@@ -19,7 +19,7 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 | State | Evidence | Status |
 |---|---|---|
 | Vision | `docs/product/vision.md` | Draft. Not accepted. |
-| Product spec | `docs/product/specification.md` | Draft. Pending review by `mjbvilhena`. **This is the gate this run stops on.** |
+| Product spec | `docs/product/specification.md` | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision `c288b7e`. |
 | Epic approval | `docs/product/epics/E1` through `E11` | Draft. E1–E9 and E11 are the v1 set. E10 is later and has no stories. E11 (Topics) has no stories yet. Not approved. |
 | Story refine | `docs/product/stories/US-01` through `US-40` and `INDEX.md` | Draft. All of those stories are in the v1 set. Not approved. |
 | Story approval | Rule recorded. No story signed. | Not given. On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. The delegation is not a sign-off on US-01–US-40. |
@@ -32,25 +32,27 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 
 ## Stop
 
-**Stopped at product specification approval.**
+**Spec gate passed. Stopped at epic approval.**
 
-`mjbvilhena` is the named approver, and the specification is pending his review. Nothing in git history, this file, or the backlog counts as his sign-off. A future approval has to name the artefact and say it is approved, or say to treat it as approved.
+`mjbvilhena` approved `docs/product/specification.md` on 2026-10-17 at 12:36 IST. His words, after a full section-by-section walkthrough (parts 1–4, including E11 at `c288b7e`), in reply to a request to approve the Lagoon spec in his own words: "Approved". The approved product revision is `c288b7e` (`c288b7ef020a9aafe821b3df3af21bd2ff75dc1b`).
 
-An instruction to record the sentence "Approve the spec, answer the 6 security questions at design" (chat, 2026-10-17, 09:20 IST) as spec approval was withdrawn before any approval was written. No approval commit exists. The specification stays Draft.
+An earlier sentence, "Approve the spec, answer the 6 security questions at design" (09:20 IST), was withdrawn and is not this sign-off. The 12:36 IST "Approved" is.
+
+That sign-off does not approve epics E1–E11, stories US-01–US-40, or any design artefact. Epics and stories stay Draft. Implementation has not started.
 
 He delegated Q1–Q4 and Q6–Q9. Mikey's Dev Bot recommended answers, and Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant reviewed them. Q1 and Q2 were later changed by the joint recommendation of Scout and Mikey's Vault App Bot: the name is Lagoon and the application id is `com.mjbvilhena.lagoon`. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. That record is in `docs/product/specification.md`. It is not approval.
 
 He later decided, in his own words where he gave them: seamless sync instead of backup and restore (Q5 resolved as merge); extra encryption at rest and as ciphertext in Drive (Q10 resolved as yes); and a v1 scope of on-device OCR, reminders, multiple attachments, offline page snapshots, and a biometric lock on sensitive items. Trip or collection grouping is later (E10). Those decisions are not approval of the specification, the epics, or the stories.
 
-On 2026-10-17 at about 11:57 IST, during his section-by-section review, he added v1 epic E11 Topics. His words: "Use a cloud AI for all items; I accept the content leaves the phone." Readable content may be sent to a cloud AI for topic extraction only. Drive sync stays ciphertext-only. Cloud OCR stays out of scope. E11 is Draft, with no stories. This scope change is not his named approval of the specification. The specification is still awaiting that sign-off.
+On 2026-10-17 at about 11:57 IST, during his section-by-section review, he added v1 epic E11 Topics. His words: "Use a cloud AI for all items; I accept the content leaves the phone." Readable content may be sent to a cloud AI for topic extraction only. Drive sync stays ciphertext-only. Cloud OCR stays out of scope. E11 is Draft, with no stories. That scope change was inside the revision he later approved.
 
 ## Story approval rule (2026-10-17)
 
-Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-40. Those stories stay Draft until a bot sign-off names them. Epic approval stays with him, and that gate is not prepared while this specification is still Draft.
+Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-40. Those stories stay Draft until a bot sign-off names them. Epic approval stays with him. That gate is now open and is not signed.
 
 ## Design-gate questions
 
-These six stay open. Miguel answers them at the technical design, ADR, and threat-model gate. They are not delegated, and that gate has not started:
+These stay open. Miguel answers them at the technical design, ADR, and threat-model gate. They are not delegated, and that gate has not started:
 
 1. Sync edit conflicts: the same item edited on two devices.
 2. How a deletion on one device propagates.
@@ -65,11 +67,11 @@ These six stay open. Miguel answers them at the technical design, ADR, and threa
 
 The five story-level questions now have consensus recommendations in US-01, US-15, US-31, US-33, and US-34 (Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot). US-31's language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports that Miguel told it in chat that English is enough for v1 OCR. That revision is not approval. Those stories stay Draft. The FTS5 / Room 3 / SQLCipher spike on US-15 is a design-gate risk, not a decision. See the specification.
 
-After spec approval, these gates are still closed until each is actually signed:
+The specification gate has passed. These gates are still closed until each is actually signed:
 
-1. Epic approval by `mjbvilhena` (E1–E9 and E11 for v1; E10 is later and not in that v1 gate). Not prepared yet. E11 has no stories until the spec and epic gates pass.
-2. Story approval of US-01–US-40 by Miguel's bots, under the rule above.
-3. Technical design and ADR approval, once those documents exist. The cipher is an ADR, not a line in the spec. The six questions above are his to answer in that band.
+1. Epic approval by `mjbvilhena` (E1–E11, including later epic E10). **This is the gate the pipeline stops on.** Epics stay Draft.
+2. Story review and approval of US-01–US-40 by Miguel's bots, under the delegation of 2026-10-17. E11 stories are not written yet. They come after epic approval. Stories stay Draft.
+3. Technical design and ADR approval, once those documents exist, and the threat model. The security questions above go to Miguel. The cipher is an ADR, not a line in the spec. That band has not started.
 
 UX, test strategy, and a threat model sit in the design band after story approval. The threat model is required before implementation. They were not skipped and they were not written. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
 
@@ -78,7 +80,7 @@ UX, test strategy, and a threat model sit in the design band after story approva
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
-| Vision ↔ spec | Spec links the vision and epics E1–E11. The vision still restates the original backup request. The spec supersedes that. Neither file is approved. E11 is a draft scope change, not spec approval. |
+| Vision ↔ spec | Spec links the vision and epics E1–E11. The vision is still not accepted. The specification is approved at revision `c288b7e`. |
 | User-story index | `docs/product/stories/INDEX.md`. Drafts are not approved. Story approval is delegated to Miguel's bots; that delegation is not a sign-off. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |

@@ -2,14 +2,14 @@
 
 > Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.** A line marked Draft means the file exists and has not been signed.
 > No story is Done. There is no app, no test run, and no named sign-off.
-> Product decisions and bot recommendations recorded in the specification are not sign-off.
-> The specification is **Draft, pending review by `mjbvilhena`.** No approval of it was recorded.
+> Product decisions and bot recommendations recorded in the specification are not sign-off of the epics or the stories.
+> The specification is **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`.
 
 ## Gate
 
-Stopped at **product specification approval**. Approver: `mjbvilhena`, pending. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Stopped at **epic approval** of E1–E11 by `mjbvilhena`. Epics stay Draft. See `docs/sdlc/pipeline-state.md`.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story, and the epic gate is not prepared while the specification is still Draft.
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them after epic approval.
 
 ## Epic E1: Capture and keep
 
@@ -98,7 +98,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Draft — not approved)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." That is not approval. No stories. Stories wait for the spec gate and the epic gate.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Draft — not approved)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." The spec that contains this epic is approved. This epic is not. No stories. Stories wait for epic approval.
 
 ## Epic E10: Trip and collection grouping
 
@@ -107,7 +107,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 ## Specification and vision
 
 - **Vision** *(Draft — not accepted)* Evidence: `docs/product/vision.md`. It restates the original request, including backup and restore. Later decisions in the specification supersede that wording. They do not accept the vision.
-- **Product specification** *(Draft — pending review by `mjbvilhena`)* Evidence: `docs/product/specification.md`. Not approved.
+- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`)* Evidence: `docs/product/specification.md`. This does not approve the epics or the stories.
 
 ## Repository setup
 

@@ -61,10 +61,10 @@ These are not promised and are not goals of this vision. They are listed so a la
 
 This vision file is still not accepted. It keeps the original request, including backup and restore, so that history stays readable.
 
-`docs/product/specification.md` records what happened after this file was written. Those lines supersede the backup wording, the "not in the request" notes on multi-device copy and OCR, and the open status of Q5 and Q10. They do not accept this vision and they do not approve the specification.
+`docs/product/specification.md` records what happened after this file was written. Those lines supersede the backup wording, the "not in the request" notes on multi-device copy and OCR, and the open status of Q5 and Q10. They do not accept this vision. Miguel approved the specification separately on 2026-10-17 at 12:36 IST. That approval does not accept this vision file.
 
 In short, and only as a pointer:
 
-- Miguel decided on seamless background sync, extra encryption, and a v1 that includes on-device OCR, reminders, multiple attachments, offline page snapshots, a biometric lock on sensitive items, and topic extraction. His words on topics: "Use a cloud AI for all items; I accept the content leaves the phone." Drive sync stays ciphertext-only. Trip or collection grouping is later. That pointer is not approval of the specification.
+- Miguel decided on seamless background sync, extra encryption, and a v1 that includes on-device OCR, reminders, multiple attachments, offline page snapshots, a biometric lock on sensitive items, and topic extraction. His words on topics: "Use a cloud AI for all items; I accept the content leaves the phone." Drive sync stays ciphertext-only. Trip or collection grouping is later. He later approved the specification as a whole. This pointer is not that approval.
 - Scout and Mikey's Vault App Bot jointly recommend the name Lagoon and the application id `com.mjbvilhena.lagoon`. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. The earlier bots' consensus on accent, tag merge, unmetered sync, text-layer PDF extraction, SDK 37, and capture filing is also in the specification. None of that is his approval.
 
