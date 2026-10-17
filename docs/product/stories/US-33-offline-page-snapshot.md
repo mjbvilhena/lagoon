@@ -21,7 +21,7 @@ Keep an offline snapshot of a saved page.
 
 - One fetch with US-08. Cap about 10 MB in the specification. This story uses 10 MiB.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: MHTML. Whether link previews are skipped is delegated to Miguel's bots and is not decided here.
+- Out of scope: MHTML. Which fetches are skipped is US-79.
 
 ## Acceptance criteria
 
@@ -57,6 +57,18 @@ Keep an offline snapshot of a saved page.
   - Given the page fits
   - When the snapshot is stored
   - Then it is not marked partial
+- **Scenario: a token-looking link** — Must
+  - Given the link is token-looking under US-79
+  - When a snapshot would be fetched and he has not confirmed that fetch
+  - Then no snapshot is stored
+- **Scenario: a sensitive item** — Must
+  - Given the item is marked sensitive
+  - When a snapshot would be fetched
+  - Then no snapshot is stored
+- **Scenario: the host rules** — Must
+  - Given the link fails a US-79 host rule
+  - When a snapshot would be fetched
+  - Then no snapshot is stored
 
 ## Analytics and observability (optional)
 

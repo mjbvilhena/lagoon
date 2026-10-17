@@ -44,19 +44,29 @@ Use the saved vault with no network and no analytics.
 - **Scenario: disclosure before the first OCR use** — Must
   - Given he has not accepted the ML Kit disclosure
   - When the app is about to run OCR for the first time (US-31)
-  - Then OCR does not run, and the app shows a disclosure. The disclosure states that the image and the recognized text stay on the device and are not sent to Google, and that ML Kit still sends usage and diagnostic metrics to Google. It states that Google's docs do not give the app a switch to turn those metrics off
+  - Then OCR does not run, `MlKit.initialize` has not been called, and the app shows a disclosure
+  - And the disclosure states that the image and the recognized text stay on the device and are not sent to Google
+  - And it lists the metrics categories from the Android data-disclosure page: device information and ML hardware accelerators, package name and version, per-installation identifiers, performance metrics, API configuration, input and output size, feature version, event types, and error codes
+  - And it states that those metrics go to Google over HTTPS and that ML Kit does not transfer them to third parties
+  - And it states that ML Kit may contact Google for model updates and bug fixes
+  - And it states that Google's docs do not give the app a switch to turn those metrics off
 - **Scenario: he accepts** — Must
   - Given that disclosure is showing
   - When he accepts
-  - Then the acceptance is stored, OCR may run, and a later OCR use does not ask again
+  - Then the acceptance is stored, `MlKit.initialize` runs, OCR may run, and a later OCR use does not ask again
 - **Scenario: he does not accept** — Must
   - Given that disclosure is showing
   - When he declines, or he leaves it without answering
-  - Then OCR does not run, and the next attempt to run OCR shows the disclosure again. This is an app gate on OCR. It is not a documented SDK switch, and it does not claim to stop metrics the SDK may send on its own
+  - Then OCR does not run, `MlKit.initialize` is not called, and the manifest has removed `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"`, so ML Kit does not start
+  - And the next attempt to run OCR shows the disclosure again
+- **Scenario: he withdraws acceptance** — Must
+  - Given he has accepted
+  - When he withdraws that acceptance in Settings (US-59)
+  - Then the next OCR use shows the disclosure again and does not call `MlKit.initialize` until he accepts
 - **Scenario: the same disclosure in Settings** — Must
   - Given he opens Settings (US-59)
   - When the screen is shown, whether or not he has accepted
-  - Then he can read the same disclosure, and he can see whether he has accepted it. There is no control that disables the metrics
+  - Then he can read the same disclosure, he can see whether he has accepted it, and he can withdraw an acceptance. There is no control that disables the metrics inside the SDK
 
 ## Analytics and observability (optional)
 
@@ -80,7 +90,7 @@ Sources, read on 2026-10-17. Facts, not a guess that a hidden flag exists:
 
 - [ML Kit Terms & Privacy](https://developers.google.com/ml-kit/terms), last modified May 14, 2025. Input processing is on device, and ML Kit does not send that input or the outputs to Google servers. The APIs also send performance and utilization metrics to Google. The developer informs users about that processing. No disable API is stated.
 - [Android data disclosure](https://developers.google.com/ml-kit/android-data-disclosure), last modified May 14, 2025. The page covers configurations the developer can control. Those are feature options. Data collected in all features is for diagnostics and usage analytics. Text recognition is not given an opt-out there.
-- [MlKit reference](https://developers.google.com/android/reference/com/google/mlkit/common/MlKit). Removing `com.google.mlkit.common.internal.MlKitInitProvider` only stops automatic startup initialization. Do not treat that removal as a telemetry off switch.
+- [MlKit reference](https://developers.google.com/android/reference/com/google/mlkit/common/MlKit). Removing `com.google.mlkit.common.internal.MlKitInitProvider` only stops automatic startup initialization. This story uses that removal so `MlKit.initialize` runs only after acceptance. It is still not a documented telemetry off switch. Whether the SDK would send metrics before the first call is not stated in these pages.
 - [Text recognition on Android](https://developers.google.com/ml-kit/vision/text-recognition/v2/android), last updated 2026-10-15 UTC. No metrics disable.
 - [iOS data disclosure](https://developers.google.com/ml-kit/ios-data-disclosure) says the SDK collects diagnostics and usage analytics by default. Lagoon is Android. That page only corroborates the default. It is not an Android control.
 

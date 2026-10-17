@@ -21,7 +21,7 @@ Sync in the background and show errors.
 
 - The specification names WorkManager for background sync. The trigger is not "while the app is running".
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the cipher (an ADR), key transport (US-74), conflict rules (US-73), and sign-out. On 2026-10-17 at 14:56 IST Miguel delegated Drive scope and sign-out to his bots. This story does not decide them.
+- Out of scope: the cipher (an ADR), key transport (US-74), conflict rules (US-73), and sign-out. Sign-out is US-78.
 
 ## Acceptance criteria
 

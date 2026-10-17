@@ -21,7 +21,7 @@ Enrich a saved link from the page.
 
 - The save in US-01 or US-06 already finished. This fetch does not block that save.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the offline snapshot file (US-33) except that its readable text comes from this same fetch. A failed fetch is US-09. Whether a link preview is skipped is delegated to Miguel's bots (2026-10-17 14:56 IST). This story does not decide that.
+- Out of scope: the offline snapshot file (US-33) except that its readable text comes from this same fetch. A failed fetch is US-09. Which fetches are skipped is US-79. Enrichment does not start until the quick-add row has closed.
 
 ## Acceptance criteria
 

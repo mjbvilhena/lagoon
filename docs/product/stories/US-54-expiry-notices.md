@@ -61,7 +61,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Lock-screen title and codes for an ordinary item follow US-34. Sensitive notification content is delegated.
+- Lock-screen title and codes for an ordinary item follow US-34. Sensitive notification content is US-75.
 
 ## Implementation notes
 

@@ -20,7 +20,8 @@ Record a return-by date and a warranty end.
 ## Background
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: OCR that picks merchants or amounts out of a receipt. Merchant, amount, and purchase date are US-82, US-83, and US-84.
+- Out of scope: OCR that picks merchants or amounts out of a receipt. Merchant, amount, and purchase date are US-82, US-83, and US-84. Changing that split is an open question for Miguel. This story does not widen it.
+- An item still has either a reminder (US-34) or an expiry (US-54), not both. A return-by date and a warranty end are extra dates. They do not take the reminder slot or the expiry slot.
 
 ## Acceptance criteria
 
@@ -29,6 +30,10 @@ Record a return-by date and a warranty end.
   - When he sets a return-by date or a warranty end
   - Then that date is stored, and notices are scheduled the same way as an expiry in US-54
   - And the item is still valid if he sets neither
+- **Scenario: beside a reminder or an expiry** — Should
+  - Given the item already has a reminder, or it already has an expiry, and not both
+  - When he sets a return-by date and a warranty end
+  - Then those two dates are stored, the reminder or the expiry stays, and he still cannot set both a reminder and an expiry
 
 ## Analytics and observability (optional)
 

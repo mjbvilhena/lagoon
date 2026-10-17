@@ -34,12 +34,14 @@ Publish a sideload signing policy.
   - Then the key is kept offline, two encrypted backups of it exist outside the repo, and the published record is the SHA-256 of the certificate
 - **Scenario: the APK signatures** — Must
   - Given a release APK
-  - When `apksigner verify --print-certs` is run
+  - When CI runs `apksigner verify --print-certs`
   - Then the APK is signed with v2 and v3, and the printed certificate matches the published SHA-256
+  - And the policy says whether a v3 rotation proof is kept with the offline key. If no rotation has happened, the published certificate is the one that command prints
 - **Scenario: an upgrade keeps the vault** — Must
   - Given an installed release build with a vault
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
+  - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch destroys the Keystore key, so the vault and every zip become unreadable. Uninstall is not a way to fix or upgrade
 - **Scenario: debug builds** — Must
   - Given a debug build
   - When it is installed beside a release build
@@ -47,7 +49,9 @@ Publish a sideload signing policy.
 - **Scenario: developer verification** — Must
   - Given the policy page
   - When it is read
-  - Then it says to register under the free limited-distribution developer verification before the 2027 enforcement, and that ADB install remains the fallback
+  - Then it follows [Register for limited distribution](https://developer.android.com/developer-verification/guides/limited-distribution), last updated 2026-09-30 UTC: the account is free, it does not ask for a government ID, and it shares with up to 20 devices
+  - And it follows the [verification overview](https://developer.android.com/developer-verification/guides): enforcement named there starts on 2026-09-30 in Brazil, Indonesia, Singapore, and Thailand for participating stores, and the ADB workflow stays the same
+  - And it does not repeat an older "global 2027" sentence that this page does not use
 - **Scenario: no self-updater** — Must
   - Given the app
   - When he looks for an update control

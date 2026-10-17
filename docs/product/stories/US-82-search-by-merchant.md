@@ -33,6 +33,14 @@ Search and filter by merchant.
   - Given he filters by one merchant
   - When the filter is applied
   - Then only items with that merchant are shown
+- **Scenario: case** — Should
+  - Given he typed "Cafe" on one item and "cafe" is the query
+  - When he searches or filters
+  - Then that item matches
+- **Scenario: an existing merchant** — Should
+  - Given "Cafe" is already stored on another item
+  - When he types a merchant
+  - Then "Cafe" is offered, and choosing it stores that same spelling
 - **Scenario: empty** — Should
   - Given he sets no merchant
   - When the item is saved

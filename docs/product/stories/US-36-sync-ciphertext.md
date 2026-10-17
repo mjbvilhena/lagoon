@@ -22,7 +22,7 @@ Sync only ciphertext.
 
 - He decided client-side encryption of everything synced. The zip rule is US-21, which he decided on 2026-10-17 at 14:56 IST is encrypted with the vault key.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: key transport (US-74). What a sensitive item reveals in an export is delegated to his bots. The topic call is not a Drive upload (US-41).
+- Out of scope: key transport (US-74). What a sensitive item reveals in an export is US-75. The topic call is not a Drive upload (US-41).
 
 ## Acceptance criteria
 

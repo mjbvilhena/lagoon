@@ -20,7 +20,7 @@ Use the teal palette, optional dynamic color, and reduced motion.
 
 ## Background
 
-- Light accent is `#0F766E`. Dark accent is `#2DD4BF`. In dark mode the color on the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces.
+- The specification's Q3 consensus says the light accent is about `#0F766E` and the dark accent is about `#2DD4BF`. The UX gate can still check the values. In dark mode the color on the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces.
 - Domain constraints: no `DOMAIN.md`. No `LAYER.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing a different accent. Wallpaper color is not the default.
 
@@ -29,7 +29,7 @@ Use the teal palette, optional dynamic color, and reduced motion.
 - **Scenario: light and dark accents** — Must
   - Given Light mode, or Dark mode
   - When a primary action is shown
-  - Then Light uses the accent `#0F766E` and Dark uses the accent `#2DD4BF`
+  - Then Light uses the accent about `#0F766E` and Dark uses the accent about `#2DD4BF`, the values the UX gate records
 - **Scenario: contrast on the dark accent** — Must
   - Given Dark mode
   - When text sits on the accent

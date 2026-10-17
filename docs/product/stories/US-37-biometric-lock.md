@@ -20,9 +20,9 @@ Lock sensitive items, and optionally lock the app.
 ## Background
 
 - On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that app lock is optional, and that the device PIN is the fallback when there are no biometrics.
-- What lists, search, notifications, export, the cloud call, and screenshots show for a sensitive item is delegated to his bots. This story does not decide that.
+- What lists, search, notifications, export, the cloud call, and screenshots show for a sensitive item is US-75.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: those delegated display questions (US-75).
+- Out of scope: those display questions (US-75).
 
 ## Acceptance criteria
 
@@ -35,9 +35,10 @@ Lock sensitive items, and optionally lock the app.
   - When he opens it on API 30 or newer
   - Then one prompt offers `BIOMETRIC_STRONG` or `DEVICE_CREDENTIAL`, and the body stays hidden until that succeeds
 - **Scenario: older APIs** — Must
-  - Given a sensitive item and the device is API 26, 27, 28, or 29
+  - Given a sensitive item, a biometric is enrolled, and the device is API 26, 27, 28, or 29
   - When he opens it
-  - Then the device credential screen is the prompt, and the body stays hidden until that succeeds
+  - Then the prompt is the biometric prompt and it offers "Use PIN"
+  - And "Use PIN" opens the device credential, and the body stays hidden until the biometric or that credential succeeds
 - **Scenario: no biometric enrolled** — Must
   - Given a sensitive item and no biometric is enrolled, and a screen lock exists
   - When he opens it

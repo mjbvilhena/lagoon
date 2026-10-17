@@ -38,10 +38,16 @@ Reschedule reminders after a restart or a clock change.
   - When the delete is pending
   - Then the notification is cancelled, and Undo restores it
 - **Scenario: which device posts** — Must
-  - Given the same reminder has synced to two devices
+  - Given the same reminder has synced to two devices and the install where it was set is still signed in
   - When the time arrives
-  - Then the device where the reminder was set posts the notification
+  - Then that origin install posts the notification
   - And a device that only received it by sync does not post it
+- **Scenario: the origin is gone** — Must
+  - Given the origin install is signed out, or no origin is known, including a vault that arrived only by sync (US-20)
+  - When the time arrives
+  - Then the install with the newest check-in posts, and only that install posts
+  - And a check-in is the timestamp an install writes when the app is opened or when a sync succeeds
+  - And the same rule covers a reminder, an expiry, a return-by date, and a warranty end
 
 ## Analytics and observability (optional)
 

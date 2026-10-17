@@ -19,7 +19,8 @@ Score whether topics are useful.
 
 ## Background
 
-- Two separate scores: kept-unchanged rate, and match against a fixture. Near-duplicate means two names are equal after the normalisation in US-42, including singular and plural, or their edit distance is 2 or less. Counts stay on the phone. Miguel is not asked to hand-label.
+- Two separate scores: kept-unchanged rate, and match against a fixture. Near-duplicate means two names are equal after the normalisation in US-42, including a trailing singular or plural `s`, or the edit distance is length-relative: at most 1 when the shorter name has fewer than 12 characters, and at most 2 when it has 12 or more. Counts stay on the phone. Miguel is not asked to hand-label.
+- The fixture is built in the test source. It is 20 items: 8 notes, 6 links, 4 images, and 2 PDFs. Each title and each body is at least 40 characters. It includes 4 name pairs that are near-duplicates under the rule above and 4 names that are not. It runs as a local unit test. It does not call the cloud and it does not use Miguel's vault.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: analytics upload (US-07).
 
@@ -28,7 +29,7 @@ Score whether topics are useful.
 - **Scenario: near-duplicates** — Could
   - Given two topic names
   - When the check runs
-  - Then they count as near-duplicates if they are equal after US-42 normalisation, including singular and plural, or if their edit distance is 2 or less
+  - Then they count as near-duplicates if they are equal after US-42 normalisation, including a trailing singular or plural `s`, or if the edit distance is at most 1 when the shorter name has fewer than 12 characters and at most 2 when it has 12 or more
 - **Scenario: the two rates** — Could
   - Given a fixture of items, not a set Miguel must label
   - When the check runs

@@ -21,7 +21,7 @@ Encrypt the vault at rest.
 
 - On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided: if the vault key is lost, the content is lost. There is no recovery.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74).
+- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). Whether the Keystore key is bound to device authentication. That question stays open for Miguel. This story does not choose it. It does set `setInvalidatedByBiometricEnrollment(false)`.
 
 ## Acceptance criteria
 
@@ -29,7 +29,8 @@ Encrypt the vault at rest.
   - Given the vault key has not been created
   - When he is asked to set up the vault, including when the first share arrives before he has accepted
   - Then he sees a clear warning that if the key is lost the content is lost and there is no recovery, that uninstall or clear storage destroys the key, and that losing the signing key forces a reinstall that destroys it too
-  - And the key is not created, and the item is not stored, until he accepts that warning
+  - And the key is not created until he accepts that warning
+  - And the first shared item is held pending until he accepts. If he declines, he is told that nothing was saved. The share is not dropped in silence
 - **Scenario: what "key gone" means** — Must
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app

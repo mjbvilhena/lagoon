@@ -28,7 +28,7 @@ Record an amount and a currency.
 - **Scenario: amount and currency** — Should
   - Given an item
   - When he enters an amount and a currency
-  - Then both are stored and shown together
+  - Then both are stored and shown together, and the currency is an ISO 4217 code such as `EUR`
 - **Scenario: one without the other** — Should
   - Given he enters an amount and no currency, or a currency and no amount
   - When he tries to save that pair

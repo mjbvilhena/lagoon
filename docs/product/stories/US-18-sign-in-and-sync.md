@@ -22,7 +22,7 @@ Sign in so the vault can sync.
 
 - Sign-in uses Credential Manager and the Identity AuthorizationClient. This story ends when the grant exists. It does not upload.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: a Back up now button, the WorkManager worker (US-51), ciphertext rules (US-36), and key transport (US-74). Drive scope and sign-out were delegated to Miguel's bots on 2026-10-17 at 14:56 IST. This story does not decide them. The approved specification still names `appDataFolder` until the bots do.
+- Out of scope: a Back up now button, the WorkManager worker (US-51), ciphertext rules (US-36), and key transport (US-74). Drive scope and sign-out are US-78. The approved specification names `appDataFolder`.
 
 ## Acceptance criteria
 

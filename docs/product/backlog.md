@@ -56,12 +56,12 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 > Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
 
 - **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-sync-not-configured.md`. Not implemented. Missing OAuth must not crash.
-- **US-18** *(Draft)* Sign in. Evidence: `docs/product/stories/US-18-sign-in-and-sync.md`. Not implemented. The specification names `appDataFolder`. Drive scope and sign-out are delegated to the bots.
+- **US-18** *(Draft)* Sign in. Evidence: `docs/product/stories/US-18-sign-in-and-sync.md`. Not implemented. The specification names `appDataFolder`. Drive scope and sign-out are US-78. The criteria stay proposed.
 - **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-unmetered-sync.md`. Not implemented. `WorkManager` `UNMETERED`.
 - **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-no-manual-backup.md`. Not implemented.
 - **US-20** *(Draft)* New install receives one-sided items. Evidence: `docs/product/stories/US-20-receive-the-vault.md`. Not implemented. Conflicts and deletions are US-73, still open for Miguel.
 - **US-21** *(Draft)* Zip export encrypted with the vault key. Evidence: `docs/product/stories/US-21-export-a-zip.md`. Not implemented. Miguel, 2026-10-17 14:56 IST. Import is US-52.
-- **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78, delegated to the bots.
+- **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78. The criteria stay proposed.
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 
 ## Epic E5: Look and feel
@@ -92,7 +92,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 - **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented. Miguel, 2026-10-17 14:56 IST.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
-- **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. Miguel, 2026-10-17 14:56 IST. What a sensitive item reveals is US-75, delegated to the bots.
+- **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. Miguel, 2026-10-17 14:56 IST. What a sensitive item reveals is US-75. The lock-screen reminder is decided. The other criteria stay proposed.
 
 ## Epic E9: Reminders and expiry
 
@@ -175,6 +175,10 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
+- The topic off switch defaults to off (US-41, US-59). Not changed in round 3.
+- US-28 keeps Add date as a Must. Not changed.
+- US-82, US-83, and US-84 stay Should. US-68 stays the date story. Not changed.
+- Whether the vault key is bound to device authentication. US-35 does not choose it.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
 
@@ -183,7 +187,7 @@ Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
 
-- Official Google docs do not document a disable switch for ML Kit usage or diagnostic telemetry. US-07 requires a disclosure he accepts before the first OCR use. Settings (US-59) shows the same disclosure. Research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
+- Official Google docs do not document a disable switch for ML Kit usage or diagnostic telemetry. US-07 requires a disclosure he accepts before the first OCR use. ML Kit is not started until he accepts, and he can withdraw that acceptance in Settings (US-59). Research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
 
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 
@@ -192,7 +196,7 @@ He did not decide these. Round 2 proposes criteria on the stories, marked pendin
 - Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. The lock-screen reminder is decided at 15:59 IST. The other criteria stay proposed.
 - Drive scope and sign-out. US-78. The specification still names `appDataFolder`.
 - Link-preview skipping. US-79. Token-looking URLs are decided at 15:59 IST. The host rules stay proposed.
-- Sharing out. US-64. Epic E3 still lists it as out of scope.
+- Sharing out. US-64. Epic E3 includes it as a Should. The criteria stay proposed.
 - Permissions. US-80.
 - Sideloading. US-81. US-24 still requires a signed APK because E6 does.
 

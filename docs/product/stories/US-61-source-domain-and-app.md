@@ -1,4 +1,4 @@
-# US-61 See and filter by where an item came from
+# US-61 Filter by where an item came from
 
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
@@ -9,31 +9,24 @@
 
 ## Title
 
-See and filter by where an item came from.
+Filter by where an item came from.
 
 ## User story
 
 **As a** person named Miguel
-**I want** to see the source domain and the sending app, and to search and filter by them
+**I want** to filter by the source domain or the sending app
 **So that** I can find what I saved from one site or one app
 
 ## Background
 
 - US-01, US-02, US-03, and US-04 record the fields. The sending app is stored only when the platform reports it. An empty field does not block the save.
+- Showing the values is US-10 and US-11. Searching them is US-15. This story is the filter only.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: a map of every app package.
+- Out of scope: a map of every app package. Showing the fields. Searching the fields.
 
 ## Acceptance criteria
 
-- **Scenario: show** — Must
-  - Given an item has a source domain or a sending app
-  - When he sees the row or the detail
-  - Then those values are shown
-- **Scenario: search** — Must
-  - Given the value is in its US-15 column
-  - When he searches it
-  - Then the item can match
-- **Scenario: filter** — Must
+- **Scenario: filter** — Should
   - Given he filters by one domain or one sending app
   - When the filter is applied
   - Then only those items are shown

@@ -270,6 +270,30 @@ US-31 had a clean round-2 verdict. The edit there is one factual note pointing a
 
 The catalog cell for US-44 no longer says E11 omits the topic unmetered setting. E11 includes that setting after the 15:55 IST amendment. The story file was not rewritten for that cell.
 
+## Harness step (2026-10-17, round 3): story revision at df8c088
+
+`sdlc-conductor`. The legal step is still story refinement. Stories stay Draft. Design, an approved threat model, and implementation stay closed. The user's instruction to apply the round-3 list is the confirm. This run records no approval.
+
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This branch does not contain `scripts/bootstrap-sdlc-mcp.sh`. That script lives on PR #4. This was not a live MCP stdio session. `get_domain_consultant("capture")` and `get_layer_consultant("ui")` found no files. No MUST/NEVER rules were invented.
+
+Skills used:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+3. `sdlc-threat-modeler`, template `get_sdlc_template("threat model")`, Definition of Done `get_definition_of_done("security change")`. The note stays proposed. Security-change implementation DoD is unmet: there is no code.
+4. `sdlc-researcher`, template `get_sdlc_template("research")`, Definition of Done `get_definition_of_done("research")`. The ML Kit note now requires the bundled model and records that pre-first-call metrics are undocumented.
+5. `sdlc-dod-checker`, `get_definition_of_done("user story")` from `third_party/ai-sdlc-harness/mcp-server/data/dod/user_story.md`, checked against every story file. Artefact shape fails US-73, US-74, US-76, and US-77. Every other story passes shape. Implementation DoD fails every story. Nothing is Done.
+6. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+7. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Left open for Miguel, and not changed: the topic off-switch default, US-28 Add date, the priority of US-82 through US-84 and the scope of US-68, whether the key is auth-bound, US-73, US-74, US-76, US-77, the reminder time zone, and full-screen QR. Those are listed in `docs/product/stories/REVIEW-PACK.md`.
+
+The 15:59 IST and 16:00 IST chat decisions are recorded in the specification decision table. That record is not a new specification approval.
+
+Clean-verdict stories edited in this run, needing re-confirm, status still Draft: US-08, US-15, US-19, US-31, US-33, US-50.
+
+`ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request. The required checks stay no-ops until Gradle exists.
+
 ## Memory checklist
 
 | Artefact | This run |

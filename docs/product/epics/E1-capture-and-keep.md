@@ -36,7 +36,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
   - No analytics.
   - Source domain and sending app (US-61) are a Should.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one. Source domain and sending app (US-61) are a Should. They are not in this epic until Miguel approves this amendment. He approved it on 2026-10-17 at 15:55 IST, so that Should is in scope above.
+- **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one. Source domain and sending app are in scope above as a Should (US-61).
 
 ## Core Workflows
 

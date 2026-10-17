@@ -22,7 +22,7 @@ Skip unsafe link previews.
 
 - On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated link-preview skipping to his bots. He did not decide the host rules. Those stay proposed below.
 - On 2026-10-17 at 15:59 IST he decided token-looking URLs, the case the proposed skip list was holding open. The vault does not auto-fetch them. It shows a foggy placeholder image in place of the preview and asks whether to enable the preview for that link. A fetch happens only after he says yes.
-- A token-looking URL is one whose address carries a secret-like value. A test supplies a link already marked token-looking. This story does not publish a detector pattern.
+- A token-looking URL is defined by the proposed rule below. The 15:59 IST decision is the prompt and the fetch gate. The detector itself stays proposed.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the offline snapshot viewer making its own network calls. It does not.
 
@@ -55,10 +55,18 @@ Skip unsafe link previews.
   - Given the URL scheme is not `http` or `https`
   - When a preview would be fetched
   - Then no fetch is made
+- **Scenario: what counts as token-looking** — Must
+  - Given a URL table in the test
+  - When the rule runs
+  - Then a URL is token-looking if any one of these is true, compared without case on the name: a query parameter named `token`, `access_token`, `id_token`, `auth`, `key`, `api_key`, `sig`, `signature`, `code`, `otp`, `session`, `sid`, `secret`, `password`, `X-Amz-Signature`, `X-Amz-Credential`, or `X-Goog-Signature`; user info of the form `user:pass@`; a value containing `eyJ`; a path segment or parameter value of at least 24 characters made only of `A-Za-z0-9_-`; or a path segment `reset`, `verify`, `magic`, `confirm`, `unsubscribe`, or `login`
+  - And `https://example.com/notes/1` is not token-looking
+  - And the same rule blocks enrichment (US-08) and a snapshot (US-33) until he confirms
+  - And enrichment waits until the quick-add row has closed
 - **Scenario: hosts that are skipped** — Must
-  - Given the host is an IP literal, a private, loopback, link-local, or CGNAT address, a single-label host, or a host ending in `.local`, `.lan`, or `.internal`
-  - When the check runs after DNS, and again on every redirect
+  - Given the host is an IP literal, a private, loopback, link-local, or CGNAT address, `0.0.0.0`, an IPv4 multicast address, an IPv6 address in `fc00::/7` or link-local `fe80::/10` or multicast `ff00::/8`, an IPv4-mapped form of any skipped IPv4 address, a single-label host, or a host ending in `.local`, `.lan`, or `.internal`
+  - When the check runs after DNS, on the connected peer address, and again on every redirect
   - Then no fetch is made to that host
+  - And a redirect to a scheme other than `http` or `https` is not followed
 - **Scenario: a sensitive item** — Must
   - Given the item is marked sensitive
   - When a preview would be fetched
@@ -66,12 +74,12 @@ Skip unsafe link previews.
 - **Scenario: what the fetch sends** — Must
   - Given a preview fetch is allowed
   - When it runs
-  - Then it sends no cookies, no `Referer`, and no authorization header, and it does not run JavaScript
+  - Then it sends no cookies, no `Referer`, and no authorization header, it does not run JavaScript, and the User-Agent is the fixed string `LagoonPreview` with no device id, account, or install id
 - **Scenario: limits** — Must
   - Given a preview fetch is allowed
   - When it runs
-  - Then it follows at most 5 redirects, it times out, and it stops at 10 MiB
-  - And cleartext traffic is off
+  - Then it follows at most 5 redirects, it times out after 15 seconds, and it stops at 10 MiB
+  - And an `http` URL is fetched as `https`. Cleartext stays off, so a failed upgrade is not fetched as `http`
 - **Scenario: the viewer** — Must
   - Given he reads a stored snapshot
   - When the viewer is open

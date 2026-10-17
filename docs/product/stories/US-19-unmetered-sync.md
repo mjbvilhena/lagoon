@@ -55,7 +55,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The topic queue follows this same preference (US-44).
+- The topic queue does not follow this preference. It has its own "Unmetered only" setting (US-44).
 
 ## Implementation notes
 

@@ -35,7 +35,7 @@ Miguel, looking back through what he kept.
   - Filter by type and by tag.
   - Sharing an item back out to other apps, as US-64 (Should). The acceptance criteria on that story stay proposed.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** A numeric latency SLO. Sharing an item back out to other apps is proposed as US-64 (Should) and stays out of this epic until Miguel approves this amendment. He approved it on 2026-10-17 at 15:55 IST, so that Should is in scope above. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1).
+- **Out of Scope / Non-Goals:** A numeric latency SLO. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1). Sharing an item back out is in scope above as US-64, a Should. The acceptance criteria on that story stay proposed.
 
 ## Core Workflows
 

@@ -49,6 +49,10 @@ Recognize English text on the device.
   - Given the image has no text
   - When OCR finishes
   - Then the item remains and no text is invented
+- **Scenario: the bundled model** — Must
+  - Given the release dependencies
+  - When they are inspected
+  - Then `com.google.mlkit:text-recognition` is present and `com.google.android.gms:play-services-mlkit-text-recognition` is absent
 
 ## Analytics and observability (optional)
 
@@ -66,4 +70,4 @@ The image and the recognized text stay on the device. ML Kit's own usage and dia
 
 ## Implementation notes
 
-On-device model bundled in the install. Not a design spec.
+On-device Latin model from `com.google.mlkit:text-recognition`, bundled in the install. The Play services text-recognition artifact is absent because that thin variant collects a device identifier. Not a design spec.

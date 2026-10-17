@@ -22,7 +22,7 @@ Miguel (`mjbvilhena`) decided these in chat on 2026-10-17 at 15:59 IST. They are
 Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 16:00 IST. It is not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
 
 - Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. There is no Settings toggle, and no default to copy from the docs.
-- Before the first OCR use he accepts a disclosure that the image and the recognized text stay on the device, and that ML Kit still sends usage and diagnostic metrics to Google. Declining, or leaving it unanswered, means OCR does not run. The same disclosure is readable in Settings, with whether he has accepted it. US-07 and US-59. US-31 only points at that gate.
+- Before the first OCR use he accepts a disclosure that the image and the recognized text stay on the device, and that ML Kit still sends usage and diagnostic metrics to Google. Declining, or leaving it unanswered, means OCR does not run and ML Kit is not started. He can withdraw the acceptance in Settings. US-07 and US-59. US-31 requires the bundled model.
 
 ## Open questions for Miguel
 
@@ -34,6 +34,11 @@ Not decided. Not delegated.
 - Topic provider, its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. US-76. The release APK must not contain that key in plaintext.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
+- The topic off switch defaults to off (US-41, US-59). Four reviewers said that conflicts with E11 processing every item. Miguel has not changed the default. This pack does not change it.
+- US-28 keeps "Add date" as a Must. Miguel has not moved it.
+- US-82, US-83, and US-84 stay Should. US-68 stays a date story. Miguel has not changed those priorities or that scope.
+- Whether the vault key is bound to device authentication. US-35 does not choose it.
+- Reminder time zone. Stories still use the device local zone.
 
 ## Open questions delegated to bots
 
@@ -42,7 +47,7 @@ On 2026-10-17 at 14:56 IST Miguel delegated these to his bots. He did not decide
 - Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. The lock-screen reminder is no longer in this list. He decided it at 15:59 IST.
 - Drive scope and sign-out. US-78. The approved specification still names `appDataFolder`.
 - Link-preview skipping. US-79. Token-looking URLs are no longer in this list. He decided them at 15:59 IST. The host rules stay proposed.
-- Sharing out. US-64. Approved epic E3 still lists it as out of scope.
+- Sharing out. US-64. Epic E3 includes it as a Should. The criteria stay proposed.
 - Permissions. US-80. US-34 still asks for `POST_NOTIFICATIONS` at the first reminder, which is the recorded specification text.
 - Sideloading. US-81. US-24 still requires a signed APK because epic E6 does.
 
@@ -65,6 +70,8 @@ US-61 cites the approved amendment and stays Draft. US-64 cites it for the Shoul
 Implementation DoD fails for every story: there is no app and no automation, so no story is Done.
 
 Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. US-07 no longer holds an open ML Kit question. The 16:00 IST disclosure criteria assert. That pass is not story approval.
+
+The seven required checks are no-ops until a Gradle project exists. `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request, not this one. The script that starts the knowledge server lives on PR #4. This branch imports `server.py` with the virtualenv Python. That import is not a live MCP session.
 
 Pass artefact shape: every other story, including US-64, US-75, US-78, US-79, US-80, and US-81. Those six pass on shape only. Their criteria are marked **Proposed: pending Miguel's approval**. That pass is not his approval, and it is not a status of Approved.
 
@@ -132,13 +139,15 @@ Dev Bot, Scout, and Mikey's Assistant may record an approval under Miguel's dele
 
 Clean approvals from all five at `40bb526`, with Household and Leisure as recommendations: US-01, US-05, US-06, US-08, US-09, US-11, US-14, US-15, US-16, US-17, US-19, US-20, US-22, US-23, US-24, US-27, US-30, US-31, US-32, US-33, US-38, US-42, US-43, US-45, US-46, US-47, US-50, US-56, US-57, US-58, US-60, US-67, US-71.
 
-Conditional, not clean: US-18 depends on US-78. US-25 and US-52 were Dev Bot [RD] until Miguel approved the amendment. He approved it at 15:55 IST. That condition is met. The cells below stay as recorded at `40bb526`. Story status stays Draft. Stories that are not in the clean list are not recorded as approvals.
+Conditional, not clean: US-18 depends on US-78. US-25 and US-52 were Dev Bot [RD] at `40bb526`. The zip is encrypted with the vault key because Miguel said so in chat on 2026-10-17 at 14:56 IST, not because the 15:55 IST amendment met that cell. The cells below stay as recorded at `40bb526`. This run records no new approval. Story status stays Draft.
 
 Approved stories edited in the round-2 revision, minimal, and needing re-confirm: US-01 (one title order, leftover text aligned with US-02, sending app only when the platform reports it), US-45 (a hard-deleted item's topic note is removed, matching US-13), US-57 (the spike also runs on an API 26 emulator and an arm64 phone, and records the APK size change).
 
 US-11 also had a clean verdict at `40bb526`. The 15:59 IST edit adds one line: when the stored preview is the foggy placeholder from US-79, the detail shows that image and does not fetch. That edit needs re-confirm. Status stays Draft. US-10 does not draw a preview, so the placeholder is not on the home row.
 
 US-31 also had a clean verdict at `40bb526`. The 16:00 IST edit is a factual note: ML Kit metrics are the US-07 disclosure, and the first OCR use waits on that acceptance. Status stays Draft. That edit needs re-confirm. US-07 was not a clean all-five approval, so its new criteria are not a re-confirm of a unanimous verdict.
+
+Round 3, against `df8c088`, edited these clean-verdict stories again. They need re-confirm. Status stays Draft. This run records no approval: US-08 (the skip rules are US-79, and enrichment waits for the quick-add row), US-15 (merchant column), US-19 (the topic queue has its own unmetered setting), US-31 (bundled `com.google.mlkit:text-recognition` only), US-33 (no snapshot for a token-looking link until he confirms, none for a sensitive item, host rules from US-79), US-50 (merchant weight 5).
 
 | ID | Dev Bot | Scout | Mikey's Assistant | Household | Leisure |
 |---|---|---|---|---|---|
@@ -239,7 +248,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-04 | Share a PDF into the vault. | E1 | the file and the text it already contains are searchable later | Must | 5 | None on this story |
 | US-05 | Add a note by hand. | E1 | I can keep something that did not come from a share | Must | 4 | None on this story |
 | US-06 | Add a URL by hand. | E1 | I can keep a page when I am not in the app that showed it | Must | 4 | None on this story |
-| US-07 | Use the saved vault with no network and no analytics. | E1 | I can read and search it offline, and the app does not report my use | Must | 7 | None. Disclosure decided 16:00 IST |
+| US-07 | Use the saved vault with no network and no analytics. | E1 | I can read and search it offline, and the app does not report my use | Must | 8 | None. Disclosure decided 16:00 IST |
 | US-08 | Enrich a saved link from the page. | E2 | I can recognise the page later without opening it | Must | 4 | None on this story |
 | US-09 | Keep the link when the page cannot be fetched. | E2 | a failed fetch does not lose the link (1 Should) | Must | 2 | None on this story |
 | US-10 | Browse saved items, newest first. | E3 | the thing I just kept is the first row | Must | 5 | None on this story |
@@ -263,17 +272,17 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-28 | Optionally tag a save from the last-used tags. | E1 | I can file the item without a second form | Must | 7 | None on this story |
 | US-29 | Rename a tag, merging only after he confirms a clash. | E3 | I do not have to retag each item, and a clash does not happen by accident | Must | 5 | None on this story |
 | US-30 | Do not offer backup or restore controls. | E4 | sync stays in the background and I am not asked to run a backup | Must | 3 | None on this story |
-| US-31 | Recognize English text on the device. | E7 | I can search that text without sending the image to a cloud OCR service | Must | 6 | None on this story |
+| US-31 | Recognize English text on the device. | E7 | I can search that text without sending the image to a cloud OCR service | Must | 7 | None on this story |
 | US-32 | Keep more than one attachment on an item. | E1 | a receipt and a photo of the same thing stay together | Must | 5 | None on this story |
-| US-33 | Keep an offline snapshot of a saved page. | E2 | I can read the page when the network is gone, and still keep the original URL | Must | 8 | None on this story |
+| US-33 | Keep an offline snapshot of a saved page. | E2 | I can read the page when the network is gone, and still keep the original URL | Must | 11 | None. Fetch gates are US-79 |
 | US-34 | Set a reminder. | E9 | I do not forget the item | Must | 9 | Exact alarms and a fixed time zone stay open. Sensitive lock-screen text is decided on US-75 |
 | US-35 | Encrypt the vault at rest. | E8 | a copy of the phone's storage does not contain the vault in the clear, and I am not promised a recovery that does not exist | Must | 9 | Key transport stays open. Loss is decided |
 | US-36 | Sync only ciphertext. | E8 | Google cannot read the vault | Must | 3 | None on this story |
 | US-37 | Lock sensitive items, and optionally lock the app. | E8 | private items stay closed, and I can still lock the app when the phone has no biometric | Must | 10 | None on this story |
 | US-38 | File new captures from an Untagged inbox. | E3 | new captures do not disappear into the full list before I tag them | Must | 5 | None on this story |
 | US-39 | Sort and filter the list by when it was saved. | E3 | I can limit the list to a day or a range | Must | 7 | None on this story |
-| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 6 | None on this story |
-| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 8 | Provider, credential, and payload stay open |
+| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 7 | None on this story |
+| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 9 | Provider, credential, payload, and the off-switch default stay open |
 | US-42 | Link an item to a topic the vault already has. | E11 | the subject I already have grows instead of starting over | Must | 5 | None on this story |
 | US-43 | Confirm a topic before it is created. | E11 | a subject I do not want is never created, and one-tap capture stays one tap | Must | 6 | None on this story |
 | US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | None on this story |
@@ -282,18 +291,18 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-47 | Keep the item when the topic call fails. | E11 | a cloud problem does not lose what I saved or invent a topic | Must | 6 | None on this story |
 | US-48 | Manage a topic that is already saved. | E11 | I can correct a subject after I have confirmed it | Must | 5 | None on this story |
 | US-49 | Update a link that was saved before, and undo that update. | E1 | one page does not become two items, and a mistake is reversible | Must | 7 | None on this story |
-| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 6 | None on this story |
+| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 7 | None on this story |
 | US-51 | Sync in the background and show errors. | E4 | I do not have to press a backup button and I can see a real failure | Must | 5 | None on this story |
 | US-52 | Import a zip and merge it. | E4 | a file fallback can fill this phone without wiping it | Must | 3 | None on this story |
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | I can read the app in light and dark and with reduced motion | Must | 6 | None on this story |
 | US-54 | Notify before an expiry. | E9 | I can act before the date, and a close date does not schedule a notice that would already have passed | Must | 6 | None on this story |
-| US-55 | Reschedule reminders after a restart or a clock change. | E9 | a notification is not lost because the phone restarted | Must | 4 | None on this story |
+| US-55 | Reschedule reminders after a restart or a clock change. | E9 | a notification is not lost because the phone restarted | Must | 5 | Time zone stays open |
 | US-56 | Keep a stable identity for each item. | Cross-cutting | an edit or a second device does not fork the item or lose it | Must | 3 | None on this story |
 | US-57 | Prove that search and encryption can run together. | Cross-cutting | search and encryption are not built on a combination that cannot run | Must | 2 | None on this story |
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | search and topics see the text that actually exists | Must | 3 | None on this story |
 | US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 3 | None. ML Kit disclosure is the US-07 slot |
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
-| US-61 | See and filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 3 | In E1 after the approved amendment. Story stays Draft |
+| US-61 | Filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 0 | In E1. Filter only. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |
 | US-63 | Copy a code he marked. | E9 | I can copy a code without selecting it by hand each time (3 Should) | Should | 0 | None on this story |
 | US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (6 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
@@ -307,11 +316,11 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-72 | Score whether topics are useful. | E11 | usefulness can be judged without me hand-labeling items and without sending counts off the phone (3 Could) | Could | 0 | None on this story |
 | US-73 | Decide sync conflicts and deletions. | Cross-cutting | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
-| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 7 | Lock-screen reminder decided 15:59 IST. Other criteria stay proposed |
+| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 9 | Lock-screen reminder decided 15:59 IST. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
-| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 6 | Proposed, pending Miguel |
-| US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 11 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
+| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 7 | Proposed, pending Miguel |
+| US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 12 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
 | US-80 | Keep the permission set to an allowlist. | Cross-cutting | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
 | US-81 | Publish a sideload signing policy. | E6 | a later install can replace the app without losing the vault | Proposed Must | 6 | Proposed, pending Miguel |
 | US-82 | Search and filter by merchant. | Cross-cutting | I can find a shop without reading every item (3 Should) | Should | 0 | None on this story |

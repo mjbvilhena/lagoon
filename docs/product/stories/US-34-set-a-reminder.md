@@ -76,7 +76,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Sensitive items: the body stays behind US-37. Lock-screen content for a sensitive item is delegated to the bots (see REVIEW-PACK). The permission set beyond this notification is also delegated (US-80).
+- Sensitive items: the body stays behind US-37. Lock-screen content for a sensitive item is US-75. The permission set beyond this notification is US-80.
 
 ## Implementation notes
 

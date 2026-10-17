@@ -33,12 +33,13 @@ Follow written steps to build, sideload, and create the OAuth client.
 - **Scenario: OAuth clients** — Must
   - Given the OAuth section
   - When he reads it
-  - Then it names an Android client with the package `com.mjbvilhena.lagoon` and both the release and debug SHA-1, and a Web client ID used as `serverClientId` when Credential Manager needs one
+  - Then it names an Android client with the package `com.mjbvilhena.lagoon` and the release SHA-1, a separate Android client for `com.mjbvilhena.lagoon.debug` with the debug SHA-1, and a Web client ID used as `serverClientId` when Credential Manager needs one
+  - And the root README names that debug client in one line and points at these steps
 - **Scenario: consent screen** — Must
   - Given the OAuth section
   - When he follows the client steps
   - Then it includes a step to set the OAuth consent screen to "In production"
-  - And it says, as unverified, that Testing-mode grants may expire after about 7 days. Scout could not verify that expiry. The sentence is not stated as a measured fact
+  - And it states, as Google's documented rule, that an external consent screen left in Testing issues a refresh token that expires in 7 days, unless the only scopes are a subset of name, email, and profile (`userinfo.email`, `userinfo.profile`, `openid`, or their OpenID Connect equivalents). Source: [Refresh token expiration](https://developers.google.com/identity/protocols/oauth2#expiration), last updated 2026-10-16 UTC. Drive app data is not one of those basic scopes, so a Testing client hits that 7-day expiry
 - **Scenario: missing client ID** — Must
   - Given the client ID is absent
   - When he reads the docs

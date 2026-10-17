@@ -31,13 +31,18 @@ Fill an empty title from the page or the file.
   - When enrichment returns it
   - Then the item title becomes that page title
 - **Scenario: no page title** — Must
-  - Given the page has no title
+  - Given the page has no title and the link is not token-looking
   - When the title is filled
   - Then it is the host and path of the normalised URL
-- **Scenario: a camera-like file name** — Must
-  - Given the only name is `IMG_`, `SCAN_`, or `DSC_` plus digits
+- **Scenario: a token-looking link** — Must
+  - Given the link is token-looking under US-79 and he did not type a title
   - When the title is filled
-  - Then it is the type plus the saved date, such as "Image 17 Oct 2026", and not that camera name
+  - Then it is the host only, not the path
+- **Scenario: a camera-like file name** — Must
+  - Given the only name matches `IMG_`, `SCAN_`, `DSC_`, `Screenshot_`, `PXL_`, or the word Screenshot followed by a space, compared without case, plus whatever follows
+  - When the title is filled and the sending app was reported
+  - Then the title is `Screenshot · <sending app> · <saved date>`, and not that file name
+  - And when the sending app was not reported, that middle segment is omitted
 - **Scenario: another file name** — Must
   - Given the file name is not one of those patterns
   - When the title is filled

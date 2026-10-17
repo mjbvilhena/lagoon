@@ -30,24 +30,33 @@ Share or open an item in another app.
 
 - **Scenario: share an attachment, a URL, or note text** — Should
   - Given an ordinary item has an attachment, a source URL, or note text
-  - When he chooses Share or Open with
-  - Then he can send that attachment, that URL, or that note text
+  - When he chooses Share and does not pick a part
+  - Then the note text is what is shared
+  - And he can instead send one attachment or the URL
+- **Scenario: every attachment** — Should
+  - Given an ordinary item has more than one attachment
+  - When he chooses to share all of them
+  - Then one send includes every attachment
 - **Scenario: the other app receives a stream** — Should
   - Given he shares an attachment
   - When the other app reads it
-  - Then the bytes come from a non-exported FileProvider, with a one-time read grant, and the URI is not `file://`
+  - Then the bytes are a `ParcelFileDescriptor` pipe from a non-exported FileProvider, with a one-time read grant, the URI is not `file://`, and no plaintext copy is written for that share
 - **Scenario: a temp copy** — Should
-  - Given a temp copy in `cacheDir/share/` cannot be avoided
-  - When the next launch runs, or the wipe job runs
+  - Given a pipe cannot be used and a temp copy cannot be avoided
+  - When the other app returns, or 15 minutes pass, or the next launch runs
   - Then that copy is gone
+- **Scenario: a link** — Should
+  - Given he opens a source URL
+  - When Open with runs
+  - Then it uses Custom Tabs or `ACTION_VIEW`, the scheme is `http` or `https` only, and no WebView loads the page
 - **Scenario: photo location** — Should
   - Given the attachment is a photo that carries GPS
   - When he shares it and he has not asked to keep location
   - Then the shared bytes do not include that GPS
 - **Scenario: a sensitive item** — Should
   - Given the item is marked sensitive
-  - When he chooses Share
-  - Then US-37 unlocks it first and he sees a warning before the share continues
+  - When he chooses Share or Open with
+  - Then US-37 unlocks it first and he sees a warning before either one continues
 - **Scenario: the vault stays here** — Should
   - Given any share
   - When the sheet is built
@@ -64,8 +73,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Depends on an approved amendment of E3 before this Should is scheduled. The amendment is proposed, not approved.
-- US-35 does not encrypt a temp copy that another app must read. This story wipes that copy instead.
+- Epic E3 already includes this Should. These criteria stay proposed.
+- US-35 does not encrypt a temp copy that another app must read. This story wipes that copy instead. The 15 minute bound is a draft so the wipe is testable. It is not his approval.
 
 ## Implementation notes
 

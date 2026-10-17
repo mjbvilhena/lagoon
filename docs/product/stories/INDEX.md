@@ -71,7 +71,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
 | US-59 | Use one Settings screen. | Cross-cutting | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
 | US-60 | Browse topics and pending suggestions. | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
-| US-61 | See and filter by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
+| US-61 | Filter by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
 | US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Draft |
 | US-63 | Copy a code he marked. | E9 | Should | `docs/product/stories/US-63-copy-a-code.md` | Draft |
 | US-64 | Share or open an item in another app. | Cross-cutting | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Draft |

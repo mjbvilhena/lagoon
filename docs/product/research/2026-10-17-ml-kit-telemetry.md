@@ -15,7 +15,7 @@ This note is in the pull request for him. That is the share this step can make. 
 
 ## Executive Summary
 
-Official Google ML Kit documentation does not give an app a switch that turns off usage or diagnostic telemetry. The terms say the APIs send performance and utilization metrics to Google, and that the app developer must inform users about that processing. The Android data-disclosure page says it lists the configurations a developer can control, and the controls it lists are feature options, not a telemetry off switch. Text recognition is not given a separate opt-out. Because a disable control is not in those docs, US-07 follows the other branch of his 16:00 IST sentence: disclose the metrics and require acceptance before the first OCR use, with the same disclosure readable in Settings (US-59). There is no toggle, so there is no default to copy from the docs.
+Official Google ML Kit documentation does not give an app a switch that turns off usage or diagnostic telemetry. The terms say the APIs send performance and utilization metrics to Google, and that the app developer must inform users about that processing. The Android data-disclosure page says it lists the configurations a developer can control, and the controls it lists are feature options, not a telemetry off switch. Text recognition is not given a separate opt-out. Because a disable control is not in those docs, US-07 follows the other branch of his 16:00 IST sentence: disclose the metrics and require acceptance before the first OCR use, with the same disclosure readable in Settings (US-59). There is no toggle, so there is no default to copy from the docs. Round 3 adds two constraints from the same pages: use the bundled text-recognition library, and do not start ML Kit until he accepts. Pre-first-call metrics are not documented.
 
 ## Context and constraints
 
@@ -87,7 +87,16 @@ Official Google ML Kit documentation does not give an app a switch that turns of
 
 - **Chosen option:** Option 2.
 - **Rationale:** The terms, the Android data-disclosure page, the `MlKit` initialization reference, and the text-recognition guide do not document a developer switch that disables usage or diagnostic telemetry. His sentence then requires disclosure and acceptance. Option 3 would cancel an approved OCR outcome he did not cancel.
-- **Next steps:** Write the acceptance criteria on US-07 and the Settings slot on US-59. Leave both stories Draft. Do not implement. Do not fill a Play Data safety form from this note. Story approval is still a separate human gate.
+- **Next steps:** The acceptance criteria are on US-07 and US-59. Leave both stories Draft. Do not implement. Do not fill a Play Data safety form from this note. Story approval is still a separate human gate.
+
+## Round 3 update
+
+Same sources. Two facts that change the implementation of option 2, not the choice of option.
+
+- **Bundled model.** The Android data-disclosure page separates thin features from bundled features. Thin features collect a device identifier for diagnostics and usage analytics. Bundled features collect per-installation identifiers that are not intended to uniquely identify a user or a physical device. Text recognition has a Play services artifact, `com.google.android.gms:play-services-mlkit-text-recognition`, and a bundled artifact, `com.google.mlkit:text-recognition`. US-31 requires the bundled artifact and requires the Play services artifact to be absent.
+- **When the SDK starts.** Those pages do not say whether metrics are sent before the first API call. That gap is undocumented, not a hidden off switch. US-07 therefore removes `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and calls `MlKit.initialize` only after he accepts. A decline means the app never calls `initialize`, so ML Kit does not start. Withdrawing the acceptance in Settings returns to that state. This is still init timing. It is not a documented way to turn metrics off after the SDK has been used.
+
+Option 1 stays unavailable. Option 2 stays the recommendation.
 
 ## References
 

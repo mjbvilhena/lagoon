@@ -21,8 +21,8 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue and the re-run after enrichment (US-44, US-58), and the topic page (US-45). Provider, credential storage, and payload slice stay open for Miguel (US-76). Whether a sensitive item is sent is proposed in US-75 and is not decided here. The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
-- The off switch lives in Settings (US-59) and defaults to off. Items saved while it is off are not sent later unless he asks. That later-send rule is a draft so the scenario is testable. It is not his approval.
+- Out of scope: linking (US-42), creating (US-43), the offline queue (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. Whether a sensitive item is sent is US-75. The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
+- The off switch lives in Settings (US-59) and defaults to off. Items saved while it is off are not sent later unless he asks. That default is an open question for Miguel. This story does not change it. The later-send rule is a draft so the scenario is testable. It is not his approval.
 
 ## Acceptance criteria
 
@@ -55,6 +55,10 @@ Extract topics when an item is saved.
   - Given the call succeeds and names nothing
   - When the result is stored
   - Then the item remains, no topic is created, and the status is "no topics", not "failed"
+- **Scenario: text arrives later** — Must
+  - Given the topic switch is on and an OCR retry or enrichment adds text that was not in the earlier call
+  - When that text is stored
+  - Then the topic job runs again for that item
 - **Scenario: the key is not in the APK** — Must
   - Given a release APK
   - When its packaged files are inspected

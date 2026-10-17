@@ -18,4 +18,6 @@ He comes across those things in other apps and has nowhere private that holds th
 
 The product specification and the epics are approved. The app is not implemented yet.
 
+A debug install uses its own Android OAuth client for `com.mjbvilhena.lagoon.debug` and the debug signing SHA-1. The release client stays `com.mjbvilhena.lagoon`. The steps live in the docs.
+
 The rest of the notes are in [docs/](docs/).

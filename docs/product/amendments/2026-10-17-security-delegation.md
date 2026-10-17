@@ -11,9 +11,9 @@ This amendment records where the story revision of commit `40bb526`, plus the ro
 
 ## 1. Specification design-gate list
 
-File: `docs/product/specification.md`. Not edited.
+File: `docs/product/specification.md`. Applied in commit `86573af`.
 
-Current text, in "For Miguel at the design gate":
+Text before application, in "For Miguel at the design gate":
 
 > These stay open. They are security, data integrity, or release questions. They are not delegated. Miguel answers them at the technical design, ADR, and threat-model gate.
 
@@ -29,7 +29,7 @@ The same list still includes, as open and not delegated:
 
 On 2026-10-17 at 14:56 IST Miguel decided lost key and app unlock, and delegated sideload verification and sensitive-item cloud handling to his bots. The "not delegated" sentence now conflicts with that chat.
 
-Proposed text:
+Applied text:
 
 > Some design-gate questions are still open. Miguel answers those at the technical design, ADR, and threat-model gate. That gate has not started.
 >
@@ -41,75 +41,79 @@ Proposed text:
 
 ## 2. Epic E8
 
-File: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Not edited.
+File: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Applied in commit `86573af`.
 
-Current out-of-scope phrase:
+Text before application, out-of-scope phrase:
 
 > App-wide unlock, which is still an open question for him.
 
-Current risks sentence:
+Text before application, risks sentence:
 
 > Lost key, key transport, and app unlock are his open questions. Stories do not answer them.
 
-Proposed out-of-scope phrase:
+Applied out-of-scope phrase:
 
 > App-wide unlock is optional, per Miguel's decision of 2026-10-17 at 14:56 IST. It is no longer an open question.
 
-Proposed risks sentence:
+Applied risks sentence:
 
 > Key transport is his open question. Stories do not answer it. On 2026-10-17 at 14:56 IST he decided that a lost key means the content is lost, with no recovery, and that app lock is optional with a device-PIN fallback.
 
 ## 3. Epic E3
 
-File: `docs/product/epics/E3-find-and-curate.md`. Not edited.
+File: `docs/product/epics/E3-find-and-curate.md`. Applied in commit `86573af`.
 
-Current out-of-scope phrase:
+Text before application, out-of-scope phrase:
 
 > Sharing an item back out to other apps.
 
-Proposed text:
+Applied text:
 
 > Sharing an item back out to other apps is proposed as US-64 (Should) and stays out of this epic until Miguel approves this amendment.
 
+The epic file now states the current rule: sharing out is in scope as US-64, a Should, and the acceptance criteria stay proposed.
+
 ## 4. Epic E11
 
-File: `docs/product/epics/E11-topics.md`. Not edited.
+File: `docs/product/epics/E11-topics.md`. Applied in commit `86573af`.
 
-Current out-of-scope sentence:
+Text before application, out-of-scope sentence:
 
 > Choosing the provider, the retention terms, the credential store, whether sensitive items are excluded, or the exact payload. Those are design-gate questions for him.
 
 The epic does not say that the topic call follows the unmetered sync preference.
 
-Proposed text:
+Applied text:
 
 > Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Whether sensitive items are excluded from the topic call is proposed in US-75 and stays out of this epic until he approves that proposal. The topic job has its own "Unmetered only" setting in US-44 and US-59. That setting is not the sync preference, and it is not in this epic until he approves this amendment.
 
+The epic file now states the current rule: the unmetered setting is in scope, and sensitive-item exclusion is not in the epic because the US-75 proposal is not approved.
+
 ## 5. Epic E1
 
-File: `docs/product/epics/E1-capture-and-keep.md`. Not edited.
+File: `docs/product/epics/E1-capture-and-keep.md`. Applied in commit `86573af`.
 
-Current out-of-scope line does not mention a source domain or a sending app:
+Text before application, out-of-scope line, did not mention a source domain or a sending app:
 
 > Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one.
 
-Proposed addition, not a replacement of the rest of that line:
+Applied addition, not a replacement of the rest of that line:
 
 > Source domain and sending app (US-61) are a Should. They are not in this epic until Miguel approves this amendment.
 
-US-61 is marked Should for that reason. The story is not an epic edit.
+US-61 is marked Should for that reason. The epic file now states that Should as in scope. The story is not an epic edit.
 
 ## 6. Specification line 27, drift
 
-File: `docs/product/specification.md`. Not edited.
+File: `docs/product/specification.md`. Applied in commit `86573af`.
 
-Current text:
+Text before application:
 
 > v1 is the draft epics E1–E9 and E11. Epic text is not epic approval. E10 is later and is not v1. E11 has no stories yet.
 
 The epics are approved. E11 has drafted stories. Those stories are not approved.
 
-Proposed text:
+Applied text:
 
 > v1 is the approved epics E1–E9 and E11. Epic approval is not story approval. E10 is later and is not v1. E11 stories are drafted under `docs/product/stories/` and stay Draft until story approval.
 

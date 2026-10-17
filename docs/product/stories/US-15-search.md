@@ -26,7 +26,7 @@ Search the vault and see highlighted matches.
 ## Acceptance criteria
 
 - **Scenario: match in each field** — Must
-  - Given ordinary items whose only match is in one of: title, body, personal note, tags, extracted text, the OCR column, snapshot text, source domain, or sending app
+  - Given ordinary items whose only match is in one of: title, body, personal note, tags, extracted text, the OCR column, snapshot text, source domain, sending app, or the merchant column from US-82
   - When he searches that word
   - Then each of those items is returned
 - **Scenario: highlight** — Must

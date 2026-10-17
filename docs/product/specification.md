@@ -112,6 +112,14 @@ Recorded as his decisions, in his words where he gave them.
 - **In v1:** (1) on-device OCR for screenshots, images, and scanned PDFs, so their text is searchable; (2) optional expiry or reminder dates, with notifications; (3) multiple attachments per item; (4) offline snapshots of saved web pages, keeping the original URL; (5) fingerprint or biometric lock on items marked sensitive, tied to the encryption work.
 - **Later, not v1:** trip or collection grouping with a date range.
 
+### Chat decisions after this specification was approved
+
+`mjbvilhena` decided these in chat. They are not a new approval of this specification. Story status stays Draft.
+
+- **2026-10-17 at 15:59 IST. Sensitive lock-screen reminder.** A sensitive item's lock-screen reminder shows only "Lagoon reminder", with no title or codes until unlock. Ordinary items still follow the 14:56 IST decision. US-75.
+- **2026-10-17 at 15:59 IST. Token-looking URLs.** The vault does not auto-fetch them. A foggy placeholder stands in for the preview, and he is asked whether to enable that preview. A fetch runs only after he says yes. US-79.
+- **2026-10-17 at 16:00 IST. ML Kit telemetry.** His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept". Official Google ML Kit docs do not document a disable switch, so US-07 records disclosure and acceptance before the first OCR use, also readable in Settings. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
+
 ### Q1 and Q2 (joint recommendation, not approval)
 
 Scout and Mikey's Vault App Bot jointly recommend these answers under Miguel's delegation of the product questions. This replaces the earlier name and application id. It is not Miguel's approval.

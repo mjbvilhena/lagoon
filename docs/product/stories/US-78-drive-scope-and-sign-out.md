@@ -4,7 +4,7 @@
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> The approved specification still names `appDataFolder` until he approves an amendment. That specification is not edited here.
+> The approved specification names `appDataFolder`. These criteria do not replace that.
 
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
@@ -36,18 +36,26 @@ Keep Drive to app data, and sign out without deleting the phone.
   - Given the OAuth client from US-26
   - When the consent screen is configured
   - Then it is set to "In production"
+  - And the docs state the US-26 fact that an external app left in Testing, with a non-basic scope, gets a refresh token that expires in 7 days
 - **Scenario: sign out** — Must
   - Given he is signed in
   - When he chooses Sign out
-  - Then tokens are cleared, sync jobs are cancelled, the local vault stays, and the Drive copy stays
+  - Then `clearCredentialState` runs, the Drive grant is revoked, sync jobs are cancelled, the local vault stays, and the Drive copy stays
+  - And there is no third control named "disconnect but keep the Drive copy", because Sign out already does that. Deleting the Drive copy is the separate action below
 - **Scenario: delete the Drive copy** — Must
   - Given he chooses "Disconnect and delete Lagoon data from Drive" and confirms, after unlock
-  - When that action finishes
-  - Then `revokeAccess()` has been called, the Drive copy is the target, and the local vault is not deleted
+  - When the app-data files are deleted and a following read shows they are gone
+  - Then `revokeAccess()` runs, he can see that the Drive copy no longer exists, and the local vault is not deleted
+  - And the next sign-in asks for consent again
+- **Scenario: deletion fails** — Must
+  - Given that delete is in progress
+  - When the app-data files are still present
+  - Then `revokeAccess()` is not called, and he is told the Drive copy is still there
 - **Scenario: another account** — Must
   - Given he signs in with a different Google account
-  - When sync runs
-  - Then that account has its own Drive copy and does not read the previous account's copy
+  - When sync would upload this vault
+  - Then he is asked before that upload
+  - And if he agrees, that account has its own Drive copy and does not read the previous account's copy
 - **Scenario: tokens stay out of logs** — Must
   - Given a token exists
   - When logs and WorkManager inputs are inspected

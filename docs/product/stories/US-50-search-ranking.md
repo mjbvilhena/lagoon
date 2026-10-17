@@ -19,7 +19,7 @@ Rank search matches.
 
 ## Background
 
-- Starting weights, as consensus already recorded in the specification: title 10, tags 5, personal note 3, body 1, extracted text 1, OCR text 1. Snapshot text, source domain, and sending app are weight 1, the same as body.
+- Starting weights, as consensus already recorded in the specification: title 10, tags 5, personal note 3, body 1, extracted text 1, OCR text 1. Snapshot text, source domain, and sending app are weight 1, the same as body. A merchant from US-82 is weight 5, the same as tags. That merchant weight is not in the approved specification.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: changing these weights in Settings. The FTS engine spike is US-57.
 
@@ -45,6 +45,10 @@ Rank search matches.
   - Given an item contains "café"
   - When he types "cafe" or the prefix "caf"
   - Then that item matches. Accent folding uses `unicode61 remove_diacritics 2`
+- **Scenario: a merchant** — Must
+  - Given one ordinary item matches only in the merchant column and another matches only in a tag, with the same term frequency
+  - When he searches
+  - Then neither outranks the other on weight
 - **Scenario: the order is testable** — Must
   - Given a fixed set of items
   - When the same query runs twice

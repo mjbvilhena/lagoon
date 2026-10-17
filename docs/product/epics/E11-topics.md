@@ -11,7 +11,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
-> This amendment approval does not approve the US-75 proposal. Sensitive-item exclusion stays out of this epic until he approves that proposal.
+> This amendment approval does not approve the US-75 proposal. Sensitive-item exclusion is not in this epic.
 
 ## Background & Value Proposition
 
@@ -34,7 +34,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - Offline, the item is stored and topic processing is queued until a network exists.
   - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Whether sensitive items are excluded from the topic call is proposed in US-75 and stays out of this epic until he approves that proposal. The topic job has its own "Unmetered only" setting in US-44 and US-59. That setting is not the sync preference, and it is not in this epic until he approves this amendment. He approved this amendment on 2026-10-17 at 15:55 IST, so that setting is in scope above.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Sensitive-item exclusion from the topic call is not in this epic. It is proposed on US-75 and is not approved. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 

@@ -23,7 +23,8 @@ Use one Settings screen.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: deciding sign-out. The row is only a slot. The behavior is the proposed US-78, pending Miguel's approval.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Epic E11 includes that setting after the amendment approved on 2026-10-17 at 15:55 IST.
-- The ML Kit disclosure is a slot. The behavior is US-07, decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. It is not a telemetry off switch. Google's docs do not state a default, because they do not state a switch.
+- The ML Kit disclosure is a slot. The behavior is US-07, decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. It is not a telemetry off switch. Google's docs do not state a default, because they do not state a switch. Settings can withdraw the acceptance.
+- The topic off switch stays default off. Whether that default should be on is an open question for Miguel. This story does not change it.
 
 ## Acceptance criteria
 
@@ -38,7 +39,7 @@ Use one Settings screen.
 - **Scenario: ML Kit disclosure** — Must
   - Given he opens Settings
   - When the screen is shown
-  - Then he can read the same disclosure US-07 requires before the first OCR use, and he can see whether he has accepted it. There is no control that disables ML Kit usage or diagnostic telemetry
+  - Then he can read the same disclosure US-07 requires before the first OCR use, he can see whether he has accepted it, and he can withdraw that acceptance. There is no control that disables ML Kit usage or diagnostic telemetry inside the SDK
 
 ## Analytics and observability (optional)
 

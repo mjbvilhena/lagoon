@@ -19,7 +19,7 @@ Decide the topic call's provider, credential, and payload.
 
 ## Background
 
-- Still open for Miguel: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). Whether a sensitive item is excluded is delegated to his bots (US-75), not decided here.
+- Still open for Miguel: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). Whether a sensitive item is excluded is US-75.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing those answers in this revision.
 
@@ -38,7 +38,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open questions for Miguel, except sensitive-item exclusion, which is delegated to bots.
+- Open questions for Miguel. Sensitive-item exclusion is US-75.
 
 ## Implementation notes
 
