@@ -24,7 +24,7 @@ Cover search, backup packaging, and a basic screen with automated tests.
 - **Scenario: repository and search** — Must
   - Given the repository tests
   - When they run
-  - Then they cover saving an item and a full-text query that matches title, body, extracted text, tags, and the personal note, including the title-before-body order from US-15
+  - Then they cover saving an item and a full-text query that matches title, body, extracted text, tags, the personal note, and OCR text, including the US-15 weights, the exact-phrase rule, and the deterministic tie-break
 - **Scenario: sync and zip packaging** — Must
   - Given the packaging tests, with no live Google account
   - When they run

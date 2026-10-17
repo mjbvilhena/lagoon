@@ -36,11 +36,11 @@ Miguel.
 
 - Depends on E1 items and on edit (US-12).
 - Notification permission is the platform's. If he denies it, the date is still stored and he can see it on the item. Do not invent a second channel.
-- The clock time inside the day is a story-level question. Do not invent a default hour.
+- The clock time is the US-34 recommendation: 09:00 local by default, overridable per item. Not approval.
 
 ## Open Questions
 
-- [ ] Whether the notification fires at the start of the day or at a time he picks. Story-level. Safe to delegate.
+- The time, the 7-day expiry warning, and inexact alarms are recommended in US-34. Not an open product question. Not approval.
 
 ## Draft stories
 

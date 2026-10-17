@@ -60,8 +60,8 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Composes with type and tag filters (US-16). All active filters apply together.
-- "Date saved" is the created date, not an edited date and not the reminder date (US-34).
+- "Date saved" is the last-saved date. A first save sets it to the created date. A repeat URL bumps it (US-01) and does not move the created date. It is not the reminder date (US-34). That US-01 recommendation is not approval of this story.
 
 ## Implementation notes
 
-Filter and order on the created date. Not a design spec.
+Filter and order on the last-saved date. Not a design spec.

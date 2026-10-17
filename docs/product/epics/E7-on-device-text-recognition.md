@@ -34,12 +34,12 @@ Miguel, searching something he saved as an image or a scan.
 ## Risks & Dependencies
 
 - Depends on E1 for the file and E3 for search.
-- Languages are an open story-level question. Do not pick a language list here.
+- Languages are the US-31 recommendation: bundled Latin-script only. Non-Latin scripts are later. Not approval. The sideload ABI note is a design-gate build choice.
 - Recognized text is vault data. It is covered by E8 encryption once that epic exists. This epic does not design the cipher.
 
 ## Open Questions
 
-- [ ] Which languages recognition must handle. Story-level. Safe to delegate. Not a security decision.
+- Languages are recommended in US-31 and are not an open product question. The `arm64` filter versus per-ABI APKs choice waits for design. Not approval.
 
 ## Draft stories
 

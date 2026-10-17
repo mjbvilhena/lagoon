@@ -148,15 +148,15 @@ These six stay open. They are security, data integrity, or release questions. Th
 - [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena, design gate)
 - [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? (@mjbvilhena, design gate)
 
-### Story-level, safe to delegate
+### Story-level recommendations (not approval)
 
-Not security decisions and not epic scope.
+Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot under Miguel's delegation of 2026-10-17. The stories stay Draft. This specification stays Draft.
 
-- [ ] A second share of the same URL: update the existing item, or keep both? The earlier personal note must not be deleted silently (US-01).
-- [ ] Search ranking beyond "a title match is listed before a body-only match" (US-15).
-- [ ] Which languages on-device OCR must handle (US-31).
-- [ ] Whether a reminder fires at the start of the chosen day or at a time he picks. No default time is invented here (US-34).
-- [ ] How complete an offline snapshot is, beyond a readable copy of the page plus the original URL (US-33).
+- **US-01.** Match a repeat URL on a normalised form (ignore scheme, `www`, trailing slash, the `#fragment`, and `utm_*` / tracking parameters; lowercase the host) and keep the original URL. Update the existing item: refresh preview and snapshot, union the tags, never overwrite text. Append a new note as a dated entry. Bump last-saved. Snackbar: "Saved before, added to existing", with Undo and "Keep separate".
+- **US-15.** Weighted BM25, starting weights title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1. Exact phrases rank above scattered terms. Recency is only a light tie-break. Prefixes match as he types. Accents fold with `unicode61 remove_diacritics 2`. Weights and the tie-break are deterministic and tested. Design-gate risk, not decided here: FTS5 needs Room 3 with the bundled SQLite driver (stock SQLite on `minSdk` 26 lacks FTS5, and Room 2 only has FTS4), and it is not yet verified with an encrypted database (SQLCipher). Spike it early. Fallback: Room 2 FTS4 plus app-side ranking.
+- **US-31.** Bundled ML Kit on-device Latin-script model only (English, Irish, and other Latin-script languages), offline from install. Non-Latin scripts come later. Acceptance tests use English plus one accented Latin-script sample. Design note: sideloaded APKs do not get per-device splits, so use `arm64` `abiFilters` or per-ABI APKs.
+- **US-34.** He picks the time. Default is 09:00 local in Settings, with a per-item override. Expiry notifies 7 days before and on the day. Inexact alarms (`setWindow` or `setAndAllowWhileIdle`); no exact-alarm permission. Persist reminders and re-register them on `BOOT_COMPLETED`. Ask for `POST_NOTIFICATIONS` when the first reminder is set, not at launch.
+- **US-33.** A readable extracted copy (headings, lists, inline images downscaled and saved locally), with title, site, author, capture time, and the original URL. One sanitised archive, capped at about 10 MB, marked "partial snapshot" if truncated. Searchable, encrypted, and synced like other content. A full-page MHTML copy is later, not v1.
 
 ### Resolved, not open
 

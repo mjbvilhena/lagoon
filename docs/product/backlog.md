@@ -15,7 +15,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: Miguel can save a link, text, an image, or a PDF from the share sheet in one tap, file it with last-used tags afterwards, add a note or URL himself, and attach more than one file. *(Draft — not approved)* Evidence: `docs/product/epics/E1-capture-and-keep.md`.
 
-- **US-01** *(Draft)* Share a link. Evidence: `docs/product/stories/US-01-share-a-link.md`. Not implemented.
+- **US-01** *(Draft)* Share a link. A normalised repeat URL updates the existing item. Evidence: `docs/product/stories/US-01-share-a-link.md`. Not implemented. Bots' consensus, not approval.
 - **US-02** *(Draft)* Share plain text. Evidence: `docs/product/stories/US-02-share-plain-text.md`. Not implemented.
 - **US-03** *(Draft)* Share an image. Evidence: `docs/product/stories/US-03-share-an-image.md`. Not implemented.
 - **US-04** *(Draft)* Share a PDF, including text-layer extraction. Evidence: `docs/product/stories/US-04-share-a-pdf.md`. Not implemented. Extraction is not OCR.
@@ -32,7 +32,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 - **US-08** *(Draft)* Enrich a link. Evidence: `docs/product/stories/US-08-enrich-a-link.md`. Not implemented.
 - **US-09** *(Draft)* Keep the URL when enrichment fails. Evidence: `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md`. Not implemented.
-- **US-33** *(Draft)* Offline snapshot of a saved page, original URL kept. Evidence: `docs/product/stories/US-33-offline-page-snapshot.md`. Not implemented. Miguel's v1 decision. Not approval.
+- **US-33** *(Draft)* Offline snapshot: one sanitised readable archive, about 10 MB, original URL kept. Evidence: `docs/product/stories/US-33-offline-page-snapshot.md`. Not implemented. Miguel's v1 decision plus the bots' snapshot shape. Not approval. MHTML is later.
 
 ## Epic E3: Find and curate
 
@@ -43,7 +43,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 - **US-12** *(Draft)* Edit, including why it matters. Evidence: `docs/product/stories/US-12-edit-an-item.md`. Not implemented.
 - **US-13** *(Draft)* Delete with undo. Evidence: `docs/product/stories/US-13-delete-with-undo.md`. Not implemented.
 - **US-14** *(Draft)* Tag management. Evidence: `docs/product/stories/US-14-manage-tags.md`. Not implemented.
-- **US-15** *(Draft)* Ranked, highlighted search. Evidence: `docs/product/stories/US-15-search.md`. Not implemented.
+- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk, not decided. Not approval.
 - **US-16** *(Draft)* Filter by type and tag. Evidence: `docs/product/stories/US-16-filter-by-type-and-tag.md`. Not implemented.
 - **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented. Bots' consensus on Q4. Not approval.
 - **US-38** *(Draft)* Untagged / Inbox view. Evidence: `docs/product/stories/US-38-untagged-inbox.md`. Not implemented. Bots' consensus on Q9. A view, not a stored Inbox tag. Not approval.
@@ -80,7 +80,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Draft — not approved)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's decision. Not approval. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device text recognition. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Booking references and merchants are not this story.
+- **US-31** *(Draft, in v1)* On-device Latin-script recognition, bundled ML Kit model. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Non-Latin scripts are later. Booking references and merchants are not this story. Not approval.
 
 ## Epic E8: Encryption and sensitive items
 
@@ -94,7 +94,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: Optional expiry or reminder date on an item, with a notification. *(Draft — not approved)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. Not approval.
 
-- **US-34** *(Draft)* Reminder or expiry with a notification. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Time of day inside the date is a story-level question.
+- **US-34** *(Draft)* Reminder or expiry with a notification. Default 09:00 local, per-item time, expiry at 7 days and on the day, inexact alarms. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Bots' consensus, not approval.
 
 ## Epic E10: Trip and collection grouping
 
@@ -140,13 +140,9 @@ Still open. Assigned to the technical design, ADR, and threat-model gate. He ans
 - Whether unlocking the whole app is required, separate from the sensitive-item lock.
 - Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
 
-### Story-level, safe to delegate
+### Story-level recommendations (not approval)
 
-- A second share of the same URL (US-01).
-- Search ranking beyond title-over-body (US-15).
-- OCR languages (US-31).
-- Reminder time of day (US-34).
-- How complete an offline snapshot is (US-33).
+Answered as consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot. Stories stay Draft. See US-01, US-15, US-31, US-33, and US-34. The FTS5 / Room 3 / SQLCipher question on US-15 stays a design-gate spike, not a decision.
 
 ### Resolved
 

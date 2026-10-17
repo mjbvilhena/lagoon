@@ -24,7 +24,7 @@ Browse saved items, newest first.
 - **Scenario: several items** — Must
   - Given three saved items with different created dates
   - When he opens the home list
-  - Then they appear with the newest created date first and the oldest last
+  - Then they appear with the newest last-saved date first and the oldest last. On a first save, last-saved is the created date. A repeat URL bumps last-saved (US-01) and that item moves up
 - **Scenario: nothing saved** — Must
   - Given the vault has no items
   - When he opens the home list
@@ -51,4 +51,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Order by created date descending. Not a design spec.
+Order by last-saved date descending. Not a design spec. The US-01 recommendation is not approval of this story.

@@ -43,7 +43,7 @@ Miguel, looking back through what he kept.
 ## Risks & Dependencies
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
-- Ranking was requested without a formula. Stories US-15 state the smallest order that can be tested and leave the full score as Q-rank in that story, not a silent formula.
+- Ranking is the US-15 recommendation: weighted BM25, not approval. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
 - Q4 is a bots' consensus, not approval: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29.
 
 ## Open Questions

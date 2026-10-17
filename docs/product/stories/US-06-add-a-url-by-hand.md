@@ -46,7 +46,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Blocks nothing that US-01 does not also block. US-08 applies to links from this story too.
-- Open question on duplicate URLs is the same as US-01 and is still open.
+- A duplicate URL uses the US-01 recommendation (normalised match, update in place, snackbar). That recommendation is not approval.
 
 ## Implementation notes
 
