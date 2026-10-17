@@ -15,7 +15,7 @@ Share a PDF into the vault.
 
 ## Background
 
-- PDFs are a named share type and a named backup payload.
+- PDFs are a named share type. The file is part of the vault that background sync and the zip carry. It is not a separate backup.
 - Domain constraints: none. No `DOMAIN.md`.
 - Out of scope: a PDF editor, annotating the file, and using OCR on a PDF that already has a text layer. Scanned pages are US-31, which is in v1 by Miguel's decision. That decision is not approval of this story.
 

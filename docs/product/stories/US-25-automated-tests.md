@@ -5,12 +5,12 @@
 
 ## Title
 
-Cover search, backup packaging, and a basic screen with automated tests.
+Cover search, sync and zip packaging, and a basic screen with automated tests.
 
 ## User story
 
 **As a** person named Miguel
-**I want** automated tests on search, on how a backup is packaged, and on at least one Compose screen
+**I want** automated tests on search, on how the sync payload and the zip are packaged, and on at least one Compose screen
 **So that** those parts cannot change silently before I install a build
 
 ## Background

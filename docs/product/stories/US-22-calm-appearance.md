@@ -1,4 +1,4 @@
-# US-22 Use a calm light and dark appearance
+# US-22 Choose light, dark, or the system theme
 
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.

@@ -4,7 +4,7 @@
 > This index only lists files. Listing a story here is not story approval.
 > On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule is not a sign-off. No story below is approved.
 > Sign-off on file: none.
-> Updated 2026-10-17 after Miguel's decisions on sync, encryption, and v1 scope, and after the bots' consensus on the delegated questions. None of that is approval.
+> Updated 2026-10-17 after the E11 story drafts (US-41 through US-47) and the backlog review the same day. Listing those drafts is not approval.
 
 Stories were drafted in the same run as the specification because the request asked for them. The pipeline normally refines stories after epic approval. That order was not treated as a skip of the gates. Design and implementation are still blocked.
 
@@ -52,5 +52,12 @@ File names for US-17 through US-21, US-28, and US-30 were kept so older links st
 | US-38 | See untagged items in an inbox | E3 | `docs/product/stories/US-38-untagged-inbox.md` | Draft |
 | US-39 | Sort and filter by the date saved | E3 | `docs/product/stories/US-39-sort-and-filter-by-date.md` | Draft |
 | US-40 | Fill the title from the page or the file | E1 | `docs/product/stories/US-40-autofill-title.md` | Draft |
+| US-41 | Extract topics when an item is saved | E11 | `docs/product/stories/US-41-extract-topics-on-save.md` | Draft |
+| US-42 | Link an item to a topic the vault already has | E11 | `docs/product/stories/US-42-link-an-existing-topic.md` | Draft |
+| US-43 | Confirm a topic before it is created | E11 | `docs/product/stories/US-43-confirm-a-new-topic.md` | Draft |
+| US-44 | Queue topic processing while offline | E11 | `docs/product/stories/US-44-queue-topics-offline.md` | Draft |
+| US-45 | Read a topic | E11 | `docs/product/stories/US-45-read-a-topic.md` | Draft |
+| US-46 | Reject, rename, or merge a suggested topic | E11 | `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md` | Draft |
+| US-47 | Keep the item when the topic call fails | E11 | `docs/product/stories/US-47-topic-call-fails.md` | Draft |
 
-No story is Done. Implementation has not started. Must acceptance criteria are not met in software because there is no software. US-01 through US-40 are v1 drafts. E10 (trip or collection grouping) has no stories. Q5 and Q10 are resolved in the specification and are not open. Miguel's decisions and the bots' consensus are not approval of this index or of any story.
+No story is Done. Implementation has not started. Must acceptance criteria are not met in software because there is no software. US-01 through US-47 are v1 drafts. E10 (trip or collection grouping) has no stories. Q5 and Q10 are resolved in the specification and are not open. Miguel's decisions and the bots' consensus are not approval of this index or of any story. A compact review list is `docs/product/stories/REVIEW-PACK.md`. That list is not approval.

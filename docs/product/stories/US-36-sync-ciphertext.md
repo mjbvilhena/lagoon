@@ -19,7 +19,7 @@ Send only ciphertext to Drive.
 - He decided client-side end-to-end encryption of everything synced. Drive holds ciphertext.
 - How keys reach a second device is his open question. This story does not derive a key from the Google account and does not invent a passphrase.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: the algorithm. Android Auto Backup. A Drive file he can open in Docs.
+- Out of scope: the algorithm. Android Auto Backup. A Drive file he can open in Docs. The cloud topic call (E11). That call is not a Drive upload, and this story does not choose its provider, credential, payload, or whether a sensitive item is included.
 
 ## Acceptance criteria
 

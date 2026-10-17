@@ -20,9 +20,9 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 |---|---|---|
 | Vision | `docs/product/vision.md` | Draft. Not accepted. |
 | Product spec | `docs/product/specification.md` | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision `c288b7e`. |
-| Epic approval | `docs/product/epics/E1` through `E11` | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision `98275b3`. E1–E9 and E11 are v1. E10 is Approved as Later, not in v1, and has no stories. E11 has no stories yet. |
-| Story refine | `docs/product/stories/US-01` through `US-40` and `INDEX.md` | Draft. All of those stories are in the v1 set. Not approved. |
-| Story approval | Rule recorded. No story signed. | Not given. On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. The delegation is not a sign-off on US-01–US-40. |
+| Epic approval | `docs/product/epics/E1` through `E11` | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision `98275b3`. E1–E9 and E11 are v1. E10 is Approved as Later, not in v1, and has no stories. |
+| Story refine | `docs/product/stories/US-01` through `US-47` and `INDEX.md` | Draft. US-41–US-47 are the E11 drafts from this step. Not approved. |
+| Story approval | Rule recorded. No story signed. | Not given. On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. The delegation is not a sign-off on US-01–US-47. |
 | Technical design / ADRs | No RFC, API design, or ADR files | Not started. |
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync, and the cloud topic call). |
@@ -50,11 +50,11 @@ He later decided, in his own words where he gave them: seamless sync instead of 
 
 On 2026-10-17 at about 11:57 IST, during his section-by-section review, he added v1 epic E11 Topics. His words: "Use a cloud AI for all items; I accept the content leaves the phone." Readable content may be sent to a cloud AI for topic extraction only. Drive sync stays ciphertext-only. Cloud OCR stays out of scope. E11 had no stories. That scope change was inside the specification revision he later approved.
 
-`mjbvilhena` approved epics E1–E11 on 2026-10-17 at 13:29 IST, after a 3-part walkthrough of every epic, including the E5 Light/Dark/System theme change at `98275b3`. His words: "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11. The approved epic revision is `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). E10 is Approved as Later and is not in v1. This sign-off does not approve stories US-01–US-40. E11 stories are not written yet. Implementation has not started.
+`mjbvilhena` approved epics E1–E11 on 2026-10-17 at 13:29 IST, after a 3-part walkthrough of every epic, including the E5 Light/Dark/System theme change at `98275b3`. His words: "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11. The approved epic revision is `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). E10 is Approved as Later and is not in v1. This sign-off does not approve stories US-01–US-40. At that moment E11 stories were not written yet. They were drafted later the same day (US-41–US-47) and stay Draft. Implementation has not started.
 
 ## Story approval rule (2026-10-17)
 
-Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-40. Those stories stay Draft until a bot sign-off names them. Epic approval is now signed by him. The next gate is story review and approval by his bots. E11 stories are still to be drafted first.
+Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-47. Those stories stay Draft until a bot sign-off names them. Epic approval is now signed by him. The next gate is story review and approval by his bots. E11 stories US-41–US-47 are drafted and are part of that gate. Drafting them is not the sign-off.
 
 ## Design-gate questions
 
@@ -76,10 +76,42 @@ The five story-level questions now have consensus recommendations in US-01, US-1
 The specification gate and the epic gate have passed. Later gates stay closed until each is actually signed:
 
 1. Epic approval by `mjbvilhena` (E1–E11, including later epic E10). **Passed** on 2026-10-17 at 13:29 IST. E10 is Approved as Later, not in v1.
-2. Story review and approval of US-01–US-40 by Miguel's bots, under the delegation of 2026-10-17. **This is the gate the pipeline stops on.** E11 stories are not written yet. Draft them before that review. Stories stay Draft.
+2. Story review and approval of US-01–US-47 by Miguel's bots, under the delegation of 2026-10-17. **This is the gate the pipeline stops on.** E11 stories US-41–US-47 are drafted. Stories stay Draft.
 3. Technical design and ADR approval, once those documents exist, and the threat model. The security questions above go to Miguel. The cipher is an ADR, not a line in the spec. That band has not started.
 
 UX, test strategy, and a threat model sit in the design band after story approval. The threat model is required before implementation. They were not skipped and they were not written. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
+
+## Harness step (2026-10-17): E11 stories, then docs backlog review
+
+The MCP server did not start. `bash scripts/sdlc-knowledge-mcp.sh` exited 1 with `sdlc-knowledge: Python venv not found at third_party/ai-sdlc-harness/mcp-server/venv/bin/python`. The same functions were imported and called directly from `third_party/ai-sdlc-harness/mcp-server/src/server.py`. `mcp` and `thefuzz` were stubbed only so that module could import. Alias resolution matched the exact logical names before any fuzzy score. This is not a live MCP session.
+
+Skills used, in order:
+
+1. `sdlc-conductor` (`.cursor/commands/sdlc-conductor.md`). Next legal step from `get_sdlc_template("lifecycle pipeline")`: the specification and epics E1–E11 are approved, story artefacts for E11 were missing, and story approval is not signed. The child skill is `sdlc-user-story-refiner`. UX, technical design, the threat model, and implementation stay closed. The correction that asked to drive this step is the confirm to hand off. Drafting is not approval.
+2. `sdlc-user-story-refiner` (`.cursor/commands/sdlc-user-story-refiner.md`). Structure from `get_sdlc_template("user story")`. Each of US-41–US-47 was checked against `get_definition_of_done("user story")`.
+3. `sdlc-docs-backlog-review` (`.cursor/commands/sdlc-docs-backlog-review.md`). Procedure from `get_sdlc_template("docs backlog review")`. The landing description follows `get_sdlc_template("pr")` and `get_definition_of_done("pr")`.
+
+Templates fetched with `get_sdlc_template`: `lifecycle pipeline`, `user story`, `docs backlog review`, `pr`.
+
+Definition of Done fetched with `get_definition_of_done`: `user story` (artefact self-check; implementation DoD is unmet), `epic` (fetched because a new epic would have required it; none was added), `pr` (docs-only change; green CI is not permission to merge).
+
+Consultants: `get_domain_consultant` for `capture`, `vault`, and `knowledge`, and `get_layer_consultant` for `ui`, each returned not found. No `DOMAIN.md` or `LAYER.md` is in the tree. No MUST/NEVER rules were invented.
+
+User-story DoD self-check for US-41–US-47 (artefact shape only):
+
+- Story shape holds: actor is a person named Miguel, with I want and So that.
+- Must criteria are Given/When/Then, independently valuable, and testable. Dependencies on other stories are named.
+- Out of scope is listed. None of these seven stories has a Nice criterion.
+- The four design-gate questions stay open and are not answered: provider and retention, credential storage, sensitive-item exclusion, and payload slice.
+- Implementation DoD is unmet. There is no app, automation is absent, and no Must criterion is true in software. The stories stay Draft. They are not Done and not approved.
+
+Docs backlog review, five phases, on 2026-10-17:
+
+1. Drift against the tree: current-state lines still said E11 had no stories; the backlog now cites `.github/workflows/qa.yml` and no longer treats removed workflow files as present; a few older stories still used backup wording where the approved epic says sync, or a heading that did not match Light / Dark / System.
+2. New drift backlog items: 0. The approved specification still says "E11 has no stories yet" (`docs/product/specification.md`). That sentence was not edited. It is residual approved text, not a new epic.
+3. Status audit: no item flipped to Done or to In progress. US-01–US-47 stay Draft. E10 stays Later and has no stories. Nothing is implemented.
+4. Straightforward fixes in this change: US-04, US-22 heading, US-25, US-27, US-36, plus the E11 story list in the backlog, the index, and this file. The historical sentence above now says the stories were unwritten at epic approval, then drafted later.
+5. The review pull request stays open. It is not merged. Drafts in that pull request are not approvals.
 
 ## Memory checklist
 
@@ -87,7 +119,7 @@ UX, test strategy, and a threat model sit in the design band after story approva
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
 | Vision ↔ spec | Spec links the vision and epics E1–E11. The vision is still not accepted. The specification is approved at revision `c288b7e`. |
-| User-story index | `docs/product/stories/INDEX.md`. Drafts are not approved. Story approval is delegated to Miguel's bots; that delegation is not a sign-off. |
+| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-47. Drafts are not approved. Story approval is delegated to Miguel's bots; that delegation is not a sign-off. Review pack: `docs/product/stories/REVIEW-PACK.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

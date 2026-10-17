@@ -10,7 +10,7 @@ Review screenshots of the main screens.
 ## User story
 
 **As a** person named Miguel
-**I want** screenshots of home, search results, item detail, share-to-save, and settings/backup
+**I want** screenshots of home, search results, item detail, share-to-save, and settings
 **So that** I can see those screens without installing a build first
 
 ## Background

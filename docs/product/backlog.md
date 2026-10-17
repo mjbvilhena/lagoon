@@ -7,11 +7,11 @@
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-40 by Miguel's bots. E11 stories are not written yet. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-47 by Miguel's bots. E11 stories US-41–US-47 are drafted and stay Draft. See `docs/sdlc/pipeline-state.md`.
 
 Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them. E11 stories are drafted first.
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them. E11 stories were drafted on 2026-10-17 by `sdlc-user-story-refiner`. Drafting is not that sign-off.
 
 ## Epic E1: Capture and keep
 
@@ -100,7 +100,15 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." No stories yet. Draft them next, then Miguel's bots review them. Do not implement.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." Stories below are Draft. They do not decide provider, credential storage, sensitive-item exclusion, or payload. Do not implement.
+
+- **US-41** *(Draft)* Extract topics when an item is saved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Not implemented. The four design-gate questions stay open.
+- **US-42** *(Draft)* Link an item to a topic that already exists and extend that topic's notes. Evidence: `docs/product/stories/US-42-link-an-existing-topic.md`. Not implemented.
+- **US-43** *(Draft)* Ask before creating a topic. Decline creates nothing. Evidence: `docs/product/stories/US-43-confirm-a-new-topic.md`. Not implemented.
+- **US-44** *(Draft)* Save offline and queue topic processing. Evidence: `docs/product/stories/US-44-queue-topics-offline.md`. Not implemented.
+- **US-45** *(Draft)* Open a topic and see its items and summary. Evidence: `docs/product/stories/US-45-read-a-topic.md`. Not implemented.
+- **US-46** *(Draft)* Reject, rename, or merge a suggested topic. Evidence: `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md`. Not implemented. Does not merge two topics that already exist.
+- **US-47** *(Draft)* A failed topic call leaves the item and creates no topic. Evidence: `docs/product/stories/US-47-topic-call-fails.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -113,7 +121,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Repository setup
 
-Checks from the harness mapping are in the tree. That is not product approval. Kotlin CI was not added. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/secret-scan.yml`, `.github/workflows/markdownlint.yml`, `.github/CODEOWNERS`, `.gitignore`, `README.md`.
+Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree.
 
 - **Harness install** *(In place)* Cursor skills under `.cursor/commands/`. Submodule `third_party/ai-sdlc-harness` at `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. Evidence: `docs/sdlc/harness-install.md`.
 

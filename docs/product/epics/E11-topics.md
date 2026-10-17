@@ -6,7 +6,7 @@
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve any story. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
-> No user stories yet. Draft those stories next. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
+> Draft stories US-41 through US-47 are in `docs/product/stories/`. They are Draft. They are not approved. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
 
 ## Background & Value Proposition
 
@@ -62,4 +62,12 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Draft stories
 
-None. The specification is approved. Stories still wait until this epic is approved. After that, Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.
+These are not approved. Paths are under `docs/product/stories/`. Drafting them is not story approval. Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.
+
+- US-41 Extract topics when an item is saved
+- US-42 Link an item to a topic the vault already has
+- US-43 Confirm a topic before it is created
+- US-44 Queue topic processing while offline
+- US-45 Read a topic
+- US-46 Reject, rename, or merge a suggested topic
+- US-47 Keep the item when the topic call fails
