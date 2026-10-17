@@ -1,0 +1,36 @@
+# Signing material and local config. Never commit these.
+*.jks
+*.keystore
+*.pem
+keystore.properties
+signing.properties
+local.properties
+google-services.json
+secrets.properties
+oauth.properties
+
+# Android / Gradle outputs (the app module is not in the tree yet).
+.gradle/
+build/
+**/build/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+.externalNativeBuild/
+.cxx/
+.kotlin/
+
+# Editors and OS
+.idea/
+*.iml
+.vscode/
+*.swp
+.DS_Store
+
+# Python
+__pycache__/
+.venv/
+venv/
+*.pyc

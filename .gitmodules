@@ -1,0 +1,3 @@
+[submodule "third_party/ai-sdlc-harness"]
+	path = third_party/ai-sdlc-harness
+	url = https://github.com/mjbvilhena/ai-sdlc-harness

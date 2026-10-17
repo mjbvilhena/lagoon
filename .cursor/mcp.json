@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sdlc-knowledge": {
+      "command": "bash",
+      "args": ["scripts/sdlc-knowledge-mcp.sh"]
+    }
+  }
+}
