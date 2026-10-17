@@ -19,7 +19,8 @@ Miguel, installing and configuring the vault himself.
 
 - **In Scope (MVP):**
   - Command-line Gradle build of a release APK.
-  - `minSdk` 26. Target SDK is the latest stable SDK when the app is built (Q8).
+  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). Bots' consensus on Q8. Not his approval of this spec.
+  - Application id `com.mjbvilhena.folio` (Q2, delegated recommendation).
   - Signed with a self-generated release keystore. The keystore is documented. Secrets are not committed.
   - README: build, sideload (unknown sources), Google Cloud OAuth client steps (package name, SHA-1 of the signing cert he was given), and where the client ID goes.
   - Unit tests for the repository/search layer and the backup-packaging layer. At least one Compose UI test.
@@ -40,15 +41,15 @@ Miguel, installing and configuring the vault himself.
 ## Risks & Dependencies
 
 - Depends on E1–E5 for there to be screens and behavior worth testing and photographing.
-- Q1 and Q2 must be answered before the README can name the package and the final launcher label.
+- The README can name Folio and `com.mjbvilhena.folio` as the delegated recommendations. The signing SHA-1 still does not exist and must not be invented. These recommendations are not Miguel's approval.
 - Screenshot capture needs an emulator or a device. Availability is unknown at drafting time.
 - The signing SHA-1 cannot be known until the keystore exists. It is an implementation output, documented in the README, not invented in this epic.
 
 ## Open Questions
 
-- [ ] Q1. Short name. (@mjbvilhena)
-- [ ] Q2. Application id. (@mjbvilhena)
-- [ ] Q8. Target SDK level, recorded when implementation is allowed. (@mjbvilhena)
+- Q1, Q2, and Q8 are the bots' consensus. They are not approval.
+- [ ] Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. Flagged for Miguel. (@mjbvilhena)
+- Q5 and Q10 are his decisions, recorded in the specification. They are not open here.
 
 ## Draft stories
 

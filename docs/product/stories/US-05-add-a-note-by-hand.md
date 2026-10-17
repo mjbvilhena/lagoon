@@ -46,7 +46,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Q9: the personal note is optional on this form.
+- Q9 is about sharing, not this in-app form. The personal note on this form stays optional. Sharing's one tap and tag chips are US-01 and US-28.
 - Independent value: a note does not need a share intent.
 
 ## Implementation notes

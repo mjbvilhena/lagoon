@@ -17,7 +17,7 @@ Manage tags on saved items.
 
 - He asked for tags on items and for tag management.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: renaming a tag (Q4, not assumed). Tag hierarchies. Sharing tags with anyone else.
+- Out of scope: merging tags. Tag hierarchies. Sharing tags with anyone else. Renaming is US-29, from the Q4 recommendation, and is not part of this story's Must criteria.
 
 ## Acceptance criteria
 
@@ -49,7 +49,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Q4: rename is not a Must. If he answers Q4 with yes, that is a new story, not a silent addition here.
+- Q4 is the bots' consensus, not approval: rename is in v1 and applies to every item. That is US-29. A case-insensitive clash asks for confirmation and then merges. There is no other merge path.
 - US-12 also writes tags on one item. The rules above apply there too.
 
 ## Implementation notes

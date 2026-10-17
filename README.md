@@ -1,6 +1,6 @@
 # Personal knowledge vault
 
-On-device Android vault where Miguel keeps links, notes, images, and PDFs he wants to find again. Search and the library work offline. Google Drive backup is private to the app and stays off until he configures an OAuth client. A zip export on the phone is the fallback.
+On-device Android vault where Miguel keeps links, notes, images, and PDFs he wants to find again. Search and the library work offline. The draft spec now calls for background sync of ciphertext to private Drive app data, not a manual backup. A zip on the phone remains the fallback. There is still no app.
 
 There is no app module in this repository yet. Do not look for an APK or a Gradle build.
 
@@ -9,6 +9,8 @@ There is no app module in this repository yet. Do not look for an APK or a Gradl
 The AI SDLC harness is installed. The product vision, specification, epics, and user stories are **drafts**. None of them is approved.
 
 The pipeline is stopped at the first human approval gate: **product specification approval** by `mjbvilhena`.
+
+Decisions in the specification are recorded and are not approval. Miguel decided sync, encryption, and the v1 scope (OCR, reminders, multiple attachments, page snapshots, biometric lock on sensitive items). His bots recommended the delegated answers. Trip grouping is later. Q5 and Q10 are resolved. Conflicts, deletions, keys, app unlock, and sideload verification are still open for him.
 
 Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code.
 

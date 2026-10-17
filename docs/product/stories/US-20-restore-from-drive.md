@@ -1,42 +1,53 @@
-# US-20 Restore from Drive
+# US-20 Receive the vault on a new install
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
+> Replaces Restore. His decision: a new install or a second device signs in and gets the vault. Sync merges. Q5 is resolved. Not approval.
 
 ## Title
 
-Restore the vault from Drive.
+Receive the vault after signing in on another install.
 
 ## User story
 
 **As a** person named Miguel
-**I want to** restore a Drive backup into the app
-**So that** I can get my items and files back after they are gone from the phone
+**I want** a new install or a second device to pick up the vault after I sign in
+**So that** I do not run a restore
 
 ## Background
 
-- He asked for Restore from Drive. The backup holds the database and stored files.
+- He said sync is seamless and a second device gets the vault automatically.
+- Q5 is resolved: sync merges. An item that exists on only one side is kept.
+- The same item edited on both sides, and how deletions propagate, are still open. This story does not invent those rules.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: merging with items that exist only on the device (Q5, unanswered). Browsing ordinary Drive folders.
+- Out of scope: a Restore button. Reading ciphertext before keys exist (US-36 and his key question).
 
 ## Acceptance criteria
 
-- **Scenario: restore onto an empty vault** — Must
-  - Given he is signed in, a backup exists in app data, and the local vault has no items
-  - When he restores
-  - Then the items, personal notes, tags, and stored images and PDFs from that backup are present on the device and usable offline afterward
-- **Scenario: no backup** — Must
-  - Given he is signed in and no backup exists
-  - When he chooses Restore
-  - Then nothing local is wiped and he can see that there was nothing to restore
+- **Scenario: empty phone, existing Drive copy** — Must
+  - Given he is signed in, Drive holds a vault, and this install has no items
+  - When sync runs
+  - Then the items, notes, tags, and attachments from that copy are on the device
+- **Scenario: merge** — Must
+  - Given this phone has an item the Drive copy does not, and the Drive copy has an item this phone does not
+  - When sync finishes
+  - Then both items exist on the phone and in the synced copy
+- **Scenario: no remote vault** — Must
+  - Given he is signed in and Drive has no vault yet
+  - When sync runs
+  - Then local items are not wiped
 - **Scenario: not configured or not signed in** — Must
   - Given no client ID, or he is not signed in
-  - When he looks for restore
-  - Then restore does not run and does not crash. The unconfigured case uses the US-17 explanation.
-- **Scenario: restore while local items exist** — Must
-  - Given the local vault is not empty
-  - When he chooses Restore
-  - Then the app does not pick a merge-or-replace outcome that this story invents. The action waits until Q5 is answered, or it asks him in the way Q5's answer requires. Until Q5 is answered, this scenario is an open question, not a guessed wipe.
+  - When he uses the app
+  - Then nothing is pulled from Drive and the app does not crash
+- **Scenario: conflicting edits** — Must
+  - Given the same item was changed on two devices
+  - When they sync
+  - Then the app does not pick a winner this story invents. Behavior waits on his open question.
+- **Scenario: deletions** — Must
+  - Given he deleted an item on one device only
+  - When the other device syncs
+  - Then this story does not specify that the other copy disappears. That rule waits on his open question.
 
 ## Analytics and observability (optional)
 
@@ -44,14 +55,14 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Restore is a deliberate action with a text confirmation once Q5 says what it will do.
-- No placeholder backup date.
+- There is no Restore control. Sign-in is the way onto a new install.
+- If the copy cannot be read yet because keys are unanswered, the screen says so in real words rather than showing a fake empty vault. Wording waits for the UX artefact.
 
 ## Dependencies and risks
 
-- Blocked by US-18 having produced a backup, and by Q5.
-- The open Q5 scenario means this story cannot be marked implementation-Done until Q5 is closed or split into a follow-up story. Do not soft-pass it.
+- Blocked by US-18 having synced a vault, and by his answers on conflicts, deletions, and keys before those paths can be called done.
+- Do not soft-pass the open cases by dropping them.
 
 ## Implementation notes
 
-Read app-data only. Do not implement a silent replace while Q5 is open. Not a design spec.
+Read and write `appDataFolder` only. Do not implement a silent replace. Not a design spec.

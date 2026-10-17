@@ -46,7 +46,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Tags attached here are the same tags US-14 manages.
-- Q9: editing later is enough to satisfy "optional personal note" if capture did not ask.
+- Q9 consensus, not approval: the personal note and tags can be edited on this detail screen at any time after save. The tag chips (US-28) do not replace this. A reminder date is US-34. Marking sensitive is US-37.
 
 ## Implementation notes
 

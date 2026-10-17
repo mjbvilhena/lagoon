@@ -17,7 +17,7 @@ Share a PDF into the vault.
 
 - PDFs are a named share type and a named backup payload.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a PDF editor, OCR of scanned pages (Q7), and annotating the file.
+- Out of scope: a PDF editor, annotating the file, and using OCR on a PDF that already has a text layer. Scanned pages are US-31, which is in v1 by Miguel's decision. That decision is not approval of this story.
 
 ## Acceptance criteria
 
@@ -32,8 +32,8 @@ Share a PDF into the vault.
 - **Scenario: text the PDF already contains** — Must
   - Given the PDF contains extractable text
   - When it is stored
-  - Then that text is kept as extracted text so search (US-15) can see it
-  - And a PDF with no extractable text is still stored
+  - Then that text is kept as extracted text so search (US-15) can see it. This is extraction, not OCR
+  - And a PDF with no extractable text is still stored, for US-31 to recognize later
 
 ## Analytics and observability (optional)
 
@@ -47,7 +47,8 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Extracted text is an input to US-15. This story does not implement search.
-- Q7: scanned pages without a text layer are stored and are not OCR'd in this story.
+- Scanned pages are stored here and recognized in US-31. This story does not OCR them.
+- Q9 consensus, not approval: one tap saves the PDF. Last-used tag chips are US-28. An empty title uses the file name (US-40).
 
 ## Implementation notes
 

@@ -46,7 +46,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Independent of link enrichment.
-- Q9 applies: note and tags are optional at capture.
+- Q9 consensus, not approval: one tap saves. Last-used tag chips are US-28. He can edit the note and tags later (US-12). A text share with no title still takes the title from the start of the text.
 
 ## Implementation notes
 

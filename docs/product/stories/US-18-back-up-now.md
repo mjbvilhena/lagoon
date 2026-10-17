@@ -1,58 +1,64 @@
-# US-18 Sign in and back up now
+# US-18 Sign in and let the vault sync
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
+> Replaces Back up now. His decision: seamless sync, no explicit backup. Not approval.
 
 ## Title
 
-Sign in with Google and back up now.
+Sign in and let the vault sync in the background.
 
 ## User story
 
 **As a** person named Miguel
-**I want to** sign in with Google and back up the vault now into the app's private Drive space
-**So that** a copy of my database and my files exists off the phone, visible only to this app
+**I want to** sign in with Google and have the vault sync itself to the app's private Drive space
+**So that** a copy exists off the phone without me running a backup
 
 ## Background
 
-- He asked for Google Sign-In / Credential Manager, the Drive API, and the `drive.appdata` scope, plus Back up now. The backup includes the database and stored images and PDFs.
+- He rejected an explicit backup. Sync uses Google Sign-In / Credential Manager and the Drive API `appDataFolder`. Not Android Auto Backup.
+- The copy includes the database and attachments. Those bytes are ciphertext (US-36).
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: the unconfigured state (US-17), the schedule (US-19), restore (US-20), and zip (US-21).
+- Out of scope: a Back up now button, a last-backup clock, restore (US-20 is the other device, not a restore button), zip (US-21), the unmetered preference (US-19).
 
 ## Acceptance criteria
 
-- **Scenario: back up** — Must
-  - Given a build whose OAuth client ID is set, and he is signed in, and the vault has a note plus an image or a PDF
-  - When he chooses Back up now
-  - Then the app writes a backup into the Drive app-data folder that contains the database and those stored files, and Settings shows a last backup time of that run
+- **Scenario: sync after sign-in** — Must
+  - Given a build whose OAuth client ID is set, he is signed in, the device may sync (US-19), and the vault has a note plus an attachment
+  - When the app is running and the network is allowed
+  - Then the vault is uploaded to Drive `appDataFolder` without him choosing Back up now
 - **Scenario: not signed in** — Must
   - Given a configured client ID and he is not signed in
-  - When he chooses Back up now
-  - Then the backup does not pretend to succeed. He can start Google sign-in.
+  - When he opens Settings
+  - Then sync does not pretend to have run, and he can start Google sign-in
 - **Scenario: sign-in fails or he cancels** — Must
   - Given he cancels sign-in or Google returns an error
   - When control returns to the app
-  - Then his local items are unchanged and he can see that backup did not run
-- **Scenario: the backup is app-data** — Must
-  - Given a successful backup
+  - Then his local items are unchanged
+- **Scenario: the copy is app-data** — Must
+  - Given a successful sync
   - When its Drive location is checked
-  - Then it is in the app-data folder for `drive.appdata`, not in a folder of his ordinary My Drive that other apps are invited to browse
+  - Then it is in `appDataFolder`, not in a folder of ordinary My Drive, and it is not an Android Auto Backup set
+- **Scenario: hidden in Drive** — Must
+  - Given that copy
+  - When he browses Drive in the Drive app
+  - Then the vault files are not listed as normal Drive files
 
 ## Analytics and observability (optional)
 
-Not applicable. No analytics. Sign-in with Google is authentication he asked for, not product analytics.
+Not applicable. No analytics. Sign-in is authentication he asked for, not product analytics.
 
 ## Design and a11y notes
 
-- Sign-in, Back up now, and the last backup time are visible as text.
+- Sign-in is visible as text. There is no backup button and no last-backup timestamp.
 - No placeholder account name.
 
 ## Dependencies and risks
 
-- Requires the OAuth client from US-26's procedure and Q2 (application id) plus the release SHA-1.
-- Q6: this story's Back up now runs when he asks, on the current network, including mobile data. The Wi-Fi toggle is US-19. If he rejects Q6, this criterion changes.
-- Which of Credential Manager and the older Google Sign-In API performs the sign-in is an ADR. He named both. This story does not pick.
+- Application id `com.mjbvilhena.folio` is the bots' consensus, not his spec approval. The release SHA-1 must not be invented.
+- Which of Credential Manager and the older Google Sign-In API performs sign-in is an ADR. He named both. This story does not pick.
+- Ciphertext is US-36. This story does not choose an algorithm.
 
 ## Implementation notes
 
-Do not log tokens. Do not commit the client ID. Packaging of database plus files is what US-25 tests locally. Not a design spec.
+Do not log tokens. Do not commit the client ID. Not a design spec.

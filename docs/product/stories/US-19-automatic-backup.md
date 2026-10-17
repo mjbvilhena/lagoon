@@ -1,47 +1,45 @@
-# US-19 Run a daily backup and see when it last succeeded
+# US-19 Keep background sync on unmetered networks
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
+> The bots' consensus named an Unmetered-only setting for automatic transfer. Miguel removed manual backup. The preference remains for background sync. Not approval.
 
 ## Title
 
-Turn on a daily automatic backup.
+Prefer an unmetered network for background sync.
 
 ## User story
 
 **As a** person named Miguel
-**I want** a daily automatic backup I can limit to Wi-Fi, and I want to see the last backup time
-**So that** I do not have to remember to tap Back up now, and I do not have to upload on mobile data unless I choose to
+**I want** background sync to wait for an unmetered network unless I turn that preference off
+**So that** the vault does not quietly upload on a metered connection
 
 ## Background
 
-- He asked for automatic backup, with daily via WorkManager as the example, a Wi-Fi only toggle, and the last backup time.
+- Consensus: the automatic transfer setting is Unmetered only, using WorkManager `UNMETERED`.
+- There is no Back up now, so this is not a Wi-Fi toggle beside a manual button, and there is no roaming warning on a manual backup.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: choosing the hour of day. He did not name one. Back up now is US-18.
+- Out of scope: choosing the hour of day. A size warning. A last-sync clock.
 
 ## Acceptance criteria
 
-- **Scenario: turn automatic backup on** — Must
-  - Given he is signed in on a configured build
-  - When he turns automatic backup on
-  - Then a periodic backup is scheduled about once a day using WorkManager
-- **Scenario: Wi-Fi only on** — Must
-  - Given automatic backup is on and the Wi-Fi only toggle is on
-  - When the device has only mobile data
-  - Then the automatic backup does not upload
-  - And when the device is later on Wi-Fi, the scheduled backup may run
-- **Scenario: Wi-Fi only off** — Must
-  - Given automatic backup is on and the Wi-Fi only toggle is off
-  - When the scheduled time arrives on mobile data
-  - Then the automatic backup is allowed to run on that network
-- **Scenario: last backup time** — Must
-  - Given a backup has succeeded, whether manual or automatic
-  - When he opens Settings
-  - Then he sees the time of that last success
-- **Scenario: automatic backup off** — Must
-  - Given he turns automatic backup off
-  - When a day passes
-  - Then no automatic backup runs. Back up now still works.
+- **Scenario: unmetered only is the preference** — Must
+  - Given he is signed in on a configured build and the preference is on
+  - When the device has only a metered connection
+  - Then background sync does not upload
+  - And when the device later has an unmetered connection, background sync may run
+- **Scenario: preference off** — Must
+  - Given he turns Unmetered only off
+  - When the device has a metered connection
+  - Then background sync may run on that connection
+- **Scenario: default** — Must
+  - Given a fresh install
+  - When he has not changed the preference
+  - Then Unmetered only is on
+- **Scenario: offline** — Must
+  - Given no network
+  - When he uses the vault
+  - Then local capture and search still work, and sync waits
 
 ## Analytics and observability (optional)
 
@@ -49,15 +47,14 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Both toggles have text labels and state a screen reader can hear.
-- The last backup time is text. If there has never been one, the screen says that, not a fake timestamp.
+- The preference has a text label and a state a screen reader can hear.
+- It is not labeled Back up now.
 
 ## Dependencies and risks
 
-- Blocked by US-18 for a signed-in, configured build.
-- "About once a day" follows WorkManager's periodic work. An exact clock time is not required.
-- Q6 is assumed as written in the spec: the toggle governs automatic backup, not Back up now.
+- Depends on US-18 for a signed-in, configured build.
+- Roaming is not a separate warning. A roaming network that is metered is covered by Unmetered only.
 
 ## Implementation notes
 
-WorkManager periodic work with a network constraint when the toggle is on. Not a design spec.
+WorkManager network constraint `UNMETERED` when the preference is on. Not a design spec.

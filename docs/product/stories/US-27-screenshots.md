@@ -24,12 +24,12 @@ Review screenshots of the main screens.
 - **Scenario: emulator available** — Must
   - Given an emulator can run the app
   - When the screenshots are taken
-  - Then there is one image each for home, search results, item detail, the share sheet offering the vault, and settings/backup, and they show the real app, not a mock
-- **Scenario: search and backup states** — Must
+  - Then there is one image each for home, search results, item detail, the share sheet offering the vault, and settings, and they show the real app, not a mock
+- **Scenario: search and settings** — Must
   - Given those shots
   - When he looks at search
   - Then the results are a real query against saved items, with a visible highlight
-  - And the settings shot shows either a real backup status or the real "not configured" explanation from US-17
+  - And the settings shot shows the real sync state, including the "not configured" explanation from US-17 when that is the build. It does not show a Back up now button
 - **Scenario: no emulator** — Must
   - Given no emulator is available in the environment
   - When the delivery is reported

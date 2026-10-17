@@ -4,107 +4,170 @@
 > This is the first human approval gate. Do not start technical design, UX, threat modeling, test planning, or implementation from this file alone.
 > Approver required: `mjbvilhena` — a named sign-off, or an explicit sentence that says to treat this specification as approved.
 > Sign-off on file: none.
-> Drafted from `docs/product/vision.md` by `sdlc-product-owner` on 2026-10-17. The vision file itself is still unaccepted.
+> Decisions recorded below are not that sign-off. A decision from Miguel, and a recommendation from his bots, are different things. Neither one approves this specification.
 > Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
 
 ## Background & Value Proposition
 
 Miguel comes across links, text, images, and PDFs in other apps and has nowhere private on his phone that keeps them as one searchable store. The vault is that store. He captures what matters, adds a few words about why when he wants to, and finds it later without a network.
 
-It matters now because the request is to build this as v1, including an installable signed APK and a private backup path. The request does not give a business metric. Success is the capability in the vision: capture, search, offline use, and backup or export, at the quality bar he set.
+The phone is the primary copy. It works fully offline. When a network is available, the vault syncs itself to his private Google Drive app space. He does not run a backup or a restore. A zip on the device remains a fallback. What leaves the phone for Drive is ciphertext.
+
+No numeric success metric was given.
 
 ## Target Audience
 
 - **Primary user:** Miguel. No other persona is named.
-- **Pain this addresses:** content that matters to him stays scattered in the apps where he saw it. He wants one on-device store he can search, and a private way to copy it off the phone.
+- **Pain this addresses:** content that matters to him stays scattered in the apps where he saw it. He wants one on-device store he can search, and a private copy that follows him to another install without a manual backup ritual.
 
 ## Scope & Phasing
 
 ### In Scope (MVP)
 
-Everything in `docs/product/vision.md` under "What he asked to be able to do" is in v1. It is split into six draft epics. Epic text is not epic approval.
+v1 is the draft epics E1–E9. Epic text is not epic approval. E10 is later and is not v1.
 
 | Epic | Outcome | Draft |
 |---|---|---|
-| E1 Capture and keep | He can save a link, plain text, an image, or a PDF from the share sheet, or add a note or URL himself. Items keep the fields he named. The store is on the device and the app works offline. No analytics. | `docs/product/epics/E1-capture-and-keep.md` |
-| E2 Link enrichment | A saved link gains a title, description, preview image, and readable text when a fetch works. When it does not, the URL remains. | `docs/product/epics/E2-link-enrichment.md` |
-| E3 Find and curate | He can browse newest first, open, edit, delete with undo, manage tags, search with ranked highlighted matches, and filter by type and tag. | `docs/product/epics/E3-find-and-curate.md` |
-| E4 Private backup | He can sign in and back up or restore via Drive app data, including on a schedule, and export or import a zip. Without an OAuth client ID, Settings explains that backup is not configured. | `docs/product/epics/E4-private-backup.md` |
-| E5 Look and feel | The shipped UI is calm and minimal, in light and dark, with one accent and no dynamic color, plus an icon and a short name he accepts. | `docs/product/epics/E5-look-and-feel.md` |
-| E6 Installable release | A signed release APK he can sideload, the tests he named, a README for build, install, and OAuth setup, and screenshots when an emulator is available. | `docs/product/epics/E6-installable-release.md` |
+| E1 Capture and keep | One tap from the share sheet saves a link, text, image, or PDF. Afterwards, last-used tags can be applied from a non-blocking chip row. A note or URL can be added by hand. An item can hold more than one attachment. Titles auto-fill from the page title or file name when he did not type one. Offline. No analytics. | `docs/product/epics/E1-capture-and-keep.md` |
+| E2 Link enrichment | A saved link keeps its URL and, when a fetch works, gains title, description, preview image, readable text, and an offline snapshot of the page. | `docs/product/epics/E2-link-enrichment.md` |
+| E3 Find and curate | Browse, sort and filter by date saved, Untagged / Inbox, detail, edit, delete with undo, tags including rename-and-merge, search with ranked highlighted matches, filter by type and tag. | `docs/product/epics/E3-find-and-curate.md` |
+| E4 Seamless sync | No Back up now, no Restore, no last-backup-time control. Background sync to Drive `appDataFolder` when connectivity allows. On-device first. A new install or a second device signs in and receives the vault. Sync merges. Unmetered-only preference. Zip export/import stays. | `docs/product/epics/E4-private-backup.md` |
+| E5 Look and feel | Calm Material 3 light and dark UI. Deep teal accent with the contrast rules below. Dynamic color is an optional toggle; teal is the fallback. Launcher name Folio for this sideload build. | `docs/product/epics/E5-look-and-feel.md` |
+| E6 Installable release | Signed sideload APK. Application id `com.mjbvilhena.folio`. `minSdk` 26. `compileSdk` and `targetSdk` 37. Tests, README, screenshots when an emulator exists. | `docs/product/epics/E6-installable-release.md` |
+| E7 On-device text recognition | In v1. OCR for screenshots, images, and scanned PDFs, on the device, so that text is searchable. Text-based PDFs are extracted, not OCR'd. | `docs/product/epics/E7-on-device-text-recognition.md` |
+| E8 Encryption and sensitive items | Encrypted database and attachment files at rest, keys in Android Keystore. Everything synced to Drive is client-side ciphertext. Fingerprint or biometric lock on items he marks sensitive. | `docs/product/epics/E8-encryption-and-sensitive-items.md` |
+| E9 Reminders and expiry | Optional expiry or reminder date on an item, with a notification. | `docs/product/epics/E9-reminders-and-expiry.md` |
 
-Constraints he already fixed, which later design must not reopen unless he does:
+Constraints later design must not reopen unless he does:
 
 - Kotlin, Jetpack Compose, Material 3.
-- Room with FTS for search.
-- `minSdk` 26. Target SDK is the latest stable SDK at implementation time (the number is not pinned here).
-- Google Sign-In / Credential Manager, Drive API, `drive.appdata` scope.
-- WorkManager for the daily automatic backup example.
-- OAuth client ID is build-time configuration, not a secret baked into the repo as a committed credential.
+- Room with FTS. Search covers title, body, extracted text (including text extracted from text-based PDFs, and OCR text once recognized), tags, and the personal note.
+- `minSdk` 26. `compileSdk` 37 and `targetSdk` 37 (Android 17, stable since June 2026). Bots' consensus on Q8. Not his approval of this spec.
+- Application id `com.mjbvilhena.folio`. Bots' consensus on Q2.
+- Google Sign-In / Credential Manager and the Drive API with the app-data folder (`appDataFolder` / `drive.appdata`). Not Android Auto Backup. That folder is hidden in the Drive UI.
+- WorkManager for background sync. The unmetered-only preference uses `UNMETERED`.
+- OAuth client ID is build-time configuration. The app builds, installs, and works offline without it. Settings then explain that sync is not configured. They do not crash and they do not offer a manual backup.
 - Release signing uses a self-generated keystore that is documented and not committed.
+- Crypto algorithms, modes, and key-wrapping details wait for an ADR. This spec only states the outcomes.
 
-### Future Scope (v2+)
+### Future Scope (not v1)
 
-He did not ask for a v2. Nothing is scheduled past v1.
+- **E10 Trip or collection grouping** with a date range. Miguel decided this is later, not v1. Draft: `docs/product/epics/E10-trip-and-collection-grouping.md`. No stories. Not approval.
+- Picking out booking references and merchants. Stays proposed and later, unless it falls out of OCR with no extra product scope. No story.
+- Full-screen QR and barcode display. Still proposed. He has not decided. No story.
+- Renaming Folio before any public Play release. v1 is a sideload build and may keep the name Folio. No rename story in v1.
 
 ### Out of Scope / Non-Goals
 
-- Analytics, usage telemetry, or a crash-reporting product. He said no analytics.
-- Play Store listing and distribution.
-- Live sync across devices, or a second person's access to the vault.
-- OCR, image editing, and PDF editing.
-- Private APIs for YouTube or X. Those apps are examples of share sources.
-- Material You dynamic color as the way the accent is chosen.
-- Committing the release keystore, its passwords, or the OAuth client secret material.
-
-A short name was requested as a suggestion. **Folio** is the suggestion. It is not the decided name. See Open Questions.
+- Analytics, usage telemetry, or a crash-reporting product.
+- Play Store listing for this v1.
+- An explicit backup or restore: no Back up now, no Restore action, no last-backup-time control, no manual-backup size warning, no roaming warning tied to a manual backup.
+- Android Auto Backup as the sync mechanism.
+- A cloud OCR or cloud vision API.
+- Image editing and PDF editing.
+- Tag hierarchies, and any tag merge that is not the confirmed rename onto an existing name.
+- Private APIs for YouTube or X.
+- Using wallpaper color as the default accent. Dynamic color may be turned on; teal is the fallback when it is off.
+- Committing the release keystore, its passwords, or OAuth client secrets.
+- Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft. Those are open questions for Miguel.
 
 ## Core Workflows
 
 1. **Save something from another app**
-   - Miguel is in a browser or another app, on a link, a passage of text, an image, or a PDF.
-   - He shares it and chooses this vault.
-   - The app stores an item of the matching type with the fields it can fill. A link also keeps the URL if page details cannot be fetched.
-   - He can add or skip the optional note about why it matters.
+   - He shares a link, text, image, or PDF and chooses the vault. One tap saves it.
+   - The title fills from the page title or the file name when he did not type one.
+   - A non-blocking row of his last-used tags can be tapped afterwards. He can skip it. Note and tags remain editable on the detail screen.
+   - Untagged items show in an Untagged / Inbox view until he files them.
 2. **Find it later**
-   - He opens the vault with no network.
-   - The home list shows what he saved, newest first.
-   - He searches, filters by type or tag, opens an item, and edits or deletes it. A delete can be undone.
-3. **Keep a private copy**
-   - In Settings he either sees that Drive backup is not configured yet, or he signs in, backs up now, and can turn on a daily backup.
-   - He can restore from Drive, or export and import a zip on the device, without sending the vault to anyone else.
+   - With no network he can browse, sort and filter by the date saved, search, and open items, including text-based PDF text and, once OCR has run, text from screenshots, images, and scans.
+   - He can set an optional reminder or expiry. He can mark an item sensitive so opening it takes a biometric.
+   - An item may have more than one attachment. A saved link keeps its URL and, when the fetch worked, an offline snapshot.
+3. **The vault follows him**
+   - The phone holds the vault first. Sync runs in the background into Drive `appDataFolder` when the network policy allows. He does not press backup or restore.
+   - On a new install or a second device he signs in and the vault arrives. Copies merge: an item that exists on only one side is kept.
+   - Drive stores ciphertext. He can still export and import a zip on the device.
 
-Sprint-level acceptance criteria live in the draft stories, not here. Those stories were written in the same run because the request asked for them. Writing them did not approve this specification.
+## Decisions recorded
+
+None of these approve the specification.
+
+### Miguel (`mjbvilhena`)
+
+Recorded as his decisions, in his words where he gave them.
+
+- **Sync, not backup.** "There should be no explicit backup and restore, there should be just a seamless sync behind the scenes." On-device first. Works fully offline. Syncs when connectivity allows. A new install or a second device signs in and receives the vault. **Q5 is resolved:** sync merges. Zip export/import stays as a fallback.
+- **Q10. Encryption.** "Yes, extra encryption would be good." Encryption at rest beyond app-private storage (encrypted database and encrypted attachment files, keys in Android Keystore). Client-side end-to-end encryption of everything synced, so Drive only holds ciphertext. The crypto design itself is not decided here.
+- **In v1:** (1) on-device OCR for screenshots, images, and scanned PDFs, so their text is searchable; (2) optional expiry or reminder dates, with notifications; (3) multiple attachments per item; (4) offline snapshots of saved web pages, keeping the original URL; (5) fingerprint or biometric lock on items marked sensitive, tied to the encryption work.
+- **Later, not v1:** trip or collection grouping with a date range.
+
+### Bots' consensus (not approval)
+
+Mikey's Dev Bot first recommended answers under Miguel's delegation of Q1–Q4 and Q6–Q9. Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant then reviewed them. The lines below are that **consensus recommendation**. They are not Miguel's approval.
+
+- **Q1. Name.** Folio stays. The name is crowded on Play (other apps are called Folio), so it should be renamed before any public release. This sideload v1 may still use Folio.
+- **Q2. Application id.** `com.mjbvilhena.folio`.
+- **Q3. Accent.** The teal stays. Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode the color on top of the accent (`onPrimary`) must be dark (black or `#003731`), because white on `#2DD4BF` fails contrast. Never use `#0F766E` on dark surfaces. Material dynamic color can be an optional toggle, with teal as the fallback. The UX gate can still check the values.
+- **Q4. Tags.** Renaming a tag applies to every item. Renaming onto a name that already exists, compared case-insensitively, asks for confirmation and then merges the two tags. Merging is in v1 only through that path.
+- **Q6. Network, after his sync decision.** The background-sync preference is Unmetered only (`WorkManager` `UNMETERED`). There is no Back up now, so there is no "runs on any connection" manual action and no roaming warning on a manual backup. Sync uses the Drive API `appDataFolder`, not Android Auto Backup. `appDataFolder` is hidden in the Drive UI. The earlier size warning (about 50 MB on a manual backup) is dropped with Back up now.
+- **Q7. OCR timing.** The bots left timing to Miguel. He has since decided OCR is in v1 (see above). Their other point still stands: v1 extracts and indexes the text of text-based PDFs, and that extraction is not OCR. Title, personal note, and tags are searchable.
+- **Q8. SDK.** `compileSdk` and `targetSdk` are 37. `minSdk` stays 26.
+- **Q9. After the tap.** Saving stays one tap. Afterwards the UI shows an optional, non-blocking chip row of last-used tags, auto-fills the title from the page title or file name, and offers an Untagged / Inbox view so new captures get filed. He can sort and filter by date saved. Note and tags stay editable on the detail screen.
+
+### Proposed, pending Miguel
+
+No stories are added for these.
+
+- Full-screen QR and barcode display.
+- Picking out booking references and merchants. Later, unless it falls out of the OCR work for free.
 
 ## Risks & Dependencies
 
-- Drive backup needs a Google Cloud OAuth client whose package name and signing-certificate SHA-1 match the release keystore. Until Miguel creates that client and supplies the client ID at build time, backup cannot succeed. The app must still install and run.
-- Page fetches fail on offline devices, login walls, and pages that only render in a browser. The item must still keep the URL.
-- Share-sheet behavior differs across Android versions and manufacturers. The types he named still have to be receivable on a normal current device.
-- `drive.appdata` backups are hidden from the user's normal Drive UI. Restore has to find the app's own backup without him browsing a public folder.
-- Images and PDFs can be large. The request does not set a size cap.
-- An emulator may be unavailable when screenshots are due. The request allows explaining that, and does not allow fake screenshots.
-- No `DOMAIN.md` or `LAYER.md` exists. Consultants were queried and returned none. This specification does not invent those rules.
+- Sync needs a Google Cloud OAuth client whose package name and signing-certificate SHA-1 match the release keystore. Until he supplies the client ID at build time, sync cannot run. The app must still install and work offline.
+- A second device can receive ciphertext and still be unable to read it until he answers how keys move (open question below). This draft does not invent a passphrase or a Google-derived key.
+- Page fetches fail offline, on login walls, and on pages that only render in a browser. The item still keeps the URL. A snapshot exists only when a fetch succeeded.
+- Share-sheet behavior differs by OEM.
+- `appDataFolder` files do not appear in the ordinary Drive UI. That is expected, not a bug.
+- OCR quality varies by phone and language. No accuracy rate is set here.
+- An emulator may be unavailable for screenshots. Do not fabricate them.
+- No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
+- Encryption, biometric lock, and Drive sync are security-sensitive. The harness has `sdlc-threat-modeler` and the `threat model` template. A threat model is required in the later design band, before implementation. It is not started. This note does not skip it and does not write it.
 
-## Open Questions
+## Open questions
 
-- [ ] **Q1.** What is the short name? Suggestion only: Folio. (@mjbvilhena)
-- [ ] **Q2.** What is the Android application id? It depends on Q1 and is required in the OAuth setup steps. (@mjbvilhena)
-- [ ] **Q3.** What is the single accent? He asked for one accent and did not name a color. Decide in the UX gate, not in this draft. (@mjbvilhena)
-- [ ] **Q4.** Does tag management in v1 include renaming a tag, or only adding and removing tags? (@mjbvilhena)
-- [ ] **Q5.** When he restores from Drive or imports a zip, do items that exist only on the device remain, or does the copy replace the local vault? (@mjbvilhena)
-- [ ] **Q6.** The Wi-Fi only toggle is specified for automatic backup. This draft treats Back up now as running when he asks, even on mobile data. Confirm or correct that. (@mjbvilhena)
-- [ ] **Q7.** Is OCR of scanned PDFs or images in v1? It was not requested. This draft leaves it out. (@mjbvilhena)
-- [ ] **Q8.** Which API level is "the latest stable SDK" on the day of implementation? Record it in technical design. Do not guess it here. (@mjbvilhena)
-- [ ] **Q9.** Must the share flow ask for the personal note and tags before the item is saved, or is editing them later enough? This draft requires that both can be empty and can be changed later. (@mjbvilhena)
-- [ ] **Q10.** Is any encryption required beyond the app's private on-device storage? None was requested. (@mjbvilhena)
+### For Miguel (`mjbvilhena`)
+
+Security or data integrity. Not delegated.
+
+- [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena)
+- [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena)
+- [ ] **Keys on a new device.** How do keys reach a new or second device (for example a passphrase or recovery key, versus a key derived from the Google account)? (@mjbvilhena)
+- [ ] **Lost key.** What happens if the key or passphrase is lost? (@mjbvilhena)
+- [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena)
+- [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? Raised with the Q8 consensus and flagged for him. (@mjbvilhena)
+
+### Story-level, safe to delegate
+
+Not security decisions and not epic scope.
+
+- [ ] A second share of the same URL: update the existing item, or keep both? The earlier personal note must not be deleted silently (US-01).
+- [ ] Search ranking beyond "a title match is listed before a body-only match" (US-15).
+- [ ] Which languages on-device OCR must handle (US-31).
+- [ ] Whether a reminder fires at the start of the chosen day or at a time he picks. No default time is invented here (US-34).
+- [ ] How complete an offline snapshot is, beyond a readable copy of the page plus the original URL (US-33).
+
+### Resolved, not open
+
+- **Q5.** Resolved by Miguel's sync decision: sync merges. An item that exists on only one side is kept. Concurrent edits and deletions are the open questions above, not a return of Q5.
+- **Q10.** Resolved by Miguel: extra encryption, at rest and end-to-end for Drive. Key transport, loss, and app unlock remain open.
 
 ## Approval
 
 | Gate | Status | What advances it |
 |---|---|---|
 | This specification | Draft | Named sign-off by `mjbvilhena`, or a sentence that treats this file as approved |
-| Epics E1–E6 | Draft, separate gate | Not approved by approving this file |
-| User stories | Draft, separate gate | Not approved by approving this file or the epics |
+| Epics E1–E9 | Draft, separate gate | Not approved by his product decisions or by the bots' consensus |
+| Epic E10 | Draft, later, not v1 | His decision that it is later. Not approval to build it, and not part of v1 |
+| User stories | Draft, separate gate | Not approved |
+| Threat model, UX, test strategy, ADRs | Not started | Required before implementation where the pipeline says so. Not skipped |
 
-Next gate after a real approval of this file: epic approval, still by `mjbvilhena`. Story files already exist as drafts. Their presence is not a reason to skip epic approval or story approval, and it is not permission to open UX, RFC, ADR, test-plan, or implementation work.
+Next gate after a real approval of this file: epic approval, still by `mjbvilhena`. Draft stories are not a reason to skip epic approval, story approval, or the design band.

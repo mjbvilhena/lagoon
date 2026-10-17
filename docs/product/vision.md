@@ -56,3 +56,15 @@ These are not promised and are not goals of this vision. They are listed so a la
 - An image editor or a PDF editor.
 - Special integrations with YouTube or X beyond receiving a share and, for a link, a best-effort page fetch.
 - A chosen app name, package name, or accent color. A short name was asked for as a suggestion, not supplied.
+
+## Later decisions
+
+This vision file is still not accepted. It keeps the original request, including backup and restore, so that history stays readable.
+
+`docs/product/specification.md` records what happened after this file was written. Those lines supersede the backup wording, the "not in the request" notes on multi-device copy and OCR, and the open status of Q5 and Q10. They do not accept this vision and they do not approve the specification.
+
+In short, and only as a pointer:
+
+- Miguel decided on seamless background sync, extra encryption, and a v1 that includes on-device OCR, reminders, multiple attachments, offline page snapshots, and a biometric lock on sensitive items. Trip or collection grouping is later.
+- His bots' consensus on the delegated questions (name, application id, accent, tag merge, unmetered sync, text-layer PDF extraction, SDK 37, capture filing) is also in the specification. That consensus is not his approval.
+

@@ -15,7 +15,7 @@ Cover search, backup packaging, and a basic screen with automated tests.
 
 ## Background
 
-- He asked for unit tests for the repository/search layer and the backup-packaging layer, and at least a basic Compose UI test. The Gradle build must be clean.
+- He asked for unit tests for the repository/search layer and the backup-packaging layer, and at least a basic Compose UI test. Packaging now means the sync payload and the zip, not a manual backup. The Gradle build must be clean.
 - Domain constraints: none. No `DOMAIN.md`.
 - Out of scope: a full screenshot test suite (US-27 is capture for a human, not this story). A Kotlin CI workflow, which the repository-setup mapping did not include.
 
@@ -25,10 +25,11 @@ Cover search, backup packaging, and a basic screen with automated tests.
   - Given the repository tests
   - When they run
   - Then they cover saving an item and a full-text query that matches title, body, extracted text, tags, and the personal note, including the title-before-body order from US-15
-- **Scenario: backup packaging** — Must
+- **Scenario: sync and zip packaging** — Must
   - Given the packaging tests, with no live Google account
   - When they run
-  - Then they cover building a backup payload of the database plus an image or PDF file, and reading that payload back, for both the Drive backup assembly and the zip
+  - Then they cover assembling the vault (database plus attachments) and reading it back, for both the Drive sync payload and the zip
+  - And the Drive payload they assemble is ciphertext, not a plaintext database (US-36). The test does not need a live Drive account and does not choose a cipher beyond "not plaintext"
 - **Scenario: Compose UI** — Must
   - Given the UI tests
   - When they run

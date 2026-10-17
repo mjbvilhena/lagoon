@@ -25,7 +25,7 @@ Share a link into the vault.
 - **Scenario: share a link** — Must
   - Given the vault is installed and Miguel is viewing a link in another app
   - When he opens the system share sheet and chooses the vault
-  - Then the vault stores one item of type `link` with that URL as the source URL, a created date of the save, and an empty personal note and no tags unless he supplied them
+  - Then one tap stores one item of type `link` with that URL as the source URL and a created date of the save. Tags stay empty unless he taps a last-used tag afterwards (US-28)
 - **Scenario: the share has no URL** — Must
   - Given he tries to share content that has no URL and is not plain text, an image, or a PDF
   - When the vault receives it
@@ -41,14 +41,14 @@ Not applicable. The brief forbids analytics. No events are proposed.
 
 ## Design and a11y notes
 
-- The vault's name in the share sheet is the approved short name (Q1). Until Q1 is answered, the share target still has to be recognizable as this app.
+- The share sheet lists the vault as Folio. That name is the Q1 recommendation from Mikey's Dev Bot under delegation. It is not Miguel's approval of the spec.
 - No placeholder sentences in the shipped UI.
 - The share target has a name a screen reader can announce. Exact layout is for the later UX artefact, which does not exist yet.
 
 ## Dependencies and risks
 
 - Blocks US-08 and US-09.
-- Q9: this story does not require a note or tags at share time. They must be editable later (US-12).
+- Q9 consensus, not approval: one tap saves. Last-used tag chips are US-28. Title auto-fill is US-40. Editing later is US-12.
 - Open: a second share of the same URL. Not answered with a merge rule here.
 - No feature flag was requested.
 

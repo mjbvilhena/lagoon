@@ -18,16 +18,28 @@ Use a calm light and dark appearance.
 
 - He asked for a polished, professional, minimalist Material 3 app: calm, lots of whitespace, refined typography, a restrained neutral palette with a single accent, smooth subtle animations, light and dark, and no reliance on Material You dynamic color. No clutter. No placeholder text in the shipped UI.
 - Domain constraints: none. No `DOMAIN.md`. No `LAYER.md`.
-- Out of scope: choosing the accent color (Q3). Drawing wireframes. Dynamic color as an option he can turn on. A second theme pack.
+- Out of scope: a second brand accent, drawing wireframes in this story, and a second theme pack. Dynamic color is an optional toggle, not the default. The accent values below are the bots' consensus on Q3. The UX gate can still check them. That check has not been done. Not approval.
 
 ## Acceptance criteria
 
 - **Scenario: light and dark** — Must
   - Given items on the home list and an open item
   - When he uses the app in light mode and in dark mode
-  - Then both modes use the same neutral palette and the same single accent, and neither mode takes that accent from the wallpaper
-- **Scenario: dynamic color off** — Must
-  - Given the device has a wallpaper that would normally tint Material You apps
+  - Then, with dynamic color off, both modes use the neutral palette and the teal accent, and neither mode takes that accent from the wallpaper
+  - And the light accent is about `#0F766E` and the dark accent is about `#2DD4BF`, unless the later UX gate records a different pair
+- **Scenario: contrast on the dark accent** — Must
+  - Given dark mode and the accent about `#2DD4BF`
+  - When text is drawn on that accent
+  - Then that text is dark: black or `#003731`. It is not white
+  - And `#0F766E` is not used as a color on dark surfaces
+- **Scenario: dynamic color toggle** — Must
+  - Given dynamic color is available on the device
+  - When the toggle is off
+  - Then the vault uses the teal fallback
+  - And when he turns the toggle on, the vault may follow the system dynamic colors
+  - And the default is off
+- **Scenario: dynamic color off by default** — Must
+  - Given the device has a wallpaper that would normally tint Material You apps, and he has not turned the toggle on
   - When he opens the vault
   - Then the vault's colors do not follow that wallpaper
 - **Scenario: no placeholder copy** — Must
@@ -38,10 +50,10 @@ Use a calm light and dark appearance.
   - Given he opens an item from the list and goes back
   - When the screen changes
   - Then the change is animated, the animation finishes and leaves him on the destination, and it does not block the back action
-- **Scenario: accent not chosen yet** — Must
-  - Given Q3 is still open
-  - When this story is implemented
-  - Then implementation waits for the accent decided at the UX gate. This story does not name a hex color.
+- **Scenario: UX gate may still check the accent** — Must
+  - Given these hex values are a delegated recommendation and not Miguel's approval
+  - When a later UX artefact is agreed
+  - Then that artefact may keep or adjust the accent, and this story follows the agreed values. Until then the recommendation stands in the draft, and implementation has not started.
 
 ## Analytics and observability (optional)
 
@@ -55,7 +67,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on Q3 for the actual accent.
+- Q3 is the bots' consensus, not an open question and not approval. The UX gate can still check the accent. UX design has not started.
 - US-10, US-11, and the settings stories are the surfaces. This story is the visual constraint on them, not a second information architecture.
 
 ## Implementation notes

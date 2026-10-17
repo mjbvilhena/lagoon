@@ -20,12 +20,12 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 |---|---|---|
 | Vision | `docs/product/vision.md` | Draft. Not accepted. |
 | Product spec | `docs/product/specification.md` | Draft. **This is the gate this run stops on.** |
-| Epic approval | `docs/product/epics/E1` through `E6` | Drafted early. Not approved. |
-| Story refine | `docs/product/stories/US-01` through `US-27` and `INDEX.md` | Drafted early, at the user's request. Not approved. |
+| Epic approval | `docs/product/epics/E1` through `E10` | Draft. E1–E9 are the v1 set. E10 is later and has no stories. Not approved. |
+| Story refine | `docs/product/stories/US-01` through `US-40` and `INDEX.md` | Draft. All of those stories are in the v1 set. Not approved. |
 | Story approval | — | Not given. |
 | Technical design / ADRs | No RFC, API design, or ADR files | Not started. |
 | UX | No UX artefact | Not started. |
-| Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. |
+| Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync). |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. Bounds have not been designed. |
 | Repository checks | Workflows, CODEOWNERS, gitignore, README | Present for markdown and secrets. See `docs/sdlc/repository-setup.md`. Not a product approval. |
 | Implement | No application code | Not started. Blocked. |
@@ -36,20 +36,26 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 
 `mjbvilhena` is the named approver. Nothing in git history, this file, or the backlog counts as his sign-off. A future approval has to name the artefact and say it is approved, or say to treat it as approved.
 
+He delegated Q1–Q4 and Q6–Q9. Mikey's Dev Bot recommended answers, and Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant reviewed them. That consensus is in `docs/product/specification.md`. It is not approval.
+
+He later decided, in his own words where he gave them: seamless sync instead of backup and restore (Q5 resolved as merge); extra encryption at rest and as ciphertext in Drive (Q10 resolved as yes); and a v1 scope of on-device OCR, reminders, multiple attachments, offline page snapshots, and a biometric lock on sensitive items. Trip or collection grouping is later (E10). Those decisions are not approval of the specification, the epics, or the stories.
+
+Open questions that still need him are sync conflicts, deletion propagation, key transport, lost keys, app-wide unlock, and sideload developer verification. Story-level questions may be delegated. See the specification.
+
 After that, these gates are still closed until he signs each of them:
 
-1. Epic approval (E1–E6).
-2. Story approval (US-01–US-27).
-3. Technical design and ADR approval, once those documents exist.
+1. Epic approval (E1–E9 for v1; E10 is later and not in that v1 gate).
+2. Story approval (US-01–US-40).
+3. Technical design and ADR approval, once those documents exist. The cipher is an ADR, not a line in the spec.
 
-UX, test strategy, and a threat model (the vault stores personal content and Google tokens) sit in the design band after story approval. They were not skipped. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
+UX, test strategy, and a threat model sit in the design band after story approval. The threat model is required before implementation. They were not skipped and they were not written. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
 
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
-| Vision ↔ spec | Spec links the vision and the six epics. |
+| Vision ↔ spec | Spec links the vision and epics E1–E10. The vision still restates the original backup request. The spec supersedes that. Neither file is approved. |
 | User-story index | `docs/product/stories/INDEX.md`. Drafts are not approved. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |

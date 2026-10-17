@@ -1,60 +1,68 @@
-# Epic E4: Private backup
+# Epic E4: Seamless sync
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> Does not approve child stories. Shipped-epic DoD is not claimed.
+> Miguel decided there is no explicit backup or restore. That decision is not approval of this epic. Shipped-epic DoD is not claimed.
+> The file name is unchanged so existing links keep working. The epic is sync, not backup.
 
 ## Background & Value Proposition
 
-The vault lives on one phone. Miguel asked for a private Google Drive backup in the app-data folder, and a zip on device storage when Drive is not set up. Backup must not become a crash or a blocker when the OAuth client ID is missing.
+He said: "There should be no explicit backup and restore, there should be just a seamless sync behind the scenes." The phone holds the vault. Sync copies it to Drive `appDataFolder` when a network is allowed. A new install or a second device signs in and receives it. A zip on the device remains if Drive is not set up.
 
 No separate success metric was given.
 
 ## Target Audience
 
-Miguel, protecting the library he already saved.
+Miguel, on this phone and on a later install of the same app.
 
 ## Scope & Phasing
 
 - **In Scope (MVP):**
-  - Settings: sign in with Google, Back up now, automatic backup (daily via WorkManager is the given mechanism), Wi-Fi only toggle, last backup time, Restore from Drive.
-  - Google Sign-In / Credential Manager and the Drive API with `drive.appdata` only. Backups are not placed in a folder he shares.
-  - The backup includes the database and stored files (images and PDFs).
-  - The OAuth client ID is a build-time value. With it unset, the app still builds, installs, and works offline, and the backup screen explains that backup is not configured.
-  - Local zip export and import to device storage.
-- **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** Live sync. Backup to a provider other than Google Drive. A committed client ID or keystore. Showing app-data files in the ordinary Drive browser as a feature.
+  - Background sync of the vault (database and attachments) through the Drive API `appDataFolder`. Not Android Auto Backup.
+  - `appDataFolder` stays hidden in the Drive UI.
+  - On-device first. The app works fully offline. Sync runs when connectivity allows.
+  - No Back up now, no Restore, no last-backup-time control, no size warning, and no roaming warning on a manual backup.
+  - Sign in with Google (Google Sign-In / Credential Manager). A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash.
+  - Unmetered-only preference for background sync (`WorkManager` `UNMETERED`), from the bots' consensus, kept because it still fits background sync.
+  - A new install or second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept.
+  - Zip export and import on device storage, as a fallback. It does not replace sync.
+  - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
+- **Future Scope (v2+):** Nothing named here.
+- **Out of Scope / Non-Goals:** A backup button, a restore wizard, Android Auto Backup, a second cloud provider, showing app-data files in the normal Drive browser.
 
 ## Core Workflows
 
-1. **Backup is not configured**
-   - He opens Settings on a build with no client ID.
-   - He can read why backup is unavailable. The rest of the app still works. He can still export a zip.
-2. **Back up and restore**
-   - On a build with a client ID, he signs in, runs Back up now, and sees the last backup time.
-   - He can turn on a daily backup and choose Wi-Fi only.
-   - He can restore that backup onto the app.
-3. **Zip fallback**
-   - He exports a zip to device storage and can import a zip the app exported.
+1. **Sync is not configured**
+   - He opens Settings with no client ID.
+   - He reads that sync is not configured. Capture and search still work. Zip export still works.
+2. **It syncs itself**
+   - On a configured build he signs in.
+   - The vault syncs in the background. He is not asked to back up or restore, and he is not shown a last-backup clock.
+   - With the unmetered-only preference on, sync waits for an unmetered network.
+3. **Another device**
+   - He installs the app again, or on a second phone, and signs in.
+   - The vault from Drive is merged into the device.
+4. **Zip fallback**
+   - He exports a zip and can import one the app exported, including when Drive is unavailable.
 
 ## Risks & Dependencies
 
-- Depends on E1 so there is a database to back up, and on stored image/PDF files from E1 and E2.
-- The OAuth client must be created by Miguel in Google Cloud with the release package name and SHA-1. That procedure is a README obligation in E6, not something this draft can complete.
-- Q5 (replace versus merge on restore/import) changes the restore outcome. Stories do not invent the answer. US-20 and US-21 keep their Must criteria on the empty-vault case and mark the non-empty case as open.
-- Q6 (whether Back up now ignores the Wi-Fi toggle) is called out the same way.
+- Depends on E1 for items and files, and on E8 for ciphertext. Key transport to the second device is an open question for Miguel. This epic does not invent it.
+- Concurrent edits and deletion propagation are open questions for him. Stories must not pick a winner or a delete rule.
+- OAuth client setup is E6's README, after a real SHA-1 exists.
 
 ## Open Questions
 
-- [ ] Q2. Application id, required for the OAuth client. (@mjbvilhena)
-- [ ] Q5. Restore and import versus items that exist only locally. (@mjbvilhena)
-- [ ] Q6. Does Back up now honor the Wi-Fi only toggle? (@mjbvilhena)
-- [ ] Q8. Not a backup question, but the target SDK is unpinned. (@mjbvilhena)
+- [ ] Same item edited on two devices. (@mjbvilhena)
+- [ ] How deletions propagate. (@mjbvilhena)
+- [ ] How keys reach the second device. Owned with E8. (@mjbvilhena)
+- Q5 is not open. His sync decision resolved it: merge.
 
 ## Draft stories
 
-- US-17 See that Drive backup is not configured
-- US-18 Sign in and back up now
-- US-19 Run a daily backup and see when it last succeeded
-- US-20 Restore from Drive
+- US-17 See that sync is not configured
+- US-18 Sign in and let the vault sync
+- US-19 Keep background sync on unmetered networks
+- US-20 Receive the vault on a new install
 - US-21 Export and import a zip
+- US-30 No manual backup or restore

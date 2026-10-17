@@ -17,7 +17,8 @@ Search the vault and see ranked, highlighted matches.
 
 - He asked for fast full-text search using Room and FTS, across those fields, with results ranked and highlighted.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a millisecond budget (none was given). Searching image pixels or scanned PDF pages that have no extracted text (Q7). Filters (US-16).
+- Out of scope: a millisecond budget (none was given). Performing OCR (US-31). Filters (US-16) and date filters (US-39).
+- Title, body, extracted text, tags, and the personal note are all in the index. Extracted text includes text taken from a text-based PDF (US-04) and OCR text once US-31 has stored it.
 
 ## Acceptance criteria
 

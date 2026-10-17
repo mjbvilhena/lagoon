@@ -15,9 +15,9 @@ Share an image into the vault.
 
 ## Background
 
-- Images are one of the four share types he named. Stored image files are part of the later backup.
+- Images are one of the four share types he named. Stored image files are part of sync and the zip. OCR of the image is US-31, in v1, and is not this story.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: OCR, cropping, and drawing on the image.
+- Out of scope: performing OCR in this story (US-31 does that), cropping, and drawing on the image.
 
 ## Acceptance criteria
 
@@ -45,7 +45,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The stored file is in scope for US-18 and US-21 once those stories are approved and built.
+- Q9 consensus, not approval: one tap saves the image. Tag chips are US-28. The file name fills an empty title (US-40).
+- The stored file is in scope for sync (US-18) and the zip (US-21). OCR is US-31.
 - No size limit was requested. A very large image is a risk, not a silent rejection rule.
 
 ## Implementation notes

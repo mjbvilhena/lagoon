@@ -16,6 +16,7 @@ Install a signed release APK without the Play Store.
 ## Background
 
 - He asked for a working, installable APK, signed with a self-generated release keystore, secrets not committed, `minSdk` 26, latest stable target SDK, built with Gradle from the command line.
+- Q8, bots' consensus, not his approval: `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). `minSdk` stays 26.
 - Domain constraints: none. No `DOMAIN.md`.
 - Out of scope: Play Store signing, Play App Signing, and a debug build as the thing he installs.
 
@@ -28,7 +29,7 @@ Install a signed release APK without the Play Store.
 - **Scenario: SDK levels** — Must
   - Given the built manifest
   - When it is inspected
-  - Then `minSdk` is 26 and `targetSdk` is the latest stable Android SDK recorded for that build (Q8)
+  - Then `minSdk` is 26, and `compileSdk` and `targetSdk` are 37
 - **Scenario: secrets stay out of git** — Must
   - Given the keystore file and its passwords
   - When the repo is checked
@@ -49,7 +50,8 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - The SHA-1 of this cert is an output US-26 must document. It does not exist at draft time. Do not invent a fingerprint in the docs.
-- Q8 must be answered with the actual latest stable level at implementation, not a guess in this story.
+- Q8 is a bots' consensus, not approval. The levels are 37, not "whatever is newest on the day."
+- Android developer verification for sideloaded APKs (global enforcement in 2027, ADB exempt) is an open question for Miguel. This story does not decide it.
 - Implementation of this story is forbidden until the product spec, epics, stories, and technical design/ADRs are approved. Drafting this story is not that approval.
 
 ## Implementation notes

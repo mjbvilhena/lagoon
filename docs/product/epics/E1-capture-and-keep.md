@@ -19,19 +19,23 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 
 - **In Scope (MVP):**
   - The app appears in Android's share sheet for links, plain text, images, and PDFs.
+  - Choosing the vault is one tap and saves the item. Afterwards a non-blocking row of last-used tags can file it. There is no sheet he must finish first.
+  - He can edit the note and tags later on the detail screen.
+  - An empty title fills from the page title or the file name (US-40).
+  - An item can hold more than one attachment (US-32).
   - He can add a note or a URL from inside the app.
   - Each saved item has a title, body, optional source URL, type (`link`, `note`, `image`, or `PDF`), tags, created date, and an optional personal note on why it matters.
   - The primary store is on the device. Capture, aside from link enrichment (E2), does not need a network.
   - No analytics.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** Fetching page details (E2). Search and browse polish beyond what is needed to know an item was saved (E3). Backup (E4). OCR. Editing pixels or PDF pages.
+- **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one.
 
 ## Core Workflows
 
 1. **Share in**
    - Miguel shares a link, text, image, or PDF from another app.
-   - He chooses this vault.
-   - An item of that type is stored. He can leave the personal note and tags empty.
+   - He chooses this vault. That is one tap and stores the item.
+   - A non-blocking row of last-used tags may follow. He can ignore it. He can edit the note and tags later.
 2. **Add by hand**
    - He opens the vault and adds a note or a URL.
    - The new item appears in the on-device store with a created date.
@@ -44,8 +48,8 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 
 ## Open Questions
 
-- [ ] Q9. Does the share flow have to collect the personal note and tags before save? (@mjbvilhena)
-- [ ] Q1 and Q2 block the launcher name and application id, not the act of saving. (@mjbvilhena)
+- Q9 is a bots' consensus, not approval: one tap, then a non-blocking chip row, title auto-fill, inbox, and date sort. See US-28, US-38, US-39, and US-40. Edit later is US-12.
+- Q1 and Q2 are delegated recommendations (name Folio, application id `com.mjbvilhena.folio`). They do not block saving, and they are not Miguel's approval.
 
 ## Draft stories
 
@@ -58,3 +62,6 @@ These are not approved. Paths are under `docs/product/stories/`.
 - US-05 Add a note by hand
 - US-06 Add a URL by hand
 - US-07 Use the vault offline, with no analytics
+- US-28 File a capture with last-used tags
+- US-32 Keep more than one attachment on an item
+- US-40 Fill the title from the page or the file

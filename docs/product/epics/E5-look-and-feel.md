@@ -18,14 +18,15 @@ Miguel, using the app every time he saves or looks something up.
 ## Scope & Phasing
 
 - **In Scope (MVP):**
-  - Material 3, with a restrained neutral palette and a single accent.
+  - Material 3. Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode, text on the accent is dark: black or `#003731`. Never put `#0F766E` on a dark surface. White on `#2DD4BF` is not allowed.
+  - Dynamic color is an optional toggle. Teal is the fallback when it is off. The UX gate can still check the teal values.
   - Light and dark mode.
   - Dynamic color is not how the palette is chosen.
   - Calm layout, generous whitespace, refined typography, subtle motion.
   - No clutter and no placeholder text in the shipped UI.
-  - A tasteful launcher icon and a short name he accepts.
+  - A tasteful launcher icon and the short name Folio.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** A component library other than Material 3. A named accent color in this epic (Q3). A final name in this epic (Q1). Wireframes.
+- **Out of Scope / Non-Goals:** A component library other than Material 3. A second brand accent beside teal. Dynamic color as the default. Wireframes in this epic. Treating Folio or the teal values as Miguel's approval of the spec. A public Play name. Folio should be renamed before any public release because the name is crowded. That rename is not a v1 story.
 
 ## Core Workflows
 
@@ -33,19 +34,19 @@ Miguel, using the app every time he saves or looks something up.
    - He runs the app in light mode and in dark mode.
    - Both use the same neutral palette and the same single accent, not colors taken from the wallpaper.
 2. **Recognize the app**
-   - The launcher shows an icon made for this app and the short name he approved.
+   - The launcher shows an icon made for this app and the short name Folio.
 
 ## Risks & Dependencies
 
-- Q1 blocks the launcher label. Q3 blocks the accent. UX design is a later gate and is not started.
-- "Tasteful" and "refined" are his words. This epic does not translate them into hex values or a typeface.
+- Q1 and Q3 are the bots' consensus (Folio, the teal, dark on-accent text, optional dynamic color). They are not Miguel's approval. The UX gate can still check the accent. UX design has not started.
+- "Tasteful" and "refined" are his words. This epic does not pick a typeface. The accent values are the recommendation, not a finished visual design.
 
 ## Open Questions
 
-- [ ] Q1. Short name. Suggestion only: Folio. (@mjbvilhena)
-- [ ] Q3. Accent color, at the UX gate. (@mjbvilhena)
+- Q1 and Q3 are consensus recommendations, not open questions and not approval. The UX gate may still adjust the accent.
+- Q5 and Q10 are Miguel's decisions (sync merges; extra encryption). They are not questions for this epic.
 
 ## Draft stories
 
 - US-22 Use a calm light and dark appearance
-- US-23 Install an icon and the approved short name
+- US-23 Show a launcher icon and the name Folio
