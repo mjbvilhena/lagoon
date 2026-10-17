@@ -25,12 +25,11 @@ That path is not portable. The committed `.cursor/mcp.json` points at `scripts/s
 
 ## Recreate the knowledge-server venv
 
-The venv is not committed.
+The venv is not committed. `scripts/sdlc-knowledge-mcp.sh` runs `scripts/bootstrap-sdlc-mcp.sh` when the venv is missing or cannot import `mcp` and `thefuzz`. Bootstrap is safe to re-run. If it fails, it exits with a `sdlc-knowledge:` message and the server does not start.
 
 ```bash
 git submodule update --init third_party/ai-sdlc-harness
-python3 -m venv third_party/ai-sdlc-harness/mcp-server/venv
-third_party/ai-sdlc-harness/mcp-server/venv/bin/pip install -r third_party/ai-sdlc-harness/mcp-server/requirements.txt
+scripts/bootstrap-sdlc-mcp.sh
 ```
 
 ## Tools called before drafting

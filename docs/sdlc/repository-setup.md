@@ -73,7 +73,20 @@ From the repo root, the same Markdown rules CI uses:
 npx --yes markdownlint-cli2
 ```
 
-Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code. The harness submodule and its MCP virtualenv are in `docs/sdlc/harness-install.md`. Kotlin test commands do not exist yet. There is no app module, Gradle build, or APK in the tree.
+Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code. Kotlin test commands do not exist yet. There is no app module, Gradle build, or APK in the tree.
+
+### Harness knowledge server
+
+`sdlc-conductor` on 2026-10-17: this bootstrap is repository setup. It does not advance the product pipeline, and it is not a skip of story approval, design, or implementation.
+
+The Cursor MCP entry `.cursor/mcp.json` starts `scripts/sdlc-knowledge-mcp.sh`. That script needs a virtualenv at `third_party/ai-sdlc-harness/mcp-server/venv`. The venv is not committed. When it is missing, the wrapper runs `scripts/bootstrap-sdlc-mcp.sh`, which creates the venv and installs `third_party/ai-sdlc-harness/mcp-server/requirements.txt`. If Python, the `python3-venv` package, the submodule, or pip fails, the script exits 1 with a `sdlc-knowledge:` line and the server does not start.
+
+```bash
+git submodule update --init third_party/ai-sdlc-harness
+scripts/bootstrap-sdlc-mcp.sh
+```
+
+Skills used for this note: `sdlc-conductor`, then `sdlc-setup-repository` with `get_sdlc_template("repository setup")` and `get_definition_of_done("repository setup")`. The MCP process was not running, so those calls were made by importing `third_party/ai-sdlc-harness/mcp-server/src/server.py`. No new CI job was added. Bash is not the product language, and the existing note that shellcheck is not configured still stands. Secret scan, Markdown lint, and CODEOWNERS are unchanged.
 
 ### Testing
 
