@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > This index only lists files. Listing a story here is not story approval.
-> Approver required for each story: `mjbvilhena`.
+> On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule is not a sign-off. No story below is approved.
 > Sign-off on file: none.
 > Updated 2026-10-17 after Miguel's decisions on sync, encryption, and v1 scope, and after the bots' consensus on the delegated questions. None of that is approval.
 

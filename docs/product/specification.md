@@ -1,9 +1,8 @@
 # Product specification: personal knowledge vault
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Draft. Not approved. Pending review by `mjbvilhena`.**
 > This is the first human approval gate. Do not start technical design, UX, threat modeling, test planning, or implementation from this file alone.
-> Approver required: `mjbvilhena` — a named sign-off, or an explicit sentence that says to treat this specification as approved.
-> Sign-off on file: none.
+> Approver required: `mjbvilhena`. Sign-off on file: none. He still needs to review this specification.
 > Decisions recorded below are not that sign-off. A decision from Miguel, and a recommendation from his bots, are different things. Neither one approves this specification.
 > Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
 
@@ -68,7 +67,7 @@ Constraints later design must not reopen unless he does:
 - Private APIs for YouTube or X.
 - Using wallpaper color as the default accent. Dynamic color may be turned on; teal is the fallback when it is off.
 - Committing the release keystore, its passwords, or OAuth client secrets.
-- Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft. Those are open questions for Miguel.
+- Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft. Those stay open for Miguel at the technical design, ADR, and threat-model gate.
 
 ## Core Workflows
 
@@ -138,16 +137,16 @@ No stories are added for these.
 
 ## Open questions
 
-### For Miguel (`mjbvilhena`)
+### For Miguel at the design gate
 
-Security or data integrity. Not delegated.
+These six stay open. They are security, data integrity, or release questions. They are not delegated. Miguel answers them at the technical design, ADR, and threat-model gate. That gate has not started. Assigning them there does not open it, and it does not approve this specification.
 
-- [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena)
-- [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena)
-- [ ] **Keys on a new device.** How do keys reach a new or second device (for example a passphrase or recovery key, versus a key derived from the Google account)? (@mjbvilhena)
-- [ ] **Lost key.** What happens if the key or passphrase is lost? (@mjbvilhena)
-- [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena)
-- [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? Raised with the Q8 consensus and flagged for him. (@mjbvilhena)
+- [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena, design gate)
+- [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena, design gate)
+- [ ] **Keys on a new device.** How do keys reach a new or second device (for example a passphrase or recovery key, versus a key derived from the Google account)? (@mjbvilhena, design gate)
+- [ ] **Lost key.** What happens if the key or passphrase is lost? (@mjbvilhena, design gate)
+- [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena, design gate)
+- [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? (@mjbvilhena, design gate)
 
 ### Story-level, safe to delegate
 
@@ -168,10 +167,10 @@ Not security decisions and not epic scope.
 
 | Gate | Status | What advances it |
 |---|---|---|
-| This specification | Draft | Named sign-off by `mjbvilhena`, or a sentence that treats this file as approved |
-| Epics E1–E9 | Draft, separate gate | Not approved by his product decisions or by the bots' consensus |
-| Epic E10 | Draft, later, not v1 | His decision that it is later. Not approval to build it, and not part of v1 |
-| User stories | Draft, separate gate | Not approved |
-| Threat model, UX, test strategy, ADRs | Not started | Required before implementation where the pipeline says so. Not skipped |
+| This specification | Draft, pending `mjbvilhena` | Named sign-off by `mjbvilhena`, or a sentence that treats this file as approved. He still needs to review it. |
+| Epics E1–E9 | Draft, separate gate, not prepared | Epic-level matters stay with Miguel. Not approved by his product decisions or by the bots' consensus. |
+| Epic E10 | Draft, later, not v1 | His decision that it is later. Not approval to build it, and not part of v1. |
+| User stories | Draft. None approved. | On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule is not a sign-off on any story. |
+| Threat model, UX, test strategy, ADRs | Not started | The six security, data-integrity, and release questions above are answered here, by Miguel. Required before implementation where the pipeline says so. Not skipped. |
 
-Next gate after a real approval of this file: epic approval, still by `mjbvilhena`. Draft stories are not a reason to skip epic approval, story approval, or the design band.
+This specification is still the open gate. Epic approval comes only after he approves this file. Draft stories are not a reason to skip epic approval, story approval, or the design band.

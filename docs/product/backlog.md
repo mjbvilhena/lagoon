@@ -1,12 +1,15 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.** A line marked Draft means the file exists and `mjbvilhena` has not signed it.
+> Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.** A line marked Draft means the file exists and has not been signed.
 > No story is Done. There is no app, no test run, and no named sign-off.
 > Product decisions and bot recommendations recorded in the specification are not sign-off.
+> The specification is **Draft, pending review by `mjbvilhena`.** No approval of it was recorded.
 
 ## Gate
 
-Stopped at **product specification approval**. See `docs/sdlc/pipeline-state.md`.
+Stopped at **product specification approval**. Approver: `mjbvilhena`, pending. See `docs/sdlc/pipeline-state.md`.
+
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story, and the epic gate is not prepared while the specification is still Draft.
 
 ## Epic E1: Capture and keep
 
@@ -100,7 +103,7 @@ Stopped at **product specification approval**. See `docs/sdlc/pipeline-state.md`
 ## Specification and vision
 
 - **Vision** *(Draft — not accepted)* Evidence: `docs/product/vision.md`. It restates the original request, including backup and restore. Later decisions in the specification supersede that wording. They do not accept the vision.
-- **Product specification** *(Draft — approval gate)* Evidence: `docs/product/specification.md`.
+- **Product specification** *(Draft — pending review by `mjbvilhena`)* Evidence: `docs/product/specification.md`. Not approved.
 
 ## Repository setup
 
@@ -126,9 +129,11 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 
 ## Open questions
 
-### For Miguel (security, data integrity, or release)
+### For Miguel at the design gate (security, data integrity, or release)
 
-- Sync conflicts: the same item edited on two devices.
+Still open. Assigned to the technical design, ADR, and threat-model gate. He answers them there. That gate has not started.
+
+- Sync edit conflicts: the same item edited on two devices.
 - How a deletion on one device propagates.
 - How keys reach a new or second device.
 - What happens if the key or passphrase is lost.
