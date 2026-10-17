@@ -7,7 +7,7 @@
 
 **Epic:** E9. Not an approval.
 
-**MoSCoW:** Must. v1, from approved epic E9. Inexact alarms, per E9. Exact alarms are US-77 and are not decided.
+**MoSCoW:** Must. v1, from approved epic E9. Inexact alarms, per E9. Exact alarms were closed on 2026-10-17 at 20:03 IST. US-77. Not a story approval.
 
 ## Title
 

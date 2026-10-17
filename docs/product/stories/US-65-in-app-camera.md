@@ -5,9 +5,9 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E1. Pending Miguel's keep/remove decision. Not an approval.
+**Epic:** E1. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
 
-**MoSCoW:** Should. Later than the v1 picker. Not a v1 gate.
+**MoSCoW:** Should. In E1 by the amendment approved on 2026-10-17 at 20:02 IST. Not a story approval.
 
 ## Title
 
@@ -22,18 +22,21 @@ Add a photo from the camera.
 ## Background
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: v1 capture, which already shares images and uses the document picker (US-32).
+- The photo comes from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. That is Miguel's (`mjbvilhena`) fix of C-E1-2 on 2026-10-17 at 20:03 IST. The US-80 allowlist stays as it is.
+- Out of scope: the share sheet and the document picker (US-03, US-32). Declaring `CAMERA` in the Lagoon manifest.
 
 ## Acceptance criteria
 
 - **Scenario: a new item** — Should
-  - Given he starts from the camera intent
-  - When he takes a photo and confirms
+  - Given he starts a capture with `ACTION_IMAGE_CAPTURE`
+  - When the system camera returns a photo and he confirms
   - Then a new item is stored with that photo as its attachment
+  - And the Lagoon manifest does not declare `CAMERA`
 - **Scenario: multi-page** — Should
-  - Given he scans several pages into that new item
-  - When he saves the scan
+  - Given he takes several photos that way into that new item
+  - When he saves them
   - Then they are attachments in that order
+  - And Lagoon still does not declare `CAMERA`
 
 ## Analytics and observability (optional)
 

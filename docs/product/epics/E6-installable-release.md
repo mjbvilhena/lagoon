@@ -6,6 +6,8 @@
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > This epic is the delivery bar he set for v1. It is not a reason to write the app before the story and technical-design gates are actually approved.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E6-1 and A-E6-2 are folded into the scope below from the text at commit `2fe0422`. The criteria on US-80 and US-81 stay proposed. This does not approve those stories.
+> Clash fix, 2026-10-17 at 20:03 IST. Approver: `mjbvilhena`. C-E1-2 is resolved. Camera capture uses the system camera, so this allowlist still does not request `CAMERA`. The US-80 allowlist is unchanged.
 
 ## Background & Value Proposition
 
@@ -27,6 +29,8 @@ Miguel, installing and configuring the vault himself.
   - README: build, sideload (unknown sources), Google Cloud OAuth client steps (package name, SHA-1 of the signing cert he was given), and where the client ID goes.
   - Unit tests for the repository/search layer and for sync-payload and zip packaging. At least one Compose UI test.
   - Screenshots: home, search results, item detail, share-to-save, and settings showing sync state. From an emulator when one is available. If none is available, say so. Do not fabricate images.
+  - The release app requests only the permissions the product needs (A-E6-1, US-80). Acceptance: an install does not ask for storage, camera, or location, while those criteria stay proposed. The 20:03 IST fix of C-E1-2 leaves `CAMERA` off this allowlist, because US-65 uses the system camera.
+  - A later install signed with the same release key can replace the app without losing the vault (A-E6-2, US-81). Acceptance: the policy text stays proposed. Android developer verification for sideloaded APKs stays the open question already in this epic.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** Play Store upload. A committed keystore or client ID. CI jobs for Kotlin that the repository-setup mapping does not list, until a later approved change adds them.
 
@@ -59,21 +63,9 @@ Miguel, installing and configuring the vault himself.
 - US-25 Run the tests he named
 - US-26 Follow a README to build, sideload, and configure OAuth
 - US-27 Review screenshots of the main screens
+- US-80 Keep the permission set to an allowlist. Proposed. Not story approval.
+- US-81 Publish a sideload signing policy. Proposed. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E6-1 Permission allowlist
-
-- **Story:** US-80.
-- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
-- **Scope:** The release app requests only the permissions the product needs.
-- **Acceptance outcome:** An install does not ask for storage, camera, or location, while those criteria stay proposed. If US-65 is kept, the camera line conflicts with A-E1-5. See C-E1-2. This amendment does not resolve that.
-
-### A-E6-2 Sideload signing policy
-
-- **Story:** US-81.
-- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
-- **Scope:** A later install signed with the same release key can replace the app without losing the vault.
-- **Acceptance outcome:** The policy text stays proposed. Android developer verification for sideloaded APKs stays the open question already in this epic.
+A-E6-1 and A-E6-2 were approved as written at `2fe0422` and folded into Scope above. C-E1-2 is resolved: the allowlist still does not request `CAMERA`. US-80 and US-81 criteria stay proposed. Stories stay Draft.

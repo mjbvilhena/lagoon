@@ -37,8 +37,6 @@ None until he brings this epic back. No stories were written.
 
 None.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. No amendment is proposed for this epic.
-
-No remaining story is parented here. This epic stays later, and not in v1, as approved. A date on one item stays E9.
+This epic was not one of the 25 amendments. No story is parented here. It stays later, and not in v1.

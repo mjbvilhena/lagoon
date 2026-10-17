@@ -48,8 +48,6 @@ Miguel, searching something he saved as an image or a scan.
 
 - US-31 Recognize text on the device
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. No amendment is proposed for this epic.
-
-No remaining story asks this epic to pick out booking references or merchants. The approved Future Scope says that stays later, and it says "No story." Adding a story for it would contradict the approved specification and this epic. Nothing was added.
+This epic was not one of the 25 amendments. No merchant or booking story was added. The approved Future Scope still says that stays later, and it says "No story."

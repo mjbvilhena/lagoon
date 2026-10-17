@@ -5,6 +5,7 @@
 > His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E2-1 and A-E2-2 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft.
 
 ## Background & Value Proposition
 
@@ -23,6 +24,8 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
   - Store what the page actually provides. Missing pieces stay empty.
   - If the device is offline or the fetch fails, keep the item and the URL. Do not drop the save and do not crash.
   - When the fetch works, also keep an offline snapshot he can read later, and always keep the original URL (US-33).
+  - A token-looking URL is not auto-fetched. A foggy placeholder stands in until he enables that preview (A-E2-1, US-79). Acceptance: that skip is his chat decision of 2026-10-17 at 15:59 IST. The other skip rules stay the proposed text on US-79.
+  - A check lists items whose snapshot or OCR is still pending, failed, or has never run (A-E2-2, US-70, Could). US-70 is kept. Acceptance: he can see what will be missing before he goes offline. A failed or never-run snapshot can use the retry already on US-33. OCR itself stays E7.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** Logged-in or paywalled content. YouTube or X private APIs. A pixel-perfect archive. A guarantee that JavaScript-only pages yield body text. OCR (that is E7).
 
@@ -52,21 +55,9 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 - US-08 Enrich a link when the page can be fetched
 - US-09 Keep the URL when enrichment does not run
 - US-33 Keep an offline snapshot of a saved page
+- US-70 See what is not ready for offline. Could. Kept 2026-10-17 at 20:02 IST. Not story approval.
+- US-79 Skip unsafe link previews. Proposed. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E2-1 Unsafe link previews
-
-- **Story:** US-79.
-- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
-- **Scope:** A token-looking URL is not auto-fetched. A foggy placeholder stands in until he enables that preview.
-- **Acceptance outcome:** That skip is his chat decision of 2026-10-17 at 15:59 IST. The other skip rules stay the proposed text on US-79.
-
-### A-E2-2 What is not ready for offline
-
-- **Story:** US-70. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** A check lists items whose snapshot or OCR is still pending, failed, or has never run.
-- **Acceptance outcome:** He can see what will be missing before he goes offline. A failed or never-run snapshot can use the retry already on US-33. OCR itself stays E7.
+A-E2-1 and A-E2-2 were approved as written at `2fe0422` and folded into Scope above. US-70 is kept. Stories stay Draft.

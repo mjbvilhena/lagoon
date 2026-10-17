@@ -4,6 +4,7 @@
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+> Miguel (`mjbvilhena`) on 2026-10-17 at 20:03 IST: an empty title on a screenshot, image, or scan fills from the file name. The host-only title for a token-looking link stays. This is not story approval.
 
 **Epic:** E1. Not an approval.
 
@@ -40,23 +41,8 @@ Fill an empty title from the page or the file.
   - Given the link is token-looking under US-79 and he did not type a title
   - When the title is filled
   - Then it is the host only, not the path
-- **Scenario: a screenshot file name** — Must
-  - Given the only name matches `Screenshot_` or the word Screenshot followed by a space, compared without case, plus whatever follows
-  - When the title is filled and the sending app was reported
-  - Then the title is `Screenshot · <sending app> · 17 Oct 2026`, using the saved date in that form, and not that file name
-  - And when the sending app was not reported, that middle segment is omitted
-- **Scenario: a camera file name** — Must
-  - Given the only name matches `IMG_`, `PXL_`, or `DSC_`, compared without case, plus whatever follows
-  - When the title is filled and the sending app was reported
-  - Then the title is `Image · <sending app> · 17 Oct 2026`, using the saved date in that form, and not that file name
-  - And when the sending app was not reported, that middle segment is omitted
-- **Scenario: a scan file name** — Must
-  - Given the only name matches `SCAN_`, compared without case, plus whatever follows
-  - When the title is filled and the sending app was reported
-  - Then the title is `Scan · <sending app> · 17 Oct 2026`, using the saved date in that form, and not that file name
-  - And when the sending app was not reported, that middle segment is omitted
-- **Scenario: another file name** — Must
-  - Given the file name is not one of those patterns
+- **Scenario: a file name** — Must
+  - Given the only title source is a file name, including a screenshot, an image, or a scan
   - When the title is filled
   - Then the file name is the title, capped at 120 characters (US-02)
 - **Scenario: he typed a title** — Must

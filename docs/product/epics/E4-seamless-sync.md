@@ -6,6 +6,7 @@
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > Miguel decided there is no explicit backup or restore. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E4-1 through A-E4-4 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft. US-78 criteria stay proposed.
 
 ## Background & Value Proposition
 
@@ -29,6 +30,10 @@ Miguel, on this phone and on a later install of the same app.
   - A new install or second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
+  - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
+  - Each item keeps one id and an updated time across an edit, a repeat save, and a sync (A-E4-2, US-56). Acceptance: an edit or a second device does not fork the item. Which side wins when two updates share that id stays the open question on US-73.
+  - Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen (A-E4-3, US-59). Acceptance: he does not hunt through the app for those controls. The screen has no Back up now, no Restore, and no last-backup time. Each control keeps the behavior of its own story.
+  - Sign-out does not delete the vault on the phone (A-E4-4, US-78). Drive access stays `appDataFolder`. Acceptance: the phone vault remains after sign-out. The rest of US-78 stays proposed.
 - **Future Scope (v2+):** Nothing named here.
 - **Out of Scope / Non-Goals:** A backup button, a restore wizard, Android Auto Backup, a second cloud provider, showing app-data files in the normal Drive browser.
 
@@ -68,35 +73,11 @@ Miguel, on this phone and on a later install of the same app.
 - US-20 Receive the vault on a new install
 - US-21 Export and import a zip
 - US-30 No manual backup or restore
+- US-51 Sync in the background and show errors
+- US-56 Keep a stable identity for each item
+- US-59 Use one Settings screen
+- US-78 Drive scope and sign-out. Proposed. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E4-1 A failed sync is visible
-
-- **Story:** US-51.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** Background sync tells him when it fails.
-- **Acceptance outcome:** There is still no Back up now and no Restore. A failure is an error he can read.
-
-### A-E4-2 Stable item identity
-
-- **Story:** US-56.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** Each item keeps one id and an updated time across an edit, a repeat save, and a sync.
-- **Acceptance outcome:** An edit or a second device does not fork the item. Which side wins when two updates share that id stays the open question on US-73.
-
-### A-E4-3 One Settings screen
-
-- **Story:** US-59.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen.
-- **Acceptance outcome:** He does not hunt through the app for those controls. The screen has no Back up now, no Restore, and no last-backup time. Each control keeps the behavior of its own story.
-
-### A-E4-4 Sign out without wiping the phone
-
-- **Story:** US-78.
-- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
-- **Scope:** Sign-out does not delete the vault on the phone. Drive access stays `appDataFolder`, which the approved text already requires.
-- **Acceptance outcome:** The phone vault remains after sign-out. The rest of US-78 stays proposed.
+A-E4-1 through A-E4-4 were approved as written at `2fe0422` and folded into Scope above. US-78 criteria stay proposed. Stories stay Draft.

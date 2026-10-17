@@ -10,6 +10,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E8-1 is folded into the scope below from the text at commit `2fe0422`. The lock-screen reminder was already decided at 15:59 IST. The other US-75 criteria stay proposed. This does not approve US-75.
 
 ## Background & Value Proposition
 
@@ -29,6 +30,7 @@ Miguel, including on a second device that should see the same vault and not a pl
   - Client-side end-to-end encryption of everything synced to Drive. Drive stores ciphertext only.
   - Fingerprint or biometric lock on items marked sensitive, tied to this encryption work.
   - App lock is optional. The device PIN is the fallback when there are no biometrics.
+  - Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail (A-E8-1, US-75). The lock-screen reminder shows only "Lagoon reminder". Acceptance: that public reminder text is the 15:59 IST decision. Export of a sensitive item waits for the US-37 unlock. The rest of US-75 stays proposed. Topic exclusion stays the approved E11 amendment of 15:55 IST.
 - **Future Scope (v2+):** Nothing named.
 - **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App-wide unlock is optional, per Miguel's decision of 2026-10-17 at 14:56 IST. It is no longer an open question. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) is his recorded exception: readable content goes to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
 
@@ -61,14 +63,8 @@ Miguel, including on a second device that should see the same vault and not a pl
 - US-35 Encrypt the vault at rest
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
+- US-75 Limit what a sensitive item reveals. Proposed, except the decided lock-screen reminder. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E8-1 What a sensitive item shows before unlock
-
-- **Story:** US-75.
-- **MoSCoW:** Proposed Must. The lock-screen reminder was decided in chat on 2026-10-17 at 15:59 IST. The other criteria on the story stay proposed. This is not approval of this epic text, and it is not story approval.
-- **Scope:** Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail. The lock-screen reminder shows only "Lagoon reminder".
-- **Acceptance outcome:** That public reminder text is the 15:59 IST decision. Export of a sensitive item waits for the US-37 unlock. The rest of US-75 stays proposed. Topic exclusion stays the approved E11 amendment of 15:55 IST.
+A-E8-1 was approved as written at `2fe0422` and folded into Scope above. The other US-75 criteria stay proposed. Stories stay Draft.

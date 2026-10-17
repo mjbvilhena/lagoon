@@ -6,7 +6,7 @@
 > No story was flipped to Approved in the round-2 revision.
 > Sign-off on file: none.
 > Updated 2026-10-17. Miguel removed US-68, US-69, US-82, US-83, and US-84 at 19:00 IST, and US-63 at 19:01 IST. Those numbers are not reused. This is not story approval.
-> Each remaining story has one parent epic. Proposed epic amendments are in the epic files and are not approved. The map is `docs/product/stories/TRACEABILITY.md`.
+> Each remaining story has one parent epic. The 25 epic amendments were approved by `mjbvilhena` on 2026-10-17 at 20:02 IST and folded into the epics. That is not story approval. The map is `docs/product/stories/TRACEABILITY.md`.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -85,7 +85,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-74 | Decide how the vault key reaches another device. | E8 | Not set | `docs/product/stories/US-74-key-transport.md` | Draft |
 | US-75 | Limit what a sensitive item reveals. | E8 | Proposed Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | Not set | `docs/product/stories/US-76-topic-call-privacy.md` | Draft |
-| US-77 | Decide whether reminders may use exact alarms. | E9 | Not set | `docs/product/stories/US-77-exact-alarms.md` | Draft |
+| US-77 | Keep reminders on inexact alarms. | E9 | Must | `docs/product/stories/US-77-exact-alarms.md` | Draft |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Proposed Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
 | US-79 | Skip unsafe link previews. | E2 | Proposed Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
 | US-80 | Keep the permission set to an allowlist. | E6 | Proposed Must | `docs/product/stories/US-80-permission-set.md` | Draft |
@@ -93,7 +93,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 
 No story is Done. Implementation has not started. No story status is Approved.
 
-Artefact Definition of Done, this revision: US-73, US-74, US-76, and US-77 fail because the question is still open and they have no asserting criterion. Every other story passes artefact shape only. US-64, US-75, US-78, US-79, US-80, and US-81 pass artefact shape with criteria marked **Proposed: pending Miguel's approval**. That mark is not approval.
+Artefact Definition of Done, this revision: US-73, US-74, and US-76 fail because the question is still open and they have no asserting criterion. US-77 is closed and has asserting criteria. It stays Draft. Every other story passes artefact shape only. US-64, US-75, US-78, US-79, US-80, and US-81 pass artefact shape with criteria marked **Proposed: pending Miguel's approval**. That mark is not approval.
 
 US-61 is a Should in epic E1. Miguel approved that in `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. The story stays Draft.
 

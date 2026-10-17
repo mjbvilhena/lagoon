@@ -5,6 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 > Miguel (`mjbvilhena`) decided the default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`. It is not story approval. It does not decide sensitive-item exclusion.
+> On 2026-10-17 at 20:03 IST he removed the cap of 8 topic suggestions. There is no cap. This is not story approval.
 
 **Epic:** E11. Not an approval.
 
@@ -24,7 +25,7 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval. A per-item "Include in topics" opt-in stays proposed on US-75. It goes beyond the 18:05 IST quote and stays open for Miguel.
+- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. Miguel (`mjbvilhena`) removed the cap of 8 on 2026-10-17 at 20:03 IST. A per-item "Include in topics" opt-in stays proposed on US-75. It goes beyond the 18:05 IST quote and stays open for Miguel.
 - The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he chooses "Get topics" on that item. That is the named control behind "unless he asks".
 - A sensitive item stays out of the call. That exclusion is US-75, from the amendment approved on 2026-10-17 at 15:55 IST. It is not part of the 18:05 IST quote. It still applies when this switch is on.
 - The topic job keeps its own "Unmetered only" setting (US-44). Turning topics on does not use the sync preference and does not ignore that setting.
@@ -35,10 +36,6 @@ Extract topics when an item is saved.
   - Given an ordinary item is stored and enrichment, snapshot, and OCR have finished or do not apply
   - When the topic job runs
   - Then a cloud call runs, the vault keeps the main ideas and topic names, and the call is not a Drive upload
-- **Scenario: a cap** — Must
-  - Given the call returns more than 8 topic names
-  - When the result is stored
-  - Then only 8 are kept as suggestions
 - **Scenario: the switch starts on** — Must
   - Given a fresh install and an ordinary item that is not sensitive
   - When the item is saved and the earlier steps have text

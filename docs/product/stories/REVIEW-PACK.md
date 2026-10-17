@@ -37,7 +37,17 @@ Miguel (`mjbvilhena`) removed stories in chat on 2026-10-17. This is not story a
 
 Miguel (`mjbvilhena`) at 19:02 IST left US-28, US-40, US-41, and US-53 unchanged, including US-53 reduced motion. That is not story approval. The earlier proposed trims on those four stories are not applied.
 
-Miguel (`mjbvilhena`) at 19:04 IST said each remaining story must map to an epic. Parent epics are set. Where the approved epic does not already cover the story, a proposed amendment sits in that epic under "Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)". None of those amendments is approved. Conflicts are flagged in `docs/product/stories/TRACEABILITY.md` and were not written in as scope.
+Miguel (`mjbvilhena`) at 19:04 IST said each remaining story must map to an epic. Parent epics were set in `2fe0422`.
+
+Miguel (`mjbvilhena`) on 2026-10-17 at 20:02 IST: "Yes, I approve all 25 proposed epic amendments as written". Those amendments are folded into the epics. This is epic approval. It is not story approval. US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72 are kept.
+
+Miguel (`mjbvilhena`) on 2026-10-17 at 20:03 IST approved five clash fixes. They are not story approval.
+
+- C-E1-1: an empty title on a screenshot, image, or scan fills from the file name. US-40. The host-only title for a token-looking link stays.
+- C-E11-1: no cap on topic suggestions. The cap of 8 is removed from US-41.
+- C-E1-2: camera capture uses `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. The US-80 allowlist is unchanged.
+- C-E9-1: the Upcoming list shows only the one reminder or the one expiry. US-62. The US-75 Upcoming row follows that.
+- C-E9-2: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. US-77.
 
 ## Open questions for Miguel
 
@@ -45,11 +55,10 @@ Not decided. Not delegated.
 
 - Sync conflicts, and how a deletion propagates. Options recorded on US-73, not chosen. One option from Scout is tombstones, per-field last-writer-wins, and merged notes.
 - How the vault key reaches a new device. US-74.
-- Exact alarms. That would amend E9. US-77. Stories keep inexact alarms.
 - Topic provider, its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. US-76. The release APK must not contain that key in plaintext.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
-- US-28 keeps "Add date" as a Must. Miguel has not moved it.
+- US-28 keeps "Add date" as a Must. That control is in E1 by the 20:02 IST approval. The story stays Draft.
 - A per-item "Include in topics" control on US-75. It goes beyond the 18:05 IST quote. It stays Proposed.
 - Whether a sensitive notification's private version is also only "Lagoon reminder". Android can reveal the private version when the device shows all notification content. US-75 records that as a Proposed option. Miguel has not chosen it.
 - Whether the vault key is bound to device authentication. US-35 does not choose it. An OS authentication change is no longer a Must on that story.
@@ -84,7 +93,7 @@ US-61 cites the approved amendment and stays Draft. US-64 cites it for the Shoul
 
 Implementation DoD fails for every story: there is no app and no automation, so no story is Done.
 
-Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. Every other story passes shape, including US-41 and US-59. That pass is not story approval. Round 4 records no approvals.
+Fail artefact shape: US-73, US-74, and US-76. Each holds an open question for Miguel and has no asserting criterion. US-77 was closed on 2026-10-17 at 20:03 IST and now has asserting criteria. It stays Draft. Every other story passes shape, including US-41 and US-59. That pass is not story approval. Round 4 records no approvals.
 
 The seven required checks are no-ops until a Gradle project exists. `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request, not this one. The script that starts the knowledge server lives on PR #4. This branch imports `server.py` with the virtualenv Python. That import is not a live MCP session.
 
@@ -243,7 +252,7 @@ Round 4, against `5ba70f5`, records no approvals. It edits stories and moves the
 | US-74 | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Recommend leaving open | Recommend leaving open |
 | US-75 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-76 | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Recommend leaving open | Recommend leaving open |
-| US-77 | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Open for Miguel. Not decided. | Recommend leaving open | Recommend leaving open |
+| US-77 | Closed by Miguel at 20:03 IST. Not a story approval. | Closed by Miguel at 20:03 IST. Not a story approval. | Closed by Miguel at 20:03 IST. Not a story approval. | Closed by Miguel at 20:03 IST. Not a story approval. | Closed by Miguel at 20:03 IST. Not a story approval. |
 | US-78 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-79 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-80 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
@@ -294,8 +303,8 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-37 | Lock sensitive items, and optionally lock the app. | E8 | private items stay closed, and I can still lock the app when the phone has no biometric | Must | 10 | None on this story |
 | US-38 | File new captures from an Untagged inbox. | E3 | new captures do not disappear into the full list before I tag them | Must | 5 | None on this story |
 | US-39 | Sort and filter the list by when it was saved. | E3 | I can limit the list to a day or a range | Must | 7 | None on this story |
-| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 9 | None on this story |
-| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 12 | Provider, credential, and payload stay open. Per-item opt-in stays open |
+| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 6 | File name for a screenshot, image, or scan. Host-only title stays. Not story approval |
+| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 11 | No cap. Provider, credential, and payload stay open. Per-item opt-in stays open |
 | US-42 | Link an item to a topic the vault already has. | E11 | the subject I already have grows instead of starting over | Must | 5 | None on this story |
 | US-43 | Confirm a topic before it is created. | E11 | a subject I do not want is never created, and one-tap capture stays one tap | Must | 6 | None on this story |
 | US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | None on this story |
@@ -328,7 +337,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
 | US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 12 | Lock-screen reminder decided 15:59 IST. Topic exclusion is the 15:55 IST amendment. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
-| US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
+| US-77 | Keep reminders on inexact alarms. | E9 | Lagoon never asks for an exact-alarm permission | Must | 2 | Closed 2026-10-17 at 20:03 IST. Not story approval |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 8 | Proposed, pending Miguel |
 | US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 12 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
 | US-80 | Keep the permission set to an allowlist. | E6 | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |

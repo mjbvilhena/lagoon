@@ -98,7 +98,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. US-34 stays Draft.
 
-- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Miguel, 2026-10-17 14:56 IST, on the lock screen. Exact alarms are US-77.
+- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Miguel, 2026-10-17 14:56 IST, on the lock screen. Exact alarms are closed on US-77.
 - **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
 - **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
 
@@ -151,9 +151,9 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. These ids were added while refining. All Draft. Not implemented.
 
 - Splits: US-49 repeat link, US-50 ranking, US-51 sync worker, US-52 import, US-53 palette and motion, US-54 expiry, US-55 reschedule.
-- Gaps, each with one parent epic: US-48 manage topics (E11, pending keep/remove), US-56 stable ids (E4), US-57 FTS5 spike (E3), US-58 pipeline (E1), US-59 Settings (E4), US-60 topic list (E11), US-61 source (Should, E1), US-62 upcoming (E9, pending keep/remove), US-65 camera (E1, pending keep/remove), US-66 trash (E3, pending keep/remove), US-67 duplicate files (E1, pending keep/remove), US-70 offline check (E2, pending keep/remove), US-71 inbox batch (E3, pending keep/remove), US-72 topic evaluation (E11, pending keep/remove).
+- Gaps, each with one parent epic. Kept on 2026-10-17 at 20:02 IST, not story approval: US-48 manage topics (E11), US-62 upcoming (E9), US-65 camera (E1), US-66 trash (E3), US-67 duplicate files (E1), US-70 offline check (E2), US-71 inbox batch (E3), US-72 topic evaluation (E11). Also US-56 stable ids (E4), US-57 FTS5 spike (E3), US-58 pipeline (E1), US-59 Settings (E4), US-60 topic list (E11), US-61 source (Should, E1).
 - Proposed criteria, pending Miguel's approval, status still Draft: US-64 sharing out (Should), US-75 sensitive-item handling, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
-- Still open for Miguel, no asserting criterion: US-73 conflicts and deletions, US-74 key transport, US-76 topic-call privacy, US-77 exact alarms.
+- Still open for Miguel, no asserting criterion: US-73 conflicts and deletions, US-74 key transport, US-76 topic-call privacy. US-77 is closed: inexact alarms, and no `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. Not story approval.
 - Removed by Miguel on 2026-10-17, numbers not reused, not an approval: US-68, US-69, US-82, US-83, and US-84 at 19:00 IST, and US-63 at 19:01 IST. Picking merchants out of a receipt stays Later, with no story, as the specification already says.
 - At 19:02 IST he left US-28, US-40, US-41, and US-53 unchanged, including reduced motion. At 19:04 IST every remaining story was given one parent epic. Proposed epic amendments await his approval. The map is `docs/product/stories/TRACEABILITY.md`. This is not story approval and not epic approval.
 
@@ -172,7 +172,7 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 
 - Sync conflicts, and how a deletion propagates. US-73. Scout's option is recorded there and not chosen.
 - How the vault key reaches a new device. US-74.
-- Exact alarms, which would amend E9. US-77. Stories keep inexact alarms.
+- Exact alarms are closed. US-77. Alarms stay inexact. Lagoon does not request `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
@@ -209,4 +209,4 @@ He did not decide these. Round 2 proposes criteria on the stories, marked pendin
 
 - **Q5.** One-sided items are kept. Conflicts and deletions stay open.
 - **Q10.** Encryption at rest and ciphertext in Drive. Loss is now decided, above. Key transport stays open.
-- English-only OCR. Inexact alarms unless he amends E9. OCR search weight equals body. URL normalisation is the specification's rule. No Back up now.
+- English-only OCR. Inexact alarms. OCR search weight equals body. URL normalisation is the specification's rule. No Back up now.

@@ -10,6 +10,7 @@
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
 > This amendment approval does not approve the acceptance criteria on US-64. Those stay proposed.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E3-1 through A-E3-3 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft.
 
 ## Background & Value Proposition
 
@@ -34,6 +35,9 @@ Miguel, looking back through what he kept.
   - Ranked results and visible highlighting of the match.
   - Filter by type and by tag.
   - Sharing an item back out to other apps, as US-64 (Should). The acceptance criteria on that story stay proposed.
+  - Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair (A-E3-1, US-57). Acceptance: search and encryption are not built on a combination that cannot run.
+  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Should). US-66 is kept. Acceptance: delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
+  - The Untagged inbox can apply one filing action to several items at once (A-E3-3, US-71, Could). US-71 is kept. Acceptance: filing does not require opening each row. Filing one item at a time still works.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** A numeric latency SLO. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1). Sharing an item back out is in scope above as US-64, a Should. The acceptance criteria on that story stay proposed.
 
@@ -70,28 +74,10 @@ Miguel, looking back through what he kept.
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
+- US-57 Prove search on an encrypted database
+- US-66 Keep a trash beyond undo. Should. Kept 2026-10-17 at 20:02 IST. Not story approval.
+- US-71 Triage the inbox in a batch. Could. Kept 2026-10-17 at 20:02 IST. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E3-1 Search on an encrypted database
-
-- **Story:** US-57.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair.
-- **Acceptance outcome:** Search and encryption are not built on a combination that cannot run. The approved risk line already names this spike. This amendment states the outcome.
-
-### A-E3-2 Trash after undo
-
-- **Story:** US-66. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Should. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** After the undo snackbar is gone, a deleted item can sit in trash and be restored.
-- **Acceptance outcome:** Delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
-
-### A-E3-3 Inbox batch
-
-- **Story:** US-71. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** The Untagged inbox can apply one filing action to several items at once.
-- **Acceptance outcome:** Filing does not require opening each row. Filing one item at a time still works.
+A-E3-1 through A-E3-3 were approved as written at `2fe0422` and folded into Scope above. US-66 and US-71 are kept. Stories stay Draft.

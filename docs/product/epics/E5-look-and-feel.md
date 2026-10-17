@@ -6,6 +6,7 @@
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > This epic records visual constraints he already stated. It is not a UX artefact. Screens, layout, and copy beyond his words belong to `sdlc-ux-designer` after story approval. This epic does not invent screens.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E5-1 is folded into the scope below from the text at commit `2fe0422`. This does not approve US-53. The story stays Draft.
 
 ## Background & Value Proposition
 
@@ -24,7 +25,7 @@ Miguel, using the app every time he saves or looks something up.
   - Dynamic color is an optional toggle. Teal is the fallback when it is off. The UX gate can still check the teal values. Dynamic color is not how light or dark is chosen.
   - An in-app theme setting with three options: Light, Dark, and System. System follows the Android system light/dark setting. System is the default.
   - Light uses the light palette. Dark uses the dark palette. Those rules apply whether he chose the mode or System followed the phone.
-  - Calm layout, generous whitespace, refined typography, subtle motion.
+  - Calm layout, generous whitespace, refined typography, subtle motion. When the system animator scale says motion is off, the vault does not require motion (A-E5-1, US-53). Acceptance: the teal palette, Light, Dark, System, and the optional dynamic-color toggle stay as approved. Reduced motion is the added outcome.
   - No clutter and no placeholder text in the shipped UI.
   - A tasteful launcher icon and the short name Lagoon.
 - **Future Scope (v2+):** Nothing scheduled.
@@ -54,14 +55,8 @@ Miguel, using the app every time he saves or looks something up.
 
 - US-22 Choose light, dark, or the system theme
 - US-23 Show a launcher icon and the name Lagoon
+- US-53 Use the teal palette, optional dynamic color, and reduced motion
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E5-1 Reduced motion
-
-- **Story:** US-53. The story is unchanged, including reduced motion, per his decision of 2026-10-17 at 19:02 IST.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** When the system animator scale says motion is off, the vault does not require motion.
-- **Acceptance outcome:** The teal palette, Light, Dark, System, and the optional dynamic-color toggle stay as the approved text already says. Reduced motion is the added outcome.
+A-E5-1 was approved as written at `2fe0422` and folded into Scope above. US-53 stays Draft.

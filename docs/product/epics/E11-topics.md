@@ -12,6 +12,8 @@
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
 > Sensitive items are excluded from the topic call. That exclusion is this amendment, recorded on US-75. The other US-75 criteria stay proposed. The topic default is the 18:05 IST chat-decisions addendum. It is not a new approval of this epic.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E11-1 through A-E11-4 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft.
+> Clash fix, 2026-10-17 at 20:03 IST. Approver: `mjbvilhena`. C-E11-1: there is no cap on topic suggestions. The cap of 8 was removed from US-41. The story stays Draft.
 
 ## Background & Value Proposition
 
@@ -33,6 +35,11 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
   - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
+  - No cap on the number of topic suggestions. That is the approved risk line, and the 20:03 IST fix of C-E11-1.
+  - Opening a topic shows the items linked to it and the notes already stored on that topic (A-E11-1, US-45). Acceptance: he can look across what he saved on that subject. Opening the topic does not start a new AI call.
+  - After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic (A-E11-2, US-48). US-48 is kept. Acceptance: a saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
+  - He has a list of saved topics and one place for suggestions that are waiting (A-E11-3, US-60). Acceptance: he can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
+  - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). US-72 is kept. Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
 - **Future Scope (v2+):** Nothing named.
 - **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Sensitive items are excluded from the topic call. That exclusion is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. It is not the 18:05 IST quote. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
@@ -77,41 +84,10 @@ These are not approved. Paths are under `docs/product/stories/`. Drafting them i
 - US-45 Read a topic
 - US-46 Reject, rename, or merge a suggested topic
 - US-47 Keep the item when the topic call fails
+- US-48 Manage a topic that is already saved. Kept 2026-10-17 at 20:02 IST. Not story approval.
+- US-60 Browse topics and pending suggestions
+- US-72 Score whether topics are useful. Could. Kept 2026-10-17 at 20:02 IST. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E11-1 Read a topic
-
-- **Story:** US-45.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** Opening a topic shows the items linked to it and the notes already stored on that topic.
-- **Acceptance outcome:** He can look across what he saved on that subject. Opening the topic does not start a new AI call.
-
-### A-E11-2 Correct a topic that is already saved
-
-- **Story:** US-48. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Must. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic.
-- **Acceptance outcome:** A saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
-
-### A-E11-3 Topic list and pending suggestions
-
-- **Story:** US-60.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** He has a list of saved topics and one place for suggestions that are waiting.
-- **Acceptance outcome:** He can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
-
-### A-E11-4 Whether topics are useful
-
-- **Story:** US-72. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** A usefulness score for topics is computed on the phone.
-- **Acceptance outcome:** He is not asked to hand-label items, and the score is not sent off the phone.
-
-### Conflicts, not amended
-
-#### C-E11-1 Cap of 8 on US-41
-
-The approved epic says "No cap is set here." The approved specification says "No budget or per-item cap is set here." US-41 still has a cap of 8 topic suggestions. Adding that cap would contradict both. No amendment adds it. The story is unchanged, per his decision of 2026-10-17 at 19:02 IST. Extracting topics, the on-by-default switch, and sensitive-item exclusion stay the approved scope.
+A-E11-1 through A-E11-4 were approved as written at `2fe0422` and folded into Scope above. US-48 and US-72 are kept. C-E11-1 was closed at 20:03 IST: no cap. Stories stay Draft.

@@ -72,8 +72,8 @@ Limit what a sensitive item reveals.
   - Then the title is shown
   - And when the app goes to the background, the row returns to the neutral form
 - **Scenario: the Upcoming row** — Must
-  - Given a sensitive item is locked
-  - When the US-62 Upcoming row is shown
+  - Given a sensitive item is locked and the US-62 row is its one reminder or its one expiry
+  - When that Upcoming row is shown
   - Then it uses the neutral "Sensitive" form, not the title
 - **Scenario: topic notes on the topic page** — Must
   - Given a sensitive item is locked

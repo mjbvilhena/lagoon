@@ -6,6 +6,8 @@
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > Miguel decided optional expiry or reminder dates, with notifications, are in v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
+> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E9-1 and A-E9-2 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft.
+> Clash fixes, 2026-10-17 at 20:03 IST. Approver: `mjbvilhena`. C-E9-1: the Upcoming list shows only the one reminder or the one expiry. Return-by and warranty stay out. C-E9-2: alarms stay inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. That closes the US-77 question. It is not story approval.
 
 ## Background & Value Proposition
 
@@ -23,7 +25,9 @@ Miguel.
   - An optional expiry or reminder date on an item.
   - He picks the time. The Settings default is 09:00 local. Each item can override that time.
   - An expiry notifies 7 days before the date and again on the day, at the item's time.
-  - Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). No exact-alarm permission.
+  - Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). No exact-alarm permission. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. That is the 20:03 IST close of C-E9-2 and US-77.
+  - A reminder or an expiry is registered again after a reboot, a clock change, an update, or a notification-permission change (A-E9-1, US-55). When the same date is on more than one install, only one install posts it. Acceptance: a notification is not lost because the phone restarted, and two installs do not both post it. Which install wins is this approved amendment.
+  - A list shows items whose one reminder or one expiry is coming due (A-E9-2, US-62, Should). US-62 is kept. Acceptance: he can see what is due without opening each item. The list does not add a return-by date or a warranty end. That limit is the 20:03 IST fix of C-E9-1.
   - Reminders are stored and re-registered on `BOOT_COMPLETED`.
   - `POST_NOTIFICATIONS` is requested when the first reminder is set, not at launch.
   - Clearing the date clears the notification.
@@ -47,36 +51,16 @@ Miguel.
 
 ## Open Questions
 
-- The time, the 7-day expiry warning, and inexact alarms are in the approved specification (US-34). They are not an open product question. This epic is Approved. Its stories stay Draft.
+- The time, the 7-day expiry warning, and inexact alarms are in the approved specification (US-34). Exact alarms were closed on 2026-10-17 at 20:03 IST. They are not an open product question. This epic is Approved. Its stories stay Draft.
 
 ## Draft stories
 
 - US-34 Set a reminder or expiry and get notified
+- US-54 Notify before an expiry
+- US-55 Reschedule reminders after a restart or a clock change
+- US-62 See what is coming due. Should. Kept 2026-10-17 at 20:02 IST. Not story approval.
+- US-77 Keep reminders on inexact alarms. The question is closed. Not story approval.
 
-## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+## Amendments applied 2026-10-17 at 20:02 IST
 
-> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
-
-### A-E9-1 One install posts, and the schedule survives more than a reboot
-
-- **Story:** US-55.
-- **MoSCoW:** Must. Not approval of this epic text.
-- **Scope:** A reminder or an expiry is registered again after a reboot, a clock change, an update, or a notification-permission change. When the same date is on more than one install, only one install posts it.
-- **Acceptance outcome:** A notification is not lost because the phone restarted, and two installs do not both post it. The approved text already covers `BOOT_COMPLETED`. Which install wins is this amendment, not an approved rule.
-
-### A-E9-2 Upcoming list
-
-- **Story:** US-62. Pending Miguel's keep/remove decision.
-- **MoSCoW:** Should. Not approval of this epic text, and not a decision to keep the story.
-- **Scope:** A list shows items whose one reminder or one expiry is coming due.
-- **Acceptance outcome:** He can see what is due without opening each item. The list does not add a return-by date or a warranty end.
-
-### Conflicts, not amended
-
-#### C-E9-1 Return-by and warranty still named on US-62
-
-US-62 still says a future reminder, expiry, return-by date, or warranty end. Return-by and warranty were removed with US-68 on 2026-10-17 at 19:00 IST. The approved epic allows one reminder or one expiry, not those extra dates. A-E9-2 does not copy them. The story was left in place because the keep/remove decision is still open.
-
-#### C-E9-2 Exact alarms on US-77
-
-The approved epic and the approved specification say alarms are inexact and the app does not request the exact-alarm permission. US-77 asks whether that may change. An amendment that allowed exact alarms would contradict both. No such amendment is drafted. US-77 stays the open question, parented to E9.
+A-E9-1 and A-E9-2 were approved as written at `2fe0422` and folded into Scope above. US-62 is kept. C-E9-1 and C-E9-2 were closed at 20:03 IST, as named in the header. Stories stay Draft.

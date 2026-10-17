@@ -23,7 +23,7 @@ Keep the permission set to an allowlist.
 
 - On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated the permission set to his bots. He did not decide it.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: exact alarms (US-77). They stay out of the allowlist while that question is open.
+- Out of scope: exact alarms (US-77). They stay out of the allowlist. Miguel closed that question on 2026-10-17 at 20:03 IST. This allowlist was not changed. Camera capture uses the system camera, so `CAMERA` stays absent.
 
 ## Acceptance criteria
 
@@ -66,7 +66,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-77 stays open. Adding exact alarms would change this allowlist and needs Miguel's decision first.
+- US-77 is closed. Exact-alarm permissions stay absent. `CAMERA` stays absent. This allowlist was not edited for either clash.
 
 ## Implementation notes
 

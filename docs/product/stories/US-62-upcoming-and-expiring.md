@@ -4,10 +4,11 @@
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+> Miguel (`mjbvilhena`) on 2026-10-17 at 20:03 IST removed return-by and warranty from this list. It shows the one reminder or the one expiry. This is not story approval.
 
-**Epic:** E9. Pending Miguel's keep/remove decision. Not an approval.
+**Epic:** E9. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
 
-**MoSCoW:** Should. Not required by the approved epic. The epic requires the notification, not this view. Inside this story, the Upcoming list and the expired marker are Must if the story is built.
+**MoSCoW:** Should. In E9 by the amendment approved on 2026-10-17 at 20:02 IST. Not a story approval. Inside this story, the Upcoming list and the expired marker are Must.
 
 ## Title
 
@@ -27,7 +28,7 @@ See what is coming due.
 ## Acceptance criteria
 
 - **Scenario: the list** — Must
-  - Given items have a future reminder, expiry, return-by date, or warranty end (US-34, US-54, US-68)
+  - Given items have a future reminder or a future expiry (US-34, US-54)
   - When he opens Upcoming
   - Then they are sorted by that date
 - **Scenario: expired** — Must
