@@ -33,7 +33,7 @@ Share a link into the vault.
   - Given the share has text and a URL
   - When he chooses Lagoon
   - Then the URL is the source URL and the leftover text is kept as a note, the same way US-02 keeps leftover text
-  - And the title uses one order, shared with US-02 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path
+  - And the title uses one order, shared with US-02 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
 - **Scenario: where it came from** — Must
   - Given the share includes a URL
   - When the item is stored

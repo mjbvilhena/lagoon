@@ -32,7 +32,8 @@ Keep the permission set to an allowlist.
   - When its permissions are listed
   - Then the app-declared ones are `INTERNET`, `ACCESS_NETWORK_STATE`, `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, `USE_BIOMETRIC`, and `WAKE_LOCK`
   - And `POST_NOTIFICATIONS` is always declared. The runtime request happens on API 33 or newer, when the first reminder is set (US-34), not at first launch
-  - And these library entries are either named on this allowlist or removed with `tools:node="remove"`: `USE_FINGERPRINT` from `androidx.biometric`, `FOREGROUND_SERVICE` and the diagnostics receiver from WorkManager, and any permission a merged ML Kit or Play services manifest adds
+  - And `USE_FINGERPRINT` from `androidx.biometric` stays, with `maxSdkVersion` 28, because US-37 needs it on API 26 and 27
+  - And these library entries are either named on this allowlist or removed with `tools:node="remove"`: `FOREGROUND_SERVICE` and the diagnostics receiver from WorkManager, and any permission a merged ML Kit or Play services manifest adds
 - **Scenario: a long sync** — Must
   - Given US-51 needs a foreground service for a long upload
   - When that path is in the build
@@ -40,18 +41,18 @@ Keep the permission set to an allowlist.
 - **Scenario: absent permissions** — Must
   - Given the merged release manifest
   - When it is inspected
-  - Then these are absent: storage permissions, `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO`, `MANAGE_EXTERNAL_STORAGE`, `CAMERA`, exact-alarm permissions, `QUERY_ALL_PACKAGES`, `GET_ACCOUNTS`, location permissions, and contacts permissions
+  - Then these are absent: storage permissions, `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO`, `MANAGE_EXTERNAL_STORAGE`, `CAMERA`, exact-alarm permissions, `QUERY_ALL_PACKAGES`, `GET_ACCOUNTS`, `AD_ID`, `ACCESS_ADSERVICES_AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION`, `ACCESS_ADSERVICES_TOPICS`, any other `ACCESS_ADSERVICES_` permission, location permissions, and contacts permissions
 - **Scenario: exported components** — Must
   - Given the merged release manifest
   - When exported components are listed
   - Then the share target and the launcher activity are exported
-  - And an app-defined signature permission such as `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` may be present
+  - And an app-defined signature permission such as `<applicationId>.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` may be present
   - And an exported component protected by a system or signature permission may be present, including `SystemJobService` with `BIND_JOB_SERVICE` and the profileinstaller receiver
   - And a widget receiver may be exported only if a widget ships (US-69)
   - And no other component is exported
 - **Scenario: CI** — Must
   - Given a release APK
-  - When CI reads the merged manifest
+  - When CI reads the full merged manifest, including `<applicationId>.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`
   - Then the set matches this allowlist
 
 ## Analytics and observability (optional)

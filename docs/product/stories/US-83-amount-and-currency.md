@@ -21,18 +21,24 @@ Record an amount and a currency.
 
 - He types both. OCR does not pick them out.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: converting between currencies, and US-68 dates.
+- Out of scope: converting between currencies, and US-68 dates. Priority stays Should. Miguel has not changed it.
 
 ## Acceptance criteria
 
 - **Scenario: amount and currency** — Should
   - Given an item
   - When he enters an amount and a currency
-  - Then both are stored and shown together, and the currency is an ISO 4217 code such as `EUR`
+  - Then both are stored and shown together, the currency is an ISO 4217 code such as `EUR`, and the amount is an exact decimal in that currency's minor units, never a float
+  - And the field accepts the locale decimal separator
 - **Scenario: one without the other** — Should
   - Given he enters an amount and no currency, or a currency and no amount
   - When he tries to save that pair
   - Then the pair is not stored and he sees that both are required
+- **Scenario: a refund** — Should. Proposed. Not his decision.
+  - Given he enters a negative amount with a minus sign, and a currency
+  - When he saves the pair
+  - Then the proposal stores that refund
+  - And Miguel has not accepted refunds. Priority stays Should
 - **Scenario: neither** — Should
   - Given he enters neither
   - When he saves the item

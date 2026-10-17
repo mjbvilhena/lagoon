@@ -21,7 +21,7 @@ Enrich a saved link from the page.
 
 - The save in US-01 or US-06 already finished. This fetch does not block that save.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the offline snapshot file (US-33) except that its readable text comes from this same fetch. A failed fetch is US-09. Which fetches are skipped is US-79. Enrichment does not start until the quick-add row has closed.
+- Out of scope: the offline snapshot file (US-33) except that its readable text comes from this same fetch. A failed fetch is US-09. Which fetches are skipped is US-79.
 
 ## Acceptance criteria
 
@@ -41,6 +41,23 @@ Enrich a saved link from the page.
   - Given the item title was typed by him
   - When the page title arrives
   - Then his title stays and the page title is not written over it
+- **Scenario: the quick-add row** — Must
+  - Given he is still on the quick-add row
+  - When enrichment would start
+  - Then it waits until that row has closed
+- **Scenario: a token-looking link** — Must
+  - Given the link is token-looking under US-79 and he has not confirmed that fetch
+  - When enrichment would run
+  - Then no fetch is made
+  - And when he says yes, one fetch runs
+- **Scenario: a sensitive item** — Must
+  - Given the item is marked sensitive
+  - When enrichment would run
+  - Then no fetch is made
+- **Scenario: the host rules** — Must
+  - Given the link fails a US-79 host rule
+  - When enrichment would run
+  - Then no fetch is made
 
 ## Analytics and observability (optional)
 

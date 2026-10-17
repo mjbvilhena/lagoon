@@ -19,7 +19,8 @@ Decide the topic call's provider, credential, and payload.
 
 ## Background
 
-- Still open for Miguel: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). Whether a sensitive item is excluded is US-75.
+- Still open for Miguel: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). Whether a sensitive item is excluded is US-75, from the 15:55 IST amendment.
+- A proposed constraint from US-79, not a decision of the rest of the payload: the query and the fragment of a token-looking URL are not sent.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing those answers in this revision.
 

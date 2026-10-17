@@ -176,7 +176,11 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - US-28 keeps Add date as a Must. Not changed.
-- US-82, US-83, and US-84 stay Should. US-68 stays the date story. Not changed.
+- US-82, US-83, and US-84 scope and priority. The specification lists picking out merchants as Later. The bots split between Could and keeping Should. The stories stay Should. Not decided.
+- US-68 stays the date story. Not changed.
+- US-50 merchant weight 5. Draft, pending Miguel. Not decided.
+- A per-item "Include in topics" control. It goes beyond the 18:05 IST quote. Proposed on US-75. Not decided.
+- Whether a sensitive notification's private version is also only "Lagoon reminder". Proposed on US-75. Not decided.
 - Whether the vault key is bound to device authentication. US-35 does not choose it.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
@@ -190,7 +194,7 @@ Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 18:05 IST. Not story approval. His words: "Topics on by default, with an off switch".
 
-- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. US-41 and US-59. A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44). This is not a new specification approval.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. US-41 and US-59. The quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`. Sensitive-item exclusion is not part of that quote. It is the 15:55 IST amendment, recorded on US-75. The topic job keeps its own unmetered setting (US-44). This is not a new specification approval.
 
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 

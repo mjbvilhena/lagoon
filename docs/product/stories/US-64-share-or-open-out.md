@@ -15,7 +15,7 @@ Share or open an item in another app.
 ## User story
 
 **As a** person named Miguel
-**I want** to send an attachment, a URL, or the note text to another app
+**I want** to send an attachment, a URL, or the body text to another app
 **So that** I can use the item outside Lagoon without handing over the vault
 
 ## Background
@@ -28,11 +28,12 @@ Share or open an item in another app.
 
 > **Proposed: pending Miguel's approval.**
 
-- **Scenario: share an attachment, a URL, or note text** — Should
-  - Given an ordinary item has an attachment, a source URL, or note text
+- **Scenario: share an attachment, a URL, or the body** — Should
+  - Given an ordinary item has an attachment, a source URL, or body text
   - When he chooses Share and does not pick a part
-  - Then the note text is what is shared
-  - And he can instead send one attachment or the URL
+  - Then the share uses attachments first, then the URL, then the body text
+  - And "note text" in this story means that body, not the "why it matters" note
+  - And he can instead send one attachment, the URL, or the body
 - **Scenario: every attachment** — Should
   - Given an ordinary item has more than one attachment
   - When he chooses to share all of them
@@ -44,15 +45,15 @@ Share or open an item in another app.
 - **Scenario: a temp copy** — Should
   - Given a pipe cannot be used and a temp copy cannot be avoided
   - When the other app returns, or 15 minutes pass, or the next launch runs
-  - Then that copy is gone
+  - Then that copy is gone, and the URI grant is revoked when the copy is wiped
 - **Scenario: a link** — Should
   - Given he opens a source URL
   - When Open with runs
   - Then it uses Custom Tabs or `ACTION_VIEW`, the scheme is `http` or `https` only, and no WebView loads the page
 - **Scenario: photo location** — Should
-  - Given the attachment is a photo that carries GPS
+  - Given the attachment is a photo that carries location or device fields in EXIF or XMP
   - When he shares it and he has not asked to keep location
-  - Then the shared bytes do not include that GPS
+  - Then the shared bytes do not include those EXIF or XMP location fields or device fields
 - **Scenario: a sensitive item** — Should
   - Given the item is marked sensitive
   - When he chooses Share or Open with

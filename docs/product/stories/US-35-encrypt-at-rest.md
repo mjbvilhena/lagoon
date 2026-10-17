@@ -31,6 +31,7 @@ Encrypt the vault at rest.
   - Then he sees a clear warning that if the key is lost the content is lost and there is no recovery, that uninstall or clear storage destroys the key, and that losing the signing key forces a reinstall that destroys it too
   - And the key is not created until he accepts that warning
   - And the first shared item is held pending until he accepts. If he declines, he is told that nothing was saved. The share is not dropped in silence
+  - And that pending share stays in memory only. Nothing is written to disk in plaintext before the key exists
 - **Scenario: what "key gone" means** — Must
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app
@@ -42,8 +43,12 @@ Encrypt the vault at rest.
   - And he can start a new empty vault. The app is not left unable to open
 - **Scenario: a new biometric does not drop the key** — Must
   - Given the key exists
-  - When he enrolls a new biometric, or the OS authentication state changes
+  - When he enrolls a new biometric
   - Then the key stays valid. The Keystore entry is created with `setInvalidatedByBiometricEnrollment(false)`
+- **Scenario: the OS authentication state** — pending Miguel. Not a Must.
+  - Given the key exists
+  - When the OS authentication state changes
+  - Then this story does not say whether the key stays valid. Whether the key is auth-bound stays open for Miguel
 - **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored

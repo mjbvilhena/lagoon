@@ -31,11 +31,11 @@ Publish a sideload signing policy.
 - **Scenario: the release key** — Must
   - Given the release signing key
   - When the policy is followed
-  - Then the key is kept offline, two encrypted backups of it exist outside the repo, and the published record is the SHA-256 of the certificate
+  - Then the key is kept offline, two encrypted backups of it exist outside the repo, and the published record is the SHA-256 of the certificate and the SHA-256 of the release APK
 - **Scenario: the APK signatures** — Must
   - Given a release APK
-  - When CI runs `apksigner verify --print-certs`
-  - Then the APK is signed with v2 and v3, and the printed certificate matches the published SHA-256
+  - When CI runs `apksigner verify --print-certs` on the release APK
+  - Then that APK is the artefact CI verifies, it is signed with v2 and v3, the printed certificate matches the published certificate SHA-256, and the APK file's SHA-256 matches the published APK SHA-256
   - And the policy says whether a v3 rotation proof is kept with the offline key. If no rotation has happened, the published certificate is the one that command prints
 - **Scenario: an upgrade keeps the vault** — Must
   - Given an installed release build with a vault
@@ -50,8 +50,9 @@ Publish a sideload signing policy.
   - Given the policy page
   - When it is read
   - Then it follows [Register for limited distribution](https://developer.android.com/developer-verification/guides/limited-distribution), last updated 2026-09-30 UTC: the account is free, it does not ask for a government ID, and it shares with up to 20 devices
-  - And it follows the [verification overview](https://developer.android.com/developer-verification/guides): enforcement named there starts on 2026-09-30 in Brazil, Indonesia, Singapore, and Thailand for participating stores, and the ADB workflow stays the same
-  - And it does not repeat an older "global 2027" sentence that this page does not use
+  - And it follows the [verification overview](https://developer.android.com/developer-verification/guides), last updated 2026-08-18 UTC: enforcement named there starts on 2026-09-30 in Brazil, Indonesia, Singapore, and Thailand, and then those protections expand globally to all certified Android devices in 2027, which covers a device in Ireland. The ADB workflow stays the same
+  - And before 2027 the package `com.mjbvilhena.lagoon` is registered with the release key under a limited-distribution account. ADB stays the fallback
+  - And two-step verification and a payments profile are optional on that account. They are not required by the scenarios above
 - **Scenario: no self-updater** — Must
   - Given the app
   - When he looks for an update control

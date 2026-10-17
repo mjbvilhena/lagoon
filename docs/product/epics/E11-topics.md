@@ -11,7 +11,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
-> This amendment approval does not approve the US-75 proposal. Sensitive-item exclusion is not in this epic.
+> Sensitive items are excluded from the topic call. That exclusion is this amendment, recorded on US-75. The other US-75 criteria stay proposed. The topic default is the 18:05 IST chat-decisions addendum. It is not a new approval of this epic.
 
 ## Background & Value Proposition
 
@@ -29,12 +29,12 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - When content is shared into the vault or added inside it, it is extracted and processed to identify its main ideas and topics.
   - If an identified topic already exists, the new item is linked to it and the topic is extended with the new information.
   - If a topic does not exist yet, he is asked whether it should be added. Nothing is created without confirmation.
-  - The processor is a cloud AI, for every item, under his recorded decision. Readable content leaves the phone for that call.
+  - The processor is a cloud AI, for every item, under his recorded decision. Readable content leaves the phone for that call. Topic extraction starts on. He can turn it off. That default is `docs/product/amendments/2026-10-17-chat-decisions.md` (2026-10-17 at 18:05 IST). It is not a new approval of this epic.
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
   - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Sensitive-item exclusion from the topic call is not in this epic. It is proposed on US-75 and is not approved. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Sensitive items are excluded from the topic call. That exclusion is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. It is not the 18:05 IST quote. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 
@@ -63,7 +63,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 - [ ] Which AI provider, and what are its data-retention terms? (@mjbvilhena, design gate)
 - [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form? (@mjbvilhena, design gate)
-- [ ] Are items marked sensitive excluded from cloud processing? (@mjbvilhena, design gate)
+- [x] Are items marked sensitive excluded from cloud processing? Yes. The amendment approved on 2026-10-17 at 15:55 IST records that exclusion on US-75. The other US-75 criteria stay proposed.
 - [ ] What exactly is sent: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
 
 ## Draft stories

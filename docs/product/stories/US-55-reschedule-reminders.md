@@ -38,16 +38,19 @@ Reschedule reminders after a restart or a clock change.
   - When the delete is pending
   - Then the notification is cancelled, and Undo restores it
 - **Scenario: which device posts** — Must
-  - Given the same reminder has synced to two devices and the install where it was set is still signed in
-  - When the time arrives
-  - Then that origin install posts the notification
-  - And a device that only received it by sync does not post it
-- **Scenario: the origin is gone** — Must
-  - Given the origin install is signed out, or no origin is known, including a vault that arrived only by sync (US-20)
+  - Given the same reminder has synced to more than one install
   - When the time arrives
   - Then the install with the newest check-in posts, and only that install posts
+  - And the origin install posts only when its own check-in is that newest one and it checked in within the last 7 days
+  - And when two check-ins are equal, the lower install id posts
   - And a check-in is the timestamp an install writes when the app is opened or when a sync succeeds
   - And the same rule covers a reminder, an expiry, a return-by date, and a warranty end
+- **Scenario: a signed-out install** — Must
+  - Given an install is signed out
+  - When the time arrives
+  - Then that install does not post from its local vault
+  - And the reason is the release: sign-out writes the US-55 release marker before the US-78 revoke, so the duty has left that install
+  - And an install that has never signed in still posts, because it has no release marker and there is no other install to take the duty
 
 ## Analytics and observability (optional)
 
@@ -61,6 +64,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - US-13 also restores reminders on Undo.
+- Residual risk, not closed: if the newest signed-in install is offline when the time arrives, nothing posts.
 
 ## Implementation notes
 

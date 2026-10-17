@@ -58,8 +58,10 @@ Skip unsafe link previews.
 - **Scenario: what counts as token-looking** — Must
   - Given a URL table in the test
   - When the rule runs
-  - Then a URL is token-looking if any one of these is true, compared without case on the name: a query parameter named `token`, `access_token`, `id_token`, `auth`, `key`, `api_key`, `sig`, `signature`, `code`, `otp`, `session`, `sid`, `secret`, `password`, `X-Amz-Signature`, `X-Amz-Credential`, or `X-Goog-Signature`; user info of the form `user:pass@`; a value containing `eyJ`; a path segment or parameter value of at least 24 characters made only of `A-Za-z0-9_-`; or a path segment `reset`, `verify`, `magic`, `confirm`, `unsubscribe`, or `login`
+  - Then a URL is token-looking if any one of these is true. Parameter names match without case, including the same names in the fragment (`#access_token=`): a query or fragment parameter named `token`, `access_token`, `id_token`, `auth`, `key`, `api_key`, `sig`, `signature`, `code`, `otp`, `session`, `sid`, `secret`, `password`, `X-Amz-Signature`, `X-Amz-Credential`, or `X-Goog-Signature`; user info of the form `user:pass@`; a value containing `eyJ`; a path segment or parameter value of at least 24 characters that mixes letters and digits and is not hyphen-separated words; or a path segment `reset`, `verify`, `magic`, `confirm`, `unsubscribe`, `login`, `invite`, `activate`, `signin`, `callback`, or `oauth`
   - And `https://example.com/notes/1` is not token-looking
+  - And `https://example.com/how-to-make-sourdough-bread-at-home` is not token-looking
+  - And `https://example.com/how-to-fix-a-leaking-tap-2026` is not token-looking
   - And the same rule blocks enrichment (US-08) and a snapshot (US-33) until he confirms
   - And enrichment waits until the quick-add row has closed
 - **Scenario: hosts that are skipped** — Must
@@ -78,7 +80,7 @@ Skip unsafe link previews.
 - **Scenario: limits** — Must
   - Given a preview fetch is allowed
   - When it runs
-  - Then it follows at most 5 redirects, it times out after 15 seconds, and it stops at 10 MiB
+  - Then it follows at most 5 redirects, the whole call stops at 15 seconds, and it stops at 10 MiB of decompressed bytes
   - And an `http` URL is fetched as `https`. Cleartext stays off, so a failed upgrade is not fetched as `http`
 - **Scenario: the viewer** — Must
   - Given he reads a stored snapshot

@@ -26,8 +26,8 @@ Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 16:00 IST. It is not
 
 Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 18:05 IST. It is not story approval and it is not a new specification approval. Asked whether topic extraction should be on by default for new items, he said: "Topics on by default, with an off switch".
 
-- The topic switch starts on. He can turn it off in Settings. US-41 and US-59.
-- A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44).
+- The topic switch starts on. He can turn it off in Settings. US-41 and US-59. The quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`.
+- Sensitive-item exclusion is not part of that quote. It is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. The topic job keeps its own unmetered setting (US-44).
 
 ## Open questions for Miguel
 
@@ -40,8 +40,12 @@ Not decided. Not delegated.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - US-28 keeps "Add date" as a Must. Miguel has not moved it.
-- US-82, US-83, and US-84 stay Should. US-68 stays a date story. Miguel has not changed those priorities or that scope.
-- Whether the vault key is bound to device authentication. US-35 does not choose it.
+- US-82, US-83, and US-84 scope and priority. The specification lists picking out merchants as Later, and it says no story. The bots split between Could and keeping Should. The stories stay Should. Miguel has not decided.
+- US-68 scope. Miguel has not changed it. The story stays the date story.
+- US-50 merchant weight 5. The bots split on whether he must accept it. The story marks it draft and pending. It is not decided.
+- A per-item "Include in topics" control on US-75. It goes beyond the 18:05 IST quote. It stays Proposed.
+- Whether a sensitive notification's private version is also only "Lagoon reminder". Android can reveal the private version when the device shows all notification content. US-75 records that as a Proposed option. Miguel has not chosen it.
+- Whether the vault key is bound to device authentication. US-35 does not choose it. An OS authentication change is no longer a Must on that story.
 - Reminder time zone. Stories still use the device local zone.
 
 ## Open questions delegated to bots
@@ -73,7 +77,7 @@ US-61 cites the approved amendment and stays Draft. US-64 cites it for the Shoul
 
 Implementation DoD fails for every story: there is no app and no automation, so no story is Done.
 
-Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. US-07 no longer holds an open ML Kit question. The 16:00 IST disclosure criteria assert. US-41 and US-59 still pass artefact shape after the 18:05 IST default. That pass is not story approval.
+Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. Every other story passes shape, including US-41 and US-59. That pass is not story approval. Round 4 records no approvals.
 
 The seven required checks are no-ops until a Gradle project exists. `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request, not this one. The script that starts the knowledge server lives on PR #4. This branch imports `server.py` with the virtualenv Python. That import is not a live MCP session.
 
@@ -154,6 +158,8 @@ US-31 also had a clean verdict at `40bb526`. The 16:00 IST edit is a factual not
 Round 3, against `df8c088`, edited these clean-verdict stories again. They need re-confirm. Status stays Draft. This run records no approval: US-08 (the skip rules are US-79, and enrichment waits for the quick-add row), US-15 (merchant column), US-19 (the topic queue has its own unmetered setting), US-31 (bundled `com.google.mlkit:text-recognition` only), US-33 (no snapshot for a token-looking link until he confirms, none for a sensitive item, host rules from US-79), US-50 (merchant weight 5).
 
 The 18:05 IST edit changes US-41 and US-59 only. Those stories were not clean approvals at `40bb526`, so this edit does not add them to the re-confirm list. Status stays Draft.
+
+Round 4, against `5ba70f5`, records no approvals. It edits stories and moves the 15:59, 16:00, and 18:05 IST chat decisions into `docs/product/amendments/2026-10-17-chat-decisions.md`. Sensitive-item exclusion stays cited to the 15:55 IST amendment. Status stays Draft.
 
 | ID | Dev Bot | Scout | Mikey's Assistant | Household | Leisure |
 |---|---|---|---|---|---|
@@ -255,7 +261,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-05 | Add a note by hand. | E1 | I can keep something that did not come from a share | Must | 4 | None on this story |
 | US-06 | Add a URL by hand. | E1 | I can keep a page when I am not in the app that showed it | Must | 4 | None on this story |
 | US-07 | Use the saved vault with no network and no analytics. | E1 | I can read and search it offline, and the app does not report my use | Must | 8 | None. Disclosure decided 16:00 IST |
-| US-08 | Enrich a saved link from the page. | E2 | I can recognise the page later without opening it | Must | 4 | None on this story |
+| US-08 | Enrich a saved link from the page. | E2 | I can recognise the page later without opening it | Must | 8 | None on this story |
 | US-09 | Keep the link when the page cannot be fetched. | E2 | a failed fetch does not lose the link (1 Should) | Must | 2 | None on this story |
 | US-10 | Browse saved items, newest first. | E3 | the thing I just kept is the first row | Must | 5 | None on this story |
 | US-11 | Read a saved item. | E3 | I can use it without going back to the app it came from | Must | 5 | None on this story |
@@ -282,13 +288,13 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-32 | Keep more than one attachment on an item. | E1 | a receipt and a photo of the same thing stay together | Must | 5 | None on this story |
 | US-33 | Keep an offline snapshot of a saved page. | E2 | I can read the page when the network is gone, and still keep the original URL | Must | 11 | None. Fetch gates are US-79 |
 | US-34 | Set a reminder. | E9 | I do not forget the item | Must | 9 | Exact alarms and a fixed time zone stay open. Sensitive lock-screen text is decided on US-75 |
-| US-35 | Encrypt the vault at rest. | E8 | a copy of the phone's storage does not contain the vault in the clear, and I am not promised a recovery that does not exist | Must | 9 | Key transport stays open. Loss is decided |
+| US-35 | Encrypt the vault at rest. | E8 | a copy of the phone's storage does not contain the vault in the clear, and I am not promised a recovery that does not exist | Must | 9 | Key transport and auth-binding stay open. Loss is decided |
 | US-36 | Sync only ciphertext. | E8 | Google cannot read the vault | Must | 3 | None on this story |
 | US-37 | Lock sensitive items, and optionally lock the app. | E8 | private items stay closed, and I can still lock the app when the phone has no biometric | Must | 10 | None on this story |
 | US-38 | File new captures from an Untagged inbox. | E3 | new captures do not disappear into the full list before I tag them | Must | 5 | None on this story |
 | US-39 | Sort and filter the list by when it was saved. | E3 | I can limit the list to a day or a range | Must | 7 | None on this story |
-| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 7 | None on this story |
-| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 12 | Provider, credential, and payload stay open |
+| US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 9 | None on this story |
+| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 12 | Provider, credential, and payload stay open. Per-item opt-in stays open |
 | US-42 | Link an item to a topic the vault already has. | E11 | the subject I already have grows instead of starting over | Must | 5 | None on this story |
 | US-43 | Confirm a topic before it is created. | E11 | a subject I do not want is never created, and one-tap capture stays one tap | Must | 6 | None on this story |
 | US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | None on this story |
@@ -297,7 +303,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-47 | Keep the item when the topic call fails. | E11 | a cloud problem does not lose what I saved or invent a topic | Must | 6 | None on this story |
 | US-48 | Manage a topic that is already saved. | E11 | I can correct a subject after I have confirmed it | Must | 5 | None on this story |
 | US-49 | Update a link that was saved before, and undo that update. | E1 | one page does not become two items, and a mistake is reversible | Must | 7 | None on this story |
-| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 7 | None on this story |
+| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 6 | Merchant weight 5 is draft, pending Miguel |
 | US-51 | Sync in the background and show errors. | E4 | I do not have to press a backup button and I can see a real failure | Must | 5 | None on this story |
 | US-52 | Import a zip and merge it. | E4 | a file fallback can fill this phone without wiping it | Must | 3 | None on this story |
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | I can read the app in light and dark and with reduced motion | Must | 6 | None on this story |
@@ -311,7 +317,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-61 | Filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 0 | In E1. Filter only. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |
 | US-63 | Copy a code he marked. | E9 | I can copy a code without selecting it by hand each time (3 Should) | Should | 0 | None on this story |
-| US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (6 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
+| US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (8 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
 | US-65 | Add a photo from the camera. | E1 | I can keep a page without a share from another app (2 Should) | Should | 0 | None on this story |
 | US-66 | Keep a trash beyond undo. | Cross-cutting | I can recover it after the undo snackbar has gone (2 Should) | Should | 0 | None on this story |
 | US-67 | Notice a duplicate image or PDF. | E1 | I do not keep two copies of the same file (1 Could) | Could | 0 | None on this story |
@@ -322,13 +328,13 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-72 | Score whether topics are useful. | E11 | usefulness can be judged without me hand-labeling items and without sending counts off the phone (3 Could) | Could | 0 | None on this story |
 | US-73 | Decide sync conflicts and deletions. | Cross-cutting | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
-| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 9 | Lock-screen reminder decided 15:59 IST. Other criteria stay proposed |
+| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 13 | Lock-screen reminder decided 15:59 IST. Topic exclusion is the 15:55 IST amendment. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
-| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 7 | Proposed, pending Miguel |
+| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 8 | Proposed, pending Miguel |
 | US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 12 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
 | US-80 | Keep the permission set to an allowlist. | Cross-cutting | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
 | US-81 | Publish a sideload signing policy. | E6 | a later install can replace the app without losing the vault | Proposed Must | 6 | Proposed, pending Miguel |
-| US-82 | Search and filter by merchant. | Cross-cutting | I can find a shop without reading every item (3 Should) | Should | 0 | None on this story |
-| US-83 | Record an amount and a currency. | Cross-cutting | the figure is stored as money, not as a bare number (3 Should) | Should | 0 | None on this story |
+| US-82 | Search and filter by merchant. | Cross-cutting | I can find a shop without reading every item (7 Should) | Should | 0 | Scope and priority stay open for Miguel |
+| US-83 | Record an amount and a currency. | Cross-cutting | the figure is stored as money, not as a bare number (4 Should) | Should | 0 | Scope and priority stay open for Miguel |
 | US-84 | Filter by purchase date. | Cross-cutting | I can see what I bought in a stretch of days (3 Should) | Should | 0 | None on this story |

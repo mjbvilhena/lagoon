@@ -33,7 +33,7 @@ Share plain text into the vault.
   - Given `EXTRA_TEXT` contains a URL and some other words
   - When he shares it
   - Then US-01 stores the link, and the leftover words are kept as a note, the same way as US-01
-  - And the title uses the same order as US-01 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path
+  - And the title uses the same order as US-01 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
 - **Scenario: the share has a subject** — Must
   - Given `EXTRA_SUBJECT` is present
   - When the item is stored

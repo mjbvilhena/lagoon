@@ -87,7 +87,7 @@ Applied text:
 
 > Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Whether sensitive items are excluded from the topic call is proposed in US-75 and stays out of this epic until he approves that proposal. The topic job has its own "Unmetered only" setting in US-44 and US-59. That setting is not the sync preference, and it is not in this epic until he approves this amendment.
 
-The epic file now states the current rule: the unmetered setting is in scope, and sensitive-item exclusion is not in the epic because the US-75 proposal is not approved.
+The epic file now states the current rule: the unmetered setting is in scope. Sensitive-item exclusion is in the epic and is recorded on US-75 as part of this amendment. The other US-75 criteria stay proposed. The topic default is not in this amendment. It is in `docs/product/amendments/2026-10-17-chat-decisions.md`.
 
 ## 5. Epic E1
 

@@ -86,8 +86,8 @@ Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 18:05 IST. Not story approval. His words: "Topics on by default, with an off switch".
 
-1. Asked whether topic extraction should be on by default for new items, he said it starts on, with an off switch in Settings. US-41 and US-59.
-2. A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44). This does not approve US-41, US-59, or US-75, and it is not a new specification approval.
+1. Asked whether topic extraction should be on by default for new items, he said it starts on, with an off switch in Settings. US-41 and US-59. His words are quoted in `docs/product/amendments/2026-10-17-chat-decisions.md`.
+2. That quote does not exclude sensitive items. The exclusion is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. The topic job keeps its own unmetered setting (US-44). This does not approve US-41, US-59, or US-75, and it is not a new specification approval.
 
 Delegated to his bots the same afternoon. He did not decide them. Round 2 proposes criteria, marked pending his approval, in `docs/product/amendments/2026-10-17-security-delegation.md` and on the stories. The proposals are not approval.
 
@@ -293,7 +293,7 @@ Skills used:
 
 Left open for Miguel at the end of round 3, and not changed in that run: the topic off-switch default (decided later the same day at 18:05 IST), US-28 Add date, the priority of US-82 through US-84 and the scope of US-68, whether the key is auth-bound, US-73, US-74, US-76, US-77, the reminder time zone, and full-screen QR. The questions that stayed open are listed in `docs/product/stories/REVIEW-PACK.md`.
 
-The 15:59 IST and 16:00 IST chat decisions are recorded in the specification decision table. That record is not a new specification approval.
+The 15:59 IST and 16:00 IST chat decisions were recorded in the specification decision table in that run. Round 4 moves them to `docs/product/amendments/2026-10-17-chat-decisions.md`. That record is not a new specification approval.
 
 Clean-verdict stories edited in this run, needing re-confirm, status still Draft: US-08, US-15, US-19, US-31, US-33, US-50.
 
@@ -308,20 +308,40 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 Skills used:
 
 1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
-2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`. US-41 and US-59 only. The topic switch starts on. He can turn it off in Settings. A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44).
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`. US-41 and US-59 only. The topic switch starts on. He can turn it off in Settings. The topic job keeps its own unmetered setting (US-44). Round 4 later records that sensitive-item exclusion is the 15:55 IST amendment, not this quote.
 3. `sdlc-dod-checker`, `get_definition_of_done("user story")` from `third_party/ai-sdlc-harness/mcp-server/data/dod/user_story.md`. US-41 and US-59 pass artefact shape. Implementation DoD fails both, and every other story. Nothing is Done.
 4. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`. The topic default is removed from the open-question lists. The decision is recorded next to the 15:59 IST and 16:00 IST decisions.
 5. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
 
-The decision is recorded in the specification decision table. It is not a new specification approval. US-41 and US-59 stay Draft. They were not clean approvals at `40bb526`, so this edit does not add them to the re-confirm list.
+The decision was first written into the specification decision table. Round 4 moves it to `docs/product/amendments/2026-10-17-chat-decisions.md`. It is not a new specification approval. US-41 and US-59 stay Draft. They were not clean approvals at `40bb526`, so this edit does not add them to the re-confirm list.
+
+## Harness step (2026-10-17, round 4): story revision at 5ba70f5
+
+`sdlc-conductor`. The legal step is still story refinement. The specification gate and the epic gate have passed. Story approval has not. Design, an approved threat model, and implementation stay closed. The user's instruction to apply the round-4 list is the confirm. This run records no approval and does not flip any story to Approved.
+
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This branch does not contain `scripts/bootstrap-sdlc-mcp.sh`. That script lives on PR #4. This was not a live MCP stdio session. `get_domain_consultant` for capture, vault, and knowledge, and `get_layer_consultant("ui")`, found no files. No MUST/NEVER rules were invented.
+
+Skills used:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+3. `sdlc-threat-modeler`, template `get_sdlc_template("threat model")`, Definition of Done `get_definition_of_done("security change")`. The note stays proposed. Security-change implementation DoD is unmet: there is no code.
+4. `sdlc-product-owner`, template `get_sdlc_template("product spec")`, Definition of Done `get_definition_of_done("product spec")` and `get_definition_of_done("epic")`. The chat-decisions addendum is not a specification approval. E11 now cites the 15:55 IST amendment for sensitive-item exclusion and the addendum for the 18:05 IST default.
+5. `sdlc-dod-checker`, `get_definition_of_done("user story")` from `third_party/ai-sdlc-harness/mcp-server/data/dod/user_story.md`, checked against every story file.
+6. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+7. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Left open for Miguel, and not decided in this run: US-82 through US-84 scope and priority, the US-50 merchant weight, whether the key is auth-bound, the per-item "Include in topics" opt-in, whether a sensitive notification's private version is also generic, the reminder time zone, full-screen QR, US-73, US-74, US-76, US-77, US-28 Add date, and US-68 scope. Those are listed in `docs/product/stories/REVIEW-PACK.md`.
+
+`ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request. The required checks stay no-ops until Gradle exists.
 
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
-| Vision ↔ spec | The vision states the current product, including the 18:05 IST topic default. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. The 15:59, 16:00, and 18:05 IST chat decisions are recorded there and are not a new specification approval. |
-| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
+| Vision ↔ spec | The vision states the current product. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. The 15:59, 16:00, and 18:05 IST chat decisions are in `docs/product/amendments/2026-10-17-chat-decisions.md`. They are not a new specification approval. |
+| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. Chat decisions: `docs/product/amendments/2026-10-17-chat-decisions.md`. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |
