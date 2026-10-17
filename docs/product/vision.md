@@ -5,7 +5,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > On the vision file he said: "Vision document should always reflect the current vision, not an historic vision with some amendments added to it".
-> Approved revision of this application: commit `PENDING_APPLICATION_SHA`.
+> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`).
 > E10 is later and is not v1. Stories stay Draft. This file does not approve them.
 
 ## Vision

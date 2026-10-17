@@ -9,7 +9,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > He changed section 7 of that amendment. `docs/product/vision.md` is rewritten to the current vision. No supersession sentence was added.
-> Approved revision of this application: commit `PENDING_APPLICATION_SHA`. This record does not change the product text of that revision.
+> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
 > This amendment approval does not approve any story. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay proposed.
 > Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
 
@@ -191,7 +191,7 @@ Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot un
 
 | Gate | Status | What advances it |
 |---|---|---|
-| This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST. Wording: "Yes". Application revision: `PENDING_APPLICATION_SHA`. | Passed. |
+| This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST. Wording: "Yes". Application revision: `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). | Passed. |
 | Epics E1–E9 and E11 | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. | Passed. This does not approve the stories. |
 | Epic E10 | **Approved. Later. Not in v1.** Same sign-off and revision. | Passed as later work. Not approval to build it in v1. |
 | User stories | Draft. None approved. | Next gate. Miguel's bots review and approve stories under his delegation of 2026-10-17. E11 stories are drafted first. He decides epic-level and security matters only. That rule is not a sign-off on any story. |

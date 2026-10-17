@@ -204,7 +204,7 @@ Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, 
 
 No story status was flipped to Approved. The stale drift list (specification line 27, the design-gate "not delegated" sentence, E8, E3, E11, E1, and the old vision) is removed because those files now match the approved amendment.
 
-Approved revision of this application: commit `PENDING_APPLICATION_SHA`.
+Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`).
 
 ## Memory checklist
 

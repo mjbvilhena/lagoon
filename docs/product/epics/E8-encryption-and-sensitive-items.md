@@ -9,7 +9,7 @@
 > Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, section 2, applied after his approval.
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
-> Approved revision of this application: commit `PENDING_APPLICATION_SHA`. This record does not change the product text of that revision.
+> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
 
 ## Background & Value Proposition
 

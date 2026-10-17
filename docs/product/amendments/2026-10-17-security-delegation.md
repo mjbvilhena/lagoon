@@ -3,7 +3,7 @@
 > **Status: Approved by `mjbvilhena` on 2026-10-17 at 15:55 IST.**
 > His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
 > He changed section 7. The vision is rewritten to the current vision. No supersession sentence was added. His words: "Vision document should always reflect the current vision, not an historic vision with some amendments added to it".
-> Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, E8, and E11. Approved revision of that application: commit `PENDING_APPLICATION_SHA`.
+> Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, E8, and E11. Approved revision of that application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`).
 > Skill: `sdlc-product-owner`. Template: `get_sdlc_template("product spec")`. Definition of Done: `get_definition_of_done("epic")` and `get_definition_of_done("product spec")`, artefact shape only. Shipped-epic DoD is unmet: nothing is built.
 > This approval does not approve any story. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay proposed.
 
