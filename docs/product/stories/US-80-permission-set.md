@@ -48,7 +48,6 @@ Keep the permission set to an allowlist.
   - Then the share target and the launcher activity are exported
   - And an app-defined signature permission such as `<applicationId>.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` may be present
   - And an exported component protected by a system or signature permission may be present, including `SystemJobService` with `BIND_JOB_SERVICE` and the profileinstaller receiver
-  - And a widget receiver may be exported only if a widget ships (US-69)
   - And no other component is exported
 - **Scenario: CI** — Must
   - Given a release APK

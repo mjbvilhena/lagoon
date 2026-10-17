@@ -333,6 +333,22 @@ Skills used:
 
 Left open for Miguel, and not decided in this run: US-82 through US-84 scope and priority, the US-50 merchant weight, whether the key is auth-bound, the per-item "Include in topics" opt-in, whether a sensitive notification's private version is also generic, the reminder time zone, full-screen QR, US-73, US-74, US-76, US-77, US-28 Add date, and US-68 scope. Those are listed in `docs/product/stories/REVIEW-PACK.md`.
 
+### Harness: story removal, 2026-10-17 at 19:00 and 19:01 IST
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+3. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+4. `sdlc-dod-checker`, `get_definition_of_done("user story")` from `third_party/ai-sdlc-harness/mcp-server/data/dod/user_story.md`.
+5. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Templates were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This was not a live MCP session. No domain consultant was found. No MUST/NEVER rules were invented.
+
+Miguel (`mjbvilhena`) at 19:00 IST: "68, 69, and 82 to 84 should be removed." At 19:01 IST: "63 can be removed as well." Deleted US-63, US-68, US-69, US-82, US-83, and US-84. Numbers were not reused. No story status was set to Approved.
+
+Downstream clauses cut with those stories: US-15 merchant column, US-34 code clause, US-50 merchant weight and draft merchant scenario, US-55 return-by and warranty words, US-75 return-by and warranty notice, pinned-shortcut half, merchant word, copied-code scenario, and widget cache line, US-80 widget receiver, and the matching phrases in the proposed threat note. US-62 was left in place, including its given-list and the US-75 Upcoming row.
+
+Still awaiting his decision: US-48, US-62, US-65, US-66, US-67, US-70, US-71, US-72, the US-28 Add date trim, the US-40 generated-titles trim, the US-41 cap-of-8 trim, and the US-53 reduced-motion trim. Also still open: whether the key is auth-bound, the per-item "Include in topics" opt-in, whether a sensitive notification's private version is also generic, the reminder time zone, full-screen QR, US-73, US-74, US-76, and US-77.
+
 `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request. The required checks stay no-ops until Gradle exists.
 
 ## Memory checklist
@@ -341,7 +357,7 @@ Left open for Miguel, and not decided in this run: US-82 through US-84 scope and
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
 | Vision ↔ spec | The vision states the current product. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. The 15:59, 16:00, and 18:05 IST chat decisions are in `docs/product/amendments/2026-10-17-chat-decisions.md`. They are not a new specification approval. |
-| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. Chat decisions: `docs/product/amendments/2026-10-17-chat-decisions.md`. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
+| User-story index | `docs/product/stories/INDEX.md` lists the remaining stories. US-63, US-68, US-69, US-82, US-83, and US-84 were removed on 2026-10-17 at 19:00 and 19:01 IST. Numbers were not reused. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Traceability: `docs/product/stories/TRACEABILITY.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. Chat decisions: `docs/product/amendments/2026-10-17-chat-decisions.md`. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

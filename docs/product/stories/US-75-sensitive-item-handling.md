@@ -51,7 +51,7 @@ Limit what a sensitive item reveals.
   - When the proposed "Include in topics" control is considered
   - Then that control stays proposed. It goes beyond the 18:05 IST quote. Miguel has not accepted it. The default exclusion above still holds
 - **Scenario: other sensitive notices** — Must
-  - Given a sensitive item has an expiry, a return-by date, or a warranty end
+  - Given a sensitive item has an expiry
   - When that notice is posted
   - Then it uses the same public version as the lock-screen reminder: `VISIBILITY_PRIVATE`, `setPublicVersion`, and the text "Lagoon reminder"
 - **Scenario: a list row** — Must
@@ -62,17 +62,17 @@ Limit what a sensitive item reveals.
   - Given a sensitive item is locked
   - When he searches
   - Then a tag word can return the neutral row
-  - And a title word, a body word, an OCR word, a merchant word, and a note word return nothing
+  - And a title word, a body word, an OCR word, and a note word return nothing
   - And the row has no snippet and no highlight
 - **Scenario: titles after unlock** — Must
   - Given he has unlocked the item with US-37
   - When the list is showing and the app has not gone to the background
   - Then the title is shown
   - And when the app goes to the background, the row returns to the neutral form
-- **Scenario: upcoming and a pinned shortcut** — Must
+- **Scenario: the Upcoming row** — Must
   - Given a sensitive item is locked
-  - When the US-62 Upcoming row or the US-69 pinned-shortcut label is shown
-  - Then each uses the neutral "Sensitive" form, not the title
+  - When the US-62 Upcoming row is shown
+  - Then it uses the neutral "Sensitive" form, not the title
 - **Scenario: topic notes on the topic page** — Must
   - Given a sensitive item is locked
   - When the US-45 page would show that item's topic notes or quotes
@@ -87,10 +87,6 @@ Limit what a sensitive item reveals.
   - When that content is showing
   - Then `FLAG_SECURE` is set for that screen, not for the whole app
   - And when app lock is on, on API 33 or newer, `setRecentsScreenshotEnabled(false)` is set
-- **Scenario: a copied code** — Must
-  - Given he copies a code from a sensitive item on API 33 or newer
-  - When the clip is set
-  - Then it is marked `EXTRA_IS_SENSITIVE`
 - **Scenario: the posted notification itself** — Proposed. Not decided.
   - Given a sensitive reminder is posted
   - When the device is set to show all notification content
@@ -101,9 +97,9 @@ Limit what a sensitive item reveals.
   - When a sensitive item would be included
   - Then US-37 unlocks first
   - And the item is inside the vault-key zip and its entry name is an opaque id
-- **Scenario: caches and widgets** — Must
+- **Scenario: caches** — Must
   - Given a sensitive item has an image
-  - When caches and widgets are written
+  - When caches are written
   - Then they do not contain a thumbnail of that item
 
 ## Analytics and observability (optional)

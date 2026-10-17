@@ -29,6 +29,12 @@ Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 18:05 IST. It is not
 - The topic switch starts on. He can turn it off in Settings. US-41 and US-59. The quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`.
 - Sensitive-item exclusion is not part of that quote. It is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. The topic job keeps its own unmetered setting (US-44).
 
+Miguel (`mjbvilhena`) removed stories in chat on 2026-10-17. This is not story approval. Numbers are not reused. No new story replaces them.
+
+- At 19:00 IST: "68, 69, and 82 to 84 should be removed." US-68, US-69, US-82, US-83, and US-84 are gone.
+- At 19:01 IST: "63 can be removed as well." US-63 is gone.
+- Picking merchants out of a receipt stays Later, with no story, as the specification already says.
+
 ## Open questions for Miguel
 
 Not decided. Not delegated.
@@ -40,9 +46,6 @@ Not decided. Not delegated.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - US-28 keeps "Add date" as a Must. Miguel has not moved it.
-- US-82, US-83, and US-84 scope and priority. The specification lists picking out merchants as Later, and it says no story. The bots split between Could and keeping Should. The stories stay Should. Miguel has not decided.
-- US-68 scope. Miguel has not changed it. The story stays the date story.
-- US-50 merchant weight 5. The bots split on whether he must accept it. The story marks it draft and pending. It is not decided.
 - A per-item "Include in topics" control on US-75. It goes beyond the 18:05 IST quote. It stays Proposed.
 - Whether a sensitive notification's private version is also only "Lagoon reminder". Android can reveal the private version when the device shows all notification content. US-75 records that as a Proposed option. Miguel has not chosen it.
 - Whether the vault key is bound to device authentication. US-35 does not choose it. An OS authentication change is no longer a Must on that story.
@@ -225,13 +228,10 @@ Round 4, against `5ba70f5`, records no approvals. It edits stories and moves the
 | US-60 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Recommend approve | Recommend approve |
 | US-61 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-62 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
-| US-63 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-64 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-65 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-66 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-67 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Recommend approve | Recommend approve |
-| US-68 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
-| US-69 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-70 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
 | US-71 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Approved under Miguel's delegation of 2026-10-17 | Recommend approve | Recommend approve |
 | US-72 | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes requested at 40bb526. Not a clean approval. | Changes | Changes |
@@ -244,9 +244,6 @@ Round 4, against `5ba70f5`, records no approvals. It edits stories and moves the
 | US-79 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-80 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
 | US-81 | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Proposed: pending Miguel's approval | Recommend the proposal. Pending Miguel's approval. | Recommend the proposal. Pending Miguel's approval. |
-| US-82 | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review |
-| US-83 | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review |
-| US-84 | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review | Not in the 40bb526 review |
 
 ## Stories
 
@@ -303,7 +300,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-47 | Keep the item when the topic call fails. | E11 | a cloud problem does not lose what I saved or invent a topic | Must | 6 | None on this story |
 | US-48 | Manage a topic that is already saved. | E11 | I can correct a subject after I have confirmed it | Must | 5 | None on this story |
 | US-49 | Update a link that was saved before, and undo that update. | E1 | one page does not become two items, and a mistake is reversible | Must | 7 | None on this story |
-| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 6 | Merchant weight 5 is draft, pending Miguel |
+| US-50 | Rank search matches. | E3 | the item I meant is not buried under a weak match | Must | 6 | None on this story |
 | US-51 | Sync in the background and show errors. | E4 | I do not have to press a backup button and I can see a real failure | Must | 5 | None on this story |
 | US-52 | Import a zip and merge it. | E4 | a file fallback can fill this phone without wiping it | Must | 3 | None on this story |
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | I can read the app in light and dark and with reduced motion | Must | 6 | None on this story |
@@ -316,25 +313,19 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
 | US-61 | Filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 0 | In E1. Filter only. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |
-| US-63 | Copy a code he marked. | E9 | I can copy a code without selecting it by hand each time (3 Should) | Should | 0 | None on this story |
 | US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (8 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
 | US-65 | Add a photo from the camera. | E1 | I can keep a page without a share from another app (2 Should) | Should | 0 | None on this story |
 | US-66 | Keep a trash beyond undo. | Cross-cutting | I can recover it after the undo snackbar has gone (2 Should) | Should | 0 | None on this story |
 | US-67 | Notice a duplicate image or PDF. | E1 | I do not keep two copies of the same file (1 Could) | Could | 0 | None on this story |
-| US-68 | Record a return-by date and a warranty end. | Cross-cutting | those dates behave like an expiry when I type them (1 Should) | Should | 0 | None on this story |
-| US-69 | Pin a shortcut or a widget. | Cross-cutting | I can open that item without hunting for it (2 Could) | Could | 0 | None on this story |
 | US-70 | See what is not ready for offline. | Cross-cutting | I know what will be missing before I go offline (1 Could) | Could | 0 | None on this story |
 | US-71 | Triage the inbox in a batch. | E3 | filing does not mean opening each row (1 Could) | Could | 0 | None on this story |
 | US-72 | Score whether topics are useful. | E11 | usefulness can be judged without me hand-labeling items and without sending counts off the phone (3 Could) | Could | 0 | None on this story |
 | US-73 | Decide sync conflicts and deletions. | Cross-cutting | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
-| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 13 | Lock-screen reminder decided 15:59 IST. Topic exclusion is the 15:55 IST amendment. Other criteria stay proposed |
+| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 12 | Lock-screen reminder decided 15:59 IST. Topic exclusion is the 15:55 IST amendment. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 8 | Proposed, pending Miguel |
 | US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 12 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
 | US-80 | Keep the permission set to an allowlist. | Cross-cutting | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
 | US-81 | Publish a sideload signing policy. | E6 | a later install can replace the app without losing the vault | Proposed Must | 6 | Proposed, pending Miguel |
-| US-82 | Search and filter by merchant. | Cross-cutting | I can find a shop without reading every item (7 Should) | Should | 0 | Scope and priority stay open for Miguel |
-| US-83 | Record an amount and a currency. | Cross-cutting | the figure is stored as money, not as a bare number (4 Should) | Should | 0 | Scope and priority stay open for Miguel |
-| US-84 | Filter by purchase date. | Cross-cutting | I can see what I bought in a stretch of days (3 Should) | Should | 0 | None on this story |

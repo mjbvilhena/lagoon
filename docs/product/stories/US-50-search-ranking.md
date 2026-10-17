@@ -19,7 +19,7 @@ Rank search matches.
 
 ## Background
 
-- Starting weights, as consensus already recorded in the specification: title 10, tags 5, personal note 3, body 1, extracted text 1, OCR text 1. Snapshot text, source domain, and sending app are weight 1, the same as body. A merchant weight of 5, the same as tags, is a draft pending Miguel. It applies only when US-82 is in the build. It is not in the approved specification, and the bots do not agree on whether he must accept it. This story does not decide it.
+- Starting weights, as consensus already recorded in the specification: title 10, tags 5, personal note 3, body 1, extracted text 1, OCR text 1. Snapshot text, source domain, and sending app are weight 1, the same as body.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: changing these weights in Settings. The FTS engine spike is US-57.
 
@@ -45,11 +45,6 @@ Rank search matches.
   - Given an item contains "café"
   - When he types "cafe" or the prefix "caf"
   - Then that item matches. Accent folding uses `unicode61 remove_diacritics 2`
-- **Scenario: a merchant** — draft, pending Miguel. Not a Must.
-  - Given US-82 is in the build, and one ordinary item matches only in the merchant column and another matches only in a tag, with the same term frequency and the same field length
-  - When he searches
-  - Then the draft weight of 5, the same as tags, would leave neither ahead on weight
-  - And that weight is not decided. Miguel has not accepted it
 - **Scenario: the order is testable** — Must
   - Given a fixed set of items
   - When the same query runs twice

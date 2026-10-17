@@ -46,7 +46,7 @@ Set a reminder.
 - **Scenario: the notification** — Must
   - Given the time arrives for an ordinary item
   - When the notification is posted, including on the lock screen
-  - Then it shows the item title. It shows a code only when US-63 is built and he has marked a code on that item
+  - Then it shows the item title
 - **Scenario: open it** — Must
   - Given he taps the notification
   - When the item is not sensitive

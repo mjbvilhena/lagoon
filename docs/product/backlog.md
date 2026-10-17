@@ -7,7 +7,7 @@
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-84 by Miguel's bots. Stories stay Draft. Round-2 verdicts at `40bb526` are recorded in `docs/product/stories/REVIEW-PACK.md` and are not a status of Approved. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. Stopped at **story review and approval** of the remaining stories by Miguel's bots. US-63, US-68, US-69, US-82, US-83, and US-84 were removed on 2026-10-17. Stories stay Draft. Round-2 verdicts at `40bb526` are recorded in `docs/product/stories/REVIEW-PACK.md` and are not a status of Approved. See `docs/sdlc/pipeline-state.md`.
 
 Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
 
@@ -151,10 +151,10 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. These ids were added while refining. All Draft. Not implemented.
 
 - Splits: US-49 repeat link, US-50 ranking, US-51 sync worker, US-52 import, US-53 palette and motion, US-54 expiry, US-55 reschedule.
-- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source (Should, now in E1), US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Should), US-66 trash (Should), US-67 duplicate files (Could), US-68 return-by and warranty dates (Should), US-69 pin one item (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Could).
+- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source (Should, now in E1), US-62 upcoming (Should), US-65 camera (Should), US-66 trash (Should), US-67 duplicate files (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Could).
 - Proposed criteria, pending Miguel's approval, status still Draft: US-64 sharing out (Should), US-75 sensitive-item handling, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
 - Still open for Miguel, no asserting criterion: US-73 conflicts and deletions, US-74 key transport, US-76 topic-call privacy, US-77 exact alarms.
-- Split from US-68 in round 2: US-82 merchant, US-83 amount and currency, US-84 purchase date. All Should. All Draft.
+- Removed by Miguel on 2026-10-17, numbers not reused, not an approval: US-68, US-69, US-82, US-83, and US-84 at 19:00 IST, and US-63 at 19:01 IST. Picking merchants out of a receipt stays Later, with no story, as the specification already says.
 
 ## Open questions
 
@@ -176,9 +176,6 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - US-28 keeps Add date as a Must. Not changed.
-- US-82, US-83, and US-84 scope and priority. The specification lists picking out merchants as Later. The bots split between Could and keeping Should. The stories stay Should. Not decided.
-- US-68 stays the date story. Not changed.
-- US-50 merchant weight 5. Draft, pending Miguel. Not decided.
 - A per-item "Include in topics" control. It goes beyond the 18:05 IST quote. Proposed on US-75. Not decided.
 - Whether a sensitive notification's private version is also only "Lagoon reminder". Proposed on US-75. Not decided.
 - Whether the vault key is bound to device authentication. US-35 does not choose it.

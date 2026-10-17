@@ -44,7 +44,7 @@ Reschedule reminders after a restart or a clock change.
   - And the origin install posts only when its own check-in is that newest one and it checked in within the last 7 days
   - And when two check-ins are equal, the lower install id posts
   - And a check-in is the timestamp an install writes when the app is opened or when a sync succeeds
-  - And the same rule covers a reminder, an expiry, a return-by date, and a warranty end
+  - And the same rule covers a reminder and an expiry
 - **Scenario: a signed-out install** — Must
   - Given an install is signed out
   - When the time arrives
