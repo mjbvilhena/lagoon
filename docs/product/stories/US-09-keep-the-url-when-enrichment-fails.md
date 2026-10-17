@@ -1,7 +1,11 @@
-# US-09 Keep the URL when enrichment does not run
+# US-09 Keep the link when the page cannot be fetched
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> At commit `9e7de63`, Dev Bot, Scout, Mikey's Assistant, Household, and Leisure each returned an Approve review verdict on this story. Those verdicts are not recorded as approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E2. One scenario is Should.
 
 ## Title
 
@@ -10,29 +14,29 @@ Keep the link when the page cannot be fetched.
 ## User story
 
 **As a** person named Miguel
-**I want** a saved link to remain, with its URL, when the phone is offline or the fetch fails
-**So that** a bad network does not throw away the thing I just saved
+**I want** the URL to stay saved when the page cannot be fetched
+**So that** a failed fetch does not lose the link
 
 ## Background
 
-- He said enrichment is best effort and must fail gracefully offline, keeping the URL.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: retry policy beyond "the item survives". A retry schedule was not requested.
+- The item already exists before the fetch.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: retry policy beyond the Should scenario. Topic queueing is US-44.
 
 ## Acceptance criteria
 
 - **Scenario: save while offline** — Must
-  - Given the device has no network
-  - When he shares or types a valid URL
-  - Then a `link` item exists with that URL, and the app does not crash or discard the item because enrichment could not start
+  - Given he saves a URL with no network
+  - When the save completes
+  - Then the item exists, the source URL is intact, and no preview or readable text is invented
 - **Scenario: the server errors or times out** — Must
-  - Given the device has a network and the fetch fails
-  - When enrichment ends
-  - Then the link item and its URL are still there, empty fields stay empty, and he can see that details were not added
-- **Scenario: a later success can fill gaps** — Nice
-  - Given a link item that previously failed enrichment
-  - When a later fetch succeeds
-  - Then empty title, description, preview, and readable text can be filled without removing the URL or his personal note
+  - Given the fetch returns an error or times out
+  - When enrichment stops
+  - Then the item and its URL remain, and he can see that the page details are not available
+- **Scenario: a later success can fill gaps** — Should
+  - Given an earlier fetch failed and a later fetch succeeds
+  - When that later fetch returns details the item does not have
+  - Then those gaps fill and text he already has is not overwritten
 
 ## Analytics and observability (optional)
 
@@ -40,15 +44,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The failure is visible as text on the item, not only as a color.
-- No placeholder text pretending a description was fetched.
+- "Page details are not available" is visible. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Blocked by US-01 or US-06 for the link item.
-- The Nice criterion is not required for the story's implementation DoD.
-- Timeout length is not specified. Do not invent a number in this story. Technical design can set it later.
+- The Should scenario does not block this story.
+- A manual snapshot retry is US-33.
 
 ## Implementation notes
 
-Failure must not roll back the insert of the URL. Not a design spec.
+Failure must not roll back the URL. Not a design spec.

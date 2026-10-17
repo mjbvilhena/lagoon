@@ -1,7 +1,12 @@
-# US-16 Filter by type and by tag
+# US-16 Filter items by type and by tag
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E3.
 
 ## Title
 
@@ -10,33 +15,33 @@ Filter items by type and by tag.
 ## User story
 
 **As a** person named Miguel
-**I want to** narrow the list or the search results by type and by tag
-**So that** I can look only at PDFs, or only at items I tagged a certain way
+**I want** to limit the list to a type and to tags
+**So that** I can look at one kind of item without reading the rest
 
 ## Background
 
-- He asked to filter by type and by tag, in the same breath as search.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: saved searches, boolean query language.
+- Several tags combine as AND. Source filters are US-61.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: saved searches.
 
 ## Acceptance criteria
 
-- **Scenario: filter the home list by type** — Must
+- **Scenario: filter by type** — Must
   - Given items of more than one type
-  - When he filters to `PDF`
-  - Then only PDF items are shown, still newest first
-- **Scenario: filter search by tag** — Must
-  - Given a search that matches two items and only one of them has the chosen tag
-  - When he applies that tag
-  - Then only the tagged match remains, still highlighted
+  - When he filters the home list to one type
+  - Then only that type is shown
+- **Scenario: several tags** — Must
+  - Given he selects two tags
+  - When the filter is applied
+  - Then an item is shown only when it has both tags
 - **Scenario: filter that matches nothing** — Must
-  - Given no item has the chosen tag
-  - When he applies it
-  - Then the list is empty and he can see that the filter, not a crash, produced the empty list
+  - Given no item has the selected type and tags
+  - When the filter is applied
+  - Then he sees that nothing matches
 - **Scenario: clear filters** — Must
-  - Given a type or tag filter is on
+  - Given a filter is on
   - When he clears it
-  - Then the items that were hidden come back
+  - Then the unfiltered list returns
 
 ## Analytics and observability (optional)
 
@@ -44,14 +49,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The active filter is visible as text, not only as a colored chip.
-- Type names are the four he named: link, note, image, PDF.
+- Selected filters are visible. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Uses tags from US-14 and search from US-15.
-- Combining type and tag: both apply together (intersection). That is the reading of "filter by type and tag." If he wanted either/or, that would change this criterion.
+- Filters compose with US-15. Date filters are US-39.
 
 ## Implementation notes
 
-Filters compose with FTS. Not a design spec.
+Not a design spec.

@@ -1,8 +1,12 @@
-# US-38 See untagged items in an inbox
+# US-38 File new captures from an Untagged inbox
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Bots' consensus on Q9. Not approval.
+> Sign-off on file: none.
+> Story approval has not been recorded. Epic approval is not story approval.
+> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
+
+**MoSCoW:** Must. v1, from the approved specification.
 
 ## Title
 
@@ -11,30 +15,37 @@ File new captures from an Untagged inbox.
 ## User story
 
 **As a** person named Miguel
-**I want** an Untagged / Inbox view of items that have no tags
-**So that** new captures are easy to file
+**I want** untagged items to sit in an inbox until I file them or mark them filed
+**So that** new captures do not disappear into the full list before I tag them
 
 ## Background
 
-- Consensus: an Untagged / Inbox view so new captures get filed.
-- Inbox here is a view of items with no tags. It is not a tag named Inbox that the app inserts.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: an automatic tag. A second inbox for read items.
+- A note is not a tag. The inbox is a view, not a stored tag.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: multi-select triage (US-71, Could).
 
 ## Acceptance criteria
 
 - **Scenario: a new untagged item** — Must
-  - Given he saves an item and adds no tag
-  - When he opens Untagged / Inbox
-  - Then that item is in the view
+  - Given he saves an item and does not tag it
+  - When he opens the inbox
+  - Then the item is listed, including when it has no note
+- **Scenario: the count** — Must
+  - Given three untagged items
+  - When the inbox is shown
+  - Then the count is 3
 - **Scenario: he tags it** — Must
-  - Given an item in that view
+  - Given an inbox item
   - When he adds a tag
-  - Then it leaves the Untagged / Inbox view and remains in the vault
+  - Then it leaves the inbox
+- **Scenario: mark filed** — Must
+  - Given an inbox item
+  - When he marks it filed
+  - Then it leaves the inbox and no tag is added
 - **Scenario: empty** — Must
-  - Given every item has at least one tag, or the vault is empty
-  - When he opens the view
-  - Then he sees that nothing is waiting, in real words, with no sample item
+  - Given every item is tagged or marked filed
+  - When he opens the inbox
+  - Then he sees that the inbox is empty
 
 ## Analytics and observability (optional)
 
@@ -42,14 +53,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The view's name is text: Untagged or Inbox, as the UX artefact settles. Not lorem.
-- It is a filter, and a screen reader can tell that it is selected.
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- US-28 is one way to add a tag immediately. This view catches what he skipped.
-- Do not create a stored tag called Inbox.
+- Tags are US-14.
 
 ## Implementation notes
 
-A query for items with no tags. Not a design spec.
+A query, not a stored Inbox tag. Not a design spec.

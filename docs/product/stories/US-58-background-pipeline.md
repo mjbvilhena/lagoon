@@ -1,0 +1,56 @@
+# US-58 Run enrichment, snapshot, OCR, and topics in that order
+
+> **Approval status: Draft. Not approved.**
+> Sign-off on file: none.
+> Story approval has not been recorded. Epic approval is not story approval.
+> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+
+**MoSCoW:** Must. v1 enabler. The review asked for the pipeline order.
+
+## Title
+
+Run enrichment, snapshot, OCR, and topics in that order.
+
+## User story
+
+**As a** person named Miguel
+**I want** background work to run in a fixed order and to re-index when text changes
+**So that** search and topics see the text that actually exists
+
+## Background
+
+- Order: the save returns first. Then enrichment for a link. Then the snapshot from that same fetch. Then OCR. Then the topic job.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: the topic payload (US-76).
+
+## Acceptance criteria
+
+- **Scenario: the order** — Must
+  - Given he saves a link with an image attachment
+  - When each step finishes
+  - Then the order is save, enrich, snapshot, OCR, topic, and a later step can start only after the step it needs
+- **Scenario: re-index** — Must
+  - Given a step adds text
+  - When that step finishes
+  - Then FTS is updated from that text
+- **Scenario: an edit** — Must
+  - Given he edits the body or US-49 updates the item
+  - When the new version is stored
+  - Then FTS is re-indexed and the topic job is queued again. Enrichment and OCR re-run only when their input changed
+
+## Analytics and observability (optional)
+
+Not applicable. No analytics.
+
+## Design and a11y notes
+
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
+
+## Dependencies and risks
+
+- US-08, US-31, US-33, US-41, and US-44 are the steps.
+
+## Implementation notes
+
+Not a design spec.

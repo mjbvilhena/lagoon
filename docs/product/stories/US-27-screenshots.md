@@ -1,7 +1,11 @@
 # US-27 Review screenshots of the main screens
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> At commit `9e7de63`, Dev Bot, Scout, Mikey's Assistant, Household, and Leisure each returned an Approve review verdict on this story. Those verdicts are not recorded as approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E6. The images exist only when an emulator exists.
 
 ## Title
 
@@ -15,25 +19,24 @@ Review screenshots of the main screens.
 
 ## Background
 
-- He asked for those five captures, from an emulator when possible, saved with the delivery artifacts.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a marketing site, device frames, and fake images drawn to look like the app.
+- No images are fabricated. Settings shows sync state, not a backup button.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a marketing page, and a Back up now control in the settings shot.
 
 ## Acceptance criteria
 
 - **Scenario: emulator available** — Must
   - Given an emulator can run the app
-  - When the screenshots are taken
-  - Then there is one image each for home, search results, item detail, the share sheet offering the vault, and settings, and they show the real app, not a mock
+  - When screenshots are taken
+  - Then home, search results, item detail, share-to-save, and settings are captured from that emulator
 - **Scenario: search and settings** — Must
   - Given those shots
-  - When he looks at search
-  - Then the results are a real query against saved items, with a visible highlight
-  - And the settings shot shows the real sync state, including the "not configured" explanation from US-17 when that is the build. It does not show a Back up now button
+  - When he looks at settings
+  - Then it shows the real sync state, including the not-configured explanation from US-17 when that is the build, and it does not show a Back up now button
 - **Scenario: no emulator** — Must
-  - Given no emulator is available in the environment
-  - When the delivery is reported
-  - Then the report says why the shots are missing and does not include invented images
+  - Given no emulator is available
+  - When this story is reviewed
+  - Then no screenshot file is invented, and the gap is stated
 
 ## Analytics and observability (optional)
 
@@ -41,14 +44,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Shots are evidence of the UX artefact once that artefact has been implemented. They are not a substitute for the UX artefact.
-- Captures should include the empty home list only if that is the honest state. The home shot he asked for can show saved items. Do not seed lorem to fill the screen.
+- Shots use the real UI copy. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Blocked by an implemented app and by the UX artefact. Neither exists.
-- Share-sheet captures depend on the emulator image including a share UI.
+- The app does not exist yet, so no shots exist. That is the third scenario, not a failure of this draft.
 
 ## Implementation notes
 
-Capture during a later implementation pass. Not started now. Not a design spec.
+Test approach: capture is manual on an emulator during implementation. Do not commit generated stand-in images now. Not a design spec.

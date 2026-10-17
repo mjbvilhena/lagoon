@@ -1,7 +1,11 @@
-# US-13 Delete an item and undo it
+# US-13 Delete an item and undo that delete
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E3. Trash beyond this undo is Could (US-66).
 
 ## Title
 
@@ -10,33 +14,37 @@ Delete an item and undo that delete.
 ## User story
 
 **As a** person named Miguel
-**I want to** delete an item and immediately undo that if I made a mistake
-**So that** I can remove something without being afraid of a mis-tap
+**I want** to delete an item and undo that delete until I leave the confirmation
+**So that** a mistake does not destroy the item, and a finished delete really removes it
 
 ## Background
 
-- He asked for delete with undo.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a trash folder that keeps items for days. He did not ask for one. How long undo stays available was not specified. This story does not invent a timer.
+- "Leaves that confirmation" means he dismisses the undo snackbar, navigates away from the screen that shows it, or the snackbar times out. A deferred hard delete is stored, so process death after that point still completes the delete.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a trash folder (US-66), and how a deletion propagates to another device (US-73).
 
 ## Acceptance criteria
 
 - **Scenario: delete** — Must
-  - Given a saved item on the list
+  - Given an item is visible
   - When he deletes it
-  - Then it disappears from the list and from search, and an undo action is available
+  - Then it leaves the home list and an undo snackbar is shown
 - **Scenario: undo** — Must
-  - Given he just deleted an item and has not dismissed the undo action
-  - When he undoes
-  - Then the item is back, including its personal note, tags, and any stored image or PDF
-- **Scenario: undo is not taken** — Must
-  - Given he deleted an item
-  - When he dismisses the undo action, or leaves that confirmation without undoing
-  - Then the item stays deleted, including its stored file
+  - Given the snackbar is showing
+  - When he chooses Undo
+  - Then the item returns with its text, attachments, FTS row, reminders, topic links, queued topic job, and pending suggestions
+- **Scenario: the confirmation ends** — Must
+  - Given he dismisses the snackbar, leaves that screen, or the snackbar times out
+  - When the deferred delete runs, including after the process was killed in between
+  - Then the item, its FTS row, reminders, topic links, queued topic job, and pending suggestions are gone
+- **Scenario: a topic note from this item** — Must
+  - Given a topic note was written from this item
+  - When the hard delete finishes
+  - Then the note stays on the topic, still shows its date and source, and is marked "item deleted"
 - **Scenario: nothing to delete** — Must
-  - Given the list is empty
-  - When he looks for a delete action on an item
-  - Then there is no item to delete
+  - Given he is not viewing an item
+  - When no delete is available
+  - Then no snackbar appears
 
 ## Analytics and observability (optional)
 
@@ -44,15 +52,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Undo is a named action, not a gesture with no alternative.
-- The UX artefact chooses snackbar, banner, or dialog. This story does not.
-- Delete and undo are available to a screen reader and to a keyboard or switch where the platform provides one.
+- Undo is a named action. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Open: a timeout was not requested. "Dismiss or leave" is the end of undo in this story. If he wants a fixed number of seconds, that is a change to this criterion, not an assumption.
-- Stored files must come back on undo. A delete that orphans the file and an undo that loses the file both fail this story.
+- US-45 shows the same "item deleted" note. US-48 can remove that note.
+- Reminder cancel and restore are also US-55.
 
 ## Implementation notes
 
-Undo has to restore the row and the file. Not a design spec.
+Persist the pending hard delete. Not a design spec.

@@ -1,7 +1,11 @@
 # US-05 Add a note by hand
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E1.
 
 ## Title
 
@@ -10,29 +14,33 @@ Add a note by hand.
 ## User story
 
 **As a** person named Miguel
-**I want to** write a note inside the vault
-**So that** I can keep something that did not come from another app's share sheet
+**I want** to type a note inside the vault
+**So that** I can keep something that did not come from a share
 
 ## Background
 
-- He asked for a manual add of a note, not only share-sheet capture.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: sharing text in (US-02), checklists, and rich text.
+- Creating a note may fill a title. Editing later is US-12 and refuses an empty title. Those rules do not clash: auto-title runs only when he saves a new note without typing a title.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: changing an existing title to empty (US-12 refuses that).
 
 ## Acceptance criteria
 
 - **Scenario: save a note** — Must
-  - Given he is in the vault
-  - When he adds a note with a title and a body and confirms
-  - Then one item of type `note` is stored with that title, that body, a created date, no source URL, and whatever personal note and tags he entered, including none
-- **Scenario: empty note** — Must
-  - Given the title and the body are both empty
-  - When he tries to save
-  - Then no item is stored and he can see why
-- **Scenario: note with no personal "why"** — Must
-  - Given he enters a title and a body and leaves the personal note blank
+  - Given he types a body and a title
   - When he saves
-  - Then the item is stored and the personal note stays empty
+  - Then one note item is stored with that title and body, and he sees "Saved to Lagoon"
+- **Scenario: body only** — Must
+  - Given he types a body and leaves the title empty
+  - When he saves
+  - Then the title follows the US-02 rule: the first line, at most 120 characters, and the full body stays in the body
+- **Scenario: empty note** — Must
+  - Given the body is empty
+  - When he tries to save
+  - Then no item is stored and he sees that the note was not saved
+- **Scenario: no personal why** — Must
+  - Given he does not fill "why it matters"
+  - When he saves a note that has a body
+  - Then the item is stored and that field stays empty
 
 ## Analytics and observability (optional)
 
@@ -40,14 +48,11 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Labels for title, body, and the optional why-it-matters note come from real words, not placeholder lorem. The UX artefact will set the exact strings.
-- Errors are text, not color alone.
-- No placeholder text shipped as if it were his content.
+- The empty-note message is specific. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Q9 is about sharing, not this in-app form. The personal note on this form stays optional. Sharing's one tap and tag chips are US-01 and US-28.
-- Independent value: a note does not need a share intent.
+- Topic processing after the save is US-41, in the order US-58 defines.
 
 ## Implementation notes
 

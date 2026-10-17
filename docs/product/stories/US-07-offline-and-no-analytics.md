@@ -1,7 +1,12 @@
-# US-07 Use the vault offline, with no analytics
+# US-07 Use the saved vault with no network and no analytics
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E1 and the specification.
 
 ## Title
 
@@ -10,44 +15,42 @@ Use the saved vault with no network and no analytics.
 ## User story
 
 **As a** person named Miguel
-**I want to** open, read, and add notes with no network, and I want the app to keep no analytics
-**So that** the vault is actually on my phone and does not report how I use it
+**I want** the vault I already saved to keep working with no network, and to send no analytics
+**So that** I can read and search it offline, and the app does not report my use
 
 ## Background
 
-- He said the primary store is on-device, the app works fully offline, and there are no analytics.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: making Drive sync work offline. Sync needs a network and is E4. Link enrichment needs a network and is E2. Topic extraction needs a network and is queued (E11). That queue is not analytics, and this story does not approve E11.
+- The phone is the primary copy. Analytics, usage telemetry, and a crash-reporting product are out of the specification.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a page fetch while offline (US-09) and the topic call (US-44). Those wait. They do not block reading what is already stored.
 
 ## Acceptance criteria
 
-- **Scenario: airplane mode after items exist** — Must
-  - Given he has already saved at least one note and one image
-  - When the device has no network and he opens the app
-  - Then he can read those items, including the image bytes, and he can add another note
+- **Scenario: airplane mode** — Must
+  - Given items already exist, including a PDF whose text was extracted, a link with a stored snapshot, and a search match that occurs only in that PDF text
+  - When the phone has no network
+  - Then he can open the PDF text, open the snapshot, and see that search hit
 - **Scenario: a fresh install with no network and no OAuth client ID** — Must
-  - Given a build with no OAuth client ID and no network
-  - When he installs and opens the app
-  - Then the app opens, he can add a note, and it does not crash on the missing client ID
-- **Scenario: analytics** — Must
-  - Given the app build
-  - When its dependency list and outbound behavior are reviewed
-  - Then it does not include an analytics or usage-telemetry SDK and it does not send usage events
+  - Given a new install, no network, and no OAuth client ID
+  - When he opens the app
+  - Then it does not crash, he can save and read local items, and Settings explains that sync is not configured (US-17)
+- **Scenario: no analytics libraries** — Must
+  - Given the release classpath and manifest
+  - When CI inspects them
+  - Then Firebase Analytics, Crashlytics, and any other usage-analytics dependency are absent
 
 ## Analytics and observability (optional)
 
-The brief forbids analytics. This story's Must criterion is the absence of that, not a list of events.
+The specification forbids analytics. This story's Must is that absence.
 
 ## Design and a11y notes
 
-- Offline is not an error banner that blocks the library.
-- No placeholder text in the shipped UI.
+- Offline use has no extra screen. No placeholder sentences.
 
 ## Dependencies and risks
 
-- US-05 and US-03 (or any saved image) provide the fixtures. This story is still the one that requires offline use.
-- "No analytics" includes not adding a crash-reporting product. He said no analytics. Crash reporting was not requested and is not added here.
+- Search behavior is US-15 and US-50. This story only requires a hit that is already indexed.
 
 ## Implementation notes
 
-Room (or the on-device store chosen in an approved design) is the primary store. Do not add Firebase Analytics or an equivalent. Not a design spec.
+Test approach: the analytics check is an automated CI rule on dependencies and the manifest, not a hand look. Not a design spec.

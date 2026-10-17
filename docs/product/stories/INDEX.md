@@ -2,62 +2,94 @@
 
 > **Approval status: Draft. Not approved.**
 > This index only lists files. Listing a story here is not story approval.
-> On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule is not a sign-off. No story below is approved.
+> Verdicts at commit `9e7de63` are review verdicts, not approvals. Status stays Draft until all five bots re-review.
 > Sign-off on file: none.
-> Updated 2026-10-17 after the E11 story drafts (US-41 through US-47) and the backlog review the same day. Listing those drafts is not approval.
+> Updated 2026-10-17 after the story revision. US-48 through US-81 were not in the review at `9e7de63`.
 
-Stories were drafted in the same run as the specification because the request asked for them. The pipeline normally refines stories after epic approval. That order was not treated as a skip of the gates. Design and implementation are still blocked.
+File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
-File names for US-17 through US-21, US-28, and US-30 were kept so older links still resolve. The titles below are the current story titles.
+| ID | Title | Epic | MoSCoW | Path | Approval |
+|---|---|---|---|---|---|
+| US-01 | Share a link into the vault | E1 | Must | `docs/product/stories/US-01-share-a-link.md` | Draft |
+| US-02 | Share plain text into the vault | E1 | Must | `docs/product/stories/US-02-share-plain-text.md` | Draft |
+| US-03 | Share an image into the vault | E1 | Must | `docs/product/stories/US-03-share-an-image.md` | Draft |
+| US-04 | Share a PDF into the vault | E1 | Must | `docs/product/stories/US-04-share-a-pdf.md` | Draft |
+| US-05 | Add a note by hand | E1 | Must | `docs/product/stories/US-05-add-a-note-by-hand.md` | Draft |
+| US-06 | Add a URL by hand | E1 | Must | `docs/product/stories/US-06-add-a-url-by-hand.md` | Draft |
+| US-07 | Use the saved vault with no network and no analytics | E1 | Must | `docs/product/stories/US-07-offline-and-no-analytics.md` | Draft |
+| US-08 | Enrich a saved link from the page | E2 | Must | `docs/product/stories/US-08-enrich-a-link.md` | Draft |
+| US-09 | Keep the link when the page cannot be fetched | E2 | Must | `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md` | Draft |
+| US-10 | Browse saved items, newest first | E3 | Must | `docs/product/stories/US-10-browse-newest-first.md` | Draft |
+| US-11 | Read a saved item | E3 | Must | `docs/product/stories/US-11-read-an-item.md` | Draft |
+| US-12 | Edit a saved item | E3 | Must | `docs/product/stories/US-12-edit-an-item.md` | Draft |
+| US-13 | Delete an item and undo that delete | E3 | Must | `docs/product/stories/US-13-delete-with-undo.md` | Draft |
+| US-14 | Manage tags on saved items | E3 | Must | `docs/product/stories/US-14-manage-tags.md` | Draft |
+| US-15 | Search the vault and see highlighted matches | E3 | Must | `docs/product/stories/US-15-search.md` | Draft |
+| US-16 | Filter items by type and by tag | E3 | Must | `docs/product/stories/US-16-filter-by-type-and-tag.md` | Draft |
+| US-17 | See that sync is not configured | E4 | Must | `docs/product/stories/US-17-sync-not-configured.md` | Draft |
+| US-18 | Sign in so the vault can sync | E4 | Must | `docs/product/stories/US-18-sign-in-and-sync.md` | Draft |
+| US-19 | Prefer an unmetered network for background sync | E4 | Must | `docs/product/stories/US-19-unmetered-sync.md` | Draft |
+| US-20 | Receive the vault on another install | E4 | Must | `docs/product/stories/US-20-receive-the-vault.md` | Draft |
+| US-21 | Export a zip to a place he chooses | E4 | Must | `docs/product/stories/US-21-export-a-zip.md` | Draft |
+| US-22 | Choose light, dark, or the system theme | E5 | Must | `docs/product/stories/US-22-calm-appearance.md` | Draft |
+| US-23 | Show a launcher icon and the name Lagoon | E5 | Must | `docs/product/stories/US-23-icon-and-name.md` | Draft |
+| US-24 | Install a signed release APK without the Play Store | E6 | Must | `docs/product/stories/US-24-signed-apk.md` | Draft |
+| US-25 | Cover search, sync and zip packaging, and a basic screen with automated tests | E6 | Must | `docs/product/stories/US-25-automated-tests.md` | Draft |
+| US-26 | Follow written steps to build, sideload, and create the OAuth client | E6 | Must | `docs/product/stories/US-26-readme-build-and-oauth.md` | Draft |
+| US-27 | Review screenshots of the main screens | E6 | Must | `docs/product/stories/US-27-screenshots.md` | Draft |
+| US-28 | Optionally tag a save from the last-used tags | E1 | Must | `docs/product/stories/US-28-quick-add-sheet.md` | Draft |
+| US-29 | Rename a tag, merging only after he confirms a clash | E3 | Must | `docs/product/stories/US-29-rename-a-tag.md` | Draft |
+| US-30 | Do not offer backup or restore controls | E4 | Must | `docs/product/stories/US-30-no-manual-backup.md` | Draft |
+| US-31 | Recognize English text on the device | E7 | Must | `docs/product/stories/US-31-on-device-text-recognition.md` | Draft |
+| US-32 | Keep more than one attachment on an item | E1 | Must | `docs/product/stories/US-32-multiple-attachments.md` | Draft |
+| US-33 | Keep an offline snapshot of a saved page | E2 | Must | `docs/product/stories/US-33-offline-page-snapshot.md` | Draft |
+| US-34 | Set a reminder | E9 | Must | `docs/product/stories/US-34-set-a-reminder.md` | Draft |
+| US-35 | Encrypt the vault at rest | E8 | Must | `docs/product/stories/US-35-encrypt-at-rest.md` | Draft |
+| US-36 | Sync only ciphertext | E8 | Must | `docs/product/stories/US-36-sync-ciphertext.md` | Draft |
+| US-37 | Lock sensitive items, and optionally lock the app | E8 | Must | `docs/product/stories/US-37-biometric-lock.md` | Draft |
+| US-38 | File new captures from an Untagged inbox | E3 | Must | `docs/product/stories/US-38-untagged-inbox.md` | Draft |
+| US-39 | Sort and filter the list by when it was saved | E3 | Must | `docs/product/stories/US-39-sort-and-filter-by-date.md` | Draft |
+| US-40 | Fill an empty title from the page or the file | E1 | Must | `docs/product/stories/US-40-autofill-title.md` | Draft |
+| US-41 | Extract topics when an item is saved | E11 | Must | `docs/product/stories/US-41-extract-topics-on-save.md` | Draft |
+| US-42 | Link an item to a topic the vault already has | E11 | Must | `docs/product/stories/US-42-link-an-existing-topic.md` | Draft |
+| US-43 | Confirm a topic before it is created | E11 | Must | `docs/product/stories/US-43-confirm-a-new-topic.md` | Draft |
+| US-44 | Queue topic processing while offline | E11 | Must | `docs/product/stories/US-44-queue-topics-offline.md` | Draft |
+| US-45 | Read a topic | E11 | Must | `docs/product/stories/US-45-read-a-topic.md` | Draft |
+| US-46 | Reject, rename, or merge a suggested topic | E11 | Must | `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md` | Draft |
+| US-47 | Keep the item when the topic call fails | E11 | Must | `docs/product/stories/US-47-topic-call-fails.md` | Draft |
+| US-48 | Manage a topic that is already saved | E11 | Must | `docs/product/stories/US-48-manage-saved-topics.md` | Draft |
+| US-49 | Update a link that was saved before, and undo that update | E1 | Must | `docs/product/stories/US-49-repeat-link-update.md` | Draft |
+| US-50 | Rank search matches | E3 | Must | `docs/product/stories/US-50-search-ranking.md` | Draft |
+| US-51 | Sync in the background and show errors | E4 | Must | `docs/product/stories/US-51-sync-worker-and-errors.md` | Draft |
+| US-52 | Import a zip and merge it | E4 | Must | `docs/product/stories/US-52-import-a-zip.md` | Draft |
+| US-53 | Use the teal palette, optional dynamic color, and reduced motion | E5 | Must | `docs/product/stories/US-53-palette-and-motion.md` | Draft |
+| US-54 | Notify before an expiry | E9 | Must | `docs/product/stories/US-54-expiry-notices.md` | Draft |
+| US-55 | Reschedule reminders after a restart or a clock change | E9 | Must | `docs/product/stories/US-55-reschedule-reminders.md` | Draft |
+| US-56 | Keep a stable identity for each item | Cross-cutting | Must | `docs/product/stories/US-56-item-data-model.md` | Draft |
+| US-57 | Prove that search and encryption can run together | Cross-cutting | Must | `docs/product/stories/US-57-fts5-sqlcipher-spike.md` | Draft |
+| US-58 | Run enrichment, snapshot, OCR, and topics in that order | Cross-cutting | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
+| US-59 | Use one Settings screen | Cross-cutting | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
+| US-60 | Browse topics and pending suggestions | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
+| US-61 | See and filter by where an item came from | E1 | Must | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
+| US-62 | See what is coming due | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Draft |
+| US-63 | Copy a code he marked | E9 | Should | `docs/product/stories/US-63-copy-a-code.md` | Draft |
+| US-64 | Share or open an item in another app | Cross-cutting | Not set | `docs/product/stories/US-64-share-or-open-out.md` | Draft |
+| US-65 | Add a photo from the camera | E1 | Could | `docs/product/stories/US-65-in-app-camera.md` | Draft |
+| US-66 | Keep a trash beyond undo | Cross-cutting | Could | `docs/product/stories/US-66-trash.md` | Draft |
+| US-67 | Notice a duplicate image or PDF | E1 | Could | `docs/product/stories/US-67-duplicate-files.md` | Draft |
+| US-68 | Record a return date, a warranty, and a purchase | Cross-cutting | Could | `docs/product/stories/US-68-purchase-fields.md` | Draft |
+| US-69 | Pin a shortcut or a widget | Cross-cutting | Could | `docs/product/stories/US-69-pin-or-widget.md` | Draft |
+| US-70 | See what is not ready for offline | Cross-cutting | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
+| US-71 | Triage the inbox in a batch | E3 | Could | `docs/product/stories/US-71-inbox-multi-select.md` | Draft |
+| US-72 | Score whether topics are useful | E11 | Should | `docs/product/stories/US-72-topic-usefulness.md` | Draft |
+| US-73 | Decide sync conflicts and deletions | Cross-cutting | Not set | `docs/product/stories/US-73-sync-conflicts-and-deletions.md` | Draft |
+| US-74 | Decide how the vault key reaches another device | E8 | Not set | `docs/product/stories/US-74-key-transport.md` | Draft |
+| US-75 | Decide what a sensitive item reveals | E8 | Not set | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
+| US-76 | Decide the topic call's provider, credential, and payload | E11 | Not set | `docs/product/stories/US-76-topic-call-privacy.md` | Draft |
+| US-77 | Decide whether reminders may use exact alarms | E9 | Not set | `docs/product/stories/US-77-exact-alarms.md` | Draft |
+| US-78 | Decide Drive scope and sign-out | E4 | Not set | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
+| US-79 | Decide whether a link preview can be skipped | E2 | Not set | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
+| US-80 | Decide the permission set | Cross-cutting | Not set | `docs/product/stories/US-80-permission-set.md` | Draft |
+| US-81 | Decide the sideload policy | E6 | Not set | `docs/product/stories/US-81-sideload-policy.md` | Draft |
 
-| ID | Title | Epic | Path | Approval |
-|---|---|---|---|---|
-| US-01 | Share a link into the vault | E1 | `docs/product/stories/US-01-share-a-link.md` | Draft |
-| US-02 | Share plain text into the vault | E1 | `docs/product/stories/US-02-share-plain-text.md` | Draft |
-| US-03 | Share an image into the vault | E1 | `docs/product/stories/US-03-share-an-image.md` | Draft |
-| US-04 | Share a PDF into the vault | E1 | `docs/product/stories/US-04-share-a-pdf.md` | Draft |
-| US-05 | Add a note by hand | E1 | `docs/product/stories/US-05-add-a-note-by-hand.md` | Draft |
-| US-06 | Add a URL by hand | E1 | `docs/product/stories/US-06-add-a-url-by-hand.md` | Draft |
-| US-07 | Use the vault offline, with no analytics | E1 | `docs/product/stories/US-07-offline-and-no-analytics.md` | Draft |
-| US-08 | Enrich a link when the page can be fetched | E2 | `docs/product/stories/US-08-enrich-a-link.md` | Draft |
-| US-09 | Keep the URL when enrichment does not run | E2 | `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md` | Draft |
-| US-10 | Browse items, newest first | E3 | `docs/product/stories/US-10-browse-newest-first.md` | Draft |
-| US-11 | Read an item | E3 | `docs/product/stories/US-11-read-an-item.md` | Draft |
-| US-12 | Edit an item, including why it matters | E3 | `docs/product/stories/US-12-edit-an-item.md` | Draft |
-| US-13 | Delete an item and undo it | E3 | `docs/product/stories/US-13-delete-with-undo.md` | Draft |
-| US-14 | Manage tags | E3 | `docs/product/stories/US-14-manage-tags.md` | Draft |
-| US-15 | Search with ranked, highlighted matches | E3 | `docs/product/stories/US-15-search.md` | Draft |
-| US-16 | Filter by type and by tag | E3 | `docs/product/stories/US-16-filter-by-type-and-tag.md` | Draft |
-| US-17 | See that sync is not configured | E4 | `docs/product/stories/US-17-backup-not-configured.md` | Draft |
-| US-18 | Sign in and let the vault sync | E4 | `docs/product/stories/US-18-back-up-now.md` | Draft |
-| US-19 | Keep background sync on unmetered networks | E4 | `docs/product/stories/US-19-automatic-backup.md` | Draft |
-| US-20 | Receive the vault on a new install | E4 | `docs/product/stories/US-20-restore-from-drive.md` | Draft |
-| US-21 | Export and import a zip | E4 | `docs/product/stories/US-21-export-and-import-a-zip.md` | Draft |
-| US-22 | Choose light, dark, or the system theme | E5 | `docs/product/stories/US-22-calm-appearance.md` | Draft |
-| US-23 | Show a launcher icon and the name Lagoon | E5 | `docs/product/stories/US-23-icon-and-name.md` | Draft |
-| US-24 | Install a signed release APK | E6 | `docs/product/stories/US-24-signed-apk.md` | Draft |
-| US-25 | Run the tests he named | E6 | `docs/product/stories/US-25-automated-tests.md` | Draft |
-| US-26 | Follow a README to build, sideload, and configure OAuth | E6 | `docs/product/stories/US-26-readme-build-and-oauth.md` | Draft |
-| US-27 | Review screenshots of the main screens | E6 | `docs/product/stories/US-27-screenshots.md` | Draft |
-| US-28 | File a capture with last-used tags | E1 | `docs/product/stories/US-28-quick-add-sheet.md` | Draft |
-| US-29 | Rename a tag, and merge when the name exists | E3 | `docs/product/stories/US-29-rename-a-tag.md` | Draft |
-| US-30 | No manual backup or restore | E4 | `docs/product/stories/US-30-backup-size-warning.md` | Draft |
-| US-31 | Recognize text on the device | E7 | `docs/product/stories/US-31-on-device-text-recognition.md` | Draft |
-| US-32 | Keep more than one attachment on an item | E1 | `docs/product/stories/US-32-multiple-attachments.md` | Draft |
-| US-33 | Keep an offline snapshot of a saved page | E2 | `docs/product/stories/US-33-offline-page-snapshot.md` | Draft |
-| US-34 | Set a reminder or expiry and get notified | E9 | `docs/product/stories/US-34-reminder-or-expiry.md` | Draft |
-| US-35 | Encrypt the vault at rest | E8 | `docs/product/stories/US-35-encrypt-at-rest.md` | Draft |
-| US-36 | Sync only ciphertext | E8 | `docs/product/stories/US-36-sync-ciphertext.md` | Draft |
-| US-37 | Lock sensitive items with a biometric | E8 | `docs/product/stories/US-37-biometric-lock.md` | Draft |
-| US-38 | See untagged items in an inbox | E3 | `docs/product/stories/US-38-untagged-inbox.md` | Draft |
-| US-39 | Sort and filter by the date saved | E3 | `docs/product/stories/US-39-sort-and-filter-by-date.md` | Draft |
-| US-40 | Fill the title from the page or the file | E1 | `docs/product/stories/US-40-autofill-title.md` | Draft |
-| US-41 | Extract topics when an item is saved | E11 | `docs/product/stories/US-41-extract-topics-on-save.md` | Draft |
-| US-42 | Link an item to a topic the vault already has | E11 | `docs/product/stories/US-42-link-an-existing-topic.md` | Draft |
-| US-43 | Confirm a topic before it is created | E11 | `docs/product/stories/US-43-confirm-a-new-topic.md` | Draft |
-| US-44 | Queue topic processing while offline | E11 | `docs/product/stories/US-44-queue-topics-offline.md` | Draft |
-| US-45 | Read a topic | E11 | `docs/product/stories/US-45-read-a-topic.md` | Draft |
-| US-46 | Reject, rename, or merge a suggested topic | E11 | `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md` | Draft |
-| US-47 | Keep the item when the topic call fails | E11 | `docs/product/stories/US-47-topic-call-fails.md` | Draft |
-
-No story is Done. Implementation has not started. Must acceptance criteria are not met in software because there is no software. US-01 through US-47 are v1 drafts. E10 (trip or collection grouping) has no stories. Q5 and Q10 are resolved in the specification and are not open. Miguel's decisions and the bots' consensus are not approval of this index or of any story. A compact review list is `docs/product/stories/REVIEW-PACK.md`. That list is not approval.
+No story is Done. Implementation has not started. US-64 and US-73 through US-81 fail the user-story artefact Definition of Done because their question is still open. The other stories pass artefact shape only. A compact review list is `docs/product/stories/REVIEW-PACK.md`. That list is not approval.

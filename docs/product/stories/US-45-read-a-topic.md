@@ -2,9 +2,10 @@
 
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
-> Story approval is delegated to Miguel's bots (2026-10-17). None has signed this story.
-> Epic E11 is Approved. This story is not.
-> Provider, credential storage, sensitive-item exclusion, and payload contents are open design-gate questions for Miguel. This story does not decide them.
+> Story approval has not been recorded. Epic approval is not story approval.
+> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+
+**MoSCoW:** Must. v1, from approved epic E11.
 
 ## Title
 
@@ -13,33 +14,37 @@ Read a topic.
 ## User story
 
 **As a** person named Miguel
-**I want** to open a topic and see its items and a summary
+**I want** to open a topic and see its items and the notes listed together
 **So that** I can look across what I saved on that subject
 
 ## Background
 
-- A topic he already has, or one he confirmed, should be readable as its own page: the items linked to it, and a summary of what those items added.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: editing an item from this page (US-12), search ranking (US-15), and inventing a topic that has no items. Provider, credential, sensitive-item exclusion, and payload stay open and are not answered by this page.
+- The summary is the notes. It is not a new AI call.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: editing an item (US-12) and search ranking (US-50).
 
 ## Acceptance criteria
 
 - **Scenario: open a topic** — Must
-  - Given a topic with at least one linked item and notes from those items
-  - When he opens the topic
-  - Then he sees the topic name, the linked items, and a summary made of those notes
+  - Given a topic has linked items
+  - When he opens it from the topic list (US-60)
+  - Then he sees the name, the linked items, and each note with its source item, date, and AI label
 - **Scenario: the summary is the notes** — Must
-  - Given the topic has notes from two items, added at different times
-  - When he reads the summary
-  - Then both are visible and the earlier one is still there
+  - Given those notes exist
+  - When the page is shown
+  - Then they are listed together and no new cloud call runs
 - **Scenario: an item that is not linked** — Must
-  - Given another saved item is not linked to this topic
+  - Given an item is not linked to this topic
   - When he opens the topic
-  - Then that item is not listed
+  - Then that item is absent
 - **Scenario: a deleted item** — Must
-  - Given a linked item is deleted and the undo period has ended (US-13)
+  - Given US-13 hard-deleted the source item
   - When he opens the topic
-  - Then that item is not listed. The notes already written stay
+  - Then the note stays, marked "item deleted"
+- **Scenario: empty** — Must
+  - Given a topic has no items and no notes
+  - When he opens it
+  - Then he sees the name and that nothing is linked
 
 ## Analytics and observability (optional)
 
@@ -47,20 +52,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The topic name is a heading a screen reader can announce. Each linked item has a name he can read.
-- Exact layout is for the later UX artefact.
 - No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Depends on a topic created or extended by US-42 or US-43.
-- Open, for Miguel at the design gate, not decided here. This page does not answer them:
-  - Which AI provider processes topics, and what are its data-retention terms?
-  - How is the API key or credential stored and protected, with no key baked into the APK in plain form?
-  - Are items marked sensitive excluded from cloud processing?
-  - What exactly is sent: full text, images, OCR output, or some other slice?
-- How he reaches the list of topics is the UX artefact. This story is the page once he is there.
+- He reaches this page from US-60.
 
 ## Implementation notes
 
-Read local topic, notes, and items. Not a design spec.
+Read local data. Not a design spec.

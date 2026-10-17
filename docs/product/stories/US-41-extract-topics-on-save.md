@@ -2,9 +2,10 @@
 
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
-> Story approval is delegated to Miguel's bots (2026-10-17). None has signed this story.
-> Epic E11 is Approved. This story is not.
-> Provider, credential storage, sensitive-item exclusion, and payload contents are open design-gate questions for Miguel. This story does not decide them.
+> Story approval has not been recorded. Epic approval is not story approval.
+> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+
+**MoSCoW:** Must. v1, from approved epic E11.
 
 ## Title
 
@@ -13,60 +14,63 @@ Extract topics when an item is saved.
 ## User story
 
 **As a** person named Miguel
-**I want** the vault to identify the main ideas and topics of something I just saved
-**So that** a later step can attach it to a topic without me typing the subject by hand
+**I want** the vault to identify main ideas and topic names after a save, once the earlier steps have text
+**So that** I do not have to type the subject by hand
 
 ## Background
 
-- Today a saved item has no topics. E11 says that when he shares or adds something, a cloud AI identifies its main ideas and topics. Readable content may leave the phone for that call. He accepted that. Drive sync stays ciphertext and is not this call.
-- Domain constraints: `get_domain_consultant` for capture, vault, and knowledge found no `DOMAIN.md`. No MUST/NEVER rules are implied. Do not invent any.
-- Out of scope: linking an existing topic (US-42), creating a new one (US-43), the offline queue (US-44), the topic page (US-45), renaming or merging a suggestion (US-46), and a failed call (US-47). Cloud OCR and a cloud vision API stay out (E7 is on-device). Choosing the provider, where the credential lives, whether a sensitive item is sent, and which bytes are sent.
+- The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
+- Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
+- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), and the topic page (US-45). Provider, credential storage, and payload slice stay open for Miguel (US-76). Whether a sensitive item is sent is delegated to his bots (US-75). The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
 
 ## Acceptance criteria
 
-- **Scenario: a save can be processed** — Must
-  - Given he shares an item into the vault or adds one inside it, the design gate has not forbidden this item, and a topic call can complete
-  - When the save has been stored
-  - Then a cloud AI call runs for that item and the vault keeps the main ideas and topic names the call returns, tied to that item
-  - And the call is not a Drive upload
-- **Scenario: both ways of saving** — Must
-  - Given a share from another app, and separately an item added inside the vault (a note or a URL)
-  - When each save is stored and the call can complete
-  - Then each item gets its own result. One save does not reuse another item's result
-- **Scenario: the call returns no topics** — Must
-  - Given the call succeeds and names no topics and no main ideas
+- **Scenario: after the earlier steps** — Must
+  - Given an ordinary item is stored and enrichment, snapshot, and OCR have finished or do not apply
+  - When the topic job runs
+  - Then a cloud call runs, the vault keeps the main ideas and topic names, and the call is not a Drive upload
+- **Scenario: it runs again when those steps finish** — Must
+  - Given OCR or enrichment finishes later
+  - When that text is new
+  - Then the topic job runs again for this item
+- **Scenario: edit or repeat** — Must
+  - Given he edits the item or US-49 updates it
+  - When the new version is stored
+  - Then the job is queued for that latest version
+- **Scenario: a cap** — Must
+  - Given the call returns more than 8 topic names
   - When the result is stored
-  - Then the item remains, no topic is created, and the outcome is not shown as a failed call
+  - Then only 8 are kept as suggestions
+- **Scenario: the switch is off** — Must
+  - Given he turned the topic call off in Settings
+  - When an item is saved
+  - Then no call is made
+- **Scenario: grounding** — Must
+  - Given the call returns a main idea
+  - When the result is stored
+  - Then that idea includes a quote that appears word for word in the text that was sent, and the result is marked AI-generated
+- **Scenario: no topics** — Must
+  - Given the call succeeds and names nothing
+  - When the result is stored
+  - Then the item remains, no topic is created, and the status is "no topics", not "failed"
 - **Scenario: the key is not in the APK** — Must
-  - Given a release APK built for sideload
+  - Given a release APK
   - When its packaged files are inspected
-  - Then the topic API key is not present as plaintext. How the credential is supplied is still open
-- **Scenario: a sensitive item is not decided here** — Must
-  - Given an item he has marked sensitive, and he has not answered whether those items are excluded
-  - When the item is saved
-  - Then the item is stored. This story does not state that a topic call was made, and it does not state that the item was excluded. That answer waits on him
+  - Then the topic API key is not present as plaintext. How the credential is supplied stays US-76
 
 ## Analytics and observability (optional)
 
-Not applicable. The brief forbids analytics. A topic call is not a usage event.
+Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Any later screen that shows the main ideas uses words he can read. This story does not invent that layout.
 - No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Depends on a stored item from E1 (US-01 through US-06).
-- Open, for Miguel at the design gate, not decided here:
-  - Which AI provider processes topics, and what are its data-retention terms?
-  - How is the API key or credential stored and protected, with no key baked into the APK in plain form?
-  - Are items marked sensitive excluded from cloud processing?
-  - What exactly is sent: full text, images, OCR output, or some other slice?
-- Text from E2, E7, and the snapshot may be part of what could be sent. What is sent stays the question above.
-- No cost cap was set. This story does not invent one.
-- A threat model is required later and is not started.
+- Provenance stored with the result: item id, time, and model or prompt version. Which fields may be sent is US-76.
 
 ## Implementation notes
 
-Tests can use a stand-in for the cloud call. Do not name a provider or a payload in this story. Not a design spec. No `LAYER.md` exists.
+Tests can use a stand-in for the cloud call. Not a design spec.

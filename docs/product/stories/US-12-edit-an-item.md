@@ -1,7 +1,11 @@
-# US-12 Edit an item, including why it matters
+# US-12 Edit a saved item
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+> Sign-off on file: none.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E3.
 
 ## Title
 
@@ -10,29 +14,38 @@ Edit a saved item.
 ## User story
 
 **As a** person named Miguel
-**I want to** change an item's title, body, tags, and the note about why it matters
-**So that** I can correct what was captured and record why I kept it
+**I want** to change a saved item's title, body, note, and tags
+**So that** I can correct it and say why it matters
 
 ## Background
 
-- He asked to edit an item, and for an optional personal note on why it matters.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: replacing the image or PDF bytes, and changing the created date.
+- Create-time auto-title (US-05) does not run again on edit. An edit cannot leave the title empty.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: merging two items, and the topic-call privacy questions (US-76).
 
 ## Acceptance criteria
 
-- **Scenario: edit the personal note and title** — Must
-  - Given a saved item
-  - When he changes the title and writes a personal note and confirms
-  - Then the item shows the new title and the new personal note, and the created date is unchanged
-- **Scenario: clear the personal note** — Must
-  - Given an item that has a personal note
-  - When he clears it and confirms
-  - Then the personal note is empty and the rest of the item remains
-- **Scenario: edit with an empty title** — Must
-  - Given he clears the title and leaves no title
-  - When he tries to save the edit
-  - Then the change is not stored and he can see why
+- **Scenario: edit title, body, and note** — Must
+  - Given an existing item
+  - When he changes the title, the body, and the personal note and saves
+  - Then those fields are the new values, created date stays, and last-saved and `updatedAt` move to this edit
+- **Scenario: edit tags** — Must
+  - Given an item with tags
+  - When he adds one tag and removes another
+  - Then the item has the new set, and search follows it after US-15 re-indexes
+- **Scenario: empty title** — Must
+  - Given he clears the title
+  - When he tries to save
+  - Then the edit is refused, the stored title is unchanged, and he sees that the title is required
+- **Scenario: dated notes** — Must
+  - Given notes sit under `YYYY-MM-DD` separators
+  - When he edits the text of an existing entry
+  - Then that entry's separator date stays the day it was written
+  - And adding a note creates a new entry under today's date
+- **Scenario: search and topics follow the edit** — Must
+  - Given the body changed
+  - When the edit is saved
+  - Then FTS is re-indexed from the new text, and topic processing is re-queued for this latest version (US-44, US-58)
 
 ## Analytics and observability (optional)
 
@@ -40,14 +53,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The personal note field is labeled as why it matters, in words the UX artefact will finalize. Not lorem.
-- Validation is text, not color alone.
+- The empty-title refusal is a visible error. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Tags attached here are the same tags US-14 manages.
-- Q9 consensus, not approval: the personal note and tags can be edited on this detail screen at any time after save. The tag chips (US-28) do not replace this. A reminder date is US-34. Marking sensitive is US-37.
+- `updatedAt` is defined in US-56.
 
 ## Implementation notes
 
-Update the local row. Do not change `createdAt` on edit. Not a design spec.
+Do not change `createdAt` on edit. Not a design spec.

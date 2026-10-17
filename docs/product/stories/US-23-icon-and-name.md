@@ -1,8 +1,12 @@
 # US-23 Show a launcher icon and the name Lagoon
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Lagoon is the joint Q1 recommendation of Scout and Mikey's Vault App Bot under Miguel's delegation. It is not his approval.
+> Sign-off on file: none.
+> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
+> The name Lagoon is the joint recommendation recorded in the approved specification. This story does not treat that recommendation as its own approval.
+> Story approval has not been recorded.
+
+**MoSCoW:** Must. v1, from approved epic E5.
 
 ## Title
 
@@ -11,30 +15,29 @@ Show a launcher icon and the name Lagoon.
 ## User story
 
 **As a** person named Miguel
-**I want** the app to have its own icon and the short name Lagoon
-**So that** I can recognize it in the launcher and in the share sheet
+**I want** the launcher and the share sheet to show Lagoon and its icon
+**So that** I can find the app and share into it
 
 ## Background
 
-- He asked for a tasteful app icon and a short name. Q1, the joint recommendation of Scout and Mikey's Vault App Bot under his delegation, names it Lagoon. That is not his approval of the spec.
-- Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a wordmark animation, and drawing the glyph in this story.
+- The approved specification names the app Lagoon.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a Play Store listing, and a second check that the recommendation "is not approval".
 
 ## Acceptance criteria
 
 - **Scenario: launcher** — Must
-  - Given the draft recommendation stands
-  - When he looks at the Android launcher
-  - Then this app shows the name Lagoon and an icon drawn for it, not the default Android system icon
+  - Given the app is installed
+  - When he opens the launcher
+  - Then the label is Lagoon and an icon is shown
+- **Scenario: adaptive icon** — Must
+  - Given API 33 or newer
+  - When the themed icon is requested
+  - Then the adaptive icon includes a monochrome layer
 - **Scenario: share sheet** — Must
-  - Given the same recommendation
-  - When he opens the system share sheet
-  - Then the vault is listed as Lagoon
-- **Scenario: recommendation is not approval** — Must
-  - Given Miguel has not approved the specification
-  - When this story is only a draft
-  - Then it is not treated as accepted, and implementation has not started
+  - Given he shares from another app
+  - When the share sheet is shown
+  - Then the target name is Lagoon
 
 ## Analytics and observability (optional)
 
@@ -42,14 +45,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The icon reads at launcher size. The UX or visual pass draws it. This story does not describe the glyph.
-- Lagoon is short enough for a launcher label. The glyph is still for the later visual pass.
+- The label is text, not only an image. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Q1 is no longer open. The recommendation is not spec approval. Play Store and trademark checks were not done.
-- Q2 (application id `com.mjbvilhena.lagoon`) is the same joint recommendation. US-26 carries it. It is not this story.
+- None beyond the app existing.
 
 ## Implementation notes
 
-Launcher label and adaptive icon resources. Not a design spec.
+Test approach: CI checks the adaptive-icon XML for a monochrome layer. Launcher and share-sheet labels are instrumented checks. Not a design spec.

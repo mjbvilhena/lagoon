@@ -1,46 +1,50 @@
-# US-40 Fill the title from the page or the file
+# US-40 Fill an empty title from the page or the file
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Bots' consensus on Q9. Not approval.
+> Sign-off on file: none.
+> Story approval has not been recorded. Epic approval is not story approval.
+> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+
+**MoSCoW:** Must. v1, from the approved specification.
 
 ## Title
 
-Auto-fill a title when he did not type one.
+Fill an empty title from the page or the file.
 
 ## User story
 
 **As a** person named Miguel
-**I want** the title to fill from the page title or the file name
-**So that** a one-tap save is not called "Untitled"
+**I want** an empty title to fill from the page or from a readable file name
+**So that** a one-tap save is not called Untitled
 
 ## Background
 
-- Consensus: auto-fill the title from the page title or the file name.
-- If he types a title, that title wins (US-08 already says a typed title is kept).
-- A plain-text share with no separate title still uses the start of the text (US-02).
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: rewriting a title he already set. OCR as the source of the title. That can happen to supply text, but this story's sources are the page title and the file name.
+- He typed a title: it stays (US-08, US-12).
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: using the first OCR line as the title.
 
 ## Acceptance criteria
 
-- **Scenario: a link whose page has a title** — Must
-  - Given he saves a link in one tap and did not type a title
-  - And the fetch returns a page title
-  - When enrichment finishes
-  - Then the item's title is that page title, and the URL is unchanged
-- **Scenario: a file** — Must
-  - Given he saves an image or a PDF and did not type a title
-  - When the item is stored
-  - Then the title is the file name
+- **Scenario: a page title** — Must
+  - Given a link whose page has a title and he did not type one
+  - When enrichment returns it
+  - Then the item title becomes that page title
+- **Scenario: no page title** — Must
+  - Given the page has no title
+  - When the title is filled
+  - Then it is the host and path of the normalised URL
+- **Scenario: a camera-like file name** — Must
+  - Given the only name is `IMG_`, `SCAN_`, or `DSC_` plus digits
+  - When the title is filled
+  - Then it is the type plus the saved date, such as "Image 17 Oct 2026", and not that camera name
+- **Scenario: another file name** — Must
+  - Given the file name is not one of those patterns
+  - When the title is filled
+  - Then the file name is the title, capped at 120 characters (US-02)
 - **Scenario: he typed a title** — Must
-  - Given he set a title before auto-fill would run
-  - When the page title or file name arrives
+  - Given he typed a title
+  - When enrichment or a file name arrives
   - Then his title stays
-- **Scenario: no page title and no file name** — Must
-  - Given a link whose fetch returns no title
-  - When the item is stored
-  - Then it still has some non-placeholder title he can read, and the URL is kept
 
 ## Analytics and observability (optional)
 
@@ -48,13 +52,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Auto-filled titles are real strings from the page or the file. Never lorem.
-- He can change the title later (US-12).
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Page title depends on US-08. Failure to fetch is US-09: the URL remains, and this story does not block the save.
-- US-02 covers plain text.
+- Body-only notes use US-05, not this story.
 
 ## Implementation notes
 

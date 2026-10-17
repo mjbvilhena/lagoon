@@ -7,11 +7,11 @@
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-47 by Miguel's bots. E11 stories US-41–US-47 are drafted and stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-81 by Miguel's bots. Stories stay Draft until all five bots re-review. See `docs/sdlc/pipeline-state.md` and `docs/product/stories/REVIEW-PACK.md`.
 
 Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them. E11 stories were drafted on 2026-10-17 by `sdlc-user-story-refiner`. Drafting is not that sign-off.
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until all five bots re-review. The revision after the review at `9e7de63` was done by `sdlc-user-story-refiner`. Drafting is not that sign-off. Scout's Approve verdicts on the listed stories are verdicts only.
 
 ## Epic E1: Capture and keep
 
@@ -55,12 +55,14 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
 
-- **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-backup-not-configured.md`. Not implemented. Missing OAuth must not crash.
-- **US-18** *(Draft)* Sign in and background sync. Evidence: `docs/product/stories/US-18-back-up-now.md`. Not implemented. Drive API `appDataFolder`, not Android Auto Backup. Hidden in the Drive UI.
-- **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-automatic-backup.md`. Not implemented. `WorkManager` `UNMETERED`. Bots' consensus, kept because it still fits background sync.
-- **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-backup-size-warning.md`. Not implemented. No size warning and no roaming warning, because those belonged to Back up now.
-- **US-20** *(Draft)* New install or second device receives the vault and merges one-sided items. Evidence: `docs/product/stories/US-20-restore-from-drive.md`. Not implemented. Q5 is resolved as merge. Concurrent edits and deletions stay open for Miguel.
-- **US-21** *(Draft)* Zip export and import that merges. Evidence: `docs/product/stories/US-21-export-and-import-a-zip.md`. Not implemented. Must not be a plaintext hole beside encryption. The conflict algorithm is still open.
+- **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-sync-not-configured.md`. Not implemented. Missing OAuth must not crash.
+- **US-18** *(Draft)* Sign in. Evidence: `docs/product/stories/US-18-sign-in-and-sync.md`. Not implemented. The specification names `appDataFolder`. Drive scope and sign-out are delegated to the bots.
+- **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-unmetered-sync.md`. Not implemented. `WorkManager` `UNMETERED`.
+- **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-no-manual-backup.md`. Not implemented.
+- **US-20** *(Draft)* New install receives one-sided items. Evidence: `docs/product/stories/US-20-receive-the-vault.md`. Not implemented. Conflicts and deletions are US-73, still open for Miguel.
+- **US-21** *(Draft)* Zip export encrypted with the vault key. Evidence: `docs/product/stories/US-21-export-a-zip.md`. Not implemented. Miguel, 2026-10-17 14:56 IST. Import is US-52.
+- **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78, delegated to the bots.
+- **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 
 ## Epic E5: Look and feel
 
@@ -88,15 +90,17 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. His Q10 words plus the sensitive-item decision. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt the vault at rest. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
-- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented.
-- **US-37** *(Draft)* Biometric lock on items marked sensitive. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. App-wide unlock is a separate open question for Miguel.
+- **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented. Miguel, 2026-10-17 14:56 IST.
+- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
+- **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. Miguel, 2026-10-17 14:56 IST. What a sensitive item reveals is US-75, delegated to the bots.
 
 ## Epic E9: Reminders and expiry
 
 > Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. US-34 stays Draft.
 
-- **US-34** *(Draft)* Reminder or expiry with a notification. Default 09:00 local, per-item time, expiry at 7 days and on the day, inexact alarms. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Bots' consensus, not approval.
+- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Miguel, 2026-10-17 14:56 IST, on the lock screen. Exact alarms are US-77.
+- **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
+- **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
 
 ## Epic E11: Topics
 
@@ -142,28 +146,47 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 - OCR for languages other than English. Later option. v1 acceptance tests stay English-only (US-31).
 - Picking out booking references and merchants. Later, unless it falls out of OCR with no extra product scope.
 
+## Stories split or added on 2026-10-17
+
+The index is the full list. These ids were added while refining. All Draft. Not implemented.
+
+- Splits: US-49 repeat link, US-50 ranking, US-51 sync worker, US-52 import, US-53 palette and motion, US-54 expiry, US-55 reschedule.
+- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source, US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Could), US-66 trash (Could), US-67 duplicate files (Could), US-68 purchase fields (Could), US-69 pin (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Should).
+- Blocked, no Must: US-64 sharing out, US-73 conflicts and deletions, US-74 key transport, US-75 sensitive-item handling, US-76 topic-call privacy, US-77 exact alarms, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
+
 ## Open questions
 
-### For Miguel at the design gate (security, data integrity, or release)
+The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is a story approval.
 
-Still open. Assigned to the technical design, ADR, and threat-model gate. He answers them there. That gate has not started.
+### Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 14:56 IST
 
-- Sync edit conflicts: the same item edited on two devices.
-- How a deletion on one device propagates.
-- How keys reach a new or second device.
-- What happens if the key or passphrase is lost.
-- Whether unlocking the whole app is required, separate from the sensitive-item lock.
-- Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
-- Which AI provider processes topics, and what are its data-retention terms.
-- How the topic API key or credential is stored and protected. No key baked into the APK in plain form.
-- Whether items marked sensitive are excluded from cloud topic processing.
-- What exactly is sent for topic extraction: full text, images, OCR output, or some other slice.
+- Lost vault key: the content is lost. No recovery. US-35.
+- App lock is optional. The device PIN is the fallback when there are no biometrics. US-37.
+- Lock-screen notifications may show the item title and codes. US-34.
+- The zip export is encrypted with the vault key. US-21.
 
-### Story-level recommendations (not approval)
+### Still open for Miguel
 
-Answered as consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot. Stories stay Draft. See US-01, US-15, US-31, US-33, and US-34. US-31's v1 language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports Miguel said in chat that English is enough. That is not approval. Accent folding in US-15 stays. The FTS5 / Room 3 / SQLCipher question on US-15 stays a design-gate spike, not a decision.
+- Sync conflicts, and how a deletion propagates. US-73. Scout's option is recorded there and not chosen.
+- How the vault key reaches a new device. US-74.
+- Exact alarms, which would amend E9. US-77. Stories keep inexact alarms.
+- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
+- Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
+- Full-screen QR and barcode display. No story.
 
-### Resolved
+### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 
-- **Q5.** Sync and zip import merge. One-sided items are kept. Concurrent edits and deletions are the open questions above.
-- **Q10.** Extra encryption: at rest, and ciphertext only in Drive. Key transport, loss, and app unlock remain open.
+He did not decide these.
+
+- Sensitive-item handling in lists, search, notifications, export, the cloud call, and screenshots. US-75.
+- Drive scope and sign-out. US-78. The specification still names `appDataFolder`.
+- Link-preview skipping. US-79.
+- Sharing out. US-64.
+- Permissions. US-80.
+- Sideloading. US-81. US-24 still requires a signed APK because E6 does.
+
+### Resolved earlier
+
+- **Q5.** One-sided items are kept. Conflicts and deletions stay open.
+- **Q10.** Encryption at rest and ciphertext in Drive. Loss is now decided, above. Key transport stays open.
+- English-only OCR. Inexact alarms unless he amends E9. OCR search weight equals body. URL normalisation is the specification's rule. No Back up now.
