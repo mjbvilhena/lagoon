@@ -22,7 +22,7 @@ Miguel, including on a second device that should see the same vault and not a pl
   - Client-side end-to-end encryption of everything synced to Drive. Drive stores ciphertext only.
   - Fingerprint or biometric lock on items marked sensitive, tied to this encryption work.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App-wide unlock, which is still an open question for him. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design.
+- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App-wide unlock, which is still an open question for him. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) is his recorded exception: readable content goes to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
 
 ## Core Workflows
 

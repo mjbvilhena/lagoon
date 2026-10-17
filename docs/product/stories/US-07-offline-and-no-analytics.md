@@ -17,7 +17,7 @@ Use the saved vault with no network and no analytics.
 
 - He said the primary store is on-device, the app works fully offline, and there are no analytics.
 - Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: making Drive backup work offline. Backup needs a network and is E4. Link enrichment needs a network and is E2.
+- Out of scope: making Drive sync work offline. Sync needs a network and is E4. Link enrichment needs a network and is E2. Topic extraction needs a network and is queued (E11). That queue is not analytics, and this story does not approve E11.
 
 ## Acceptance criteria
 

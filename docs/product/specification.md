@@ -10,7 +10,7 @@
 
 Miguel comes across links, text, images, and PDFs in other apps and has nowhere private on his phone that keeps them as one searchable store. The vault is that store. He captures what matters, adds a few words about why when he wants to, and finds it later without a network.
 
-The phone is the primary copy. It works fully offline. When a network is available, the vault syncs itself to his private Google Drive app space. He does not run a backup or a restore. A zip on the device remains a fallback. What leaves the phone for Drive is ciphertext.
+The phone is the primary copy. It works fully offline. When a network is available, the vault syncs itself to his private Google Drive app space. He does not run a backup or a restore. A zip on the device remains a fallback. What leaves the phone for Drive is ciphertext. Topic extraction is the recorded exception: readable content is sent to a cloud AI, and that call is not a Drive sync.
 
 No numeric success metric was given.
 
@@ -23,7 +23,7 @@ No numeric success metric was given.
 
 ### In Scope (MVP)
 
-v1 is the draft epics E1–E9. Epic text is not epic approval. E10 is later and is not v1.
+v1 is the draft epics E1–E9 and E11. Epic text is not epic approval. E10 is later and is not v1. E11 has no stories yet.
 
 | Epic | Outcome | Draft |
 |---|---|---|
@@ -36,6 +36,7 @@ v1 is the draft epics E1–E9. Epic text is not epic approval. E10 is later and 
 | E7 On-device text recognition | In v1. OCR for screenshots, images, and scanned PDFs, on the device, so that text is searchable. Text-based PDFs are extracted, not OCR'd. | `docs/product/epics/E7-on-device-text-recognition.md` |
 | E8 Encryption and sensitive items | Encrypted database and attachment files at rest, keys in Android Keystore. Everything synced to Drive is client-side ciphertext. Fingerprint or biometric lock on items he marks sensitive. | `docs/product/epics/E8-encryption-and-sensitive-items.md` |
 | E9 Reminders and expiry | Optional expiry or reminder date on an item, with a notification. | `docs/product/epics/E9-reminders-and-expiry.md` |
+| E11 Topics | When an item is shared or added, a cloud AI identifies its main ideas and topics. An existing topic is linked and extended. A new topic is created only after he confirms. | `docs/product/epics/E11-topics.md` |
 
 Constraints later design must not reopen unless he does:
 
@@ -61,7 +62,7 @@ Constraints later design must not reopen unless he does:
 - Play Store listing for this v1.
 - An explicit backup or restore: no Back up now, no Restore action, no last-backup-time control, no manual-backup size warning, no roaming warning tied to a manual backup.
 - Android Auto Backup as the sync mechanism.
-- A cloud OCR or cloud vision API.
+- A cloud OCR or cloud vision API. On-device OCR stays in E7. Cloud AI is allowed for topic extraction only (E11). It is not a license for cloud OCR, cloud vision, or any other cloud processing of vault content.
 - Image editing and PDF editing.
 - Tag hierarchies, and any tag merge that is not the confirmed rename onto an existing name.
 - Private APIs for YouTube or X.
@@ -84,6 +85,11 @@ Constraints later design must not reopen unless he does:
    - The phone holds the vault first. Sync runs in the background into Drive `appDataFolder` when the network policy allows. He does not press backup or restore.
    - On a new install or a second device he signs in and the vault arrives. Copies merge: an item that exists on only one side is kept.
    - Drive stores ciphertext. He can still export and import a zip on the device.
+4. **Topics**
+   - After an item is shared or added, its content is processed to identify main ideas and topics.
+   - If a topic already exists, the item is linked to it and the topic is extended with the new information.
+   - If a topic does not exist yet, he is asked whether to add it. Nothing is created without that confirmation.
+   - The phone keeps the item if it is offline. Topic processing waits and runs when a network is available. The processing call sends readable content to a cloud AI. Drive sync is still ciphertext only.
 
 ## Decisions recorded
 
@@ -95,6 +101,7 @@ Recorded as his decisions, in his words where he gave them.
 
 - **Sync, not backup.** "There should be no explicit backup and restore, there should be just a seamless sync behind the scenes." On-device first. Works fully offline. Syncs when connectivity allows. A new install or a second device signs in and receives the vault. **Q5 is resolved:** sync merges. Zip export/import stays as a fallback.
 - **Q10. Encryption.** "Yes, extra encryption would be good." Encryption at rest beyond app-private storage (encrypted database and encrypted attachment files, keys in Android Keystore). Client-side end-to-end encryption of everything synced, so Drive only holds ciphertext. The crypto design itself is not decided here.
+- **Topics, and the cloud-AI exception.** During the section-by-section review on 2026-10-17 at about 11:57 IST he added topic extraction to v1. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That is an explicit exception to the end-to-end encryption goal. Readable content is sent to a cloud AI for topic processing. Drive sync remains ciphertext-only. This decision does not approve the specification.
 - **In v1:** (1) on-device OCR for screenshots, images, and scanned PDFs, so their text is searchable; (2) optional expiry or reminder dates, with notifications; (3) multiple attachments per item; (4) offline snapshots of saved web pages, keeping the original URL; (5) fingerprint or biometric lock on items marked sensitive, tied to the encryption work.
 - **Later, not v1:** trip or collection grouping with a date range.
 
@@ -133,13 +140,17 @@ No stories are added for these.
 - OCR quality varies by phone and language. No accuracy rate is set here.
 - An emulator may be unavailable for screenshots. Do not fabricate them.
 - No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
-- Encryption, biometric lock, and Drive sync are security-sensitive. The harness has `sdlc-threat-modeler` and the `threat model` template. A threat model is required in the later design band, before implementation. It is not started. This note does not skip it and does not write it.
+- Topic extraction sends readable content off the phone to a cloud AI. That is a privacy risk he has accepted in principle. Which provider, and what that provider retains, is still open.
+- Cloud processing has a cost. No budget or per-item cap is set here.
+- Offline, the item is saved and topic processing is queued until a network exists. The vault stays usable without that call.
+- The cloud AI credential for a sideloaded APK must not be baked into the package in plain form. How it is supplied and protected is an open design-gate question.
+- Encryption, biometric lock, Drive sync, and the cloud topic call are security-sensitive. The harness has `sdlc-threat-modeler` and the `threat model` template. A threat model is required in the later design band, before implementation. It is not started. This note does not skip it and does not write it.
 
 ## Open questions
 
 ### For Miguel at the design gate
 
-These six stay open. They are security, data integrity, or release questions. They are not delegated. Miguel answers them at the technical design, ADR, and threat-model gate. That gate has not started. Assigning them there does not open it, and it does not approve this specification.
+These stay open. They are security, data integrity, or release questions. They are not delegated. Miguel answers them at the technical design, ADR, and threat-model gate. That gate has not started. Assigning them there does not open it, and it does not approve this specification.
 
 - [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena, design gate)
 - [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena, design gate)
@@ -147,6 +158,10 @@ These six stay open. They are security, data integrity, or release questions. Th
 - [ ] **Lost key.** What happens if the key or passphrase is lost? (@mjbvilhena, design gate)
 - [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena, design gate)
 - [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? (@mjbvilhena, design gate)
+- [ ] **Topic AI provider.** Which cloud AI provider processes topics, and what are its data-retention terms? (@mjbvilhena, design gate)
+- [ ] **Topic API credential.** How is the API key or credential stored and protected? It must not be baked into the APK in plain form. (@mjbvilhena, design gate)
+- [ ] **Sensitive items and the cloud.** Are items marked sensitive excluded from cloud topic processing? (@mjbvilhena, design gate)
+- [ ] **What is sent.** What exactly is sent to the cloud AI: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
 
 ### Story-level recommendations (not approval)
 
@@ -168,9 +183,9 @@ Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot un
 | Gate | Status | What advances it |
 |---|---|---|
 | This specification | Draft, pending `mjbvilhena` | Named sign-off by `mjbvilhena`, or a sentence that treats this file as approved. He still needs to review it. |
-| Epics E1–E9 | Draft, separate gate, not prepared | Epic-level matters stay with Miguel. Not approved by his product decisions or by the bots' consensus. |
+| Epics E1–E9 and E11 | Draft, separate gate, not prepared | Epic-level matters stay with Miguel. E11 is the topics scope change. Not approved by his product decisions. |
 | Epic E10 | Draft, later, not v1 | His decision that it is later. Not approval to build it, and not part of v1. |
 | User stories | Draft. None approved. | On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule is not a sign-off on any story. |
-| Threat model, UX, test strategy, ADRs | Not started | The six security, data-integrity, and release questions above are answered here, by Miguel. Required before implementation where the pipeline says so. Not skipped. |
+| Threat model, UX, test strategy, ADRs | Not started | The security, data-integrity, and release questions above, including the topic-extraction questions, are answered here, by Miguel. Required before implementation where the pipeline says so. Not skipped. |
 
 This specification is still the open gate. Epic approval comes only after he approves this file. Draft stories are not a reason to skip epic approval, story approval, or the design band.

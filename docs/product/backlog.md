@@ -96,6 +96,10 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 - **US-34** *(Draft)* Reminder or expiry with a notification. Default 09:00 local, per-item time, expiry at 7 days and on the day, inexact alarms. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Bots' consensus, not approval.
 
+## Epic E11: Topics
+
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Draft — not approved)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." That is not approval. No stories. Stories wait for the spec gate and the epic gate.
+
 ## Epic E10: Trip and collection grouping
 
 > Goal: Later, not v1. Group items into a trip or collection with a date range. *(Draft — not in v1 — not approved)* Evidence: `docs/product/epics/E10-trip-and-collection-grouping.md`. Miguel's decision that this is later. No stories. Do not build it in v1.
@@ -140,6 +144,10 @@ Still open. Assigned to the technical design, ADR, and threat-model gate. He ans
 - What happens if the key or passphrase is lost.
 - Whether unlocking the whole app is required, separate from the sensitive-item lock.
 - Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
+- Which AI provider processes topics, and what are its data-retention terms.
+- How the topic API key or credential is stored and protected. No key baked into the APK in plain form.
+- Whether items marked sensitive are excluded from cloud topic processing.
+- What exactly is sent for topic extraction: full text, images, OCR output, or some other slice.
 
 ### Story-level recommendations (not approval)
 

@@ -20,12 +20,12 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 |---|---|---|
 | Vision | `docs/product/vision.md` | Draft. Not accepted. |
 | Product spec | `docs/product/specification.md` | Draft. Pending review by `mjbvilhena`. **This is the gate this run stops on.** |
-| Epic approval | `docs/product/epics/E1` through `E10` | Draft. E1–E9 are the v1 set. E10 is later and has no stories. Not approved. |
+| Epic approval | `docs/product/epics/E1` through `E11` | Draft. E1–E9 and E11 are the v1 set. E10 is later and has no stories. E11 (Topics) has no stories yet. Not approved. |
 | Story refine | `docs/product/stories/US-01` through `US-40` and `INDEX.md` | Draft. All of those stories are in the v1 set. Not approved. |
 | Story approval | Rule recorded. No story signed. | Not given. On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. The delegation is not a sign-off on US-01–US-40. |
 | Technical design / ADRs | No RFC, API design, or ADR files | Not started. |
 | UX | No UX artefact | Not started. |
-| Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync). |
+| Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync, and the cloud topic call). |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. Bounds have not been designed. |
 | Repository checks | Workflows, CODEOWNERS, gitignore, README | Present for markdown and secrets. See `docs/sdlc/repository-setup.md`. Not a product approval. |
 | Implement | No application code | Not started. Blocked. |
@@ -42,6 +42,8 @@ He delegated Q1–Q4 and Q6–Q9. Mikey's Dev Bot recommended answers, and Scout
 
 He later decided, in his own words where he gave them: seamless sync instead of backup and restore (Q5 resolved as merge); extra encryption at rest and as ciphertext in Drive (Q10 resolved as yes); and a v1 scope of on-device OCR, reminders, multiple attachments, offline page snapshots, and a biometric lock on sensitive items. Trip or collection grouping is later (E10). Those decisions are not approval of the specification, the epics, or the stories.
 
+On 2026-10-17 at about 11:57 IST, during his section-by-section review, he added v1 epic E11 Topics. His words: "Use a cloud AI for all items; I accept the content leaves the phone." Readable content may be sent to a cloud AI for topic extraction only. Drive sync stays ciphertext-only. Cloud OCR stays out of scope. E11 is Draft, with no stories. This scope change is not his named approval of the specification. The specification is still awaiting that sign-off.
+
 ## Story approval rule (2026-10-17)
 
 Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-40. Those stories stay Draft until a bot sign-off names them. Epic approval stays with him, and that gate is not prepared while this specification is still Draft.
@@ -56,12 +58,16 @@ These six stay open. Miguel answers them at the technical design, ADR, and threa
 4. What happens if the key or passphrase is lost.
 5. Whether unlocking the whole app is required, separate from the sensitive-item lock.
 6. Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
+7. Which AI provider processes topics, and what are its data-retention terms.
+8. How the topic API key or credential is stored and protected. No key baked into the APK in plain form.
+9. Whether items marked sensitive are excluded from cloud topic processing.
+10. What exactly is sent for topic extraction: full text, images, OCR output, or some other slice.
 
 The five story-level questions now have consensus recommendations in US-01, US-15, US-31, US-33, and US-34 (Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot). US-31's language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports that Miguel told it in chat that English is enough for v1 OCR. That revision is not approval. Those stories stay Draft. The FTS5 / Room 3 / SQLCipher spike on US-15 is a design-gate risk, not a decision. See the specification.
 
 After spec approval, these gates are still closed until each is actually signed:
 
-1. Epic approval by `mjbvilhena` (E1–E9 for v1; E10 is later and not in that v1 gate). Not prepared yet.
+1. Epic approval by `mjbvilhena` (E1–E9 and E11 for v1; E10 is later and not in that v1 gate). Not prepared yet. E11 has no stories until the spec and epic gates pass.
 2. Story approval of US-01–US-40 by Miguel's bots, under the rule above.
 3. Technical design and ADR approval, once those documents exist. The cipher is an ADR, not a line in the spec. The six questions above are his to answer in that band.
 
@@ -72,7 +78,7 @@ UX, test strategy, and a threat model sit in the design band after story approva
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
-| Vision ↔ spec | Spec links the vision and epics E1–E10. The vision still restates the original backup request. The spec supersedes that. Neither file is approved. |
+| Vision ↔ spec | Spec links the vision and epics E1–E11. The vision still restates the original backup request. The spec supersedes that. Neither file is approved. E11 is a draft scope change, not spec approval. |
 | User-story index | `docs/product/stories/INDEX.md`. Drafts are not approved. Story approval is delegated to Miguel's bots; that delegation is not a sign-off. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |

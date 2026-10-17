@@ -65,6 +65,6 @@ This vision file is still not accepted. It keeps the original request, including
 
 In short, and only as a pointer:
 
-- Miguel decided on seamless background sync, extra encryption, and a v1 that includes on-device OCR, reminders, multiple attachments, offline page snapshots, and a biometric lock on sensitive items. Trip or collection grouping is later.
+- Miguel decided on seamless background sync, extra encryption, and a v1 that includes on-device OCR, reminders, multiple attachments, offline page snapshots, a biometric lock on sensitive items, and topic extraction. His words on topics: "Use a cloud AI for all items; I accept the content leaves the phone." Drive sync stays ciphertext-only. Trip or collection grouping is later. That pointer is not approval of the specification.
 - Scout and Mikey's Vault App Bot jointly recommend the name Lagoon and the application id `com.mjbvilhena.lagoon`. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. The earlier bots' consensus on accent, tag merge, unmetered sync, text-layer PDF extraction, SDK 37, and capture filing is also in the specification. None of that is his approval.
 
