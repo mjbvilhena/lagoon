@@ -5,7 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**MoSCoW:** Should. Source domain and sending app are not in the approved specification or epic E1. This story is noted for Miguel in the proposed amendment. It is not an epic edit.
+**MoSCoW:** Should. Source domain and sending app are in epic E1 because Miguel approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. This story stays Draft. That approval is not story approval.
 
 ## Title
 

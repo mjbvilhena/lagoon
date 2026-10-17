@@ -39,17 +39,13 @@ On 2026-10-17 at 14:56 IST Miguel delegated these to his bots. He did not decide
 - Permissions. US-80. US-34 still asks for `POST_NOTIFICATIONS` at the first reminder, which is the recorded specification text.
 - Sideloading. US-81. US-24 still requires a signed APK because epic E6 does.
 
-## Doc drift, not edited
+## Amendment applied
 
-The approved specification and the approved epics were not edited. Proposed current-versus-proposed text is in `docs/product/amendments/2026-10-17-security-delegation.md`. Status of that file: Proposed, awaiting `mjbvilhena`.
+`docs/product/amendments/2026-10-17-security-delegation.md` is **Approved** by `mjbvilhena` on 2026-10-17 at 15:55 IST. His words: "Yes". Sections 1–6 are applied to the specification and to epics E1, E3, E8, and E11. Section 7 is the vision rewrite. He did not want a supersession sentence.
 
-- `docs/product/specification.md` line 27 still says "E11 has no stories yet".
-- The same file's design-gate list still says those questions are not delegated. That conflicts with the 14:56 delegation. Lost key and app unlock were decided that afternoon. The list still shows them as open.
-- `docs/product/epics/E8-encryption-and-sensitive-items.md` still says lost key, key transport, and app unlock are open, and that app-wide unlock is out of scope as an open question. Key transport is still open. Lost key and app unlock are not.
-- `docs/product/epics/E3-find-and-curate.md` still lists sharing an item back out as out of scope. US-64 proposes it.
-- `docs/product/epics/E11-topics.md` does not give the topic call its own unmetered setting, and it still treats sensitive-item exclusion as his design-gate question. US-44 and US-75 propose those. Provider and payload stay his.
-- `docs/product/epics/E1-capture-and-keep.md` does not mention source domain or sending app. US-61 is a Should for that reason.
-- `docs/product/vision.md` still lists OCR under "Not in the request" and still describes Back up now. That file is not accepted and was not edited.
+The stale drift list from the round-2 pack is removed. Those sentences are no longer in the approved files.
+
+US-61 cites the approved amendment and stays Draft. US-64 cites it for the Should in E3. The acceptance criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay **Proposed: pending Miguel's approval**. The amendment approved the delegation, not those criteria.
 
 ## Proposed threat note
 
@@ -129,7 +125,7 @@ Dev Bot, Scout, and Mikey's Assistant may record an approval under Miguel's dele
 
 Clean approvals from all five at `40bb526`, with Household and Leisure as recommendations: US-01, US-05, US-06, US-08, US-09, US-11, US-14, US-15, US-16, US-17, US-19, US-20, US-22, US-23, US-24, US-27, US-30, US-31, US-32, US-33, US-38, US-42, US-43, US-45, US-46, US-47, US-50, US-56, US-57, US-58, US-60, US-67, US-71.
 
-Conditional, not clean: US-18 depends on US-78. US-25 and US-52 are Dev Bot [RD] until Miguel approves the amendment. Stories that are not in the clean list are not recorded as approvals.
+Conditional, not clean: US-18 depends on US-78. US-25 and US-52 were Dev Bot [RD] until Miguel approved the amendment. He approved it at 15:55 IST. That condition is met. The cells below stay as recorded at `40bb526`. Story status stays Draft. Stories that are not in the clean list are not recorded as approvals.
 
 Approved stories edited in this revision, minimal, and needing re-confirm: US-01 (one title order, leftover text aligned with US-02, sending app only when the platform reports it), US-45 (a hard-deleted item's topic note is removed, matching US-13), US-57 (the spike also runs on an API 26 emulator and an arm64 phone, and records the APK size change).
 
@@ -286,10 +282,10 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | search and topics see the text that actually exists | Must | 3 | None on this story |
 | US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 2 | None on this story |
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
-| US-61 | See and filter by where an item came from. | E1 (not in epic yet) | I can find what I saved from one site or one app | Should | 3 | Not in approved E1. Should. Amendment proposed |
+| US-61 | See and filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 3 | In E1 after the approved amendment. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |
 | US-63 | Copy a code he marked. | E9 | I can copy a code without selecting it by hand each time (3 Should) | Should | 0 | None on this story |
-| US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (6 Should) | Proposed Should | 0 | Proposed, pending Miguel. E3 still excludes sharing out |
+| US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (6 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
 | US-65 | Add a photo from the camera. | E1 | I can keep a page without a share from another app (2 Should) | Should | 0 | None on this story |
 | US-66 | Keep a trash beyond undo. | Cross-cutting | I can recover it after the undo snackbar has gone (2 Should) | Should | 0 | None on this story |
 | US-67 | Notice a duplicate image or PDF. | E1 | I do not keep two copies of the same file (1 Could) | Could | 0 | None on this story |

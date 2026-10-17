@@ -22,7 +22,7 @@ Queue topic processing while offline.
 - One WorkManager job per item id. The job uses the same worker family as US-41.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: what the call is allowed to send (US-76).
-- Applying a network preference to the topic call is not in approved epic E11. This story gives the topic job its own "Unmetered only" setting. That gap is listed for Miguel in `docs/product/amendments/2026-10-17-security-delegation.md`. The epic file is not edited.
+- The topic job has its own "Unmetered only" setting. It is not the sync preference. Miguel approved that in `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST, and epic E11 now includes it.
 
 ## Acceptance criteria
 

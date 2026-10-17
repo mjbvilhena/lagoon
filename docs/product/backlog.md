@@ -11,7 +11,7 @@ Spec gate passed. Epic gate passed. Stopped at **story review and approval** of 
 
 Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Round 2 records Dev Bot, Scout, and Mikey's Assistant verdicts as approvals under his delegation of 2026-10-17, and Household and Leisure as recommendations only. No story status was flipped to Approved. The proposed amendment is `docs/product/amendments/2026-10-17-security-delegation.md`, awaiting `mjbvilhena`.
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Round 2 records Dev Bot, Scout, and Mikey's Assistant verdicts as approvals under his delegation of 2026-10-17, and Household and Leisure as recommendations only. No story status was flipped to Approved. He approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. Wording: "Yes". That approval does not approve the proposed criteria on US-64, US-75, US-78, US-79, US-80, or US-81.
 
 ## Epic E1: Capture and keep
 
@@ -120,8 +120,8 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Specification and vision
 
-- **Vision** *(Draft — not accepted)* Evidence: `docs/product/vision.md`. It restates the original request, including backup and restore. Later decisions in the specification supersede that wording. They do not accept the vision.
-- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`)* Evidence: `docs/product/specification.md`. This spec approval does not approve the stories. The epics were approved later the same day.
+- **Vision** *(Current vision, 2026-10-17 15:55 IST)* Evidence: `docs/product/vision.md`. It states the approved specification, epics E1–E9 and E11, and the approved amendment. It does not describe backup or restore controls.
+- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST, wording "Yes".)* Evidence: `docs/product/specification.md`. This does not approve the stories.
 
 ## Repository setup
 
@@ -151,7 +151,7 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. These ids were added while refining. All Draft. Not implemented.
 
 - Splits: US-49 repeat link, US-50 ranking, US-51 sync worker, US-52 import, US-53 palette and motion, US-54 expiry, US-55 reschedule.
-- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source (Should, not in E1 yet), US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Should), US-66 trash (Should), US-67 duplicate files (Could), US-68 return-by and warranty dates (Should), US-69 pin one item (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Could).
+- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source (Should, now in E1), US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Should), US-66 trash (Should), US-67 duplicate files (Could), US-68 return-by and warranty dates (Should), US-69 pin one item (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Could).
 - Proposed criteria, pending Miguel's approval, status still Draft: US-64 sharing out (Should), US-75 sensitive-item handling, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
 - Still open for Miguel, no asserting criterion: US-73 conflicts and deletions, US-74 key transport, US-76 topic-call privacy, US-77 exact alarms.
 - Split from US-68 in round 2: US-82 merchant, US-83 amount and currency, US-84 purchase date. All Should. All Draft.

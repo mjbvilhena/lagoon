@@ -5,6 +5,11 @@
 > His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
 > Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
 > This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, section 5, applied after his approval.
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
+> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
+> Approved revision of this application: commit `PENDING_APPLICATION_SHA`. This record does not change the product text of that revision.
+> This amendment approval does not approve US-61. The story stays Draft.
 
 ## Background & Value Proposition
 
@@ -29,8 +34,9 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
   - A second share of the same page matches on a normalised URL (ignore scheme, `www`, a trailing slash, the `#fragment`, and `utm_*` / tracking parameters; lowercase the host), keeps the original URL, updates the existing item, and appends any new note as its own dated entry (US-01).
   - The primary store is on the device. Storing the item does not need a network. Link enrichment (E2) and topic processing (E11) wait for a network. A save queues E11. It does not block the save.
   - No analytics.
+  - Source domain and sending app (US-61) are a Should.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one.
+- **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one. Source domain and sending app (US-61) are a Should. They are not in this epic until Miguel approves this amendment. He approved it on 2026-10-17 at 15:55 IST, so that Should is in scope above.
 
 ## Core Workflows
 

@@ -4,7 +4,7 @@
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> Approved epic E3 still lists sharing an item back out as out of scope. That file is not edited. The proposed amendment is `docs/product/amendments/2026-10-17-security-delegation.md`.
+> Epic E3 includes sharing out as a Should because Miguel approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. That approval is the delegation. These criteria stay proposed.
 
 **MoSCoW:** Should. Proposed, pending Miguel's approval. Not a status of Approved.
 

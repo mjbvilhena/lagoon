@@ -71,7 +71,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
 | US-59 | Use one Settings screen. | Cross-cutting | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
 | US-60 | Browse topics and pending suggestions. | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
-| US-61 | See and filter by where an item came from. | E1 (not in epic yet) | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
+| US-61 | See and filter by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
 | US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Draft |
 | US-63 | Copy a code he marked. | E9 | Should | `docs/product/stories/US-63-copy-a-code.md` | Draft |
 | US-64 | Share or open an item in another app. | Cross-cutting | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Draft |
@@ -100,6 +100,6 @@ No story is Done. Implementation has not started. No story status is Approved.
 
 Artefact Definition of Done, this revision: US-73, US-74, US-76, and US-77 fail because the question is still open and they have no asserting criterion. Every other story passes artefact shape only. US-64, US-75, US-78, US-79, US-80, and US-81 pass artefact shape with criteria marked **Proposed: pending Miguel's approval**. That mark is not approval.
 
-US-61 is a Should. Approved epic E1 does not mention source domain or sending app. That gap is in `docs/product/amendments/2026-10-17-security-delegation.md`, which is Proposed and awaiting Miguel.
+US-61 is a Should in epic E1. Miguel approved that in `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. The story stays Draft.
 
 A compact review list is `docs/product/stories/REVIEW-PACK.md`. That list is not approval.

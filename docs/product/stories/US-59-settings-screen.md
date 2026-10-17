@@ -22,7 +22,7 @@ Use one Settings screen.
 - This screen hosts controls defined by other stories. It does not add Back up now.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: deciding sign-out. The row is only a slot. The behavior is the proposed US-78, pending Miguel's approval.
-- The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Approved epic E11 does not say the topic call follows the sync preference. That gap is in the proposed amendment.
+- The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Epic E11 includes that setting after the amendment approved on 2026-10-17 at 15:55 IST.
 
 ## Acceptance criteria
 

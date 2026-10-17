@@ -18,8 +18,8 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 
 | State | Evidence | Status |
 |---|---|---|
-| Vision | `docs/product/vision.md` | Draft. Not accepted. |
-| Product spec | `docs/product/specification.md` | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision `c288b7e`. |
+| Vision | `docs/product/vision.md` | Current vision, rewritten 2026-10-17 at 15:55 IST to match the approved specification, epics E1–E9 and E11, and the approved amendment. |
+| Product spec | `docs/product/specification.md` | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST. Wording: "Yes". |
 | Epic approval | `docs/product/epics/E1` through `E11` | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision `98275b3`. E1–E9 and E11 are v1. E10 is Approved as Later, not in v1, and has no stories. |
 | Story refine | `docs/product/stories/US-01` through `US-84` and `INDEX.md` | Draft. Refined again on 2026-10-17 after the round-2 review of `40bb526`. Not approved. |
 | Story approval | Rule recorded. No story signed. | Not given. Round-2 verdicts are not a status of Approved. Household and Leisure are recommendations only. |
@@ -185,13 +185,34 @@ Proposed criteria, marked **Proposed: pending Miguel's approval**, are on US-64,
 
 Not decided, and not turned into criteria: ML Kit telemetry, lock-screen text for sensitive items, token-looking URL previews, the topic provider and payload, sync conflicts, key transfer, exact alarms, a fixed time zone, and full-screen QR.
 
+## Harness step (2026-10-17, amendment approval): apply the approved security-delegation amendment
+
+`sdlc-conductor`. The pipeline is still stopped at story review. Spec and epic text already have a named human gate, and Miguel (`mjbvilhena`) approved this amendment at 15:55 IST after a 4-part walkthrough. Applying sections 1–6 is legal. It does not open the design band, does not approve any story, and does not start implementation. His instruction to apply it is the confirm. The next product gate remains story approval.
+
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This branch does not contain `scripts/bootstrap-sdlc-mcp.sh`. This was not a live MCP stdio session.
+
+Skills used:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-product-owner`, template `get_sdlc_template("product spec")` (the epic alias resolves to the same template). Definition of Done `get_definition_of_done("epic")` and `get_definition_of_done("product spec")`, artefact shape only. Shipped-epic DoD is unmet: nothing is built.
+3. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+4. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+His words. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes". He changed section 7. The vision file is rewritten to the current vision. No supersession sentence was added. His words: "Vision document should always reflect the current vision, not an historic vision with some amendments added to it".
+
+Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, E8, and E11. Where a proposed sentence said a rule stayed out until this amendment was approved, the file records that he approved it, so US-61, US-64 (Should), and the topic job's own unmetered setting are now in those epics. Sensitive-item exclusion stays out of E11 until he approves the US-75 proposal. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay marked **Proposed: pending Miguel's approval**.
+
+No story status was flipped to Approved. The stale drift list (specification line 27, the design-gate "not delegated" sentence, E8, E3, E11, E1, and the old vision) is removed because those files now match the approved amendment.
+
+Approved revision of this application: commit `PENDING_APPLICATION_SHA`.
+
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
-| Vision ↔ spec | Spec links the vision and epics E1–E11. The vision is still not accepted. The specification is approved at revision `c288b7e`. |
-| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Proposed amendment: `docs/product/amendments/2026-10-17-security-delegation.md`. |
+| Vision ↔ spec | The vision states the current approved product. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. |
+| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

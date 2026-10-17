@@ -5,6 +5,12 @@
 > His words, in reply to a request to approve the Lagoon spec in his own words, after a full section-by-section walkthrough (parts 1–4, including the E11 Topics addition): "Approved".
 > Approved revision: commit `c288b7e` (`c288b7ef020a9aafe821b3df3af21bd2ff75dc1b`). This record does not change the product text of that revision.
 > This approval is of the specification only. It does not itself approve the epics, the stories, the technical design, or the threat model. Epics E1–E11 were approved later, on 2026-10-17 at 13:29 IST, at revision `98275b3`. Stories stay Draft. Do not start implementation from this file alone.
+> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, sections 1 and 6, applied after his approval.
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
+> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
+> He changed section 7 of that amendment. `docs/product/vision.md` is rewritten to the current vision. No supersession sentence was added.
+> Approved revision of this application: commit `PENDING_APPLICATION_SHA`. This record does not change the product text of that revision.
+> This amendment approval does not approve any story. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay proposed.
 > Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
 
 ## Background & Value Proposition
@@ -24,7 +30,7 @@ No numeric success metric was given.
 
 ### In Scope (MVP)
 
-v1 is the draft epics E1–E9 and E11. Epic text is not epic approval. E10 is later and is not v1. E11 has no stories yet.
+v1 is the approved epics E1–E9 and E11. Epic approval is not story approval. E10 is later and is not v1. E11 stories are drafted under `docs/product/stories/` and stay Draft until story approval.
 
 | Epic | Outcome | Draft |
 |---|---|---|
@@ -151,22 +157,24 @@ No stories are added for these.
 
 ### For Miguel at the design gate
 
-These stay open. They are security, data integrity, or release questions. They are not delegated. Miguel answers them at the technical design, ADR, and threat-model gate. That gate has not started. Assigning them there does not open it, and it does not approve this specification.
+Some design-gate questions are still open. Miguel answers those at the technical design, ADR, and threat-model gate. That gate has not started.
+
+Decided by Miguel on 2026-10-17 at 14:56 IST, not by this amendment: if the vault key is lost, the content is lost, and there is no recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
+
+Delegated by him the same afternoon, with proposed story criteria still pending his approval: sensitive-item handling (US-75), Drive scope and sign-out (US-78), link-preview skipping (US-79), sharing out (US-64), the permission set (US-80), and sideload policy (US-81).
+
+Still open for him, and not decided by the stories: sync conflicts, how a deletion propagates, how keys reach a new device, the topic AI provider and its retention terms, how the topic credential is supplied, and what the topic call sends.
 
 - [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena, design gate)
 - [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena, design gate)
 - [ ] **Keys on a new device.** How do keys reach a new or second device (for example a passphrase or recovery key, versus a key derived from the Google account)? (@mjbvilhena, design gate)
-- [ ] **Lost key.** What happens if the key or passphrase is lost? (@mjbvilhena, design gate)
-- [ ] **App unlock.** Is unlocking the app (biometric or device credential) required? This is separate from the v1 lock on items marked sensitive. (@mjbvilhena, design gate)
-- [ ] **Sideload verification.** Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. What should this project do about that? (@mjbvilhena, design gate)
 - [ ] **Topic AI provider.** Which cloud AI provider processes topics, and what are its data-retention terms? (@mjbvilhena, design gate)
 - [ ] **Topic API credential.** How is the API key or credential stored and protected? It must not be baked into the APK in plain form. (@mjbvilhena, design gate)
-- [ ] **Sensitive items and the cloud.** Are items marked sensitive excluded from cloud topic processing? (@mjbvilhena, design gate)
 - [ ] **What is sent.** What exactly is sent to the cloud AI: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
 
 ### Story-level recommendations (not approval)
 
-Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot under Miguel's delegation of 2026-10-17. The stories stay Draft. This specification stays Draft.
+Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot under Miguel's delegation of 2026-10-17. The stories stay Draft. This specification is approved.
 
 - **US-01.** Match a repeat URL on a normalised form (ignore scheme, `www`, trailing slash, the `#fragment`, and `utm_*` / tracking parameters; lowercase the host) and keep the original URL. Update the existing item: refresh preview and snapshot, union the tags, never overwrite text. Append a new note as a dated entry. Bump last-saved. Snackbar: "Saved before, added to existing", with Undo and "Keep separate".
 - **US-15.** Weighted BM25, starting weights title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1. Exact phrases rank above scattered terms. Recency is only a light tie-break. Prefixes match as he types. Accents fold with `unicode61 remove_diacritics 2`. Weights and the tie-break are deterministic and tested. Design-gate risk, not decided here: FTS5 needs Room 3 with the bundled SQLite driver (stock SQLite on `minSdk` 26 lacks FTS5, and Room 2 only has FTS4), and it is not yet verified with an encrypted database (SQLCipher). Spike it early. Fallback: Room 2 FTS4 plus app-side ranking.
@@ -177,13 +185,13 @@ Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot un
 ### Resolved, not open
 
 - **Q5.** Resolved by Miguel's sync decision: sync merges. An item that exists on only one side is kept. Concurrent edits and deletions are the open questions above, not a return of Q5.
-- **Q10.** Resolved by Miguel: extra encryption, at rest and end-to-end for Drive. Key transport, loss, and app unlock remain open.
+- **Q10.** Resolved by Miguel: extra encryption, at rest and end-to-end for Drive. Key transport remains open. A lost key means the content is lost, with no recovery. App lock is optional, and the device PIN is the fallback when there are no biometrics. He decided both on 2026-10-17 at 14:56 IST.
 
 ## Approval
 
 | Gate | Status | What advances it |
 |---|---|---|
-| This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. | Passed. |
+| This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST. Wording: "Yes". Application revision: `PENDING_APPLICATION_SHA`. | Passed. |
 | Epics E1–E9 and E11 | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. | Passed. This does not approve the stories. |
 | Epic E10 | **Approved. Later. Not in v1.** Same sign-off and revision. | Passed as later work. Not approval to build it in v1. |
 | User stories | Draft. None approved. | Next gate. Miguel's bots review and approve stories under his delegation of 2026-10-17. E11 stories are drafted first. He decides epic-level and security matters only. That rule is not a sign-off on any story. |

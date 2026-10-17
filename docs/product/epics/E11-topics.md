@@ -7,6 +7,11 @@
 > This approval does not approve any story. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 > Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
 > Draft stories US-41 through US-47 are in `docs/product/stories/`. They are Draft. They are not approved. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
+> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, section 4, applied after his approval.
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
+> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
+> Approved revision of this application: commit `PENDING_APPLICATION_SHA`. This record does not change the product text of that revision.
+> This amendment approval does not approve the US-75 proposal. Sensitive-item exclusion stays out of this epic until he approves that proposal.
 
 ## Background & Value Proposition
 
@@ -27,8 +32,9 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - The processor is a cloud AI, for every item, under his recorded decision. Readable content leaves the phone for that call.
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
+  - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, whether sensitive items are excluded, or the exact payload. Those are design-gate questions for him. Writing user stories before this epic is approved.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Whether sensitive items are excluded from the topic call is proposed in US-75 and stays out of this epic until he approves that proposal. The topic job has its own "Unmetered only" setting in US-44 and US-59. That setting is not the sync preference, and it is not in this epic until he approves this amendment. He approved this amendment on 2026-10-17 at 15:55 IST, so that setting is in scope above.
 
 ## Core Workflows
 

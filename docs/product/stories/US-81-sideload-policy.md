@@ -63,7 +63,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The approved specification still says sideload verification is not delegated. That sentence is unchanged until Miguel approves the amendment.
+- The specification now records that sideload policy was delegated, after the amendment approved on 2026-10-17 at 15:55 IST. These criteria stay proposed.
 
 ## Implementation notes
 

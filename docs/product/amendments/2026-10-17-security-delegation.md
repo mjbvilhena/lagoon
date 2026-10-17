@@ -1,10 +1,13 @@
-# Proposed amendment, 2026-10-17
+# Amendment, 2026-10-17
 
-> **Status: Proposed. Awaiting approval by Miguel (`mjbvilhena`).**
-> Drafting this file is not approval. The approved specification and the approved epics are not edited by this file.
-> Skill: `sdlc-product-owner`. Template: `get_sdlc_template("product spec")`. Definition of Done: `get_definition_of_done("epic")`, artefact shape only. Epic implementation DoD is unmet: nothing is built.
+> **Status: Approved by `mjbvilhena` on 2026-10-17 at 15:55 IST.**
+> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
+> He changed section 7. The vision is rewritten to the current vision. No supersession sentence was added. His words: "Vision document should always reflect the current vision, not an historic vision with some amendments added to it".
+> Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, E8, and E11. Approved revision of that application: commit `PENDING_APPLICATION_SHA`.
+> Skill: `sdlc-product-owner`. Template: `get_sdlc_template("product spec")`. Definition of Done: `get_definition_of_done("epic")` and `get_definition_of_done("product spec")`, artefact shape only. Shipped-epic DoD is unmet: nothing is built.
+> This approval does not approve any story. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay proposed.
 
-This amendment records where the story revision of commit `40bb526`, plus the round-2 proposals, no longer matches approved text. Each section quotes the current text and gives proposed text. Nothing here is applied until Miguel approves it.
+This amendment records where the story revision of commit `40bb526`, plus the round-2 proposals, no longer matched the then-approved text. Each section quotes the text as it stood and the text he approved. Sections 1–6 are now applied.
 
 ## 1. Specification design-gate list
 
@@ -110,19 +113,11 @@ Proposed text:
 
 > v1 is the approved epics E1–E9 and E11. Epic approval is not story approval. E10 is later and is not v1. E11 stories are drafted under `docs/product/stories/` and stay Draft until story approval.
 
-## 7. Vision, drift
+## 7. Vision
 
-File: `docs/product/vision.md`. Not edited. The file is still not accepted. It says it keeps the original request so that history stays readable.
+File: `docs/product/vision.md`.
 
-Current drift, among other original-request lines:
-
-> OCR of images or scanned PDFs.
-
-is listed under "Not in the request". The same file still describes Back up now, automatic backup, last backup time, and Restore from Drive.
-
-Proposed text: no rewrite of the historical request. If this amendment is approved, add one sentence under the existing supersession note:
-
-> Story drafts after 2026-10-17 do not follow the backup controls or the "OCR not in the request" line. The approved specification supersedes both. This vision file stays a historical request.
+He did not accept the proposed supersession sentence. He changed this section during the walkthrough. The vision file is rewritten so it states the current approved vision: the specification, epics E1–E9 and E11, and this amendment. It includes English-only OCR, offline snapshots, multiple attachments, expiry and reminders, the biometric lock on sensitive items with an optional app lock, end-to-end encrypted seamless Drive sync, AI topics, the Light/Dark/System theme, and sharing out as a Should. It does not describe Back up now, Restore, or a last-backup time.
 
 ## What this amendment does not decide
 

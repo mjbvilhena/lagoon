@@ -25,7 +25,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 
 | Path | What it is |
 |---|---|
-| `docs/product/vision.md` | Draft vision, taken from the request |
+| `docs/product/vision.md` | Current vision. Restates the approved specification, epics E1–E9 and E11, and the approved amendment. |
 | `docs/product/specification.md` | Approved product specification (`c288b7e`) |
 | `docs/product/epics/` | Approved epics E1–E11 (`98275b3`). E10 is Later, not in v1 |
 | `docs/product/stories/` | Draft user stories and the index |
