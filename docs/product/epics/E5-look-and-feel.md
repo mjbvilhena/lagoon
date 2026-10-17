@@ -24,9 +24,9 @@ Miguel, using the app every time he saves or looks something up.
   - Dynamic color is not how the palette is chosen.
   - Calm layout, generous whitespace, refined typography, subtle motion.
   - No clutter and no placeholder text in the shipped UI.
-  - A tasteful launcher icon and the short name Folio.
+  - A tasteful launcher icon and the short name Lagoon.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** A component library other than Material 3. A second brand accent beside teal. Dynamic color as the default. Wireframes in this epic. Treating Folio or the teal values as Miguel's approval of the spec. A public Play name. Folio should be renamed before any public release because the name is crowded. That rename is not a v1 story.
+- **Out of Scope / Non-Goals:** A component library other than Material 3. A second brand accent beside teal. Dynamic color as the default. Wireframes in this epic. Treating Lagoon or the teal values as Miguel's approval of the spec. A Play Store listing.
 
 ## Core Workflows
 
@@ -34,19 +34,19 @@ Miguel, using the app every time he saves or looks something up.
    - He runs the app in light mode and in dark mode.
    - Both use the same neutral palette and the same single accent, not colors taken from the wallpaper.
 2. **Recognize the app**
-   - The launcher shows an icon made for this app and the short name Folio.
+   - The launcher shows an icon made for this app and the short name Lagoon.
 
 ## Risks & Dependencies
 
-- Q1 and Q3 are the bots' consensus (Folio, the teal, dark on-accent text, optional dynamic color). They are not Miguel's approval. The UX gate can still check the accent. UX design has not started.
+- Q1 is the joint recommendation of Scout and Mikey's Vault App Bot: the short name is Lagoon. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. Q3 is the earlier bots' consensus (the teal, dark on-accent text, optional dynamic color). Neither is Miguel's approval. The UX gate can still check the accent. UX design has not started.
 - "Tasteful" and "refined" are his words. This epic does not pick a typeface. The accent values are the recommendation, not a finished visual design.
 
 ## Open Questions
 
-- Q1 and Q3 are consensus recommendations, not open questions and not approval. The UX gate may still adjust the accent.
+- Q1 and Q3 are recommendations, not open questions and not approval. The UX gate may still adjust the accent.
 - Q5 and Q10 are Miguel's decisions (sync merges; extra encryption). They are not questions for this epic.
 
 ## Draft stories
 
 - US-22 Use a calm light and dark appearance
-- US-23 Show a launcher icon and the name Folio
+- US-23 Show a launcher icon and the name Lagoon

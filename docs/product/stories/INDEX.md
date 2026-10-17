@@ -34,7 +34,7 @@ File names for US-17 through US-21, US-28, and US-30 were kept so older links st
 | US-20 | Receive the vault on a new install | E4 | `docs/product/stories/US-20-restore-from-drive.md` | Draft |
 | US-21 | Export and import a zip | E4 | `docs/product/stories/US-21-export-and-import-a-zip.md` | Draft |
 | US-22 | Use a calm light and dark appearance | E5 | `docs/product/stories/US-22-calm-appearance.md` | Draft |
-| US-23 | Show a launcher icon and the name Folio | E5 | `docs/product/stories/US-23-icon-and-name.md` | Draft |
+| US-23 | Show a launcher icon and the name Lagoon | E5 | `docs/product/stories/US-23-icon-and-name.md` | Draft |
 | US-24 | Install a signed release APK | E6 | `docs/product/stories/US-24-signed-apk.md` | Draft |
 | US-25 | Run the tests he named | E6 | `docs/product/stories/US-25-automated-tests.md` | Draft |
 | US-26 | Follow a README to build, sideload, and configure OAuth | E6 | `docs/product/stories/US-26-readme-build-and-oauth.md` | Draft |

@@ -32,8 +32,8 @@ v1 is the draft epics E1–E9. Epic text is not epic approval. E10 is later and 
 | E2 Link enrichment | A saved link keeps its URL and, when a fetch works, gains title, description, preview image, readable text, and an offline snapshot of the page. | `docs/product/epics/E2-link-enrichment.md` |
 | E3 Find and curate | Browse, sort and filter by date saved, Untagged / Inbox, detail, edit, delete with undo, tags including rename-and-merge, search with ranked highlighted matches, filter by type and tag. | `docs/product/epics/E3-find-and-curate.md` |
 | E4 Seamless sync | No Back up now, no Restore, no last-backup-time control. Background sync to Drive `appDataFolder` when connectivity allows. On-device first. A new install or a second device signs in and receives the vault. Sync merges. Unmetered-only preference. Zip export/import stays. | `docs/product/epics/E4-private-backup.md` |
-| E5 Look and feel | Calm Material 3 light and dark UI. Deep teal accent with the contrast rules below. Dynamic color is an optional toggle; teal is the fallback. Launcher name Folio for this sideload build. | `docs/product/epics/E5-look-and-feel.md` |
-| E6 Installable release | Signed sideload APK. Application id `com.mjbvilhena.folio`. `minSdk` 26. `compileSdk` and `targetSdk` 37. Tests, README, screenshots when an emulator exists. | `docs/product/epics/E6-installable-release.md` |
+| E5 Look and feel | Calm Material 3 light and dark UI. Deep teal accent with the contrast rules below. Dynamic color is an optional toggle; teal is the fallback. Launcher name Lagoon. | `docs/product/epics/E5-look-and-feel.md` |
+| E6 Installable release | Signed sideload APK. Application id `com.mjbvilhena.lagoon`. `minSdk` 26. `compileSdk` and `targetSdk` 37. Tests, README, screenshots when an emulator exists. | `docs/product/epics/E6-installable-release.md` |
 | E7 On-device text recognition | In v1. OCR for screenshots, images, and scanned PDFs, on the device, so that text is searchable. Text-based PDFs are extracted, not OCR'd. | `docs/product/epics/E7-on-device-text-recognition.md` |
 | E8 Encryption and sensitive items | Encrypted database and attachment files at rest, keys in Android Keystore. Everything synced to Drive is client-side ciphertext. Fingerprint or biometric lock on items he marks sensitive. | `docs/product/epics/E8-encryption-and-sensitive-items.md` |
 | E9 Reminders and expiry | Optional expiry or reminder date on an item, with a notification. | `docs/product/epics/E9-reminders-and-expiry.md` |
@@ -43,7 +43,7 @@ Constraints later design must not reopen unless he does:
 - Kotlin, Jetpack Compose, Material 3.
 - Room with FTS. Search covers title, body, extracted text (including text extracted from text-based PDFs, and OCR text once recognized), tags, and the personal note.
 - `minSdk` 26. `compileSdk` 37 and `targetSdk` 37 (Android 17, stable since June 2026). Bots' consensus on Q8. Not his approval of this spec.
-- Application id `com.mjbvilhena.folio`. Bots' consensus on Q2.
+- Application id `com.mjbvilhena.lagoon`. Joint recommendation of Scout and Mikey's Vault App Bot on Q2. Not his approval of this spec.
 - Google Sign-In / Credential Manager and the Drive API with the app-data folder (`appDataFolder` / `drive.appdata`). Not Android Auto Backup. That folder is hidden in the Drive UI.
 - WorkManager for background sync. The unmetered-only preference uses `UNMETERED`.
 - OAuth client ID is build-time configuration. The app builds, installs, and works offline without it. Settings then explain that sync is not configured. They do not crash and they do not offer a manual backup.
@@ -55,7 +55,6 @@ Constraints later design must not reopen unless he does:
 - **E10 Trip or collection grouping** with a date range. Miguel decided this is later, not v1. Draft: `docs/product/epics/E10-trip-and-collection-grouping.md`. No stories. Not approval.
 - Picking out booking references and merchants. Stays proposed and later, unless it falls out of OCR with no extra product scope. No story.
 - Full-screen QR and barcode display. Still proposed. He has not decided. No story.
-- Renaming Folio before any public Play release. v1 is a sideload build and may keep the name Folio. No rename story in v1.
 
 ### Out of Scope / Non-Goals
 
@@ -100,12 +99,17 @@ Recorded as his decisions, in his words where he gave them.
 - **In v1:** (1) on-device OCR for screenshots, images, and scanned PDFs, so their text is searchable; (2) optional expiry or reminder dates, with notifications; (3) multiple attachments per item; (4) offline snapshots of saved web pages, keeping the original URL; (5) fingerprint or biometric lock on items marked sensitive, tied to the encryption work.
 - **Later, not v1:** trip or collection grouping with a date range.
 
-### Bots' consensus (not approval)
+### Q1 and Q2 (joint recommendation, not approval)
 
-Mikey's Dev Bot first recommended answers under Miguel's delegation of Q1–Q4 and Q6–Q9. Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant then reviewed them. The lines below are that **consensus recommendation**. They are not Miguel's approval.
+Scout and Mikey's Vault App Bot jointly recommend these answers under Miguel's delegation of the product questions. This replaces the earlier name and application id. It is not Miguel's approval.
 
-- **Q1. Name.** Folio stays. The name is crowded on Play (other apps are called Folio), so it should be renamed before any public release. This sideload v1 may still use Folio.
-- **Q2. Application id.** `com.mjbvilhena.folio`.
+- **Q1. Name.** Lagoon. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done.
+- **Q2. Application id.** `com.mjbvilhena.lagoon`.
+
+### Bots' consensus on the other delegated questions (not approval)
+
+Mikey's Dev Bot first recommended answers under Miguel's delegation of Q3, Q4, and Q6–Q9. Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant then reviewed them. The lines below are that **consensus recommendation**. They are not Miguel's approval.
+
 - **Q3. Accent.** The teal stays. Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode the color on top of the accent (`onPrimary`) must be dark (black or `#003731`), because white on `#2DD4BF` fails contrast. Never use `#0F766E` on dark surfaces. Material dynamic color can be an optional toggle, with teal as the fallback. The UX gate can still check the values.
 - **Q4. Tags.** Renaming a tag applies to every item. Renaming onto a name that already exists, compared case-insensitively, asks for confirmation and then merges the two tags. Merging is in v1 only through that path.
 - **Q6. Network, after his sync decision.** The background-sync preference is Unmetered only (`WorkManager` `UNMETERED`). There is no Back up now, so there is no "runs on any connection" manual action and no roaming warning on a manual backup. Sync uses the Drive API `appDataFolder`, not Android Auto Backup. `appDataFolder` is hidden in the Drive UI. The earlier size warning (about 50 MB on a manual backup) is dropped with Back up now.

@@ -10,7 +10,7 @@ The AI SDLC harness is installed. The product vision, specification, epics, and 
 
 The pipeline is stopped at the first human approval gate: **product specification approval** by `mjbvilhena`.
 
-Decisions in the specification are recorded and are not approval. Miguel decided sync, encryption, and the v1 scope (OCR, reminders, multiple attachments, page snapshots, biometric lock on sensitive items). His bots recommended the delegated answers. Trip grouping is later. Q5 and Q10 are resolved. Conflicts, deletions, keys, app unlock, and sideload verification are still open for him.
+Decisions in the specification are recorded and are not approval. Miguel decided sync, encryption, and the v1 scope (OCR, reminders, multiple attachments, page snapshots, biometric lock on sensitive items). Scout and Mikey's Vault App Bot jointly recommend the name Lagoon and the application id `com.mjbvilhena.lagoon`. His other bots recommended the remaining delegated answers. Trip grouping is later. Q5 and Q10 are resolved. Conflicts, deletions, keys, app unlock, and sideload verification are still open for him.
 
 Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code.
 

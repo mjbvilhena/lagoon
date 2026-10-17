@@ -49,7 +49,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 ## Open Questions
 
 - Q9 is a bots' consensus, not approval: one tap, then a non-blocking chip row, title auto-fill, inbox, and date sort. See US-28, US-38, US-39, and US-40. Edit later is US-12.
-- Q1 and Q2 are delegated recommendations (name Folio, application id `com.mjbvilhena.folio`). They do not block saving, and they are not Miguel's approval.
+- Q1 and Q2 are the joint recommendation of Scout and Mikey's Vault App Bot (name Lagoon, application id `com.mjbvilhena.lagoon`). They do not block saving, and they are not Miguel's approval. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done.
 
 ## Draft stories
 

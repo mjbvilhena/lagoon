@@ -28,7 +28,7 @@ Follow written steps to build, sideload, and create the OAuth client.
 - **Scenario: OAuth steps exist** — Must
   - Given that README
   - When he follows the Drive section
-  - Then it names the application id `com.mjbvilhena.folio`, the SHA-1 of the release signing certificate used for that APK, the Google Cloud steps to create an Android OAuth client with that package name and SHA-1, the `drive.appdata` scope the app requests, and the file or property where he puts the client ID at build time
+  - Then it names the application id `com.mjbvilhena.lagoon`, the SHA-1 of the release signing certificate used for that APK, the Google Cloud steps to create an Android OAuth client with that package name and SHA-1, the `drive.appdata` scope the app requests, and the file or property where he puts the client ID at build time
 - **Scenario: missing client ID is described** — Must
   - Given he has not set the client ID
   - When he reads the README
@@ -48,7 +48,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Q2 is a delegated recommendation, not approval: the application id in those steps is `com.mjbvilhena.folio`. The SHA-1 still comes from US-24's keystore and must not be invented before that keystore exists.
+- Q2 is the joint recommendation of Scout and Mikey's Vault App Bot, not approval: the application id in those steps is `com.mjbvilhena.lagoon`. The SHA-1 still comes from US-24's keystore and must not be invented before that keystore exists.
 - The current root `README.md` points at these drafts and says there is no app yet. Replacing it with build steps happens when this story is implemented, not in this drafting pass.
 
 ## Implementation notes

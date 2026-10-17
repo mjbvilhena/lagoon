@@ -55,7 +55,7 @@ Not applicable. No analytics. Sign-in is authentication he asked for, not produc
 
 ## Dependencies and risks
 
-- Application id `com.mjbvilhena.folio` is the bots' consensus, not his spec approval. The release SHA-1 must not be invented.
+- Application id `com.mjbvilhena.lagoon` is the joint recommendation of Scout and Mikey's Vault App Bot, not his spec approval. The release SHA-1 must not be invented.
 - Which of Credential Manager and the older Google Sign-In API performs sign-in is an ADR. He named both. This story does not pick.
 - Ciphertext is US-36. This story does not choose an algorithm.
 

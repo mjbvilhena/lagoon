@@ -59,10 +59,10 @@ Stopped at **product specification approval**. See `docs/sdlc/pipeline-state.md`
 
 ## Epic E5: Look and feel
 
-> Goal: Calm Material 3 light and dark UI. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the sideload name Folio. *(Draft — not approved)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started.
+> Goal: Calm Material 3 light and dark UI. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Draft — not approved)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started.
 
 - **US-22** *(Draft)* Light and dark appearance. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Bots' consensus: light about `#0F766E`, dark about `#2DD4BF`, dark `onPrimary` (black or `#003731`). Never use `#0F766E` on dark surfaces. Not approval.
-- **US-23** *(Draft)* Icon and the name Folio for this sideload build. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. The name is crowded on Play and should be renamed before any public release. Not approval.
+- **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Joint recommendation of Scout and Mikey's Vault App Bot. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. Not approval.
 
 ## Epic E6: Installable release
 
@@ -70,7 +70,7 @@ Stopped at **product specification approval**. See `docs/sdlc/pipeline-state.md`
 
 - **US-24** *(Draft)* Signed release APK. Evidence: `docs/product/stories/US-24-signed-apk.md`. Not implemented. `minSdk` 26. `compileSdk` and `targetSdk` 37 (bots' consensus on Q8, not approval). Sideload developer verification stays an open question for Miguel.
 - **US-25** *(Draft)* Search, sync/zip packaging, and a basic Compose test. Evidence: `docs/product/stories/US-25-automated-tests.md`. Not implemented. Packaging tests cover ciphertext, not a live Drive call.
-- **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Recommended application id `com.mjbvilhena.folio` (Q2, not approval). SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
+- **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Recommended application id `com.mjbvilhena.lagoon` (Q2, joint recommendation of Scout and Mikey's Vault App Bot, not approval). SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
 - **US-27** *(Draft)* Screenshots. Evidence: `docs/product/stories/US-27-screenshots.md`. Not started. No images were fabricated. Settings shows sync state, not a backup button.
 
 ## Epic E7: On-device text recognition

@@ -41,7 +41,7 @@ Not applicable. The brief forbids analytics. No events are proposed.
 
 ## Design and a11y notes
 
-- The share sheet lists the vault as Folio. That name is the Q1 recommendation from Mikey's Dev Bot under delegation. It is not Miguel's approval of the spec.
+- The share sheet lists the vault as Lagoon. That name is the joint Q1 recommendation of Scout and Mikey's Vault App Bot under Miguel's delegation. It is not his approval of the spec.
 - No placeholder sentences in the shipped UI.
 - The share target has a name a screen reader can announce. Exact layout is for the later UX artefact, which does not exist yet.
 
