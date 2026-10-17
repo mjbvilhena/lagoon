@@ -21,11 +21,11 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 | Vision | `docs/product/vision.md` | Draft. Not accepted. |
 | Product spec | `docs/product/specification.md` | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision `c288b7e`. |
 | Epic approval | `docs/product/epics/E1` through `E11` | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision `98275b3`. E1–E9 and E11 are v1. E10 is Approved as Later, not in v1, and has no stories. |
-| Story refine | `docs/product/stories/US-01` through `US-81` and `INDEX.md` | Draft. Refined again on 2026-10-17 after the five-bot review and Miguel's 14:56 IST decisions. Not approved. |
-| Story approval | Rule recorded. No story signed. | Not given. Verdicts at `9e7de63` are not approvals. Stories stay Draft until all five bots re-review. |
+| Story refine | `docs/product/stories/US-01` through `US-84` and `INDEX.md` | Draft. Refined again on 2026-10-17 after the round-2 review of `40bb526`. Not approved. |
+| Story approval | Rule recorded. No story signed. | Not given. Round-2 verdicts are not a status of Approved. Household and Leisure are recommendations only. |
 | Technical design / ADRs | No RFC, API design, or ADR files | Not started. |
 | UX | No UX artefact | Not started. |
-| Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync, and the cloud topic call). |
+| Test strategy / threat model | `docs/product/amendments/2026-10-17-proposed-threat-note.md` | Not started as a gate. A proposed note exists. It is not an approved threat model and it does not open the design band. |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. Bounds have not been designed. |
 | Repository checks | Workflows, CODEOWNERS, gitignore, README | `.github/workflows/qa.yml` on `master`. See `docs/sdlc/repository-setup.md`. Not a product approval. |
 | Implement | No application code | Not started. Blocked. |
@@ -54,7 +54,7 @@ On 2026-10-17 at about 11:57 IST, during his section-by-section review, he added
 
 ## Story approval rule (2026-10-17)
 
-Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not approve US-01–US-81. Those stories stay Draft until all five bots re-review and a sign-off names them. Verdicts at `9e7de63` are not that sign-off. Epic approval is now signed by him. The next gate is still story review. Drafting is not the sign-off.
+Miguel delegated story approval to his bots. He decides epic-level and security matters only. The rule is recorded here. It does not by itself approve US-01–US-84. Round-2 cells for Dev Bot, Scout, and Mikey's Assistant use the words "Approved under Miguel's delegation of 2026-10-17" where the review of `40bb526` was a clean approval. Household and Leisure stay recommendations until he confirms the delegation to them directly. No story status field was set to Approved in this run. Epic approval is signed by him. The next gate is still story review. Drafting is not the sign-off.
 
 ## Design-gate questions
 
@@ -73,10 +73,13 @@ Still open for him. The design band has not started:
 4. Topic provider, retention and training, how the credential is supplied, and the payload. US-76. The APK still must not contain a plaintext key.
 5. Whether 09:00 should use a fixed zone instead of the phone.
 6. Full-screen QR and barcode display.
+7. ML Kit usage or diagnostic telemetry. US-07.
+8. Lock-screen text for a sensitive item. US-75 does not decide it.
+9. Whether a preview is fetched for a token-looking URL. US-79 does not decide it.
 
-Delegated to his bots the same afternoon. He did not decide them:
+Delegated to his bots the same afternoon. He did not decide them. Round 2 proposes criteria, marked pending his approval, in `docs/product/amendments/2026-10-17-security-delegation.md` and on the stories. The proposals are not approval.
 
-1. Sensitive-item handling in lists, search, notifications, export, the cloud call, and screenshots. US-75.
+1. Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75.
 2. Drive scope and sign-out. US-78.
 3. Link-preview skipping. US-79.
 4. Sharing out. US-64.
@@ -88,10 +91,10 @@ The five story-level questions now have consensus recommendations in US-01, US-1
 The specification gate and the epic gate have passed. Later gates stay closed until each is actually signed:
 
 1. Epic approval by `mjbvilhena` (E1–E11, including later epic E10). **Passed** on 2026-10-17 at 13:29 IST. E10 is Approved as Later, not in v1.
-2. Story review and approval of US-01–US-81 by Miguel's bots, under the delegation of 2026-10-17. **This is the gate the pipeline stops on.** Stories stay Draft until all five bots re-review.
+2. Story review and approval of US-01–US-84 by Miguel's bots, under the delegation of 2026-10-17. **This is the gate the pipeline stops on.** Round-2 verdicts are recorded. No story status is Approved. Household and Leisure remain recommendations until he confirms the delegation to them.
 3. Technical design and ADR approval, once those documents exist, and the threat model. The questions still marked for Miguel go to him. The questions marked delegated go to his bots. The cipher is an ADR, not a line in the spec. That band has not started.
 
-UX, test strategy, and a threat model sit in the design band after story approval. The threat model is required before implementation. They were not skipped and they were not written. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
+UX, test strategy, and an approved threat model sit in the design band after story approval. The threat model is required before implementation. A proposed note exists and does not open that band. Implementation stays illegal until those gates are actually passed or he explicitly skips one and the skip is recorded here.
 
 ## Harness step (2026-10-17): E11 stories, then docs backlog review
 
@@ -154,13 +157,41 @@ Scout's Approve verdicts at `9e7de63`, under the delegation of 2026-10-17, cover
 
 Doc drift, not edited: `docs/product/specification.md` line 27 still says "E11 has no stories yet". `docs/product/vision.md` still lists OCR under "Not in the request" and still describes Back up now. Both are left as written. The approved specification and epics were not edited.
 
+## Harness step (2026-10-17, round 2): revise stories after the review of 40bb526
+
+`sdlc-conductor` again. The legal step is still story refinement. Stories are Draft. Design, UX, an approved threat model, and implementation stay closed. The user's instruction to apply the round-2 review is the confirm to stay in `sdlc-user-story-refiner`. No story status was flipped to Approved. Pull request #3 stays open and unmerged.
+
+The story branch does not contain `scripts/bootstrap-sdlc-mcp.sh` (that script is on pull request #4). The virtualenv created by that script was already on disk at `third_party/ai-sdlc-harness/mcp-server/venv`. `get_sdlc_template` and `get_definition_of_done` were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with that virtualenv's Python. This was not a live MCP stdio session. `get_domain_consultant` for capture, vault, and knowledge, and `get_layer_consultant("ui")`, found no files. No MUST/NEVER rules were invented.
+
+Skills, templates, and Definition of Done checks used for this revision:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`. Legal step: story refinement.
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+3. `sdlc-threat-modeler`, template `get_sdlc_template("threat model")`, Definition of Done `get_definition_of_done("security change")`. The proposed note is not an approved threat model. Security-change implementation DoD is unmet: there is no code.
+4. `sdlc-dod-checker`, `get_definition_of_done("user story")`, artefact shape only.
+5. `sdlc-product-owner`, template `get_sdlc_template("product spec")`, Definition of Done `get_definition_of_done("epic")`. The amendment is Proposed, awaiting `mjbvilhena`. The approved specification and epics were not edited.
+6. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+7. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Approved stories touched in this revision, and why. Each edit is small. The round-2 cell asks for re-confirm. Status stays Draft.
+
+- US-01. One title order, shared with US-02 and US-40. Leftover text is kept as a note the same way in US-01 and US-02. The sending app is recorded only when the platform reports it.
+- US-45. A hard-deleted item's topic note is removed, so the story matches US-13. The previous "item deleted" note contradicted that delete.
+- US-57. The spike also runs on an API 26 emulator and an arm64 phone, and the note records the APK size change.
+
+`sdlc-dod-checker` artefact result: fail US-73, US-74, US-76, US-77. Pass artefact shape: every other story, including the six proposed security stories. Implementation DoD fails for every story. Nothing is Done.
+
+Proposed criteria, marked **Proposed: pending Miguel's approval**, are on US-64, US-75, US-78, US-79, US-80, and US-81. The proposed threat note is `docs/product/amendments/2026-10-17-proposed-threat-note.md`. The proposed amendment is `docs/product/amendments/2026-10-17-security-delegation.md`.
+
+Not decided, and not turned into criteria: ML Kit telemetry, lock-screen text for sensitive items, token-looking URL previews, the topic provider and payload, sync conflicts, key transfer, exact alarms, a fixed time zone, and full-screen QR.
+
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
 | Vision ↔ spec | Spec links the vision and epics E1–E11. The vision is still not accepted. The specification is approved at revision `c288b7e`. |
-| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-81. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. |
+| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Proposed amendment: `docs/product/amendments/2026-10-17-security-delegation.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

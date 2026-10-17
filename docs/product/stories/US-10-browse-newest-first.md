@@ -20,7 +20,7 @@ Browse saved items, newest first.
 
 ## Background
 
-- The sort key is last-saved, not created. A repeat update (US-49) and an edit (US-12) move last-saved and therefore move the row.
+- The sort key is last-saved, not created. A new save and a repeat share (US-49) move last-saved. An edit moves only `updatedAt` (US-12) and does not move the row.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: date filters and other sort directions (US-39). What a sensitive row reveals before unlock is US-75.
 
@@ -42,6 +42,10 @@ Browse saved items, newest first.
   - Given he saves a new item
   - When he returns to the home list
   - Then that item is the first row
+- **Scenario: an edit does not move the row** — Must
+  - Given an item is not the newest by last-saved
+  - When he edits it (US-12)
+  - Then last-saved stays and the row does not become first because of that edit
 
 ## Analytics and observability (optional)
 

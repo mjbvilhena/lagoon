@@ -5,7 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**MoSCoW:** Must. v1. Capture records the source. This story shows it and makes it searchable.
+**MoSCoW:** Should. Source domain and sending app are not in the approved specification or epic E1. This story is noted for Miguel in the proposed amendment. It is not an epic edit.
 
 ## Title
 
@@ -19,7 +19,7 @@ See and filter by where an item came from.
 
 ## Background
 
-- US-01, US-02, and US-03 record the fields. An empty field does not block the save.
+- US-01, US-02, US-03, and US-04 record the fields. The sending app is stored only when the platform reports it. An empty field does not block the save.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a map of every app package.
 

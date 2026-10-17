@@ -28,15 +28,23 @@ Notify before an expiry.
 - **Scenario: seven days and the day** — Must
   - Given he sets an expiry more than 7 days away
   - When the alarms are registered
-  - Then one inexact notification is 7 days before and one is on the day. Both use 09:00 local unless he picked a time
+  - Then one inexact notification is 7 days before, counted as seven midnights in the device local zone, and one is on the day. Both use 09:00 local unless he picked a time
+- **Scenario: exactly 7 days** — Must
+  - Given the expiry date is exactly 7 local midnights ahead
+  - When the alarms are registered
+  - Then both the 7-day notice and the day-of notice are scheduled
 - **Scenario: closer than 7 days** — Must
-  - Given the expiry is fewer than 7 days away
+  - Given the expiry is fewer than 7 days away and 09:00 local on that day has not passed
   - When he sets it
   - Then the 7-day notice is not scheduled and the day-of notice is
+- **Scenario: 09:00 today has passed** — Must
+  - Given he sets an expiry for today and 09:00 local has already passed, and he did not pick a later time
+  - When he sets it
+  - Then no notice is scheduled for that passed time, and the expiry date is still stored
 - **Scenario: a past date** — Must
   - Given the date is already past
-  - When he tries to set it
-  - Then he sees that the date is in the past and no notification is scheduled
+  - When he sets it
+  - Then the expiry is stored, the item is marked expired, and no notification is scheduled
 - **Scenario: the item shows it** — Must
   - Given the expiry day has passed
   - When he opens the item

@@ -22,6 +22,7 @@ Queue topic processing while offline.
 - One WorkManager job per item id. The job uses the same worker family as US-41.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: what the call is allowed to send (US-76).
+- Applying a network preference to the topic call is not in approved epic E11. This story gives the topic job its own "Unmetered only" setting. That gap is listed for Miguel in `docs/product/amendments/2026-10-17-security-delegation.md`. The epic file is not edited.
 
 ## Acceptance criteria
 
@@ -32,12 +33,12 @@ Queue topic processing while offline.
 - **Scenario: one job** — Must
   - Given the item id already has a queued job
   - When another trigger arrives
-  - Then there is still one job for that id, with a `CONNECTED` constraint
+  - Then there is still one job for that id
 - **Scenario: unmetered** — Must
-  - Given "Unmetered only" is on
-  - When the network is metered or roaming
-  - Then the job does not run
-  - And when that preference is off, a metered or roaming network may run it
+  - Given the topic setting "Unmetered only" is on
+  - When the job is queued
+  - Then its constraint is `UNMETERED`, and it does not run on a metered or roaming network
+  - And when that setting is off, the constraint is `CONNECTED`
 - **Scenario: unchanged** — Must
   - Given the content hash matches a completed call
   - When the job runs

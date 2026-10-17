@@ -34,10 +34,10 @@ Sync only ciphertext.
   - Given the payload is uploaded
   - When Drive is inspected
   - Then the vault key is not in the uploaded bytes
-- **Scenario: the topic call is separate** — Must
-  - Given a topic call runs
-  - When sync runs
-  - Then the topic call is not the Drive upload
+- **Scenario: Drive names stay opaque** — Must
+  - Given an item has a title and tags
+  - When the Drive file is created
+  - Then the Drive file name and its metadata carry no title and no tag. They use an opaque id
 
 ## Analytics and observability (optional)
 

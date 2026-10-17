@@ -5,7 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**MoSCoW:** Could. The review asked for this as later than the v1 picker.
+**MoSCoW:** Should. Later than the v1 picker. Not a v1 gate.
 
 ## Title
 
@@ -14,8 +14,8 @@ Add a photo from the camera.
 ## User story
 
 **As a** person named Miguel
-**I want** to take a photo or a multi-page scan inside the vault
-**So that** I can add a page without leaving the item
+**I want** to start a new item from the camera
+**So that** I can keep a page without a share from another app
 
 ## Background
 
@@ -24,12 +24,12 @@ Add a photo from the camera.
 
 ## Acceptance criteria
 
-- **Scenario: camera** — Could
-  - Given an item is open
-  - When he takes a photo
-  - Then the photo is another attachment
-- **Scenario: multi-page** — Could
-  - Given he scans several pages
+- **Scenario: a new item** — Should
+  - Given he starts from the camera intent
+  - When he takes a photo and confirms
+  - Then a new item is stored with that photo as its attachment
+- **Scenario: multi-page** — Should
+  - Given he scans several pages into that new item
   - When he saves the scan
   - Then they are attachments in that order
 

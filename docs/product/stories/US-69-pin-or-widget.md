@@ -14,8 +14,8 @@ Pin a shortcut or a widget.
 ## User story
 
 **As a** person named Miguel
-**I want** a shortcut or a widget that opens capture
-**So that** I can save without hunting for the app
+**I want** to pin a specific item as a launcher shortcut
+**So that** I can open that item without hunting for it
 
 ## Background
 
@@ -24,10 +24,14 @@ Pin a shortcut or a widget.
 
 ## Acceptance criteria
 
-- **Scenario: shortcut** — Could
-  - Given he pins a shortcut or a widget
-  - When he taps it
-  - Then the in-app add screen opens
+- **Scenario: a specific item** — Could
+  - Given he pins one item as a launcher shortcut
+  - When he taps it and the item is not sensitive
+  - Then that item opens
+- **Scenario: a sensitive item** — Could
+  - Given the pinned item is sensitive
+  - When he taps the shortcut
+  - Then US-37 asks him to unlock before the body is shown
 
 ## Analytics and observability (optional)
 

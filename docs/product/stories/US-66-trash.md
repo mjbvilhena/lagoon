@@ -5,7 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**MoSCoW:** Could. v1 delete-with-undo is US-13.
+**MoSCoW:** Should. v1 delete-with-undo is US-13. This story is not a v1 gate.
 
 ## Title
 
@@ -24,14 +24,15 @@ Keep a trash beyond undo.
 
 ## Acceptance criteria
 
-- **Scenario: trash** — Could
+- **Scenario: trash** — Should
   - Given this story is in the build
   - When the undo window ends
-  - Then the item is in trash for 30 days and then removed as US-13 removes it
-- **Scenario: restore** — Could
+  - Then the item is in trash for 30 days, it is absent from search, and its reminders are paused
+  - And after 30 days it is removed as US-13 removes it
+- **Scenario: restore** — Should
   - Given an item is in trash
   - When he restores it
-  - Then it returns with its links, reminders, and index row
+  - Then it returns to search, and its reminders are scheduled again
 
 ## Analytics and observability (optional)
 

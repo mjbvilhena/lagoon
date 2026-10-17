@@ -23,6 +23,7 @@ Use the saved vault with no network and no analytics.
 - The phone is the primary copy. Analytics, usage telemetry, and a crash-reporting product are out of the specification.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a page fetch while offline (US-09) and the topic call (US-44). Those wait. They do not block reading what is already stored.
+- Open for Miguel, not decided here: whether ML Kit usage or diagnostic telemetry is accepted and disclosed, or blocked. This story does not choose.
 
 ## Acceptance criteria
 
@@ -37,7 +38,7 @@ Use the saved vault with no network and no analytics.
 - **Scenario: no analytics libraries** — Must
   - Given the release classpath and manifest
   - When CI inspects them
-  - Then Firebase Analytics, Crashlytics, and any other usage-analytics dependency are absent
+  - Then Firebase Analytics, Crashlytics, and any other usage-analytics dependency are absent. That check does not decide ML Kit usage or diagnostic telemetry. That question stays open for Miguel
 
 ## Analytics and observability (optional)
 

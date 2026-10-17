@@ -14,21 +14,22 @@ Use one Settings screen.
 ## User story
 
 **As a** person named Miguel
-**I want** theme, sync, the reminder default, and the topic switch to live on one Settings screen
+**I want** theme, sync, the reminder default, app lock, and the topic controls to live on one Settings screen
 **So that** I do not hunt through the app for those controls
 
 ## Background
 
 - This screen hosts controls defined by other stories. It does not add Back up now.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: sign-out, which is delegated to his bots (US-78).
+- Out of scope: deciding sign-out. The row is only a slot. The behavior is the proposed US-78, pending Miguel's approval.
+- The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Approved epic E11 does not say the topic call follows the sync preference. That gap is in the proposed amendment.
 
 ## Acceptance criteria
 
 - **Scenario: the controls** — Must
   - Given he opens Settings
   - When the screen is shown
-  - Then he sees the theme (US-22), dynamic color where US-53 shows it, sync state (US-17), the unmetered preference (US-19), sign-in (US-18), the reminder default time (US-34), and the topic-call switch (US-41)
+  - Then he sees the theme (US-22), dynamic color where US-53 shows it, sync state (US-17), the sync unmetered preference (US-19), sign-in (US-18), the reminder default time (US-34), the app-lock toggle (US-37), the notification-permission state (US-34), a sign-out slot whose behavior is US-78, the zip export and import entry (US-21, US-52), the topic off switch (US-41, default off), and the topic "Unmetered only" setting (US-44)
 - **Scenario: no backup controls** — Must
   - Given that screen
   - When he reads it

@@ -20,7 +20,7 @@ Use the teal palette, optional dynamic color, and reduced motion.
 
 ## Background
 
-- Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode the color on the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces.
+- Light accent is `#0F766E`. Dark accent is `#2DD4BF`. In dark mode the color on the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces.
 - Domain constraints: no `DOMAIN.md`. No `LAYER.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing a different accent. Wallpaper color is not the default.
 
@@ -29,7 +29,7 @@ Use the teal palette, optional dynamic color, and reduced motion.
 - **Scenario: light and dark accents** — Must
   - Given Light mode, or Dark mode
   - When a primary action is shown
-  - Then Light uses an accent about `#0F766E` and Dark uses an accent about `#2DD4BF`
+  - Then Light uses the accent `#0F766E` and Dark uses the accent `#2DD4BF`
 - **Scenario: contrast on the dark accent** — Must
   - Given Dark mode
   - When text sits on the accent
@@ -41,8 +41,9 @@ Use the teal palette, optional dynamic color, and reduced motion.
   - And on API 30 and below the toggle is not shown
 - **Scenario: he turns dynamic color on** — Must
   - Given API 31 or newer and he turns the toggle on
-  - When dynamic color is unavailable
-  - Then teal is used
+  - When the system can supply dynamic colors
+  - Then those system dynamic colors are used
+  - And when dynamic color is unavailable, teal is used
 - **Scenario: reduced motion** — Must
   - Given the system animator duration scale is 0
   - When a screen changes

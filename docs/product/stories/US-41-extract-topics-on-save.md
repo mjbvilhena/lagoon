@@ -21,7 +21,8 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), and the topic page (US-45). Provider, credential storage, and payload slice stay open for Miguel (US-76). Whether a sensitive item is sent is delegated to his bots (US-75). The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
+- Out of scope: linking (US-42), creating (US-43), the offline queue and the re-run after enrichment (US-44, US-58), and the topic page (US-45). Provider, credential storage, and payload slice stay open for Miguel (US-76). Whether a sensitive item is sent is proposed in US-75 and is not decided here. The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
+- The off switch lives in Settings (US-59) and defaults to off. Items saved while it is off are not sent later unless he asks. That later-send rule is a draft so the scenario is testable. It is not his approval.
 
 ## Acceptance criteria
 
@@ -29,26 +30,27 @@ Extract topics when an item is saved.
   - Given an ordinary item is stored and enrichment, snapshot, and OCR have finished or do not apply
   - When the topic job runs
   - Then a cloud call runs, the vault keeps the main ideas and topic names, and the call is not a Drive upload
-- **Scenario: it runs again when those steps finish** — Must
-  - Given OCR or enrichment finishes later
-  - When that text is new
-  - Then the topic job runs again for this item
-- **Scenario: edit or repeat** — Must
-  - Given he edits the item or US-49 updates it
-  - When the new version is stored
-  - Then the job is queued for that latest version
 - **Scenario: a cap** — Must
   - Given the call returns more than 8 topic names
   - When the result is stored
   - Then only 8 are kept as suggestions
 - **Scenario: the switch is off** — Must
-  - Given he turned the topic call off in Settings
+  - Given the topic switch in Settings (US-59) is off, which is the default
   - When an item is saved
   - Then no call is made
-- **Scenario: grounding** — Must
-  - Given the call returns a main idea
+  - And when he later turns the switch on, that saved item is not sent unless he asks for topics on it
+- **Scenario: provenance** — Must
+  - Given a call returns
   - When the result is stored
-  - Then that idea includes a quote that appears word for word in the text that was sent, and the result is marked AI-generated
+  - Then the vault records the item id, the fields that were sent, the timestamp, and the model or prompt version
+- **Scenario: grounding** — Must
+  - Given the call returns a main idea whose quote appears word for word in the text that was sent
+  - When the result is stored
+  - Then that quote is kept and the result is marked AI-generated
+- **Scenario: a quote that is not in the text** — Must
+  - Given a returned quote is not in the sent text word for word
+  - When the result is stored
+  - Then that quote is dropped, or the idea is flagged ungrounded, and it is not shown as a grounded quote
 - **Scenario: no topics** — Must
   - Given the call succeeds and names nothing
   - When the result is stored
@@ -69,7 +71,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Provenance stored with the result: item id, time, and model or prompt version. Which fields may be sent is US-76.
+- Which fields may be sent is US-76 and is still open for Miguel.
 
 ## Implementation notes
 

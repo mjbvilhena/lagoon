@@ -39,6 +39,10 @@ Export a zip to a place he chooses.
   - When the zip is written and then opened without that key
   - Then the sentinel cannot be read from the file
   - And when the same file is opened with the vault key, the sentinel and the item body can be read
+- **Scenario: the notice** — Must
+  - Given he exports
+  - When the file is written
+  - Then he sees that the file opens only with this vault's key, and that it cannot be opened on a replacement phone until US-74 is decided
 - **Scenario: empty vault** — Must
   - Given there are no items
   - When he exports

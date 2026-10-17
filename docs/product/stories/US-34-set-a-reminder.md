@@ -35,6 +35,10 @@ Set a reminder.
   - Given he picks a time on that item
   - When he saves
   - Then that time is kept for this item and the Settings default is unchanged
+- **Scenario: a later default** — Must
+  - Given an item already has a reminder time
+  - When he changes the Settings default
+  - Then that item's time stays as it was
 - **Scenario: inexact alarms** — Must
   - Given the reminder is set
   - When the alarm is registered
@@ -42,7 +46,7 @@ Set a reminder.
 - **Scenario: the notification** — Must
   - Given the time arrives for an ordinary item
   - When the notification is posted, including on the lock screen
-  - Then it shows the item title, and it shows a code when he has marked one on that item (US-63)
+  - Then it shows the item title. It shows a code only when US-63 is built and he has marked a code on that item
 - **Scenario: open it** — Must
   - Given he taps the notification
   - When the item is not sensitive

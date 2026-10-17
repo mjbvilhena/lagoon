@@ -31,9 +31,21 @@ Lock sensitive items, and optionally lock the app.
   - When he marks it sensitive
   - Then it is stored as sensitive
 - **Scenario: open a sensitive item** — Must
-  - Given a sensitive item and the device has a biometric
+  - Given a sensitive item and the device has a biometric enrolled
+  - When he opens it on API 30 or newer
+  - Then one prompt offers `BIOMETRIC_STRONG` or `DEVICE_CREDENTIAL`, and the body stays hidden until that succeeds
+- **Scenario: older APIs** — Must
+  - Given a sensitive item and the device is API 26, 27, 28, or 29
   - When he opens it
-  - Then `androidx.biometric` prompts him, and the body stays hidden until that succeeds
+  - Then the device credential screen is the prompt, and the body stays hidden until that succeeds
+- **Scenario: no biometric enrolled** — Must
+  - Given a sensitive item and no biometric is enrolled, and a screen lock exists
+  - When he opens it
+  - Then the device PIN, pattern, or password is the prompt
+- **Scenario: no screen lock** — Must
+  - Given a sensitive item and the device has no screen lock at all
+  - When he tries to open it
+  - Then the body stays hidden and he sees that a screen lock is required
 - **Scenario: fail or cancel** — Must
   - Given the prompt is showing
   - When he cancels or fails
@@ -46,14 +58,15 @@ Lock sensitive items, and optionally lock the app.
   - Given a fresh install
   - When he has not turned app lock on
   - Then the app opens without an app-level prompt
-- **Scenario: no biometric** — Must
-  - Given he has turned app lock on and the device has no biometric
-  - When the lock is required
-  - Then the device PIN is the prompt
-- **Scenario: re-lock** — Must
-  - Given app lock is on and he had unlocked
-  - When the app goes to the background
-  - Then the next open prompts again
+- **Scenario: the toggle** — Must
+  - Given Settings (US-59)
+  - When he looks for app lock
+  - Then the toggle is there, and it is off until he turns it on
+- **Scenario: one unlock** — Must
+  - Given he has unlocked
+  - When he stays in the app, including while a share sheet, a picker, or the biometric prompt is showing
+  - Then he is not asked again
+  - And when the app goes to the background, the next open prompts again
 
 ## Analytics and observability (optional)
 

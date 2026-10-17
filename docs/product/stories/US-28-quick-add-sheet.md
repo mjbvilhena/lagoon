@@ -38,6 +38,10 @@ Optionally tag a save from the last-used tags.
   - Given the row is showing
   - When he uses Add note and types
   - Then that text is stored as a note on the item
+- **Scenario: add a date** — Must
+  - Given the row is showing
+  - When he uses Add date
+  - Then he can set a reminder or an expiry on that item (US-34, US-54), and skipping Add date leaves the item without one
 - **Scenario: dismiss** — Must
   - Given the row is showing
   - When he taps Back or outside the row

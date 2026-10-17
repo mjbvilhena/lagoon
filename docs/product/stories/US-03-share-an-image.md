@@ -29,7 +29,7 @@ Share an image into the vault.
 - **Scenario: share one image** — Must
   - Given a share of one `image/jpeg`, `image/png`, `image/webp`, `image/gif`, `image/heic`, or `image/heif`
   - When he chooses Lagoon
-  - Then the vault copies the bytes into its own storage, stores one item, shows "Saved to Lagoon", and records the sending app
+  - Then the vault copies the bytes into its own storage, stores one item, and shows "Saved to Lagoon". The sending app is recorded only when the platform reports it
 - **Scenario: several images** — Must
   - Given `ACTION_SEND_MULTIPLE` shares N of those images
   - When he chooses Lagoon

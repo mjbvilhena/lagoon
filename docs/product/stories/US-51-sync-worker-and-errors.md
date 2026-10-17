@@ -27,8 +27,17 @@ Sync in the background and show errors.
 
 - **Scenario: the worker runs** — Must
   - Given he is signed in and the unmetered preference allows the network (US-19)
-  - When the app is not in the foreground
-  - Then a WorkManager worker uploads the vault payload
+  - When an item changes
+  - Then one unique WorkManager job for the vault is queued, debounced after that change, and a periodic run also exists
+  - And the job still runs when the app is not in the foreground
+- **Scenario: a long upload** — Must
+  - Given the upload is long and the device is API 34 or newer
+  - When the worker runs
+  - Then it uses a `dataSync` foreground service, within the Android 15 time limit, or it uses resumable chunked uploads
+- **Scenario: a download** — Must
+  - Given another install is receiving the vault
+  - When bytes come down
+  - Then that path is US-20, not a second download design in this story
 - **Scenario: revoked auth** — Must
   - Given Drive rejects the grant
   - When the worker finishes

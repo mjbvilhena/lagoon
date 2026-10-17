@@ -28,7 +28,7 @@ Edit a saved item.
 - **Scenario: edit title, body, and note** — Must
   - Given an existing item
   - When he changes the title, the body, and the personal note and saves
-  - Then those fields are the new values, created date stays, and last-saved and `updatedAt` move to this edit
+  - Then those fields are the new values, created date and last-saved stay, and only `updatedAt` moves to this edit
 - **Scenario: edit tags** — Must
   - Given an item with tags
   - When he adds one tag and removes another
@@ -61,4 +61,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Do not change `createdAt` on edit. Not a design spec.
+Do not change `createdAt` or last-saved on edit. Last-saved moves on a new save or a repeat share (US-49). Not a design spec.

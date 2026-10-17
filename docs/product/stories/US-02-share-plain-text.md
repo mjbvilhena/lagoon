@@ -28,11 +28,12 @@ Share plain text into the vault.
 - **Scenario: share text** — Must
   - Given another app shares plain text that is not only whitespace and contains no URL
   - When he chooses Lagoon
-  - Then one note item is stored, he sees "Saved to Lagoon", and the sending app name is recorded
+  - Then one note item is stored and he sees "Saved to Lagoon". The sending app name is recorded only when the platform reports it
 - **Scenario: the text contains a URL** — Must
   - Given `EXTRA_TEXT` contains a URL and some other words
   - When he shares it
-  - Then US-01 stores the link, and the leftover words become the note. They become the title only when no subject is present
+  - Then US-01 stores the link, and the leftover words are kept as a note, the same way as US-01
+  - And the title uses the same order as US-01 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path
 - **Scenario: the share has a subject** — Must
   - Given `EXTRA_SUBJECT` is present
   - When the item is stored

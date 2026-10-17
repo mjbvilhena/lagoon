@@ -7,11 +7,11 @@
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-81 by Miguel's bots. Stories stay Draft until all five bots re-review. See `docs/sdlc/pipeline-state.md` and `docs/product/stories/REVIEW-PACK.md`.
+Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-84 by Miguel's bots. Stories stay Draft. Round-2 verdicts at `40bb526` are recorded in `docs/product/stories/REVIEW-PACK.md` and are not a status of Approved. See `docs/sdlc/pipeline-state.md`.
 
 Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until all five bots re-review. The revision after the review at `9e7de63` was done by `sdlc-user-story-refiner`. Drafting is not that sign-off. Scout's Approve verdicts on the listed stories are verdicts only.
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Round 2 records Dev Bot, Scout, and Mikey's Assistant verdicts as approvals under his delegation of 2026-10-17, and Household and Leisure as recommendations only. No story status was flipped to Approved. The proposed amendment is `docs/product/amendments/2026-10-17-security-delegation.md`, awaiting `mjbvilhena`.
 
 ## Epic E1: Capture and keep
 
@@ -151,8 +151,10 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. These ids were added while refining. All Draft. Not implemented.
 
 - Splits: US-49 repeat link, US-50 ranking, US-51 sync worker, US-52 import, US-53 palette and motion, US-54 expiry, US-55 reschedule.
-- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source, US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Could), US-66 trash (Could), US-67 duplicate files (Could), US-68 purchase fields (Could), US-69 pin (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Should).
-- Blocked, no Must: US-64 sharing out, US-73 conflicts and deletions, US-74 key transport, US-75 sensitive-item handling, US-76 topic-call privacy, US-77 exact alarms, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
+- Gaps: US-48 manage topics, US-56 stable ids, US-57 FTS5 spike, US-58 pipeline, US-59 Settings, US-60 topic list, US-61 source (Should, not in E1 yet), US-62 upcoming (Should), US-63 copy a code (Should), US-65 camera (Should), US-66 trash (Should), US-67 duplicate files (Could), US-68 return-by and warranty dates (Should), US-69 pin one item (Could), US-70 offline check (Could), US-71 inbox batch (Could), US-72 topic evaluation (Could).
+- Proposed criteria, pending Miguel's approval, status still Draft: US-64 sharing out (Should), US-75 sensitive-item handling, US-78 Drive scope and sign-out, US-79 link-preview skipping, US-80 permissions, US-81 sideload policy.
+- Still open for Miguel, no asserting criterion: US-73 conflicts and deletions, US-74 key transport, US-76 topic-call privacy, US-77 exact alarms.
+- Split from US-68 in round 2: US-82 merchant, US-83 amount and currency, US-84 purchase date. All Should. All Draft.
 
 ## Open questions
 
@@ -173,15 +175,18 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
+- ML Kit usage or diagnostic telemetry. US-07. Not decided.
+- Lock-screen text for a sensitive item. US-75. Not decided.
+- Whether a preview is fetched for a token-looking URL. US-79. Not decided.
 
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 
-He did not decide these.
+He did not decide these. Round 2 proposes criteria on the stories, marked pending his approval. The proposals are not approval.
 
-- Sensitive-item handling in lists, search, notifications, export, the cloud call, and screenshots. US-75.
+- Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. Lock-screen text stays open for him.
 - Drive scope and sign-out. US-78. The specification still names `appDataFolder`.
-- Link-preview skipping. US-79.
-- Sharing out. US-64.
+- Link-preview skipping. US-79. Token-looking URLs stay open for him.
+- Sharing out. US-64. Epic E3 still lists it as out of scope.
 - Permissions. US-80.
 - Sideloading. US-81. US-24 still requires a signed APK because E6 does.
 

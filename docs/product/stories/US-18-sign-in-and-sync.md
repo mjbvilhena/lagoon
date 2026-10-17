@@ -6,7 +6,7 @@
 > Story approval has not been recorded.
 > The file was renamed from `US-18-back-up-now.md`. There is no Back up now button.
 
-**MoSCoW:** Must. v1, from approved epic E4. The worker, errors, and sign-out are US-51.
+**MoSCoW:** Must. v1, from approved epic E4. The worker and errors are US-51. Sign-out is the proposed US-78. A round-2 verdict on this story is conditional on US-78. That condition is not an approval.
 
 ## Title
 

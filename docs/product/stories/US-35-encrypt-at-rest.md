@@ -27,20 +27,38 @@ Encrypt the vault at rest.
 
 - **Scenario: the warning** — Must
   - Given the vault key has not been created
-  - When he is asked to set up the vault
-  - Then he sees a clear warning that if the key is lost the content is lost and there is no recovery, and the key is not created until he accepts that warning
+  - When he is asked to set up the vault, including when the first share arrives before he has accepted
+  - Then he sees a clear warning that if the key is lost the content is lost and there is no recovery, that uninstall or clear storage destroys the key, and that losing the signing key forces a reinstall that destroys it too
+  - And the key is not created, and the item is not stored, until he accepts that warning
+- **Scenario: what "key gone" means** — Must
+  - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
+  - When he opens the app
+  - Then the key is treated as gone
 - **Scenario: no recovery path** — Must
   - Given the key was created and is then gone
   - When he opens the app
   - Then he sees that the content is lost, and there is no restore, reset, or "forgot key" flow
+  - And he can start a new empty vault. The app is not left unable to open
+- **Scenario: a new biometric does not drop the key** — Must
+  - Given the key exists
+  - When he enrolls a new biometric, or the OS authentication state changes
+  - Then the key stays valid. The Keystore entry is created with `setInvalidatedByBiometricEnrollment(false)`
 - **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored
   - Then those bytes are encrypted with the vault key
 - **Scenario: derived files** — Must
-  - Given thumbnails, previews, snapshots, the OCR cache, share temp copies, or export temp copies exist
+  - Given thumbnails, previews, snapshots, the OCR cache, the WebView cache, the image cache, WorkManager inputs, logs, or export temp copies exist
   - When they are on disk
   - Then they are encrypted with the vault key as well
+- **Scenario: backup of app data is off** — Must
+  - Given the manifest
+  - When it is read
+  - Then `allowBackup` is false and `dataExtractionRules` exclude the vault
+- **Scenario: a share temp copy another app must read** — Must
+  - Given a temp copy has to be readable by another app
+  - When it is created
+  - Then encrypting that copy is not this story. US-64 holds it
 - **Scenario: he can still use the app** — Must
   - Given the key is present
   - When he saves and opens an ordinary item

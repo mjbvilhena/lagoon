@@ -28,8 +28,8 @@ Prove that search and encryption can run together.
 
 - **Scenario: the spike writes a result** — Must
   - Given a small test app on `minSdk` 26
-  - When FTS5 is tried with SQLCipher using a bundled SQLite
-  - Then a note in `docs/` records pass or blocked, with the error if blocked
+  - When FTS5 is tried with SQLCipher using a bundled SQLite, on an API 26 emulator and on an arm64 phone
+  - Then a note in `docs/` records pass or blocked, with the error if blocked, and it records the APK size change
 - **Scenario: it does not choose a product cipher** — Must
   - Given that note
   - When it is read

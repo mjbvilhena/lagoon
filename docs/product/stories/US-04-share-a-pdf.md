@@ -22,22 +22,22 @@ Share a PDF into the vault.
 
 - The file is part of the vault that background sync and the zip carry. It is not a separate backup.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: a PDF editor, cloud OCR, and storing or asking for a PDF password. Whether a password is kept is an open question in `docs/product/stories/REVIEW-PACK.md`.
+- Out of scope: a PDF editor, cloud OCR, and asking him for a PDF password. v1 stores no PDF passwords.
 
 ## Acceptance criteria
 
 - **Scenario: share a PDF** — Must
   - Given a readable PDF share
   - When he chooses Lagoon
-  - Then one item stores a copy of the file, he sees "Saved to Lagoon", and the sending app is recorded
+  - Then one item stores a copy of the file and he sees "Saved to Lagoon". The sending app is recorded only when the platform reports it
 - **Scenario: text the PDF already contains** — Must
   - Given the PDF has a text layer and the device is API 26 or newer
   - When extraction runs with a library that works on `minSdk` 26, such as PdfBox-Android
   - Then that text is stored as extracted text, and those pages are not sent through OCR
 - **Scenario: a locked PDF** — Must
-  - Given the PDF is password-protected and no password is available
+  - Given the PDF is password-protected
   - When it is stored
-  - Then the file is kept and the item is marked "text not extracted"
+  - Then v1 stores no PDF password, the file is still stored and openable, and the item is marked "text not extracted"
 - **Scenario: mixed pages** — Must
   - Given some pages have a text layer and some do not
   - When extraction finishes

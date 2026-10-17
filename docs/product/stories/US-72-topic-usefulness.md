@@ -5,7 +5,7 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**MoSCoW:** Should. Scout asked for this evaluation. It is not a v1 ship gate.
+**MoSCoW:** Could. A dev chore, not a v1 ship gate, and not a task for Miguel to hand-label.
 
 ## Title
 
@@ -14,22 +14,26 @@ Score whether topics are useful.
 ## User story
 
 **As a** person named Miguel
-**I want** to hand-label 30 to 50 items and see whether the topics matched
-**So that** I can judge the topic feature without sending those counts off the phone
+**I want** a local check that scores topic names against a fixture
+**So that** usefulness can be judged without me hand-labeling items and without sending counts off the phone
 
 ## Background
 
-- Scores: kept-unchanged rate, near-duplicate topics, and traceability (the quote is in the sent text). Counts stay on the phone.
+- Two separate scores: kept-unchanged rate, and match against a fixture. Near-duplicate means two names are equal after the normalisation in US-42, including singular and plural, or their edit distance is 2 or less. Counts stay on the phone. Miguel is not asked to hand-label.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: analytics upload (US-07).
 
 ## Acceptance criteria
 
-- **Scenario: the scores** — Should
-  - Given he has hand-labeled 30 to 50 items
-  - When he opens the evaluation
-  - Then he sees the kept-unchanged rate, a near-duplicate count, and how many ideas have a word-for-word quote
-- **Scenario: on the phone** — Should
+- **Scenario: near-duplicates** — Could
+  - Given two topic names
+  - When the check runs
+  - Then they count as near-duplicates if they are equal after US-42 normalisation, including singular and plural, or if their edit distance is 2 or less
+- **Scenario: the two rates** — Could
+  - Given a fixture of items, not a set Miguel must label
+  - When the check runs
+  - Then the kept-unchanged rate is reported apart from the fixture-match rate
+- **Scenario: on the phone** — Could
   - Given those counts exist
   - When the network is up
   - Then they are not uploaded

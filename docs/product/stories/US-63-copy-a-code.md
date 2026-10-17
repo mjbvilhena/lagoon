@@ -26,9 +26,13 @@ Copy a code he marked.
 ## Acceptance criteria
 
 - **Scenario: mark and copy** — Should
-  - Given he selects text on an item and chooses Mark as code
-  - When he later chooses Copy code
-  - Then that text is on the clipboard
+  - Given he selects text on an ordinary item and chooses Mark as code
+  - When he later chooses Copy code on API 33 or newer
+  - Then that text is on the clipboard and the clip is marked `EXTRA_IS_SENSITIVE`
+- **Scenario: a sensitive item** — Should
+  - Given the code is on an item marked sensitive
+  - When he copies it
+  - Then the copy follows US-75, which is still proposed and pending Miguel's approval
 - **Scenario: no code** — Should
   - Given he has not marked a code
   - When he opens the item

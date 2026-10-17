@@ -29,14 +29,19 @@ Reschedule reminders after a restart or a clock change.
   - Given a reminder or expiry is stored
   - When the device boots, the clock or time zone changes, the app is updated, or notification permission changes
   - Then the inexact alarms are registered again from the stored local time
+- **Scenario: app start** — Must
+  - Given notification permission may have changed while the app was closed
+  - When he opens the app
+  - Then the app checks `POST_NOTIFICATIONS` again and registers or skips the alarms from that result
 - **Scenario: delete and undo** — Must
   - Given he deletes the item
   - When the delete is pending
   - Then the notification is cancelled, and Undo restores it
-- **Scenario: no duplicate across devices** — Must
-  - Given the same reminder id has synced to two devices
+- **Scenario: which device posts** — Must
+  - Given the same reminder has synced to two devices
   - When the time arrives
-  - Then only one device posts the notification
+  - Then the device where the reminder was set posts the notification
+  - And a device that only received it by sync does not post it
 
 ## Analytics and observability (optional)
 

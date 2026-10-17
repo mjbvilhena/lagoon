@@ -26,7 +26,7 @@ Update a link that was saved before, and undo that update.
 ## Acceptance criteria
 
 - **Scenario: normalisation** — Must
-  - Given two URLs differ only by scheme (`http` or `https`), a leading `www.`, a trailing slash, a `#fragment`, host case, or one of these tracking parameters: `utm_*`, `fbclid`, `gclid`, `mc_eid`, `igshid`, YouTube `si`, or `ref`
+  - Given two URLs differ only by scheme (`http` or `https`), a leading `www.`, a trailing slash, a `#fragment`, host case, or one of these tracking parameters: `utm_*`, `fbclid`, `gclid`, `mc_eid`, `igshid`, or YouTube `si`
   - When he shares the second URL
   - Then they are the same item and the stored source URL stays the first one
 - **Scenario: other query parameters stay distinct** — Must

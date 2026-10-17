@@ -22,6 +22,7 @@ Fill an empty title from the page or the file.
 - He typed a title: it stays (US-08, US-12).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: using the first OCR line as the title.
+- The title order, shared with US-01 and US-02, is: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path.
 
 ## Acceptance criteria
 
@@ -42,9 +43,13 @@ Fill an empty title from the page or the file.
   - When the title is filled
   - Then the file name is the title, capped at 120 characters (US-02)
 - **Scenario: he typed a title** — Must
-  - Given he typed a title
+  - Given he typed a title, or the share had a subject
   - When enrichment or a file name arrives
-  - Then his title stays
+  - Then that title stays
+- **Scenario: leftover text yields to a page title** — Must
+  - Given the only title so far is leftover share text
+  - When a page title or a readable file name arrives
+  - Then that page title or file name becomes the title, and the leftover text stays in the note
 
 ## Analytics and observability (optional)
 

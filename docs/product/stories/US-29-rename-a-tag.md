@@ -19,7 +19,7 @@ Rename a tag, merging only after he confirms a clash.
 
 ## Background
 
-- A case-only change is the same tag. It does not ask for a merge.
+- A case-only rename sets the display name. It does not merge and it does not ask.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a separate merge button. This confirmed rename is the only tag merge.
 
@@ -32,11 +32,12 @@ Rename a tag, merging only after he confirms a clash.
 - **Scenario: case only** — Must
   - Given the tag is "Tax"
   - When he renames it to "tax"
-  - Then the existing tag is kept and he is not asked to merge
+  - Then the display name becomes the letters he typed, no merge is offered, and the items still carry that one tag
 - **Scenario: clash** — Must
-  - Given "tax" and "Tax" are the same under a case-insensitive compare, and another tag already has that name
-  - When he confirms the clash
-  - Then the items carry the kept name once
+  - Given the tag "Bills" is being renamed to "receipts" while a different tag "Receipts" already exists
+  - When the clash is shown
+  - Then he sees both names, and the name he typed is the one that survives if he confirms
+  - And if he confirms, the items carry one tag
   - And if he does not confirm, nothing changes
 - **Scenario: blank name** — Must
   - Given the new name is blank

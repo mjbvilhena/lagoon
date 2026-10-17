@@ -20,7 +20,7 @@ Sort and filter the list by when it was saved.
 
 ## Background
 
-- Boundaries use the device local zone. The sort key is last-saved.
+- Boundaries use the device local zone. The sort key is last-saved. An edit does not move last-saved (US-12).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: an upcoming view (US-62, Should).
 
@@ -51,6 +51,10 @@ Sort and filter the list by when it was saved.
   - Given a date filter is on
   - When he clears it
   - Then the unfiltered list returns
+- **Scenario: an edit** — Must
+  - Given an item's last-saved date is outside the filter
+  - When he edits the item
+  - Then last-saved stays outside the filter. Only `updatedAt` moves
 
 ## Analytics and observability (optional)
 

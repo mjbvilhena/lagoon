@@ -34,6 +34,11 @@ Follow written steps to build, sideload, and create the OAuth client.
   - Given the OAuth section
   - When he reads it
   - Then it names an Android client with the package `com.mjbvilhena.lagoon` and both the release and debug SHA-1, and a Web client ID used as `serverClientId` when Credential Manager needs one
+- **Scenario: consent screen** — Must
+  - Given the OAuth section
+  - When he follows the client steps
+  - Then it includes a step to set the OAuth consent screen to "In production"
+  - And it says, as unverified, that Testing-mode grants may expire after about 7 days. Scout could not verify that expiry. The sentence is not stated as a measured fact
 - **Scenario: missing client ID** — Must
   - Given the client ID is absent
   - When he reads the docs

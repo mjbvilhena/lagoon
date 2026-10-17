@@ -25,9 +25,9 @@ See what is not ready for offline.
 ## Acceptance criteria
 
 - **Scenario: the check** — Could
-  - Given some snapshots or OCR jobs are pending
+  - Given some snapshots or OCR jobs are pending, failed, or have never run
   - When he opens the check
-  - Then those items are listed
+  - Then those items are listed, and a failed or never-run snapshot offers the retry from US-33
 
 ## Analytics and observability (optional)
 

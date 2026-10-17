@@ -40,7 +40,7 @@ Read a topic.
 - **Scenario: a deleted item** — Must
   - Given US-13 hard-deleted the source item
   - When he opens the topic
-  - Then the note stays, marked "item deleted"
+  - Then the note that came from that item is gone with it
 - **Scenario: empty** — Must
   - Given a topic has no items and no notes
   - When he opens it
