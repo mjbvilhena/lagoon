@@ -6,6 +6,8 @@
 > Story approval has not been recorded.
 > The file was renamed from `US-20-restore-from-drive.md`. This is not a Restore button.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E4. Q5 is resolved as merge.
 
 ## Title

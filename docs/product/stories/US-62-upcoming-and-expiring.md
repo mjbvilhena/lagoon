@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E9. Pending Miguel's keep/remove decision. Not an approval.
+
 **MoSCoW:** Should. Not required by the approved epic. The epic requires the notification, not this view. Inside this story, the Upcoming list and the expired marker are Must if the story is built.
 
 ## Title

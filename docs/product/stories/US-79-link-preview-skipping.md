@@ -6,6 +6,8 @@
 > **Proposed: pending Miguel's approval.** The criteria in that block are a bot draft. They are not his decision.
 > Token-looking URLs are decided. Miguel (`mjbvilhena`) decided them in chat on 2026-10-17 at 15:59 IST. That decision is not story approval. Status stays Draft.
 
+**Epic:** E2. Not an approval.
+
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
 ## Title

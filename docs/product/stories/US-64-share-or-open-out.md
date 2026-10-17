@@ -6,6 +6,8 @@
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
 > Epic E3 includes sharing out as a Should because Miguel approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. That approval is the delegation. These criteria stay proposed.
 
+**Epic:** E3. Not an approval.
+
 **MoSCoW:** Should. Proposed, pending Miguel's approval. Not a status of Approved.
 
 ## Title

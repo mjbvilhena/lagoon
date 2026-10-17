@@ -35,6 +35,10 @@ Miguel (`mjbvilhena`) removed stories in chat on 2026-10-17. This is not story a
 - At 19:01 IST: "63 can be removed as well." US-63 is gone.
 - Picking merchants out of a receipt stays Later, with no story, as the specification already says.
 
+Miguel (`mjbvilhena`) at 19:02 IST left US-28, US-40, US-41, and US-53 unchanged, including US-53 reduced motion. That is not story approval. The earlier proposed trims on those four stories are not applied.
+
+Miguel (`mjbvilhena`) at 19:04 IST said each remaining story must map to an epic. Parent epics are set. Where the approved epic does not already cover the story, a proposed amendment sits in that epic under "Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)". None of those amendments is approved. Conflicts are flagged in `docs/product/stories/TRACEABILITY.md` and were not written in as scope.
+
 ## Open questions for Miguel
 
 Not decided. Not delegated.
@@ -306,26 +310,26 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | I can read the app in light and dark and with reduced motion | Must | 6 | None on this story |
 | US-54 | Notify before an expiry. | E9 | I can act before the date, and a close date does not schedule a notice that would already have passed | Must | 6 | None on this story |
 | US-55 | Reschedule reminders after a restart or a clock change. | E9 | a notification is not lost because the phone restarted | Must | 5 | Time zone stays open |
-| US-56 | Keep a stable identity for each item. | Cross-cutting | an edit or a second device does not fork the item or lose it | Must | 3 | None on this story |
-| US-57 | Prove that search and encryption can run together. | Cross-cutting | search and encryption are not built on a combination that cannot run | Must | 2 | None on this story |
-| US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | search and topics see the text that actually exists | Must | 3 | None on this story |
-| US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 4 | None. Topic switch starts on. ML Kit disclosure is the US-07 slot |
+| US-56 | Keep a stable identity for each item. | E4 | an edit or a second device does not fork the item or lose it | Must | 3 | None on this story |
+| US-57 | Prove that search and encryption can run together. | E3 | search and encryption are not built on a combination that cannot run | Must | 2 | None on this story |
+| US-58 | Run enrichment, snapshot, OCR, and topics in that order. | E1 | search and topics see the text that actually exists | Must | 3 | None on this story |
+| US-59 | Use one Settings screen. | E4 | I do not hunt through the app for those controls | Must | 4 | None. Topic switch starts on. ML Kit disclosure is the US-07 slot |
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
 | US-61 | Filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 0 | In E1. Filter only. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |
-| US-64 | Share or open an item in another app. | Cross-cutting | I can use the item outside Lagoon without handing over the vault (8 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
+| US-64 | Share or open an item in another app. | E3 | I can use the item outside Lagoon without handing over the vault (8 Should) | Proposed Should | 0 | Should is in E3. Criteria stay proposed |
 | US-65 | Add a photo from the camera. | E1 | I can keep a page without a share from another app (2 Should) | Should | 0 | None on this story |
-| US-66 | Keep a trash beyond undo. | Cross-cutting | I can recover it after the undo snackbar has gone (2 Should) | Should | 0 | None on this story |
+| US-66 | Keep a trash beyond undo. | E3 | I can recover it after the undo snackbar has gone (2 Should) | Should | 0 | None on this story |
 | US-67 | Notice a duplicate image or PDF. | E1 | I do not keep two copies of the same file (1 Could) | Could | 0 | None on this story |
-| US-70 | See what is not ready for offline. | Cross-cutting | I know what will be missing before I go offline (1 Could) | Could | 0 | None on this story |
+| US-70 | See what is not ready for offline. | E2 | I know what will be missing before I go offline (1 Could) | Could | 0 | None on this story |
 | US-71 | Triage the inbox in a batch. | E3 | filing does not mean opening each row (1 Could) | Could | 0 | None on this story |
 | US-72 | Score whether topics are useful. | E11 | usefulness can be judged without me hand-labeling items and without sending counts off the phone (3 Could) | Could | 0 | None on this story |
-| US-73 | Decide sync conflicts and deletions. | Cross-cutting | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
+| US-73 | Decide sync conflicts and deletions. | E4 | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
 | US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 12 | Lock-screen reminder decided 15:59 IST. Topic exclusion is the 15:55 IST amendment. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 8 | Proposed, pending Miguel |
 | US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 12 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
-| US-80 | Keep the permission set to an allowlist. | Cross-cutting | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
+| US-80 | Keep the permission set to an allowlist. | E6 | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
 | US-81 | Publish a sideload signing policy. | E6 | a later install can replace the app without losing the vault | Proposed Must | 6 | Proposed, pending Miguel |

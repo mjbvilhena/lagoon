@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E8. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E8, plus Miguel's app-lock decision of 2026-10-17 14:56 IST.
 
 ## Title

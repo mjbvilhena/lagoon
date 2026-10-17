@@ -7,6 +7,8 @@
 > The lock-screen reminder criterion is decided. Miguel (`mjbvilhena`) decided it in chat on 2026-10-17 at 15:59 IST. That decision is not story approval. Status stays Draft.
 > Sensitive-item exclusion from the topic call is the amendment approved on 2026-10-17 at 15:55 IST. It is not Proposed. It is not the 18:05 IST quote. This run does not record a new approval.
 
+**Epic:** E8. Not an approval.
+
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
 ## Title

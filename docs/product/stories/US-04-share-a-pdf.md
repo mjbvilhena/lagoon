@@ -6,6 +6,8 @@
 > Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
 > Story approval has not been recorded.
 
+**Epic:** E1. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E1. Text-layer extraction is not OCR.
 
 ## Title

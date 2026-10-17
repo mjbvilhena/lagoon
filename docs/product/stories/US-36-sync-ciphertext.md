@@ -6,6 +6,8 @@
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 > Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
 
+**Epic:** E8. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E8.
 
 ## Title

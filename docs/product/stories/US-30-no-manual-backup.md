@@ -7,6 +7,8 @@
 > Story approval has not been recorded.
 > The file was renamed from `US-30-backup-size-warning.md`. Kept as its own story so the absence stays testable. US-17 states the same absence on the not-configured screen.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E4.
 
 ## Title

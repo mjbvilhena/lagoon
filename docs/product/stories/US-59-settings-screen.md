@@ -6,6 +6,8 @@
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 > Miguel (`mjbvilhena`) decided the topic default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That decision is not story approval.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1. The review asked for one Settings screen for the controls that already exist.
 
 ## Title

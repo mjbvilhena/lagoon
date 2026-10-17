@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1 enabler. The review asked for this chore so sync and edits have a basis.
 
 ## Title

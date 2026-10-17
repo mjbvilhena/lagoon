@@ -7,6 +7,8 @@
 > Story approval has not been recorded.
 > Miguel (`mjbvilhena`) decided the ML Kit rule in chat on 2026-10-17 at 16:00 IST. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept". That decision is not story approval.
 
+**Epic:** E1. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E1 and the specification.
 
 ## Title

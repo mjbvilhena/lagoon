@@ -5,6 +5,8 @@
 > Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
 > Story approval has not been recorded.
 
+**Epic:** E3. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E3. Trash beyond this undo is Should (US-66).
 
 ## Title

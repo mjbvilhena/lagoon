@@ -5,11 +5,107 @@
 > At 18:48 IST he said: "Let me know what you find before removing." The findings below were written before any deletion.
 > At 19:00 IST he said: "68, 69, and 82 to 84 should be removed." US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
 > At 19:01 IST he said: "63 can be removed as well." US-63 is removed. The number is not reused.
-> Still awaiting his decision, and not changed: US-48, US-62, US-65, US-66, US-67, US-70, US-71, US-72, the US-28 Add date trim, the US-40 generated-titles trim, the US-41 cap-of-8 trim, and the US-53 reduced-motion trim. The US-75 Upcoming row stays.
+> At 19:02 IST he left US-28, US-40, US-41, and US-53 unchanged, including US-53 reduced motion. Those trims are not applied.
+> At 19:04 IST he said each remaining story must map to an epic, and an epic may gain a proposed amendment when it does not already cover the story. Those amendments are not approved.
+> Still awaiting his keep/remove decision: US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72. The US-75 Upcoming row stays.
 > Sources that count: `docs/product/vision.md`, `docs/product/specification.md`, approved epics E1–E9 and E11, the amendment approved on 2026-10-17 at 15:55 IST, and `docs/product/amendments/2026-10-17-chat-decisions.md` (15:59, 16:00, and 18:05 IST). E10 is Later and is not a v1 parent.
 > A bot consensus counts only where that text is inside one of those sources. A review pack, a story, or a threat note is not a source.
 > Skills: `sdlc-conductor` (template `lifecycle pipeline`), `sdlc-docs-backlog-review` (template `docs backlog review`), `sdlc-product-owner` (template `product spec`, Definition of Done `epic`). Templates were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This was not a live MCP session. No domain consultant was found. No MUST/NEVER rules were invented.
 > Head reviewed: `0209d5c`. Stories stay Draft. This file records no approval.
+
+## Epic map, 2026-10-17 at 19:04 IST
+
+Each remaining story has one parent epic. `traced` means the approved epic text already covers it. `needs-amendment` means a proposed section was added and is not approved. `conflict` means no amendment was written, because it would contradict the approved specification or epic. `pending keep/remove` means Miguel has not decided whether the story stays. US-73, US-74, and US-76 are traced as the open questions the epic already names. They do not pick an answer. E7 and E10 have no new scope. E10 stays later.
+
+| Story | Epic | Traced or needs-amendment | Amendment reference |
+|---|---|---|---|
+| US-01 Share a link into the vault. | E1 | traced | — |
+| US-02 Share plain text into the vault. | E1 | traced | — |
+| US-03 Share an image into the vault. | E1 | traced | — |
+| US-04 Share a PDF into the vault. | E1 | traced | — |
+| US-05 Add a note by hand. | E1 | traced | — |
+| US-06 Add a URL by hand. | E1 | traced | — |
+| US-07 Use the saved vault with no network and no analytics. | E1 | needs-amendment | A-E1-1 |
+| US-08 Enrich a saved link from the page. | E2 | traced | — |
+| US-09 Keep the link when the page cannot be fetched. | E2 | traced | — |
+| US-10 Browse saved items, newest first. | E3 | traced | — |
+| US-11 Read a saved item. | E3 | traced | — |
+| US-12 Edit a saved item. | E3 | traced | — |
+| US-13 Delete an item and undo that delete. | E3 | traced | — |
+| US-14 Manage tags on saved items. | E3 | traced | — |
+| US-15 Search the vault and see highlighted matches. | E3 | traced | — |
+| US-16 Filter items by type and by tag. | E3 | traced | — |
+| US-17 See that sync is not configured. | E4 | traced | — |
+| US-18 Sign in so the vault can sync. | E4 | traced | — |
+| US-19 Prefer an unmetered network for background sync. | E4 | traced | — |
+| US-20 Receive the vault on another install. | E4 | traced | — |
+| US-21 Export a zip to a place he chooses. | E4 | traced | — |
+| US-22 Choose light, dark, or the system theme. | E5 | traced | — |
+| US-23 Show a launcher icon and the name Lagoon. | E5 | traced | — |
+| US-24 Install a signed release APK without the Play Store. | E6 | traced | — |
+| US-25 Cover search, sync and zip packaging, and a basic screen with automated tests. | E6 | traced | — |
+| US-26 Follow written steps to build, sideload, and create the OAuth client. | E6 | traced | — |
+| US-27 Review screenshots of the main screens. | E6 | traced | — |
+| US-28 Optionally tag a save from the last-used tags. | E1 | needs-amendment | A-E1-2 |
+| US-29 Rename a tag, merging only after he confirms a clash. | E3 | traced | — |
+| US-30 Do not offer backup or restore controls. | E4 | traced | — |
+| US-31 Recognize English text on the device. | E7 | traced | — |
+| US-32 Keep more than one attachment on an item. | E1 | traced | — |
+| US-33 Keep an offline snapshot of a saved page. | E2 | traced | — |
+| US-34 Set a reminder. | E9 | traced | — |
+| US-35 Encrypt the vault at rest. | E8 | traced | — |
+| US-36 Sync only ciphertext. | E8 | traced | — |
+| US-37 Lock sensitive items, and optionally lock the app. | E8 | traced | — |
+| US-38 File new captures from an Untagged inbox. | E3 | traced | — |
+| US-39 Sort and filter the list by when it was saved. | E3 | traced | — |
+| US-40 Fill an empty title from the page or the file. | E1 | needs-amendment; conflict | A-E1-3; C-E1-1 |
+| US-41 Extract topics when an item is saved. | E11 | conflict | C-E11-1 |
+| US-42 Link an item to a topic the vault already has. | E11 | traced | — |
+| US-43 Confirm a topic before it is created. | E11 | traced | — |
+| US-44 Queue topic processing while offline. | E11 | traced | — |
+| US-45 Read a topic. | E11 | needs-amendment | A-E11-1 |
+| US-46 Reject, rename, or merge a suggested topic. | E11 | traced | — |
+| US-47 Keep the item when the topic call fails. | E11 | traced | — |
+| US-48 Manage a topic that is already saved. | E11 | needs-amendment; pending keep/remove | A-E11-2 |
+| US-49 Update a link that was saved before, and undo that update. | E1 | traced | — |
+| US-50 Rank search matches. | E3 | traced | — |
+| US-51 Sync in the background and show errors. | E4 | needs-amendment | A-E4-1 |
+| US-52 Import a zip and merge it. | E4 | traced | — |
+| US-53 Use the teal palette, optional dynamic color, and reduced motion. | E5 | needs-amendment | A-E5-1 |
+| US-54 Notify before an expiry. | E9 | traced | — |
+| US-55 Reschedule reminders after a restart or a clock change. | E9 | needs-amendment | A-E9-1 |
+| US-56 Keep a stable identity for each item. | E4 | needs-amendment | A-E4-2 |
+| US-57 Prove that search and encryption can run together. | E3 | needs-amendment | A-E3-1 |
+| US-58 Run enrichment, snapshot, OCR, and topics in that order. | E1 | needs-amendment | A-E1-4 |
+| US-59 Use one Settings screen. | E4 | needs-amendment | A-E4-3 |
+| US-60 Browse topics and pending suggestions. | E11 | needs-amendment | A-E11-3 |
+| US-61 Filter by where an item came from. | E1 | traced | — |
+| US-62 See what is coming due. | E9 | needs-amendment; conflict; pending keep/remove | A-E9-2; C-E9-1 |
+| US-64 Share or open an item in another app. | E3 | traced | — |
+| US-65 Add a photo from the camera. | E1 | needs-amendment; pending keep/remove | A-E1-5; C-E1-2 |
+| US-66 Keep a trash beyond undo. | E3 | needs-amendment; pending keep/remove | A-E3-2 |
+| US-67 Notice a duplicate image or PDF. | E1 | needs-amendment; pending keep/remove | A-E1-6 |
+| US-70 See what is not ready for offline. | E2 | needs-amendment; pending keep/remove | A-E2-2 |
+| US-71 Triage the inbox in a batch. | E3 | needs-amendment; pending keep/remove | A-E3-3 |
+| US-72 Score whether topics are useful. | E11 | needs-amendment; pending keep/remove | A-E11-4 |
+| US-73 Decide sync conflicts and deletions. | E4 | traced | — |
+| US-74 Decide how the vault key reaches another device. | E8 | traced | — |
+| US-75 Limit what a sensitive item reveals. | E8 | needs-amendment | A-E8-1 |
+| US-76 Decide the topic call's provider, credential, and payload. | E11 | traced | — |
+| US-77 Decide whether reminders may use exact alarms. | E9 | conflict | C-E9-2 |
+| US-78 Keep Drive to app data, and sign out without deleting the phone. | E4 | needs-amendment | A-E4-4 |
+| US-79 Skip unsafe link previews. | E2 | needs-amendment | A-E2-1 |
+| US-80 Keep the permission set to an allowlist. | E6 | needs-amendment | A-E6-1; C-E1-2 |
+| US-81 Publish a sideload signing policy. | E6 | needs-amendment | A-E6-2 |
+
+Conflicts that were not written into an amendment:
+
+- **C-E1-1.** US-40 replaces screenshot, camera, and scan file names with constructed titles. The approved specification and E1 say an empty title fills from the page title or the file name. The story was left unchanged at 19:02 IST.
+- **C-E1-2.** US-65 needs the camera. The proposed US-80 allowlist says the release app does not ask for the camera. The vision and the approved E1 row do not name a camera. Both proposals stay. Neither was dropped.
+- **C-E9-1.** US-62 still names a return-by date and a warranty end. Those left with US-68 at 19:00 IST. E9 allows one reminder or one expiry. A-E9-2 does not copy the extra dates.
+- **C-E9-2.** US-77 would allow exact alarms. E9 and the specification say alarms are inexact and the app does not request that permission.
+- **C-E11-1.** US-41 caps topic suggestions at 8. E11 says "No cap is set here." The specification says "No budget or per-item cap is set here." The story was left unchanged at 19:02 IST.
+- **E7.** No merchant or booking story remains. The approved Future Scope says that stays later, and it says "No story." Nothing was added.
 
 ## Proposed removals
 

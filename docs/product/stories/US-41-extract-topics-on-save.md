@@ -6,6 +6,8 @@
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 > Miguel (`mjbvilhena`) decided the default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`. It is not story approval. It does not decide sensitive-item exclusion.
 
+**Epic:** E11. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E11.
 
 ## Title

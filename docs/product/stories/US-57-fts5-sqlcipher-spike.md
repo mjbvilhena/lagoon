@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E3. Not an approval.
+
 **MoSCoW:** Must. Blocking chore. The review asked for this spike before US-15 and US-35 choose an engine.
 
 ## Title

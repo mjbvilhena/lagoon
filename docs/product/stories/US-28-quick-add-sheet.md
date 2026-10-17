@@ -6,6 +6,8 @@
 > Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
 > Story approval has not been recorded.
 
+**Epic:** E1. Not an approval.
+
 **MoSCoW:** Must. v1, from the approved specification's Q9 consensus. The consensus is not a new approval.
 
 ## Title

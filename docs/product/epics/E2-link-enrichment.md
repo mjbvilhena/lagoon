@@ -52,3 +52,21 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 - US-08 Enrich a link when the page can be fetched
 - US-09 Keep the URL when enrichment does not run
 - US-33 Keep an offline snapshot of a saved page
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E2-1 Unsafe link previews
+
+- **Story:** US-79.
+- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
+- **Scope:** A token-looking URL is not auto-fetched. A foggy placeholder stands in until he enables that preview.
+- **Acceptance outcome:** That skip is his chat decision of 2026-10-17 at 15:59 IST. The other skip rules stay the proposed text on US-79.
+
+### A-E2-2 What is not ready for offline
+
+- **Story:** US-70. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** A check lists items whose snapshot or OCR is still pending, failed, or has never run.
+- **Acceptance outcome:** He can see what will be missing before he goes offline. A failed or never-run snapshot can use the retry already on US-33. OCR itself stays E7.

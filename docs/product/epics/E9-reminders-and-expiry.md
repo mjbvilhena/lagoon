@@ -52,3 +52,31 @@ Miguel.
 ## Draft stories
 
 - US-34 Set a reminder or expiry and get notified
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E9-1 One install posts, and the schedule survives more than a reboot
+
+- **Story:** US-55.
+- **MoSCoW:** Must. Not approval of this epic text.
+- **Scope:** A reminder or an expiry is registered again after a reboot, a clock change, an update, or a notification-permission change. When the same date is on more than one install, only one install posts it.
+- **Acceptance outcome:** A notification is not lost because the phone restarted, and two installs do not both post it. The approved text already covers `BOOT_COMPLETED`. Which install wins is this amendment, not an approved rule.
+
+### A-E9-2 Upcoming list
+
+- **Story:** US-62. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Should. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** A list shows items whose one reminder or one expiry is coming due.
+- **Acceptance outcome:** He can see what is due without opening each item. The list does not add a return-by date or a warranty end.
+
+### Conflicts, not amended
+
+#### C-E9-1 Return-by and warranty still named on US-62
+
+US-62 still says a future reminder, expiry, return-by date, or warranty end. Return-by and warranty were removed with US-68 on 2026-10-17 at 19:00 IST. The approved epic allows one reminder or one expiry, not those extra dates. A-E9-2 does not copy them. The story was left in place because the keep/remove decision is still open.
+
+#### C-E9-2 Exact alarms on US-77
+
+The approved epic and the approved specification say alarms are inexact and the app does not request the exact-alarm permission. US-77 asks whether that may change. An amendment that allowed exact alarms would contradict both. No such amendment is drafted. US-77 stays the open question, parented to E9.

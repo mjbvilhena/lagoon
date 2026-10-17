@@ -7,6 +7,8 @@
 > Story approval has not been recorded.
 > The file was renamed from `US-19-automatic-backup.md`.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E4.
 
 ## Title

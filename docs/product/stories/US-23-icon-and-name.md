@@ -6,6 +6,8 @@
 > The name Lagoon is the joint recommendation recorded in the approved specification. This story does not treat that recommendation as its own approval.
 > Story approval has not been recorded.
 
+**Epic:** E5. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E5.
 
 ## Title

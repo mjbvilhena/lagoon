@@ -61,3 +61,14 @@ Miguel, including on a second device that should see the same vault and not a pl
 - US-35 Encrypt the vault at rest
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E8-1 What a sensitive item shows before unlock
+
+- **Story:** US-75.
+- **MoSCoW:** Proposed Must. The lock-screen reminder was decided in chat on 2026-10-17 at 15:59 IST. The other criteria on the story stay proposed. This is not approval of this epic text, and it is not story approval.
+- **Scope:** Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail. The lock-screen reminder shows only "Lagoon reminder".
+- **Acceptance outcome:** That public reminder text is the 15:59 IST decision. Export of a sensitive item waits for the US-37 unlock. The rest of US-75 stays proposed. Topic exclusion stays the approved E11 amendment of 15:55 IST.

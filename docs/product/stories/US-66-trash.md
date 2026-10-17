@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E3. Pending Miguel's keep/remove decision. Not an approval.
+
 **MoSCoW:** Should. v1 delete-with-undo is US-13. This story is not a v1 gate.
 
 ## Title

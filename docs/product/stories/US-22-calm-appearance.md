@@ -6,6 +6,8 @@
 > On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." That clarification is not approval of this story.
 > Story approval has not been recorded.
 
+**Epic:** E5. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E5. Palette, dynamic color, and motion are US-53.
 
 ## Title

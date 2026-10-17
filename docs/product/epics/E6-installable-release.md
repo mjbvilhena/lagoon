@@ -59,3 +59,21 @@ Miguel, installing and configuring the vault himself.
 - US-25 Run the tests he named
 - US-26 Follow a README to build, sideload, and configure OAuth
 - US-27 Review screenshots of the main screens
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E6-1 Permission allowlist
+
+- **Story:** US-80.
+- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
+- **Scope:** The release app requests only the permissions the product needs.
+- **Acceptance outcome:** An install does not ask for storage, camera, or location, while those criteria stay proposed. If US-65 is kept, the camera line conflicts with A-E1-5. See C-E1-2. This amendment does not resolve that.
+
+### A-E6-2 Sideload signing policy
+
+- **Story:** US-81.
+- **MoSCoW:** Proposed Must. The criteria on the story stay proposed. This is not approval.
+- **Scope:** A later install signed with the same release key can replace the app without losing the vault.
+- **Acceptance outcome:** The policy text stays proposed. Android developer verification for sideloaded APKs stays the open question already in this epic.

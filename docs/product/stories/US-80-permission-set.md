@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
 
+**Epic:** E6. Not an approval.
+
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
 ## Title

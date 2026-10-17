@@ -6,6 +6,7 @@
 > No story was flipped to Approved in the round-2 revision.
 > Sign-off on file: none.
 > Updated 2026-10-17. Miguel removed US-68, US-69, US-82, US-83, and US-84 at 19:00 IST, and US-63 at 19:01 IST. Those numbers are not reused. This is not story approval.
+> Each remaining story has one parent epic. Proposed epic amendments are in the epic files and are not approved. The map is `docs/product/stories/TRACEABILITY.md`.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -66,28 +67,28 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | Must | `docs/product/stories/US-53-palette-and-motion.md` | Draft |
 | US-54 | Notify before an expiry. | E9 | Must | `docs/product/stories/US-54-expiry-notices.md` | Draft |
 | US-55 | Reschedule reminders after a restart or a clock change. | E9 | Must | `docs/product/stories/US-55-reschedule-reminders.md` | Draft |
-| US-56 | Keep a stable identity for each item. | Cross-cutting | Must | `docs/product/stories/US-56-item-data-model.md` | Draft |
-| US-57 | Prove that search and encryption can run together. | Cross-cutting | Must | `docs/product/stories/US-57-fts5-sqlcipher-spike.md` | Draft |
-| US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
-| US-59 | Use one Settings screen. | Cross-cutting | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
+| US-56 | Keep a stable identity for each item. | E4 | Must | `docs/product/stories/US-56-item-data-model.md` | Draft |
+| US-57 | Prove that search and encryption can run together. | E3 | Must | `docs/product/stories/US-57-fts5-sqlcipher-spike.md` | Draft |
+| US-58 | Run enrichment, snapshot, OCR, and topics in that order. | E1 | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
+| US-59 | Use one Settings screen. | E4 | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
 | US-60 | Browse topics and pending suggestions. | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
 | US-61 | Filter by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
 | US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Draft |
-| US-64 | Share or open an item in another app. | Cross-cutting | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Draft |
+| US-64 | Share or open an item in another app. | E3 | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Draft |
 | US-65 | Add a photo from the camera. | E1 | Should | `docs/product/stories/US-65-in-app-camera.md` | Draft |
-| US-66 | Keep a trash beyond undo. | Cross-cutting | Should | `docs/product/stories/US-66-trash.md` | Draft |
+| US-66 | Keep a trash beyond undo. | E3 | Should | `docs/product/stories/US-66-trash.md` | Draft |
 | US-67 | Notice a duplicate image or PDF. | E1 | Could | `docs/product/stories/US-67-duplicate-files.md` | Draft |
-| US-70 | See what is not ready for offline. | Cross-cutting | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
+| US-70 | See what is not ready for offline. | E2 | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
 | US-71 | Triage the inbox in a batch. | E3 | Could | `docs/product/stories/US-71-inbox-multi-select.md` | Draft |
 | US-72 | Score whether topics are useful. | E11 | Could | `docs/product/stories/US-72-topic-usefulness.md` | Draft |
-| US-73 | Decide sync conflicts and deletions. | Cross-cutting | Not set | `docs/product/stories/US-73-sync-conflicts-and-deletions.md` | Draft |
+| US-73 | Decide sync conflicts and deletions. | E4 | Not set | `docs/product/stories/US-73-sync-conflicts-and-deletions.md` | Draft |
 | US-74 | Decide how the vault key reaches another device. | E8 | Not set | `docs/product/stories/US-74-key-transport.md` | Draft |
 | US-75 | Limit what a sensitive item reveals. | E8 | Proposed Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | Not set | `docs/product/stories/US-76-topic-call-privacy.md` | Draft |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | Not set | `docs/product/stories/US-77-exact-alarms.md` | Draft |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Proposed Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
 | US-79 | Skip unsafe link previews. | E2 | Proposed Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
-| US-80 | Keep the permission set to an allowlist. | Cross-cutting | Proposed Must | `docs/product/stories/US-80-permission-set.md` | Draft |
+| US-80 | Keep the permission set to an allowlist. | E6 | Proposed Must | `docs/product/stories/US-80-permission-set.md` | Draft |
 | US-81 | Publish a sideload signing policy. | E6 | Proposed Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
 
 No story is Done. Implementation has not started. No story status is Approved.

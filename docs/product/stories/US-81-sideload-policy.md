@@ -6,6 +6,8 @@
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
 > US-24 still requires a signed APK because epic E6 does. This story does not replace that.
 
+**Epic:** E6. Not an approval.
+
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
 ## Title

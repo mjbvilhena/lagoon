@@ -77,3 +77,41 @@ These are not approved. Paths are under `docs/product/stories/`. Drafting them i
 - US-45 Read a topic
 - US-46 Reject, rename, or merge a suggested topic
 - US-47 Keep the item when the topic call fails
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E11-1 Read a topic
+
+- **Story:** US-45.
+- **MoSCoW:** Must. Not approval of this epic text.
+- **Scope:** Opening a topic shows the items linked to it and the notes already stored on that topic.
+- **Acceptance outcome:** He can look across what he saved on that subject. Opening the topic does not start a new AI call.
+
+### A-E11-2 Correct a topic that is already saved
+
+- **Story:** US-48. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Must. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic.
+- **Acceptance outcome:** A saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
+
+### A-E11-3 Topic list and pending suggestions
+
+- **Story:** US-60.
+- **MoSCoW:** Must. Not approval of this epic text.
+- **Scope:** He has a list of saved topics and one place for suggestions that are waiting.
+- **Acceptance outcome:** He can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
+
+### A-E11-4 Whether topics are useful
+
+- **Story:** US-72. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** A usefulness score for topics is computed on the phone.
+- **Acceptance outcome:** He is not asked to hand-label items, and the score is not sent off the phone.
+
+### Conflicts, not amended
+
+#### C-E11-1 Cap of 8 on US-41
+
+The approved epic says "No cap is set here." The approved specification says "No budget or per-item cap is set here." US-41 still has a cap of 8 topic suggestions. Adding that cap would contradict both. No amendment adds it. The story is unchanged, per his decision of 2026-10-17 at 19:02 IST. Extracting topics, the on-by-default switch, and sensitive-item exclusion stay the approved scope.

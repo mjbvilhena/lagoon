@@ -54,3 +54,14 @@ Miguel, using the app every time he saves or looks something up.
 
 - US-22 Choose light, dark, or the system theme
 - US-23 Show a launcher icon and the name Lagoon
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E5-1 Reduced motion
+
+- **Story:** US-53. The story is unchanged, including reduced motion, per his decision of 2026-10-17 at 19:02 IST.
+- **MoSCoW:** Must. Not approval of this epic text.
+- **Scope:** When the system animator scale says motion is off, the vault does not require motion.
+- **Acceptance outcome:** The teal palette, Light, Dark, System, and the optional dynamic-color toggle stay as the approved text already says. Reduced motion is the added outcome.

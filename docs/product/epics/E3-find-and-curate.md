@@ -70,3 +70,28 @@ Miguel, looking back through what he kept.
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
+
+## Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)
+
+> Not approved. This section does not change the approved text above. Epic changes need Miguel's own named approval. Stories stay Draft.
+
+### A-E3-1 Search on an encrypted database
+
+- **Story:** US-57.
+- **MoSCoW:** Must. Not approval of this epic text.
+- **Scope:** Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair.
+- **Acceptance outcome:** Search and encryption are not built on a combination that cannot run. The approved risk line already names this spike. This amendment states the outcome.
+
+### A-E3-2 Trash after undo
+
+- **Story:** US-66. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Should. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** After the undo snackbar is gone, a deleted item can sit in trash and be restored.
+- **Acceptance outcome:** Delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
+
+### A-E3-3 Inbox batch
+
+- **Story:** US-71. Pending Miguel's keep/remove decision.
+- **MoSCoW:** Could. Not approval of this epic text, and not a decision to keep the story.
+- **Scope:** The Untagged inbox can apply one filing action to several items at once.
+- **Acceptance outcome:** Filing does not require opening each row. Filing one item at a time still works.

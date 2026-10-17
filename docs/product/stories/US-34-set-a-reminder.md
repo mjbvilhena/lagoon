@@ -5,6 +5,8 @@
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
+**Epic:** E9. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E9. Inexact alarms, per E9. Exact alarms are US-77 and are not decided.
 
 ## Title

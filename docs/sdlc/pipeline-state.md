@@ -351,13 +351,28 @@ Still awaiting his decision: US-48, US-62, US-65, US-66, US-67, US-70, US-71, US
 
 `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request. The required checks stay no-ops until Gradle exists.
 
+### Harness: one parent epic, 2026-10-17 at 19:02 and 19:04 IST
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-product-owner`, template `get_sdlc_template("epic")`, Definition of Done `get_definition_of_done("epic")`.
+3. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+4. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+5. `sdlc-dod-checker`, `get_definition_of_done("user story")` from `third_party/ai-sdlc-harness/mcp-server/data/dod/user_story.md`.
+6. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Templates were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This was not a live MCP session. No domain consultant was found. No MUST/NEVER rules were invented.
+
+Miguel (`mjbvilhena`) at 19:02 IST left US-28, US-40, US-41, and US-53 unchanged, including reduced motion. At 19:04 IST he said every remaining story must map to an epic, and an epic may be updated so that it covers the story. Each story now names one parent from E1 to E11. Approved epic text was not edited in place. Proposed amendments are marked "Proposed amendment 2026-10-17 (awaiting mjbvilhena approval)". None is approved. No story status was set to Approved.
+
+US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72 are marked pending his keep/remove decision. Conflicts that were not amended: C-E1-1 constructed titles, C-E1-2 camera versus the permission allowlist, C-E9-1 return-by and warranty still named on US-62, C-E9-2 exact alarms, C-E11-1 the cap of 8. E7 was not given a merchant story. E10 stays later and has no story.
+
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
 | Vision ↔ spec | The vision states the current product. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. The 15:59, 16:00, and 18:05 IST chat decisions are in `docs/product/amendments/2026-10-17-chat-decisions.md`. They are not a new specification approval. |
-| User-story index | `docs/product/stories/INDEX.md` lists the remaining stories. US-63, US-68, US-69, US-82, US-83, and US-84 were removed on 2026-10-17 at 19:00 and 19:01 IST. Numbers were not reused. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Traceability: `docs/product/stories/TRACEABILITY.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. Chat decisions: `docs/product/amendments/2026-10-17-chat-decisions.md`. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
+| User-story index | `docs/product/stories/INDEX.md` lists the remaining stories, each with one parent epic. US-63, US-68, US-69, US-82, US-83, and US-84 were removed on 2026-10-17 at 19:00 and 19:01 IST. Numbers were not reused. Drafts are not approved. Proposed epic amendments are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Traceability: `docs/product/stories/TRACEABILITY.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. Chat decisions: `docs/product/amendments/2026-10-17-chat-decisions.md`. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

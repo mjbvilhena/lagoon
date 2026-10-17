@@ -6,6 +6,8 @@
 > **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
 > The approved specification names `appDataFolder`. These criteria do not replace that.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
 ## Title

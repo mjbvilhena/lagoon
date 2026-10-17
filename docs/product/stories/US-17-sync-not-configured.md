@@ -7,6 +7,8 @@
 > Story approval has not been recorded.
 > The file was renamed from `US-17-backup-not-configured.md` so the name matches seamless sync.
 
+**Epic:** E4. Not an approval.
+
 **MoSCoW:** Must. v1, from approved epic E4.
 
 ## Title
