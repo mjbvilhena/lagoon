@@ -57,7 +57,7 @@ These six stay open. Miguel answers them at the technical design, ADR, and threa
 5. Whether unlocking the whole app is required, separate from the sensitive-item lock.
 6. Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
 
-The five story-level questions now have consensus recommendations in US-01, US-15, US-31, US-33, and US-34 (Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot). Those stories stay Draft. The FTS5 / Room 3 / SQLCipher spike on US-15 is a design-gate risk, not a decision. See the specification.
+The five story-level questions now have consensus recommendations in US-01, US-15, US-31, US-33, and US-34 (Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot). US-31's language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports that Miguel told it in chat that English is enough for v1 OCR. That revision is not approval. Those stories stay Draft. The FTS5 / Room 3 / SQLCipher spike on US-15 is a design-gate risk, not a decision. See the specification.
 
 After spec approval, these gates are still closed until each is actually signed:
 

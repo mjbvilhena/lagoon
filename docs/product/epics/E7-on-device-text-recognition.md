@@ -21,7 +21,7 @@ Miguel, searching something he saved as an image or a scan.
   - Recognized text is stored as extracted text and is searchable.
   - Recognition does not upload the file.
   - Text-based PDF extraction stays in US-04 and is not this epic's method.
-- **Future Scope (v2+):** Booking references and merchants, only if they fall out of this work for free. Otherwise they stay proposed and later. No story either way.
+- **Future Scope (v2+):** OCR for languages other than English. Booking references and merchants, only if they fall out of this work for free. Otherwise they stay proposed and later. No story either way.
 - **Out of Scope / Non-Goals:** A cloud vision API. Translating the text. Editing the image or PDF. Treating text-layer extraction as OCR.
 
 ## Core Workflows
@@ -34,12 +34,12 @@ Miguel, searching something he saved as an image or a scan.
 ## Risks & Dependencies
 
 - Depends on E1 for the file and E3 for search.
-- Languages are the US-31 recommendation: bundled Latin-script only. Non-Latin scripts are later. Not approval. The sideload ABI note is a design-gate build choice.
+- v1 language scope is English, Mikey's Dev Bot's revised recommendation. The Dev Bot reports that Miguel told it in chat that English is enough. Not approval. The bundled Latin-script model still fits. Other languages are later. The sideload ABI note is a design-gate build choice.
 - Recognized text is vault data. It is covered by E8 encryption once that epic exists. This epic does not design the cipher.
 
 ## Open Questions
 
-- Languages are recommended in US-31 and are not an open product question. The `arm64` filter versus per-ABI APKs choice waits for design. Not approval.
+- v1 OCR language is English in US-31. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. Not approval.
 
 ## Draft stories
 

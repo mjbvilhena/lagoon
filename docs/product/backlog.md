@@ -80,7 +80,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Draft — not approved)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's decision. Not approval. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device Latin-script recognition, bundled ML Kit model. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Non-Latin scripts are later. Booking references and merchants are not this story. Not approval.
+- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Mikey's Dev Bot's revised recommendation: the Dev Bot reports Miguel said in chat that English is enough. Not approval. Acceptance tests are English only. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
@@ -125,6 +125,7 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 ## Proposed, no stories
 
 - Full-screen QR and barcode display. He has not decided.
+- OCR for languages other than English. Later option. v1 acceptance tests stay English-only (US-31).
 - Picking out booking references and merchants. Later, unless it falls out of OCR with no extra product scope.
 
 ## Open questions
@@ -142,7 +143,7 @@ Still open. Assigned to the technical design, ADR, and threat-model gate. He ans
 
 ### Story-level recommendations (not approval)
 
-Answered as consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot. Stories stay Draft. See US-01, US-15, US-31, US-33, and US-34. The FTS5 / Room 3 / SQLCipher question on US-15 stays a design-gate spike, not a decision.
+Answered as consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot. Stories stay Draft. See US-01, US-15, US-31, US-33, and US-34. US-31's v1 language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports Miguel said in chat that English is enough. That is not approval. Accent folding in US-15 stays. The FTS5 / Room 3 / SQLCipher question on US-15 stays a design-gate spike, not a decision.
 
 ### Resolved
 
