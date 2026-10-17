@@ -1,10 +1,9 @@
 # Epic E3: Find and curate
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -28,8 +27,12 @@ Miguel, looking back through what he kept.
   - Room + FTS search across title, body, extracted text, OCR text, tags, and notes.
   - Ranked results and visible highlighting of the match.
   - Filter by type and by tag.
+  - Sharing an item back out to other apps, as US-64 (Should). The acceptance criteria are on that story.
+  - Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair (A-E3-1, US-57). Acceptance: search and encryption are not built on a combination that cannot run.
+  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Should). Acceptance: delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
+  - The Untagged inbox can apply one filing action to several items at once (A-E3-3, US-71, Could). Acceptance: filing does not require opening each row. Filing one item at a time still works.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** A numeric latency SLO. Sharing an item back out to other apps. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1).
+- **Out of Scope / Non-Goals:** A numeric latency SLO. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1). Sharing an item back out is in scope above as US-64, a Should.
 
 ## Core Workflows
 
@@ -45,12 +48,12 @@ Miguel, looking back through what he kept.
 ## Risks & Dependencies
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
-- Ranking is the US-15 rule in the specification approved by `mjbvilhena` on 2026-10-17: weighted BM25, including OCR text. This epic is Approved. Its stories stay Draft. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
-- Q4 is part of that approved specification: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. This epic is Approved. Its stories stay Draft.
+- Ranking is the US-15 rule in the specification: weighted BM25, including OCR text. Stories stay Draft. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
+- Rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. Stories stay Draft.
 
 ## Open Questions
 
-- Q4 and Q9 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. Q5 and Q10 were decided by him and are not open here. Conflicts and deletions on sync are his questions on E4, not this epic.
+- Tag rename-and-merge, the inbox, and date sort are in the specification. Stories stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions on sync stay open on E4.
 
 ## Draft stories
 
@@ -64,3 +67,6 @@ Miguel, looking back through what he kept.
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
+- US-57 Prove search on an encrypted database
+- US-66 Keep a trash beyond undo. Should.
+- US-71 Triage the inbox in a batch. Could.

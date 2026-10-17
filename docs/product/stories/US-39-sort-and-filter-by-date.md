@@ -1,8 +1,10 @@
-# US-39 Sort and filter by the date saved
+# US-39 Sort and filter the list by when it was saved
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Bots' consensus on Q9. Not approval.
+
+**Epic:** E3.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -11,42 +13,46 @@ Sort and filter the list by when it was saved.
 ## User story
 
 **As a** person named Miguel
-**I want to** sort items by the date I saved them and narrow them to a date
-**So that** I can look at what I kept on a particular day, not only the newest page
+**I want** to sort and filter by the date saved, including inside search
+**So that** I can limit the list to a day or a range
 
 ## Background
 
-- The home list defaults to newest first (US-10).
-- Consensus: also sort and filter by date saved.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: sorting by title. A calendar. Trip date ranges (E10, not v1).
+- Boundaries use the device local zone. The sort key is last-saved. An edit does not move last-saved (US-12).
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: an upcoming view (US-62, Should).
 
 ## Acceptance criteria
 
-- **Scenario: oldest first** — Must
-  - Given items saved on different days
-  - When he sorts by date saved, oldest first
-  - Then the oldest item is first
-- **Scenario: newest first** — Must
-  - Given that sort
-  - When he sorts newest first
-  - Then the order matches US-10
-- **Scenario: filter to a day** — Must
-  - Given items saved on two different days
-  - When he filters to one of those days
-  - Then only items saved that day are shown
-- **Scenario: filter to a range** — Must
-  - Given items saved before, during, and after a range of dates
-  - When he filters to that range
-  - Then only items saved inside the range are shown, inclusive of the end dates
+- **Scenario: newest and oldest** — Must
+  - Given several items
+  - When he chooses newest first, then oldest first
+  - Then the order follows last-saved in that direction
+- **Scenario: a local day** — Must
+  - Given an item was saved at 23:30 local time
+  - When he filters to that local date
+  - Then the item is included, and an item from the next local date is not
+- **Scenario: a range and quick ranges** — Must
+  - Given items across a month
+  - When he filters to a range, or to Today, Last 7 days, or Last 30 days
+  - Then only items whose last-saved local date is inside that range are shown
+- **Scenario: search keeps relevance by default** — Must
+  - Given he is searching
+  - When he has not chosen a date sort
+  - Then US-50 relevance order is used
+  - And when he applies a date filter, it limits those results
 - **Scenario: nothing in range** — Must
-  - Given no item was saved in the range
-  - When he applies it
-  - Then the list is empty and he can see that the filter caused it
+  - Given no item is in the range
+  - When the filter is applied
+  - Then he sees that nothing is in the range
 - **Scenario: clear** — Must
   - Given a date filter is on
   - When he clears it
-  - Then the hidden items return
+  - Then the unfiltered list returns
+- **Scenario: an edit** — Must
+  - Given an item's last-saved date is outside the filter
+  - When he edits the item
+  - Then last-saved stays outside the filter. Only `updatedAt` moves
 
 ## Analytics and observability (optional)
 
@@ -54,14 +60,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The active sort and the active date filter are text, not only a colored control.
-- The date control is the platform's or the UX artefact's. This story does not draw it.
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Composes with type and tag filters (US-16). All active filters apply together.
-- "Date saved" is the last-saved date. A first save sets it to the created date. A repeat URL bumps it (US-01) and does not move the created date. It is not the reminder date (US-34). That US-01 recommendation is not approval of this story.
+- Home default order is US-10.
 
 ## Implementation notes
 
-Filter and order on the last-saved date. Not a design spec.
+Not a design spec.

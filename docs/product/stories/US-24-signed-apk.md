@@ -1,7 +1,10 @@
 # US-24 Install a signed release APK
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E6.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -10,34 +13,37 @@ Install a signed release APK without the Play Store.
 ## User story
 
 **As a** person named Miguel
-**I want** a release APK I can sideload, signed with a release keystore that is not in the repo
-**So that** I can put the vault on my phone without publishing it
+**I want** a signed release APK I can sideload
+**So that** I can install Lagoon without a store listing
 
 ## Background
 
-- He asked for a working, installable APK, signed with a self-generated release keystore, secrets not committed, `minSdk` 26, latest stable target SDK, built with Gradle from the command line.
-- Q8, bots' consensus, not his approval: `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). `minSdk` stays 26.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: Play Store signing, Play App Signing, and a debug build as the thing he installs.
+- The approved specification sets `minSdk` 26 and `compileSdk` and `targetSdk` 37. The application id is `com.mjbvilhena.lagoon`.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: Play Store listing, and what to do about 2027 sideload developer verification. That question is in `docs/product/stories/REVIEW-PACK.md`.
 
 ## Acceptance criteria
 
-- **Scenario: command-line release build** — Must
-  - Given a checkout with no keystore committed and with the documented local signing config present on that machine
-  - When the release Gradle task is run from the command line
-  - Then it produces a release APK signed with that release keystore
-- **Scenario: SDK levels** — Must
-  - Given the built manifest
-  - When it is inspected
+- **Scenario: the build config** — Must
+  - Given the Gradle build
+  - When its SDK fields are read
   - Then `minSdk` is 26, and `compileSdk` and `targetSdk` are 37
+- **Scenario: ABI** — Must
+  - Given the release build
+  - When the packaged ABIs are inspected
+  - Then it uses the `arm64` filter from US-31, or it produces per-ABI APKs
+- **Scenario: signature** — Must
+  - Given the release APK
+  - When `apksigner verify` runs
+  - Then the APK verifies with v2 or v3
 - **Scenario: secrets stay out of git** — Must
-  - Given the keystore file and its passwords
-  - When the repo is checked
-  - Then those files are not tracked, and `.gitignore` ignores keystore files
+  - Given the repository
+  - When the tree is inspected
+  - Then the keystore, its passwords, and OAuth secrets are not committed
 - **Scenario: sideload** — Must
-  - Given the signed APK and a phone that allows installs from unknown sources
-  - When he installs it
-  - Then the app installs and opens without a Play Store account
+  - Given that APK
+  - When he installs it on a device
+  - Then Lagoon opens
 
 ## Analytics and observability (optional)
 
@@ -45,15 +51,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- None beyond the app that opens. Install UI is the Android system installer.
+- Not a UI story. No placeholder sentences in the app that this APK contains.
 
 ## Dependencies and risks
 
-- The SHA-1 of this cert is an output US-26 must document. It does not exist at draft time. Do not invent a fingerprint in the docs.
-- Q8 is a bots' consensus, not approval. The levels are 37, not "whatever is newest on the day."
-- Android developer verification for sideloaded APKs (global enforcement in 2027, ADB exempt) is an open question for Miguel. This story does not decide it.
-- Implementation of this story is forbidden until the product spec, epics, stories, and technical design/ADRs are approved. Drafting this story is not that approval.
+- Signing properties are local and gitignored.
 
 ## Implementation notes
 
-Release signing config reads local, gitignored properties. Not a design spec.
+Test approach: `apksigner verify` and the Gradle field check run in CI. Not a design spec.

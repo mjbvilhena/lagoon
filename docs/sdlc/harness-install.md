@@ -3,15 +3,17 @@
 The AI SDLC harness is installed in this workspace from a pinned submodule.
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Source | [mjbvilhena/ai-sdlc-harness](https://github.com/mjbvilhena/ai-sdlc-harness) |
 | Commit | `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604` |
 | Submodule path | `third_party/ai-sdlc-harness` |
 | Installer used | `install/install_cursor.sh --workspace` (this repo) |
-| Skills and rules | `.cursor/commands/sdlc-*.md` (32 files) |
+| Skills and rules | `.cursor/commands/sdlc-*.md` (30 files) |
 | MCP entry | `.cursor/mcp.json` server name `sdlc-knowledge` |
 
 `agents/` is absent in that commit. The installer skipped it and continued.
+
+The two example stubs, `sdlc-example-skill` and `sdlc-example-rule`, are not installed here. Running `install/install_cursor.sh` again would copy them back. The harness submodule still contains those stubs.
 
 ## MCP command
 

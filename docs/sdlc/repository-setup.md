@@ -10,7 +10,7 @@ Structured from `get_sdlc_template("repository setup")` and `get_definition_of_d
 ## Metadata
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Target Repository | `github.com/mjbvilhena/lagoon` (public). Default branch `master`. |
 | Primary Tech Stack | Markdown product docs now. Kotlin, Jetpack Compose, and Gradle are named for a later app and are not in the tree. |
 | CI/CD System | GitHub Actions (`.github/workflows/qa.yml`) |
@@ -24,8 +24,8 @@ This repository will hold Miguel's personal knowledge vault: an on-device Androi
 The root `README.md` only describes the app. These paths are the rest of the notes:
 
 | Path | What it is |
-|---|---|
-| `docs/product/vision.md` | Draft vision, taken from the request |
+| --- | --- |
+| `docs/product/vision.md` | Current vision. Restates the approved specification, epics E1–E9 and E11, and the approved amendment. |
 | `docs/product/specification.md` | Approved product specification (`c288b7e`) |
 | `docs/product/epics/` | Approved epics E1–E11 (`98275b3`). E10 is Later, not in v1 |
 | `docs/product/stories/` | Draft user stories and the index |
@@ -41,7 +41,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The Android and Kotlin jobs were added because the 2026-10-17 GitHub request named them. They do not compile anything until a Gradle project exists. Bash and Python checks were not added.
 
 | Content expected | Proposed check | In this repo |
-|---|---|---|
+| --- | --- | --- |
 | Markdown documentation | `markdownlint` | Job `Markdown lint` in `.github/workflows/qa.yml` |
 | Any repo | `gitleaks` and `CODEOWNERS` | Job `Secret scan` in `.github/workflows/qa.yml`, `.github/CODEOWNERS` |
 | GitHub Actions YAML | `actionlint` 1.7.12 | Job `Workflow lint` |
@@ -63,7 +63,7 @@ SAST for Python was not added. There is no product Python package.
 
 ### Linting & Formatting
 
-`.github/workflows/qa.yml` job `Markdown lint` uses `DavidAnson/markdownlint-cli2-action@v24` and `.markdownlint-cli2.jsonc`. Line length (`MD013`) and ordered-list prefix (`MD029`) are off, matching leisure-orchestrator. `.cursor/**`, `.agents/**`, and `third_party/**` are ignored so slash commands and the harness submodule are not treated as this product's docs. `.markdownlint.json` remains the harness-compatible config; the CI job reads the cli2 file.
+`.github/workflows/qa.yml` job `Markdown lint` uses `DavidAnson/markdownlint-cli2-action@v24` and `.markdownlint-cli2.jsonc`. Line length (`MD013`) and ordered-list prefix (`MD029`) are off, matching leisure-orchestrator. `.cursor/**`, `.agents/**`, and `third_party/**` are ignored so slash commands and the harness submodule are not treated as this product's docs. `.markdownlint-cli2.jsonc` is the only Markdown lint config in this repo.
 
 No shellcheck, eslint, or ruff project exists here.
 

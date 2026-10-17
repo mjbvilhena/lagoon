@@ -1,7 +1,10 @@
-# US-11 Read an item
+# US-11 Read a saved item
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E3.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -10,29 +13,38 @@ Read a saved item.
 ## User story
 
 **As a** person named Miguel
-**I want to** open an item and see what was stored
-**So that** I can read it again without going back to the app it came from
+**I want** to open an item and read what was saved
+**So that** I can use it without going back to the app it came from
 
 ## Background
 
-- He asked for an item detail view.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: editing (US-12) and delete (US-13).
+- Detail shows the stored fields. It does not invent missing ones.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: what a locked sensitive row shows in the list (US-75). Editing is US-12.
 
 ## Acceptance criteria
 
-- **Scenario: open a note or a link** — Must
-  - Given a saved item
-  - When he opens it from the list
-  - Then he can read its title, body or extracted text, source URL when one exists, type, tags, created date, and personal note when one exists
-- **Scenario: open an image or a PDF** — Must
-  - Given an image or PDF item
-  - When he opens it with no network
-  - Then he can see the image or read the stored PDF from the device
-- **Scenario: optional fields are empty** — Must
-  - Given an item with no source URL, no tags, and no personal note
+- **Scenario: open an ordinary item** — Must
+  - Given an item that is not marked sensitive
   - When he opens it
-  - Then those absences are quiet. The detail view does not fill them with placeholder sentences.
+  - Then he sees the title, body, note, all attachments, last-saved date, source domain and sending app when present, and the original URL when the item is a link
+  - And when the stored preview is the foggy placeholder from US-79, he sees that image and opening the item does not fetch a preview
+- **Scenario: OCR text** — Must
+  - Given OCR text exists
+  - When he opens the item
+  - Then that text is shown, and he can select it and copy it
+- **Scenario: snapshot and dates** — Must
+  - Given a snapshot or a reminder or expiry is stored
+  - When he opens the item
+  - Then he can read the snapshot, and he sees the reminder or expiry
+- **Scenario: a sensitive item** — Must
+  - Given the item is marked sensitive
+  - When he opens it before US-37 succeeds
+  - Then the body, OCR text, attachments, and snapshot are not shown
+- **Scenario: optional fields are empty** — Must
+  - Given an item has no note and no reminder
+  - When he opens it
+  - Then those areas are absent, and the title and body that do exist are still shown
 
 ## Analytics and observability (optional)
 
@@ -40,15 +52,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The URL, when present, is text he can read, not only a tap target.
-- Empty optional fields are not labeled with lorem.
-- Exact layout is for the UX artefact.
+- Copy is a named action. No placeholder sentences. The foggy preview image is the US-79 placeholder, not a sentence of filler copy.
 
 ## Dependencies and risks
 
-- Depends on items from E1 and, for enriched text, on E2 when enrichment ran.
-- PDF rendering of hostile files is a later threat-model topic. This story does not specify a sandbox design.
+- Unlock is US-37. The original URL opens in another app through US-64 only if that story is in the build. This story's Must is that the URL is visible and can be opened with the platform.
 
 ## Implementation notes
 
-Detail screen reads the local item and local files. Not a design spec.
+Read the local item. Not a design spec.

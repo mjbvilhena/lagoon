@@ -1,0 +1,191 @@
+# Traceability
+
+> **Draft. Not approval.** Stories stay Draft.
+> Sources: `docs/product/vision.md`, `docs/product/specification.md`, and approved epics E1–E9 and E11. E10 is Later and is not a v1 parent.
+> A review pack, a story, or the threat note is not a source.
+
+## Outcome
+
+- Removed, numbers not reused: US-63, US-68, US-69, US-82, US-83, and US-84.
+- Kept, and covered by the epic text: US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72.
+- Left in place: US-28 (Add date), US-40 (file-name titles), US-41 (topics on, no cap), and US-53 (reduced motion).
+- An empty title on a screenshot, image, or scan fills from the file name. A token-looking link with no typed title uses the host only.
+- Camera capture uses `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. The US-80 allowlist is unchanged.
+- Upcoming shows only the one reminder or the one expiry.
+- Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
+- There is no cap on topic suggestions.
+- US-73, US-74, and US-76 stay open questions. They are not capabilities.
+
+## Epic map
+
+`traced` means the epic or the specification already states the outcome. Amendment ids name the epic text that covers the story. They are not story approval.
+
+| Story | Epic | Trace | Amendment reference |
+| --- | --- | --- | --- |
+| US-01 Share a link into the vault. | E1 | traced | — |
+| US-02 Share plain text into the vault. | E1 | traced | — |
+| US-03 Share an image into the vault. | E1 | traced | — |
+| US-04 Share a PDF into the vault. | E1 | traced | — |
+| US-05 Add a note by hand. | E1 | traced | — |
+| US-06 Add a URL by hand. | E1 | traced | — |
+| US-07 Use the saved vault with no network and no analytics. | E1 | traced | A-E1-1 |
+| US-08 Enrich a saved link from the page. | E2 | traced | — |
+| US-09 Keep the link when the page cannot be fetched. | E2 | traced | — |
+| US-10 Browse saved items, newest first. | E3 | traced | — |
+| US-11 Read a saved item. | E3 | traced | — |
+| US-12 Edit a saved item. | E3 | traced | — |
+| US-13 Delete an item and undo that delete. | E3 | traced | — |
+| US-14 Manage tags on saved items. | E3 | traced | — |
+| US-15 Search the vault and see highlighted matches. | E3 | traced | — |
+| US-16 Filter items by type and by tag. | E3 | traced | — |
+| US-17 See that sync is not configured. | E4 | traced | — |
+| US-18 Sign in so the vault can sync. | E4 | traced | — |
+| US-19 Prefer an unmetered network for background sync. | E4 | traced | — |
+| US-20 Receive the vault on another install. | E4 | traced | — |
+| US-21 Export a zip to a place he chooses. | E4 | traced | — |
+| US-22 Choose light, dark, or the system theme. | E5 | traced | — |
+| US-23 Show a launcher icon and the name Lagoon. | E5 | traced | — |
+| US-24 Install a signed release APK without the Play Store. | E6 | traced | — |
+| US-25 Cover search, sync and zip packaging, and a basic screen with automated tests. | E6 | traced | — |
+| US-26 Follow written steps to build, sideload, and create the OAuth client. | E6 | traced | — |
+| US-27 Review screenshots of the main screens. | E6 | traced | — |
+| US-28 Optionally tag a save from the last-used tags. | E1 | traced | A-E1-2 |
+| US-29 Rename a tag, merging only after he confirms a clash. | E3 | traced | — |
+| US-30 Do not offer backup or restore controls. | E4 | traced | — |
+| US-31 Recognize English text on the device. | E7 | traced | — |
+| US-32 Keep more than one attachment on an item. | E1 | traced | — |
+| US-33 Keep an offline snapshot of a saved page. | E2 | traced | — |
+| US-34 Set a reminder. | E9 | traced | — |
+| US-35 Encrypt the vault at rest. | E8 | traced | — |
+| US-36 Sync only ciphertext. | E8 | traced | — |
+| US-37 Lock sensitive items, and optionally lock the app. | E8 | traced | — |
+| US-38 File new captures from an Untagged inbox. | E3 | traced | — |
+| US-39 Sort and filter the list by when it was saved. | E3 | traced | — |
+| US-40 Fill an empty title from the page or the file. | E1 | traced | A-E1-3 |
+| US-41 Extract topics when an item is saved. | E11 | traced | — |
+| US-42 Link an item to a topic the vault already has. | E11 | traced | — |
+| US-43 Confirm a topic before it is created. | E11 | traced | — |
+| US-44 Queue topic processing while offline. | E11 | traced | — |
+| US-45 Read a topic. | E11 | traced | A-E11-1 |
+| US-46 Reject, rename, or merge a suggested topic. | E11 | traced | — |
+| US-47 Keep the item when the topic call fails. | E11 | traced | — |
+| US-48 Manage a topic that is already saved. | E11 | traced | A-E11-2 |
+| US-49 Update a link that was saved before, and undo that update. | E1 | traced | — |
+| US-50 Rank search matches. | E3 | traced | — |
+| US-51 Sync in the background and show errors. | E4 | traced | A-E4-1 |
+| US-52 Import a zip and merge it. | E4 | traced | — |
+| US-53 Use the teal palette, optional dynamic color, and reduced motion. | E5 | traced | A-E5-1 |
+| US-54 Notify before an expiry. | E9 | traced | — |
+| US-55 Reschedule reminders after a restart or a clock change. | E9 | traced | A-E9-1 |
+| US-56 Keep a stable identity for each item. | E4 | traced | A-E4-2 |
+| US-57 Prove that search and encryption can run together. | E3 | traced | A-E3-1 |
+| US-58 Run enrichment, snapshot, OCR, and topics in that order. | E1 | traced | A-E1-4 |
+| US-59 Use one Settings screen. | E4 | traced | A-E4-3 |
+| US-60 Browse topics and pending suggestions. | E11 | traced | A-E11-3 |
+| US-61 Filter by where an item came from. | E1 | traced | — |
+| US-62 See what is coming due. | E9 | traced | A-E9-2 |
+| US-64 Share or open an item in another app. | E3 | traced | — |
+| US-65 Add a photo from the camera. | E1 | traced | A-E1-5 |
+| US-66 Keep a trash beyond undo. | E3 | traced | A-E3-2 |
+| US-67 Notice a duplicate image or PDF. | E1 | traced | A-E1-6 |
+| US-70 See what is not ready for offline. | E2 | traced | A-E2-2 |
+| US-71 Triage the inbox in a batch. | E3 | traced | A-E3-3 |
+| US-72 Score whether topics are useful. | E11 | traced | A-E11-4 |
+| US-73 Decide sync conflicts and deletions. | E4 | traced | — |
+| US-74 Decide how the vault key reaches another device. | E8 | traced | — |
+| US-75 Limit what a sensitive item reveals. | E8 | traced | A-E8-1 |
+| US-76 Decide the topic call's provider, credential, and payload. | E11 | traced | — |
+| US-77 Keep reminders on inexact alarms. | E9 | traced | — |
+| US-78 Keep Drive to app data, and sign out without deleting the phone. | E4 | traced | A-E4-4 |
+| US-79 Skip unsafe link previews. | E2 | traced | A-E2-1 |
+| US-80 Keep the permission set to an allowlist. | E6 | traced | A-E6-1 |
+| US-81 Publish a sideload signing policy. | E6 | traced | A-E6-2 |
+
+## Every story
+
+| ID | Epic | Source | Verdict |
+| --- | --- | --- | --- |
+| US-01 | E1 | E1: "The app appears in Android's share sheet for links, plain text, images, and PDFs." Spec US-01 line covers the repeat URL. | Traced |
+| US-02 | E1 | Same E1 share-sheet line, plain text. | Traced |
+| US-03 | E1 | Same E1 share-sheet line, images. | Traced |
+| US-04 | E1 | Same E1 share-sheet line, PDFs. Spec E7 row: text-based PDFs are extracted, not OCR'd. | Traced |
+| US-05 | E1 | E1: "He can add a note or a URL from inside the app." | Traced |
+| US-06 | E1 | Same E1 line, a URL. | Traced |
+| US-07 | E1 | E1: "The primary store is on the device" and "No analytics." Vision states the ML Kit disclosure. | Traced |
+| US-08 | E2 | E2: "Best-effort fetch of title, description, preview image, and readable text." A token-looking URL is not auto-fetched. | Traced |
+| US-09 | E2 | E2: "If the device is offline or the fetch fails, keep the item and the URL." | Traced |
+| US-10 | E3 | E3: "Home list, most recent first." | Traced |
+| US-11 | E3 | E3: "Item detail." A token-looking link shows a foggy placeholder until the preview is enabled. | Traced |
+| US-12 | E3 | E3: "Edit, including the personal note and tags." | Traced |
+| US-13 | E3 | E3: "Delete with undo." | Traced |
+| US-14 | E3 | E3: "Tag management, including rename." | Traced |
+| US-15 | E3 | Spec: "Search covers title, body, extracted text... tags, and the personal note." | Traced. Search does not include a merchant column. |
+| US-16 | E3 | E3: "Filter by type and by tag." | Traced |
+| US-17 | E4 | E4: "A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash." | Traced |
+| US-18 | E4 | E4: "Sign in with Google." | Traced |
+| US-19 | E4 | E4: "Unmetered-only preference for background sync." | Traced |
+| US-20 | E4 | E4: "A new install or second device signs in and receives the vault." | Traced |
+| US-21 | E4 | E4: "Zip export and import on device storage, as a fallback." E8: the zip must not be a plaintext hole. | Traced |
+| US-22 | E5 | E5: "An in-app theme setting with three options: Light, Dark, and System." | Traced |
+| US-23 | E5 | E5: "A tasteful launcher icon and the short name Lagoon." Vision: "The name is Lagoon." | Traced |
+| US-24 | E6 | E6: "Signed with a self-generated release keystore." Vision: "He installs a signed APK himself." | Traced |
+| US-25 | E6 | E6: "Unit tests for the repository/search layer and for sync-payload and zip packaging. At least one Compose UI test." | Traced. Enabling for that E6 line. |
+| US-26 | E6 | E6: "README: build, sideload... Google Cloud OAuth client steps." | Traced |
+| US-27 | E6 | E6: "Screenshots: home, search results, item detail, share-to-save, and settings." | Traced |
+| US-28 | E1 | Spec E1 row: "last-used tags can be applied from a non-blocking chip row." | Traced. Add date is in E1. |
+| US-29 | E3 | E3: "A rename applies to every item. A case-insensitive clash asks for confirmation and then merges." | Traced |
+| US-30 | E4 | E4: "No Back up now, no Restore, no last-backup-time control." Vision says the same. | Traced |
+| US-31 | E7 | E7: "On-device text recognition for screenshots, images, and scanned PDFs." Vision: English, bundled model, disclosure. | Traced |
+| US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
+| US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |
+| US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 local, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. |
+| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. Spec Q10: a lost key means the content is lost. | Traced |
+| US-36 | E8 | E8: "Drive stores ciphertext only." | Traced |
+| US-37 | E8 | E8: "Fingerprint or biometric lock on items marked sensitive" and "App lock is optional. The device PIN is the fallback." | Traced |
+| US-38 | E3 | E3: "An Untagged / Inbox view." | Traced |
+| US-39 | E3 | E3: "Sort and filter by date saved." | Traced |
+| US-40 | E1 | E1: "An empty title fills from the page title or the file name." | Traced. An empty title fills from the page title or the file name, including a screenshot, image, or scan. |
+| US-41 | E11 | E11: identify main ideas and topics. Topic extraction starts on, with an off switch. Sensitive items are excluded. There is no cap. | Traced. |
+| US-42 | E11 | E11: "If an identified topic already exists, the new item is linked to it." | Traced |
+| US-43 | E11 | E11: "A new topic is created only after he confirms." | Traced |
+| US-44 | E11 | E11: "Offline, the item is stored and topic processing is queued." The topic job has its own Unmetered-only setting. | Traced |
+| US-45 | E11 | E11 audience: "later looking across items that share a subject." | Traced. Judgement: no screen is named. |
+| US-46 | E11 | E11: "If he declines, the topic is not created. The item remains." | Traced. Judgement: rename-before-confirm is treated as that confirmation. |
+| US-47 | E11 | E11 workflow: he can still save, and processing waits. "The item remains." | Traced. Enabling so a failed call does not lose the item. |
+| US-48 | E11 | E11: after a topic is saved he can rename it, delete it, unlink an item, or merge it. | Traced. |
+| US-49 | E1 | E1: "A second share of the same page matches on a normalised URL... updates the existing item." | Traced |
+| US-50 | E3 | Spec US-15 line: weighted BM25, title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1. | Traced. There is no merchant weight. |
+| US-51 | E4 | E4: "The vault syncs in the background." | Traced. Judgement: error text is not named. |
+| US-52 | E4 | E4: "Zip export and import." | Traced |
+| US-53 | E5 | E5 palette, Light/Dark/System, and "Dynamic color is an optional toggle." | Traced. Reduced motion is in E5. |
+| US-54 | E9 | E9: "An expiry notifies 7 days before the date and again on the day." | Traced |
+| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Re-registration and which install posts are in E9. There is no return-by or warranty. |
+| US-56 | E4 | E4: "Sync merges: an item that exists on only one side is kept." | Traced. Enabling: merge needs a stable item id. |
+| US-57 | E3 | Spec US-15 line: FTS5 with an encrypted database is a design-gate risk. "Spike it early." E8 requires encryption and E3 requires search. | Traced. Enabling for those two lines. |
+| US-58 | E2, E7, E11 | E1: enrichment and topic processing wait. E11 risks: text from E2, E7, and the snapshot may be sent. | Traced. E1 states the order: enrich, snapshot, OCR, then the topic job. |
+| US-59 | E4, E5, E9, E11 | Spec: "Settings then explain that sync is not configured." E5 theme, E9 09:00 default, E11 topic switch and Unmetered only, vision disclosure in Settings. | Traced. Enabling host for those controls. |
+| US-60 | E11 | E11: he is asked before a new topic is created, and an existing topic is linked. | Traced. E11 includes a list of saved topics and a place for waiting suggestions. |
+| US-61 | E1 | E1: "Source domain and sending app (US-61) are a Should." Vision says the same. | Traced |
+| US-62 | E9 | E9: a list shows items whose one reminder or one expiry is coming due. | Traced. |
+| US-63 | — | No Mark as code or Copy code requirement. | Removed. Number not reused. |
+| US-64 | E3 | E3: "Sharing an item back out to other apps, as US-64 (Should)." Vision says the same. The criteria are on US-64. | Traced |
+| US-65 | E1 | E1: a new item can start from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. | Traced. |
+| US-66 | E3 | E3: after undo, a deleted item can sit in trash and be restored. How long is not decided. | Traced. |
+| US-67 | E1 | E1: duplicate image or PDF bytes are pointed out. A repeat URL still matches under US-49. | Traced. |
+| US-68 | — | No return-by or warranty requirement. | Removed. Number not reused. |
+| US-69 | — | No shortcut or widget requirement. | Removed. Number not reused. |
+| US-70 | E2 | E2: a check lists items whose snapshot or OCR is pending, failed, or has never run. | Traced. |
+| US-71 | E3 | E3: the inbox can apply one filing action to several items. | Traced. |
+| US-72 | E11 | E11: a usefulness score is computed on the phone and is not sent off the phone. | Traced. |
+| US-73 | E4 | Spec: "Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft" stays open. "Concurrent edits and deletions are the open questions." | Traced. Placeholder for that open question, not a capability. |
+| US-74 | E8 | Spec: "Keys on a new device" is an open design-gate question. | Traced. Placeholder, not a capability. |
+| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. The lock-screen reminder is "Lagoon reminder". Export waits for US-37. | Traced. A per-item topic control and the private notification version stay open on the story. |
+| US-76 | E11 | E11 open question: provider, credential, and what is sent. Spec design gate says the same. | Traced. Placeholder, not a capability. |
+| US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
+| US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
+| US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |
+| US-80 | E6 | E6: the release app requests only the permissions the product needs. `CAMERA` and exact-alarm permissions are absent. | Traced. |
+| US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. |
+| US-82 | — | Merchants stay later. No story. | Removed. Number not reused. |
+| US-83 | — | No amount or currency requirement. | Removed. Number not reused. |
+| US-84 | — | No purchase-date requirement. Date-saved filter is US-39. | Removed. Number not reused. |

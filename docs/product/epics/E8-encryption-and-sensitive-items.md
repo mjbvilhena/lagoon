@@ -1,11 +1,9 @@
 # Epic E8: Encryption and sensitive items
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
-> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. The cipher is an ADR, not this file.
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -24,8 +22,10 @@ Miguel, including on a second device that should see the same vault and not a pl
   - Keys held in Android Keystore.
   - Client-side end-to-end encryption of everything synced to Drive. Drive stores ciphertext only.
   - Fingerprint or biometric lock on items marked sensitive, tied to this encryption work.
+  - App lock is optional. The device PIN is the fallback when there are no biometrics.
+  - Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail (A-E8-1, US-75). The lock-screen reminder shows only "Lagoon reminder". Acceptance: that public reminder text is "Lagoon reminder". Export of a sensitive item waits for the US-37 unlock. The rest of the handling is the criteria on US-75. Sensitive items are excluded from the topic call (E11).
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App-wide unlock, which is still an open question for him. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) is his recorded exception: readable content goes to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
+- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App lock is optional. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) sends readable content to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
 
 ## Core Workflows
 
@@ -41,18 +41,19 @@ Miguel, including on a second device that should see the same vault and not a pl
 
 ## Risks & Dependencies
 
-- Depends on E4 for the sync path. Sync of readable data on a second device depends on his answer about keys.
+- Depends on E4 for the sync path. Sync of readable data on a second device depends on how keys move.
 - Threat model (`sdlc-threat-modeler`) is required before implementation. Not started.
-- Lost key, key transport, and app unlock are his open questions. Stories do not answer them.
+- Key transport is open. A lost key means the content is lost, with no recovery. App lock is optional, with a device-PIN fallback.
 
 ## Open Questions
 
-- [ ] How keys reach a new or second device. (@mjbvilhena)
-- [ ] What happens if the key or passphrase is lost. (@mjbvilhena)
-- [ ] Whether unlocking the whole app is required. (@mjbvilhena)
+- [ ] How keys reach a new or second device.
+- If the key is lost, the content is lost, and there is no recovery.
+- App lock is optional. The device PIN is the fallback when there are no biometrics.
 
 ## Draft stories
 
 - US-35 Encrypt the vault at rest
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
+- US-75 Limit what a sensitive item reveals.

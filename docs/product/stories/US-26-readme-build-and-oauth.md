@@ -1,7 +1,10 @@
-# US-26 Follow a README to build, sideload, and configure OAuth
+# US-26 Follow written steps to build, sideload, and create the OAuth client
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E6.
+
+**MoSCoW:** Must. v1. The root README stays the app overview. These steps live in `docs/` and the README links there, once the app exists.
 
 ## Title
 
@@ -10,33 +13,39 @@ Follow written steps to build, sideload, and create the OAuth client.
 ## User story
 
 **As a** person named Miguel
-**I want** a README that tells me how to build the app, install the APK, and create the Google OAuth client
-**So that** I can do those steps myself, including where the client ID goes
+**I want** written steps to build, sideload, and create the OAuth client
+**So that** I can install a build and turn sync on without guessing
 
 ## Background
 
-- He asked for a README covering the build, installing on a phone (allow unknown sources), and Google Drive setup. The OAuth section must be exact steps: package name, SHA-1 of the signing key that was used, and where to put the client ID.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: creating the Cloud project for him. Putting a real client ID in the repo.
+- There is no app yet, so those steps are not in the tree. That absence is correct until implementation.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: documenting a Back up now or Restore button.
 
 ## Acceptance criteria
 
 - **Scenario: build and sideload steps exist** — Must
-  - Given the README in the repo root once the app exists
-  - When he follows it on a machine with the Android SDK
-  - Then it tells him the Gradle command that produces the signed release APK and how to allow installs from unknown sources and install that APK
-- **Scenario: OAuth steps exist** — Must
-  - Given that README
-  - When he follows the Drive section
-  - Then it names the application id `com.mjbvilhena.lagoon`, the SHA-1 of the release signing certificate used for that APK, the Google Cloud steps to create an Android OAuth client with that package name and SHA-1, the `drive.appdata` scope the app requests, and the file or property where he puts the client ID at build time
-- **Scenario: missing client ID is described** — Must
-  - Given he has not set the client ID
-  - When he reads the README
-  - Then it says the app still builds, installs, and works offline, and that Settings will explain that sync is not configured. It does not document a Back up now or a Restore button
-- **Scenario: no secret in the README** — Must
-  - Given the README and the repo
+  - Given a release build exists
+  - When he follows the docs
+  - Then they name the commands to build and sideload the APK
+- **Scenario: OAuth clients** — Must
+  - Given the OAuth section
+  - When he reads it
+  - Then it names an Android client with the package `com.mjbvilhena.lagoon` and the release SHA-1, a separate Android client for `com.mjbvilhena.lagoon.debug` with the debug SHA-1, and a Web client ID used as `serverClientId` when Credential Manager needs one
+  - And the root README names that debug client in one line and points at these steps
+- **Scenario: consent screen** — Must
+  - Given the OAuth section
+  - When he follows the client steps
+  - Then it includes a step to set the OAuth consent screen to "In production"
+  - And it states, as Google's documented rule, that an external consent screen left in Testing issues a refresh token that expires in 7 days, unless the only scopes are a subset of name, email, and profile (`userinfo.email`, `userinfo.profile`, `openid`, or their OpenID Connect equivalents). Source: [Refresh token expiration](https://developers.google.com/identity/protocols/oauth2#expiration), last updated 2026-10-16 UTC. Drive app data is not one of those basic scopes, so a Testing client hits that 7-day expiry
+- **Scenario: missing client ID** — Must
+  - Given the client ID is absent
+  - When he reads the docs
+  - Then they say the app still builds, installs, and works offline, and that Settings explains sync is not configured
+- **Scenario: no secret in the docs** — Must
+  - Given those pages
   - When they are read
-  - Then they do not contain a keystore password, a private key, or a real client secret
+  - Then they contain no client secret, keystore password, or API key
 
 ## Analytics and observability (optional)
 
@@ -44,13 +53,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The README is prose, not a screenshot substitute. Screenshots are US-27.
+- Not a UI story.
 
 ## Dependencies and risks
 
-- Q2 is the joint recommendation of Scout and Mikey's Vault App Bot, not approval: the application id in those steps is `com.mjbvilhena.lagoon`. The SHA-1 still comes from US-24's keystore and must not be invented before that keystore exists.
-- The current root `README.md` points at these drafts and says there is no app yet. Replacing it with build steps happens when this story is implemented, not in this drafting pass.
+- SHA-1 values are produced by the signing config. They are unknown until a keystore exists.
 
 ## Implementation notes
 
-Document the build-time config key in the same place the Gradle build reads it. Not a design spec.
+Not a design spec.

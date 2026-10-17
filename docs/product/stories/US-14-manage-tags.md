@@ -1,7 +1,10 @@
-# US-14 Manage tags
+# US-14 Manage tags on saved items
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E3.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -10,33 +13,42 @@ Manage tags on saved items.
 ## User story
 
 **As a** person named Miguel
-**I want to** add and remove tags and see the tags I use
-**So that** I can group what I saved in my own words
+**I want** to add and remove tags, and see the tags I already use
+**So that** I can file items without inventing a second spelling of the same tag
 
 ## Background
 
-- He asked for tags on items and for tag management.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: merging tags. Tag hierarchies. Sharing tags with anyone else. Renaming is US-29, from the Q4 recommendation, and is not part of this story's Must criteria.
+- Tags are not topics. Topics are AI-generated and are marked as such (US-41).
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a separate merge action. The only tag merge is the confirmed rename in US-29.
 
 ## Acceptance criteria
 
-- **Scenario: add a tag to an item** — Must
-  - Given a saved item
-  - When he adds a tag and confirms
-  - Then the item shows that tag, and the tag appears among the tags he can filter by (US-16)
-- **Scenario: remove a tag from an item** — Must
-  - Given an item with a tag
-  - When he removes that tag from the item
-  - Then the item no longer shows it. Other items that still use it keep it.
+- **Scenario: add a tag** — Must
+  - Given an item
+  - When he adds a tag
+  - Then the item has that tag and search can match it after re-index
+- **Scenario: the same tag in another case** — Must
+  - Given the tag "Tax" exists
+  - When he types "tax" on an item
+  - Then the item uses the existing tag "Tax" and no second tag is created
+- **Scenario: autocomplete and counts** — Must
+  - Given several tags exist
+  - When he opens the tag list or starts typing a tag
+  - Then he sees existing tags with their item counts, and typing filters that list
+- **Scenario: remove a tag from one item** — Must
+  - Given an item has a tag
+  - When he removes it from that item
+  - Then the other items keep the tag
 - **Scenario: remove a tag everywhere** — Must
-  - Given a tag that is on two items
-  - When he removes the tag itself
-  - Then it is gone from both items and from the tag list
+  - Given a tag is on more than one item
+  - When he chooses remove everywhere and confirms
+  - Then every item loses that tag, and Undo restores it
+  - And if he does not confirm, the tag stays
 - **Scenario: blank tag** — Must
-  - Given he tries to add a tag whose name is empty or only whitespace
-  - When he confirms
-  - Then the tag is not created
+  - Given the name is blank
+  - When he tries to add it
+  - Then no tag is created
 
 ## Analytics and observability (optional)
 
@@ -44,14 +56,12 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Tag names are his words. The UI does not ship sample tags.
-- Tag controls have names, not color alone.
+- Confirm and Undo for "remove everywhere" are named actions. No placeholder sentences.
 
 ## Dependencies and risks
 
-- Q4 is the bots' consensus, not approval: rename is in v1 and applies to every item. That is US-29. A case-insensitive clash asks for confirmation and then merges. There is no other merge path.
-- US-12 also writes tags on one item. The rules above apply there too.
+- Rename-and-merge is US-29 only.
 
 ## Implementation notes
 
-Tags are part of the local item record and of FTS (US-15). Not a design spec.
+Not a design spec.

@@ -1,119 +1,126 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.** A line marked Draft means the file exists and has not been signed.
-> No story is Done. There is no app, no test run, and no named sign-off.
-> Product decisions and bot recommendations recorded in the specification are not the sign-off of the stories. The epics have their own approval, recorded below.
-> The specification is **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`.
+> Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.**
+> No story is Done. There is no app.
+> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. Stories stay Draft.
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-40 by Miguel's bots. E11 stories are not written yet. See `docs/sdlc/pipeline-state.md`.
-
-Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
-
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them. E11 stories are drafted first.
+Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
-> Goal: Miguel can save a link, text, an image, or a PDF from the share sheet in one tap, file it with last-used tags afterwards, add a note or URL himself, and attach more than one file. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E1-capture-and-keep.md`.
+> Goal: Miguel can save a link, text, an image, or a PDF from the share sheet in one tap, file it with last-used tags afterwards, add a note or URL himself, and attach more than one file. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E1-capture-and-keep.md`.
 
-- **US-01** *(Draft)* Share a link. A normalised repeat URL updates the existing item. Evidence: `docs/product/stories/US-01-share-a-link.md`. Not implemented. Bots' consensus, not approval.
+- **US-01** *(Draft)* Share a link. A normalised repeat URL updates the existing item. Evidence: `docs/product/stories/US-01-share-a-link.md`. Not implemented.
 - **US-02** *(Draft)* Share plain text. Evidence: `docs/product/stories/US-02-share-plain-text.md`. Not implemented.
 - **US-03** *(Draft)* Share an image. Evidence: `docs/product/stories/US-03-share-an-image.md`. Not implemented.
 - **US-04** *(Draft)* Share a PDF, including text-layer extraction. Evidence: `docs/product/stories/US-04-share-a-pdf.md`. Not implemented. Extraction is not OCR.
 - **US-05** *(Draft)* Add a note by hand. Evidence: `docs/product/stories/US-05-add-a-note-by-hand.md`. Not implemented.
 - **US-06** *(Draft)* Add a URL by hand. Evidence: `docs/product/stories/US-06-add-a-url-by-hand.md`. Not implemented.
-- **US-07** *(Draft)* Offline use, no analytics. Evidence: `docs/product/stories/US-07-offline-and-no-analytics.md`. Not implemented.
-- **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented. Bots' consensus on Q9. Not a blocking sheet. Not approval.
-- **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented. Miguel's v1 decision. Not approval.
-- **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented. Bots' consensus on Q9. Not approval.
+- **US-07** *(Draft)* Offline use, no analytics library the app chooses. ML Kit metrics are disclosed and accepted before the first OCR use. Evidence: `docs/product/stories/US-07-offline-and-no-analytics.md`. Not implemented.
+- **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented.
+- **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented.
+- **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
 
 ## Epic E2: Link enrichment
 
-> Goal: A saved link gains page details and an offline snapshot when a fetch works, and always keeps its URL. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E2-link-enrichment.md`.
+> Goal: A saved link gains page details and an offline snapshot when a fetch works, and always keeps its URL. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E2-link-enrichment.md`.
 
 - **US-08** *(Draft)* Enrich a link. Evidence: `docs/product/stories/US-08-enrich-a-link.md`. Not implemented.
 - **US-09** *(Draft)* Keep the URL when enrichment fails. Evidence: `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md`. Not implemented.
-- **US-33** *(Draft)* Offline snapshot: one sanitised readable archive, about 10 MB, original URL kept. Evidence: `docs/product/stories/US-33-offline-page-snapshot.md`. Not implemented. Miguel's v1 decision plus the bots' snapshot shape. Not approval. MHTML is later.
+- **US-33** *(Draft)* Offline snapshot: one sanitised readable archive, about 10 MB, original URL kept. Evidence: `docs/product/stories/US-33-offline-page-snapshot.md`. Not implemented. MHTML is later.
 
 ## Epic E3: Find and curate
 
-> Goal: He can browse, sort and filter by date saved, see an Untagged / Inbox view, read, edit, delete with undo, manage tags including a confirmed merge, search, and filter by type and tag. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E3-find-and-curate.md`.
+> Goal: He can browse, sort and filter by date saved, see an Untagged / Inbox view, read, edit, delete with undo, manage tags including a confirmed merge, search, and filter by type and tag. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E3-find-and-curate.md`.
 
 - **US-10** *(Draft)* Home list, newest first. Evidence: `docs/product/stories/US-10-browse-newest-first.md`. Not implemented.
 - **US-11** *(Draft)* Item detail. Evidence: `docs/product/stories/US-11-read-an-item.md`. Not implemented.
 - **US-12** *(Draft)* Edit, including why it matters. Evidence: `docs/product/stories/US-12-edit-an-item.md`. Not implemented.
 - **US-13** *(Draft)* Delete with undo. Evidence: `docs/product/stories/US-13-delete-with-undo.md`. Not implemented.
 - **US-14** *(Draft)* Tag management. Evidence: `docs/product/stories/US-14-manage-tags.md`. Not implemented.
-- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk, not decided. Not approval.
+- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
 - **US-16** *(Draft)* Filter by type and tag. Evidence: `docs/product/stories/US-16-filter-by-type-and-tag.md`. Not implemented.
-- **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented. Bots' consensus on Q4. Not approval.
-- **US-38** *(Draft)* Untagged / Inbox view. Evidence: `docs/product/stories/US-38-untagged-inbox.md`. Not implemented. Bots' consensus on Q9. A view, not a stored Inbox tag. Not approval.
-- **US-39** *(Draft)* Sort and filter by date saved. Evidence: `docs/product/stories/US-39-sort-and-filter-by-date.md`. Not implemented. Bots' consensus on Q9. Not approval.
+- **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented.
+- **US-38** *(Draft)* Untagged / Inbox view. Evidence: `docs/product/stories/US-38-untagged-inbox.md`. Not implemented. A view, not a stored Inbox tag.
+- **US-39** *(Draft)* Sort and filter by date saved. Evidence: `docs/product/stories/US-39-sort-and-filter-by-date.md`. Not implemented.
 
 ## Epic E4: Seamless sync
 
-> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
+> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
 
-- **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-backup-not-configured.md`. Not implemented. Missing OAuth must not crash.
-- **US-18** *(Draft)* Sign in and background sync. Evidence: `docs/product/stories/US-18-back-up-now.md`. Not implemented. Drive API `appDataFolder`, not Android Auto Backup. Hidden in the Drive UI.
-- **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-automatic-backup.md`. Not implemented. `WorkManager` `UNMETERED`. Bots' consensus, kept because it still fits background sync.
-- **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-backup-size-warning.md`. Not implemented. No size warning and no roaming warning, because those belonged to Back up now.
-- **US-20** *(Draft)* New install or second device receives the vault and merges one-sided items. Evidence: `docs/product/stories/US-20-restore-from-drive.md`. Not implemented. Q5 is resolved as merge. Concurrent edits and deletions stay open for Miguel.
-- **US-21** *(Draft)* Zip export and import that merges. Evidence: `docs/product/stories/US-21-export-and-import-a-zip.md`. Not implemented. Must not be a plaintext hole beside encryption. The conflict algorithm is still open.
+- **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-sync-not-configured.md`. Not implemented. Missing OAuth must not crash.
+- **US-18** *(Draft)* Sign in. Evidence: `docs/product/stories/US-18-sign-in-and-sync.md`. Not implemented. Drive scope and sign-out are US-78.
+- **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-unmetered-sync.md`. Not implemented. `WorkManager` `UNMETERED`.
+- **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-no-manual-backup.md`. Not implemented.
+- **US-20** *(Draft)* New install receives one-sided items. Evidence: `docs/product/stories/US-20-receive-the-vault.md`. Not implemented. Conflicts and deletions are US-73 and stay open.
+- **US-21** *(Draft)* Zip export encrypted with the vault key. Evidence: `docs/product/stories/US-21-export-a-zip.md`. Not implemented. Import is US-52.
+- **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78.
+- **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 
 ## Epic E5: Look and feel
 
-> Goal: Calm Material 3 UI with an in-app theme setting: Light, Dark, or System. System is the default and follows Android. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started. His epic-review words on 2026-10-17 at 13:15 IST are in the approved revision. US-22 stays Draft.
+> Goal: Calm Material 3 UI with an in-app theme setting: Light, Dark, or System. System is the default and follows Android. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started. US-22 stays Draft.
 
-- **US-22** *(Draft)* Light, Dark, or System theme. System is the default. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Not story approval. Accent: light about `#0F766E`, dark about `#2DD4BF`, dark text on the dark accent (black or `#003731`). Never use `#0F766E` on dark surfaces.
-- **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Joint recommendation of Scout and Mikey's Vault App Bot. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. Not approval.
+- **US-22** *(Draft)* Light, Dark, or System theme. System is the default. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Accent: light about `#0F766E`, dark about `#2DD4BF`, dark text on the dark accent (black or `#003731`). Never use `#0F766E` on dark surfaces.
+- **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Play Store and trademark checks were not done.
 
 ## Epic E6: Installable release
 
-> Goal: Signed sideload APK, the named tests, README, and screenshots when an emulator exists. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E6-installable-release.md`.
+> Goal: Signed sideload APK, the named tests, README, and screenshots when an emulator exists. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E6-installable-release.md`.
 
-- **US-24** *(Draft)* Signed release APK. Evidence: `docs/product/stories/US-24-signed-apk.md`. Not implemented. `minSdk` 26. `compileSdk` and `targetSdk` 37 (bots' consensus on Q8, not approval). Sideload developer verification stays an open question for Miguel.
+- **US-24** *(Draft)* Signed release APK. Evidence: `docs/product/stories/US-24-signed-apk.md`. Not implemented. `minSdk` 26. `compileSdk` and `targetSdk` 37. Sideload developer verification stays open.
 - **US-25** *(Draft)* Search, sync/zip packaging, and a basic Compose test. Evidence: `docs/product/stories/US-25-automated-tests.md`. Not implemented. Packaging tests cover ciphertext, not a live Drive call.
-- **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Recommended application id `com.mjbvilhena.lagoon` (Q2, joint recommendation of Scout and Mikey's Vault App Bot, not approval). SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
+- **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Application id `com.mjbvilhena.lagoon`. SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
 - **US-27** *(Draft)* Screenshots. Evidence: `docs/product/stories/US-27-screenshots.md`. Not started. No images were fabricated. Settings shows sync state, not a backup button.
 
 ## Epic E7: On-device text recognition
 
-> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's v1 decision. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
+> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Mikey's Dev Bot's revised recommendation: the Dev Bot reports Miguel said in chat that English is enough. Not approval. Acceptance tests are English only. Booking references and merchants are not this story.
+- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Acceptance tests are English only. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. His Q10 words plus the sensitive-item decision. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt the vault at rest. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
-- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented.
-- **US-37** *(Draft)* Biometric lock on items marked sensitive. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. App-wide unlock is a separate open question for Miguel.
+- **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
+- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
+- **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
 
 ## Epic E9: Reminders and expiry
 
-> Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. US-34 stays Draft.
+> Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. US-34 stays Draft.
 
-- **US-34** *(Draft)* Reminder or expiry with a notification. Default 09:00 local, per-item time, expiry at 7 days and on the day, inexact alarms. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Bots' consensus, not approval.
+- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
+- **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
+- **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." No stories yet. Draft them next, then Miguel's bots review them. Do not implement.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E11-topics.md`. Stories below are Draft. Provider, credential storage, and payload stay open. Sensitive items are excluded from the topic call. Do not implement.
+
+- **US-41** *(Draft)* Extract topics when an item is saved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Not implemented. The four design-gate questions stay open.
+- **US-42** *(Draft)* Link an item to a topic that already exists and extend that topic's notes. Evidence: `docs/product/stories/US-42-link-an-existing-topic.md`. Not implemented.
+- **US-43** *(Draft)* Ask before creating a topic. Decline creates nothing. Evidence: `docs/product/stories/US-43-confirm-a-new-topic.md`. Not implemented.
+- **US-44** *(Draft)* Save offline and queue topic processing. Evidence: `docs/product/stories/US-44-queue-topics-offline.md`. Not implemented.
+- **US-45** *(Draft)* Open a topic and see its items and summary. Evidence: `docs/product/stories/US-45-read-a-topic.md`. Not implemented.
+- **US-46** *(Draft)* Reject, rename, or merge a suggested topic. Evidence: `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md`. Not implemented. Does not merge two topics that already exist.
+- **US-47** *(Draft)* A failed topic call leaves the item and creates no topic. Evidence: `docs/product/stories/US-47-topic-call-fails.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
-> Goal: Later, not v1. Group items into a trip or collection with a date range. *(Approved as Later, not in v1, by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E10-trip-and-collection-grouping.md`. Miguel's decision that this is later. No stories. Do not build it in v1.
+> Goal: Later, not v1. Group items into a trip or collection with a date range. *(Approved by mjbvilhena on 2026-10-17. Later, not in v1.)* Evidence: `docs/product/epics/E10-trip-and-collection-grouping.md`. No stories. Do not build it in v1.
 
 ## Specification and vision
 
-- **Vision** *(Draft — not accepted)* Evidence: `docs/product/vision.md`. It restates the original request, including backup and restore. Later decisions in the specification supersede that wording. They do not accept the vision.
-- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`)* Evidence: `docs/product/specification.md`. This spec approval does not approve the stories. The epics were approved later the same day.
+- **Vision** *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/vision.md`. It states the current product. It does not describe backup or restore controls.
+- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.)* Evidence: `docs/product/specification.md`. This does not approve the stories.
 
 ## Repository setup
 
-Checks from the harness mapping are in the tree. That is not product approval. Kotlin CI was not added. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/secret-scan.yml`, `.github/workflows/markdownlint.yml`, `.github/CODEOWNERS`, `.gitignore`, `README.md`.
+Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree.
 
 - **Harness install** *(In place)* Cursor skills under `.cursor/commands/`. Submodule `third_party/ai-sdlc-harness` at `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. Evidence: `docs/sdlc/harness-install.md`.
 
@@ -130,32 +137,44 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 
 ## Proposed, no stories
 
-- Full-screen QR and barcode display. He has not decided.
+- Full-screen QR and barcode display. Still open.
 - OCR for languages other than English. Later option. v1 acceptance tests stay English-only (US-31).
 - Picking out booking references and merchants. Later, unless it falls out of OCR with no extra product scope.
 
+## Stories
+
+The index is the full list. All remaining stories are Draft. Not implemented.
+
+- US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
+- US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72 stay.
+- US-73, US-74, and US-76 have no asserting criterion. The questions stay open. US-77 has criteria and stays Draft. Alarms are inexact.
+- The map is `docs/product/stories/TRACEABILITY.md`.
+
+## Requirements
+
+- Lost vault key: the content is lost. No recovery.
+- App lock is optional. The device PIN is the fallback when there are no biometrics.
+- An ordinary lock-screen reminder may show the item title and codes. A sensitive lock-screen reminder shows only "Lagoon reminder".
+- The zip export is encrypted with the vault key.
+- A token-looking URL is not auto-fetched. A foggy placeholder is shown until that preview is enabled.
+- ML Kit metrics are disclosed and accepted before the first OCR use. There is no telemetry off switch. Research: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. Sensitive items are excluded. There is no cap. The topic job has its own unmetered setting.
+- An empty title fills from the page title or the file name. Camera capture uses the system camera. Lagoon does not request `CAMERA`.
+- Upcoming is the one reminder or the one expiry. Alarms are inexact.
+
 ## Open questions
 
-### For Miguel at the design gate (security, data integrity, or release)
+- Sync conflicts, and how a deletion propagates. US-73. The options on that story are not chosen.
+- How the vault key reaches a new device. US-74.
+- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
+- Whether 09:00 follows a fixed zone instead of the device local zone. Stories use the device local zone.
+- Full-screen QR and barcode display. No story.
+- A per-item "Include in topics" control. US-75.
+- Whether a sensitive notification's private version is also only "Lagoon reminder". US-75.
+- Whether the vault key is bound to device authentication. US-35 does not choose it.
 
-Still open. Assigned to the technical design, ADR, and threat-model gate. He answers them there. That gate has not started.
+## Resolved
 
-- Sync edit conflicts: the same item edited on two devices.
-- How a deletion on one device propagates.
-- How keys reach a new or second device.
-- What happens if the key or passphrase is lost.
-- Whether unlocking the whole app is required, separate from the sensitive-item lock.
-- Android developer verification for sideloaded APKs (enforced globally in 2027; ADB installs are exempt).
-- Which AI provider processes topics, and what are its data-retention terms.
-- How the topic API key or credential is stored and protected. No key baked into the APK in plain form.
-- Whether items marked sensitive are excluded from cloud topic processing.
-- What exactly is sent for topic extraction: full text, images, OCR output, or some other slice.
-
-### Story-level recommendations (not approval)
-
-Answered as consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot. Stories stay Draft. See US-01, US-15, US-31, US-33, and US-34. US-31's v1 language scope was later revised by Mikey's Dev Bot to English only. The Dev Bot reports Miguel said in chat that English is enough. That is not approval. Accent folding in US-15 stays. The FTS5 / Room 3 / SQLCipher question on US-15 stays a design-gate spike, not a decision.
-
-### Resolved
-
-- **Q5.** Sync and zip import merge. One-sided items are kept. Concurrent edits and deletions are the open questions above.
-- **Q10.** Extra encryption: at rest, and ciphertext only in Drive. Key transport, loss, and app unlock remain open.
+- One-sided items are kept. Conflicts and deletions stay open.
+- Encryption at rest, and ciphertext in Drive. Key transport stays open.
+- English-only OCR. Inexact alarms. No Back up now.

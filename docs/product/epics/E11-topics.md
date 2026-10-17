@@ -1,12 +1,9 @@
 # Epic E11: Topics
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve any story. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
-> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
-> No user stories yet. Draft those stories next. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -24,11 +21,17 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - When content is shared into the vault or added inside it, it is extracted and processed to identify its main ideas and topics.
   - If an identified topic already exists, the new item is linked to it and the topic is extended with the new information.
   - If a topic does not exist yet, he is asked whether it should be added. Nothing is created without confirmation.
-  - The processor is a cloud AI, for every item, under his recorded decision. Readable content leaves the phone for that call.
+  - The processor is a cloud AI. Readable content leaves the phone for that call. Topic extraction starts on for a new ordinary item. He can turn it off.
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
+  - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
+  - No cap on the number of topic suggestions.
+  - Opening a topic shows the items linked to it and the notes already stored on that topic (A-E11-1, US-45). Acceptance: he can look across what he saved on that subject. Opening the topic does not start a new AI call.
+  - After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic (A-E11-2, US-48). Acceptance: a saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
+  - He has a list of saved topics and one place for suggestions that are waiting (A-E11-3, US-60). Acceptance: he can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
+  - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, whether sensitive items are excluded, or the exact payload. Those are design-gate questions for him. Writing user stories before this epic is approved.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay open. Sensitive items are excluded from the topic call. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 
@@ -46,8 +49,8 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Risks & Dependencies
 
-- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is an open question for him.
-- Privacy: readable content leaves the device. He has accepted that for this epic. Provider and retention terms are not chosen.
+- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is open.
+- Privacy: readable content leaves the device for this call. Provider and retention terms are not chosen.
 - Cost: each call can spend money. No cap is set here.
 - A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is open.
 - Encryption of the vault at rest and of the Drive copy stays E8. This epic does not weaken that. It is the exception that sends readable content to a cloud AI.
@@ -55,11 +58,22 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Open Questions
 
-- [ ] Which AI provider, and what are its data-retention terms? (@mjbvilhena, design gate)
-- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form? (@mjbvilhena, design gate)
-- [ ] Are items marked sensitive excluded from cloud processing? (@mjbvilhena, design gate)
-- [ ] What exactly is sent: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
+- [ ] Which AI provider, and what are its data-retention terms?
+- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form?
+- [x] Sensitive items are excluded from the topic call.
+- [ ] What exactly is sent: full text, images, OCR output, or some other slice?
 
 ## Draft stories
 
-None. The specification is approved. Stories still wait until this epic is approved. After that, Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.
+These stay Draft. Paths are under `docs/product/stories/`.
+
+- US-41 Extract topics when an item is saved
+- US-42 Link an item to a topic the vault already has
+- US-43 Confirm a topic before it is created
+- US-44 Queue topic processing while offline
+- US-45 Read a topic
+- US-46 Reject, rename, or merge a suggested topic
+- US-47 Keep the item when the topic call fails
+- US-48 Manage a topic that is already saved.
+- US-60 Browse topics and pending suggestions
+- US-72 Score whether topics are useful. Could.

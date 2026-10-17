@@ -1,7 +1,10 @@
 # US-02 Share plain text into the vault
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E1.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -10,29 +13,38 @@ Share plain text into the vault.
 ## User story
 
 **As a** person named Miguel
-**I want to** share a passage of plain text from another app
-**So that** words I want to keep become a note in the vault
+**I want** to share plain text into the vault
+**So that** a passage I want to keep is stored without me retyping it
 
 ## Background
 
-- He asked to receive plain text from the share sheet, separate from links.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: links (US-01), images, PDFs, and rich-text editing.
+- Text shared from another app is not a link item unless the text contains a URL.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: OCR, topics, and the repeat-URL update (US-49). An empty title is capped at 120 characters.
 
 ## Acceptance criteria
 
 - **Scenario: share text** — Must
-  - Given he selects plain text in another app
-  - When he shares it to the vault
-  - Then one item of type `note` is stored, the text is the body, the created date is set, the source URL is empty, and the personal note and tags are empty unless he supplied them
-- **Scenario: share text that is only whitespace** — Must
-  - Given the shared text has no non-whitespace characters
-  - When the vault receives it
-  - Then no item is stored and he can see that nothing was saved
-- **Scenario: a title is not part of the share** — Must
-  - Given the shared text has a body and no separate title
+  - Given another app shares plain text that is not only whitespace and contains no URL
+  - When he chooses Lagoon
+  - Then one note item is stored and he sees "Saved to Lagoon". The sending app name is recorded only when the platform reports it
+- **Scenario: the text contains a URL** — Must
+  - Given `EXTRA_TEXT` contains a URL and some other words
+  - When he shares it
+  - Then US-01 stores the link, and the leftover words are kept as a note, the same way as US-01
+  - And the title uses the same order as US-01 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
+- **Scenario: the share has a subject** — Must
+  - Given `EXTRA_SUBJECT` is present
   - When the item is stored
-  - Then the item still has a title he can read, taken from the start of the text, and the full text remains the body
+  - Then that subject is the title
+- **Scenario: a long auto-title** — Must
+  - Given he did not supply a subject and the first line is longer than 120 characters
+  - When the title is filled
+  - Then the title is the first 120 characters and the full text stays in the body
+- **Scenario: whitespace** — Must
+  - Given the text is only whitespace
+  - When he shares it
+  - Then no item is stored and he sees that nothing was saved
 
 ## Analytics and observability (optional)
 
@@ -40,14 +52,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- No placeholder text in the shipped UI.
-- How much of the passage becomes the title is a display rule for the UX artefact. This story only requires that a title exists and the full body is kept.
+- Confirmation text is "Saved to Lagoon".
+- No placeholder sentences.
 
 ## Dependencies and risks
 
-- Independent of link enrichment.
-- Q9 consensus, not approval: one tap saves. Last-used tag chips are US-28. He can edit the note and tags later (US-12). A text share with no title still takes the title from the start of the text.
+- A body-only note he types himself uses the same 120-character title rule (US-05).
 
 ## Implementation notes
 
-Share intent for `text/plain` when the payload is not a URL. Not a design spec.
+Share intent `text/plain`. Not a design spec.

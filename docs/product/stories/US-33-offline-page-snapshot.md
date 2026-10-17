@@ -1,62 +1,73 @@
 # US-33 Keep an offline snapshot of a saved page
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval is delegated to Miguel's bots (2026-10-17). None has signed this story.
-> His decision that snapshots are in v1 is not approval of this story.
-> The snapshot shape below is a consensus recommendation from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot under that delegation. Not approval.
+
+**Epic:** E2.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
-Read a saved page offline, and keep its URL.
+Keep an offline snapshot of a saved page.
 
 ## User story
 
 **As a** person named Miguel
-**I want** a saved web page to keep a copy I can read offline, and to keep the original URL
-**So that** the page is still there when the network is not, and I can still open the source
+**I want** a saved page to leave a sanitised offline copy, without blocking the save
+**So that** I can read the page when the network is gone, and still keep the original URL
 
 ## Background
 
-- He decided v1 stores an offline snapshot of a saved web page and keeps the original URL.
-- US-08 still stores title, description, preview image, and readable text when the fetch works. This story is the snapshot in addition to that.
-- US-09 still keeps the URL when the fetch fails. No snapshot is invented in that case.
-- The snapshot is one sanitised archive: a readable extracted copy (headings, lists, and inline images downscaled and saved locally), plus title, site, author, capture time, and the original URL. The cap is about 10 MB. A truncated archive is marked "partial snapshot". It is searchable, encrypted, and synced like other content.
-- A full-page MHTML copy is an optional later extra, not v1.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a logged-in or paywalled page, a pixel-perfect browser archive, and MHTML in v1.
+- One fetch with US-08. Cap about 10 MB in the specification. This story uses 10 MiB.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: MHTML. Which fetches are skipped is US-79.
 
 ## Acceptance criteria
 
-- **Scenario: fetch works** — Must
-  - Given he saves a link and the page can be fetched
-  - When the save finishes
-  - Then the item stores the original URL and one sanitised archive he can read with no network
-  - And that archive contains the readable copy (headings, lists, and inline images downscaled and stored locally) plus title, site, author, capture time, and the original URL
-- **Scenario: cap** — Must
-  - Given the fetched page would make an archive larger than about 10 MB
+- **Scenario: the save is not blocked** — Must
+  - Given he saved a link
+  - When the snapshot has not finished
+  - Then the item is already stored and readable as a URL
+- **Scenario: one sanitised file** — Must
+  - Given the fetch returns a page
   - When the snapshot is stored
-  - Then the archive is cut at about 10 MB and marked "partial snapshot"
+  - Then it is one HTML file, images are downscaled `data:` URLs, and script, iframe, forms, event handlers, and remote URLs are removed
+- **Scenario: the viewer** — Must
+  - Given he opens the snapshot
+  - When it is shown
+  - Then the WebView has JavaScript off and network off
+- **Scenario: the cap** — Must
+  - Given the page is over 10 MiB
+  - When the snapshot is built
+  - Then images are dropped before text, the file stays within 10 MiB, and it is marked partial
+- **Scenario: searchable** — Must
+  - Given the snapshot has text
+  - When US-15 indexes it
+  - Then that text is in the snapshot column
+- **Scenario: encrypted and synced** — Must
+  - Given the snapshot is stored
+  - When the vault is encrypted and synced
+  - Then the snapshot is inside that encrypted store and is part of the vault payload
+- **Scenario: failure and retry** — Must
+  - Given the fetch fails
+  - When he chooses retry
+  - Then a new attempt runs, and the original URL is still on the item
 - **Scenario: under the cap** — Must
-  - Given the archive fits
-  - When it is stored
+  - Given the page fits
+  - When the snapshot is stored
   - Then it is not marked partial
-- **Scenario: fetch fails** — Must
-  - Given the device is offline or the fetch fails
-  - When he saves the link
-  - Then the URL is kept, no fake snapshot is stored, and the app does not crash
-- **Scenario: the URL stays** — Must
-  - Given a snapshot was stored
-  - When he opens the item
-  - Then he can still see the original URL
-- **Scenario: search, encryption, and sync** — Must
-  - Given a snapshot was stored
-  - When he searches, when the vault is encrypted (US-35), and when sync runs (US-36)
-  - Then the snapshot text is searchable, the archive is encrypted with the other content, and the synced copy is ciphertext like the rest of the vault
-- **Scenario: no MHTML in v1** — Must
-  - Given a snapshot was stored
-  - When he looks at the item
-  - Then v1 does not require a full-page MHTML copy
+- **Scenario: a token-looking link** — Must
+  - Given the link is token-looking under US-79
+  - When a snapshot would be fetched and he has not confirmed that fetch
+  - Then no snapshot is stored
+- **Scenario: a sensitive item** — Must
+  - Given the item is marked sensitive
+  - When a snapshot would be fetched
+  - Then no snapshot is stored
+- **Scenario: the host rules** — Must
+  - Given the link fails a US-79 host rule
+  - When a snapshot would be fetched
+  - Then no snapshot is stored
 
 ## Analytics and observability (optional)
 
@@ -64,16 +75,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The snapshot is a readable extracted copy he can scroll. The UX artefact chooses the presentation.
-- The "partial snapshot" marker is text, not only a color.
-- The URL is text, not only a button.
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Depends on a link item from US-01 or US-06. A repeat save refreshes this snapshot only when the fetch works (US-01).
-- Sanitising the archive is required. Script and active content from the page are not part of the readable copy.
-- Encryption and sync follow E8 and E4. This story does not choose a cipher.
+- The URL always stays (US-09).
 
 ## Implementation notes
 
-Store one archive with the item. Do not drop the URL. Not a design spec. MHTML is later.
+Not a design spec. MHTML is later.

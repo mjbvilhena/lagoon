@@ -1,7 +1,10 @@
-# US-10 Browse items, newest first
+# US-10 Browse saved items, newest first
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E3.
+
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -10,29 +13,38 @@ Browse saved items, newest first.
 ## User story
 
 **As a** person named Miguel
-**I want** the home list to show what I saved, most recent first
-**So that** the thing I just kept is the first thing I see
+**I want** the home list to show what I saved, newest first
+**So that** the thing I just kept is the first row
 
 ## Background
 
-- He asked for a clean home list, most recent first.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: search ranking (US-15). Filters (US-16). Editing.
+- The sort key is last-saved, not created. A new save and a repeat share (US-49) move last-saved. An edit moves only `updatedAt` (US-12) and does not move the row.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: date filters and other sort directions (US-39). What a sensitive row reveals before unlock is US-75.
+- A home row does not render a link preview image. The foggy placeholder from US-79 is not drawn on the row.
 
 ## Acceptance criteria
 
 - **Scenario: several items** — Must
-  - Given three saved items with different created dates
+  - Given items with different last-saved times
   - When he opens the home list
-  - Then they appear with the newest last-saved date first and the oldest last. On a first save, last-saved is the created date. A repeat URL bumps last-saved (US-01) and that item moves up
+  - Then they are ordered by last-saved, newest first, and created date is not the sort key
+- **Scenario: what a row shows** — Must
+  - Given an ordinary item with a title, a type, a last-saved date, and a source domain or sending app
+  - When the row is shown
+  - Then he sees the title, the type, the saved date, and that source. A reminder or expiry, when set, shows a marker
 - **Scenario: nothing saved** — Must
   - Given the vault has no items
   - When he opens the home list
-  - Then he sees that the vault is empty, in real words, with no lorem placeholder and no fake sample item
+  - Then he sees that nothing is saved yet
 - **Scenario: a new save** — Must
-  - Given he is looking at the list
-  - When he saves another item
-  - Then that item appears at the top
+  - Given he saves a new item
+  - When he returns to the home list
+  - Then that item is the first row
+- **Scenario: an edit does not move the row** — Must
+  - Given an item is not the newest by last-saved
+  - When he edits it (US-12)
+  - Then last-saved stays and the row does not become first because of that edit
 
 ## Analytics and observability (optional)
 
@@ -40,15 +52,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Empty copy is real and short. The UX artefact will write it. This story forbids placeholder text.
-- The list is readable in light and dark (US-22) once that story exists. This story does not define the palette.
-- List rows expose their title to assistive tech.
+- Each row has an accessible name that includes the title.
+- No placeholder sentences.
 
 ## Dependencies and risks
 
-- Needs at least one capture story so items can exist. The empty case does not.
-- "Clean" and "whitespace" are E5 constraints, not extra features in this story.
+- Source fields come from US-61. The marker comes from US-34 or US-54.
 
 ## Implementation notes
 
-Order by last-saved date descending. Not a design spec. The US-01 recommendation is not approval of this story.
+Order by last-saved descending. Not a design spec.

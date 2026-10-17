@@ -1,7 +1,10 @@
 # US-04 Share a PDF into the vault
 
 > **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
+
+**Epic:** E1.
+
+**MoSCoW:** Must. v1. Text-layer extraction is not OCR.
 
 ## Title
 
@@ -10,30 +13,37 @@ Share a PDF into the vault.
 ## User story
 
 **As a** person named Miguel
-**I want to** share a PDF into the vault
-**So that** a document I care about stays with the rest of what I have saved
+**I want** to share a PDF into the vault
+**So that** the file and the text it already contains are searchable later
 
 ## Background
 
-- PDFs are a named share type and a named backup payload.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a PDF editor, annotating the file, and using OCR on a PDF that already has a text layer. Scanned pages are US-31, which is in v1 by Miguel's decision. That decision is not approval of this story.
+- The file is part of the vault that background sync and the zip carry. It is not a separate backup.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: a PDF editor, cloud OCR, and asking him for a PDF password. v1 stores no PDF passwords.
 
 ## Acceptance criteria
 
 - **Scenario: share a PDF** — Must
-  - Given a PDF he can share from another app
-  - When he shares it to the vault
-  - Then one item of type `PDF` is stored, the file is kept in the app's private storage, a created date is set, and he can open the item later and read the stored PDF without a network
-- **Scenario: the file is not a readable PDF** — Must
-  - Given the share is labeled as a PDF but the vault cannot read it as one
-  - When he completes the share
-  - Then no broken item is left in the list and he can see that it was not saved
+  - Given a readable PDF share
+  - When he chooses Lagoon
+  - Then one item stores a copy of the file and he sees "Saved to Lagoon". The sending app is recorded only when the platform reports it
 - **Scenario: text the PDF already contains** — Must
-  - Given the PDF contains extractable text
+  - Given the PDF has a text layer and the device is API 26 or newer
+  - When extraction runs with a library that works on `minSdk` 26, such as PdfBox-Android
+  - Then that text is stored as extracted text, and those pages are not sent through OCR
+- **Scenario: a locked PDF** — Must
+  - Given the PDF is password-protected
   - When it is stored
-  - Then that text is kept as extracted text so search (US-15) can see it. This is extraction, not OCR
-  - And a PDF with no extractable text is still stored, for US-31 to recognize later
+  - Then v1 stores no PDF password, the file is still stored and openable, and the item is marked "text not extracted"
+- **Scenario: mixed pages** — Must
+  - Given some pages have a text layer and some do not
+  - When extraction finishes
+  - Then text-layer pages are extracted, and pages with no text layer are queued for on-device OCR (US-31)
+- **Scenario: not a PDF** — Must
+  - Given the bytes are not a PDF
+  - When the vault receives them
+  - Then no item is stored and he sees that nothing was saved
 
 ## Analytics and observability (optional)
 
@@ -41,15 +51,13 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- The PDF item has a title that is not placeholder copy. If the file has no title, the file name is enough for this story.
-- No placeholder text in the shipped UI.
+- "text not extracted" is visible on the item.
+- No placeholder sentences.
 
 ## Dependencies and risks
 
-- Extracted text is an input to US-15. This story does not implement search.
-- Scanned pages are stored here and recognized in US-31. This story does not OCR them.
-- Q9 consensus, not approval: one tap saves the PDF. Last-used tag chips are US-28. An empty title uses the file name (US-40).
+- OCR of scanned pages is US-31. The pipeline order is US-58.
 
 ## Implementation notes
 
-Share intent for `application/pdf`. Not a design spec.
+Not a design spec. The library name is an example that satisfies `minSdk` 26, not an ADR.

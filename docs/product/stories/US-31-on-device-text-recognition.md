@@ -1,72 +1,72 @@
-# US-31 Recognize text on the device
+# US-31 Recognize English text on the device
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval is delegated to Miguel's bots (2026-10-17). None has signed this story.
-> He decided OCR is in v1. That decision is not approval of this story.
-> Language scope is Mikey's Dev Bot's revised recommendation under the 2026-10-17 delegation. The Dev Bot reports that Miguel told it in chat that English is enough for v1 OCR. That report is not his approval of this story. Booking references are not a story.
+
+**Epic:** E7.
+
+**MoSCoW:** Must. v1. English only.
 
 ## Title
 
-Recognize text in a screenshot, image, or scanned PDF.
+Recognize English text on the device.
 
 ## User story
 
 **As a** person named Miguel
-**I want** the vault to read text from a screenshot, a photo, or a scanned PDF on the phone
-**So that** I can search a page that was only a picture
+**I want** text in a screenshot, image, or scanned PDF page to be recognized on the phone
+**So that** I can search that text without sending the image to a cloud OCR service
 
 ## Background
 
-- His v1 decision: on-device text recognition for screenshots, images, and scanned PDFs, so their text is searchable.
-- A text-based PDF is extracted by US-04. That is not OCR and is not optional.
-- v1 OCR scope is English. The bundled ML Kit on-device Latin-script model still fits for implementation, and it works offline from install. Acceptance tests use English samples only. Other languages are a later backlog option, not this story.
-- Bots said picking out booking references and merchants stays proposed and later, unless it falls out of this work for free. This story does not require that extraction.
-- Domain constraints: none. No `DOMAIN.md`.
-- Out of scope: a cloud recognizer, a downloadable language pack, any language other than English in v1, translation, and a guarantee about accuracy. Accent folding in search stays in US-15.
+- v1 OCR is English only. Other languages are out of scope.
+- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Out of scope: merchants, booking references, and cloud OCR. The page cap below makes the job testable.
 
 ## Acceptance criteria
 
-- **Scenario: an image or screenshot** — Must
-  - Given a saved image or screenshot that shows English text
-  - When recognition runs on the device, with no network
-  - Then the recognized text is stored as OCR text, search can find it offline, and the image file was not uploaded for recognition
-- **Scenario: a scanned PDF** — Must
-  - Given a PDF with no text layer and English text on the page
-  - When recognition runs
-  - Then its recognized text is searchable the same way
-- **Scenario: English samples** — Must
-  - Given English samples
-  - When the acceptance tests run
-  - Then they produce searchable text from the bundled model, with no language download, and the tests do not require another language
-- **Scenario: a text-based PDF is not sent through OCR** — Must
-  - Given a PDF whose text US-04 already extracted
-  - When the item is stored
-  - Then that extracted text is searchable without OCR
+- **Scenario: the item is visible first** — Must
+  - Given he saved an image or a PDF
+  - When the save confirmation is already showing
+  - Then a WorkManager job may run OCR, and the item is already in the list
+- **Scenario: each attachment and each scanned page** — Must
+  - Given an item has images and PDF pages with no text layer
+  - When OCR runs
+  - Then each attachment is processed, and each such page is processed, up to 50 pages and 20 MB of image bytes. The rest is marked not recognized
+- **Scenario: English** — Must
+  - Given an English sample
+  - When OCR finishes
+  - Then the text is stored in the OCR column, and he can view it and copy it
+- **Scenario: a text-based PDF** — Must
+  - Given US-04 already extracted a text layer
+  - When OCR runs
+  - Then those pages are not recognized again
+- **Scenario: pending, failed, and retry** — Must
+  - Given the job has not finished, or it failed, including after an out-of-memory kill
+  - When he opens the item
+  - Then he sees pending or failed, the item is still there, and he can retry
 - **Scenario: nothing to read** — Must
-  - Given an image with no text
-  - When recognition finishes
-  - Then the item remains, and no invented paragraph is stored
-- **Scenario: merchants and bookings** — Must
-  - Given recognized text happens to contain a booking code
-  - When he looks at the item
-  - Then the vault is not required to label a merchant or a booking reference. Doing so for free is allowed. A dedicated extractor is out of this story
+  - Given the image has no text
+  - When OCR finishes
+  - Then the item remains and no text is invented
+- **Scenario: the bundled model** — Must
+  - Given the release dependencies
+  - When they are inspected
+  - Then `com.google.mlkit:text-recognition` is present and `com.google.android.gms:play-services-mlkit-text-recognition` is absent
 
 ## Analytics and observability (optional)
 
-Not applicable. No analytics.
+The image and the recognized text stay on the device. ML Kit's own usage and diagnostic metrics are the disclosure in US-07. This story does not add an analytics library.
 
 ## Design and a11y notes
 
-- Recognized text is real text, not a placeholder.
-- He can tell OCR text from text he typed. The UX artefact chooses how. This story does not draw it.
+- No placeholder sentences in the shipped UI.
+- Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Languages other than English are a later backlog option, not this story. US-15 still folds accents in search. That search rule is unchanged.
-- Depends on US-15 for search. OCR text uses the OCR weight in that ranking. Encryption of the extracted text follows E8.
-- Build note for the design gate: sideloaded APKs do not get per-device splits, so the package uses `arm64` `abiFilters` or per-ABI APKs. This story does not choose which of those two the design adopts.
+- Non-English OCR is out of scope. The pipeline order is US-58. ABI packaging is US-24.
+- Before the first OCR use he accepts the US-07 disclosure. This story does not choose that disclosure.
 
 ## Implementation notes
 
-On-device recognition only, model bundled in the install. Not a design spec. Not an ADR for the recognizer.
+On-device Latin model from `com.google.mlkit:text-recognition`, bundled in the install. The Play services text-recognition artifact is absent because that thin variant collects a device identifier. Not a design spec.
