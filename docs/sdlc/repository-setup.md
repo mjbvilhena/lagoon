@@ -19,6 +19,23 @@ Structured from `get_sdlc_template("repository setup")` and `get_definition_of_d
 
 This repository will hold Miguel's personal knowledge vault: an on-device Android app and the SDLC documents that precede it. The content expected over time is product and design markdown, then a Kotlin/Compose app, its tests, and release notes. No application source is in the tree at this gate.
 
+## Where things live
+
+The root `README.md` only describes the app. These paths are the rest of the notes:
+
+| Path | What it is |
+|---|---|
+| `docs/product/vision.md` | Draft vision, taken from the request |
+| `docs/product/specification.md` | Approved product specification (`c288b7e`) |
+| `docs/product/epics/` | Approved epics E1–E11 (`98275b3`). E10 is Later, not in v1 |
+| `docs/product/stories/` | Draft user stories and the index |
+| `docs/product/backlog.md` | Draft backlog |
+| `docs/sdlc/pipeline-state.md` | Current gate and what has not been started |
+| `docs/sdlc/harness-install.md` | Harness pin, installer, MCP command |
+| `docs/sdlc/repository-setup.md` | Draft repository checks |
+| `.cursor/commands/` | Installed harness skills and rules |
+| `third_party/ai-sdlc-harness` | Harness submodule |
+
 ## Stack mapping
 
 Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The Android and Kotlin jobs were added because the 2026-10-17 GitHub request named them. They do not compile anything until a Gradle project exists. Bash and Python checks were not added.
@@ -32,15 +49,15 @@ Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The An
 | Python | `bandit` and pytest | Not configured. Python is only the harness MCP server inside the submodule. |
 | Kotlin / Gradle | Build, Android lint, Kotlin style, CodeQL | Jobs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. Each passes with a clear message until `settings.gradle` or `settings.gradle.kts` exists. No Gradle project was added to make them pass. |
 
-The workflow matches `mjbvilhena/leisure-orchestrator` `.github/workflows/qa.yml`: `push` to `master`, `pull_request`, `workflow_dispatch`, `permissions: contents: read`, `actions/checkout@v6`. The older Origin-era workflows `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` are removed so those checks are not duplicated.
+The workflow matches `mjbvilhena/leisure-orchestrator` `.github/workflows/qa.yml` on triggers and permissions: `push` to `master`, `pull_request`, `workflow_dispatch`, `permissions: contents: read`, `actions/checkout@v6`. The older Origin-era workflows `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` are removed so those checks are not duplicated.
 
-`GITLEAKS_LICENSE` is referenced the same way as leisure-orchestrator. It is required for organization repositories, not for this personal account.
+Secret scan does not use `gitleaks/gitleaks-action`. That action scans `<first-pushed-commit>^..<head>`, which fails when a push includes the root commit. This repo installs gitleaks 8.30.1 and runs `gitleaks git` on the full history. `GITLEAKS_LICENSE` is required for organization repositories that use the action. It is not required here.
 
 ## Configurations
 
 ### Security
 
-Secret scanning is the `Secret scan` job. It checks out full history (`fetch-depth: 0`) and runs `gitleaks/gitleaks-action@v3` with `GITHUB_TOKEN`. `.gitignore` excludes `local.properties`, `*.jks`, `*.keystore`, `keystore.properties`, `google-services.json`, and `.env*` except `.env.example`, plus the signing and OAuth property files already listed.
+Secret scanning is the `Secret scan` job. It checks out full history (`fetch-depth: 0`) and runs gitleaks 8.30.1 (`gitleaks git`) over that history. Store tokens in GitHub Actions secrets. Do not commit them. `GITHUB_TOKEN` is provided by GitHub for other Actions uses. This job does not need it, and it does not need `GITLEAKS_LICENSE`. `.gitignore` excludes `local.properties`, `*.jks`, `*.keystore`, `keystore.properties`, `google-services.json`, and `.env*` except `.env.example`, plus the signing and OAuth property files already listed.
 
 SAST for Python was not added. There is no product Python package.
 
@@ -49,6 +66,14 @@ SAST for Python was not added. There is no product Python package.
 `.github/workflows/qa.yml` job `Markdown lint` uses `DavidAnson/markdownlint-cli2-action@v24` and `.markdownlint-cli2.jsonc`. Line length (`MD013`) and ordered-list prefix (`MD029`) are off, matching leisure-orchestrator. `.cursor/**`, `.agents/**`, and `third_party/**` are ignored so slash commands and the harness submodule are not treated as this product's docs. `.markdownlint.json` remains the harness-compatible config; the CI job reads the cli2 file.
 
 No shellcheck, eslint, or ruff project exists here.
+
+From the repo root, the same Markdown rules CI uses:
+
+```bash
+npx --yes markdownlint-cli2
+```
+
+Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code. The harness submodule and its MCP virtualenv are in `docs/sdlc/harness-install.md`. Kotlin test commands do not exist yet. There is no app module, Gradle build, or APK in the tree.
 
 ### Testing
 
@@ -78,7 +103,7 @@ A green check is not product approval and is not permission to start implementat
 - [x] Universal secret scanning is configured (job `Secret scan`).
 - [x] Markdown lint and workflow lint are configured. Android and Kotlin jobs are present and no-op until Gradle exists.
 - [x] Default code ownership is established (`.github/CODEOWNERS`).
-- [x] CI uses `actions/checkout@v6`, `gitleaks/gitleaks-action@v3`, and `markdownlint-cli2-action@v24`, matching leisure-orchestrator.
+- [x] CI uses `actions/checkout@v6`, gitleaks 8.30.1 (`gitleaks git` on full history), and `markdownlint-cli2-action@v24`. Checkout and Markdown lint match leisure-orchestrator. Secret scan does not use `gitleaks-action`.
 - [x] `.gitignore` covers signing secrets, `google-services.json`, `local.properties`, and `.env*` except `.env.example`.
 - [x] Branch protection policy for `master` is documented above. Pull requests are required after the initial import.
 - [ ] Named approval of this setup note by `mjbvilhena`.
