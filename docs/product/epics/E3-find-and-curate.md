@@ -23,7 +23,7 @@ Miguel, looking back through what he kept.
   - Delete with undo.
   - Tag management, including rename. A rename applies to every item. A case-insensitive clash asks for confirmation and then merges. No other merge path.
   - An Untagged / Inbox view. Sort and filter by date saved.
-  - Room + FTS search across title, body, extracted text, tags, and notes.
+  - Room + FTS search across title, body, extracted text, OCR text, tags, and notes.
   - Ranked results and visible highlighting of the match.
   - Filter by type and by tag.
 - **Future Scope (v2+):** Nothing scheduled.
@@ -43,12 +43,12 @@ Miguel, looking back through what he kept.
 ## Risks & Dependencies
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
-- Ranking is the US-15 recommendation: weighted BM25, not approval. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
-- Q4 is a bots' consensus, not approval: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29.
+- Ranking is the US-15 rule in the specification approved by `mjbvilhena` on 2026-10-17: weighted BM25, including OCR text. This epic is still Draft and awaits his approval. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
+- Q4 is part of that approved specification: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. This epic is still Draft and awaits his approval.
 
 ## Open Questions
 
-- Q4 and Q9 are bots' consensus, not approval. Q5 and Q10 were decided by Miguel and are not open here. Conflicts and deletions on sync are his questions on E4, not this epic.
+- Q4 and Q9 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Q5 and Q10 were decided by him and are not open here. Conflicts and deletions on sync are his questions on E4, not this epic.
 
 ## Draft stories
 

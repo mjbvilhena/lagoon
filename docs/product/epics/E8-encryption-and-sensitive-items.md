@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Neither decision approves this epic. The cipher is an ADR, not this file. Shipped-epic DoD is not claimed.
+> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. The cipher is an ADR, not this file. Shipped-epic DoD is not claimed.
 
 ## Background & Value Proposition
 

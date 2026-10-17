@@ -51,7 +51,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E4: Seamless sync
 
-> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Draft — not approved)* Evidence: `docs/product/epics/E4-private-backup.md`. The file name is unchanged. The epic is sync.
+> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Draft — not approved)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
 
 - **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-backup-not-configured.md`. Not implemented. Missing OAuth must not crash.
 - **US-18** *(Draft)* Sign in and background sync. Evidence: `docs/product/stories/US-18-back-up-now.md`. Not implemented. Drive API `appDataFolder`, not Android Auto Backup. Hidden in the Drive UI.

@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not in v1. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> He decided this is later, not v1. That decision is not approval to build it. No stories. Do not implement it with v1.
+> He decided this is later, not v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft. That approval is not approval to build it. No stories. Do not implement it with v1.
 
 ## Background & Value Proposition
 

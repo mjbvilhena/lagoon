@@ -2,8 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> Miguel decided there is no explicit backup or restore. That decision is not approval of this epic. Shipped-epic DoD is not claimed.
-> The file name is unchanged so existing links keep working. The epic is sync, not backup.
+> Miguel decided there is no explicit backup or restore. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Shipped-epic DoD is not claimed.
 
 ## Background & Value Proposition
 

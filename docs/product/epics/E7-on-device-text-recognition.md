@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> Miguel decided this is in v1. That decision is not approval of this epic or of its stories. Shipped-epic DoD is not claimed.
+> Miguel decided this is in v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. It does not approve its stories. Shipped-epic DoD is not claimed.
 
 ## Background & Value Proposition
 
@@ -34,12 +34,12 @@ Miguel, searching something he saved as an image or a scan.
 ## Risks & Dependencies
 
 - Depends on E1 for the file and E3 for search.
-- v1 language scope is English, Mikey's Dev Bot's revised recommendation. The Dev Bot reports that Miguel told it in chat that English is enough. Not approval. The bundled Latin-script model still fits. Other languages are later. The sideload ABI note is a design-gate build choice.
+- v1 language scope is English. That scope is part of the specification approved by `mjbvilhena` on 2026-10-17. The Dev Bot reported that he said in chat that English is enough. This epic is still Draft and awaits his approval. The bundled Latin-script model still fits. Other languages are later. The sideload ABI note is a design-gate build choice.
 - Recognized text is vault data. It is covered by E8 encryption once that epic exists. This epic does not design the cipher.
 
 ## Open Questions
 
-- v1 OCR language is English in US-31. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. Not approval.
+- v1 OCR language is English in US-31, as in the approved specification. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. This epic is still Draft and awaits his approval.
 
 ## Draft stories
 

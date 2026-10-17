@@ -37,12 +37,12 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 
 - Depends on E1 to have a link item to enrich.
 - Many pages will return little or no readable text. That is an expected miss, not a failed save.
-- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33, bots' consensus, not approval). The old manual-backup size warning is gone.
+- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33). That shape is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. The old manual-backup size warning is gone.
 
 ## Open Questions
 
 - OCR is Miguel's v1 decision and lives in E7. This epic does not perform it.
-- Snapshot shape is the US-33 recommendation: a sanitised readable archive, not MHTML in v1. Not approval.
+- Snapshot shape is the US-33 rule in the approved specification: a sanitised readable archive, not MHTML in v1. This epic is still Draft and awaits his approval.
 - [ ] No question was opened here about which HTML fields count as description. Technical design should say which signals are tried, without inventing a success rate.
 
 ## Draft stories

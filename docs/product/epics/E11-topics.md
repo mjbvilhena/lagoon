@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is not approval of this epic or of the specification. Shipped-epic DoD is not claimed.
+> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Shipped-epic DoD is not claimed.
 > No user stories yet. Stories come after the specification gate and the epic gate. Story approval is delegated to Miguel's bots. Do not write the stories in place of those gates.
 
 ## Background & Value Proposition
@@ -25,7 +25,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, whether sensitive items are excluded, or the exact payload. Those are design-gate questions for him. Writing user stories before the spec and epic gates.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, whether sensitive items are excluded, or the exact payload. Those are design-gate questions for him. Writing user stories before this epic is approved.
 
 ## Core Workflows
 
@@ -59,4 +59,4 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Draft stories
 
-None. Do not add them until the specification is approved and this epic is approved. After that, Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.
+None. The specification is approved. Stories still wait until this epic is approved. After that, Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.

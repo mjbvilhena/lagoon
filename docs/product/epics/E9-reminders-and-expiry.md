@@ -2,7 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Approver required: `mjbvilhena`. Sign-off on file: none.
-> Miguel decided optional expiry or reminder dates, with notifications, are in v1. That decision is not approval of this epic. Shipped-epic DoD is not claimed.
+> Miguel decided optional expiry or reminder dates, with notifications, are in v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Shipped-epic DoD is not claimed.
 
 ## Background & Value Proposition
 
@@ -18,7 +18,11 @@ Miguel.
 
 - **In Scope (MVP):**
   - An optional expiry or reminder date on an item.
-  - A notification when that date arrives.
+  - He picks the time. The Settings default is 09:00 local. Each item can override that time.
+  - An expiry notifies 7 days before the date and again on the day, at the item's time.
+  - Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). No exact-alarm permission.
+  - Reminders are stored and re-registered on `BOOT_COMPLETED`.
+  - `POST_NOTIFICATIONS` is requested when the first reminder is set, not at launch.
   - Clearing the date clears the notification.
 - **Future Scope (v2+):** Trip or collection grouping is E10, not this epic.
 - **Out of Scope / Non-Goals:** A default expiry on every item. Recurring reminders. A calendar sync he did not ask for.
@@ -36,11 +40,11 @@ Miguel.
 
 - Depends on E1 items and on edit (US-12).
 - Notification permission is the platform's. If he denies it, the date is still stored and he can see it on the item. Do not invent a second channel.
-- The clock time is the US-34 recommendation: 09:00 local by default, overridable per item. Not approval.
+- The schedule above is the US-34 rule in the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval.
 
 ## Open Questions
 
-- The time, the 7-day expiry warning, and inexact alarms are recommended in US-34. Not an open product question. Not approval.
+- The time, the 7-day expiry warning, and inexact alarms are in the approved specification (US-34). They are not an open product question. This epic is still Draft and awaits his approval.
 
 ## Draft stories
 
