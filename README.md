@@ -29,12 +29,50 @@ Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code.
 | `.cursor/commands/` | Installed harness skills and rules |
 | `third_party/ai-sdlc-harness` | Harness submodule |
 
-## Run the document checks locally
+## Quality checks
 
-Markdownlint and Gitleaks are the configured checks. Kotlin test commands do not exist yet.
+GitHub Actions on `push` to `master`, pull requests, and `workflow_dispatch`. The workflow is `.github/workflows/qa.yml`.
+
+| Check | Tool | Why |
+| --- | --- | --- |
+| Secret scan | [Gitleaks](https://github.com/gitleaks/gitleaks-action) | Universal control against committed credentials |
+| Markdown lint | [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2-action) | Markdown is the current primary content |
+| Workflow lint | [actionlint](https://github.com/rhysd/actionlint) 1.7.12 | GitHub Actions YAML is part of this repo |
+| Build and test | Gradle `assembleDebug` and `testDebugUnitTest` | App build, once a Gradle project exists. Until then the job passes with a clear skip message |
+| Android lint | Gradle `lintDebug` | Android lint, once a Gradle project exists. Until then the job passes with a clear skip message |
+| Kotlin style | ktlint or detekt | Kotlin style, once a Gradle project exists. Until then the job passes with a clear skip message |
+| CodeQL | CodeQL for Java and Kotlin | SAST, once a Gradle project exists. Until then the job passes with a clear skip message |
+
+### Secrets
+
+Store tokens in GitHub Actions secrets. Do not commit them.
+
+- `GITHUB_TOKEN` — provided by GitHub; used by Gitleaks
+- `GITLEAKS_LICENSE` — **required for GitHub Organization repositories**, not for personal accounts. Add it under repository or organization secrets if this repo lives in an org
+
+Signing keys, `local.properties`, `google-services.json`, OAuth client files, and `.env*` (except `.env.example`) are listed in `.gitignore`.
+
+## Branch protection
+
+Enforced on `master` by the Protect master ruleset:
+
+1. Require a pull request before merging
+2. Require at least one approving review (CODEOWNERS covers the tree)
+3. Require status checks to pass: `Secret scan`, `Markdown lint`, `Workflow lint`, `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`
+4. Disallow force-pushes and branch deletion
+
+**Break-glass:** repository admins may bypass these rules only when merging a pull request. Direct pushes to `master` remain blocked.
+
+The first publication of this history is the import onto `master`. After that import, changes to the GitHub repository go through pull requests into `master`.
+
+## Local lint
+
+```bash
+npx --yes markdownlint-cli2
+```
 
 ```bash
 git submodule update --init third_party/ai-sdlc-harness
 ```
 
-See `docs/sdlc/harness-install.md` for the MCP virtualenv.
+See `docs/sdlc/harness-install.md` for the MCP virtualenv. Kotlin test commands do not exist yet.

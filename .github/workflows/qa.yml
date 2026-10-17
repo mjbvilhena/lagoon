@@ -1,0 +1,170 @@
+name: QA
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DavidAnson/markdownlint-cli2-action@v24
+
+  actionlint:
+    name: Workflow lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Download actionlint
+        env:
+          ACTIONLINT_VERSION: "1.7.12"
+        run: |
+          bash <(curl --fail --silent --show-error --location \
+            "https://raw.githubusercontent.com/rhysd/actionlint/v${ACTIONLINT_VERSION}/scripts/download-actionlint.bash") \
+            "${ACTIONLINT_VERSION}"
+      - name: Check workflow files
+        run: ./actionlint -color
+
+  # Android jobs stay green until a Gradle project exists so they can be
+  # required checks on day one. They run the real tasks once settings.gradle
+  # or settings.gradle.kts is in the tree.
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Detect Gradle project
+        id: gradle
+        run: |
+          if [[ -f settings.gradle || -f settings.gradle.kts ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No Gradle project is present. Build and test succeeds so it can be required before the app exists."
+          fi
+      - name: Set up Temurin 17
+        if: steps.gradle.outputs.present == 'true'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        if: steps.gradle.outputs.present == 'true'
+        uses: gradle/actions/setup-gradle@v4
+      - name: Validate Gradle wrapper
+        if: steps.gradle.outputs.present == 'true'
+        uses: gradle/actions/wrapper-validation@v4
+      - name: Assemble debug and run unit tests
+        if: steps.gradle.outputs.present == 'true'
+        run: ./gradlew assembleDebug testDebugUnitTest --no-daemon
+
+  android-lint:
+    name: Android lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Detect Gradle project
+        id: gradle
+        run: |
+          if [[ -f settings.gradle || -f settings.gradle.kts ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No Gradle project is present. Android lint succeeds so it can be required before the app exists."
+          fi
+      - name: Set up Temurin 17
+        if: steps.gradle.outputs.present == 'true'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        if: steps.gradle.outputs.present == 'true'
+        uses: gradle/actions/setup-gradle@v4
+      - name: Run lintDebug
+        if: steps.gradle.outputs.present == 'true'
+        run: ./gradlew lintDebug --no-daemon
+
+  kotlin-style:
+    name: Kotlin style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Detect Gradle project
+        id: gradle
+        run: |
+          if [[ -f settings.gradle || -f settings.gradle.kts ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No Gradle project is present. Kotlin style succeeds so it can be required before the app exists."
+          fi
+      - name: Set up Temurin 17
+        if: steps.gradle.outputs.present == 'true'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        if: steps.gradle.outputs.present == 'true'
+        uses: gradle/actions/setup-gradle@v4
+      - name: Run ktlint or detekt
+        if: steps.gradle.outputs.present == 'true'
+        run: |
+          tasks="$(./gradlew tasks --all --no-daemon)"
+          if printf '%s\n' "$tasks" | grep -q '^ktlintCheck'; then
+            ./gradlew ktlintCheck --no-daemon
+          elif printf '%s\n' "$tasks" | grep -q '^detekt'; then
+            ./gradlew detekt --no-daemon
+          else
+            echo "Gradle project has no ktlintCheck or detekt task."
+            exit 1
+          fi
+
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      packages: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Detect Gradle project
+        id: gradle
+        run: |
+          if [[ -f settings.gradle || -f settings.gradle.kts ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No Gradle project is present. CodeQL succeeds so it can be required before the app exists."
+          fi
+      - name: Initialize CodeQL
+        if: steps.gradle.outputs.present == 'true'
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java-kotlin
+          build-mode: none
+      - name: Analyze
+        if: steps.gradle.outputs.present == 'true'
+        uses: github/codeql-action/analyze@v3

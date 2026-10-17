@@ -11,9 +11,9 @@ Structured from `get_sdlc_template("repository setup")` and `get_definition_of_d
 
 | Field | Value |
 |---|---|
-| Target Repository | This workspace (personal knowledge vault for Miguel) |
+| Target Repository | `github.com/mjbvilhena/lagoon` (public). Default branch `master`. |
 | Primary Tech Stack | Markdown product docs now. Kotlin, Jetpack Compose, and Gradle are named for a later app and are not in the tree. |
-| CI/CD System | GitHub Actions |
+| CI/CD System | GitHub Actions (`.github/workflows/qa.yml`) |
 
 ## Purpose Summary
 
@@ -21,35 +21,38 @@ This repository will hold Miguel's personal knowledge vault: an on-device Androi
 
 ## Stack mapping
 
-The harness mapping was applied as written. Checks were not added for languages that mapping does not list.
+Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The Android and Kotlin jobs were added because the 2026-10-17 GitHub request named them. They do not compile anything until a Gradle project exists. Bash and Python checks were not added.
 
 | Content expected | Proposed check | In this repo |
 |---|---|---|
-| Markdown documentation | `markdownlint` | `.github/workflows/markdownlint.yml` linting `README.md` and `docs/**/*.md` |
-| Any repo | `gitleaks` and `CODEOWNERS` | `.github/workflows/secret-scan.yml`, `.github/CODEOWNERS` |
+| Markdown documentation | `markdownlint` | Job `Markdown lint` in `.github/workflows/qa.yml` |
+| Any repo | `gitleaks` and `CODEOWNERS` | Job `Secret scan` in `.github/workflows/qa.yml`, `.github/CODEOWNERS` |
+| GitHub Actions YAML | `actionlint` 1.7.12 | Job `Workflow lint` |
 | Bash scripts | `bats`, `shellcheck` | Not configured. This product repo is not a Bash project. The harness submodule has its own checks. |
 | Python | `bandit` and pytest | Not configured. Python is only the harness MCP server inside the submodule. |
-| Kotlin / Gradle | — | Not in the mapping table. Detekt, ktlint, and Gradle test jobs were not added. Add them only when an approved technical design names them, or when the mapping is extended. |
+| Kotlin / Gradle | Build, Android lint, Kotlin style, CodeQL | Jobs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. Each passes with a clear message until `settings.gradle` or `settings.gradle.kts` exists. No Gradle project was added to make them pass. |
 
-Action versions match the harness workflows: `actions/checkout@v4`, `gitleaks/gitleaks-action@v2`, `articulate/actions-markdownlint@v1`. They are major-version tags, the same pins that harness uses, not commit SHAs.
+The workflow matches `mjbvilhena/leisure-orchestrator` `.github/workflows/qa.yml`: `push` to `master`, `pull_request`, `workflow_dispatch`, `permissions: contents: read`, `actions/checkout@v6`. The older Origin-era workflows `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` are removed so those checks are not duplicated.
+
+`GITLEAKS_LICENSE` is referenced the same way as leisure-orchestrator. It is required for organization repositories, not for this personal account.
 
 ## Configurations
 
 ### Security
 
-Secret scanning is `.github/workflows/secret-scan.yml`. It checks out full history and runs Gitleaks with `GITHUB_TOKEN`. Signing keys, `local.properties`, and OAuth property files are also listed in `.gitignore` so a later release keystore is not committed by default.
+Secret scanning is the `Secret scan` job. It checks out full history (`fetch-depth: 0`) and runs `gitleaks/gitleaks-action@v3` with `GITHUB_TOKEN`. `.gitignore` excludes `local.properties`, `*.jks`, `*.keystore`, `keystore.properties`, `google-services.json`, and `.env*` except `.env.example`, plus the signing and OAuth property files already listed.
 
 SAST for Python was not added. There is no product Python package.
 
 ### Linting & Formatting
 
-`.github/workflows/markdownlint.yml` uses `.markdownlint.json` (the same rule relaxations as the harness config: line length off, dash lists, and the same disabled structural rules). The file glob is `README.md` plus `docs/**/*.md` so generated slash commands under `.cursor/commands/` and the harness submodule are not treated as this product's docs.
+`.github/workflows/qa.yml` job `Markdown lint` uses `DavidAnson/markdownlint-cli2-action@v24` and `.markdownlint-cli2.jsonc`. Line length (`MD013`) and ordered-list prefix (`MD029`) are off, matching leisure-orchestrator. `.cursor/**`, `.agents/**`, and `third_party/**` are ignored so slash commands and the harness submodule are not treated as this product's docs. `.markdownlint.json` remains the harness-compatible config; the CI job reads the cli2 file.
 
 No shellcheck, eslint, or ruff project exists here.
 
 ### Testing
 
-No product test runner exists yet. User stories US-25 ask for repository/search tests, backup-packaging tests, and a Compose UI test when implementation is allowed. Those jobs are not wired now, because that would invent a Kotlin CI menu the template does not list and because implementation has not started.
+No product test runner exists yet. `Build and test` will run `./gradlew assembleDebug testDebugUnitTest` after wrapper validation once a Gradle project exists (Temurin 17, `gradle/actions/setup-gradle`). Until then the job exits 0 with an explicit message. `Android lint` will run `lintDebug`. `Kotlin style` will run `ktlintCheck` or `detekt`. `CodeQL` will analyze Java/Kotlin. None of those tasks run today, because there is no Gradle project and implementation has not started.
 
 ### Ownership
 
@@ -57,24 +60,30 @@ No product test runner exists yet. User stories US-25 ask for repository/search 
 
 ## Branch protection
 
-GitHub branch protection cannot be enforced from a file in the repo. Recommended rules for `main`, for Miguel to turn on when he wants them:
+The GitHub default branch is `master`. The initial import of this history is the one direct push. After that, changes on `github.com/mjbvilhena/lagoon` go through pull requests into `master`.
+
+The Protect master ruleset, modelled on leisure-orchestrator, is the policy for `master`:
 
 - Require a pull request before merging.
-- Require the secret-scan and markdownlint checks to pass.
-- Do not treat a green check as product approval or as permission to start implementation.
+- Require 1 approving review, including code owners (`.github/CODEOWNERS`).
+- Require status checks: `Secret scan`, `Markdown lint`, `Workflow lint`, `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`.
+- Block force-pushes and branch deletion.
+- Admins may bypass these rules only when merging a pull request. Direct pushes stay blocked.
+
+A green check is not product approval and is not permission to start implementation. This setup note stays Draft.
 
 ## Checklist
 
 - [x] Purpose and content types have been identified (`README.md`, this file).
-- [x] Universal secret scanning is configured (`.github/workflows/secret-scan.yml`).
-- [x] Language-specific linting is configured for the markdown already in the repo. Kotlin lint is intentionally absent (see stack mapping).
+- [x] Universal secret scanning is configured (job `Secret scan`).
+- [x] Markdown lint and workflow lint are configured. Android and Kotlin jobs are present and no-op until Gradle exists.
 - [x] Default code ownership is established (`.github/CODEOWNERS`).
-- [x] CI actions use the same major-version tags as the harness workflows.
-- [x] `.gitignore` covers signing secrets and Android/Gradle outputs named by the brief.
-- [ ] Branch protection is documented above and is not enabled from this repo.
+- [x] CI uses `actions/checkout@v6`, `gitleaks/gitleaks-action@v3`, and `markdownlint-cli2-action@v24`, matching leisure-orchestrator.
+- [x] `.gitignore` covers signing secrets, `google-services.json`, `local.properties`, and `.env*` except `.env.example`.
+- [x] Branch protection policy for `master` is documented above. Pull requests are required after the initial import.
 - [ ] Named approval of this setup note by `mjbvilhena`.
 
 ## Anti-patterns avoided
 
-- No detekt, ktlint, or Gradle workflow was invented to look complete.
+- No Gradle project, wrapper, or app module was added so the Android jobs would have something to compile. Those jobs no-op until the project exists.
 - No end-to-end emulator workflow was added while there is no app.

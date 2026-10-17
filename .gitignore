@@ -9,6 +9,10 @@ google-services.json
 secrets.properties
 oauth.properties
 
+# Local environment files. .env.example is the only committed template.
+.env*
+!.env.example
+
 # Android / Gradle outputs (the app module is not in the tree yet).
 .gradle/
 build/

@@ -27,12 +27,14 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | No test plan, e2e plan, or threat model | Not started. A threat model is required in the design band before implementation (encryption, biometric lock, Drive sync, and the cloud topic call). |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. Bounds have not been designed. |
-| Repository checks | Workflows, CODEOWNERS, gitignore, README | Present for markdown and secrets. See `docs/sdlc/repository-setup.md`. Not a product approval. |
+| Repository checks | Workflows, CODEOWNERS, gitignore, README | `.github/workflows/qa.yml` on `master`. See `docs/sdlc/repository-setup.md`. Not a product approval. |
 | Implement | No application code | Not started. Blocked. |
 
 ## Stop
 
 **Spec gate passed. Stopped at epic approval.**
+
+GitHub publication, 2026-10-17 at 13:26 IST, from `mjbvilhena`: the public repository is `github.com/mjbvilhena/lagoon`, default branch `master`. The initial import is the one direct push of this history. After that import, every change on that GitHub repository goes through a pull request into `master`. Required checks are `Secret scan`, `Markdown lint`, `Workflow lint`, `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. The Android and CodeQL jobs no-op until a Gradle project exists. This publication does not approve the epics, the stories, or this setup note.
 
 Epic-gate clarification, 2026-10-17 at 13:15 IST, from `mjbvilhena` on E5: "Look & feel should allow for light or dark theme, or follow the system setting." E5 and US-22 now describe an in-app setting, Light, Dark, and System, with System as the default. E5 stays Draft. US-22 stays Draft. The approved specification was not revised. Its E5 line already calls for a light and dark UI and does not forbid following the Android light/dark setting. Dynamic color remains a separate optional toggle. Spec approval stands.
 
