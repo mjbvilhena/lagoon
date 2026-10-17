@@ -34,6 +34,8 @@ That is an explicit request to draft stories in the same run as the spec. It is 
 
 **Spec gate passed. Stopped at epic approval.**
 
+Epic-gate clarification, 2026-10-17 at 13:15 IST, from `mjbvilhena` on E5: "Look & feel should allow for light or dark theme, or follow the system setting." E5 and US-22 now describe an in-app setting, Light, Dark, and System, with System as the default. E5 stays Draft. US-22 stays Draft. The approved specification was not revised. Its E5 line already calls for a light and dark UI and does not forbid following the Android light/dark setting. Dynamic color remains a separate optional toggle. Spec approval stands.
+
 `mjbvilhena` approved `docs/product/specification.md` on 2026-10-17 at 12:36 IST. His words, after a full section-by-section walkthrough (parts 1–4, including E11 at `c288b7e`), in reply to a request to approve the Lagoon spec in his own words: "Approved". The approved product revision is `c288b7e` (`c288b7ef020a9aafe821b3df3af21bd2ff75dc1b`).
 
 An earlier sentence, "Approve the spec, answer the 6 security questions at design" (09:20 IST), was withdrawn and is not this sign-off. The 12:36 IST "Approved" is.

@@ -62,9 +62,9 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E5: Look and feel
 
-> Goal: Calm Material 3 light and dark UI. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Draft — not approved)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started.
+> Goal: Calm Material 3 UI with an in-app theme setting: Light, Dark, or System. System is the default and follows Android. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Draft — not approved)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started. His epic-review words on 2026-10-17 at 13:15 IST. Not epic approval.
 
-- **US-22** *(Draft)* Light and dark appearance. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Bots' consensus: light about `#0F766E`, dark about `#2DD4BF`, dark `onPrimary` (black or `#003731`). Never use `#0F766E` on dark surfaces. Not approval.
+- **US-22** *(Draft)* Light, Dark, or System theme. System is the default. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Not story approval. Accent: light about `#0F766E`, dark about `#2DD4BF`, dark text on the dark accent (black or `#003731`). Never use `#0F766E` on dark surfaces.
 - **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Joint recommendation of Scout and Mikey's Vault App Bot. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. Not approval.
 
 ## Epic E6: Installable release
