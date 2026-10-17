@@ -1,13 +1,10 @@
 # US-02 Share plain text into the vault
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -23,7 +20,7 @@ Share plain text into the vault.
 
 - Text shared from another app is not a link item unless the text contains a URL.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: OCR, topics, and the repeat-URL update (US-49). The auto-title cap below is a draft rule so the scenario is testable. It is not Miguel's approval.
+- Out of scope: OCR, topics, and the repeat-URL update (US-49). An empty title is capped at 120 characters.
 
 ## Acceptance criteria
 

@@ -1,13 +1,10 @@
 # US-57 Prove that search and encryption can run together
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
-**MoSCoW:** Must. Blocking chore. The review asked for this spike before US-15 and US-35 choose an engine.
+**MoSCoW:** Must. Prove search on the encrypted database before US-15 and US-35 choose an engine.
 
 ## Title
 

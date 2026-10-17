@@ -1,14 +1,10 @@
 # US-36 Sync only ciphertext
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
-> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
 
-**Epic:** E8. Not an approval.
+**Epic:** E8.
 
-**MoSCoW:** Must. v1, from approved epic E8.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -22,7 +18,7 @@ Sync only ciphertext.
 
 ## Background
 
-- He decided client-side encryption of everything synced. The zip rule is US-21, which he decided on 2026-10-17 at 14:56 IST is encrypted with the vault key.
+- Everything synced is client-side ciphertext. The zip (US-21) is encrypted with the vault key.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: key transport (US-74). What a sensitive item reveals in an export is US-75. The topic call is not a Drive upload (US-41).
 

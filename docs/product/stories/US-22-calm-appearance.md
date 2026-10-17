@@ -1,14 +1,10 @@
 # US-22 Choose light, dark, or the system theme
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." That clarification is not approval of this story.
-> Story approval has not been recorded.
 
-**Epic:** E5. Not an approval.
+**Epic:** E5.
 
-**MoSCoW:** Must. v1, from approved epic E5. Palette, dynamic color, and motion are US-53.
+**MoSCoW:** Must. v1. Palette, dynamic color, and motion are US-53.
 
 ## Title
 

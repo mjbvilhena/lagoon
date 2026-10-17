@@ -1,13 +1,10 @@
 # US-27 Review screenshots of the main screens
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> At commit `9e7de63`, Dev Bot, Scout, Mikey's Assistant, Household, and Leisure each returned an Approve review verdict on this story. Those verdicts are not recorded as approval.
-> Story approval has not been recorded.
 
-**Epic:** E6. Not an approval.
+**Epic:** E6.
 
-**MoSCoW:** Must. v1, from approved epic E6. The images exist only when an emulator exists.
+**MoSCoW:** Must. v1. The images exist only when an emulator exists.
 
 ## Title
 

@@ -1,13 +1,10 @@
 # US-06 Add a URL by hand
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -23,7 +20,7 @@ Add a URL by hand.
 
 - A typed URL is a link item. Enrichment is not required for the save.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the page fetch (US-08). The schemeless rule below is a draft so the scenario is testable. It is not Miguel's approval.
+- Out of scope: the page fetch (US-08). A URL typed without a scheme is treated as https so the scenario is testable.
 
 ## Acceptance criteria
 

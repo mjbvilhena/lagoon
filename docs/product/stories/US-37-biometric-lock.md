@@ -1,13 +1,10 @@
 # US-37 Lock sensitive items, and optionally lock the app
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E8. Not an approval.
+**Epic:** E8.
 
-**MoSCoW:** Must. v1, from approved epic E8, plus Miguel's app-lock decision of 2026-10-17 14:56 IST.
+**MoSCoW:** Must. v1. App lock is optional.
 
 ## Title
 
@@ -21,7 +18,7 @@ Lock sensitive items, and optionally lock the app.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that app lock is optional, and that the device PIN is the fallback when there are no biometrics.
+- App lock is optional. The device PIN is the fallback when there are no biometrics.
 - What lists, search, notifications, export, the cloud call, and screenshots show for a sensitive item is US-75.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: those display questions (US-75).

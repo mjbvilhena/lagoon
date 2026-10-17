@@ -1,13 +1,10 @@
 # US-33 Keep an offline snapshot of a saved page
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E2. Not an approval.
+**Epic:** E2.
 
-**MoSCoW:** Must. v1, from approved epic E2.
+**MoSCoW:** Must. v1.
 
 ## Title
 

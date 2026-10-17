@@ -1,13 +1,10 @@
 # US-58 Run enrichment, snapshot, OCR, and topics in that order
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1 enabler. The review asked for the pipeline order.
+**MoSCoW:** Must. v1.
 
 ## Title
 

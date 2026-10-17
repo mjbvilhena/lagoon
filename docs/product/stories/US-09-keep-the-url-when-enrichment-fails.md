@@ -1,13 +1,10 @@
 # US-09 Keep the link when the page cannot be fetched
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> At commit `9e7de63`, Dev Bot, Scout, Mikey's Assistant, Household, and Leisure each returned an Approve review verdict on this story. Those verdicts are not recorded as approval.
-> Story approval has not been recorded.
 
-**Epic:** E2. Not an approval.
+**Epic:** E2.
 
-**MoSCoW:** Must. v1, from approved epic E2. One scenario is Should.
+**MoSCoW:** Must. v1. One scenario is Should.
 
 ## Title
 

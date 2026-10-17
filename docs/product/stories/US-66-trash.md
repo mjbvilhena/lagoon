@@ -1,13 +1,10 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E3. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
+**Epic:** E3.
 
-**MoSCoW:** Should. v1 delete-with-undo is US-13. This story is not a v1 gate.
+**MoSCoW:** Should. Delete with undo is US-13.
 
 ## Title
 
@@ -22,7 +19,7 @@ Keep a trash beyond undo.
 ## Background
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: US-13, which remains the v1 path. Thirty days is a draft rule, not Miguel's approval.
+- Out of scope: US-13, which remains the undo path. How long trash keeps an item is not decided. Scenarios use thirty days until it is.
 
 ## Acceptance criteria
 

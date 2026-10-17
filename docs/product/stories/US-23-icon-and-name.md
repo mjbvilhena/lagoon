@@ -1,14 +1,10 @@
 # US-23 Show a launcher icon and the name Lagoon
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> The name Lagoon is the joint recommendation recorded in the approved specification. This story does not treat that recommendation as its own approval.
-> Story approval has not been recorded.
 
-**Epic:** E5. Not an approval.
+**Epic:** E5.
 
-**MoSCoW:** Must. v1, from approved epic E5.
+**MoSCoW:** Must. v1.
 
 ## Title
 

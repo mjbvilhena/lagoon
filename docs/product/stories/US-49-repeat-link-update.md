@@ -1,13 +1,10 @@
 # US-49 Update a link that was saved before
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Split from US-01 after the review at `9e7de63`. This draft was not in that review.
-> Story approval has not been recorded. Epic approval is not story approval.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1. The approved specification already describes this repeat-URL behavior.
+**MoSCoW:** Must. v1.
 
 ## Title
 

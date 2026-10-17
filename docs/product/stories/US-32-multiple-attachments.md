@@ -1,13 +1,10 @@
 # US-32 Keep more than one attachment on an item
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1.
+**MoSCoW:** Must. v1.
 
 ## Title
 

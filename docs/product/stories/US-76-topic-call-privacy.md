@@ -1,13 +1,10 @@
 # US-76 Decide the topic call's provider, credential, and payload
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E11. Not an approval.
+**Epic:** E11.
 
-**MoSCoW:** Not set. Blocked. Not scheduled until the question it holds is answered.
+**MoSCoW:** Not set. The question is still open.
 
 ## Title
 
@@ -21,8 +18,8 @@ Decide the topic call's provider, credential, and payload.
 
 ## Background
 
-- Still open for Miguel: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). Whether a sensitive item is excluded is US-75, from the 15:55 IST amendment.
-- A proposed constraint from US-79, not a decision of the rest of the payload: the query and the fragment of a token-looking URL are not sent.
+- Still open: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). A sensitive item is excluded (US-75).
+- The query and the fragment of a token-looking URL are not sent (US-79). The rest of the payload is still open.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing those answers in this revision.
 
@@ -41,7 +38,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open questions for Miguel. Sensitive-item exclusion is US-75.
+- The questions above stay open. Sensitive-item exclusion is US-75.
 
 ## Implementation notes
 

@@ -1,14 +1,10 @@
 # US-40 Fill an empty title from the page or the file
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
-> Miguel (`mjbvilhena`) on 2026-10-17 at 20:03 IST: an empty title on a screenshot, image, or scan fills from the file name. The host-only title for a token-looking link stays. This is not story approval.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from the approved specification.
+**MoSCoW:** Must. v1.
 
 ## Title
 

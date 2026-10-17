@@ -1,14 +1,10 @@
 # US-03 Share an image into the vault
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -24,7 +20,7 @@ Share an image into the vault.
 
 - The bytes have to be copied during the share, because the sending app may delete its copy.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the in-app camera (US-65), image editing, and cloud vision. HEIC handling below is a draft rule, not Miguel's approval.
+- Out of scope: the in-app camera (US-65), image editing, and cloud vision. On API 26 or 27, HEIC or HEIF bytes are kept and the item has no preview.
 
 ## Acceptance criteria
 

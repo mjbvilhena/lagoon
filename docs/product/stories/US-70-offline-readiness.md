@@ -1,13 +1,10 @@
 # US-70 See what is not ready for offline
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E2. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
+**Epic:** E2.
 
-**MoSCoW:** Could. Not in the approved specification.
+**MoSCoW:** Could.
 
 ## Title
 

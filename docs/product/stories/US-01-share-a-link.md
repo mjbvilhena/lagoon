@@ -1,13 +1,10 @@
 # US-01 Share a link into the vault
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded. Epic approval is not story approval.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -64,7 +61,7 @@ Not applicable. The brief forbids analytics.
 ## Dependencies and risks
 
 - A hand-entered URL uses US-06, then US-49 for a repeat.
-- Open questions for Miguel are in `docs/product/stories/REVIEW-PACK.md`. This story does not decide them.
+- Open questions are in `docs/product/stories/REVIEW-PACK.md`. This story does not decide them.
 
 ## Implementation notes
 

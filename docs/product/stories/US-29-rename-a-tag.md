@@ -1,13 +1,10 @@
 # US-29 Rename a tag, merging only after he confirms a clash
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
-**MoSCoW:** Must. v1, from approved epic E3.
+**MoSCoW:** Must. v1.
 
 ## Title
 

@@ -1,13 +1,10 @@
 # US-47 Keep the item when the topic call fails
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E11. Not an approval.
+**Epic:** E11.
 
-**MoSCoW:** Must. v1, from approved epic E11.
+**MoSCoW:** Must. v1.
 
 ## Title
 

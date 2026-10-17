@@ -1,13 +1,10 @@
 # US-72 Score whether topics are useful
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E11. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
+**Epic:** E11.
 
-**MoSCoW:** Could. A dev chore, not a v1 ship gate, and not a task for Miguel to hand-label.
+**MoSCoW:** Could. The score is computed on the phone.
 
 ## Title
 
@@ -21,8 +18,8 @@ Score whether topics are useful.
 
 ## Background
 
-- Two separate scores: kept-unchanged rate, and match against a fixture. Near-duplicate means two names are equal after the normalisation in US-42, including a trailing singular or plural `s`, or the edit distance is length-relative: at most 1 when the shorter name has fewer than 12 characters, and at most 2 when it has 12 or more. Counts stay on the phone. Miguel is not asked to hand-label.
-- The fixture is built in the test source. It is 20 items: 8 notes, 6 links, 4 images, and 2 PDFs. Each title and each body is at least 40 characters. It includes 4 name pairs that are near-duplicates under the rule above and 4 names that are not. It runs as a local unit test. It does not call the cloud and it does not use Miguel's vault.
+- Two separate scores: kept-unchanged rate, and match against a fixture. Near-duplicate means two names are equal after the normalisation in US-42, including a trailing singular or plural `s`, or the edit distance is length-relative: at most 1 when the shorter name has fewer than 12 characters, and at most 2 when it has 12 or more. Counts stay on the phone. He is not asked to hand-label.
+- The fixture is built in the test source. It is 20 items: 8 notes, 6 links, 4 images, and 2 PDFs. Each title and each body is at least 40 characters. It includes 4 name pairs that are near-duplicates under the rule above and 4 names that are not. It runs as a local unit test. It does not call the cloud and it does not use the vault on the phone.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: analytics upload (US-07).
 

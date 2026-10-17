@@ -1,13 +1,10 @@
 # US-44 Queue topic processing while offline
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E11. Not an approval.
+**Epic:** E11.
 
-**MoSCoW:** Must. v1, from approved epic E11.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -24,7 +21,7 @@ Queue topic processing while offline.
 - One WorkManager job per item id. The job uses the same worker family as US-41.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: what the call is allowed to send (US-76).
-- The topic job has its own "Unmetered only" setting. It is not the sync preference. Miguel approved that in `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST, and epic E11 now includes it.
+- The topic job has its own "Unmetered only" setting. It is not the sync preference. Epic E11 includes that setting.
 
 ## Acceptance criteria
 

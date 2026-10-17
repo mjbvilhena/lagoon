@@ -1,13 +1,7 @@
 # Product vision
 
-> **Approval status: Current vision.**
-> This file states the vision that is already approved. It is the specification, epics E1–E9 and E11, and the amendment `docs/product/amendments/2026-10-17-security-delegation.md`.
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
-> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
-> On the vision file he said: "Vision document should always reflect the current vision, not an historic vision with some amendments added to it".
-> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`).
-> Later, on 2026-10-17 at 16:00 IST, he decided the ML Kit telemetry requirement recorded on US-07. This file includes that requirement so the vision stays current. That sentence is not a new approval of the whole vision, and it does not approve US-07.
-> E10 is later and is not v1. Stories stay Draft. This file does not approve them.
+> **Approval status: Approved.**
+> Approved by mjbvilhena on 2026-10-17.
 
 ## Vision
 
@@ -24,7 +18,7 @@ Miguel. He is the only person named. The vault is personal, not a shared workspa
 - A saved link keeps its URL. When a fetch works, it gains a title, description, preview, readable text, and an offline snapshot of the page.
 - English text on images and scanned PDFs is recognized on the device with the bundled model. Text-based PDFs are extracted, not sent through OCR. Before the first OCR use he accepts a disclosure that ML Kit sends usage and diagnostic metrics to Google, because Google's docs do not offer a switch to turn that off. He can withdraw that acceptance. The image and the recognized text stay on the device. He can read that disclosure in Settings.
 - He browses newest first, opens an item, edits it, deletes it with undo, and files it with tags. Search is ranked and highlighted. He can filter by type and by tag.
-- Sharing an item back out to another app is a Should (US-64). The acceptance criteria for that share stay proposed.
+- Sharing an item back out to another app is a Should (US-64). The acceptance criteria are on that story.
 - Sync runs in the background to his private Google Drive app space. What Drive stores is ciphertext. There is no Back up now, no Restore, and no last-backup time. A zip on the device remains a fallback. The app still works when sync is not configured.
 - The database and the files are encrypted on the phone. A sensitive item stays closed until a biometric succeeds, or the device PIN when there is no biometric. App lock is optional. If the vault key is lost, the content is lost, and there is no recovery.
 - An item can have a reminder or an expiry, with a notification. Alarms stay inexact.

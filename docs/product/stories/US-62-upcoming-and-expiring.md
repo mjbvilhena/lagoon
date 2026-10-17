@@ -1,14 +1,10 @@
 # US-62 See what is coming due
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
-> Miguel (`mjbvilhena`) on 2026-10-17 at 20:03 IST removed return-by and warranty from this list. It shows the one reminder or the one expiry. This is not story approval.
 
-**Epic:** E9. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
+**Epic:** E9.
 
-**MoSCoW:** Should. In E9 by the amendment approved on 2026-10-17 at 20:02 IST. Not a story approval. Inside this story, the Upcoming list and the expired marker are Must.
+**MoSCoW:** Should. The Upcoming list and the expired marker are Must.
 
 ## Title
 
@@ -23,7 +19,7 @@ See what is coming due.
 ## Background
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: exact alarms (US-77). Snooze length of 1 hour is a draft rule. It is not Miguel's approval.
+- Out of scope: exact alarms (US-77). Snooze length is 1 hour in this story.
 
 ## Acceptance criteria
 

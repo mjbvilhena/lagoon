@@ -1,14 +1,10 @@
 # US-53 Use the teal palette, optional dynamic color, and reduced motion
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Split from US-22 after the review at `9e7de63`. This draft was not in that review.
-> The accent values are the recorded Q3 consensus in the approved specification. They are not a new approval.
-> Story approval has not been recorded.
 
-**Epic:** E5. Not an approval.
+**Epic:** E5.
 
-**MoSCoW:** Must. v1, from approved epic E5.
+**MoSCoW:** Must. v1.
 
 ## Title
 

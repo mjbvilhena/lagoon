@@ -1,13 +1,10 @@
 # US-31 Recognize English text on the device
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E7. Not an approval.
+**Epic:** E7.
 
-**MoSCoW:** Must. v1, from approved epic E7. English only.
+**MoSCoW:** Must. v1. English only.
 
 ## Title
 
@@ -21,9 +18,9 @@ Recognize English text on the device.
 
 ## Background
 
-- Miguel's recorded decision is English only for v1. Other languages are out of scope.
+- v1 OCR is English only. Other languages are out of scope.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: merchants, booking references, and cloud OCR. The page cap below is a draft rule so the job is testable. It is not Miguel's approval.
+- Out of scope: merchants, booking references, and cloud OCR. The page cap below makes the job testable.
 
 ## Acceptance criteria
 

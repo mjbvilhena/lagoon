@@ -1,13 +1,10 @@
 # US-25 Run the tests he named
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E6. Not an approval.
+**Epic:** E6.
 
-**MoSCoW:** Must. v1, from approved epic E6.
+**MoSCoW:** Must. v1.
 
 ## Title
 

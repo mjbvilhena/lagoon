@@ -1,13 +1,10 @@
 # US-55 Reschedule reminders after a restart or a clock change
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E9. Not an approval.
+**Epic:** E9.
 
-**MoSCoW:** Must. v1, from approved epic E9. Split from US-34.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -21,7 +18,7 @@ Reschedule reminders after a restart or a clock change.
 
 ## Background
 
-- Alarms stay inexact. The time is the device local zone, which is what the specification means by local. A fixed home zone is an open question for Miguel, not a Must.
+- Alarms stay inexact. The time is the device local zone. Whether 09:00 follows a fixed zone instead stays open.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: exact alarms (US-77).
 

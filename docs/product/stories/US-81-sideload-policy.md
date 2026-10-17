@@ -1,14 +1,10 @@
 # US-81 Publish a sideload signing policy
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> US-24 still requires a signed APK because epic E6 does. This story does not replace that.
 
-**Epic:** E6. Not an approval.
+**Epic:** E6.
 
-**MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -22,13 +18,11 @@ Publish a sideload signing policy.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated sideloading to his bots. He did not decide it.
+- A later install uses the same application id and the same release key. The criteria below are the requirements.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a self-updater. There is none. Play Store listing. Exact keystore passwords, which are never written in the repo.
 
 ## Acceptance criteria
-
-> **Proposed: pending Miguel's approval.**
 
 - **Scenario: the release key** — Must
   - Given the release signing key
@@ -70,8 +64,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The specification now records that sideload policy was delegated, after the amendment approved on 2026-10-17 at 15:55 IST. These criteria stay proposed.
+- The criteria below are the sideload signing policy.
 
 ## Implementation notes
 
-Not a design spec. Do not implement from this file until Miguel approves the proposal. Do not commit key material.
+Not a design spec. The story is Draft. Do not implement from this file. Do not commit key material.

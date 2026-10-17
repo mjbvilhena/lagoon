@@ -1,13 +1,10 @@
 # US-51 Sync in the background and show errors
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Split from US-18 after the review at `9e7de63`. This draft was not in that review.
-> Story approval has not been recorded.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1, from approved epic E4.
+**MoSCoW:** Must. v1.
 
 ## Title
 

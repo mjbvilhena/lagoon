@@ -1,15 +1,10 @@
 # US-41 Extract topics when an item is saved
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
-> Miguel (`mjbvilhena`) decided the default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That quote is in `docs/product/amendments/2026-10-17-chat-decisions.md`. It is not story approval. It does not decide sensitive-item exclusion.
-> On 2026-10-17 at 20:03 IST he removed the cap of 8 topic suggestions. There is no cap. This is not story approval.
 
-**Epic:** E11. Not an approval.
+**Epic:** E11.
 
-**MoSCoW:** Must. v1, from approved epic E11.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -25,9 +20,9 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. Miguel (`mjbvilhena`) removed the cap of 8 on 2026-10-17 at 20:03 IST. A per-item "Include in topics" opt-in stays proposed on US-75. It goes beyond the 18:05 IST quote and stays open for Miguel.
+- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. A per-item "Include in topics" control on US-75 is still open.
 - The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he chooses "Get topics" on that item. That is the named control behind "unless he asks".
-- A sensitive item stays out of the call. That exclusion is US-75, from the amendment approved on 2026-10-17 at 15:55 IST. It is not part of the 18:05 IST quote. It still applies when this switch is on.
+- A sensitive item stays out of the call (US-75). That exclusion still applies when this switch is on.
 - The topic job keeps its own "Unmetered only" setting (US-44). Turning topics on does not use the sync preference and does not ignore that setting.
 
 ## Acceptance criteria
@@ -48,7 +43,7 @@ Extract topics when an item is saved.
 - **Scenario: a sensitive item** — Must
   - Given the topic switch is on and the item is sensitive
   - When a topic job would run
-  - Then no call is made for that item. The exclusion is US-75, from the amendment approved on 2026-10-17 at 15:55 IST. It is not the 18:05 IST quote
+  - Then no call is made for that item (US-75)
 - **Scenario: unmetered still applies** — Must
   - Given the topic switch is on and the topic "Unmetered only" setting (US-44) is on
   - When the network is metered
@@ -89,7 +84,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Which fields may be sent is US-76 and is still open for Miguel.
+- Which fields may be sent is US-76 and is still open.
 
 ## Implementation notes
 

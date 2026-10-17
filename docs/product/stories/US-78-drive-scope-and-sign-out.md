@@ -1,14 +1,10 @@
 # US-78 Keep Drive to app data, and sign out without deleting the phone
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> The approved specification names `appDataFolder`. These criteria do not replace that.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -22,13 +18,11 @@ Keep Drive to app data, and sign out without deleting the phone.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated Drive scope and sign-out to his bots. He did not decide them.
+- Drive access stays `appDataFolder`. Sign-out does not delete the vault on the phone. The criteria below are the requirements.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: sync conflicts and deletion propagation (US-73). Key transport (US-74).
 
 ## Acceptance criteria
-
-> **Proposed: pending Miguel's approval.**
 
 - **Scenario: the scope** — Must
   - Given he grants Drive access
@@ -78,9 +72,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-18's round-2 verdict is conditional on this proposal. That condition is not an approval of either story.
+- US-18 is sign-in. This story is scope and sign-out.
 - US-59 only hosts the sign-out slot.
 
 ## Implementation notes
 
-Not a design spec. Do not implement from this file until Miguel approves the proposal.
+Not a design spec. The story is Draft. Do not implement from this file.

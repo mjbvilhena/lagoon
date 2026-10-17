@@ -1,13 +1,10 @@
 # US-15 Search the vault and see highlighted matches
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
-**MoSCoW:** Must. v1, from approved epic E3. Ranking weights are US-50. The FTS5 spike is US-57.
+**MoSCoW:** Must. v1. Ranking weights are US-50. The FTS5 spike is US-57.
 
 ## Title
 

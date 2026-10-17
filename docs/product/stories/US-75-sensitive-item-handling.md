@@ -1,15 +1,10 @@
 # US-75 Limit what a sensitive item reveals
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria in that block are a bot draft. They are not his decision.
-> The lock-screen reminder criterion is decided. Miguel (`mjbvilhena`) decided it in chat on 2026-10-17 at 15:59 IST. That decision is not story approval. Status stays Draft.
-> Sensitive-item exclusion from the topic call is the amendment approved on 2026-10-17 at 15:55 IST. It is not Proposed. It is not the 18:05 IST quote. This run does not record a new approval.
 
-**Epic:** E8. Not an approval.
+**Epic:** E8.
 
-**MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -23,15 +18,14 @@ Limit what a sensitive item reveals.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated lists, search, export, the cloud call, and screenshots to his bots. He did not decide those. US-37 still requires a biometric or device credential before the body.
-- On 2026-10-17 at 15:59 IST he decided the lock-screen reminder for a sensitive item. It narrows his 14:56 decision, which still lets an ordinary item show its title and codes (US-34). Sensitive items only: the lock screen shows a generic "Lagoon reminder" and nothing else.
+- US-37 still requires a biometric or device credential before the body.
+- A lock-screen reminder for a sensitive item shows only "Lagoon reminder", with no title and no code until the device is unlocked. An ordinary item may still show its title and codes (US-34).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the topic provider and payload (US-76). Ordinary lock-screen text (US-34).
 
 ## Acceptance criteria
 
 - **Scenario: lock-screen reminder** — Must
-  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
   - Given a sensitive item has a reminder
   - When the notification is posted
   - Then it uses `VISIBILITY_PRIVATE` and `setPublicVersion`, and the public text is only "Lagoon reminder"
@@ -40,18 +34,15 @@ Limit what a sensitive item reveals.
   - And the private version, which may show the title and a code, appears only after the device is unlocked
   - And the item body still waits for the US-37 unlock
 - **Scenario: the topic call** — Must
-  - Recorded in the amendment approved on 2026-10-17 at 15:55 IST. This criterion is not Proposed. This run does not record a new approval.
   - Given a sensitive item
   - When a topic job would run
   - Then the item is excluded
   - And the job waits until the quick-add row has closed, so a sensitive mark on that row is seen first
 
-> **Proposed: pending Miguel's approval.** The scenarios below are still a bot draft.
-
-- **Scenario: a per-item opt-in** — Proposed. Not decided.
+- **Scenario: a per-item opt-in** — open
   - Given a sensitive item
-  - When the proposed "Include in topics" control is considered
-  - Then that control stays proposed. It goes beyond the 18:05 IST quote. Miguel has not accepted it. The default exclusion above still holds
+  - When an "Include in topics" control is considered
+  - Then whether that per-item control exists is still open. The default exclusion above still holds
 - **Scenario: other sensitive notices** — Must
   - Given a sensitive item has an expiry
   - When that notice is posted
@@ -89,11 +80,11 @@ Limit what a sensitive item reveals.
   - When that content is showing
   - Then `FLAG_SECURE` is set for that screen, not for the whole app
   - And when app lock is on, on API 33 or newer, `setRecentsScreenshotEnabled(false)` is set
-- **Scenario: the posted notification itself** — Proposed. Not decided.
+- **Scenario: the posted notification itself** — open
   - Given a sensitive reminder is posted
   - When the device is set to show all notification content
-  - Then one proposed option is that the posted notification itself carries only "Lagoon reminder", because that setting can reveal the private version
-  - And Miguel has not chosen this option. The decided public version above still stands
+  - Then whether the posted notification itself carries only "Lagoon reminder" is still open, because that setting can reveal the private version
+  - And the public version above still stands
 - **Scenario: the zip** — Must
   - Given he exports a zip (US-21)
   - When a sensitive item would be included
@@ -115,9 +106,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The lock-screen reminder is decided, above. Sensitive-item exclusion from the topic call is the 15:55 IST amendment, above. The other scenarios in this file stay proposed. The per-item opt-in and the private-version notification option are open for Miguel.
+- The lock-screen reminder and the topic exclusion are requirements above. Whether a per-item "Include in topics" control exists, and whether a sensitive notification's private version is also only "Lagoon reminder", stay open.
 - US-37 is the unlock. Details of a sensitive reminder appear only after that unlock.
 
 ## Implementation notes
 
-Not a design spec. Do not implement from this file until Miguel approves the proposal.
+Not a design spec. The story is Draft. Do not implement from this file.

@@ -1,14 +1,10 @@
 # US-18 Sign in so the vault can sync
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
-> The file was renamed from `US-18-back-up-now.md`. There is no Back up now button.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1, from approved epic E4. The worker and errors are US-51. Sign-out is the proposed US-78. A round-2 verdict on this story is conditional on US-78. That condition is not an approval.
+**MoSCoW:** Must. v1. The worker and errors are US-51. Sign-out is US-78.
 
 ## Title
 

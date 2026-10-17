@@ -1,14 +1,10 @@
 # US-20 Receive the vault on another install
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
-> The file was renamed from `US-20-restore-from-drive.md`. This is not a Restore button.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1, from approved epic E4. Q5 is resolved as merge.
+**MoSCoW:** Must. v1. One-sided items are kept.
 
 ## Title
 
@@ -24,7 +20,7 @@ Receive the vault on another install.
 
 - The specification says an item that exists on only one side is kept. The merge basis for that case is a stable item id and `updatedAt` (US-56).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the same item edited on both sides, and how a deletion propagates. Those are US-73. Scout's option (tombstones, per-field last-writer-wins, merged notes) is recorded there and is not chosen. Keys on a new device are US-74.
+- Out of scope: the same item edited on both sides, and how a deletion propagates (US-73). The options on that story are not chosen. Keys on a new device are US-74.
 
 ## Acceptance criteria
 

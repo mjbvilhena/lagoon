@@ -1,14 +1,10 @@
 # US-64 Share or open an item in another app
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> Epic E3 includes sharing out as a Should because Miguel approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. That approval is the delegation. These criteria stay proposed.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
-**MoSCoW:** Should. Proposed, pending Miguel's approval. Not a status of Approved.
+**MoSCoW:** Should.
 
 ## Title
 
@@ -22,13 +18,11 @@ Share or open an item in another app.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated sharing out to his bots. He did not decide it. These criteria are the bots' proposal.
+- Sharing out is a Should in E3. The criteria below are the requirements.
 - Domain constraints: `get_domain_consultant("capture")` and `get_domain_consultant("vault")` found no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: sharing the database, the vault key, or snapshot internals. Key transport (US-74).
 
 ## Acceptance criteria
-
-> **Proposed: pending Miguel's approval.**
 
 - **Scenario: share an attachment, a URL, or the body** — Should
   - Given an ordinary item has an attachment, a source URL, or body text
@@ -76,9 +70,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Epic E3 already includes this Should. These criteria stay proposed.
-- US-35 does not encrypt a temp copy that another app must read. This story wipes that copy instead. The 15 minute bound is a draft so the wipe is testable. It is not his approval.
+- Epic E3 includes this Should.
+- US-35 does not encrypt a temp copy that another app must read. This story wipes that copy instead. A temp copy is wiped within 15 minutes.
 
 ## Implementation notes
 
-Not a design spec. Do not implement from this file until Miguel approves the proposal.
+Not a design spec. The story is Draft. Do not implement from this file.

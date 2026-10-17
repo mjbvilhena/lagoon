@@ -1,26 +1,24 @@
 # Research report: ML Kit usage and diagnostic telemetry
 
-Structured findings for Miguel's requirement of 2026-10-17 at 16:00 IST. Pair with skill `sdlc-researcher`.
-
-This note is in the pull request for him. That is the share this step can make. It is not a separate stakeholder review, and it is not his approval of the research or of US-07.
+Input for a later ADR. This file is not an ADR. US-07 stays Draft.
 
 ## Metadata
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Topic | Whether an Android app can disable ML Kit usage and diagnostic telemetry |
 | Domains | `get_domain_consultant("capture")` returned not found. No `DOMAIN.md`. No MUST/NEVER rules were invented. |
 | Layers | `get_layer_consultant("ui")` returned not found. No `LAYER.md`. |
-| Primary Objective | Choose the branch his sentence requires: a Settings toggle if the official docs allow a disable, otherwise an in-app disclosure he accepts |
+| Primary Objective | If the official docs allow a disable, a Settings toggle. They do not, so the requirement is disclosure and acceptance before the first OCR use |
 
 ## Executive Summary
 
-Official Google ML Kit documentation does not give an app a switch that turns off usage or diagnostic telemetry. The terms say the APIs send performance and utilization metrics to Google, and that the app developer must inform users about that processing. The Android data-disclosure page says it lists the configurations a developer can control, and the controls it lists are feature options, not a telemetry off switch. Text recognition is not given a separate opt-out. Because a disable control is not in those docs, US-07 follows the other branch of his 16:00 IST sentence: disclose the metrics and require acceptance before the first OCR use, with the same disclosure readable in Settings (US-59). There is no toggle, so there is no default to copy from the docs. Round 3 adds two constraints from the same pages: use the bundled text-recognition library, and do not start ML Kit until he accepts. Pre-first-call metrics are not documented.
+Official Google ML Kit documentation does not give an app a switch that turns off usage or diagnostic telemetry. The terms say the APIs send performance and utilization metrics to Google, and that the app developer must inform users about that processing. The Android data-disclosure page says it lists the configurations a developer can control, and the controls it lists are feature options, not a telemetry off switch. Text recognition is not given a separate opt-out. Because a disable control is not in those docs, US-07 requires disclosure and acceptance before the first OCR use, with the same disclosure readable in Settings (US-59). There is no toggle, so there is no default to copy from the docs. Two further constraints come from the same pages: use the bundled text-recognition library, and do not start ML Kit until he accepts. Pre-first-call metrics are not documented.
 
 ## Context and constraints
 
-- Miguel (`mjbvilhena`) said, in chat on 2026-10-17 at 16:00 IST: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
-- US-31 already requires on-device English OCR. The approved vision and E7 keep that recognition. This research does not remove OCR.
+- If the docs allow a disable, the app offers one. They do not, so the requirement is disclosure and acceptance.
+- US-31 requires on-device English OCR. The vision and E7 keep that recognition. This note does not remove OCR.
 - The specification forbids an analytics product the app chooses, including Firebase Analytics and Crashlytics. That rule stays. It is a different product from ML Kit's own metrics.
 - The app is a signed sideload APK in v1, not a Play Store product. This note does not fill in a Play Data safety form.
 - Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This was not a live MCP stdio session.
@@ -30,9 +28,9 @@ Official Google ML Kit documentation does not give an app a switch that turns of
 ### Option 1: a Settings toggle that disables the telemetry
 
 - **Description:** Add a control on US-59 that turns ML Kit usage and diagnostic metrics off, and record the default from Google's docs.
-- **Key characteristics:** This is the branch he asked for if it is possible. A real toggle needs a documented developer API or configuration.
+- **Key characteristics:** This is the branch if a disable is possible. A real toggle needs a documented developer API or configuration.
 - **Pros:**
-  - Matches the first half of his sentence.
+  - Would be the fit if a disable API existed.
   - Would let him refuse the metrics and still keep a written choice.
 - **Cons:**
   - The ML Kit terms (last modified May 14, 2025) describe the metrics as something the APIs send. They do not describe a way to stop them.
@@ -46,9 +44,9 @@ Official Google ML Kit documentation does not give an app a switch that turns of
 ### Option 2: disclose the metrics and require acceptance before the first OCR use
 
 - **Description:** Before the first OCR run, the app shows that the image and the recognized text stay on the device, and that ML Kit still sends usage and diagnostic metrics to Google. OCR does not run until he accepts. Settings shows the same disclosure and whether he has accepted it. Declining, or leaving the disclosure unanswered, leaves OCR unrun. A later OCR use does not ask again after an acceptance.
-- **Key characteristics:** This is the branch his sentence requires when a disable is not possible. Acceptance is an app gate on OCR. It is not a documented SDK off switch.
+- **Key characteristics:** This is the requirement when a disable is not possible. Acceptance is an app gate on OCR. It is not a documented SDK off switch.
 - **Pros:**
-  - Matches the second half of his sentence.
+  - Matches the requirement when a disable is not documented.
   - Matches the terms, which assign the developer the job of informing users about Google's processing of ML Kit metrics.
   - Keeps English on-device OCR, which E7 and US-31 already require.
   - The disclosure can be tested without inventing an API.
@@ -56,7 +54,7 @@ Official Google ML Kit documentation does not give an app a switch that turns of
   - He cannot turn the metrics off and still use OCR. The terms do not offer that choice.
   - Declining does not, on the evidence of these docs, guarantee that the SDK sends nothing if it initializes on its own. The acceptance gate stops the app from running OCR. It does not claim a network block the docs do not provide.
   - Exact sentences for the screen wait for a UX artefact. The facts that must appear are in US-07.
-- **Suitability:** This is the fit. His sentence already chooses it when option 1 is unavailable.
+- **Suitability:** This is the fit when option 1 is unavailable.
 - **Security:** Input images, video, and text are processed on device, and the terms say ML Kit does not send that input or the outputs to Google servers. Metrics still leave the device: performance and utilization, plus the all-features set on the Android disclosure page, over HTTPS, not transferred to third parties by ML Kit. The disclosure has to say both facts. Logs must not gain a new analytics pipeline.
 - **Performance:** OCR stays the on-device job in US-31. This option does not add a second recognition service.
 - **Operations:** Store the acceptance on the device so a later OCR use can proceed, and show the same text in Settings. Do not treat Firebase Analytics `setAnalyticsCollectionEnabled`, or any Crashlytics flag, as this control. Those products stay absent under the existing CI rule.
@@ -69,16 +67,16 @@ Official Google ML Kit documentation does not give an app a switch that turns of
   - No ML Kit metrics to disclose.
 - **Cons:**
   - Contradicts approved E7 and US-31, which require on-device English recognition.
-  - His sentence asked for a disable if possible, and otherwise for disclosure and acceptance. It did not ask to drop OCR.
+  - Dropping OCR is not the requirement. The requirement is a disable if the docs allow one, and otherwise disclosure and acceptance.
 - **Suitability:** Not suitable for this decision.
 - **Security, performance, and operations:** Search would lose recognized text from images and scanned pages. That is a product cut, not a telemetry setting.
 
 ## Trade-off analysis
 
 | Constraint | Option 1, toggle | Option 2, disclose and accept | Option 3, drop ML Kit |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Official disable API | Not documented | Not required | Not required |
-| His 16:00 IST sentence | Asked for, only if possible | Required once option 1 is not possible | Not what he asked |
+| Requirement | A toggle, only if a disable exists | Required once option 1 is not possible | Drops OCR, which stays in v1 |
 | Approved on-device OCR | Kept, but the toggle would be fiction | Kept | Removed |
 | What he can refuse | Metrics, if a real API existed | The OCR run, until he accepts | OCR itself |
 | Default to record | None in the docs | Not applicable. There is no toggle | Not applicable |
@@ -86,12 +84,12 @@ Official Google ML Kit documentation does not give an app a switch that turns of
 ## Recommendation
 
 - **Chosen option:** Option 2.
-- **Rationale:** The terms, the Android data-disclosure page, the `MlKit` initialization reference, and the text-recognition guide do not document a developer switch that disables usage or diagnostic telemetry. His sentence then requires disclosure and acceptance. Option 3 would cancel an approved OCR outcome he did not cancel.
-- **Next steps:** The acceptance criteria are on US-07 and US-59. Leave both stories Draft. Do not implement. Do not fill a Play Data safety form from this note. Story approval is still a separate human gate.
+- **Rationale:** The terms, the Android data-disclosure page, the `MlKit` initialization reference, and the text-recognition guide do not document a developer switch that disables usage or diagnostic telemetry. The requirement is then disclosure and acceptance. Option 3 would cancel on-device OCR, which stays in v1.
+- **Next steps:** The acceptance criteria are on US-07 and US-59. Both stories stay Draft. Do not implement. Do not fill a Play Data safety form from this note. Do not draft an ADR from this note.
 
-## Round 3 update
+## Bundled model and init timing
 
-Same sources. Two facts that change the implementation of option 2, not the choice of option.
+Same sources. Two facts that change how option 2 is built, not the choice of option.
 
 - **Bundled model.** The Android data-disclosure page separates thin features from bundled features. Thin features collect a device identifier for diagnostics and usage analytics. Bundled features collect per-installation identifiers that are not intended to uniquely identify a user or a physical device. Text recognition has a Play services artifact, `com.google.android.gms:play-services-mlkit-text-recognition`, and a bundled artifact, `com.google.mlkit:text-recognition`. US-31 requires the bundled artifact and requires the Play services artifact to be absent.
 - **When the SDK starts.** Those pages do not say whether metrics are sent before the first API call. That gap is undocumented, not a hidden off switch. US-07 therefore removes `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and calls `MlKit.initialize` only after he accepts. A decline means the app never calls `initialize`, so ML Kit does not start. Withdrawing the acceptance in Settings returns to that state. This is still init timing. It is not a documented way to turn metrics off after the SDK has been used.

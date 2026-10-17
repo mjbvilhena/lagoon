@@ -1,16 +1,9 @@
 # Epic E8: Encryption and sensitive items
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
-> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. The cipher is an ADR, not this file.
-> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, section 2, applied after his approval.
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
-> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
-> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
-> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E8-1 is folded into the scope below from the text at commit `2fe0422`. The lock-screen reminder was already decided at 15:59 IST. The other US-75 criteria stay proposed. This does not approve US-75.
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -30,9 +23,9 @@ Miguel, including on a second device that should see the same vault and not a pl
   - Client-side end-to-end encryption of everything synced to Drive. Drive stores ciphertext only.
   - Fingerprint or biometric lock on items marked sensitive, tied to this encryption work.
   - App lock is optional. The device PIN is the fallback when there are no biometrics.
-  - Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail (A-E8-1, US-75). The lock-screen reminder shows only "Lagoon reminder". Acceptance: that public reminder text is the 15:59 IST decision. Export of a sensitive item waits for the US-37 unlock. The rest of US-75 stays proposed. Topic exclusion stays the approved E11 amendment of 15:55 IST.
+  - Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail (A-E8-1, US-75). The lock-screen reminder shows only "Lagoon reminder". Acceptance: that public reminder text is "Lagoon reminder". Export of a sensitive item waits for the US-37 unlock. The rest of the handling is the criteria on US-75. Sensitive items are excluded from the topic call (E11).
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App-wide unlock is optional, per Miguel's decision of 2026-10-17 at 14:56 IST. It is no longer an open question. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) is his recorded exception: readable content goes to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
+- **Out of Scope / Non-Goals:** Choosing algorithms, modes, or key lengths here. A cloud key service. App lock is optional. Encrypting the zip with a scheme this draft invents. The zip must not become a plaintext hole if the rest of the vault is encrypted; how the zip is protected follows the same at-rest outcome and is not a second design. Treating Drive sync as the only way content can leave the phone. Topic extraction (E11) sends readable content to a cloud AI. Drive still receives only ciphertext. This epic does not design that call.
 
 ## Core Workflows
 
@@ -48,23 +41,19 @@ Miguel, including on a second device that should see the same vault and not a pl
 
 ## Risks & Dependencies
 
-- Depends on E4 for the sync path. Sync of readable data on a second device depends on his answer about keys.
+- Depends on E4 for the sync path. Sync of readable data on a second device depends on how keys move.
 - Threat model (`sdlc-threat-modeler`) is required before implementation. Not started.
-- Key transport is his open question. Stories do not answer it. On 2026-10-17 at 14:56 IST he decided that a lost key means the content is lost, with no recovery, and that app lock is optional with a device-PIN fallback.
+- Key transport is open. A lost key means the content is lost, with no recovery. App lock is optional, with a device-PIN fallback.
 
 ## Open Questions
 
-- [ ] How keys reach a new or second device. (@mjbvilhena)
-- Decided 2026-10-17 at 14:56 IST: if the key is lost, the content is lost, and there is no recovery.
-- Decided 2026-10-17 at 14:56 IST: app lock is optional. The device PIN is the fallback when there are no biometrics.
+- [ ] How keys reach a new or second device.
+- If the key is lost, the content is lost, and there is no recovery.
+- App lock is optional. The device PIN is the fallback when there are no biometrics.
 
 ## Draft stories
 
 - US-35 Encrypt the vault at rest
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
-- US-75 Limit what a sensitive item reveals. Proposed, except the decided lock-screen reminder. Not story approval.
-
-## Amendments applied 2026-10-17 at 20:02 IST
-
-A-E8-1 was approved as written at `2fe0422` and folded into Scope above. The other US-75 criteria stay proposed. Stories stay Draft.
+- US-75 Limit what a sensitive item reveals.

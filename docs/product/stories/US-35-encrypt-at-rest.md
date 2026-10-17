@@ -1,13 +1,10 @@
 # US-35 Encrypt the vault at rest
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E8. Not an approval.
+**Epic:** E8.
 
-**MoSCoW:** Must. v1, from approved epic E8.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -21,9 +18,9 @@ Encrypt the vault at rest.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided: if the vault key is lost, the content is lost. There is no recovery.
+- If the vault key is lost, the content is lost. There is no recovery.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). Whether the Keystore key is bound to device authentication. That question stays open for Miguel. This story does not choose it. It does set `setInvalidatedByBiometricEnrollment(false)`.
+- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). Whether the Keystore key is bound to device authentication stays open. This story does not choose it. It does set `setInvalidatedByBiometricEnrollment(false)`.
 
 ## Acceptance criteria
 
@@ -47,10 +44,10 @@ Encrypt the vault at rest.
   - Given the key exists
   - When he enrolls a new biometric
   - Then the key stays valid. The Keystore entry is created with `setInvalidatedByBiometricEnrollment(false)`
-- **Scenario: the OS authentication state** — pending Miguel. Not a Must.
+- **Scenario: the OS authentication state** — open
   - Given the key exists
   - When the OS authentication state changes
-  - Then this story does not say whether the key stays valid. Whether the key is auth-bound stays open for Miguel
+  - Then this story does not say whether the key stays valid. Whether the key is auth-bound stays open
 - **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored

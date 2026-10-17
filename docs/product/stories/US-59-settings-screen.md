@@ -1,14 +1,10 @@
 # US-59 Use one Settings screen
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
-> Miguel (`mjbvilhena`) decided the topic default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That decision is not story approval.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1. The review asked for one Settings screen for the controls that already exist.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -24,9 +20,9 @@ Use one Settings screen.
 
 - This screen hosts controls defined by other stories. It does not add Back up now.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: deciding sign-out. The row is only a slot. The behavior is the proposed US-78, pending Miguel's approval.
-- The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Epic E11 includes that setting after the amendment approved on 2026-10-17 at 15:55 IST.
-- The ML Kit disclosure is a slot. The behavior is US-07, decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. It is not a telemetry off switch. Google's docs do not state a default, because they do not state a switch. Settings can withdraw the acceptance.
+- Out of scope: the sign-out behavior. The row is only a slot. The behavior is US-78.
+- The topic job's own "Unmetered only" control (US-44) is separate from the sync preference.
+- The ML Kit disclosure is a slot. The behavior is US-07. It is not a telemetry off switch. Google's docs do not state a switch. Settings can withdraw the acceptance.
 - The topic switch starts on. He can turn it off. The behavior is US-41. The topic "Unmetered only" setting stays separate (US-44).
 
 ## Acceptance criteria

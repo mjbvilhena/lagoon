@@ -1,13 +1,10 @@
 # US-74 Decide how the vault key reaches another device
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E8. Not an approval.
+**Epic:** E8.
 
-**MoSCoW:** Not set. Blocked. Not scheduled until the question it holds is answered.
+**MoSCoW:** Not set. The question is still open.
 
 ## Title
 
@@ -21,7 +18,7 @@ Decide how the vault key reaches another device.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel decided that a lost key means the content is lost, with no recovery (US-35), and that the zip is encrypted with the vault key (US-21). He did not decide how a key reaches a new device.
+- A lost key means the content is lost, with no recovery (US-35). The zip is encrypted with the vault key (US-21). How a key reaches a new device is still open.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: inventing a Google-derived key or a passphrase here.
 
@@ -40,7 +37,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open question for Miguel in `docs/product/stories/REVIEW-PACK.md`.
+- Open question. Listed in `docs/product/stories/REVIEW-PACK.md`.
 
 ## Implementation notes
 

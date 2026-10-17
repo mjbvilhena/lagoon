@@ -1,12 +1,8 @@
 # Epic E5: Look and feel
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
-> This epic records visual constraints he already stated. It is not a UX artefact. Screens, layout, and copy beyond his words belong to `sdlc-ux-designer` after story approval. This epic does not invent screens.
-> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E5-1 is folded into the scope below from the text at commit `2fe0422`. This does not approve US-53. The story stays Draft.
+> Approved by mjbvilhena on 2026-10-17.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -25,11 +21,11 @@ Miguel, using the app every time he saves or looks something up.
   - Dynamic color is an optional toggle. Teal is the fallback when it is off. The UX gate can still check the teal values. Dynamic color is not how light or dark is chosen.
   - An in-app theme setting with three options: Light, Dark, and System. System follows the Android system light/dark setting. System is the default.
   - Light uses the light palette. Dark uses the dark palette. Those rules apply whether he chose the mode or System followed the phone.
-  - Calm layout, generous whitespace, refined typography, subtle motion. When the system animator scale says motion is off, the vault does not require motion (A-E5-1, US-53). Acceptance: the teal palette, Light, Dark, System, and the optional dynamic-color toggle stay as approved. Reduced motion is the added outcome.
+  - Calm layout, generous whitespace, refined typography, subtle motion. When the system animator scale says motion is off, the vault does not require motion (A-E5-1, US-53). Acceptance: the teal palette, Light, Dark, System, and the optional dynamic-color toggle stay. Reduced motion is included.
   - No clutter and no placeholder text in the shipped UI.
   - A tasteful launcher icon and the short name Lagoon.
 - **Future Scope (v2+):** Nothing scheduled.
-- **Out of Scope / Non-Goals:** A component library other than Material 3. A second brand accent beside teal. Dynamic color as the default. Wireframes in this epic. Treating this draft as epic approval. A Play Store listing.
+- **Out of Scope / Non-Goals:** A component library other than Material 3. A second brand accent beside teal. Dynamic color as the default. Wireframes in this epic. A Play Store listing.
 
 ## Core Workflows
 
@@ -42,21 +38,16 @@ Miguel, using the app every time he saves or looks something up.
 
 ## Risks & Dependencies
 
-- Q1 (the name Lagoon) and Q3 (the teal, dark on-accent text, optional dynamic color) are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design has not started.
-- "Tasteful" and "refined" are his words. This epic does not pick a typeface. The accent values are the recommendation, not a finished visual design.
+- The name Lagoon, the teal accent, dark on-accent text, and optional dynamic color are in the specification. Stories stay Draft. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design has not started.
+- This epic does not pick a typeface. The accent values are not a finished visual design.
 
 ## Open Questions
 
-- Q1 and Q3 are part of the approved specification, not open questions. This epic is Approved. Its stories stay Draft. The UX gate may still adjust the accent.
-- On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." The three-way setting above is that clarification, and it is part of the revision he approved.
-- Q5 and Q10 are Miguel's decisions (sync merges; extra encryption). They are not questions for this epic.
+- The name, the teal accent, and Light, Dark, or System are in the specification. Stories stay Draft. The UX gate may still adjust the accent.
+- Sync merge and encryption are not questions for this epic.
 
 ## Draft stories
 
 - US-22 Choose light, dark, or the system theme
 - US-23 Show a launcher icon and the name Lagoon
 - US-53 Use the teal palette, optional dynamic color, and reduced motion
-
-## Amendments applied 2026-10-17 at 20:02 IST
-
-A-E5-1 was approved as written at `2fe0422` and folded into Scope above. US-53 stays Draft.

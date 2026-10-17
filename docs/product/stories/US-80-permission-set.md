@@ -1,13 +1,10 @@
 # US-80 Keep the permission set to an allowlist
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
 
-**Epic:** E6. Not an approval.
+**Epic:** E6.
 
-**MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -21,13 +18,10 @@ Keep the permission set to an allowlist.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated the permission set to his bots. He did not decide it.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: exact alarms (US-77). They stay out of the allowlist. Miguel closed that question on 2026-10-17 at 20:03 IST. This allowlist was not changed. Camera capture uses the system camera, so `CAMERA` stays absent.
+- Out of scope: exact alarms (US-77). They stay out of the allowlist. Camera capture uses the system camera, so `CAMERA` stays absent.
 
 ## Acceptance criteria
-
-> **Proposed: pending Miguel's approval.**
 
 - **Scenario: the allowlist** — Must
   - Given the merged release manifest
@@ -66,8 +60,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-77 is closed. Exact-alarm permissions stay absent. `CAMERA` stays absent. This allowlist was not edited for either clash.
+- Exact-alarm permissions stay absent. `CAMERA` stays absent.
 
 ## Implementation notes
 
-Not a design spec. Do not implement from this file until Miguel approves the proposal.
+Not a design spec. The story is Draft. Do not implement from this file.

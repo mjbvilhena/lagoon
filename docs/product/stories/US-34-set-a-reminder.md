@@ -1,13 +1,10 @@
 # US-34 Set a reminder
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E9. Not an approval.
+**Epic:** E9.
 
-**MoSCoW:** Must. v1, from approved epic E9. Inexact alarms, per E9. Exact alarms were closed on 2026-10-17 at 20:03 IST. US-77. Not a story approval.
+**MoSCoW:** Must. v1. Inexact alarms.
 
 ## Title
 
@@ -22,8 +19,8 @@ Set a reminder.
 ## Background
 
 - A reminder is one optional date-time. An expiry is a different kind of date and is US-54. An item has at most one of them, matching the specification's "expiry or reminder".
-- Default time is 09:00 in the device's local zone, with a per-item override. Whether 09:00 should instead mean a fixed zone such as Europe/Dublin is still an open question for Miguel.
-- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that a lock-screen notification for an ordinary item may show the item title and codes. On 2026-10-17 at 15:59 IST he narrowed that for a sensitive item only: US-75 shows a generic "Lagoon reminder" and no title or code until unlock.
+- Default time is 09:00 in the device's local zone, with a per-item override. Whether 09:00 should instead mean a fixed zone such as Europe/Dublin is still open.
+- A lock-screen notification for an ordinary item may show the item title and codes. A sensitive item shows only "Lagoon reminder", with no title or code until unlock (US-75).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: exact alarms, expiry lead times (US-54), reschedule triggers (US-55). Sensitive lock-screen text is decided on US-75.
 

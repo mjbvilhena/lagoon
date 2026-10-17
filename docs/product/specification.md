@@ -1,17 +1,8 @@
 # Product specification: personal knowledge vault
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 12:36 IST.
-> His words, in reply to a request to approve the Lagoon spec in his own words, after a full section-by-section walkthrough (parts 1–4, including the E11 Topics addition): "Approved".
-> Approved revision: commit `c288b7e` (`c288b7ef020a9aafe821b3df3af21bd2ff75dc1b`). This record does not change the product text of that revision.
-> This approval is of the specification only. It does not itself approve the epics, the stories, the technical design, or the threat model. Epics E1–E11 were approved later, on 2026-10-17 at 13:29 IST, at revision `98275b3`. Stories stay Draft. Do not start implementation from this file alone.
-> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, sections 1 and 6, applied after his approval.
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
-> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
-> He changed section 7 of that amendment. `docs/product/vision.md` is rewritten to the current vision. No supersession sentence was added.
-> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
-> This amendment approval does not approve any story. Proposed criteria on US-64, US-75, US-78, US-79, US-80, and US-81 stay proposed.
-> Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
 
 ## Background & Value Proposition
 
@@ -30,10 +21,10 @@ No numeric success metric was given.
 
 ### In Scope (MVP)
 
-v1 is the approved epics E1–E9 and E11. Epic approval is not story approval. E10 is later and is not v1. E11 stories are drafted under `docs/product/stories/` and stay Draft until story approval.
+v1 is the approved epics E1–E9 and E11. Epic approval is not story approval. E10 is later and is not v1. E11 stories are drafted under `docs/product/stories/` and stay Draft.
 
 | Epic | Outcome | Draft |
-|---|---|---|
+| --- | --- | --- |
 | E1 Capture and keep | One tap from the share sheet saves a link, text, image, or PDF. Afterwards, last-used tags can be applied from a non-blocking chip row. A note or URL can be added by hand. An item can hold more than one attachment. Titles auto-fill from the page title or file name when he did not type one. Offline. No analytics. | `docs/product/epics/E1-capture-and-keep.md` |
 | E2 Link enrichment | A saved link keeps its URL and, when a fetch works, gains title, description, preview image, readable text, and an offline snapshot of the page. | `docs/product/epics/E2-link-enrichment.md` |
 | E3 Find and curate | Browse, sort and filter by date saved, Untagged / Inbox, detail, edit, delete with undo, tags including rename-and-merge, search with ranked highlighted matches, filter by type and tag. | `docs/product/epics/E3-find-and-curate.md` |
@@ -49,8 +40,8 @@ Constraints later design must not reopen unless he does:
 
 - Kotlin, Jetpack Compose, Material 3.
 - Room with FTS. Search covers title, body, extracted text (including text extracted from text-based PDFs, and OCR text once recognized), tags, and the personal note.
-- `minSdk` 26. `compileSdk` 37 and `targetSdk` 37 (Android 17, stable since June 2026). Bots' consensus on Q8. Not his approval of this spec.
-- Application id `com.mjbvilhena.lagoon`. Joint recommendation of Scout and Mikey's Vault App Bot on Q2. Not his approval of this spec.
+- `minSdk` 26. `compileSdk` 37 and `targetSdk` 37 (Android 17, stable since June 2026).
+- Application id `com.mjbvilhena.lagoon`.
 - Google Sign-In / Credential Manager and the Drive API with the app-data folder (`appDataFolder` / `drive.appdata`). Not Android Auto Backup. That folder is hidden in the Drive UI.
 - WorkManager for background sync. The unmetered-only preference uses `UNMETERED`.
 - OAuth client ID is build-time configuration. The app builds, installs, and works offline without it. Settings then explain that sync is not configured. They do not crash and they do not offer a manual backup.
@@ -59,9 +50,9 @@ Constraints later design must not reopen unless he does:
 
 ### Future Scope (not v1)
 
-- **E10 Trip or collection grouping** with a date range. Miguel decided this is later, not v1. Draft: `docs/product/epics/E10-trip-and-collection-grouping.md`. No stories. Not approval.
-- Picking out booking references and merchants. Stays proposed and later, unless it falls out of OCR with no extra product scope. No story.
-- Full-screen QR and barcode display. Still proposed. He has not decided. No story.
+- **E10 Trip or collection grouping** with a date range. Later, not v1. Draft: `docs/product/epics/E10-trip-and-collection-grouping.md`. No stories.
+- Picking out booking references and merchants. Later, unless it falls out of OCR with no extra product scope. No story.
+- Full-screen QR and barcode display. Still open. No story.
 
 ### Out of Scope / Non-Goals
 
@@ -75,7 +66,7 @@ Constraints later design must not reopen unless he does:
 - Private APIs for YouTube or X.
 - Using wallpaper color as the default accent. Dynamic color may be turned on; teal is the fallback when it is off.
 - Committing the release keystore, its passwords, or OAuth client secrets.
-- Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft. Those stay open for Miguel at the technical design, ADR, and threat-model gate.
+- Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this specification. Those stay open at the technical design, ADR, and threat-model gate.
 
 ## Core Workflows
 
@@ -98,103 +89,64 @@ Constraints later design must not reopen unless he does:
    - If a topic does not exist yet, he is asked whether to add it. Nothing is created without that confirmation.
    - The phone keeps the item if it is offline. Topic processing waits and runs when a network is available. The processing call sends readable content to a cloud AI. Drive sync is still ciphertext only.
 
-## Decisions recorded
+## Product rules
 
-None of these approve the specification.
-
-### Miguel (`mjbvilhena`)
-
-Recorded as his decisions, in his words where he gave them.
-
-- **Sync, not backup.** "There should be no explicit backup and restore, there should be just a seamless sync behind the scenes." On-device first. Works fully offline. Syncs when connectivity allows. A new install or a second device signs in and receives the vault. **Q5 is resolved:** sync merges. Zip export/import stays as a fallback.
-- **Q10. Encryption.** "Yes, extra encryption would be good." Encryption at rest beyond app-private storage (encrypted database and encrypted attachment files, keys in Android Keystore). Client-side end-to-end encryption of everything synced, so Drive only holds ciphertext. The crypto design itself is not decided here.
-- **Topics, and the cloud-AI exception.** During the section-by-section review on 2026-10-17 at about 11:57 IST he added topic extraction to v1. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That is an explicit exception to the end-to-end encryption goal. Readable content is sent to a cloud AI for topic processing. Drive sync remains ciphertext-only. This decision does not approve the specification.
-- **In v1:** (1) on-device OCR for screenshots, images, and scanned PDFs, so their text is searchable; (2) optional expiry or reminder dates, with notifications; (3) multiple attachments per item; (4) offline snapshots of saved web pages, keeping the original URL; (5) fingerprint or biometric lock on items marked sensitive, tied to the encryption work.
-- **Later, not v1:** trip or collection grouping with a date range.
-
-### Q1 and Q2 (joint recommendation, not approval)
-
-Scout and Mikey's Vault App Bot jointly recommend these answers under Miguel's delegation of the product questions. This replaces the earlier name and application id. It is not Miguel's approval.
-
-- **Q1. Name.** Lagoon. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done.
-- **Q2. Application id.** `com.mjbvilhena.lagoon`.
-
-### Bots' consensus on the other delegated questions (not approval)
-
-Mikey's Dev Bot first recommended answers under Miguel's delegation of Q3, Q4, and Q6–Q9. Scout, Mikey's Assistant, Mikey's Household Assistant, and Mikey's Leisure Assistant then reviewed them. The lines below are that **consensus recommendation**. They are not Miguel's approval.
-
-- **Q3. Accent.** The teal stays. Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode the color on top of the accent (`onPrimary`) must be dark (black or `#003731`), because white on `#2DD4BF` fails contrast. Never use `#0F766E` on dark surfaces. Material dynamic color can be an optional toggle, with teal as the fallback. The UX gate can still check the values.
-- **Q4. Tags.** Renaming a tag applies to every item. Renaming onto a name that already exists, compared case-insensitively, asks for confirmation and then merges the two tags. Merging is in v1 only through that path.
-- **Q6. Network, after his sync decision.** The background-sync preference is Unmetered only (`WorkManager` `UNMETERED`). There is no Back up now, so there is no "runs on any connection" manual action and no roaming warning on a manual backup. Sync uses the Drive API `appDataFolder`, not Android Auto Backup. `appDataFolder` is hidden in the Drive UI. The earlier size warning (about 50 MB on a manual backup) is dropped with Back up now.
-- **Q7. OCR timing.** The bots left timing to Miguel. He has since decided OCR is in v1 (see above). Their other point still stands: v1 extracts and indexes the text of text-based PDFs, and that extraction is not OCR. Title, personal note, and tags are searchable.
-- **Q8. SDK.** `compileSdk` and `targetSdk` are 37. `minSdk` stays 26.
-- **Q9. After the tap.** Saving stays one tap. Afterwards the UI shows an optional, non-blocking chip row of last-used tags, auto-fills the title from the page title or file name, and offers an Untagged / Inbox view so new captures get filed. He can sort and filter by date saved. Note and tags stay editable on the detail screen.
-
-### Proposed, pending Miguel
-
-No stories are added for these.
-
-- Full-screen QR and barcode display.
-- Picking out booking references and merchants. Later, unless it falls out of the OCR work for free.
-
-## Risks & Dependencies
-
-- Sync needs a Google Cloud OAuth client whose package name and signing-certificate SHA-1 match the release keystore. Until he supplies the client ID at build time, sync cannot run. The app must still install and work offline.
-- A second device can receive ciphertext and still be unable to read it until he answers how keys move (open question below). This draft does not invent a passphrase or a Google-derived key.
-- Page fetches fail offline, on login walls, and on pages that only render in a browser. The item still keeps the URL. A snapshot exists only when a fetch succeeded.
-- Share-sheet behavior differs by OEM.
-- `appDataFolder` files do not appear in the ordinary Drive UI. That is expected, not a bug.
-- OCR quality varies by phone and language. No accuracy rate is set here.
-- An emulator may be unavailable for screenshots. Do not fabricate them.
-- No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
-- Topic extraction sends readable content off the phone to a cloud AI. That is a privacy risk he has accepted in principle. Which provider, and what that provider retains, is still open.
-- Cloud processing has a cost. No budget or per-item cap is set here.
-- Offline, the item is saved and topic processing is queued until a network exists. The vault stays usable without that call.
-- The cloud AI credential for a sideloaded APK must not be baked into the package in plain form. How it is supplied and protected is an open design-gate question.
-- Encryption, biometric lock, Drive sync, and the cloud topic call are security-sensitive. The harness has `sdlc-threat-modeler` and the `threat model` template. A threat model is required in the later design band, before implementation. It is not started. This note does not skip it and does not write it.
+- There is no Back up now, no Restore, and no last-backup time. The phone is first. Sync runs when connectivity allows. A new install or a second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept. Zip export and import stay as a fallback.
+- The database and attachment files are encrypted at rest. Keys are in Android Keystore. Drive stores only ciphertext. The cipher itself waits for an ADR.
+- Topic extraction may send readable content to a cloud AI. Drive sync stays ciphertext-only. That call is not a license for cloud OCR.
+- In v1: on-device OCR for screenshots, images, and scanned PDFs; an optional reminder or expiry, with a notification; more than one attachment; an offline snapshot of a saved page, keeping the original URL; a biometric lock on items marked sensitive.
+- Trip or collection grouping is later, not v1.
+- The name is Lagoon. The application id is `com.mjbvilhena.lagoon`. Play Store and trademark checks were not done.
+- Light accent about `#0F766E`. Dark accent about `#2DD4BF`. In dark mode the color on top of the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces. Dynamic color is an optional toggle. Teal is the fallback.
+- Renaming a tag applies to every item. Renaming onto a name that already exists, compared case-insensitively, asks for confirmation and then merges. Merging is in v1 only through that path.
+- Background sync prefers an unmetered network (`WorkManager` `UNMETERED`). Sync uses Drive `appDataFolder`, not Android Auto Backup.
+- v1 extracts and indexes the text of text-based PDFs. That extraction is not OCR. v1 OCR is English. The bundled ML Kit on-device Latin-script model is used. Acceptance tests use English samples. Other languages are later. Sideloaded APKs use `arm64` `abiFilters` or per-ABI APKs.
+- Saving is one tap. Afterwards a non-blocking chip row of last-used tags can file the item. An empty title fills from the page title or the file name, including a screenshot, image, or scan, capped at 120 characters. Untagged items have an inbox. He can sort and filter by date saved.
+- A repeat URL matches on a normalised form (ignore scheme, `www`, trailing slash, the `#fragment`, and `utm_*` / tracking parameters; lowercase the host) and keeps the original URL. The existing item is updated: refresh preview and snapshot, union the tags, never overwrite text. A new note is appended as a dated entry. Last-saved is bumped. Snackbar: "Saved before, added to existing", with Undo and "Keep separate".
+- Search uses weighted BM25. Starting weights: title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1. Exact phrases rank above scattered terms. Recency is only a light tie-break. Prefixes match as he types. Accents fold with `unicode61 remove_diacritics 2`. Weights and the tie-break are deterministic and tested. FTS5 needs Room 3 with the bundled SQLite driver. It is not yet verified with an encrypted database. Spike that early (US-57). Fallback: Room 2 FTS4 plus app-side ranking.
+- Reminder time is chosen per item. The default is 09:00 in the device local zone, with a per-item override. An expiry notifies 7 days before and on the day. Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. Reminders are stored and re-registered on `BOOT_COMPLETED`. `POST_NOTIFICATIONS` is requested when the first reminder is set, not at launch.
+- A page snapshot is a readable extracted copy (headings, lists, inline images downscaled and saved locally), with title, site, author, capture time, and the original URL. One sanitised archive, capped at about 10 MB, marked "partial snapshot" if truncated. It is searchable, encrypted, and synced like other content. A full-page MHTML copy is later, not v1.
+- If the vault key is lost, the content is lost. There is no recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
+- Before the first OCR use he accepts a disclosure: the image and the recognized text stay on the device, and ML Kit still sends usage and diagnostic metrics to Google. Decline, or no answer, means OCR does not run and ML Kit is not started. He can withdraw that acceptance in Settings. There is no telemetry off switch.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. Sensitive items are excluded from the topic call. There is no cap on topic suggestions.
+- A sensitive lock-screen reminder shows only "Lagoon reminder". An ordinary lock-screen reminder may show the item title and codes.
+- A token-looking URL is not auto-fetched. A foggy placeholder is shown until he enables that preview.
+- The zip export is encrypted with the vault key.
+- Camera capture uses the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`.
+- The Upcoming list shows only the one reminder or the one expiry. It does not show a return-by date or a warranty end.
 
 ## Open questions
 
-### For Miguel at the design gate
+- What happens when the same item was edited on two devices before they sync?
+- How does a deletion on one device propagate to the other?
+- How do keys reach a new or second device?
+- Which cloud AI provider processes topics, and what are its data-retention terms?
+- How is the topic API credential stored and protected? It must not be baked into the APK in plain form.
+- What exactly is sent to the cloud AI?
+- Whether 09:00 follows a fixed zone instead of the device local zone. Stories use the device local zone.
+- Full-screen QR and barcode display. No story.
+- Whether a per-item "Include in topics" control exists.
+- Whether a sensitive notification's private version is also only "Lagoon reminder".
+- Whether the vault key is bound to device authentication.
 
-Some design-gate questions are still open. Miguel answers those at the technical design, ADR, and threat-model gate. That gate has not started.
+## Resolved
 
-Decided by Miguel on 2026-10-17 at 14:56 IST, not by this amendment: if the vault key is lost, the content is lost, and there is no recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
-
-Delegated by him the same afternoon, with proposed story criteria still pending his approval: sensitive-item handling (US-75), Drive scope and sign-out (US-78), link-preview skipping (US-79), sharing out (US-64), the permission set (US-80), and sideload policy (US-81).
-
-Still open for him, and not decided by the stories: sync conflicts, how a deletion propagates, how keys reach a new device, the topic AI provider and its retention terms, how the topic credential is supplied, and what the topic call sends.
-
-- [ ] **Sync conflicts.** What happens when the same item was edited on two devices before they sync? (@mjbvilhena, design gate)
-- [ ] **Deletions.** How does a deletion on one device propagate to the other? (@mjbvilhena, design gate)
-- [ ] **Keys on a new device.** How do keys reach a new or second device (for example a passphrase or recovery key, versus a key derived from the Google account)? (@mjbvilhena, design gate)
-- [ ] **Topic AI provider.** Which cloud AI provider processes topics, and what are its data-retention terms? (@mjbvilhena, design gate)
-- [ ] **Topic API credential.** How is the API key or credential stored and protected? It must not be baked into the APK in plain form. (@mjbvilhena, design gate)
-- [ ] **What is sent.** What exactly is sent to the cloud AI: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
-
-### Story-level recommendations (not approval)
-
-Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot under Miguel's delegation of 2026-10-17. The stories stay Draft. This specification is approved.
-
-- **US-01.** Match a repeat URL on a normalised form (ignore scheme, `www`, trailing slash, the `#fragment`, and `utm_*` / tracking parameters; lowercase the host) and keep the original URL. Update the existing item: refresh preview and snapshot, union the tags, never overwrite text. Append a new note as a dated entry. Bump last-saved. Snackbar: "Saved before, added to existing", with Undo and "Keep separate".
-- **US-15.** Weighted BM25, starting weights title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1. Exact phrases rank above scattered terms. Recency is only a light tie-break. Prefixes match as he types. Accents fold with `unicode61 remove_diacritics 2`. Weights and the tie-break are deterministic and tested. Design-gate risk, not decided here: FTS5 needs Room 3 with the bundled SQLite driver (stock SQLite on `minSdk` 26 lacks FTS5, and Room 2 only has FTS4), and it is not yet verified with an encrypted database (SQLCipher). Spike it early. Fallback: Room 2 FTS4 plus app-side ranking.
-- **US-31.** Mikey's Dev Bot revised this under the 2026-10-17 delegation. The Dev Bot reports that Miguel told it in chat that English is enough for v1 OCR. That report is not approval. v1 OCR scope is English. The bundled ML Kit on-device Latin-script model still fits, offline from install. Acceptance tests use English samples only. Other languages are a later backlog option. Accent folding in US-15 stays. Design note: sideloaded APKs do not get per-device splits, so use `arm64` `abiFilters` or per-ABI APKs.
-- **US-34.** He picks the time. Default is 09:00 local in Settings, with a per-item override. Expiry notifies 7 days before and on the day. Inexact alarms (`setWindow` or `setAndAllowWhileIdle`); no exact-alarm permission. Persist reminders and re-register them on `BOOT_COMPLETED`. Ask for `POST_NOTIFICATIONS` when the first reminder is set, not at launch.
-- **US-33.** A readable extracted copy (headings, lists, inline images downscaled and saved locally), with title, site, author, capture time, and the original URL. One sanitised archive, capped at about 10 MB, marked "partial snapshot" if truncated. Searchable, encrypted, and synced like other content. A full-page MHTML copy is later, not v1.
-
-### Resolved, not open
-
-- **Q5.** Resolved by Miguel's sync decision: sync merges. An item that exists on only one side is kept. Concurrent edits and deletions are the open questions above, not a return of Q5.
-- **Q10.** Resolved by Miguel: extra encryption, at rest and end-to-end for Drive. Key transport remains open. A lost key means the content is lost, with no recovery. App lock is optional, and the device PIN is the fallback when there are no biometrics. He decided both on 2026-10-17 at 14:56 IST.
+- One-sided items are kept.
+- The vault is encrypted at rest, and Drive stores ciphertext.
+- A lost key means the content is lost. App lock is optional.
+- OCR is English only. Alarms are inexact. Topic suggestions have no cap.
+- An empty title on a screenshot, image, or scan fills from the file name.
+- Camera capture uses the system camera. The app does not request `CAMERA`.
+- Upcoming is the one reminder or the one expiry.
 
 ## Approval
 
-| Gate | Status | What advances it |
-|---|---|---|
-| This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. Amendment sections 1 and 6 applied after his approval at 15:55 IST. Wording: "Yes". Application revision: `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). | Passed. |
-| Epics E1–E9 and E11 | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. | Passed. This does not approve the stories. |
-| Epic E10 | **Approved. Later. Not in v1.** Same sign-off and revision. | Passed as later work. Not approval to build it in v1. |
-| User stories | Draft. None approved. | Next gate. Miguel's bots review and approve stories under his delegation of 2026-10-17. E11 stories are drafted first. He decides epic-level and security matters only. That rule is not a sign-off on any story. |
-| Threat model, UX, test strategy, ADRs | Not started | After story approval. The security, data-integrity, and release questions above, including the topic-extraction questions, are answered here, by Miguel. Required before implementation. Not skipped. |
+| Gate | Status |
+| --- | --- |
+| This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST. |
+| Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST. |
+| Epic E10 | Approved by mjbvilhena on 2026-10-17. Later, not in v1. |
+| User stories | Draft. Not approved. |
+| Threat model, UX, test strategy, ADRs | Not started. |
 
-The specification gate and the epic gate have passed. The next gate is story review and approval by Miguel's bots. E11 stories are drafted first. Draft stories are not a reason to skip story approval or the design band.
+The specification gate and the epic gate have passed. Stories stay Draft. Implementation has not started.

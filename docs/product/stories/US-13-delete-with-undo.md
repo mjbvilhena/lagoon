@@ -1,13 +1,10 @@
 # US-13 Delete an item and undo that delete
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
-**MoSCoW:** Must. v1, from approved epic E3. Trash beyond this undo is Should (US-66).
+**MoSCoW:** Must. v1. Trash beyond this undo is Should (US-66).
 
 ## Title
 

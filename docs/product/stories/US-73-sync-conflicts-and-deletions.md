@@ -1,13 +1,10 @@
 # US-73 Decide sync conflicts and deletions
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Not set. Blocked. Not scheduled until the question it holds is answered.
+**MoSCoW:** Not set. The question is still open.
 
 ## Title
 
@@ -21,7 +18,7 @@ Decide sync conflicts and deletions.
 
 ## Background
 
-- The approved specification leaves both questions open for Miguel. Scout's option is recorded and not chosen: tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option. It is not a decision.
+- Both questions stay open. Options recorded here, and not chosen, are tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: one-sided merge, which US-20 already states.
 
@@ -40,7 +37,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open question for Miguel in `docs/product/stories/REVIEW-PACK.md`.
+- Open question. Listed in `docs/product/stories/REVIEW-PACK.md`.
 
 ## Implementation notes
 

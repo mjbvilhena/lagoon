@@ -1,11 +1,8 @@
 # US-50 Rank search matches
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Split from US-15 after the review at `9e7de63`. This draft was not in that review.
-> The weights below are the recorded bots' consensus, with OCR equal to body as the approved specification requires. They are not a new approval.
 
-**Epic:** E3. Not an approval.
+**Epic:** E3.
 
 **MoSCoW:** Must. v1. Depends on US-15.
 

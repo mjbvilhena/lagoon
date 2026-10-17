@@ -1,13 +1,10 @@
 # US-65 Add a photo from the camera
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E1. Kept by Miguel on 2026-10-17 at 20:02 IST. Not a story approval.
+**Epic:** E1.
 
-**MoSCoW:** Should. In E1 by the amendment approved on 2026-10-17 at 20:02 IST. Not a story approval.
+**MoSCoW:** Should.
 
 ## Title
 
@@ -22,7 +19,7 @@ Add a photo from the camera.
 ## Background
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- The photo comes from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. That is Miguel's (`mjbvilhena`) fix of C-E1-2 on 2026-10-17 at 20:03 IST. The US-80 allowlist stays as it is.
+- The photo comes from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. The US-80 allowlist stays as it is.
 - Out of scope: the share sheet and the document picker (US-03, US-32). Declaring `CAMERA` in the Lagoon manifest.
 
 ## Acceptance criteria

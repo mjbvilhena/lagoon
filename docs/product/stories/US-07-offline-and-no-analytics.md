@@ -1,15 +1,10 @@
 # US-07 Use the saved vault with no network and no analytics
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
-> Miguel (`mjbvilhena`) decided the ML Kit rule in chat on 2026-10-17 at 16:00 IST. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept". That decision is not story approval.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from approved epic E1 and the specification.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -26,7 +21,7 @@ Use the saved vault with no network and no analytics.
 - The phone is the primary copy. Analytics, usage telemetry, and a crash-reporting product are out of the specification. The app still does not add Firebase Analytics, Crashlytics, or another usage-analytics library.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a page fetch while offline (US-09) and the topic call (US-44). Those wait. They do not block reading what is already stored.
-- Miguel decided this on 2026-10-17 at 16:00 IST. Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry, so the requirement is disclosure and acceptance, not a Settings toggle. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. There is no toggle, so there is no default to take from the docs.
+- Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry, so the requirement is disclosure and acceptance before the first OCR use, not a Settings toggle. The research note is `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
 - The image and the recognized text stay on the device. The disclosure is about ML Kit's metrics, not about sending the image.
 
 ## Acceptance criteria

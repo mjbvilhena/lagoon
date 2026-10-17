@@ -1,14 +1,10 @@
 # US-28 Optionally tag a save from the last-used tags
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Scout's review verdict at commit `9e7de63`, under Miguel's delegation of 2026-10-17, was Approve. That verdict is not an approval. Status stays Draft until all five bots re-review.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Must. v1, from the approved specification's Q9 consensus. The consensus is not a new approval.
+**MoSCoW:** Must. v1.
 
 ## Title
 
@@ -22,7 +18,7 @@ Optionally tag a save from the last-used tags.
 
 ## Background
 
-- The save already finished in one tap. Last-used tags are the tags he applied most recently, up to 8, newest first. That cap is a draft rule so the row is testable. It is not Miguel's approval.
+- The save already finished in one tap. Last-used tags are the tags he applied most recently, up to 8, newest first.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: blocking the save on this row.
 

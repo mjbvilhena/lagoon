@@ -1,17 +1,12 @@
 # User story index
 
 > **Approval status: Draft. Not approved.**
-> This index only lists files. Listing a story here is not story approval.
-> Round-2 verdicts at commit `40bb526` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not a status of Approved.
-> No story was flipped to Approved in the round-2 revision.
-> Sign-off on file: none.
-> Updated 2026-10-17. Miguel removed US-68, US-69, US-82, US-83, and US-84 at 19:00 IST, and US-63 at 19:01 IST. Those numbers are not reused. This is not story approval.
-> Each remaining story has one parent epic. The 25 epic amendments were approved by `mjbvilhena` on 2026-10-17 at 20:02 IST and folded into the epics. That is not story approval. The map is `docs/product/stories/TRACEABILITY.md`.
+> Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
 | ID | Title | Epic | MoSCoW | Path | Approval |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | US-01 | Share a link into the vault. | E1 | Must | `docs/product/stories/US-01-share-a-link.md` | Draft |
 | US-02 | Share plain text into the vault. | E1 | Must | `docs/product/stories/US-02-share-plain-text.md` | Draft |
 | US-03 | Share an image into the vault. | E1 | Must | `docs/product/stories/US-03-share-an-image.md` | Draft |
@@ -83,18 +78,18 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-72 | Score whether topics are useful. | E11 | Could | `docs/product/stories/US-72-topic-usefulness.md` | Draft |
 | US-73 | Decide sync conflicts and deletions. | E4 | Not set | `docs/product/stories/US-73-sync-conflicts-and-deletions.md` | Draft |
 | US-74 | Decide how the vault key reaches another device. | E8 | Not set | `docs/product/stories/US-74-key-transport.md` | Draft |
-| US-75 | Limit what a sensitive item reveals. | E8 | Proposed Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
+| US-75 | Limit what a sensitive item reveals. | E8 | Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | Not set | `docs/product/stories/US-76-topic-call-privacy.md` | Draft |
 | US-77 | Keep reminders on inexact alarms. | E9 | Must | `docs/product/stories/US-77-exact-alarms.md` | Draft |
-| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Proposed Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
-| US-79 | Skip unsafe link previews. | E2 | Proposed Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
-| US-80 | Keep the permission set to an allowlist. | E6 | Proposed Must | `docs/product/stories/US-80-permission-set.md` | Draft |
-| US-81 | Publish a sideload signing policy. | E6 | Proposed Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
+| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
+| US-79 | Skip unsafe link previews. | E2 | Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
+| US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Draft |
+| US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
 
 No story is Done. Implementation has not started. No story status is Approved.
 
-Artefact Definition of Done, this revision: US-73, US-74, and US-76 fail because the question is still open and they have no asserting criterion. US-77 is closed and has asserting criteria. It stays Draft. Every other story passes artefact shape only. US-64, US-75, US-78, US-79, US-80, and US-81 pass artefact shape with criteria marked **Proposed: pending Miguel's approval**. That mark is not approval.
+Artefact Definition of Done: US-73, US-74, and US-76 have no asserting criterion because the question is still open. US-77 has asserting criteria and stays Draft. Every other story passes artefact shape only.
 
-US-61 is a Should in epic E1. Miguel approved that in `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. The story stays Draft.
+US-61 is a Should in epic E1. The story stays Draft.
 
-A compact review list is `docs/product/stories/REVIEW-PACK.md`. That list is not approval.
+A compact review list is `docs/product/stories/REVIEW-PACK.md`.

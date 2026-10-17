@@ -1,13 +1,10 @@
 # US-61 Filter by where an item came from
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E1. Not an approval.
+**Epic:** E1.
 
-**MoSCoW:** Should. Source domain and sending app are in epic E1 because Miguel approved `docs/product/amendments/2026-10-17-security-delegation.md` on 2026-10-17 at 15:55 IST. This story stays Draft. That approval is not story approval.
+**MoSCoW:** Should.
 
 ## Title
 

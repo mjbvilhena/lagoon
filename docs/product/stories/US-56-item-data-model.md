@@ -1,13 +1,10 @@
 # US-56 Keep a stable identity for each item
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Story approval has not been recorded. Epic approval is not story approval.
-> Review verdicts are not approvals. Status stays Draft until all five bots re-review.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1 enabler. The review asked for this chore so sync and edits have a basis.
+**MoSCoW:** Must. v1. Sync and edits need a stable item id.
 
 ## Title
 

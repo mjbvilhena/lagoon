@@ -1,19 +1,9 @@
 # Epic E11: Topics
 
 > **Approval status: Approved.**
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
-> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
-> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
-> This approval does not approve any story. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
-> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
-> Draft stories US-41 through US-47 are in `docs/product/stories/`. They are Draft. They are not approved. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
-> Amendment `docs/product/amendments/2026-10-17-security-delegation.md`, section 4, applied after his approval.
-> Approver: `mjbvilhena`. Date and time: 2026-10-17 15:55 IST.
-> His words, after a 4-part walkthrough the same day. Part 1, 15:48 IST: "Yes, that's what I meant". Part 2: "Happy with both". Part 3: "Yes". Final approval at 15:55 IST: "Yes".
-> Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`). This record does not change the product text of that revision.
-> Sensitive items are excluded from the topic call. That exclusion is this amendment, recorded on US-75. The other US-75 criteria stay proposed. The topic default is the 18:05 IST chat-decisions addendum. It is not a new approval of this epic.
-> Approved amendment, 2026-10-17 at 20:02 IST. Approver: `mjbvilhena`. His words: "Yes, I approve all 25 proposed epic amendments as written". A-E11-1 through A-E11-4 are folded into the scope below from the text at commit `2fe0422`. This does not approve the child stories. Stories stay Draft.
-> Clash fix, 2026-10-17 at 20:03 IST. Approver: `mjbvilhena`. C-E11-1: there is no cap on topic suggestions. The cap of 8 was removed from US-41. The story stays Draft.
+> Approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
 
 ## Background & Value Proposition
 
@@ -31,17 +21,17 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - When content is shared into the vault or added inside it, it is extracted and processed to identify its main ideas and topics.
   - If an identified topic already exists, the new item is linked to it and the topic is extended with the new information.
   - If a topic does not exist yet, he is asked whether it should be added. Nothing is created without confirmation.
-  - The processor is a cloud AI, for every item, under his recorded decision. Readable content leaves the phone for that call. Topic extraction starts on. He can turn it off. That default is `docs/product/amendments/2026-10-17-chat-decisions.md` (2026-10-17 at 18:05 IST). It is not a new approval of this epic.
+  - The processor is a cloud AI. Readable content leaves the phone for that call. Topic extraction starts on for a new ordinary item. He can turn it off.
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
   - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
-  - No cap on the number of topic suggestions. That is the approved risk line, and the 20:03 IST fix of C-E11-1.
+  - No cap on the number of topic suggestions.
   - Opening a topic shows the items linked to it and the notes already stored on that topic (A-E11-1, US-45). Acceptance: he can look across what he saved on that subject. Opening the topic does not start a new AI call.
-  - After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic (A-E11-2, US-48). US-48 is kept. Acceptance: a saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
+  - After a topic is saved he can rename it, delete it, unlink an item, or merge it with another saved topic (A-E11-2, US-48). Acceptance: a saved subject can be corrected. A topic that does not exist yet is still created only after he confirms.
   - He has a list of saved topics and one place for suggestions that are waiting (A-E11-3, US-60). Acceptance: he can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
-  - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). US-72 is kept. Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
+  - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay design-gate questions for him. Sensitive items are excluded from the topic call. That exclusion is the amendment approved on 2026-10-17 at 15:55 IST, recorded on US-75. It is not the 18:05 IST quote. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay open. Sensitive items are excluded from the topic call. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 
@@ -59,8 +49,8 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Risks & Dependencies
 
-- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is an open question for him.
-- Privacy: readable content leaves the device. He has accepted that for this epic. Provider and retention terms are not chosen.
+- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is open.
+- Privacy: readable content leaves the device for this call. Provider and retention terms are not chosen.
 - Cost: each call can spend money. No cap is set here.
 - A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is open.
 - Encryption of the vault at rest and of the Drive copy stays E8. This epic does not weaken that. It is the exception that sends readable content to a cloud AI.
@@ -68,14 +58,14 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Open Questions
 
-- [ ] Which AI provider, and what are its data-retention terms? (@mjbvilhena, design gate)
-- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form? (@mjbvilhena, design gate)
-- [x] Are items marked sensitive excluded from cloud processing? Yes. The amendment approved on 2026-10-17 at 15:55 IST records that exclusion on US-75. The other US-75 criteria stay proposed.
-- [ ] What exactly is sent: full text, images, OCR output, or some other slice? (@mjbvilhena, design gate)
+- [ ] Which AI provider, and what are its data-retention terms?
+- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form?
+- [x] Sensitive items are excluded from the topic call.
+- [ ] What exactly is sent: full text, images, OCR output, or some other slice?
 
 ## Draft stories
 
-These are not approved. Paths are under `docs/product/stories/`. Drafting them is not story approval. Miguel's bots approve stories under his delegation of 2026-10-17. He still decides epic-level and security matters.
+These stay Draft. Paths are under `docs/product/stories/`.
 
 - US-41 Extract topics when an item is saved
 - US-42 Link an item to a topic the vault already has
@@ -84,10 +74,6 @@ These are not approved. Paths are under `docs/product/stories/`. Drafting them i
 - US-45 Read a topic
 - US-46 Reject, rename, or merge a suggested topic
 - US-47 Keep the item when the topic call fails
-- US-48 Manage a topic that is already saved. Kept 2026-10-17 at 20:02 IST. Not story approval.
+- US-48 Manage a topic that is already saved.
 - US-60 Browse topics and pending suggestions
-- US-72 Score whether topics are useful. Could. Kept 2026-10-17 at 20:02 IST. Not story approval.
-
-## Amendments applied 2026-10-17 at 20:02 IST
-
-A-E11-1 through A-E11-4 were approved as written at `2fe0422` and folded into Scope above. US-48 and US-72 are kept. C-E11-1 was closed at 20:03 IST: no cap. Stories stay Draft.
+- US-72 Score whether topics are useful. Could.

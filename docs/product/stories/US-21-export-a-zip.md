@@ -1,13 +1,10 @@
 # US-21 Export a zip
 
 > **Approval status: Draft. Not approved.**
-> Sign-off on file: none.
-> Review verdicts at commit `9e7de63` are in `docs/product/stories/REVIEW-PACK.md`. A verdict is not an approval.
-> Story approval has not been recorded.
 
-**Epic:** E4. Not an approval.
+**Epic:** E4.
 
-**MoSCoW:** Must. v1, from approved epic E4. Import is US-52.
+**MoSCoW:** Must. v1. Import is US-52.
 
 ## Title
 
@@ -22,7 +19,7 @@ Export a zip to a place he chooses.
 ## Background
 
 - He picks the location with the system create-document flow. The file has a format version.
-- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that the zip export is encrypted with the vault key. That decision is recorded in `docs/product/stories/REVIEW-PACK.md`. It is not story approval.
+- The zip export is encrypted with the vault key.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: how much a file name or size reveals (sensitive-item export is US-75), and import on a device that has no key (US-74). The cipher algorithm is still an ADR.
 
