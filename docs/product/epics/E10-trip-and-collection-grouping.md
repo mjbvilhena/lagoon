@@ -1,8 +1,11 @@
 # Epic E10: Trip and collection grouping
 
-> **Approval status: Draft. Not in v1. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> He decided this is later, not v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft. That approval is not approval to build it. No stories. Do not implement it with v1.
+> **Approval status: Approved. Later. Not in v1.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> Approved as later work, not in v1. No stories. Do not implement it with v1.
+> He decided this is later, not v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This approval is not approval to build it.
 
 ## Background & Value Proposition
 

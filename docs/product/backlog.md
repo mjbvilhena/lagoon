@@ -2,18 +2,20 @@
 
 > Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.** A line marked Draft means the file exists and has not been signed.
 > No story is Done. There is no app, no test run, and no named sign-off.
-> Product decisions and bot recommendations recorded in the specification are not sign-off of the epics or the stories.
+> Product decisions and bot recommendations recorded in the specification are not the sign-off of the stories. The epics have their own approval, recorded below.
 > The specification is **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`.
 
 ## Gate
 
-Spec gate passed. Stopped at **epic approval** of E1–E11 by `mjbvilhena`. Epics stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. Stopped at **story review and approval** of US-01–US-40 by Miguel's bots. E11 stories are not written yet. See `docs/sdlc/pipeline-state.md`.
 
-On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them after epic approval.
+Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. E10 is Approved as Later, not in v1.
+
+On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level and security matters only. That rule does not approve any story. Stories stay Draft until the bots sign them. E11 stories are drafted first.
 
 ## Epic E1: Capture and keep
 
-> Goal: Miguel can save a link, text, an image, or a PDF from the share sheet in one tap, file it with last-used tags afterwards, add a note or URL himself, and attach more than one file. *(Draft — not approved)* Evidence: `docs/product/epics/E1-capture-and-keep.md`.
+> Goal: Miguel can save a link, text, an image, or a PDF from the share sheet in one tap, file it with last-used tags afterwards, add a note or URL himself, and attach more than one file. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E1-capture-and-keep.md`.
 
 - **US-01** *(Draft)* Share a link. A normalised repeat URL updates the existing item. Evidence: `docs/product/stories/US-01-share-a-link.md`. Not implemented. Bots' consensus, not approval.
 - **US-02** *(Draft)* Share plain text. Evidence: `docs/product/stories/US-02-share-plain-text.md`. Not implemented.
@@ -28,7 +30,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E2: Link enrichment
 
-> Goal: A saved link gains page details and an offline snapshot when a fetch works, and always keeps its URL. *(Draft — not approved)* Evidence: `docs/product/epics/E2-link-enrichment.md`.
+> Goal: A saved link gains page details and an offline snapshot when a fetch works, and always keeps its URL. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E2-link-enrichment.md`.
 
 - **US-08** *(Draft)* Enrich a link. Evidence: `docs/product/stories/US-08-enrich-a-link.md`. Not implemented.
 - **US-09** *(Draft)* Keep the URL when enrichment fails. Evidence: `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md`. Not implemented.
@@ -36,7 +38,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E3: Find and curate
 
-> Goal: He can browse, sort and filter by date saved, see an Untagged / Inbox view, read, edit, delete with undo, manage tags including a confirmed merge, search, and filter by type and tag. *(Draft — not approved)* Evidence: `docs/product/epics/E3-find-and-curate.md`.
+> Goal: He can browse, sort and filter by date saved, see an Untagged / Inbox view, read, edit, delete with undo, manage tags including a confirmed merge, search, and filter by type and tag. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E3-find-and-curate.md`.
 
 - **US-10** *(Draft)* Home list, newest first. Evidence: `docs/product/stories/US-10-browse-newest-first.md`. Not implemented.
 - **US-11** *(Draft)* Item detail. Evidence: `docs/product/stories/US-11-read-an-item.md`. Not implemented.
@@ -51,7 +53,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E4: Seamless sync
 
-> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Draft — not approved)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
+> Goal: Background sync to Drive `appDataFolder`. No Back up now, no Restore, no last-backup-time control. A new install receives the vault and merges. Unmetered-only preference. Zip fallback. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E4-seamless-sync.md`.
 
 - **US-17** *(Draft)* Sync not configured. Evidence: `docs/product/stories/US-17-backup-not-configured.md`. Not implemented. Missing OAuth must not crash.
 - **US-18** *(Draft)* Sign in and background sync. Evidence: `docs/product/stories/US-18-back-up-now.md`. Not implemented. Drive API `appDataFolder`, not Android Auto Backup. Hidden in the Drive UI.
@@ -62,14 +64,14 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E5: Look and feel
 
-> Goal: Calm Material 3 UI with an in-app theme setting: Light, Dark, or System. System is the default and follows Android. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Draft — not approved)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started. His epic-review words on 2026-10-17 at 13:15 IST. Not epic approval.
+> Goal: Calm Material 3 UI with an in-app theme setting: Light, Dark, or System. System is the default and follows Android. Teal accent with the contrast rules. Dynamic color is an optional toggle, off by default, teal as the fallback. Icon and the name Lagoon. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E5-look-and-feel.md`. UX artefact not started. His epic-review words on 2026-10-17 at 13:15 IST are in the approved revision. US-22 stays Draft.
 
 - **US-22** *(Draft)* Light, Dark, or System theme. System is the default. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Not story approval. Accent: light about `#0F766E`, dark about `#2DD4BF`, dark text on the dark accent (black or `#003731`). Never use `#0F766E` on dark surfaces.
 - **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Joint recommendation of Scout and Mikey's Vault App Bot. Scout's web search found no clashing notes, bookmark, or vault app called Lagoon. Play Store and trademark checks were not done. Not approval.
 
 ## Epic E6: Installable release
 
-> Goal: Signed sideload APK, the named tests, README, and screenshots when an emulator exists. *(Draft — not approved)* Evidence: `docs/product/epics/E6-installable-release.md`.
+> Goal: Signed sideload APK, the named tests, README, and screenshots when an emulator exists. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E6-installable-release.md`.
 
 - **US-24** *(Draft)* Signed release APK. Evidence: `docs/product/stories/US-24-signed-apk.md`. Not implemented. `minSdk` 26. `compileSdk` and `targetSdk` 37 (bots' consensus on Q8, not approval). Sideload developer verification stays an open question for Miguel.
 - **US-25** *(Draft)* Search, sync/zip packaging, and a basic Compose test. Evidence: `docs/product/stories/US-25-automated-tests.md`. Not implemented. Packaging tests cover ciphertext, not a live Drive call.
@@ -78,13 +80,13 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E7: On-device text recognition
 
-> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Draft — not approved)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's decision. Not approval. Text-layer PDFs stay in US-04 and are not OCR.
+> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's v1 decision. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
 
 - **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Mikey's Dev Bot's revised recommendation: the Dev Bot reports Miguel said in chat that English is enough. Not approval. Acceptance tests are English only. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Draft — not approved)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. His Q10 words plus the sensitive-item decision. Not approval. Cipher waits for an ADR. Threat model not started.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. His Q10 words plus the sensitive-item decision. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
 - **US-35** *(Draft)* Encrypt the vault at rest. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented.
@@ -92,22 +94,22 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 ## Epic E9: Reminders and expiry
 
-> Goal: Optional expiry or reminder date on an item, with a notification. *(Draft — not approved)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. Not approval.
+> Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. Miguel's v1 decision. US-34 stays Draft.
 
 - **US-34** *(Draft)* Reminder or expiry with a notification. Default 09:00 local, per-item time, expiry at 7 days and on the day, inexact alarms. Evidence: `docs/product/stories/US-34-reminder-or-expiry.md`. Not implemented. Bots' consensus, not approval.
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Draft — not approved)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." The spec that contains this epic is approved. This epic is not. No stories. Stories wait for epic approval.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E11-topics.md`. His words on 2026-10-17 at about 11:57 IST: "Use a cloud AI for all items; I accept the content leaves the phone." No stories yet. Draft them next, then Miguel's bots review them. Do not implement.
 
 ## Epic E10: Trip and collection grouping
 
-> Goal: Later, not v1. Group items into a trip or collection with a date range. *(Draft — not in v1 — not approved)* Evidence: `docs/product/epics/E10-trip-and-collection-grouping.md`. Miguel's decision that this is later. No stories. Do not build it in v1.
+> Goal: Later, not v1. Group items into a trip or collection with a date range. *(Approved as Later, not in v1, by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E10-trip-and-collection-grouping.md`. Miguel's decision that this is later. No stories. Do not build it in v1.
 
 ## Specification and vision
 
 - **Vision** *(Draft — not accepted)* Evidence: `docs/product/vision.md`. It restates the original request, including backup and restore. Later decisions in the specification supersede that wording. They do not accept the vision.
-- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`)* Evidence: `docs/product/specification.md`. This does not approve the epics or the stories.
+- **Product specification** *(Approved by `mjbvilhena`, 2026-10-17 12:36 IST, wording "Approved", revision `c288b7e`)* Evidence: `docs/product/specification.md`. This spec approval does not approve the stories. The epics were approved later the same day.
 
 ## Repository setup
 

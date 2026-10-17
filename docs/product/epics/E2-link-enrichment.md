@@ -1,8 +1,10 @@
 # Epic E2: Link enrichment
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Does not approve child stories. Shipped-epic DoD is not claimed.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 
 ## Background & Value Proposition
 
@@ -37,12 +39,12 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 
 - Depends on E1 to have a link item to enrich.
 - Many pages will return little or no readable text. That is an expected miss, not a failed save.
-- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33). That shape is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. The old manual-backup size warning is gone.
+- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33). That shape is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. The old manual-backup size warning is gone.
 
 ## Open Questions
 
 - OCR is Miguel's v1 decision and lives in E7. This epic does not perform it.
-- Snapshot shape is the US-33 rule in the approved specification: a sanitised readable archive, not MHTML in v1. This epic is still Draft and awaits his approval.
+- Snapshot shape is the US-33 rule in the approved specification: a sanitised readable archive, not MHTML in v1. This epic is Approved. Its stories stay Draft.
 - [ ] No question was opened here about which HTML fields count as description. Technical design should say which signals are tried, without inventing a success rate.
 
 ## Draft stories

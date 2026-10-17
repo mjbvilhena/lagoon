@@ -1,8 +1,11 @@
 # Epic E8: Encryption and sensitive items
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. The cipher is an ADR, not this file. Shipped-epic DoD is not claimed.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> His words on Q10: "Yes, extra encryption would be good." He also decided fingerprint or biometric lock on items marked sensitive, tied to this work. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. The cipher is an ADR, not this file.
 
 ## Background & Value Proposition
 

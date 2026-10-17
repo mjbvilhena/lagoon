@@ -1,9 +1,12 @@
 # Epic E11: Topics
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Shipped-epic DoD is not claimed.
-> No user stories yet. Stories come after the specification gate and the epic gate. Story approval is delegated to Miguel's bots. Do not write the stories in place of those gates.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve any story. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> Added during his section-by-section spec review on 2026-10-17 at about 11:57 IST. His words: "Use a cloud AI for all items; I accept the content leaves the phone." That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
+> No user stories yet. Draft those stories next. Story approval is delegated to Miguel's bots under his delegation of 2026-10-17. Do not implement.
 
 ## Background & Value Proposition
 

@@ -1,8 +1,10 @@
 # Epic E3: Find and curate
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Does not approve child stories. Shipped-epic DoD is not claimed.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
 
 ## Background & Value Proposition
 
@@ -43,12 +45,12 @@ Miguel, looking back through what he kept.
 ## Risks & Dependencies
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
-- Ranking is the US-15 rule in the specification approved by `mjbvilhena` on 2026-10-17: weighted BM25, including OCR text. This epic is still Draft and awaits his approval. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
-- Q4 is part of that approved specification: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. This epic is still Draft and awaits his approval.
+- Ranking is the US-15 rule in the specification approved by `mjbvilhena` on 2026-10-17: weighted BM25, including OCR text. This epic is Approved. Its stories stay Draft. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
+- Q4 is part of that approved specification: rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. This epic is Approved. Its stories stay Draft.
 
 ## Open Questions
 
-- Q4 and Q9 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Q5 and Q10 were decided by him and are not open here. Conflicts and deletions on sync are his questions on E4, not this epic.
+- Q4 and Q9 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. Q5 and Q10 were decided by him and are not open here. Conflicts and deletions on sync are his questions on E4, not this epic.
 
 ## Draft stories
 

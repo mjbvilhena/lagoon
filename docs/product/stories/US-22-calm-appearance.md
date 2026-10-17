@@ -3,7 +3,7 @@
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
 > Story approval is delegated to Miguel's bots (2026-10-17). None has signed this story.
-> On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." That clarification is not approval of this story or of epic E5.
+> On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." That clarification is not approval of this story. Epic E5 was approved later, on 2026-10-17 at 13:29 IST. This story stays Draft.
 > Visual specifics beyond his words wait for the UX artefact. This story does not approve that artefact and does not invent screens.
 
 ## Title

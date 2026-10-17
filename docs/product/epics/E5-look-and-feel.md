@@ -1,9 +1,11 @@
 # Epic E5: Look and feel
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Does not approve child stories. Shipped-epic DoD is not claimed.
-> This epic records visual constraints he already stated. It is not a UX artefact. Screens, layout, and copy beyond his words belong to `sdlc-ux-designer` after story approval. This draft does not invent screens.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> This epic records visual constraints he already stated. It is not a UX artefact. Screens, layout, and copy beyond his words belong to `sdlc-ux-designer` after story approval. This epic does not invent screens.
 
 ## Background & Value Proposition
 
@@ -39,13 +41,13 @@ Miguel, using the app every time he saves or looks something up.
 
 ## Risks & Dependencies
 
-- Q1 (the name Lagoon) and Q3 (the teal, dark on-accent text, optional dynamic color) are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design has not started.
+- Q1 (the name Lagoon) and Q3 (the teal, dark on-accent text, optional dynamic color) are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design has not started.
 - "Tasteful" and "refined" are his words. This epic does not pick a typeface. The accent values are the recommendation, not a finished visual design.
 
 ## Open Questions
 
-- Q1 and Q3 are part of the approved specification, not open questions. This epic is still Draft and awaits his approval. The UX gate may still adjust the accent.
-- On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." The three-way setting above is that clarification. It is not approval of this epic.
+- Q1 and Q3 are part of the approved specification, not open questions. This epic is Approved. Its stories stay Draft. The UX gate may still adjust the accent.
+- On 2026-10-17 at 13:15 IST, during epic review, he said: "Look & feel should allow for light or dark theme, or follow the system setting." The three-way setting above is that clarification, and it is part of the revision he approved.
 - Q5 and Q10 are Miguel's decisions (sync merges; extra encryption). They are not questions for this epic.
 
 ## Draft stories

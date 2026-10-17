@@ -4,7 +4,7 @@
 > Approver: `mjbvilhena`. Date and time: 2026-10-17 12:36 IST.
 > His words, in reply to a request to approve the Lagoon spec in his own words, after a full section-by-section walkthrough (parts 1–4, including the E11 Topics addition): "Approved".
 > Approved revision: commit `c288b7e` (`c288b7ef020a9aafe821b3df3af21bd2ff75dc1b`). This record does not change the product text of that revision.
-> This approval is of the specification only. It does not approve the epics, the stories, the technical design, or the threat model. Do not start implementation from this file alone.
+> This approval is of the specification only. It does not itself approve the epics, the stories, the technical design, or the threat model. Epics E1–E11 were approved later, on 2026-10-17 at 13:29 IST, at revision `98275b3`. Stories stay Draft. Do not start implementation from this file alone.
 > Template: `get_sdlc_template("product spec")`. Epic readiness notes: `get_definition_of_done("epic")` (that DoD is the shipped outcome, not this planning gate).
 
 ## Background & Value Proposition
@@ -184,9 +184,9 @@ Consensus from Mikey's Dev Bot and Scout, reconciled by Mikey's Vault App Bot un
 | Gate | Status | What advances it |
 |---|---|---|
 | This specification | **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. Wording: "Approved". Revision: `c288b7e`. | Passed. |
-| Epics E1–E9 and E11 | Draft. Next gate. Not approved. | Named sign-off by `mjbvilhena` on the epics. His spec approval does not approve them. |
-| Epic E10 | Draft, later, not v1 | His decision that it is later. Not approval to build it, and not part of v1. |
-| User stories | Draft. None approved. | After epic approval, Miguel's bots review and approve stories under his delegation of 2026-10-17. He decides epic-level and security matters only. That rule is not a sign-off on any story. |
+| Epics E1–E9 and E11 | **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. Wording: "All makes sense", then "Yes, approved". Revision: `98275b3`. | Passed. This does not approve the stories. |
+| Epic E10 | **Approved. Later. Not in v1.** Same sign-off and revision. | Passed as later work. Not approval to build it in v1. |
+| User stories | Draft. None approved. | Next gate. Miguel's bots review and approve stories under his delegation of 2026-10-17. E11 stories are drafted first. He decides epic-level and security matters only. That rule is not a sign-off on any story. |
 | Threat model, UX, test strategy, ADRs | Not started | After story approval. The security, data-integrity, and release questions above, including the topic-extraction questions, are answered here, by Miguel. Required before implementation. Not skipped. |
 
-The specification gate has passed. The next gate is epic approval by `mjbvilhena` for E1–E11. Draft stories are not a reason to skip epic approval, story approval, or the design band.
+The specification gate and the epic gate have passed. The next gate is story review and approval by Miguel's bots. E11 stories are drafted first. Draft stories are not a reason to skip story approval or the design band.

@@ -1,8 +1,11 @@
 # Epic E9: Reminders and expiry
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Miguel decided optional expiry or reminder dates, with notifications, are in v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. Shipped-epic DoD is not claimed.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> Miguel decided optional expiry or reminder dates, with notifications, are in v1. That decision is part of the specification approved by `mjbvilhena` on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -40,11 +43,11 @@ Miguel.
 
 - Depends on E1 items and on edit (US-12).
 - Notification permission is the platform's. If he denies it, the date is still stored and he can see it on the item. Do not invent a second channel.
-- The schedule above is the US-34 rule in the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval.
+- The schedule above is the US-34 rule in the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft.
 
 ## Open Questions
 
-- The time, the 7-day expiry warning, and inexact alarms are in the approved specification (US-34). They are not an open product question. This epic is still Draft and awaits his approval.
+- The time, the 7-day expiry warning, and inexact alarms are in the approved specification (US-34). They are not an open product question. This epic is Approved. Its stories stay Draft.
 
 ## Draft stories
 

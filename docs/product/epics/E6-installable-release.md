@@ -1,9 +1,11 @@
 # Epic E6: Installable release
 
-> **Approval status: Draft. Not approved.**
-> Approver required: `mjbvilhena`. Sign-off on file: none.
-> Does not approve child stories. Shipped-epic DoD is not claimed.
-> This epic is the delivery bar he set for v1. It is not a reason to write the app before the spec, epic, story, and technical-design gates are actually approved.
+> **Approval status: Approved.**
+> Approver: `mjbvilhena`. Date and time: 2026-10-17 13:29 IST.
+> His words, after a 3-part walkthrough of every epic E1–E11 (including the E5 Light/Dark/System theme change at `98275b3`): "All makes sense", then "Yes, approved" when asked to confirm that as approval of E1 to E11.
+> Approved revision: commit `98275b3` (`98275b3c8b696542b71b66da88ff101e56542a56`). This record does not change the product text of that revision.
+> This approval does not approve the child stories. Stories stay Draft. Shipped-epic DoD is not claimed. Nothing in this epic is implemented.
+> This epic is the delivery bar he set for v1. It is not a reason to write the app before the story and technical-design gates are actually approved.
 
 ## Background & Value Proposition
 
@@ -19,8 +21,8 @@ Miguel, installing and configuring the vault himself.
 
 - **In Scope (MVP):**
   - Command-line Gradle build of a release APK.
-  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). That SDK choice is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval.
-  - Application id `com.mjbvilhena.lagoon`. That id is part of the approved specification. This epic is still Draft and awaits his approval.
+  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). That SDK choice is part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft.
+  - Application id `com.mjbvilhena.lagoon`. That id is part of the approved specification. This epic is Approved. Its stories stay Draft.
   - Signed with a self-generated release keystore. The keystore is documented. Secrets are not committed.
   - README: build, sideload (unknown sources), Google Cloud OAuth client steps (package name, SHA-1 of the signing cert he was given), and where the client ID goes.
   - Unit tests for the repository/search layer and for sync-payload and zip packaging. At least one Compose UI test.
@@ -41,13 +43,13 @@ Miguel, installing and configuring the vault himself.
 ## Risks & Dependencies
 
 - Depends on E1–E5 for there to be screens and behavior worth testing and photographing.
-- The README can name Lagoon and `com.mjbvilhena.lagoon`. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval. The signing SHA-1 still does not exist and must not be invented.
+- The README can name Lagoon and `com.mjbvilhena.lagoon`. Both are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft. The signing SHA-1 still does not exist and must not be invented.
 - Screenshot capture needs an emulator or a device. Availability is unknown at drafting time.
 - The signing SHA-1 cannot be known until the keystore exists. It is an implementation output, documented in the README, not invented in this epic.
 
 ## Open Questions
 
-- Q1, Q2, and Q8 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is still Draft and awaits his approval.
+- Q1, Q2, and Q8 are part of the specification approved by `mjbvilhena` on 2026-10-17. This epic is Approved. Its stories stay Draft.
 - [ ] Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt. Flagged for Miguel. (@mjbvilhena)
 - Q5 and Q10 are his decisions, recorded in the specification. They are not open here.
 

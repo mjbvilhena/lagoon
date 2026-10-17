@@ -6,9 +6,9 @@ There is no app module in this repository yet. Do not look for an APK or a Gradl
 
 ## Where the work stands
 
-The AI SDLC harness is installed. The product specification is **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. His wording was "Approved". The approved revision is `c288b7e`. The vision, epics, and user stories stay **drafts**.
+The AI SDLC harness is installed. The product specification is **Approved** by `mjbvilhena` on 2026-10-17 at 12:36 IST. His wording was "Approved". The approved revision is `c288b7e`. Epics E1–E11 are **Approved** by `mjbvilhena` on 2026-10-17 at 13:29 IST. His wording was "All makes sense", then "Yes, approved". The approved epic revision is `98275b3`. E10 is Approved as Later and is not in v1. The vision and the user stories stay **drafts**.
 
-The pipeline is stopped at **epic approval** of E1–E11 by `mjbvilhena`. After that, Miguel's bots review and approve the stories under his delegation of 2026-10-17. Technical design, ADRs, and the threat model come next, and the security questions go to him. Nothing is implemented.
+The pipeline is stopped at **story review and approval** by Miguel's bots under his delegation of 2026-10-17. E11 stories are still to be drafted first. Technical design, ADRs, and the threat model come after that, and the security questions go to him. Nothing is implemented.
 
 Miguel decided sync, encryption, and the v1 scope (OCR, reminders, multiple attachments, page snapshots, biometric lock on sensitive items, and topic extraction). On 2026-10-17 at about 11:57 IST he added draft epic E11: a cloud AI may read item content to identify topics, and Drive sync stays ciphertext-only. Scout and Mikey's Vault App Bot jointly recommend the name Lagoon and the application id `com.mjbvilhena.lagoon`. His other bots recommended the remaining delegated answers. Trip grouping is later. Q5 and Q10 are resolved.
 
@@ -20,7 +20,7 @@ Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code.
 |---|---|
 | `docs/product/vision.md` | Draft vision, taken from the request |
 | `docs/product/specification.md` | Approved product specification (`c288b7e`) |
-| `docs/product/epics/` | Draft epics |
+| `docs/product/epics/` | Approved epics E1–E11 (`98275b3`). E10 is Later, not in v1 |
 | `docs/product/stories/` | Draft user stories and the index |
 | `docs/product/backlog.md` | Draft backlog |
 | `docs/sdlc/pipeline-state.md` | Current gate and what has not been started |
