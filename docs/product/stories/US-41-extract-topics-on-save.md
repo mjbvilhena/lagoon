@@ -4,6 +4,7 @@
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
 > Review verdicts are not approvals. Status stays Draft until all five bots re-review.
+> Miguel (`mjbvilhena`) decided the default in chat on 2026-10-17 at 18:05 IST. His words: "Topics on by default, with an off switch". That decision is not story approval.
 
 **MoSCoW:** Must. v1, from approved epic E11.
 
@@ -22,7 +23,9 @@ Extract topics when an item is saved.
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
 - Out of scope: linking (US-42), creating (US-43), the offline queue (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. Whether a sensitive item is sent is US-75. The cap of 8 suggestions is a draft rule so the scenario is testable. It is not his approval.
-- The off switch lives in Settings (US-59) and defaults to off. Items saved while it is off are not sent later unless he asks. That default is an open question for Miguel. This story does not change it. The later-send rule is a draft so the scenario is testable. It is not his approval.
+- The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he asks.
+- A sensitive item stays out of the call. That exclusion is US-75. It still applies when this switch is on.
+- The topic job keeps its own "Unmetered only" setting (US-44). Turning topics on does not use the sync preference and does not ignore that setting.
 
 ## Acceptance criteria
 
@@ -34,11 +37,23 @@ Extract topics when an item is saved.
   - Given the call returns more than 8 topic names
   - When the result is stored
   - Then only 8 are kept as suggestions
-- **Scenario: the switch is off** — Must
-  - Given the topic switch in Settings (US-59) is off, which is the default
+- **Scenario: the switch starts on** — Must
+  - Given a fresh install and an ordinary item that is not sensitive
+  - When the item is saved and the earlier steps have text
+  - Then the topic switch is on and a topic call is allowed, subject to the unmetered setting below
+- **Scenario: he turns it off** — Must
+  - Given he has turned the topic switch off in Settings (US-59)
   - When an item is saved
   - Then no call is made
   - And when he later turns the switch on, that saved item is not sent unless he asks for topics on it
+- **Scenario: a sensitive item** — Must
+  - Given the topic switch is on and the item is sensitive
+  - When a topic job would run
+  - Then no call is made for that item. The exclusion is US-75
+- **Scenario: unmetered still applies** — Must
+  - Given the topic switch is on and the topic "Unmetered only" setting (US-44) is on
+  - When the network is metered
+  - Then the call waits. It does not use the sync preference
 - **Scenario: provenance** — Must
   - Given a call returns
   - When the result is stored

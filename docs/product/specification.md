@@ -119,6 +119,7 @@ Recorded as his decisions, in his words where he gave them.
 - **2026-10-17 at 15:59 IST. Sensitive lock-screen reminder.** A sensitive item's lock-screen reminder shows only "Lagoon reminder", with no title or codes until unlock. Ordinary items still follow the 14:56 IST decision. US-75.
 - **2026-10-17 at 15:59 IST. Token-looking URLs.** The vault does not auto-fetch them. A foggy placeholder stands in for the preview, and he is asked whether to enable that preview. A fetch runs only after he says yes. US-79.
 - **2026-10-17 at 16:00 IST. ML Kit telemetry.** His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept". Official Google ML Kit docs do not document a disable switch, so US-07 records disclosure and acceptance before the first OCR use, also readable in Settings. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
+- **2026-10-17 at 18:05 IST. Topic default.** Asked whether topic extraction should be on by default for new items, he said: "Topics on by default, with an off switch". US-41 and US-59. A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44). This is not a new approval of this specification.
 
 ### Q1 and Q2 (joint recommendation, not approval)
 

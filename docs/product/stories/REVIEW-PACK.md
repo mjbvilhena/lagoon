@@ -24,6 +24,11 @@ Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 16:00 IST. It is not
 - Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. There is no Settings toggle, and no default to copy from the docs.
 - Before the first OCR use he accepts a disclosure that the image and the recognized text stay on the device, and that ML Kit still sends usage and diagnostic metrics to Google. Declining, or leaving it unanswered, means OCR does not run and ML Kit is not started. He can withdraw the acceptance in Settings. US-07 and US-59. US-31 requires the bundled model.
 
+Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 18:05 IST. It is not story approval and it is not a new specification approval. Asked whether topic extraction should be on by default for new items, he said: "Topics on by default, with an off switch".
+
+- The topic switch starts on. He can turn it off in Settings. US-41 and US-59.
+- A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44).
+
 ## Open questions for Miguel
 
 Not decided. Not delegated.
@@ -34,7 +39,6 @@ Not decided. Not delegated.
 - Topic provider, its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. US-76. The release APK must not contain that key in plaintext.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
-- The topic off switch defaults to off (US-41, US-59). Four reviewers said that conflicts with E11 processing every item. Miguel has not changed the default. This pack does not change it.
 - US-28 keeps "Add date" as a Must. Miguel has not moved it.
 - US-82, US-83, and US-84 stay Should. US-68 stays a date story. Miguel has not changed those priorities or that scope.
 - Whether the vault key is bound to device authentication. US-35 does not choose it.
@@ -69,7 +73,7 @@ US-61 cites the approved amendment and stays Draft. US-64 cites it for the Shoul
 
 Implementation DoD fails for every story: there is no app and no automation, so no story is Done.
 
-Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. US-07 no longer holds an open ML Kit question. The 16:00 IST disclosure criteria assert. That pass is not story approval.
+Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. US-07 no longer holds an open ML Kit question. The 16:00 IST disclosure criteria assert. US-41 and US-59 still pass artefact shape after the 18:05 IST default. That pass is not story approval.
 
 The seven required checks are no-ops until a Gradle project exists. `ubuntu-latest` moves to Ubuntu 26.04 on 2026-10-19. Pinning `ubuntu-24.04` is a separate pull request, not this one. The script that starts the knowledge server lives on PR #4. This branch imports `server.py` with the virtualenv Python. That import is not a live MCP session.
 
@@ -148,6 +152,8 @@ US-11 also had a clean verdict at `40bb526`. The 15:59 IST edit adds one line: w
 US-31 also had a clean verdict at `40bb526`. The 16:00 IST edit is a factual note: ML Kit metrics are the US-07 disclosure, and the first OCR use waits on that acceptance. Status stays Draft. That edit needs re-confirm. US-07 was not a clean all-five approval, so its new criteria are not a re-confirm of a unanimous verdict.
 
 Round 3, against `df8c088`, edited these clean-verdict stories again. They need re-confirm. Status stays Draft. This run records no approval: US-08 (the skip rules are US-79, and enrichment waits for the quick-add row), US-15 (merchant column), US-19 (the topic queue has its own unmetered setting), US-31 (bundled `com.google.mlkit:text-recognition` only), US-33 (no snapshot for a token-looking link until he confirms, none for a sensitive item, host rules from US-79), US-50 (merchant weight 5).
+
+The 18:05 IST edit changes US-41 and US-59 only. Those stories were not clean approvals at `40bb526`, so this edit does not add them to the re-confirm list. Status stays Draft.
 
 | ID | Dev Bot | Scout | Mikey's Assistant | Household | Leisure |
 |---|---|---|---|---|---|
@@ -282,7 +288,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-38 | File new captures from an Untagged inbox. | E3 | new captures do not disappear into the full list before I tag them | Must | 5 | None on this story |
 | US-39 | Sort and filter the list by when it was saved. | E3 | I can limit the list to a day or a range | Must | 7 | None on this story |
 | US-40 | Fill an empty title from the page or the file. | E1 | a one-tap save is not called Untitled | Must | 7 | None on this story |
-| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 9 | Provider, credential, payload, and the off-switch default stay open |
+| US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 12 | Provider, credential, and payload stay open |
 | US-42 | Link an item to a topic the vault already has. | E11 | the subject I already have grows instead of starting over | Must | 5 | None on this story |
 | US-43 | Confirm a topic before it is created. | E11 | a subject I do not want is never created, and one-tap capture stays one tap | Must | 6 | None on this story |
 | US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | None on this story |
@@ -300,7 +306,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-56 | Keep a stable identity for each item. | Cross-cutting | an edit or a second device does not fork the item or lose it | Must | 3 | None on this story |
 | US-57 | Prove that search and encryption can run together. | Cross-cutting | search and encryption are not built on a combination that cannot run | Must | 2 | None on this story |
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | search and topics see the text that actually exists | Must | 3 | None on this story |
-| US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 3 | None. ML Kit disclosure is the US-07 slot |
+| US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 4 | None. Topic switch starts on. ML Kit disclosure is the US-07 slot |
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
 | US-61 | Filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 0 | In E1. Filter only. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |

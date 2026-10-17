@@ -28,7 +28,7 @@ Miguel. He is the only person named. The vault is personal, not a shared workspa
 - Sync runs in the background to his private Google Drive app space. What Drive stores is ciphertext. There is no Back up now, no Restore, and no last-backup time. A zip on the device remains a fallback. The app still works when sync is not configured.
 - The database and the files are encrypted on the phone. A sensitive item stays closed until a biometric succeeds, or the device PIN when there is no biometric. App lock is optional. If the vault key is lost, the content is lost, and there is no recovery.
 - An item can have a reminder or an expiry, with a notification. Alarms stay inexact.
-- A cloud AI names topics (E11). He accepted that readable content leaves the phone for that call. Drive sync stays ciphertext. A new topic is created only after he confirms.
+- A cloud AI names topics (E11). Topic extraction runs for a new ordinary item, and he can turn it off in Settings. A sensitive item stays out of that call. The topic job can be limited to an unmetered network. He accepted that readable content leaves the phone for that call. Drive sync stays ciphertext. A new topic is created only after he confirms.
 - The app follows Light, Dark, or the system theme. The accent is teal. Dynamic color is optional and off until he turns it on.
 - He installs a signed APK himself. The name is Lagoon. The app is not a Play Store product in v1.
 

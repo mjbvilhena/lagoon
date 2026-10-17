@@ -175,7 +175,6 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
-- The topic off switch defaults to off (US-41, US-59). Not changed in round 3.
 - US-28 keeps Add date as a Must. Not changed.
 - US-82, US-83, and US-84 stay Should. US-68 stays the date story. Not changed.
 - Whether the vault key is bound to device authentication. US-35 does not choose it.
@@ -188,6 +187,10 @@ Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
 
 - Official Google docs do not document a disable switch for ML Kit usage or diagnostic telemetry. US-07 requires a disclosure he accepts before the first OCR use. ML Kit is not started until he accepts, and he can withdraw that acceptance in Settings (US-59). Research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
+
+Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 18:05 IST. Not story approval. His words: "Topics on by default, with an off switch".
+
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. US-41 and US-59. A sensitive item stays excluded (US-75). The topic job keeps its own unmetered setting (US-44). This is not a new specification approval.
 
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 
