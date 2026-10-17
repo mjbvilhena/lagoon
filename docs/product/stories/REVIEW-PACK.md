@@ -19,6 +19,11 @@ Miguel (`mjbvilhena`) decided these in chat on 2026-10-17 at 15:59 IST. They are
 - A lock-screen reminder for a sensitive item shows only a generic "Lagoon reminder", using `VISIBILITY_PRIVATE` and a public version. It shows no title and no codes. Those details appear after unlock. US-75. Ordinary items still follow the 14:56 decision.
 - A token-looking URL is not auto-fetched. A foggy placeholder image stands in for the preview, and he is asked whether to enable the preview for that link. Yes fetches under the proposed safe-fetch rules. No, or no answer, leaves the placeholder. He can enable it later after a no. US-79. The home row (US-10) does not draw that image. The item detail (US-11) shows it when it is the stored preview.
 
+Miguel (`mjbvilhena`) decided this in chat on 2026-10-17 at 16:00 IST. It is not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
+
+- Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. There is no Settings toggle, and no default to copy from the docs.
+- Before the first OCR use he accepts a disclosure that the image and the recognized text stay on the device, and that ML Kit still sends usage and diagnostic metrics to Google. Declining, or leaving it unanswered, means OCR does not run. The same disclosure is readable in Settings, with whether he has accepted it. US-07 and US-59. US-31 only points at that gate.
+
 ## Open questions for Miguel
 
 Not decided. Not delegated.
@@ -29,7 +34,6 @@ Not decided. Not delegated.
 - Topic provider, its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. US-76. The release APK must not contain that key in plaintext.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
-- ML Kit usage or diagnostic telemetry: accept and disclose, or block. US-07 does not decide it.
 
 ## Open questions delegated to bots
 
@@ -60,7 +64,7 @@ US-61 cites the approved amendment and stays Draft. US-64 cites it for the Shoul
 
 Implementation DoD fails for every story: there is no app and no automation, so no story is Done.
 
-Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion.
+Fail artefact shape: US-73, US-74, US-76, US-77. Each holds an open question for Miguel and has no asserting criterion. US-07 no longer holds an open ML Kit question. The 16:00 IST disclosure criteria assert. That pass is not story approval.
 
 Pass artefact shape: every other story, including US-64, US-75, US-78, US-79, US-80, and US-81. Those six pass on shape only. Their criteria are marked **Proposed: pending Miguel's approval**. That pass is not his approval, and it is not a status of Approved.
 
@@ -133,6 +137,8 @@ Conditional, not clean: US-18 depends on US-78. US-25 and US-52 were Dev Bot [RD
 Approved stories edited in the round-2 revision, minimal, and needing re-confirm: US-01 (one title order, leftover text aligned with US-02, sending app only when the platform reports it), US-45 (a hard-deleted item's topic note is removed, matching US-13), US-57 (the spike also runs on an API 26 emulator and an arm64 phone, and records the APK size change).
 
 US-11 also had a clean verdict at `40bb526`. The 15:59 IST edit adds one line: when the stored preview is the foggy placeholder from US-79, the detail shows that image and does not fetch. That edit needs re-confirm. Status stays Draft. US-10 does not draw a preview, so the placeholder is not on the home row.
+
+US-31 also had a clean verdict at `40bb526`. The 16:00 IST edit is a factual note: ML Kit metrics are the US-07 disclosure, and the first OCR use waits on that acceptance. Status stays Draft. That edit needs re-confirm. US-07 was not a clean all-five approval, so its new criteria are not a re-confirm of a unanimous verdict.
 
 | ID | Dev Bot | Scout | Mikey's Assistant | Household | Leisure |
 |---|---|---|---|---|---|
@@ -233,7 +239,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-04 | Share a PDF into the vault. | E1 | the file and the text it already contains are searchable later | Must | 5 | None on this story |
 | US-05 | Add a note by hand. | E1 | I can keep something that did not come from a share | Must | 4 | None on this story |
 | US-06 | Add a URL by hand. | E1 | I can keep a page when I am not in the app that showed it | Must | 4 | None on this story |
-| US-07 | Use the saved vault with no network and no analytics. | E1 | I can read and search it offline, and the app does not report my use | Must | 3 | ML Kit telemetry, for Miguel |
+| US-07 | Use the saved vault with no network and no analytics. | E1 | I can read and search it offline, and the app does not report my use | Must | 7 | None. Disclosure decided 16:00 IST |
 | US-08 | Enrich a saved link from the page. | E2 | I can recognise the page later without opening it | Must | 4 | None on this story |
 | US-09 | Keep the link when the page cannot be fetched. | E2 | a failed fetch does not lose the link (1 Should) | Must | 2 | None on this story |
 | US-10 | Browse saved items, newest first. | E3 | the thing I just kept is the first row | Must | 5 | None on this story |
@@ -270,7 +276,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-41 | Extract topics when an item is saved. | E11 | I do not have to type the subject by hand | Must | 8 | Provider, credential, and payload stay open |
 | US-42 | Link an item to a topic the vault already has. | E11 | the subject I already have grows instead of starting over | Must | 5 | None on this story |
 | US-43 | Confirm a topic before it is created. | E11 | a subject I do not want is never created, and one-tap capture stays one tap | Must | 6 | None on this story |
-| US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | E11 does not yet mention the topic unmetered setting |
+| US-44 | Queue topic processing while offline. | E11 | capturing something never waits on the cloud | Must | 6 | None on this story |
 | US-45 | Read a topic. | E11 | I can look across what I saved on that subject | Must | 5 | None on this story |
 | US-46 | Reject, rename, or merge a suggested topic. | E11 | the subjects stay the ones I mean | Must | 3 | None on this story |
 | US-47 | Keep the item when the topic call fails. | E11 | a cloud problem does not lose what I saved or invent a topic | Must | 6 | None on this story |
@@ -285,7 +291,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-56 | Keep a stable identity for each item. | Cross-cutting | an edit or a second device does not fork the item or lose it | Must | 3 | None on this story |
 | US-57 | Prove that search and encryption can run together. | Cross-cutting | search and encryption are not built on a combination that cannot run | Must | 2 | None on this story |
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | Cross-cutting | search and topics see the text that actually exists | Must | 3 | None on this story |
-| US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 2 | None on this story |
+| US-59 | Use one Settings screen. | Cross-cutting | I do not hunt through the app for those controls | Must | 3 | None. ML Kit disclosure is the US-07 slot |
 | US-60 | Browse topics and pending suggestions. | E11 | I can open a subject and answer suggestions without a prompt on every save | Must | 3 | None on this story |
 | US-61 | See and filter by where an item came from. | E1 | I can find what I saved from one site or one app | Should | 3 | In E1 after the approved amendment. Story stays Draft |
 | US-62 | See what is coming due. | E9 | I can see what is due without opening each item (1 Should) | Should | 3 | None on this story |

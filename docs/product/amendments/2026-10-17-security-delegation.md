@@ -121,11 +121,11 @@ He did not accept the proposed supersession sentence. He changed this section du
 
 ## What this amendment does not decide
 
-Left open for Miguel. Not proposed as closed:
+Left open for Miguel at the 15:55 IST approval. Not proposed as closed by that approval:
 
 - ML Kit usage or diagnostic telemetry (US-07).
 
-Later than this approval, and not part of it: on 2026-10-17 at 15:59 IST Miguel decided the sensitive lock-screen reminder (US-75) and token-looking previews (US-79). Those decisions are on the stories. This amendment's 15:55 IST text is unchanged. ML Kit telemetry stayed open.
+Later than this approval, and not part of it: on 2026-10-17 at 15:59 IST Miguel decided the sensitive lock-screen reminder (US-75) and token-looking previews (US-79). On 2026-10-17 at 16:00 IST he decided ML Kit telemetry. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept". Official Google docs do not document a disable switch, so US-07 records disclose-and-accept. Those decisions are on the stories. This amendment's 15:55 IST text is unchanged.
 - Topic provider, retention, credential supply, and payload (US-76).
 - Sync conflicts and deletion propagation (US-73).
 - How the vault key reaches a new device (US-74).

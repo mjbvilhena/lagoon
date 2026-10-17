@@ -14,7 +14,7 @@ Use one Settings screen.
 ## User story
 
 **As a** person named Miguel
-**I want** theme, sync, the reminder default, app lock, and the topic controls to live on one Settings screen
+**I want** theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure to live on one Settings screen
 **So that** I do not hunt through the app for those controls
 
 ## Background
@@ -23,6 +23,7 @@ Use one Settings screen.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: deciding sign-out. The row is only a slot. The behavior is the proposed US-78, pending Miguel's approval.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference. Epic E11 includes that setting after the amendment approved on 2026-10-17 at 15:55 IST.
+- The ML Kit disclosure is a slot. The behavior is US-07, decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. It is not a telemetry off switch. Google's docs do not state a default, because they do not state a switch.
 
 ## Acceptance criteria
 
@@ -34,10 +35,14 @@ Use one Settings screen.
   - Given that screen
   - When he reads it
   - Then there is no Back up now, no Restore, and no last-backup time
+- **Scenario: ML Kit disclosure** — Must
+  - Given he opens Settings
+  - When the screen is shown
+  - Then he can read the same disclosure US-07 requires before the first OCR use, and he can see whether he has accepted it. There is no control that disables ML Kit usage or diagnostic telemetry
 
 ## Analytics and observability (optional)
 
-Not applicable. No analytics.
+This screen does not add an analytics library. The ML Kit disclosure is US-07.
 
 ## Design and a11y notes
 

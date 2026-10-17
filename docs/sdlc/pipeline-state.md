@@ -73,12 +73,16 @@ Still open for him. The design band has not started:
 4. Topic provider, retention and training, how the credential is supplied, and the payload. US-76. The APK still must not contain a plaintext key.
 5. Whether 09:00 should use a fixed zone instead of the phone.
 6. Full-screen QR and barcode display.
-7. ML Kit usage or diagnostic telemetry. US-07.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
 
 1. A sensitive item's lock-screen reminder shows only "Lagoon reminder" (`VISIBILITY_PRIVATE`, public version), with no title or codes until unlock. US-75. Ordinary items still show title and codes.
 2. A token-looking URL is not auto-fetched. A foggy placeholder is shown and he is asked whether to enable that preview. US-79. The other US-79 criteria stay proposed.
+
+Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
+
+1. Official Google ML Kit docs do not document a developer switch that disables usage or diagnostic telemetry. The research note is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. There is no Settings toggle and no default to copy from the docs.
+2. US-07 requires a disclosure he accepts before the first OCR use. Declining, or leaving it unanswered, means OCR does not run. US-59 shows the same disclosure and whether he has accepted it. The image and the recognized text stay on the device. This does not approve US-07 or US-59.
 
 Delegated to his bots the same afternoon. He did not decide them. Round 2 proposes criteria, marked pending his approval, in `docs/product/amendments/2026-10-17-security-delegation.md` and on the stories. The proposals are not approval.
 
@@ -235,13 +239,44 @@ ML Kit telemetry (US-07) stays open.
 
 `sdlc-dod-checker` artefact result is unchanged in kind: fail US-73, US-74, US-76, US-77. US-75 and US-79 still pass artefact shape. Their decided criteria assert, and the remaining proposed criteria still assert. Implementation DoD fails for every story. Nothing is Done. No story status was flipped to Approved.
 
+## Harness step (2026-10-17, 16:00 IST): ML Kit telemetry
+
+`sdlc-conductor`. The legal step is still story refinement. Stories stay Draft. Design, an approved threat model, and implementation stay closed. Recording this named decision, after the research the user asked for, is legal. It does not approve US-07 or US-59. The user's instruction to write the criteria is the confirm.
+
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This branch does not contain `scripts/bootstrap-sdlc-mcp.sh`. This was not a live MCP stdio session. `get_domain_consultant("capture")` and `get_layer_consultant("ui")` found no files. No MUST/NEVER rules were invented.
+
+Skills used:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-researcher`, template `get_sdlc_template("research")`, Definition of Done `get_definition_of_done("research")`. The report is `docs/product/research/2026-10-17-ml-kit-telemetry.md`. It has an executive summary, three options, pros and cons, security and performance notes, and the sources below. The DoD review checkbox is this pull request, for Miguel. It is not a separate stakeholder review and it is not his approval of the research.
+3. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+4. `sdlc-dod-checker`, `get_definition_of_done("user story")`, artefact shape only. Also `get_definition_of_done("pr")` for the landing description. `get_definition_of_done("security change")` stays unmet: there is no code, and the threat note stays proposed.
+5. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+6. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`.
+
+Finding, from the official pages, not from a third-party privacy policy: no documented developer control disables ML Kit usage or diagnostic telemetry. Sources cited in the research note and in the US-07 implementation notes:
+
+- [ML Kit Terms & Privacy](https://developers.google.com/ml-kit/terms), last modified May 14, 2025.
+- [Android data disclosure](https://developers.google.com/ml-kit/android-data-disclosure), last modified May 14, 2025.
+- [MlKit reference](https://developers.google.com/android/reference/com/google/mlkit/common/MlKit). Removing `MlKitInitProvider` is init timing, not a telemetry switch.
+- [Text recognition on Android](https://developers.google.com/ml-kit/vision/text-recognition/v2/android), last updated 2026-10-15 UTC.
+- [iOS data disclosure](https://developers.google.com/ml-kit/ios-data-disclosure), corroboration only. Lagoon is Android.
+
+Because a disable is not in those docs, the criteria are the other branch of his sentence: an in-app disclosure he accepts before the first OCR use, also readable in Settings. No toggle was added. No default was invented.
+
+US-31 had a clean round-2 verdict. The edit there is one factual note pointing at the US-07 gate. It needs re-confirm. Status stays Draft.
+
+`sdlc-dod-checker` artefact result: fail US-73, US-74, US-76, US-77. US-07 and US-59 pass artefact shape. Their new criteria assert, and US-07 no longer leaves ML Kit as a silent open question. Implementation DoD fails for every story. Nothing is Done. No story status was flipped to Approved.
+
+The catalog cell for US-44 no longer says E11 omits the topic unmetered setting. E11 includes that setting after the 15:55 IST amendment. The story file was not rewritten for that cell.
+
 ## Memory checklist
 
 | Artefact | This run |
 |---|---|
 | Backlog | Written. Statuses are Draft or Not started. Nothing marked Done. |
 | Vision ↔ spec | The vision states the current approved product. The specification is approved at revision `c288b7e`, with the 15:55 IST amendment applied. |
-| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. |
+| User-story index | `docs/product/stories/INDEX.md` lists US-01–US-84. Drafts are not approved. Review pack: `docs/product/stories/REVIEW-PACK.md`. Amendment: `docs/product/amendments/2026-10-17-security-delegation.md`, approved 2026-10-17 at 15:55 IST. ML Kit research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`. |
 | Design-artefact index | None. No design files. |
 | ADRs | None. None accepted. |
 | `DOMAIN.md` / `LAYER.md` | Not created. Consultants found nothing, and inventing MUST/NEVER rules is forbidden. |

@@ -58,7 +58,7 @@ No credential value appears in this note. US-26 and US-41 already say the docs a
 
 ## Residual risk
 
-Miguel decided the sensitive lock-screen reminder and token-looking previews on 2026-10-17 at 15:59 IST. He has not approved the rest of the proposed criteria on US-75 and US-79. The topic payload, key transport, and sync conflicts remain open. ML Kit telemetry remains open. A lost key still means the content is lost, which he already decided. This note does not reduce that. It is still not an approved threat model.
+Miguel decided the sensitive lock-screen reminder and token-looking previews on 2026-10-17 at 15:59 IST. On 2026-10-17 at 16:00 IST he required a disable control for ML Kit telemetry if Google's docs allow one, and a disclosure the user accepts otherwise. The research note finds no such control, so US-07 records the disclosure. He has not approved the rest of the proposed criteria on US-75 and US-79. The topic payload, key transport, and sync conflicts remain open. A lost key still means the content is lost, which he already decided. This note does not reduce that. It is still not an approved threat model.
 
 ## Anti-patterns avoided
 

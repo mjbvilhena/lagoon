@@ -52,7 +52,7 @@ Recognize English text on the device.
 
 ## Analytics and observability (optional)
 
-Not applicable. No analytics.
+The image and the recognized text stay on the device. ML Kit's own usage and diagnostic metrics are the disclosure in US-07. This story does not add an analytics library.
 
 ## Design and a11y notes
 
@@ -62,6 +62,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Non-English OCR is out of scope. The pipeline order is US-58. ABI packaging is US-24.
+- Before the first OCR use he accepts the US-07 disclosure. This story does not choose that disclosure.
 
 ## Implementation notes
 

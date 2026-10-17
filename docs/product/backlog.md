@@ -23,7 +23,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 - **US-04** *(Draft)* Share a PDF, including text-layer extraction. Evidence: `docs/product/stories/US-04-share-a-pdf.md`. Not implemented. Extraction is not OCR.
 - **US-05** *(Draft)* Add a note by hand. Evidence: `docs/product/stories/US-05-add-a-note-by-hand.md`. Not implemented.
 - **US-06** *(Draft)* Add a URL by hand. Evidence: `docs/product/stories/US-06-add-a-url-by-hand.md`. Not implemented.
-- **US-07** *(Draft)* Offline use, no analytics. Evidence: `docs/product/stories/US-07-offline-and-no-analytics.md`. Not implemented.
+- **US-07** *(Draft)* Offline use, no analytics library the app chooses. ML Kit metrics are disclosed and accepted before the first OCR use, decided 2026-10-17 at 16:00 IST. Not story approval. Evidence: `docs/product/stories/US-07-offline-and-no-analytics.md`. Not implemented.
 - **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented. Bots' consensus on Q9. Not a blocking sheet. Not approval.
 - **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented. Miguel's v1 decision. Not approval.
 - **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented. Bots' consensus on Q9. Not approval.
@@ -84,7 +84,7 @@ On 2026-10-17 Miguel delegated story approval to his bots. He decides epic-level
 
 > Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by `mjbvilhena`, 2026-10-17 13:29 IST, revision `98275b3`)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. Miguel's v1 decision. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Mikey's Dev Bot's revised recommendation: the Dev Bot reports Miguel said in chat that English is enough. Not approval. Acceptance tests are English only. Booking references and merchants are not this story.
+- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Mikey's Dev Bot's revised recommendation: the Dev Bot reports Miguel said in chat that English is enough. Not approval. Acceptance tests are English only. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
@@ -175,20 +175,23 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
-- ML Kit usage or diagnostic telemetry. US-07. Not decided.
 
 Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
 
 - A sensitive lock-screen reminder shows only "Lagoon reminder", with no title or codes until unlock. US-75.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until he enables that preview. US-79. The other preview rules stay proposed.
 
+Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 16:00 IST. Not story approval. His words: "Requirement will be to let the user choose to disable (if possible), otherwise will have to disclose and accept".
+
+- Official Google docs do not document a disable switch for ML Kit usage or diagnostic telemetry. US-07 requires a disclosure he accepts before the first OCR use. Settings (US-59) shows the same disclosure. Research: `docs/product/research/2026-10-17-ml-kit-telemetry.md`.
+
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 
 He did not decide these. Round 2 proposes criteria on the stories, marked pending his approval. The proposals are not approval.
 
-- Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. Lock-screen text stays open for him.
+- Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. The lock-screen reminder is decided at 15:59 IST. The other criteria stay proposed.
 - Drive scope and sign-out. US-78. The specification still names `appDataFolder`.
-- Link-preview skipping. US-79. Token-looking URLs stay open for him.
+- Link-preview skipping. US-79. Token-looking URLs are decided at 15:59 IST. The host rules stay proposed.
 - Sharing out. US-64. Epic E3 still lists it as out of scope.
 - Permissions. US-80.
 - Sideloading. US-81. US-24 still requires a signed APK because E6 does.
