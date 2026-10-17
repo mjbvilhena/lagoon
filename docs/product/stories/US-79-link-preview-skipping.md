@@ -3,8 +3,8 @@
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> Whether to skip token-looking URLs stays open. This story does not decide it.
+> **Proposed: pending Miguel's approval.** The criteria in that block are a bot draft. They are not his decision.
+> Token-looking URLs are decided. Miguel (`mjbvilhena`) decided them in chat on 2026-10-17 at 15:59 IST. That decision is not story approval. Status stays Draft.
 
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
@@ -20,14 +20,36 @@ Skip unsafe link previews.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated link-preview skipping to his bots. He did not decide it.
+- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated link-preview skipping to his bots. He did not decide the host rules. Those stay proposed below.
+- On 2026-10-17 at 15:59 IST he decided token-looking URLs, the case the proposed skip list was holding open. The vault does not auto-fetch them. It shows a foggy placeholder image in place of the preview and asks whether to enable the preview for that link. A fetch happens only after he says yes.
+- A token-looking URL is one whose address carries a secret-like value. A test supplies a link already marked token-looking. This story does not publish a detector pattern.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: token-looking URLs. Household, Mikey's Assistant, and Dev Bot recommended skipping them. Leisure recommended fetching by default with a global toggle. Miguel has not chosen. This story does not.
 - Out of scope: the offline snapshot viewer making its own network calls. It does not.
 
 ## Acceptance criteria
 
-> **Proposed: pending Miguel's approval.**
+- **Scenario: the prompt** — Must
+  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
+  - Given a saved link is token-looking and no preview has been fetched
+  - When the item is shown
+  - Then no fetch has been made, a foggy placeholder image stands in place of the preview, and he is asked whether to enable the preview for that link
+- **Scenario: he says yes** — Must
+  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
+  - Given that prompt is showing
+  - When he says yes
+  - Then one fetch runs, and it follows the safe-fetch rules in the proposed scenarios below
+- **Scenario: he says no** — Must
+  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
+  - Given that prompt is showing
+  - When he says no
+  - Then no fetch is made, the foggy placeholder stays, and he can enable the preview later
+- **Scenario: no answer** — Must
+  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
+  - Given that prompt is showing
+  - When he leaves it without answering
+  - Then no fetch is made and the foggy placeholder stays
+
+> **Proposed: pending Miguel's approval.** The scenarios below are still a bot draft. The safe-fetch rules a yes-answer uses are in this block.
 
 - **Scenario: only http and https** — Must
   - Given the URL scheme is not `http` or `https`
@@ -65,13 +87,14 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
+- The prompt asks whether to enable the preview for that link. The foggy image is not a sentence of placeholder copy.
 - "Fetch preview" has a name. No placeholder sentences.
 - Exact layout waits for the UX artefact, which does not exist.
 
 ## Dependencies and risks
 
-- Open for Miguel: token-looking URLs. Not decided in these criteria.
-- US-08 still fetches an ordinary public page. This story is the skip list.
+- Token-looking URLs are decided, above. The host rules and the other scenarios stay proposed.
+- US-08 still fetches an ordinary public page. US-10 does not draw a preview on the home row. US-11 shows the foggy placeholder when that is the stored preview.
 
 ## Implementation notes
 

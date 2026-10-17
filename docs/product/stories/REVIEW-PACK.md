@@ -11,8 +11,13 @@ Miguel (`mjbvilhena`) confirmed these in chat on 2026-10-17 at 14:56 IST. They a
 
 - If the vault key is lost, the content is lost. No recovery. US-35 requires a clear warning before the key is created, and no recovery flow.
 - App lock is optional. The device PIN is the fallback when there are no biometrics. US-37.
-- Lock-screen notifications may show the item title and codes. US-34. Sensitive-item notification content is delegated, below.
+- Lock-screen notifications may show the item title and codes. US-34. This is for an ordinary item.
 - The zip export is encrypted with the vault key. US-21.
+
+Miguel (`mjbvilhena`) decided these in chat on 2026-10-17 at 15:59 IST. They are not story approval. They narrow two questions that were still open. The rest of US-75 and US-79 stays **Proposed: pending Miguel's approval**.
+
+- A lock-screen reminder for a sensitive item shows only a generic "Lagoon reminder", using `VISIBILITY_PRIVATE` and a public version. It shows no title and no codes. Those details appear after unlock. US-75. Ordinary items still follow the 14:56 decision.
+- A token-looking URL is not auto-fetched. A foggy placeholder image stands in for the preview, and he is asked whether to enable the preview for that link. Yes fetches under the proposed safe-fetch rules. No, or no answer, leaves the placeholder. He can enable it later after a no. US-79. The home row (US-10) does not draw that image. The item detail (US-11) shows it when it is the stored preview.
 
 ## Open questions for Miguel
 
@@ -25,16 +30,14 @@ Not decided. Not delegated.
 - Whether 09:00 should follow a fixed zone, such as Europe/Dublin, instead of the phone. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - ML Kit usage or diagnostic telemetry: accept and disclose, or block. US-07 does not decide it.
-- Lock-screen text for a sensitive item. US-75 does not decide it. Ordinary items still follow the 14:56 decision on US-34.
-- Whether a preview is fetched for a token-looking URL. US-79 does not decide it.
 
 ## Open questions delegated to bots
 
 On 2026-10-17 at 14:56 IST Miguel delegated these to his bots. He did not decide them. Round 2 writes proposed criteria on the stories. Each block is marked **Proposed: pending Miguel's approval**. That mark is not his approval.
 
-- Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. Lock-screen text for a sensitive item stays open for him, above.
+- Sensitive-item handling in lists, search, export, the cloud call, and screenshots. US-75. The lock-screen reminder is no longer in this list. He decided it at 15:59 IST.
 - Drive scope and sign-out. US-78. The approved specification still names `appDataFolder`.
-- Link-preview skipping. US-79. Token-looking URLs stay open for him, above.
+- Link-preview skipping. US-79. Token-looking URLs are no longer in this list. He decided them at 15:59 IST. The host rules stay proposed.
 - Sharing out. US-64. Approved epic E3 still lists it as out of scope.
 - Permissions. US-80. US-34 still asks for `POST_NOTIFICATIONS` at the first reminder, which is the recorded specification text.
 - Sideloading. US-81. US-24 still requires a signed APK because epic E6 does.
@@ -127,7 +130,9 @@ Clean approvals from all five at `40bb526`, with Household and Leisure as recomm
 
 Conditional, not clean: US-18 depends on US-78. US-25 and US-52 were Dev Bot [RD] until Miguel approved the amendment. He approved it at 15:55 IST. That condition is met. The cells below stay as recorded at `40bb526`. Story status stays Draft. Stories that are not in the clean list are not recorded as approvals.
 
-Approved stories edited in this revision, minimal, and needing re-confirm: US-01 (one title order, leftover text aligned with US-02, sending app only when the platform reports it), US-45 (a hard-deleted item's topic note is removed, matching US-13), US-57 (the spike also runs on an API 26 emulator and an arm64 phone, and records the APK size change).
+Approved stories edited in the round-2 revision, minimal, and needing re-confirm: US-01 (one title order, leftover text aligned with US-02, sending app only when the platform reports it), US-45 (a hard-deleted item's topic note is removed, matching US-13), US-57 (the spike also runs on an API 26 emulator and an arm64 phone, and records the APK size change).
+
+US-11 also had a clean verdict at `40bb526`. The 15:59 IST edit adds one line: when the stored preview is the foggy placeholder from US-79, the detail shows that image and does not fetch. That edit needs re-confirm. Status stays Draft. US-10 does not draw a preview, so the placeholder is not on the home row.
 
 | ID | Dev Bot | Scout | Mikey's Assistant | Household | Leisure |
 |---|---|---|---|---|---|
@@ -255,7 +260,7 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-31 | Recognize English text on the device. | E7 | I can search that text without sending the image to a cloud OCR service | Must | 6 | None on this story |
 | US-32 | Keep more than one attachment on an item. | E1 | a receipt and a photo of the same thing stay together | Must | 5 | None on this story |
 | US-33 | Keep an offline snapshot of a saved page. | E2 | I can read the page when the network is gone, and still keep the original URL | Must | 8 | None on this story |
-| US-34 | Set a reminder. | E9 | I do not forget the item | Must | 9 | Exact alarms, fixed time zone, and sensitive lock-screen text stay open |
+| US-34 | Set a reminder. | E9 | I do not forget the item | Must | 9 | Exact alarms and a fixed time zone stay open. Sensitive lock-screen text is decided on US-75 |
 | US-35 | Encrypt the vault at rest. | E8 | a copy of the phone's storage does not contain the vault in the clear, and I am not promised a recovery that does not exist | Must | 9 | Key transport stays open. Loss is decided |
 | US-36 | Sync only ciphertext. | E8 | Google cannot read the vault | Must | 3 | None on this story |
 | US-37 | Lock sensitive items, and optionally lock the app. | E8 | private items stay closed, and I can still lock the app when the phone has no biometric | Must | 10 | None on this story |
@@ -296,11 +301,11 @@ Must counts are scenarios marked Must. Should and Could are named when present. 
 | US-72 | Score whether topics are useful. | E11 | usefulness can be judged without me hand-labeling items and without sending counts off the phone (3 Could) | Could | 0 | None on this story |
 | US-73 | Decide sync conflicts and deletions. | Cross-cutting | two phones do not invent a winner | Not set | 0 | Conflicts and deletions, for Miguel |
 | US-74 | Decide how the vault key reaches another device. | E8 | ciphertext on Drive is not a dead end | Not set | 0 | Key transport, for Miguel |
-| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 6 | Proposed, pending Miguel. Lock-screen text stays open |
+| US-75 | Limit what a sensitive item reveals. | E8 | the sensitive mark limits what is shown | Proposed Must | 7 | Lock-screen reminder decided 15:59 IST. Other criteria stay proposed |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | readable content does not leave the phone under a rule nobody chose | Not set | 0 | Provider, credential, payload, for Miguel |
 | US-77 | Decide whether reminders may use exact alarms. | E9 | I do not get a permission the epic did not ask for | Not set | 0 | Exact alarms, for Miguel |
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Drive access stays narrow and a sign-out is not a wipe | Proposed Must | 6 | Proposed, pending Miguel |
-| US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 7 | Proposed, pending Miguel. Token-looking URLs stay open |
+| US-79 | Skip unsafe link previews. | E2 | saving a link does not call a private or local host | Proposed Must | 11 | Token-looking URLs decided 15:59 IST. Other criteria stay proposed |
 | US-80 | Keep the permission set to an allowlist. | Cross-cutting | an install does not ask for storage, camera, or location | Proposed Must | 5 | Proposed, pending Miguel |
 | US-81 | Publish a sideload signing policy. | E6 | a later install can replace the app without losing the vault | Proposed Must | 6 | Proposed, pending Miguel |
 | US-82 | Search and filter by merchant. | Cross-cutting | I can find a shop without reading every item (3 Should) | Should | 0 | None on this story |

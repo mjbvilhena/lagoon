@@ -30,6 +30,7 @@ Read a saved item.
   - Given an item that is not marked sensitive
   - When he opens it
   - Then he sees the title, body, note, all attachments, last-saved date, source domain and sending app when present, and the original URL when the item is a link
+  - And when the stored preview is the foggy placeholder from US-79, he sees that image and opening the item does not fetch a preview
 - **Scenario: OCR text** — Must
   - Given OCR text exists
   - When he opens the item
@@ -53,7 +54,7 @@ Not applicable. No analytics.
 
 ## Design and a11y notes
 
-- Copy is a named action. No placeholder sentences.
+- Copy is a named action. No placeholder sentences. The foggy preview image is the US-79 placeholder, not a sentence of filler copy.
 
 ## Dependencies and risks
 

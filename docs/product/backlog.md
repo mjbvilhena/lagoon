@@ -176,8 +176,11 @@ The consolidated list is `docs/product/stories/REVIEW-PACK.md`. Nothing below is
 - Whether 09:00 should follow a fixed zone instead of the phone. Not decided. Stories use the device local zone.
 - Full-screen QR and barcode display. No story.
 - ML Kit usage or diagnostic telemetry. US-07. Not decided.
-- Lock-screen text for a sensitive item. US-75. Not decided.
-- Whether a preview is fetched for a token-looking URL. US-79. Not decided.
+
+Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
+
+- A sensitive lock-screen reminder shows only "Lagoon reminder", with no title or codes until unlock. US-75.
+- A token-looking URL is not auto-fetched. A foggy placeholder is shown until he enables that preview. US-79. The other preview rules stay proposed.
 
 ### Delegated to Miguel's bots on 2026-10-17 at 14:56 IST
 

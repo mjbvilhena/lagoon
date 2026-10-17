@@ -21,9 +21,9 @@ Set a reminder.
 
 - A reminder is one optional date-time. An expiry is a different kind of date and is US-54. An item has at most one of them, matching the specification's "expiry or reminder".
 - Default time is 09:00 in the device's local zone, with a per-item override. Whether 09:00 should instead mean a fixed zone such as Europe/Dublin is still an open question for Miguel.
-- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that a lock-screen notification may show the item title and codes. What a sensitive item shows on a notification is delegated to his bots and is not decided here.
+- On 2026-10-17 at 14:56 IST, Miguel (`mjbvilhena`) decided that a lock-screen notification for an ordinary item may show the item title and codes. On 2026-10-17 at 15:59 IST he narrowed that for a sensitive item only: US-75 shows a generic "Lagoon reminder" and no title or code until unlock.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: exact alarms, expiry lead times (US-54), reschedule triggers (US-55), and sensitive-item notification content.
+- Out of scope: exact alarms, expiry lead times (US-54), reschedule triggers (US-55). Sensitive lock-screen text is decided on US-75.
 
 ## Acceptance criteria
 

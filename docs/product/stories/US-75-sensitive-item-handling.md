@@ -3,8 +3,8 @@
 > **Approval status: Draft. Not approved.**
 > Sign-off on file: none.
 > Story approval has not been recorded. Epic approval is not story approval.
-> **Proposed: pending Miguel's approval.** The criteria below are a bot draft. They are not his decision.
-> Lock-screen text for a sensitive item stays open. This story does not decide it.
+> **Proposed: pending Miguel's approval.** The criteria in that block are a bot draft. They are not his decision.
+> The lock-screen reminder criterion is decided. Miguel (`mjbvilhena`) decided it in chat on 2026-10-17 at 15:59 IST. That decision is not story approval. Status stays Draft.
 
 **MoSCoW:** Proposed Must. Pending Miguel's approval. Not a status of Approved.
 
@@ -20,14 +20,22 @@ Limit what a sensitive item reveals.
 
 ## Background
 
-- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated this to his bots. He did not decide it. US-37 still requires a biometric or device credential before the body.
+- On 2026-10-17 at 14:56 IST Miguel (`mjbvilhena`) delegated lists, search, export, the cloud call, and screenshots to his bots. He did not decide those. US-37 still requires a biometric or device credential before the body.
+- On 2026-10-17 at 15:59 IST he decided the lock-screen reminder for a sensitive item. It narrows his 14:56 decision, which still lets an ordinary item show its title and codes (US-34). Sensitive items only: the lock screen shows a generic "Lagoon reminder" and nothing else.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: lock-screen reminder text for a sensitive item. That question is open for Miguel. Bots have recommended a generic "Lagoon reminder" via `VISIBILITY_PRIVATE`, or the title only. Neither is chosen here. His 14:56 decision that ordinary lock-screen notifications may show the title and codes is unchanged.
-- Out of scope: the topic provider and payload (US-76).
+- Out of scope: the topic provider and payload (US-76). Ordinary lock-screen text (US-34).
 
 ## Acceptance criteria
 
-> **Proposed: pending Miguel's approval.**
+- **Scenario: lock-screen reminder** — Must
+  - Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. This criterion is not Proposed.
+  - Given a sensitive item has a reminder
+  - When the notification is posted on the lock screen
+  - Then the public version uses `VISIBILITY_PRIVATE` and its text is only "Lagoon reminder"
+  - And that public version shows no title and no code
+  - And the title and any code appear only after he unlocks
+
+> **Proposed: pending Miguel's approval.** The scenarios below are still a bot draft.
 
 - **Scenario: a list or a search row** — Must
   - Given a sensitive item whose body contains a sentinel string
@@ -67,8 +75,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open for Miguel: what a lock-screen reminder shows for a sensitive item. Not decided in these criteria.
-- US-37 is the unlock. This story is what is visible before that unlock.
+- The lock-screen reminder is decided, above. The other scenarios in this file stay proposed.
+- US-37 is the unlock. Details of a sensitive reminder appear only after that unlock.
 
 ## Implementation notes
 

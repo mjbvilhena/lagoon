@@ -29,10 +29,10 @@ Each row is a hypothesis about the proposed criteria. Nothing here was observed 
 | ID | Category | Asset / component | Evidence | Impact | Mitigation (defensive) | Observed or hypothesis |
 |---|---|---|---|---|---|---|
 | T-1 | Information disclosure | Sensitive item rows, screenshots, clips | US-75 proposed criteria | A list, a screenshot, or a clip shows body, OCR, or a thumbnail before unlock | Title, type, and a Sensitive mark only; `FLAG_SECURE`; sensitive clip flag; no sensitive thumbnail | Hypothesis |
-| T-2 | Information disclosure | Lock-screen reminder for a sensitive item | US-75 states the question and does not choose | A lock-screen notice could show more than he wants, or less than his 14:56 ordinary-item decision | Left open for Miguel. Ordinary items still follow US-34 | Hypothesis |
+| T-2 | Information disclosure | Lock-screen reminder for a sensitive item | US-75 lock-screen criterion, decided by Miguel on 2026-10-17 at 15:59 IST | A lock-screen notice shows the title or a code of a sensitive item | Public version is `VISIBILITY_PRIVATE` and the text is only "Lagoon reminder". Title and codes wait until unlock. Ordinary items still follow US-34 | Hypothesis |
 | T-3 | Information disclosure | Drive file names | US-36 opaque-id criterion and US-78 scope criterion | A file name or a broad OAuth scope exposes titles or more than app data | Opaque ids; granted scopes exactly `drive.appdata`; tokens out of logs and WorkManager inputs | Hypothesis |
 | T-4 | Information disclosure | Link preview fetch | US-79 proposed skip list | A fetch contacts a private host or sends cookies or a referral | http/https only; skip private and local hosts after DNS and on each redirect; no cookies, Referer, or auth; no JavaScript; size and redirect caps | Hypothesis |
-| T-5 | Information disclosure | Token-looking URLs | US-79 open question | A preview fetch could send a secret that is sitting in a URL | Not decided. Recorded as open for Miguel | Hypothesis |
+| T-5 | Information disclosure | Token-looking URLs | US-79 decided criteria, Miguel on 2026-10-17 at 15:59 IST | An automatic preview fetch sends a secret that is sitting in the URL | No auto-fetch. A foggy placeholder is shown. A fetch runs only after he says yes, and then only under the proposed safe-fetch rules | Hypothesis |
 | T-6 | Tampering | Zip and share bytes | US-21 vault-key zip; US-64 FileProvider | A shared or exported file is readable without the key, or a `file://` URI exposes a path | Zip stays encrypted with the vault key. Share uses a non-exported FileProvider and a one-time read grant. Temp copies are wiped | Hypothesis |
 | T-7 | Elevation of privilege | Manifest permissions and exported components | US-80 proposed allowlist | A wide permission or an extra exported component lets another app reach the vault | Allowlist, CI check, only the share target and the launcher exported | Hypothesis |
 | T-8 | Spoofing | Upgrade and sideload | US-81 proposed signing rules | A different key or application id replaces the app and strands or swaps the vault | Same id, same key, higher versionCode; debug id suffix; published certificate hash | Hypothesis |
@@ -58,7 +58,7 @@ No credential value appears in this note. US-26 and US-41 already say the docs a
 
 ## Residual risk
 
-Miguel has not approved the proposed criteria. Lock-screen text for sensitive items, token-looking URLs, the topic payload, key transport, and sync conflicts remain open. A lost key still means the content is lost, which he already decided. This note does not reduce that.
+Miguel decided the sensitive lock-screen reminder and token-looking previews on 2026-10-17 at 15:59 IST. He has not approved the rest of the proposed criteria on US-75 and US-79. The topic payload, key transport, and sync conflicts remain open. ML Kit telemetry remains open. A lost key still means the content is lost, which he already decided. This note does not reduce that. It is still not an approved threat model.
 
 ## Anti-patterns avoided
 

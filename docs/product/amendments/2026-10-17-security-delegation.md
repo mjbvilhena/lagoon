@@ -124,8 +124,8 @@ He did not accept the proposed supersession sentence. He changed this section du
 Left open for Miguel. Not proposed as closed:
 
 - ML Kit usage or diagnostic telemetry (US-07).
-- Lock-screen text for a sensitive item (US-75).
-- Whether token-looking URLs are fetched (US-79).
+
+Later than this approval, and not part of it: on 2026-10-17 at 15:59 IST Miguel decided the sensitive lock-screen reminder (US-75) and token-looking previews (US-79). Those decisions are on the stories. This amendment's 15:55 IST text is unchanged. ML Kit telemetry stayed open.
 - Topic provider, retention, credential supply, and payload (US-76).
 - Sync conflicts and deletion propagation (US-73).
 - How the vault key reaches a new device (US-74).

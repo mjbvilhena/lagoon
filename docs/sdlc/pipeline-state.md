@@ -62,7 +62,7 @@ Miguel (`mjbvilhena`) decided these on 2026-10-17 at 14:56 IST. Not story approv
 
 1. If the vault key is lost, the content is lost. No recovery. US-35.
 2. App lock is optional. The device PIN is the fallback when there are no biometrics. US-37.
-3. Lock-screen notifications may show the item title and codes. US-34.
+3. Lock-screen notifications for an ordinary item may show the item title and codes. US-34. A sensitive item is the 15:59 IST decision below.
 4. The zip export is encrypted with the vault key. US-21.
 
 Still open for him. The design band has not started:
@@ -74,8 +74,11 @@ Still open for him. The design band has not started:
 5. Whether 09:00 should use a fixed zone instead of the phone.
 6. Full-screen QR and barcode display.
 7. ML Kit usage or diagnostic telemetry. US-07.
-8. Lock-screen text for a sensitive item. US-75 does not decide it.
-9. Whether a preview is fetched for a token-looking URL. US-79 does not decide it.
+
+Decided by Miguel (`mjbvilhena`) on 2026-10-17 at 15:59 IST. Not story approval.
+
+1. A sensitive item's lock-screen reminder shows only "Lagoon reminder" (`VISIBILITY_PRIVATE`, public version), with no title or codes until unlock. US-75. Ordinary items still show title and codes.
+2. A token-looking URL is not auto-fetched. A foggy placeholder is shown and he is asked whether to enable that preview. US-79. The other US-79 criteria stay proposed.
 
 Delegated to his bots the same afternoon. He did not decide them. Round 2 proposes criteria, marked pending his approval, in `docs/product/amendments/2026-10-17-security-delegation.md` and on the stories. The proposals are not approval.
 
@@ -205,6 +208,32 @@ Sections 1–6 are applied to `docs/product/specification.md` and epics E1, E3, 
 No story status was flipped to Approved. The stale drift list (specification line 27, the design-gate "not delegated" sentence, E8, E3, E11, E1, and the old vision) is removed because those files now match the approved amendment.
 
 Approved revision of this application: commit `86573af` (`86573afe32a946b761f74c354acc389f2a7bac96`).
+
+## Harness step (2026-10-17, 15:59 IST): two security decisions
+
+`sdlc-conductor`. The legal step is still story refinement. Stories stay Draft. Design, an approved threat model, and implementation stay closed. Recording these two named decisions is legal. It does not approve US-75 or US-79, and it does not approve the rest of their proposed criteria. The user's instruction to record them is the confirm.
+
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This branch does not contain `scripts/bootstrap-sdlc-mcp.sh`. This was not a live MCP stdio session. `get_domain_consultant("vault")` and `get_layer_consultant("ui")` found no files. No MUST/NEVER rules were invented.
+
+Skills used:
+
+1. `sdlc-conductor`, template `get_sdlc_template("lifecycle pipeline")`.
+2. `sdlc-user-story-refiner`, template `get_sdlc_template("user story")`.
+3. `sdlc-threat-modeler`, template `get_sdlc_template("threat model")`, Definition of Done `get_definition_of_done("security change")`. The note stays proposed. Security-change implementation DoD is unmet: there is no code.
+4. `sdlc-dod-checker`, `get_definition_of_done("user story")`, artefact shape only.
+5. `sdlc-docs-backlog-review`, template `get_sdlc_template("docs backlog review")`.
+6. `sdlc-pr-summarizer`, template `get_sdlc_template("pr")`, Definition of Done `get_definition_of_done("pr")`.
+
+Miguel (`mjbvilhena`) decided, in chat on 2026-10-17 at 15:59 IST:
+
+1. US-75. A lock-screen reminder for a sensitive item shows only "Lagoon reminder" (`VISIBILITY_PRIVATE` with a public version). No title and no codes. Details appear after unlock. This narrows the 14:56 title-and-codes decision for sensitive items only. This criterion is decided, not Proposed. The other US-75 criteria stay Proposed.
+2. US-79. A token-looking URL is not auto-fetched. A foggy placeholder image is shown, and he is asked whether to enable the preview for that link. Yes fetches under the proposed safe-fetch rules. No leaves the placeholder, and he can enable it later. No answer leaves the placeholder. This criterion is decided. The rest of US-79 stays Proposed.
+
+US-10 does not draw a preview on the home row. US-11 shows the foggy placeholder when that is the stored preview. US-11 had a clean round-2 verdict, so that edit is small and needs re-confirm. US-10 did not have a clean approval. Status stays Draft.
+
+ML Kit telemetry (US-07) stays open.
+
+`sdlc-dod-checker` artefact result is unchanged in kind: fail US-73, US-74, US-76, US-77. US-75 and US-79 still pass artefact shape. Their decided criteria assert, and the remaining proposed criteria still assert. Implementation DoD fails for every story. Nothing is Done. No story status was flipped to Approved.
 
 ## Memory checklist
 
