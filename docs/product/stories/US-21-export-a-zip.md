@@ -42,6 +42,11 @@ Export a zip to a place he chooses.
   - Given he exports
   - When the file is written
   - Then he sees that the file opens only with this vault's key, and that it cannot be opened on a replacement phone until US-74 is decided
+- **Scenario: trash is included** — Must
+  - Proposed.
+  - Given an item is in trash
+  - When he exports
+  - Then the zip includes that item with `inTrash` and `trashedAt`
 - **Scenario: empty vault** — Must
   - Given there are no items
   - When he exports

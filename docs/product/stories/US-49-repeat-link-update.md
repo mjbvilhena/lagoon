@@ -49,6 +49,12 @@ Update a link that was saved before, and undo that update.
   - Given that snackbar is showing
   - When he chooses "Keep separate"
   - Then the original item is restored and a second item holds this share
+- **Scenario: the match is in trash** — Must
+  - Proposed.
+  - Given the normalised URL matches an item that is in trash
+  - When he shares that URL again
+  - Then the match finds that item and offers to restore it
+  - And a duplicate item is not created
 - **Scenario: snackbar closes** — Must
   - Given he does not choose Undo or "Keep separate"
   - When the snackbar closes

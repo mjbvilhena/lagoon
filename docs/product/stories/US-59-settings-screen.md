@@ -24,6 +24,7 @@ Use one Settings screen.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference.
 - The ML Kit disclosure is a slot. The behavior is US-07. It is not a telemetry off switch. Google's docs do not state a switch. Settings can withdraw the acceptance.
 - The topic switch starts on. He can turn it off. The behavior is US-41. The topic "Unmetered only" setting stays separate (US-44).
+- Proposed. Trash is opened from this screen. The behavior is US-66. The layout waits for the UX artefact.
 
 ## Acceptance criteria
 
@@ -58,6 +59,12 @@ Use one Settings screen.
   - Then Settings says the key is not copied from the other phone and must be typed again
   - And Settings shows how many topic calls this install has made this month
   - And that count is not a cap and is not synced
+- **Scenario: Trash** — Should
+  - Proposed.
+  - Given an item is in trash
+  - When he opens Settings
+  - Then he can open Trash from this screen
+  - And the Trash behavior is US-66
 - **Scenario: no passphrase recall check** — Should
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given he opens Settings

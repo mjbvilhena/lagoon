@@ -32,6 +32,12 @@ Import a zip and merge it.
   - Given this vault already has other items and no id is in conflict
   - When he imports
   - Then both the local-only and zip-only items are kept
+- **Scenario: trash state is kept** — Must
+  - Proposed.
+  - Given the zip includes an item with `inTrash` and `trashedAt`
+  - When he imports it
+  - Then that item stays in trash
+  - And carrying those fields does not, by itself, clear trash
 - **Scenario: not a vault zip** — Must
   - Given he picks a file that is not a versioned vault zip
   - When import runs

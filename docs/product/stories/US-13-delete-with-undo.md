@@ -57,6 +57,7 @@ Not applicable. No analytics.
 
 - US-45 reads the topic after this delete and no longer shows that note.
 - Reminder cancel and restore are also US-55.
+- Proposed. US-66 depends on the cleanup in "the confirmation ends". That cleanup runs when the tombstone is written. US-66 is the trash beyond this undo.
 
 ## Implementation notes
 

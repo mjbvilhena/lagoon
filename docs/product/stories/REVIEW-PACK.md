@@ -39,6 +39,18 @@ Artefact shape is the user-story Definition of Done: As a / I want / So that, an
 
 US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. No story is Done. There is no app.
 
+## For mjbvilhena
+
+These items are not approved. They are not decisions.
+
+- What a Trash row for a sensitive item shows, and what it hides. The open list is the type, the Sensitive mark, days left, and Restore. The open list of what stays hidden is the title, a thumbnail, a snippet, and OCR text.
+- Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
+- Whether opening a sensitive item from Trash needs the US-37 unlock, and whether restoring a sensitive item needs that unlock.
+- A phone whose clock is ahead can write a tombstone before 30 × 24 hours of true time. That residual is T-28. One option, not chosen in these records, is to check that clock against Drive server time before writing the tombstone.
+- After the tombstone, an earlier Drive revision of a records file can remain for a while. "Gone for good" in US-66 is not literal for that window. The app does not set Keep Forever and does not delete revisions.
+- A change to the sensitive mark counts as a content edit. A later toggle on another phone can bring a trashed item back, and can clear the mark. That sits with the T-26 residual.
+- "Forget this phone" retires another install's records file from Settings. It has no story of its own, and it has no stated unlock step.
+
 ## Threat note
 
 `docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. The cipher and container proposal is `docs/adr/ADR-0006-cipher-and-container.md`, also Proposed. The ADRs themselves are not accepted. UX and the test strategy are not started. Implementation has not started.
