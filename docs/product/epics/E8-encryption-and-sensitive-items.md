@@ -46,6 +46,7 @@ Miguel, including on a second device that should see the same vault and not a pl
 - Threat model (`sdlc-threat-modeler`) is required before implementation. Not started.
 - Key transport is US-74. Criteria follow from the ADR at the design gate. App lock is optional, with a device-PIN fallback. The vault key does not require user authentication.
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
+- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Proposed amendment. Needs approval by mjbvilhena.
 
 ## Open Questions
 
@@ -59,4 +60,4 @@ Miguel, including on a second device that should see the same vault and not a pl
 - US-37 Lock sensitive items with a biometric
 - US-74 Decide how the vault key reaches another device. Placeholder. Not ready for review. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase.
 - US-75 Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-86 Change the passphrase. Should. Draft. Security criteria approved by mjbvilhena on 2026-10-18.
+- US-86 Change the passphrase. Should. Draft. Security criteria approved by mjbvilhena on 2026-10-18. Proposed security criteria and a proposed amendment need approval by mjbvilhena.

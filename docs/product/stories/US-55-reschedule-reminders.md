@@ -45,7 +45,7 @@ Reschedule reminders after a restart or a clock change.
 - **Scenario: a repeated hour** — Must
   - Given a reminder time falls in an hour that happens twice when the clock falls back
   - When that local day arrives
-  - Then the reminder fires once
+  - Then the reminder fires once, at the first occurrence of that time
 - **Scenario: app start** — Must
   - Given notification permission may have changed while the app was closed
   - When he opens the app
@@ -60,7 +60,8 @@ Reschedule reminders after a restart or a clock change.
   - Then the signed-in install with the newest check-in posts, and only that install posts
   - And a sole signed-in install always posts, however old its check-in is
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
-  - And a check-in is the timestamp an install writes when the app is opened or when a sync succeeds
+  - And an install writes a check-in, and counts as newest, only once it holds the vault key
+  - And a check-in is the timestamp that install writes when the app is opened or when a sync succeeds, after it holds the vault key
   - And the same rule covers a reminder and an expiry
 - **Scenario: two installs** — Must
   - Given install A checked in 2 days ago and install B checked in 1 day ago, and both are signed in
@@ -75,7 +76,8 @@ Reschedule reminders after a restart or a clock change.
 - **Scenario: a new install** — Must
   - Given a new install has not entered the passphrase
   - When a reminder time arrives
-  - Then reminders are not available until the passphrase re-creates the key
+  - Then that install posts nothing
+  - And once the passphrase re-creates the key, its reminders register under the which-device rule
 - **Scenario: sign-out warning** — Must
   - Given this phone is the only signed-in install
   - When he signs out

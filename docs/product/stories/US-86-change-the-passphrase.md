@@ -15,34 +15,50 @@ Change the passphrase.
 
 **As a** person named Miguel
 **I want** to change the passphrase that the vault key is derived from
-**So that** a passphrase I no longer want to use stops opening the vault
+**So that** a passphrase I no longer want to use stops opening the current vault. Old zips and old Drive revisions may still open with the old passphrase
 
 ## Background
 
 - The vault key is derived from the passphrase (US-35). Changing it re-encrypts the vault.
+- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Proposed amendment. Needs approval by mjbvilhena.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74). What happens to old Drive revisions and old zips is decided at the design gate in that ADR.
+- Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74).
 
 ## Acceptance criteria
 
-- **Scenario: the current passphrase** — Should
+- **Scenario: the change** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given the correct current passphrase and a new one entered twice
+  - When the change completes
+  - Then the phone vault and the Drive copy are re-encrypted under the new derived key
+  - And the new passphrase re-creates the key on another device
+  - And the old passphrase no longer re-creates it for the current Drive copy
+- **Scenario: the current passphrase** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the vault exists
   - When he starts a passphrase change
   - Then he authenticates with the current passphrase first
-- **Scenario: a crash during re-encryption** — Should
+- **Scenario: a wrong current passphrase** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given he enters the current passphrase
+  - When that passphrase is wrong
+  - Then it is refused and nothing changes
+- **Scenario: a crash during re-encryption** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given re-encryption is interrupted by a crash
   - When the app starts again
   - Then the vault is readable under the old passphrase or the new passphrase
-  - And it is never readable under neither
-- **Scenario: another install** — Should
+  - And it is never in a state that neither passphrase can open
+- **Scenario: another install** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he changed the passphrase on this phone
   - When another signed-in install syncs
   - Then that install asks for the new passphrase
   - And it does not overwrite the re-encrypted vault
-- **Scenario: old copies** — Should
-  - Given old Drive revisions and old zips exist
-  - When the passphrase has changed
-  - Then what happens to those copies is decided at the design gate (US-74 ADR)
+- **Scenario: old zips** — Should
+  - Given zips were exported before the change
+  - When the change completes
+  - Then he is told those zips still open only with the old passphrase
+- **Scenario: a forgotten passphrase on a phone that still holds the key** — Should. Proposed amendment. Needs approval by mjbvilhena.
+  - Given he has forgotten the passphrase and this phone still holds the vault key
+  - When he completes the US-37 biometric or device-PIN unlock
+  - Then that phone can set a new passphrase without the old passphrase
+  - And this re-encrypts as in the change scenario
 
 ## Analytics and observability (optional)
 
@@ -56,6 +72,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - US-35 holds setup and re-create. This story stays Draft.
+- Drive keeps old revisions the old passphrase may open until the US-74 ADR rules.
 
 ## Implementation notes
 

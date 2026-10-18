@@ -20,6 +20,7 @@ Publish a sideload signing policy.
 ## Background
 
 - A later install uses the same application id and the same release key. The criteria below are the requirements.
+- Items not yet synced to Drive are lost with the phone's vault on uninstall. Proposed security criterion. Needs approval by mjbvilhena.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a self-updater. There is none. Play Store listing. Exact keystore passwords, which are never written in the repo.
 
@@ -38,12 +39,17 @@ Publish a sideload signing policy.
   - Given an installed release build with a vault
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
-  - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch removes that phone's key copy. The Drive copy and zips stay readable with the passphrase. Content is lost only if the passphrase is forgotten and no phone still holds the key. Uninstall is not a way to fix or upgrade.
-- **Scenario: uninstall and the passphrase** — Must
+  - And a signing-key mismatch makes Android refuse the update. It does not remove the key. Proposed security criterion. Needs approval by mjbvilhena.
+  - And only uninstall or clear storage removes that phone's key copy. Proposed security criterion. Needs approval by mjbvilhena.
+  - And the Drive copy stays readable with the passphrase or from another phone that still holds the key. Proposed security criterion. Needs approval by mjbvilhena.
+  - And each zip opens with the passphrase it was made under. Proposed security criterion. Needs approval by mjbvilhena.
+  - And uninstall is not a way to fix or upgrade
+- **Scenario: uninstall and the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the vault key was derived from his passphrase
-  - When he uninstalls Lagoon
-  - Then the phone's key copy is removed
-  - And the Drive copy and zips stay readable only with the passphrase
+  - When he uninstalls Lagoon or clears storage
+  - Then that phone's key copy is removed
+  - And the Drive copy stays readable with the passphrase or from another phone that still holds the key
+  - And each zip opens with the passphrase it was made under
 - **Scenario: debug builds** — Must
   - Given a debug build
   - When it is installed beside a release build

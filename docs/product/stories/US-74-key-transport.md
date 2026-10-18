@@ -22,7 +22,7 @@ Decide how the vault key reaches another device.
 - The zip is encrypted with the vault key (US-21). Criteria follow from the ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: inventing a Google-derived key. Choosing the derivation method, the parameters, or where the non-secret salt lives.
-- Design-gate inputs for the US-74 ADR, not criteria of this story: envelope encryption, or a full re-encrypt, when the passphrase changes (US-86). The KDF choice, for example Argon2id, the salt size, and the parameters that travel with every Drive copy and zip, timed on a low-end phone. The minimum passphrase strength and the retry delay. A reset of a forgotten passphrase from a phone that still holds the key.
+- Design-gate inputs for the US-74 ADR, not criteria of this story: envelope encryption, or a full re-encrypt, when the passphrase changes (US-86). The KDF choice, for example Argon2id, the salt size, and the parameters that travel with every Drive copy and zip, timed on a low-end phone. The minimum passphrase strength and the retry delay.
 
 ## Acceptance criteria
 
