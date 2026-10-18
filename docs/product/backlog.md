@@ -165,7 +165,7 @@ Not approval. Needs approval by mjbvilhena. Implementation has not started. The 
 - **ADR-0002** *(Proposed)* Sync conflicts and deletions. Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
 - **ADR-0003** *(Proposed)* Topic call. The recommendation is the xAI Grok API. The Cursor API does not fit. The provider stays Decision pending. The topic backlog when a key is added stays a separate pending choice. Placeholder US-76 points here. `docs/adr/ADR-0003-topic-call.md`.
 - **ADR-0004** *(Proposed)* ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
-- **ADR-0005** *(Proposed)* PDF rendering on API 26–29, isolated process, no PDF password. The definition of password-protected is Decision pending. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
+- **ADR-0005** *(Proposed)* PDF rendering on API 26–29, isolated process, no PDF password. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
 - **ADR-0006** *(Proposed)* Cipher and container. Prerequisite for US-35 implementation. US-35 is not edited. `docs/adr/ADR-0006-cipher-and-container.md`.
 - **Threat model** *(Proposed)* `docs/technical_design/threat-model.md`. The 2026-10-17 note is an earlier hypothesis list.
 

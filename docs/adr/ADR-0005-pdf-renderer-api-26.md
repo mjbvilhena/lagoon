@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-US-85 leaves this choice to the design gate. Drafting this record is not acceptance. What "password-protected" means is Decision pending. The full-screen refusal in US-85 is Could, not a Must, and this record does not promote it.
+US-85 leaves this choice to the design gate. Drafting this record is not acceptance. What "password-protected" means is decided below. The full-screen refusal in US-85 is Could, not a Must, and this record does not promote it. Nothing in this record stays under Decision pending.
 
 ## Context
 
@@ -25,7 +25,7 @@ Domain consultant: `docs/domain/vault/DOMAIN.md`. Layer consultant: `docs/layers
 
 ## Decision
 
-Recommended option: on API 26–29, render and extract with a bundled library (PdfBox-Android, the library US-04 already allows as the example). On API 30 and newer, render with platform `PdfRenderer` backed by an anonymous memfd. Both renderers run in a service with `android:isolatedProcess="true"`. On every API level, including 35 and newer, do not ask for, store, or pass a PDF password. Which files count as password-protected is Decision pending. The current recommendation under that pending item is that an owner-permission-only PDF opens normally.
+Recommended option: on API 26–29, render and extract with a bundled library (PdfBox-Android, the library US-04 already allows as the example). On API 30 and newer, render with platform `PdfRenderer` backed by an anonymous memfd. Both renderers run in a service with `android:isolatedProcess="true"`. On every API level, including 35 and newer, do not ask for, store, or pass a PDF password. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal.
 
 Rules, if this record is accepted:
 
@@ -37,21 +37,9 @@ Rules, if this record is accepted:
 - If the decrypted PDF cannot be held in that anonymous memory, or the full-resolution bitmap cannot be allocated, rendering fails and the stored ciphertext stays. The failure must not fall back to a cache file.
 - Text-layer extraction on every API uses the bundled library, so API 26 and API 35 share one extractor. Pages with a text layer are not OCR'd (US-04, US-31).
 - `setPassword` is not called. `write(..., removePasswordProtection)` is not called. No PDF password is asked for or stored (US-04, US-85).
-- Whether a file that needs a user password is opened is Decision pending. US-85's full-screen refusal for a password-protected PDF is Could. This record does not make it a Must.
+- A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as a normal PDF. Its text layer is extracted. It is not marked "text not extracted" because of that owner password. A PDF that needs a password to open is stored as the original bytes, marked "text not extracted", not OCR'd, and not opened full-screen. He is told it needs a password and offered Open with another app (US-64). No PDF password is asked for or stored. US-85's full-screen scenario for that file stays Could. This record does not make it a Must.
 
 Default: a PDF whose encryption cannot be classified is not passed to a renderer.
-
-## Decision pending: mjbvilhena
-
-What "password-protected PDF" means is not decided. The current recommendation is the option this draft would keep.
-
-Current recommendation: a PDF that opens without a password, including one that only sets an owner password and permission flags, opens and renders normally. A PDF that requires a user password to decrypt the bytes is stored as the original bytes, marked "text not extracted", not OCR'd, and not opened full-screen. He is told it needs a password and offered Open with another app (US-64). US-85's full-screen scenario for this case stays Could.
-
-| Option | Trade-off |
-| --- | --- |
-| User password only. Owner-permission flags still open | Current recommendation. A file he can already open in another viewer without a password opens here. Permission flags (no-copy, no-print) are not a password. A file that cannot be decrypted without a password stays closed, and v1 still stores no PDF password |
-| Any encryption dictionary, including owner-only | Matches a literal reading of "password-protected" that treats every encrypted file as closed. He cannot open a file that other viewers open without a password, and US-85's Could scenario would cover more files than the ones that actually need a password |
-| Ask for a password on API 35 | The platform can take one there. US-04 and US-85 forbid asking for or storing a PDF password. This option loses on that story text even if he widens the definition |
 
 ## Alternatives considered
 
@@ -59,15 +47,16 @@ Current recommendation: a PDF that opens without a password, including one that 
 | --- | --- | --- |
 | Write a temp plaintext file on API 26–29 and pass it to `PdfRenderer` | It is the only seekable descriptor the platform offers before `memfd` | US-85 forbids a plaintext rendered page on disk. US-35 treats temp copies as vault files that must be encrypted. A kill mid-render leaves the file. Trade-off of the bundle: a second renderer and a larger APK on old phones |
 | Refuse in-app PDF view below API 30 | One code path, platform renderer only | US-85 is in v1 at `minSdk` 26 and includes a PDF page. Dropping those phones is a product cut |
-| Use `LoadParams.setPassword` on API 35 | The platform can open files that need a password there | US-04 and US-85 forbid asking for or storing a PDF password. Calling `setPassword` needs a password. Which files count as protected is pending, and none of the options add a password prompt |
+| Use `LoadParams.setPassword` on API 35 | The platform can open files that need a password there | US-04 and US-85 forbid asking for or storing a PDF password. Calling `setPassword` needs a password. A file that needs a password to open stays closed |
+| Treat every encryption dictionary as password-protected, including an owner password only | A literal reading that closes every encrypted file | A password-protected PDF means only a PDF that needs a password to open. An owner-password PDF opens, renders, and is searchable as normal |
 | Platform `PdfRenderer` for every unprotected file, including API 26–29, inside the app process | Fewer moving parts | Below API 30 it needs a real file. The platform doc says to isolate an untrusted PDF. A plain `android:process` can still read the vault. The API 27 bug is process-wide |
 | `androidx.pdf` | A Jetpack renderer instead of PdfBox | Minimum SDK 28, and the library is still beta. v1 includes API 26 and 27, so this alternative drops those phones or keeps a second renderer anyway |
 
 ## Consequences
 
 - **Positive.** API 26–29 never needs a plaintext PDF file. Both renderers are isolated from the vault. A barcode is scanned from a full-resolution bitmap. API 35 does not grow a password prompt the stories forbid.
-- **Negative / accepted trade-offs.** Two renderers, both in an isolated process, which means a binder or a descriptor instead of a file path. memfd rendering and a full-resolution bitmap can fail closed on a very large page. Full-screen quality may differ between PdfBox and Pdfium. The meaning of password-protected is not decided.
-- **Follow-ups.** The isolated service must stay inside the US-80 export rules. The API 26–29 benchmark is evidence, not a threshold. He decides the pending definition. He is the approver.
+- **Negative / accepted trade-offs.** Two renderers, both in an isolated process, which means a binder or a descriptor instead of a file path. memfd rendering and a full-resolution bitmap can fail closed on a very large page. Full-screen quality may differ between PdfBox and Pdfium. A PDF that needs a password to open is stored and is not searchable. An owner password does not make a file password-protected.
+- **Follow-ups.** The isolated service must stay inside the US-80 export rules. The API 26–29 benchmark is evidence, not a threshold. He is the approver.
 
 ## Compliance
 
@@ -78,7 +67,7 @@ Current recommendation: a PDF that opens without a password, including one that 
 - [ ] No test calls `setPassword` or stores a PDF password
 - [ ] API 30+ renderer input is an anonymous descriptor
 - [ ] A failure to allocate that descriptor or the full-resolution bitmap does not create a fallback file
-- [ ] Owner-permission behaviour is not coded as if Decision pending had been resolved
+- [ ] A PDF that needs a password to open is not rendered and is not searchable. A PDF restricted only by an owner password opens, renders, and is searchable. No PDF password is asked for or stored
 
 ## Related
 
@@ -94,7 +83,8 @@ Current recommendation: a PDF that opens without a password, including one that 
 - Treating PdfBox-Android in US-04's story text as already accepted. This record is the acceptance point, and it is still Proposed.
 - Using `android:process` and calling it isolated. The same UID can read the vault.
 - Downscaling the only bitmap and then expecting a barcode to scan.
-- Treating the pending definition of password-protected as already chosen.
+- Treating an owner-password PDF as password-protected.
+- Asking for a password so a PDF that needs one can open.
 
 ## Skill State Machine (sdlc-adr-drafter)
 

@@ -87,7 +87,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - MUST use the bundled Latin-script model `com.google.mlkit:text-recognition` and keep `com.google.android.gms:play-services-mlkit-text-recognition` absent (US-31).
 - MUST post a reminder or an expiry only from the install US-55 picks, including after boot (US-55).
 - MUST leave the phone vault and the Drive copy each readable under exactly one passphrase if re-encryption crashes, with neither in a mixed state (US-86).
-- MUST NOT treat US-85's password-protected full-screen scenario as a MUST. That scenario is Could. Asking for or storing a PDF password is already refused by US-85's other text and by US-04, and US-04 is Draft. What "password-protected" means is Decision pending in ADR-0005.
+- MUST NOT treat US-85's password-protected full-screen scenario as a MUST. That scenario is Could. Asking for or storing a PDF password is already refused by US-85's other text and by US-04, and US-04 is Draft. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as a normal PDF. That definition is decided in ADR-0005. It is not a MUST while that ADR is unapproved.
 
 ## NEVER rules
 

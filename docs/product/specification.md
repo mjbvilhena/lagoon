@@ -131,6 +131,7 @@ Constraints later design must not reopen unless he does:
 - OCR quality varies by phone and language. No accuracy rate is set here.
 - An emulator may be unavailable for screenshots. Do not fabricate them.
 - No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
+- Proposed amendment. Needs approval by mjbvilhena. `docs/domain/vault/DOMAIN.md`, `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md` are in the tree. They are Proposed and are not approved. The sentence above does not match the tree. This is not approved.
 - Topic extraction sends readable content off the phone to a cloud AI. That is a privacy risk he has accepted in principle. Which provider, and what that provider retains, is US-76. Criteria follow from the ADR at the design gate.
 - Cloud processing has a cost. No budget or per-item cap is set here.
 - Offline, the item is saved and topic processing is queued until a network exists. The vault stays usable without that call.
@@ -176,3 +177,5 @@ Constraints later design must not reopen unless he does:
 The specification gate and the epic gate have passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Implementation has not started.
 
 Proposed amendment. Needs approval by mjbvilhena. US-66 is in v1 and is Proposed for story review. It is not approved. The approval table above is unchanged.
+
+Proposed amendment. Needs approval by mjbvilhena. A threat model is Proposed at `docs/technical_design/threat-model.md`. ADR-0001 through ADR-0006 are Proposed. UX and the test strategy are not started. The approval-table row that says the threat model and the ADRs are not started does not match the tree. None of those files is approved. This is not approved.
