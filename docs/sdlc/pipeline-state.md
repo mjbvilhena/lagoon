@@ -17,14 +17,14 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | `docs/technical_design/2026-10-17-proposed-threat-note.md` | Not started as a gate. The note is unapproved hypotheses. It does not open the design band. |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. |
-| Repository checks | `.github/workflows/qa.yml` | In place. Not a product approval. The workflow runs seven jobs. The Protect master ruleset requires three of them. See `docs/sdlc/repository-setup.md`. |
+| Repository checks | `.github/workflows/qa.yml` | In place. Not a product approval. The workflow runs seven jobs. The Protect master ruleset requires all seven. See `docs/sdlc/repository-setup.md`. |
 | Implement | No application code | Not started. |
 
 ## Stop
 
 **Epic gate passed. Stopped at story review.** Stories stay Draft. Implementation has not started.
 
-The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. On 2026-10-18 the Protect master ruleset requires Secret scan, Markdown lint, and Workflow lint. The other four jobs run and are not required checks. The Android jobs no-op until a Gradle project exists.
+The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. The Protect master ruleset requires those seven checks, and the branch must be up to date. There are no bypass actors. The Android jobs no-op until a Gradle project exists.
 
 ## Requirements in force
 

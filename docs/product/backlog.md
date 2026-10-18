@@ -147,11 +147,11 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 ## Repository setup
 
-Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree. The Protect master ruleset requires Secret scan, Markdown lint, and Workflow lint. The other four jobs run and are not required checks.
+Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree. The Protect master ruleset requires Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, and Kotlin style. The branch must be up to date. There are no bypass actors.
 
 - **Harness install** *(In place)* Cursor skills under `.cursor/commands/`. Submodule `third_party/ai-sdlc-harness` at `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. Evidence: `docs/sdlc/harness-install.md`.
-- **Protect master status checks** *(Not started)* Decide whether Build and test, Android lint, Kotlin style, and CodeQL become required checks. The workflow runs them. Ruleset 25303010 does not require them. Evidence: GitHub ruleset API on 2026-10-18. `docs/sdlc/repository-setup.md`.
-- **Protect master bypass** *(Not started)* Decide whether an admin may bypass the ruleset when merging a pull request. The ruleset has no bypass actors. Evidence: ruleset 25303010, `bypass_actors` null, on 2026-10-18.
+- **Protect master status checks** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
+- **Protect master bypass** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
 
 ## Not started, and not skipped
 
