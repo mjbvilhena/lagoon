@@ -187,6 +187,6 @@
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
 | US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |
 | US-80 | E6 | E6: the release app requests only the permissions the product needs. `CAMERA` and exact-alarm permissions are absent. | Traced. |
-| US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Security criteria approved by mjbvilhena on 2026-10-18. The rewritten uninstall line is a proposed security criterion. Needs approval by mjbvilhena. The story stays Draft. |
+| US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
 | US-85 | E1 | E1: one tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. | Traced. Amendment approved by mjbvilhena on 2026-10-18. A swipe moves to the next or previous PDF page, or to the item's next or previous image attachment, without leaving full-screen. The story stays Draft. |
 | US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Draft. Security criteria approved by mjbvilhena on 2026-10-18. |
