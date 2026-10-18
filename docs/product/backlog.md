@@ -110,7 +110,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
 - **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Approved)* Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18.
-- **US-86** *(Approved)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- **US-86** *(Approved)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Proposed amendment, not approved: a forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 ## Epic E9: Reminders and expiry
 
@@ -161,7 +161,7 @@ Not approval. Needs approval by mjbvilhena. Implementation has not started. The 
 
 - **Domain** *(Proposed)* `docs/domain/vault/DOMAIN.md`.
 - **Layers** *(Proposed)* `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, `docs/layers/data/LAYER.md`.
-- **ADR-0001** *(Proposed)* Argon2id vault key. Placeholder US-74 points here. `docs/adr/ADR-0001-argon2id-vault-key.md`.
+- **ADR-0001** *(Proposed)* Argon2id vault key. The forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. Passphrase floor, phones without secure hardware, and the reset factor stay Decision pending. Placeholder US-74 points here. `docs/adr/ADR-0001-argon2id-vault-key.md`.
 - **ADR-0002** *(Proposed)* Sync conflicts and deletions. Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
 - **ADR-0003** *(Proposed)* Paid Gemini topic call. Placeholder US-76 points here. `docs/adr/ADR-0003-gemini-topic-call.md`.
 - **ADR-0004** *(Proposed)* ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.

@@ -45,7 +45,7 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 ## Open questions
 
 - Sync conflicts and how a deletion propagates (US-73). Proposed answer: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted. The story stays a placeholder.
-- How the vault key reaches a new device (US-74). Proposed answer: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted. The story stays a placeholder. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
+- How the vault key reaches a new device (US-74). Proposed answer: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted. The story stays a placeholder. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. The forgotten-passphrase reset delay is decided in that ADR: the Drive copy keeps the old passphrase for 24 hours, and another phone that holds the key can cancel. The spec amendment is not approved. The passphrase floor, phones without secure hardware, and the reset factor stay Decision pending.
 - Topic provider, retention, credential supply, and payload (US-76). Proposed answer: `docs/adr/ADR-0003-gemini-topic-call.md`. Not accepted. The story stays a placeholder.
 
 ## History

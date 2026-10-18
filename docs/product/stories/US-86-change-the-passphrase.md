@@ -22,6 +22,7 @@ Change the passphrase.
 
 - The vault key is derived from the passphrase (US-35). Changing it re-encrypts the vault.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Amendment approved by mjbvilhena on 2026-10-18.
+- Proposed amendment. Needs approval by mjbvilhena. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A normal passphrase change, where he enters the current passphrase, re-encrypts the phone and the Drive copy without that wait. The phone vault and the Drive copy each stay readable under exactly one passphrase. The scenarios whose title line carries this same marker are not approved. The approved scenarios stay as written.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74).
 
@@ -68,6 +69,36 @@ Change the passphrase.
   - Given this phone holds the vault key
   - When he chooses "I've forgotten my passphrase" and the US-37 biometric or device-PIN unlock is cancelled or fails
   - Then nothing changes
+- **Scenario: the Drive copy waits** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given this phone holds the vault key and he finishes the forgotten-passphrase reset
+  - When the local re-encrypt completes
+  - Then the phone vault is under the new passphrase
+  - And the Drive copy keeps the old passphrase for 24 hours
+  - And every other phone that holds the key shows a notice and can cancel
+  - And the notice has no passphrase and no item content
+- **Scenario: he has only one phone** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given no other phone holds the key
+  - When the forgotten-passphrase reset finishes
+  - Then nobody is shown the notice
+  - And the Drive copy still keeps the old passphrase for 24 hours
+- **Scenario: the resetting phone goes offline** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given the forgotten-passphrase reset has re-encrypted the phone
+  - When that phone is offline before the pending-reset marker is on Drive
+  - Then the Drive copy stays on the old passphrase and the 24 hours have not started
+- **Scenario: cancelling the reset** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given another phone that holds the key cancels during the 24 hours
+  - When the resetting phone reads that cancel
+  - Then the Drive copy stays on the old passphrase
+  - And the resetting phone's vault is replaced by that old Drive copy
+  - And the new passphrase opens nothing
+- **Scenario: a normal change skips the wait** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given he enters the current passphrase
+  - When the change completes
+  - Then the phone vault and the Drive copy are re-encrypted without the 24-hour wait
+- **Scenario: crash safety during the wait** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given a crash during the forgotten-passphrase reset, while Drive is re-keyed, or while a cancel is applied
+  - When the app starts again
+  - Then the phone vault and the Drive copy are each readable under exactly one passphrase, and neither is mixed
 
 ## Analytics and observability (optional)
 
