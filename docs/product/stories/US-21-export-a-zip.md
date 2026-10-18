@@ -1,4 +1,4 @@
-# US-21 Export a zip
+# US-21 Export a zip to a place he chooses
 
 > **Approval status: Draft. Not approved.**
 

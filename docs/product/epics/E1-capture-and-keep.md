@@ -2,8 +2,8 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Amendment approved by mjbvilhena on 2026-10-17.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -71,6 +71,8 @@ These are not approved. Paths are under `docs/product/stories/`.
 - US-28 File a capture with last-used tags
 - US-32 Keep more than one attachment on an item
 - US-40 Fill the title from the page or the file
+- US-49 Update a link that was saved before, and undo that update.
 - US-58 Run enrichment, snapshot, OCR, and topics in that order
+- US-61 Filter by where an item came from. Should.
 - US-65 Add a photo from the system camera. Should.
 - US-67 Notice a duplicate image or PDF. Could.

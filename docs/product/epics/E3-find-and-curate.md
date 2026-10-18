@@ -2,8 +2,8 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Amendment approved by mjbvilhena on 2026-10-17.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -63,10 +63,12 @@ Miguel, looking back through what he kept.
 - US-13 Delete an item and undo it
 - US-14 Manage tags
 - US-15 Search with ranked, highlighted matches
+- US-50 Rank search matches.
 - US-16 Filter by type and by tag
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
 - US-57 Prove search on an encrypted database
+- US-64 Share or open an item in another app. Should.
 - US-66 Keep a trash beyond undo. Should.
 - US-71 Triage the inbox in a batch. Could.

@@ -100,13 +100,14 @@ No product test runner exists yet. `Build and test` will run `./gradlew assemble
 
 The GitHub default branch is `master`. The initial import of this history is the one direct push. After that, changes on `github.com/mjbvilhena/lagoon` go through pull requests into `master`.
 
-The Protect master ruleset, modelled on leisure-orchestrator, is the policy for `master`:
+The active ruleset is Protect master (id 25303010, created 2026-10-17, enforcement active, target `refs/heads/master`). Read from the GitHub ruleset API on 2026-10-18:
 
-- Require a pull request before merging.
-- Require 1 approving review, including code owners (`.github/CODEOWNERS`).
-- Require status checks: `Secret scan`, `Markdown lint`, `Workflow lint`, `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`.
+- Require a pull request before merging. One approving review. Code owner review is required (`.github/CODEOWNERS`). A new push dismisses stale reviews. Unattributed changes need an extra approval.
+- Allowed merge methods are merge, squash, and rebase.
+- Required status checks, and the branch must be up to date: `Secret scan`, `Markdown lint`, and `Workflow lint`.
+- `.github/workflows/qa.yml` also runs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. Those four jobs are not required checks on this ruleset.
 - Block force-pushes and branch deletion.
-- Admins may bypass these rules only when merging a pull request. Direct pushes stay blocked.
+- The ruleset has no bypass actors.
 
 A green check is not product approval and is not permission to start implementation. This setup note stays Draft.
 

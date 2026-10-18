@@ -2,7 +2,7 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -67,9 +67,11 @@ Miguel, on this phone and on a later install of the same app.
 - US-18 Sign in and let the vault sync
 - US-19 Keep background sync on unmetered networks
 - US-20 Receive the vault on a new install
-- US-21 Export and import a zip
+- US-21 Export a zip
+- US-52 Import a zip and merge it.
 - US-30 No manual backup or restore
 - US-51 Sync in the background and show errors
 - US-56 Keep a stable identity for each item
 - US-59 Use one Settings screen
+- US-73 Decide sync conflicts and deletions. Open question.
 - US-78 Drive scope and sign-out.

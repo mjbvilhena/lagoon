@@ -1,30 +1,30 @@
 # Pipeline state
 
-Inspection date: 2026-10-17. Conductor: `sdlc-conductor`. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
+Inspection date: 2026-10-18. Conductor: `sdlc-conductor`. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
-Templates and Definition of Done checks for this cleanup were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. This was not a live MCP session. Skills: `sdlc-conductor`, `sdlc-docs-backlog-review`, `sdlc-product-owner`, `sdlc-dod-checker`, `sdlc-pr-summarizer`. No domain consultant was found. No MUST/NEVER rules were invented.
+Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. No `DOMAIN.md` or `LAYER.md` was found. No MUST/NEVER rules were invented.
 
 ## Legal state
 
 | State | Evidence | Status |
 | --- | --- | --- |
 | Vision | `docs/product/vision.md` | Approved by mjbvilhena on 2026-10-17. |
-| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST. |
-| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. E1, E2, E3, E4, E5, E6, E8, E9, and E11 also carry the 20:02 IST epic amendments. E1, E3, E8, and E11 also carry the 15:55 IST amendment. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
+| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. |
+| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Where an epic file has an amendment line, that line is also approved by mjbvilhena on 2026-10-17. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
 | Story refine | `docs/product/stories/` and `INDEX.md` | Draft. Not approved. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
 | Story approval | No story signed | Not given. |
 | Technical design / ADRs | No ADR | Not started. ML Kit research input: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | `docs/technical_design/2026-10-17-proposed-threat-note.md` | Not started as a gate. The note is unapproved hypotheses. It does not open the design band. |
 | Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. |
-| Repository checks | `.github/workflows/qa.yml` | In place. Not a product approval. See `docs/sdlc/repository-setup.md`. |
+| Repository checks | `.github/workflows/qa.yml` | In place. Not a product approval. The workflow runs seven jobs. The Protect master ruleset requires three of them. See `docs/sdlc/repository-setup.md`. |
 | Implement | No application code | Not started. |
 
 ## Stop
 
 **Epic gate passed. Stopped at story review.** Stories stay Draft. Implementation has not started.
 
-The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. Required checks are Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. The Android jobs no-op until a Gradle project exists.
+The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. On 2026-10-18 the Protect master ruleset requires Secret scan, Markdown lint, and Workflow lint. The other four jobs run and are not required checks. The Android jobs no-op until a Gradle project exists.
 
 ## Requirements in force
 

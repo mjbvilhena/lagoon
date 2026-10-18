@@ -2,8 +2,8 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Amendment approved by mjbvilhena on 2026-10-17.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -56,4 +56,5 @@ Miguel, including on a second device that should see the same vault and not a pl
 - US-35 Encrypt the vault at rest
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
+- US-74 Decide how the vault key reaches another device. Open question.
 - US-75 Limit what a sensitive item reveals.

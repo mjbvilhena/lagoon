@@ -2,8 +2,8 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Amendment approved by mjbvilhena on 2026-10-17.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -77,3 +77,4 @@ These stay Draft. Paths are under `docs/product/stories/`.
 - US-48 Manage a topic that is already saved.
 - US-60 Browse topics and pending suggestions
 - US-72 Score whether topics are useful. Could.
+- US-76 Decide the topic call's provider, credential, and payload. Open question.
