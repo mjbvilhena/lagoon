@@ -55,7 +55,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - MUST encrypt vault bytes before they touch disk, using the vault key, including the derived files US-35 lists.
 - MUST keep the salt and KDF parameters in a header that can be read before decrypt. MUST keep the wrapped key blob on the phone only.
 - MUST send Drive file names and metadata with no title and no tag (US-36).
-- MUST NOT invent a software Keystore fallback while ADR-0001's hardware choice is Decision pending.
+- MUST NOT create a software-backed vault key unless he has accepted the warning in ADR-0001. MUST NOT ask for the passphrase on every launch because secure hardware is missing.
 - MUST run preview fetches with the US-79 limits: no cookies, no Referer, no authorization, User-Agent `LagoonPreview`, at most 5 redirects, 15 seconds, 10 MiB decompressed.
 - MUST remove `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and call `MlKit.initialize` only after acceptance, and only once per process (US-07, ADR-0004).
 - MUST keep the manifest allowlist in US-80, including ML Kit datatransport components named or removed (ADR-0004). `allowBackup` false and vault exclusion in `dataExtractionRules` (US-35).

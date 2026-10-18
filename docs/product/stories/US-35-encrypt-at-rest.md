@@ -24,6 +24,7 @@ Encrypt the vault at rest.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
 - Proposed amendment. Needs approval by mjbvilhena. On that reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A phone that holds no key still follows "I've forgotten my passphrase" and does not use this reset. A normal passphrase change, where he enters the current passphrase, does not wait. This is not approved.
 - Proposed amendment. Needs approval by mjbvilhena. A passphrase of fewer than 12 characters is refused, and a passphrase on the bundled common-password list is refused, before the KDF runs. There is no strength meter. The strong-passphrase guidance still shows. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower memory, iterations, or parallelism. The scenarios whose title line carries this same marker are not approved. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it. This is not approved.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
@@ -117,6 +118,17 @@ Encrypt the vault at rest.
   - Then the check reads the Keystore key that holds or wraps the derived key
   - And on API 31+ `KeyInfo.getSecurityLevel()` is StrongBox or TEE
   - And on API 26–30 `KeyInfo.isInsideSecureHardware()` is true
+- **Scenario: a phone without secure hardware** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given this phone's Keystore cannot keep the vault key in secure hardware
+  - When he sets up a vault
+  - Then he sees "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key."
+  - And the vault is not created until he accepts that warning
+  - And if he declines, no vault is written
+  - And if he accepts, the vault is created and the key is not hardware-backed
+  - And the same warning stays in Settings on that phone for as long as the key is not hardware-backed
+  - And Settings does not ask him to accept it again
+  - And it is not shown as a gate on later opens
+  - And a phone whose key is hardware-backed does not show it
 
 ## Analytics and observability (optional)
 
@@ -133,6 +145,7 @@ Not applicable. No analytics.
 - Amendment approved by mjbvilhena on 2026-10-18.
 - Changing the passphrase is US-86. It is not a criterion of this story.
 - When the device has no hardware-backed Keystore, the fallback is decided at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. On that phone a vault can be created after he accepts the warning in "a phone without secure hardware". This is not approved.
 
 ## Implementation notes
 
