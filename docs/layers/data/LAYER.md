@@ -12,17 +12,17 @@ Business invariants live in `docs/domain/vault/DOMAIN.md`. This layer stores and
 
 - **Responsibility:** Room, files, encryption adapters, Drive sync, FTS, reminder alarms, share-byte reading, link fetch, OCR adapter, topic HTTP, PDF extract and render.
 - **Not responsible for:** Compose, copy, or deciding a conflict rule, a KDF parameter, or a topic vendor. Those are the domain consultant and the ADRs.
-- **Typical entry points:** `com.mjbvilhena.lagoon.data`, WorkManager workers, `AlarmManager` scheduling, the Drive client.
+- **Typical entry points:** `com.mjbvilhena.lagoon.data`, WorkManager workers, `AlarmManager` scheduling, the Drive client. Gradle module `:data`. The module graph is under Patterns.
 
 Where the named capabilities live:
 
 | Capability | Package | Calls |
 | --- | --- | --- |
-| Encryption and KDF | `data.crypto` | Keystore wrap, header read, encrypt-before-write. Parameters come from ADR-0001 once accepted |
-| Sync | `data.sync` | WorkManager, Drive `appDataFolder`, merge through the domain port. Conflict rule is ADR-0002 once accepted |
+| Encryption and KDF | `data.crypto` | Keystore wrap, header read, encrypt-before-write. Parameters come from ADR-0001 once accepted. Cipher and container come from ADR-0006 once accepted |
+| Sync | `data.sync` | WorkManager, Drive `appDataFolder`, one records file per install. Merge through the domain port. Conflict rule is ADR-0002 once accepted |
 | Search | `data.search` | The FTS index behind `SearchIndex`. Weights stay in the domain |
-| Reminders | `data.reminder` | Inexact `setWindow` or `setAndAllowWhileIdle`, reschedule on boot. Notification text follows US-34 and US-75 |
-| Share intake bytes | `data.capture` | Read the content URI, reject non-PDF bytes, keep a pre-key share off disk. The Activity is the UI layer |
+| Reminders | `data.reminder` | Inexact `setAndAllowWhileIdle`. Reschedule on every US-55 trigger. Notification text follows US-34 and US-75 |
+| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Reject `file://` and Lagoon's own FileProvider URIs. Cap one image at 20 MiB. Keep a pre-key share off disk. The Activity is the UI layer |
 
 ## Allowed dependencies
 
@@ -30,13 +30,17 @@ Where the named capabilities live:
 | --- | --- | --- |
 | Domain layer | implement ports | `com.mjbvilhena.lagoon.domain` only |
 | Room | import | Spec requires Room with FTS. Engine for encryption plus FTS waits on US-57 |
-| Android Keystore | import | Wrap or hold the derived key. No user authentication (US-35) |
+| SQLCipher | import | Database encryption in ADR-0006. US-57 still has to show FTS with it |
+| Native Argon2id | import | JNI to the PHC reference. Not a pure-Java port (ADR-0001) |
+| Android Keystore | import | AES-256-GCM wrap. No user authentication (US-35, ADR-0001) |
+| PdfBox-Android | import | Extract, and render on API 26–29, inside the isolated process (ADR-0005) |
+| Credential Manager or AuthorizationClient | import | Drive sign-in. Not a WebView. Scope `drive.appdata` only (US-78) |
 | WorkManager | import | Sync and background jobs. Unmetered constraint from US-19 and US-44 |
 | Drive API | HTTP via the official client | Scope `drive.appdata` only (US-78) |
-| AlarmManager | import | Inexact alarms only (US-77) |
-| ML Kit text-recognition, bundled | import | `com.google.mlkit:text-recognition` after US-07 acceptance (ADR-0004) |
-| PDF library | import | Extraction on minSdk 26. Render path is ADR-0005 |
-| OkHttp or `HttpURLConnection` | import | Link preview (US-79) and the topic call (ADR-0003) |
+| AlarmManager | import | Inexact `setAndAllowWhileIdle` only (US-77 is Draft; the spec already requires inexact alarms) |
+| ML Kit text-recognition, bundled | import | `com.google.mlkit:text-recognition` after US-07 acceptance (ADR-0004). Datatransport components are named on the US-80 allowlist or removed |
+| Gemini HTTP client | import | The same OkHttp or `HttpURLConnection` stack as link preview. Key in the `x-goog-api-key` header (ADR-0003). No second generative SDK |
+| OkHttp or `HttpURLConnection` | import | Link preview (US-79) and the Gemini HTTP client |
 
 If a dependency is missing from this table, treat it as **disallowed** until a human updates the file.
 
@@ -51,11 +55,15 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - MUST encrypt vault bytes before they touch disk, using the vault key, including the derived files US-35 lists.
 - MUST keep the salt and KDF parameters in a header that can be read before decrypt. MUST keep the wrapped key blob on the phone only.
 - MUST send Drive file names and metadata with no title and no tag (US-36).
-- MUST refuse a software-backed Keystore key when ADR-0001 is accepted. Until then, do not invent a software fallback in code.
+- MUST NOT invent a software Keystore fallback while ADR-0001's hardware choice is Decision pending.
 - MUST run preview fetches with the US-79 limits: no cookies, no Referer, no authorization, User-Agent `LagoonPreview`, at most 5 redirects, 15 seconds, 10 MiB decompressed.
-- MUST remove `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and call `MlKit.initialize` only after acceptance (US-07).
-- MUST keep the manifest allowlist in US-80. `allowBackup` false and vault exclusion in `dataExtractionRules` (US-35).
+- MUST remove `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and call `MlKit.initialize` only after acceptance, and only once per process (US-07, ADR-0004).
+- MUST keep the manifest allowlist in US-80, including ML Kit datatransport components named or removed (ADR-0004). `allowBackup` false and vault exclusion in `dataExtractionRules` (US-35).
 - MUST post sensitive notifications as public and private text "Lagoon reminder" (US-75).
+- MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start.
+- MUST accept share bytes that are a link, plain text, an image, or a PDF. A PDF share that is not a PDF is still rejected (US-04, Draft). Image and text shares are not rejected for being non-PDF.
+- MUST reject a share URI whose scheme is `file`, and MUST reject a URI from Lagoon's own FileProvider.
+- MUST refuse a single image larger than 20 MiB at intake. That figure is the same cap US-31 uses for image bytes.
 - MUST wipe a share temp file on return, within 15 minutes, and on next launch, and revoke the URI grant with that wipe (US-64).
 
 ## NEVER rules (technical)
@@ -64,13 +72,15 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - NEVER upload the SQLite header `SQLite format 3` or a seeded plaintext sentinel (US-36).
 - NEVER request exact alarms or `CAMERA`.
 - NEVER write a plaintext PDF to disk so `PdfRenderer` can open it (US-85, ADR-0005).
-- NEVER bake a topic API key into the APK, `BuildConfig`, or assets (US-41).
-- NEVER treat FTS5 plus SQLCipher as chosen before the US-57 spike. The spec's fallback, if that spike fails, is Room 2 FTS4 plus app-side ranking.
+- NEVER run `PdfRenderer` or PdfBox in the app process or in a plain `android:process`. The service is `android:isolatedProcess="true"` (ADR-0005).
+- NEVER bake a topic API key into the APK, `BuildConfig`, or assets, and NEVER put that key in the request URL (US-41, ADR-0003).
+- NEVER treat FTS5 plus SQLCipher as proven before the US-57 spike. The dependency is allowed. The spec's fallback, if that spike fails, is Room 2 FTS4 plus app-side ranking.
 
 ## Patterns and frameworks
 
 - Kotlin. Room is the local store. WorkManager is the background runner. Both are specification constraints.
-- The content cipher (algorithm, mode, key size) and the key-wrap algorithm are not chosen. The specification leaves them for an ADR this layer must not pretend exists.
+- Cipher, container, and the AES-256-GCM Keystore wrap are proposed in ADR-0001 and ADR-0006. They are not accepted. This layer must not pretend they are.
+- Gradle modules, once implementation starts: `:domain` is pure Kotlin with no Android dependency, `:data` implements the ports, `:ui` does not depend on `:data`, `:data` does not depend on `:ui`, and `:app` is the only module that depends on both `:data` and `:ui`. An architecture test fails the build when that graph breaks. No Gradle project exists yet. This file is the rule that project has to meet.
 - Repository tests cover search ranking and ciphertext packaging without a live Drive call (US-25).
 
 ## Observability and safety

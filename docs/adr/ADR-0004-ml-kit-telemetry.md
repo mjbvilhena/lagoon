@@ -30,6 +30,8 @@ Rules, if this record is accepted:
 
 - OCR uses `com.google.mlkit:text-recognition` only. `com.google.android.gms:play-services-mlkit-text-recognition` stays absent (US-31).
 - The manifest removes `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"`. `MlKit.initialize` runs only after he accepts. Decline, no answer, or a withdrawn acceptance means the app does not call `initialize` (US-07).
+- `MlKit.initialize` can be called only once per process. A withdrawal later in that process does not un-initialize it. The next cold start, if acceptance is still withdrawn, does not call `initialize`. Acceptance stored during a process that already initialized does not imply a second call.
+- ML Kit brings datatransport components (`com.google.android.datatransport`, including transport-runtime and transport-backend-cct). US-80 already says any permission a merged ML Kit manifest adds is named on that allowlist or removed with `tools:node="remove"`. Those datatransport components are in that set. This record does not edit US-80. A build that leaves them unnamed and unremoved fails the US-80 check.
 - The disclosure states the facts US-07 already lists: image and recognized text stay on the device; the metrics categories go to Google over HTTPS; ML Kit does not transfer those metrics to third parties; ML Kit may contact Google for model updates and bug fixes; the docs do not give the app an off switch.
 - There is no Settings control that claims to disable the metrics. Firebase `setAnalyticsCollectionEnabled` and Crashlytics flags are not this control, and those products stay absent (US-07).
 - Acceptance is stored on the device so a later OCR use does not ask again. Logs do not gain an analytics event for that acceptance.
@@ -54,6 +56,9 @@ Default: any new ML Kit feature (barcode, face, or another recognizer) is out un
 
 - [ ] Classpath and manifest checks match US-07 and US-31: bundled artifact present, Play services text-recognition artifact absent, init provider removed, no Firebase Analytics or Crashlytics
 - [ ] A test that has not accepted does not call `MlKit.initialize`
+- [ ] A second `MlKit.initialize` in the same process is not called
+- [ ] A cold start after withdrawal does not call `MlKit.initialize`
+- [ ] Datatransport components from ML Kit are named on the US-80 allowlist or removed with `tools:node="remove"`
 - [ ] Settings has no control labelled as a metrics off switch
 - [ ] Logs from an OCR run do not add an analytics product
 

@@ -25,28 +25,28 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 
 | Entity | Meaning | Invariants (always true) |
 | --- | --- | --- |
-| Item | One saved link, note, image, or PDF. | Stable id across edit, sync, and a repeat of the same link (E4, US-56). `createdAt` does not move when `updatedAt` does (US-56). An empty title fills from the page title or the file name, including a screenshot, image, or scan, and is capped at 120 characters (spec, US-40). |
+| Item | One saved link, note, image, or PDF (E1). A plain-text share is a note. That mapping is US-02, which is Draft. | Stable id across edit, sync, and a repeat of the same link (E4). `createdAt` does not move when `updatedAt` does. That immutability is US-56 only, and US-56 is Draft. An empty title fills from the page title or the file name, including a screenshot, image, or scan, and is capped at 120 characters (spec, US-40). |
 | Attachment | A file on an item. | An item may hold more than one (E1, US-32). Bytes are vault content, encrypted at rest with the vault key (US-35). |
 | Personal note entry | Dated text on an item, separate from the body. | On a repeat of the same page, existing text is not overwritten and the new note is appended under `YYYY-MM-DD` (spec, US-49). US-64 "note text" means the body, not this entry. |
 | Tag | A label Miguel applies. | A rename applies to every item. A case-insensitive clash asks, then merges (spec, US-29). The Untagged inbox is a view, not a stored tag (E3, US-38). A tag is not a topic (US-41). |
 | Topic | A subject he has confirmed. | Created only after he confirms (E11, US-43). Every stored result is marked AI-generated (US-41). A quote is kept as grounded only when it appears word for word in the text that was sent (US-41). |
-| Suggestion | A topic name not yet confirmed. | Decline, rename, or merge of a suggestion does not create a topic he refused (US-46). No cap on how many suggestions may be offered (spec, US-41). |
-| Reminder | The optional alarm instant on an item. | At most one. Default 09:00 in the phone's current local zone. Inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM` (spec, US-34, US-77). |
+| Suggestion | A topic name not yet confirmed. | No cap on how many suggestions may be offered (spec, US-41). Decline, rename, or merge of a suggestion does not create a topic he refused. That sentence is US-46 only, and US-46 is Draft. |
+| Reminder | The optional local time on an item. It is an hour and minute in the phone's current local zone, not an instant. | At most one. Default 09:00. A 09:00 reminder fires at 09:00 wherever the phone is (spec, US-34, US-55). Inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM` (spec, US-34). The exact-alarm permission story US-77 is Draft. Which install posts: the signed-in install with the newest check-in; a sole signed-in install that holds the vault key always posts; equal check-ins are broken by the lower install id, plain string comparison; a check-in is written only once that install holds the vault key, on app open or a successful sync; the same rule covers expiry (US-55). |
 | Expiry | The optional expiry date on an item. | Notifies 7 days before and on the day (E9, US-54). Upcoming shows the one reminder or the one expiry, not a return-by date or a warranty end (spec, US-62). |
 | Vault header | Non-secret salt and KDF parameters. | The vault key is derived from his passphrase. No copy of the key, wrapped or otherwise, is stored off the phone (spec, US-35). The header is readable before the key exists. Method and parameters are proposed in ADR-0001, not fixed here. |
 
 ### Value objects
 
 - **Item id.** Assigned once. Never reused for a different item (US-56).
-- **Normalised URL.** Match ignores scheme, a leading `www.`, a trailing slash, the fragment, host case, and the tracking parameters named in US-49. Any other query parameter, including an order id, stays a different item (spec, US-49). The stored source URL remains the first one.
+- **Normalised URL.** Match ignores scheme, a leading `www.`, a trailing slash, the fragment, host case, and `utm_*` / tracking parameters (spec, E1). The stored source URL remains the first one. "Any other query parameter, including an order id, stays a different item" is US-49 only, and US-49 is Draft.
 - **Passphrase.** Derives the vault key. It is not the vault key. It is never stored and never logged (US-35).
 - **Sensitive mark.** A boolean on the item, not a tag (US-37, US-75).
 
 ### Aggregates
 
-- **Item.** Consistency boundary for attachments, notes, tags on that item, the sensitive mark, and the one reminder or expiry. Deleting it removes its FTS row, reminders, topic links, queued topic job, pending suggestions, and topic notes written from it, once undo has ended (US-13). How that delete reaches another phone is proposed in ADR-0002.
-- **Tag.** The name is the identity, compared case-insensitively (US-29).
-- **Topic.** Links and notes. Unlink and merge of a saved topic are US-48. Sensitive topic notes stay hidden until the US-37 unlock (US-75).
+- **Item.** Consistency boundary for attachments, notes, tags on that item, the sensitive mark, and the one reminder or expiry. Deleting it removes its FTS row, reminders, topic links, queued topic job, pending suggestions, and topic notes written from it, once undo has ended. That cleanup list is US-13 only, and US-13 is Draft. How that delete reaches another phone is proposed in ADR-0002, and delete versus a later edit is Decision pending there.
+- **Tag.** The name is the identity, compared case-insensitively (spec, US-29). US-29 is Draft. The specification already states rename-and-merge.
+- **Topic.** Links and notes. Sensitive topic notes stay hidden until the US-37 unlock (US-75). Unlink and merge of a saved topic are US-48 only, and US-48 is Draft.
 
 ## Ubiquitous language
 
@@ -79,13 +79,15 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - MUST keep an item that exists on only one side (spec, US-20). Two edits of one id, and deletion propagation, wait on ADR-0002.
 - MUST union tags, keep existing text, and append a dated note when the same normalised URL is shared again (spec, US-49).
 - MUST search title, body, extracted text, OCR text, tags, and the personal note with the specified BM25 weights: title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1 (spec, US-15, US-50).
-- MUST exclude a sensitive item from list title, snippet, thumbnail, OCR, search highlights, topic calls, and both notification versions until the rules in US-75 are met.
+- MUST exclude a sensitive item's title, snippet, thumbnail, and OCR text in rows and search, and exclude it from search highlights, topic calls, and both notification versions, until the rules in US-75 are met.
 - MUST show an ordinary lock-screen reminder's title, and show both versions of a sensitive notification as only "Lagoon reminder" (US-34, US-75).
 - MUST run link work in this order after the save returns: enrich, then snapshot from that fetch, then OCR, then the topic job (E1, US-58).
 - MUST keep topic extraction on for a new ordinary item, with a Settings switch, with no per-item opt-out, and with sensitive items always excluded (spec, US-41, US-75).
 - MUST NOT start ML Kit until he accepts the US-07 disclosure. There is no telemetry off switch (spec, US-07, US-31).
 - MUST use the bundled Latin-script model `com.google.mlkit:text-recognition` and keep `com.google.android.gms:play-services-mlkit-text-recognition` absent (US-31).
-- MUST leave a password-protected PDF unopened in full-screen, ask for no PDF password, and store none (US-85). The file is still stored and marked text-not-extracted (US-04).
+- MUST post a reminder or an expiry only from the install US-55 picks, including after boot (US-55).
+- MUST leave the phone vault and the Drive copy each readable under exactly one passphrase if re-encryption crashes, with neither in a mixed state (US-86).
+- MUST NOT treat US-85's password-protected full-screen scenario as a MUST. That scenario is Could. Asking for or storing a PDF password is already refused by US-85's other text and by US-04, and US-04 is Draft. What "password-protected" means is Decision pending in ADR-0005.
 
 ## NEVER rules
 
@@ -107,11 +109,12 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - A failed link fetch keeps the URL (US-09).
 - Enrichment, snapshot, OCR, and topic outcomes that are still pending stay visible as pending or failed, not as invented text (US-31, US-70).
 - Provenance for a topic result records item id, fields sent, timestamp, and model or prompt version. It does not record the credential or the passphrase (US-41).
-- No retention period is stated for vault content beyond the product rules. Trash duration is not decided (US-66). Drive revisions are not deleted by a passphrase change until ADR-0001 is accepted; US-86 already says old revisions may open with the old passphrase.
+- No retention period is stated for vault content beyond the product rules. Trash duration is not decided (US-66, Draft).
+- Drive keeps old revisions for about 30 days or about 100 revisions, whichever keeps more, unless keep-forever is set. ADR-0001 proposes that the app does not set keep-forever and does not delete revisions. US-86 already says an old revision or an old zip may open with the old passphrase. A zip he keeps is outside that purge. That sentence is not a change to US-86.
 
 ## Change control
 
-An ADR is required before any of these become MUST: the KDF and its parameters (ADR-0001), sync conflicts and deletions (ADR-0002), the topic provider, credential, and payload (ADR-0003), ML Kit telemetry handling (ADR-0004), PDF rendering on API 26–29 (ADR-0005), and the content cipher, mode, and key size (still no ADR; the spec leaves them open).
+An ADR is required before any of these become MUST: the KDF and its parameters (ADR-0001), sync conflicts and deletions (ADR-0002), the topic provider, credential, and payload (ADR-0003), ML Kit telemetry handling (ADR-0004), PDF rendering on API 26–29 (ADR-0005), and the content cipher and container (ADR-0006, Proposed; the specification still says the cipher waits for an ADR). Items marked Decision pending in those ADRs are not MUSTs. An invariant whose only source is a Draft story is marked above and is not a MUST.
 
 Only mjbvilhena may accept an ADR or add a published term. This file is Proposed. It does not approve those ADRs and it does not change approved story text.
 
@@ -119,7 +122,8 @@ Only mjbvilhena may accept an ADR or add a published term. This file is Proposed
 
 - A second DOMAIN.md for capture or topics that restates these rules.
 - Treating a Proposed ADR parameter as a MUST.
-- Naming a cipher here.
+- Naming a cipher here. The proposal is ADR-0006, and it is not a MUST.
+- Promoting a Draft-only invariant, or US-85's Could, into a MUST.
 - Calling the inbox a tag, or a topic a tag.
 
 ## Skill State Machine (sdlc-domain-architect)

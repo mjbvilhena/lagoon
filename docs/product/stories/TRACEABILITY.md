@@ -34,9 +34,10 @@ Proposed. Not approval. None of these files change approved specification, epic,
 | Topic call | `docs/adr/ADR-0003-gemini-topic-call.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-76 points here. |
 | ML Kit metrics | `docs/adr/ADR-0004-ml-kit-telemetry.md` | Proposed. Needs approval by mjbvilhena. |
 | PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Proposed. Needs approval by mjbvilhena. |
+| Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Proposed. Needs approval by mjbvilhena. Prerequisite for US-35 implementation. US-35 is not edited. |
 | Threat model | `docs/technical_design/threat-model.md` | Proposed. Needs approval by mjbvilhena. |
 
-The content cipher, mode, and key size still have no ADR. UX and the test strategy are not started.
+UX and the test strategy are not started. Choices marked Decision pending inside an ADR are not accepted with that ADR.
 
 ## Epic map
 

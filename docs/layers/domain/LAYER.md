@@ -12,7 +12,7 @@ Business invariants live in `docs/domain/vault/DOMAIN.md`. This file is the Kotl
 
 - **Responsibility:** entities, value objects, use cases, and repository ports for `com.mjbvilhena.lagoon.domain`.
 - **Not responsible for:** Compose, Room, Keystore, Drive, WorkManager, HTTP, PDF libraries, or ML Kit.
-- **Typical entry points:** use cases the UI calls (`CaptureShare`, `SaveItem`, `Search`, `SetReminder`, `ChangePassphrase`). Ports the data layer implements (`VaultStore`, `SyncPort`, `SearchIndex`, `Clock`, `TopicClient`, `PageRenderer`).
+- **Typical entry points:** use cases the UI calls (`CaptureShare`, `SaveItem`, `Search`, `SetReminder`, `ChangePassphrase`). Ports the data layer implements (`VaultStore`, `SyncPort`, `SearchIndex`, `Clock`, `TopicClient`, `PageRenderer`). Gradle module `:domain`.
 
 ## Allowed dependencies
 
@@ -39,12 +39,13 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - NEVER log secrets or item bodies from a use case.
 - NEVER encode SQL, HTTP, or Keystore parameters in a domain type.
-- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADRs. A port may accept a header value object the ADR defines once the ADR is accepted.
+- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all Proposed. A port may accept a header value object once the ADR is accepted. A Decision pending item is not a domain rule.
 
 ## Patterns and frameworks
 
 - Kotlin only. No Android framework types in signatures. A URI from the share sheet is a string or a small value object at this boundary; the data layer resolves it.
 - Package root `com.mjbvilhena.lagoon.domain`. Suggested packages: `item`, `tag`, `topic`, `search`, `sync`, `reminder`, `capture`.
+- Module `:domain` is pure Kotlin. It does not depend on Android, `:data`, or `:ui`. An architecture test fails the build otherwise. `:app` is the module that wires the others. No Gradle project exists yet. The data-layer file states the full graph. A reminder value in this module is a local time, not an instant.
 - Testing is JVM unit tests of use cases with fake ports (US-25's repository and search tests belong with the data adapter; domain tests fake that adapter).
 
 ## Observability and safety

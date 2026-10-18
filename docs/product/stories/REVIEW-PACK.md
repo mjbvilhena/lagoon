@@ -40,4 +40,4 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## Threat note
 
-`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. UX and the test strategy are not started. Implementation has not started.
+`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. The cipher and container proposal is `docs/adr/ADR-0006-cipher-and-container.md`, also Proposed. Items marked Decision pending in an ADR are not decided. UX and the test strategy are not started. Implementation has not started.

@@ -12,9 +12,9 @@ Business rules live in `docs/domain/vault/DOMAIN.md`. This file only says where 
 
 - **Responsibility:** Jetpack Compose screens, navigation, the share-sheet entry activity, theme, and sending user intents to domain use cases.
 - **Not responsible for:** encryption, Drive, Room, FTS, KDF, ML Kit calls, PDF parsing, alarm scheduling, or topic HTTP. Those are the data layer.
-- **Typical entry points:** `com.mjbvilhena.lagoon.ui` (Compose), plus the launcher activity and the exported share target that the manifest allows (US-80). The application class in `com.mjbvilhena.lagoon` may construct the graph. Feature composables may not.
+- **Typical entry points:** `com.mjbvilhena.lagoon.ui` (Compose), plus the launcher activity and the exported share target that the manifest allows (US-80). Module `:app` constructs the graph. Feature composables may not. Gradle module `:ui`.
 
-Share intake lives here only as the `ACTION_SEND` entry. It maps the incoming intent to a domain capture command. It does not write the database and it does not decrypt.
+Share intake lives here only as the `ACTION_SEND` entry. It maps the incoming intent to a domain capture command. It does not write the database and it does not decrypt. It does not accept a `file://` URI or a URI from Lagoon's own FileProvider. The data layer enforces that rejection and the 20 MiB image cap.
 
 ## Allowed dependencies
 
@@ -22,8 +22,10 @@ Share intake lives here only as the `ACTION_SEND` entry. It maps the incoming in
 | --- | --- | --- |
 | Domain layer | Kotlin call | Use cases and read models in `com.mjbvilhena.lagoon.domain` |
 | Jetpack Compose and Material 3 | UI toolkit | Spec constraint. Light, Dark, System. Teal tokens from the spec |
-| Android UI | Activity, Intent, Window | Share target, `FLAG_SECURE`, brightness override, Custom Tabs or `ACTION_VIEW` |
-| Data layer | Not from a feature composable | Only the application class wires implementations |
+| Android UI | Activity, Intent, Window | Share target, `FLAG_SECURE`, brightness override |
+| `androidx.biometric` | import | US-37 unlock and the optional app lock. `USE_BIOMETRIC` is already on the US-80 allowlist |
+| `androidx.browser` | import | Custom Tabs for `http` and `https` links (US-64). Not a WebView |
+| Data layer | Not from a feature composable | Only module `:app` wires implementations. `:ui` does not depend on `:data` |
 
 If a dependency is missing from this table, treat it as **disallowed** until a human updates the file.
 
@@ -55,6 +57,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - Kotlin, Jetpack Compose, Material 3, as in the specification.
 - Package root `com.mjbvilhena.lagoon.ui`. Suggested packages: `share`, `list`, `detail`, `settings`, `fullscreen`. Names can move; the dependency rule cannot.
+- Gradle modules, once implementation starts: `:ui` depends on `:domain` only. `:app` wires `:ui` to `:data`. An architecture test fails the build if `:ui` depends on `:data` or if `:domain` takes an Android dependency. No Gradle project exists yet. The data-layer file states the full graph.
 - Errors from domain use cases surface as the story's plain sentence (wrong passphrase, nothing saved, sync not configured). No new product copy in this file.
 - UI tests are Compose tests when a screen story is implemented (US-25). This layer does not invent them now.
 

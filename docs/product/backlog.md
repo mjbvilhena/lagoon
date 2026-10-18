@@ -103,7 +103,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. The content cipher still waits for an ADR. Threat model: `docs/technical_design/threat-model.md`, Proposed, not accepted.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. Proposed cipher and container: `docs/adr/ADR-0006-cipher-and-container.md`, not accepted. The specification still says the cipher waits for an ADR. That sentence is not edited. Threat model: `docs/technical_design/threat-model.md`, Proposed, not accepted.
 
 - **US-35** *(Approved)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
@@ -165,7 +165,8 @@ Not approval. Needs approval by mjbvilhena. Implementation has not started. The 
 - **ADR-0002** *(Proposed)* Sync conflicts and deletions. Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
 - **ADR-0003** *(Proposed)* Paid Gemini topic call. Placeholder US-76 points here. `docs/adr/ADR-0003-gemini-topic-call.md`.
 - **ADR-0004** *(Proposed)* ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
-- **ADR-0005** *(Proposed)* PDF rendering on API 26–29, and no PDF password. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
+- **ADR-0005** *(Proposed)* PDF rendering on API 26–29, isolated process, no PDF password. The definition of password-protected is Decision pending. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
+- **ADR-0006** *(Proposed)* Cipher and container. Prerequisite for US-35 implementation. US-35 is not edited. `docs/adr/ADR-0006-cipher-and-container.md`.
 - **Threat model** *(Proposed)* `docs/technical_design/threat-model.md`. The 2026-10-17 note is an earlier hypothesis list.
 
 ## Not started, and not skipped
@@ -173,7 +174,6 @@ Not approval. Needs approval by mjbvilhena. Implementation has not started. The 
 These need a later explicit go-ahead. No skip sentence was recorded.
 
 - UX design (`sdlc-ux-designer`)
-- Content cipher, mode, and key size. The specification still waits on that ADR. This design gate does not choose it.
 - Test strategy (`sdlc-test-planner`)
 - App implementation (`sdlc-implementer`)
 - Verification skills (test writer, UI tests beyond the plan, code review, security review)
