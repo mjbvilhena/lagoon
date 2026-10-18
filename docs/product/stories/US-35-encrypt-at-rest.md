@@ -23,6 +23,7 @@ Encrypt the vault at rest.
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
 - Proposed amendment. Needs approval by mjbvilhena. On that reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A phone that holds no key still follows "I've forgotten my passphrase" and does not use this reset. A normal passphrase change, where he enters the current passphrase, does not wait. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. A passphrase of fewer than 12 characters is refused, and a passphrase on the bundled common-password list is refused, before the KDF runs. There is no strength meter. The strong-passphrase guidance still shows. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower memory, iterations, or parallelism. The scenarios whose title line carries this same marker are not approved. This is not approved.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
@@ -35,6 +36,18 @@ Encrypt the vault at rest.
   - And the key is not created until he accepts that warning
   - And the first shared item is held pending until he accepts. If he declines, he is told that nothing was saved. The share is not dropped in silence
   - And that pending share stays in memory only. Nothing is written to disk in plaintext before the key exists
+- **Scenario: a passphrase under the minimum** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given he is setting up the vault
+  - When the passphrase is fewer than 12 characters, or it is on the bundled common-password list
+  - Then the passphrase is refused
+  - And the KDF does not run
+  - And there is no strength meter
+  - And the strong-passphrase guidance still shows
+- **Scenario: the phone cannot meet the memory floor** — Proposed amendment. Needs approval by mjbvilhena.
+  - Given this phone cannot meet the Argon2id memory floor
+  - When he tries to set up a vault
+  - Then setup is refused
+  - And memory, iterations, and parallelism are not lowered
 - **Scenario: what "key gone" means** — Must
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app

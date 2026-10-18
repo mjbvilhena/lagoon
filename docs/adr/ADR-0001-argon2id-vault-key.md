@@ -4,13 +4,13 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The forgotten-passphrase reset delay is decided below, and so is the unlock that reset accepts: the US-37 biometric or device PIN. Two choices stay open under Decision pending. Accepting this record would not decide those two.
+This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The forgotten-passphrase reset delay is decided below, and so is the unlock that reset accepts: the US-37 biometric or device PIN. The passphrase minimum and the memory-floor refusal are decided below. One choice stays open under Decision pending. Accepting this record would not decide that choice.
 
 ## Context
 
 US-35 and the specification already fix the outcome. The vault key is derived from a passphrase he chooses. A slow memory-hard KDF and a salt let another device re-create the same key. No copy of the key, wrapped or otherwise, is stored off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication. Background sync and reminders can decrypt after the first unlock since boot. Sensitive content still needs the US-37 unlock. Changing the passphrase re-encrypts the vault (US-86). A phone that still holds the key can set a new passphrase after that unlock, without the old passphrase. Forgetting the passphrase when no phone holds the key means the content is lost. Old zips and old Drive revisions may still open with the passphrase they were made under (US-86).
 
-US-74 leaves the method, the minimum parameters, where the non-secret salt lives, the passphrase floor, the retry delay, and a phone with no secure hardware. It also leaves envelope encryption versus a full re-encrypt on passphrase change.
+US-74 leaves the method, the minimum parameters, where the non-secret salt lives, the retry delay, and a phone with no secure hardware. The passphrase minimum and the memory-floor refusal are decided below. A phone with no secure hardware stays open. It also leaves envelope encryption versus a full re-encrypt on passphrase change.
 
 How the derived key encrypts the database, files, and containers is ADR-0006. This record names the KDF, the on-phone wrap, and the header fields that ADR-0006 authenticates.
 
@@ -22,14 +22,16 @@ Doing nothing leaves US-35's "method named in the US-74 ADR" with nothing to nam
 
 Recommended option: Argon2id, with the derived 32-byte output as the vault key itself. A hardware-backed Keystore key wraps that output on the phone only. Passphrase change generates a new salt and re-encrypts. A normal change re-encrypts the phone and Drive together. A forgotten-passphrase reset re-encrypts the phone, then waits 24 hours before re-keying Drive. There is no envelope key stored on Drive.
 
-Rules, if this record is accepted. The two items under Decision pending are not in this list:
+Rules, if this record is accepted. The item under Decision pending is not in this list:
 
 - KDF is Argon2id, version 0x13. Not Argon2i, Argon2d, scrypt, bcrypt, or PBKDF2. The implementation is native Argon2id, JNI to the Password Hashing Competition reference. A pure-Java or pure-Kotlin port is not this implementation.
 - Parameter floor for a new vault: memory 65536 KiB (64 MiB), iterations 3, parallelism 1, salt 16 bytes from `SecureRandom`, output 32 bytes. A new vault must not go below these.
+- A phone that cannot meet that memory floor refuses to set up a vault. It never lowers memory, iterations, or parallelism. There is no smaller parameter set for that phone.
 - Parameter ceiling when a header is read: memory 262144 KiB, iterations 10, parallelism 1, salt exactly 16 bytes, output exactly 32 bytes, version exactly 0x13. A header outside the floor or the ceiling is refused. Parameters are not clamped, and the KDF is not run on that header. A missing parameter is the same refusal. There is no silent default that could mint a second key.
 - RFC 9106's second recommended option is memory 64 MiB, iterations 3, parallelism 4. Parallelism stays 1. Memory is the cost that an attacker must pay, and raising parallelism does not lower that memory. Extra lanes shorten wall time for a multi-core attacker as well as for the phone. A low-end phone is limited by memory bandwidth, so four lanes do not reliably make unlock faster.
 - Before US-35 implementation is treated as done, unlock time at this floor is measured on a Motorola Moto E4 (XT1762), 2 GB RAM, API 26, and the measurement is recorded with the build. A slow result is not a reason to lower the floor without a new ADR. This record sets no pass or fail number of seconds.
 - The passphrase is NFC-normalised before the KDF, so two phones derive the same key. It is not trimmed.
+- The passphrase minimum is 12 characters. A passphrase of fewer than 12 characters is refused. A passphrase on the bundled common-password list is refused. There is no strength meter. The check runs before the KDF. The US-35 strong-passphrase guidance still shows. The same check applies when a passphrase is set or changed, including a forgotten-passphrase reset (US-86).
 - The clear header stores the KDF id, the salt, memory, iterations, parallelism, and output length. It does not store the key or the passphrase. That header is additional authenticated data on the container ciphertext (ADR-0006), so a change to the salt or the parameters fails authentication. The same header is in app-private storage, in a clear prefix of each Drive records file, and in a clear zip entry, because a new device must read it before decrypt. Drive file names stay opaque (US-36).
 - A generation number lives inside the ciphertext, not only in the clear header (ADR-0006). The phone keeps the highest generation it has accepted. A Drive copy or a zip whose generation is lower than that mark is a rollback and is not applied over the newer vault. A new install has no mark yet and takes the generation it can decrypt, then stores that mark.
 - On the phone, Android Keystore generates an AES-256 wrapping key with user authentication off. On API 28+ it is created with `setUnlockedDeviceRequired(false)`. The wrap is AES-256-GCM. The nonce is generated by the Keystore, not by app code, and it is stored with the wrap blob. The wrap blob stays on the phone. It is not uploaded and it is not put in the zip. `KeyInfo` is read on that wrapping key: API 31+ security level StrongBox or TEE, API 26–30 `isInsideSecureHardware()` true, `isUserAuthenticationRequired` false (US-35). What happens when that hardware level is missing is Decision pending, not a rule of this list.
@@ -50,17 +52,7 @@ Default for a new case: if a parameter is missing or outside the floor and ceili
 
 ## Decision pending: mjbvilhena
 
-These are not decided. The current recommendation is the option this draft would keep. It is not a rule until he chooses.
-
-### Passphrase floor
-
-Current recommendation: at least 12 Unicode code points, at most 128, rejected if it is on a bundled common-password list. No composition rules. No network check. The US-35 guidance text still shows. The floor is checked before the KDF runs.
-
-| Option | Trade-off |
-| --- | --- |
-| 12 Unicode code points, plus the common-password list | Current recommendation. Short enough to type on a phone. A 12-point passphrase of ordinary words is still guessable offline, where the 32-second delay does not apply |
-| 15 Unicode code points, plus the same list | Fewer guesses succeed. Harder to type and easier to lock himself out. The KDF cost does not change |
-| A strength meter, with or without a length floor | He sees a judgement of the passphrase. A meter is not a parameter the other phone can check, and a library update can change the score. A weak passphrase that the meter accepts still reaches the KDF |
+This is not decided. The current recommendation is the option this draft would keep. It is not a rule until he chooses.
 
 ### Phones without secure hardware
 
@@ -82,12 +74,15 @@ Current recommendation: a phone whose Keystore cannot provide the US-35 hardware
 | Import the raw Argon2 output as the Keystore key, including into StrongBox | One key object, and import of a raw AES key is possible | The Keystore key cannot be exported. SQLCipher and file AEAD need the raw 32 bytes in process. Wrapping with AES-256-GCM and a Keystore nonce keeps those bytes available after unwrap and still keeps them off Drive. Import loses for that reason, not because import is impossible |
 | Delete old Drive revisions, or set keep-forever, on passphrase change | Shrinks or stretches the window where the old passphrase still decrypts something | US-86 says old revisions may still open with the old passphrase. Drive already purges revisions after about 30 days or about 100 revisions. The app does not delete them and does not set keep-forever |
 | Biometric only for the forgotten-passphrase reset | A known PIN would not be enough to reset | The reset still accepts the US-37 biometric or device PIN. The 24-hour wait and the notice are the mitigation for a thief who knows the PIN |
+| A 15-character minimum, plus the common-password list | Fewer guesses succeed | The minimum is 12 characters. Fifteen is harder to type and easier to lock himself out. The KDF cost does not change |
+| A strength meter, with or without a length floor | He sees a judgement of the passphrase | There is no strength meter. A meter is not a check the other phone can repeat, and a library update can change the score. A weak passphrase that the meter accepts still reaches the KDF |
+| Lower memory, iterations, or parallelism when the phone cannot meet the memory floor | That phone could still set up a vault | The phone refuses to set up a vault. The parameters are not lowered |
 
 ## Consequences
 
-- **Positive.** A second device needs the passphrase and the clear header, not a key file. The parameters have a floor and a ceiling a test can refuse. Salt and parameter tampering fails the container tag. A rolled-back ciphertext carries an older generation. A wrong guess on the phone is delayed, and the delay stays at 32 seconds instead of ending. A forgotten-passphrase reset does not re-key Drive until 24 hours have passed and no other phone that holds the key has cancelled.
-- **Negative / accepted trade-offs.** 64 MiB and three iterations will be slow on the named API 26 phone. That cost is the point of a memory-hard KDF. Parallelism 1 is below RFC 9106's four lanes, for the reason stated above. Offline guessing against a Drive copy or a zip does not wait 32 seconds. Old revisions remain decryptable with the old passphrase until Drive purges them, and a zip he keeps remains decryptable after that. During the 24-hour wait the resetting phone's vault is already under the new passphrase. A sole phone has no other install to show the notice, so nothing can cancel unless some install derives the old key during the wait. A known PIN still opens sensitive items on the stolen phone, because the reset accepts that PIN. The passphrase floor and phones without secure hardware are not decided.
-- **Follow-ups.** ADR-0006 names the ciphers that use this 32-byte key. US-57 still has to show search and encryption together. US-74 stays a placeholder until mjbvilhena accepts this record and a later story edit adds criteria. He decides the pending items separately. He is the approver.
+- **Positive.** A second device needs the passphrase and the clear header, not a key file. The parameters have a floor and a ceiling a test can refuse. A phone that cannot meet the memory floor does not get a weaker vault. A passphrase under 12 characters, or one on the bundled common-password list, never reaches the KDF. Salt and parameter tampering fails the container tag. A rolled-back ciphertext carries an older generation. A wrong guess on the phone is delayed, and the delay stays at 32 seconds instead of ending. A forgotten-passphrase reset does not re-key Drive until 24 hours have passed and no other phone that holds the key has cancelled.
+- **Negative / accepted trade-offs.** 64 MiB and three iterations will be slow on the named API 26 phone. That cost is the point of a memory-hard KDF. A phone that cannot allocate the memory floor cannot set up a vault. Parallelism 1 is below RFC 9106's four lanes, for the reason stated above. Offline guessing against a Drive copy or a zip does not wait 32 seconds. A 12-character passphrase of ordinary words can still be guessed offline. Old revisions remain decryptable with the old passphrase until Drive purges them, and a zip he keeps remains decryptable after that. During the 24-hour wait the resetting phone's vault is already under the new passphrase. A sole phone has no other install to show the notice, so nothing can cancel unless some install derives the old key during the wait. A known PIN still opens sensitive items on the stolen phone, because the reset accepts that PIN. Phones without secure hardware are not decided.
+- **Follow-ups.** ADR-0006 names the ciphers that use this 32-byte key. US-57 still has to show search and encryption together. US-74 stays a placeholder until mjbvilhena accepts this record and a later story edit adds criteria. He decides the pending item separately. He is the approver.
 
 ## Compliance
 
@@ -102,7 +97,9 @@ Current recommendation: a phone whose Keystore cannot provide the US-35 hardware
 - [ ] Passphrase change re-encrypts, does not set keep-forever, and does not store an envelope key
 - [ ] A forgotten-passphrase reset leaves the Drive copy on the old passphrase for 24 hours after the marker is on Drive, and another phone that holds the key can cancel. A normal change, where he enters the current passphrase, re-encrypts the phone and Drive without that wait. A crash still leaves each copy under exactly one passphrase
 - [ ] A cancel copies items saved on the resetting phone during the 24 hours into the restored vault under the old passphrase before the new generation is discarded
-- [ ] The passphrase floor and the no-hardware fallback are not coded as if Decision pending had been resolved
+- [ ] A passphrase of fewer than 12 characters, or one on the bundled common-password list, is refused before the KDF. There is no strength meter
+- [ ] A phone that cannot meet the memory floor refuses to set up a vault and does not lower memory, iterations, or parallelism
+- [ ] The no-hardware fallback is not coded as if Decision pending had been resolved
 - [ ] PBKDF2, scrypt, a pure-Java Argon2, and a Drive-stored wrapped data key are forbidden
 
 ## Related
@@ -120,7 +117,8 @@ Current recommendation: a phone whose Keystore cannot provide the US-35 hardware
 - Storing the wrap blob on Drive.
 - Clamping an out-of-range header instead of refusing it.
 - Lowering memory because the Moto E4 measurement was slow, without a new ADR.
-- Treating a pending floor or hardware fallback as decided.
+- Lowering memory, iterations, or parallelism because the phone cannot meet the memory floor.
+- Treating the pending hardware fallback as decided.
 - Dropping items saved on the resetting phone during the 24 hours when a cancel restores the old vault.
 - Re-keying Drive as soon as a forgotten-passphrase reset finishes on the phone, or starting the 24 hours before the marker is on Drive.
 - Treating this Proposed record as permission to implement.
