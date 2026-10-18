@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-76 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Which of the two providers below to use, and what happens to the topic backlog when a key is added, stay open under Decision pending.
+This record answers the US-76 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The topic call uses the xAI Grok API, and zero data retention is turned on for his xAI team. The backlog when a key is added stays open under Decision pending.
 
 ## Context
 
@@ -45,13 +45,15 @@ Sources: [Cursor APIs overview](https://cursor.com/docs/api), [Cloud Agents API]
 
 ## Decision
 
-The current recommendation is the xAI Grok API, text in and JSON out, with a key he types into Settings. The key is stored only as vault ciphertext on that install. Images are out. The Cursor API does not fit, because it has no general text-completion endpoint. The provider is still Decision pending. Accepting this record would not by itself choose it.
+The topic call uses the xAI Grok API, text in and JSON out, with a key he types into Settings. Zero data retention is turned on for his xAI team. The key is stored only as vault ciphertext on that install. Images are out. The default low-cost model is grok-4.20-0309-non-reasoning. The Cursor API does not fit, because it has no general text-completion endpoint. The provider is decided. The backlog when a key is added stays Decision pending. Accepting this record would not by itself decide that backlog.
 
 Rules, if this record is accepted, for the Grok path:
 
 - The endpoint is the text API at `https://api.x.ai/v1`. The key is sent as `Authorization: Bearer`. It is not in the URL.
-- The default model is `grok-4.20-0309-non-reasoning`. That is the low-cost text model on the pricing page that is not described as a coding model. He can change the model id in Settings. Provenance records the id that was called (US-41). `grok-build-0.1` is cheaper and is not this default. The US regional endpoint is not used for this default, because that endpoint does not serve this model.
-- Before any vault text is sent, the app makes one request that contains no item text and reads `x-zero-data-retention`. If the value is not `true`, no topic call is sent and the item stays. Zero data retention is turned on in the xAI console. The app cannot turn it on. The enterprise terms say personal data is submitted through the zero-data-retention API.
+- The default low-cost model is `grok-4.20-0309-non-reasoning`. That is the low-cost text model on the pricing page that is not described as a coding model. He can change the model id in Settings. Provenance records the id that was called (US-41). `grok-build-0.1` is cheaper and is not this default. The US regional endpoint is not used for this default, because that endpoint does not serve this model.
+- Zero data retention is turned on for his xAI team. It is a team-wide console setting. The app cannot turn it on. The enterprise terms say personal data is submitted through the zero-data-retention API.
+- Before any vault text is sent, the app makes one request that contains no item text and reads `x-zero-data-retention`. Vault text is sent only when that header is `true`.
+- If a response does not include `x-zero-data-retention` set to `true`, the app discards that response and stores no suggestion from it. Topic calls on this install pause until he checks Settings. Settings says topics are paused because the call did not confirm zero data retention. He resumes from Settings. The next request contains no item text. The pause is local and is not synced.
 - The key is entered in Settings. It is stored inside the encrypted vault on that phone. It is not in the APK, `BuildConfig`, assets, logs, or WorkManager inputs. Clearing the field removes the key. It is not the Drive OAuth token. ADR-0002 does not sync the key.
 - Payload is text: title, body, personal-note entries, extracted text, OCR text, and snapshot text. No image, PDF, thumbnail, or other attachment bytes. A token-looking URL has its query and fragment removed before send (US-79). Other URLs may be sent as text already in those fields. The response uses `response_format` type `json_schema`.
 - A sensitive item is not sent (US-75). "Get topics" is not offered on one (US-41). Content already sent is not recalled when he marks an item sensitive later (US-75).
@@ -67,16 +69,7 @@ Default: if a new field is added to an item, it is not sent until this record, o
 
 ## Decision pending: mjbvilhena
 
-These are not decided. The current recommendation is what this draft would keep.
-
-### xAI Grok API or the Cursor API
-
-Current recommendation: the xAI Grok API, as the rules above describe. The Cursor API does not fit this call.
-
-| Option | Trade-off |
-| --- | --- |
-| xAI Grok API | Current recommendation. A phone can call `https://api.x.ai/v1` with a key he types, stored as vault ciphertext. The security FAQ says API inputs are not used for training without permission. The default log is 30 days unless zero data retention is on, which the app can see on `x-zero-data-retention` and cannot switch on itself. There is no documented EU endpoint. The enterprise terms grant the API for business purposes. Short-context price for `grok-4.20-0309-non-reasoning` is $1.25 / $2.50 per 1M input / output tokens. `json_schema` is documented |
-| Cursor API | Does not fit. [Cursor APIs overview](https://cursor.com/docs/api) offers cloud agents, admin, analytics, and related team APIs, and says the agent API is not a chat-completions API. A topic suggestion has no general text-completion call to make |
+This is not decided. The current recommendation is what this draft would keep.
 
 ### Topic backlog when a key is added
 
@@ -102,14 +95,15 @@ Current recommendation: do not auto-flush. Items saved while the key was missing
 ## Consequences
 
 - **Positive.** The two options are named from their own docs. The recommendation can be called from the phone with a key that is not in the APK. Sensitive items and images stay off the call. Zero data retention is checked on a response header before vault text is sent. The monthly count and the cross-phone de-dupe stay. The key can move to a new phone only if he types it again, because ADR-0002 does not sync it.
-- **Negative / accepted trade-offs.** With zero data retention off, the security FAQ says prompts and responses are stored for 30 days. The app refuses the call in that case, so a team that has not enabled zero data retention gets no topics. The enterprise terms still grant the API for business purposes, and this app is personal. There is no documented EU endpoint, and the low-cost model is not on the US endpoint. He pays the token bill. The provider and the backlog flush are not decided. No per-item suggestion cap is added.
-- **Follow-ups.** US-76 stays a placeholder until this record is accepted. He decides the pending items. He is the approver.
+- **Negative / accepted trade-offs.** Zero data retention is on for his xAI team. A response that does not confirm it is discarded, and topics pause until he checks. The security FAQ says that, without that setting, prompts and responses are stored for 30 days. The enterprise terms still grant the API for business purposes, and this app is personal. There is no documented EU endpoint, and the low-cost model is not on the US endpoint. He pays the bill. The backlog flush is not decided. No per-item suggestion cap is added.
+- **Follow-ups.** US-76 stays a placeholder until this record is accepted. He decides the pending backlog. He is the approver.
 
 ## Compliance
 
 - [ ] Release APK inspection finds no topic API key (US-41)
 - [ ] The key is sent as `Authorization: Bearer` and does not appear in the URL
 - [ ] A request that contains vault text is not sent unless a prior response's `x-zero-data-retention` header was `true`
+- [ ] A response whose `x-zero-data-retention` header is missing or not `true` stores no suggestion and pauses topic calls until he resumes in Settings
 - [ ] A sensitive item and an image fixture produce no topic request
 - [ ] A token-looking URL fixture leaves query and fragment out of the body
 - [ ] The topic response is requested with `response_format` type `json_schema`
@@ -135,7 +129,9 @@ Current recommendation: do not auto-flush. Items saved while the key was missing
 - Sending the OCR image as well as the OCR text.
 - Putting the API key in the query string.
 - Calling the Cursor Cloud Agents API as a substitute completion.
-- Treating the provider choice, or a backlog flush, as already chosen.
+- Storing a suggestion from a response that did not confirm zero data retention.
+- Continuing topic calls after a response lacked that confirmation.
+- Treating a backlog flush as already chosen.
 
 ## Skill State Machine (sdlc-adr-drafter)
 

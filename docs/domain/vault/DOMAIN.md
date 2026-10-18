@@ -15,7 +15,7 @@ MUST and NEVER below restate rules already in the approved specification, the ap
 ## Bounded context
 
 - **Owns:** items and their attachments, personal notes, tags, topics and suggestions, the one reminder or the one expiry, the sensitive mark, vault-header salt and KDF parameters, and the rules for what may leave the phone.
-- **Does not own:** Google Drive's file store (this context sends ciphertext only), the topic provider's retention (proposed in ADR-0003, not a MUST here), Android Keystore hardware, or another app that receives a share. Call those systems at the boundary. Do not treat their models as vault entities.
+- **Does not own:** Google Drive's file store (this context sends ciphertext only), the xAI Grok API's retention (the topic call uses that API, with zero data retention turned on for his xAI team, decided in ADR-0003 and not a MUST while that ADR is unapproved), Android Keystore hardware, or another app that receives a share. Call those systems at the boundary. Do not treat their models as vault entities.
 - **Published language:** item, attachment, personal note, tag, topic, suggestion, reminder, expiry, sensitive, vault key, passphrase, salt. A code is text already in a title. It is not a field.
 - **Actors:** Miguel. He captures, edits, searches, marks sensitive, and sets the passphrase. No second role is named.
 
@@ -82,7 +82,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - MUST exclude a sensitive item's title, snippet, thumbnail, and OCR text in rows and search, and exclude it from search highlights, topic calls, and both notification versions, until the rules in US-75 are met.
 - MUST show an ordinary lock-screen reminder's title, and show both versions of a sensitive notification as only "Lagoon reminder" (US-34, US-75).
 - MUST run link work in this order after the save returns: enrich, then snapshot from that fetch, then OCR, then the topic job (E1, US-58).
-- MUST keep topic extraction on for a new ordinary item, with a Settings switch, with no per-item opt-out, and with sensitive items always excluded (spec, US-41, US-75).
+- MUST keep topic extraction on for a new ordinary item, with a Settings switch, with no per-item opt-out, and with sensitive items always excluded (spec, US-41, US-75). The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics on that install pause until he checks. That provider is decided in ADR-0003. It is not a MUST while that ADR and the spec amendment are unapproved. What happens to items saved while no key was stored stays Decision pending.
 - MUST NOT start ML Kit until he accepts the US-07 disclosure. There is no telemetry off switch (spec, US-07, US-31).
 - MUST use the bundled Latin-script model `com.google.mlkit:text-recognition` and keep `com.google.android.gms:play-services-mlkit-text-recognition` absent (US-31).
 - MUST post a reminder or an expiry only from the install US-55 picks, including after boot (US-55).

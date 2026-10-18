@@ -133,6 +133,7 @@ Constraints later design must not reopen unless he does:
 - No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
 - Proposed amendment. Needs approval by mjbvilhena. `docs/domain/vault/DOMAIN.md`, `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md` are in the tree. They are Proposed and are not approved. The sentence above does not match the tree. This is not approved.
 - Topic extraction sends readable content off the phone to a cloud AI. That is a privacy risk he has accepted in principle. Which provider, and what that provider retains, is US-76. Criteria follow from the ADR at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays open. This is not approved.
 - Cloud processing has a cost. No budget or per-item cap is set here.
 - Offline, the item is saved and topic processing is queued until a network exists. The vault stays usable without that call.
 - The cloud AI credential for a sideloaded APK must not be baked into the package in plain form. How it is supplied and protected is US-76. Criteria follow from the ADR at the design gate.
@@ -145,6 +146,7 @@ Constraints later design must not reopen unless he does:
 - Proposed amendment. Needs approval by mjbvilhena. The deletion answer proposed for that question is the product rule above: 30 days of local trash, then a tombstone. An item with a tombstone is not kept as a one-sided item. That answer is not approved.
 - How do keys reach a new or second device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored anywhere off the phone.
 - Which cloud AI provider processes topics, and what are its data-retention terms? US-76. Criteria follow from the ADR at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays open. This is not approved.
 - How is the topic API credential stored and protected? It must not be baked into the APK in plain form. US-76. Criteria follow from the ADR at the design gate.
 - What exactly is sent to the cloud AI? US-76. Criteria follow from the ADR at the design gate.
 
