@@ -164,7 +164,7 @@ Constraints later design must not reopen unless he does:
 | This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. The passphrase amendment is included in that approval. |
 | Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17. Amendments to E1, E3, E4, E8, E9, and E11 approved by mjbvilhena on 2026-10-18. The passphrase amendment is included in that approval. |
 | Epic E10 | Approved by mjbvilhena on 2026-10-17. Later, not in v1. |
-| User stories | US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft. |
+| User stories | US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. |
 | Threat model, UX, test strategy, ADRs | Not started. |
 
-The specification gate and the epic gate have passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft. Implementation has not started.
+The specification gate and the epic gate have passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Implementation has not started.

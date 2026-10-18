@@ -1,7 +1,7 @@
 # User story index
 
 > Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
-> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft.
+> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -61,7 +61,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-52 | Import a zip and merge it. | E4 | Must | `docs/product/stories/US-52-import-a-zip.md` | Draft |
 | US-53 | Use the teal palette, optional dynamic color, and reduced motion. | E5 | Must | `docs/product/stories/US-53-palette-and-motion.md` | Draft |
 | US-54 | Notify before an expiry. | E9 | Must | `docs/product/stories/US-54-expiry-notices.md` | Draft |
-| US-55 | Reschedule reminders after a restart or a clock change. | E9 | Must | `docs/product/stories/US-55-reschedule-reminders.md` | Draft |
+| US-55 | Reschedule reminders after a restart or a clock change. | E9 | Must | `docs/product/stories/US-55-reschedule-reminders.md` | Approved |
 | US-56 | Keep a stable identity for each item. | E4 | Must | `docs/product/stories/US-56-item-data-model.md` | Draft |
 | US-57 | Prove that search and encryption can run together. | E3 | Must | `docs/product/stories/US-57-fts5-sqlcipher-spike.md` | Draft |
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | E1 | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
@@ -86,16 +86,16 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Approved |
 | US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Approved |
 | US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Approved |
-| US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Draft |
+| US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Approved |
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
 
-Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35 and US-81 are approved. US-86 stays Draft. Amendment approved by mjbvilhena on 2026-10-18.
+Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 are approved. Amendment approved by mjbvilhena on 2026-10-18.
 
 Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Every other story with Given/When/Then passes artefact shape only. Implementation is not Done.
 
-US-61 is a Should in epic E1. The story is approved. US-86 stays Draft.
+US-61 is a Should in epic E1. The story is approved.
 
 A compact review list is `docs/product/stories/REVIEW-PACK.md`.

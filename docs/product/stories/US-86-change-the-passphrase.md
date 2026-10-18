@@ -1,6 +1,7 @@
 # US-86 Change the passphrase
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E8.
@@ -79,9 +80,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-35 holds setup and re-create. This story stays Draft.
+- US-35 holds setup and re-create.
 - Drive keeps old revisions the old passphrase may open until the US-74 ADR rules.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file.
+Not a design spec. Do not implement from this file.
