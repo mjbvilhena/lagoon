@@ -30,10 +30,11 @@ Reschedule reminders after a restart or a clock change.
   - When the device boots, the clock or time zone changes, the app is updated, or notification permission changes
   - Then the inexact alarms are registered again for that wall-clock time in the phone's current local zone
 - **Scenario: due while the phone was off, or before the first unlock** — Must
-  - Given a reminder fell due while the phone was off, or before the first unlock since boot
+  - Given a reminder or an expiry notice fell due while the phone was off, or before the first unlock since boot
   - When the phone boots, or after the first unlock if that is needed
   - Then it fires once, as soon as possible
   - And it is not fired twice
+  - And it fires only on the install that "which device posts" picks, so an install that was not picked does not fire it on boot.
 - **Scenario: a time-zone change** — Must
   - Given a reminder is set for 09:00
   - When the phone's time zone changes
