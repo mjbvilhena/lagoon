@@ -89,7 +89,8 @@ Change the passphrase.
   - Given another phone that holds the key cancels during the 24 hours
   - When the resetting phone reads that cancel
   - Then the Drive copy stays on the old passphrase
-  - And the resetting phone's vault is replaced by that old Drive copy
+  - And items saved on the resetting phone during those 24 hours are copied into the restored vault under the old passphrase
+  - And the new local generation is discarded only after that restored vault is readable under the old passphrase
   - And the new passphrase opens nothing
 - **Scenario: a normal change skips the wait** — Proposed amendment. Needs approval by mjbvilhena.
   - Given he enters the current passphrase
