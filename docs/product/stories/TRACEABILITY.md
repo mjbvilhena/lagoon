@@ -1,6 +1,6 @@
 # Traceability
 
-> **Draft is not approval.** US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft.
+> **Draft is not approval.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft.
 > Sources: `docs/product/vision.md`, `docs/product/specification.md`, and approved epics E1–E9 and E11. E10 is Later and is not a v1 parent.
 > A review pack, a story, or the threat note is not a source.
 
@@ -15,9 +15,9 @@
 - Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - There is no cap on topic suggestions.
 - US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Criteria follow from the ADR at the design gate. They are not capabilities.
-- US-85 is Draft. One tap on an image or PDF page opens it full-screen at maximum brightness. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. The story stays Draft.
-- US-86 is Draft. Changing the passphrase re-encrypts the vault. Security criteria approved by mjbvilhena on 2026-10-18.
-- US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-85 is approved. One tap on an image or PDF page opens it full-screen at maximum brightness. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-86 is Draft. Changing the passphrase re-encrypts the vault. Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria need approval by mjbvilhena.
+- US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 ## Epic map
 
@@ -59,7 +59,7 @@
 | US-32 Keep more than one attachment on an item. | E1 | traced | — |
 | US-33 Keep an offline snapshot of a saved page. | E2 | traced | — |
 | US-34 Set a reminder. | E9 | traced | — |
-| US-35 Encrypt the vault at rest. | E8 | traced | — |
+| US-35 Encrypt the vault at rest. | E8 | traced | Approved. The earlier approval covers the rest. |
 | US-36 Sync only ciphertext. | E8 | traced | — |
 | US-37 Lock sensitive items, and optionally lock the app. | E8 | traced | — |
 | US-38 File new captures from an Untagged inbox. | E3 | traced | — |
@@ -102,9 +102,9 @@
 | US-78 Keep Drive to app data, and sign out without deleting the phone. | E4 | traced | A-E4-4 |
 | US-79 Skip unsafe link previews. | E2 | traced | A-E2-1 |
 | US-80 Keep the permission set to an allowlist. | E6 | traced | A-E6-1 |
-| US-81 Publish a sideload signing policy. | E6 | traced | A-E6-2 |
-| US-85 Show an image or PDF page full-screen and bright. | E1 | traced | Amendment approved by mjbvilhena on 2026-10-18. |
-| US-86 Change the passphrase. | E8 | traced | Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
+| US-81 Publish a sideload signing policy. | E6 | traced | A-E6-2. Approved. |
+| US-85 Show an image or PDF page full-screen and bright. | E1 | traced | Approved. Amendment approved by mjbvilhena on 2026-10-18. |
+| US-86 Change the passphrase. | E8 | traced | Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. The story stays Draft. |
 
 ## Every story
 
@@ -144,7 +144,7 @@
 | US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
 | US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |
 | US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 in the phone's current local zone, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive notification is US-75. A time-zone change is US-55. |
-| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. | Traced. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. Changing the passphrase is US-86. The story stays Draft. |
+| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. | Traced. Approved. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Background sync and reminders can decrypt while the phone is locked, after the first unlock since boot. Proposed security criterion. Needs approval by mjbvilhena. Changing the passphrase is US-86. |
 | US-36 | E8 | E8: "Drive stores ciphertext only." | Traced. A new install needs the passphrase to re-create the key before the vault is available. |
 | US-37 | E8 | E8: "Fingerprint or biometric lock on items marked sensitive" and "App lock is optional. The device PIN is the fallback." | Traced |
 | US-38 | E3 | E3: "An Untagged / Inbox view." | Traced |
@@ -164,7 +164,7 @@
 | US-52 | E4 | E4: "Zip export and import." | Traced |
 | US-53 | E5 | E5 palette, Light/Dark/System, and "Dynamic color is an optional toggle." | Traced. Reduced motion is in E5. |
 | US-54 | E9 | E9: "An expiry notifies 7 days before the date and again on the day." | Traced |
-| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. The signed-in install with the newest check-in posts, and only that install posts. A sole signed-in install always posts, however old its check-in is. A 09:00 reminder fires at 09:00 in the phone's current local zone after a time-zone change. If that time has already passed in the new zone, it fires once, as soon as possible. A time in a daylight-saving gap fires at the first valid time after the gap. A repeated hour fires once, at the first occurrence. An install writes a check-in, and counts as newest, only once it holds the vault key. A new install without the key posts nothing. There is no return-by or warranty. |
+| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Draft. The signed-in install with the newest check-in posts, and only that install posts. A sole signed-in install that holds the vault key always posts, however old its check-in is. A reminder that fell due while the phone was off, or before the first unlock since boot, fires once as soon as possible after boot, or after the first unlock if that is needed, and not twice. A 09:00 reminder fires at 09:00 in the phone's current local zone after a time-zone change. If that time has already passed in the new zone, it fires once, as soon as possible. A time in a daylight-saving gap fires at the first valid time after the gap. A repeated hour fires once, at the first occurrence. An install writes a check-in, and counts as newest, only once it holds the vault key. A new install without the key posts nothing. There is no return-by or warranty. |
 | US-56 | E4 | E4: "Sync merges: an item that exists on only one side is kept." | Traced |
 | US-57 | E3 | Spec US-15 line: FTS5 with an encrypted database is a design-gate risk. "Spike it early." E8 requires encryption and E3 requires search. | Traced |
 | US-58 | E1 | E1: "After the save returns, a link is enriched, then the snapshot is taken from that fetch, then OCR runs, then the topic job runs." | Traced |
@@ -187,6 +187,6 @@
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
 | US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |
 | US-80 | E6 | E6: the release app requests only the permissions the product needs. `CAMERA` and exact-alarm permissions are absent. | Traced. |
-| US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
-| US-85 | E1 | E1: one tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. | Traced. Amendment approved by mjbvilhena on 2026-10-18. A swipe moves to the next or previous PDF page, or to the item's next or previous image attachment, in attachment order, without leaving full-screen and without wrapping. A password-protected PDF does not open full-screen. The story stays Draft. |
-| US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Draft. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. |
+| US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. |
+| US-85 | E1 | E1: one tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. | Traced. Approved. Amendment approved by mjbvilhena on 2026-10-18. A swipe moves to the next or previous PDF page, or to the item's next or previous image attachment, in attachment order, including every page of each PDF, without leaving full-screen and without wrapping. A password-protected PDF does not open full-screen. |
+| US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Draft. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria need approval by mjbvilhena. |

@@ -1,6 +1,7 @@
 # US-85 Show an image or PDF page full-screen and bright
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.
 
@@ -61,7 +62,7 @@ Show an image or PDF page full-screen and bright.
   - Given the full-screen view is open on a PDF page or an image attachment, for example a family boarding-pass PDF with one page per passenger
   - When he swipes to the next or the previous
   - Then he moves to the next or previous PDF page, or to the item's next or previous image attachment
-  - And the order across several PDFs and images follows the item's attachment order, and every page of each PDF
+  - And the order across several PDFs and images follows the item's attachment order, including every page of each PDF
   - And a swipe does not wrap at either end
   - And he does not leave the full-screen view
   - And brightness and keep-screen-on stay in effect
@@ -94,9 +95,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The E1 wording for this story is approved. Amendment approved by mjbvilhena on 2026-10-18. This story stays Draft.
+- The E1 wording for this story is approved. Amendment approved by mjbvilhena on 2026-10-18.
 - Android `PdfRenderer` needs a file descriptor. On API 26–29, rendering a decrypted PDF without a plaintext file needs a bundled renderer. `memfd` is an option on API 30+. That choice is decided at the design gate. It also affects US-04 and US-11.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file.
+Not a design spec. Do not implement from this file.

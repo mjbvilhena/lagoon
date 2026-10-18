@@ -1,7 +1,7 @@
 # User story index
 
 > Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
-> US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft.
+> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -41,7 +41,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-32 | Keep more than one attachment on an item. | E1 | Must | `docs/product/stories/US-32-multiple-attachments.md` | Draft |
 | US-33 | Keep an offline snapshot of a saved page. | E2 | Must | `docs/product/stories/US-33-offline-page-snapshot.md` | Draft |
 | US-34 | Set a reminder. | E9 | Must | `docs/product/stories/US-34-set-a-reminder.md` | Approved |
-| US-35 | Encrypt the vault at rest. | E8 | Must | `docs/product/stories/US-35-encrypt-at-rest.md` | Draft |
+| US-35 | Encrypt the vault at rest. | E8 | Must | `docs/product/stories/US-35-encrypt-at-rest.md` | Approved |
 | US-36 | Sync only ciphertext. | E8 | Must | `docs/product/stories/US-36-sync-ciphertext.md` | Draft |
 | US-37 | Lock sensitive items, and optionally lock the app. | E8 | Must | `docs/product/stories/US-37-biometric-lock.md` | Draft |
 | US-38 | File new captures from an Untagged inbox. | E3 | Must | `docs/product/stories/US-38-untagged-inbox.md` | Draft |
@@ -84,17 +84,17 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Approved |
 | US-79 | Skip unsafe link previews. | E2 | Must | `docs/product/stories/US-79-link-preview-skipping.md` | Approved |
 | US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Approved |
-| US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
-| US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Draft |
+| US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Approved |
+| US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Approved |
 | US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Draft |
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
 
-Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 stay Draft. Amendment approved by mjbvilhena on 2026-10-18.
+Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35 and US-81 are approved. US-86 stays Draft. Amendment approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria on US-35 and US-86 need approval by mjbvilhena.
 
-Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. Every other story with Given/When/Then passes artefact shape only. Implementation is not Done.
+Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Every other story with Given/When/Then passes artefact shape only. Implementation is not Done.
 
 US-61 is a Should in epic E1. The story is approved. US-86 stays Draft.
 

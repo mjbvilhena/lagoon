@@ -1,6 +1,7 @@
 # US-81 Publish a sideload signing policy
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E6.
@@ -76,8 +77,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The criteria below are the sideload signing policy.
+- The criteria above are the sideload signing policy.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file. Do not commit key material.
+Not a design spec. Do not implement from this file. Do not commit key material.

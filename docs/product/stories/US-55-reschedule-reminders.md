@@ -29,6 +29,11 @@ Reschedule reminders after a restart or a clock change.
   - Given a reminder or expiry is stored
   - When the device boots, the clock or time zone changes, the app is updated, or notification permission changes
   - Then the inexact alarms are registered again for that wall-clock time in the phone's current local zone
+- **Scenario: due while the phone was off, or before the first unlock** — Must
+  - Given a reminder fell due while the phone was off, or before the first unlock since boot
+  - When the phone boots, or after the first unlock if that is needed
+  - Then it fires once, as soon as possible
+  - And it is not fired twice
 - **Scenario: a time-zone change** — Must
   - Given a reminder is set for 09:00
   - When the phone's time zone changes
@@ -58,7 +63,7 @@ Reschedule reminders after a restart or a clock change.
   - Given the same reminder has synced to more than one install
   - When the time arrives
   - Then the signed-in install with the newest check-in posts, and only that install posts
-  - And a sole signed-in install always posts, however old its check-in is
+  - And a sole signed-in install that holds the vault key always posts, however old its check-in is
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
   - And an install writes a check-in, and counts as newest, only once it holds the vault key
   - And a check-in is the timestamp that install writes when the app is opened or when a sync succeeds, after it holds the vault key

@@ -2,11 +2,11 @@
 
 > Statuses describe evidence in the tree on 2026-10-18. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
-> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft.
+> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft.
 
 ## Gate
 
-Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. The other stories stay Draft. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
@@ -27,7 +27,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, US-41, US-50, US
 - **US-61** *(Approved)* Filter or search by where an item came from. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
 - **US-65** *(Approved)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
 - **US-67** *(Draft)* Notice a duplicate image or PDF. Could. Evidence: `docs/product/stories/US-67-duplicate-files.md`. Not implemented.
-- **US-85** *(Draft)* Show an image or PDF page full-screen and bright. Should. Evidence: `docs/product/stories/US-85-show-an-image-full-screen.md`. Not implemented. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. The story stays Draft.
+- **US-85** *(Approved)* Show an image or PDF page full-screen and bright. Should. Evidence: `docs/product/stories/US-85-show-an-image-full-screen.md`. Not implemented. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 ## Epic E2: Link enrichment
 
@@ -93,7 +93,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, US-41, US-50, US
 - **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Application id `com.mjbvilhena.lagoon`. SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
 - **US-27** *(Draft)* Screenshots. Evidence: `docs/product/stories/US-27-screenshots.md`. Not started. No images were fabricated. Settings shows sync state, not a backup button.
 - **US-80** *(Approved)* Keep the permission set to an allowlist. Evidence: `docs/product/stories/US-80-permission-set.md`. Not implemented.
-- **US-81** *(Draft)* Publish a sideload signing policy. Evidence: `docs/product/stories/US-81-sideload-policy.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft.
+- **US-81** *(Approved)* Publish a sideload signing policy. Evidence: `docs/product/stories/US-81-sideload-policy.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 ## Epic E7: On-device text recognition
 
@@ -103,14 +103,14 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, US-41, US-50, US
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-75 is approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. Cipher waits for an ADR. Threat model not started.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35 and US-75 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria on US-35 and US-86 need approval by mjbvilhena. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
+- **US-35** *(Approved)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criterion. Needs approval by mjbvilhena. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
 - **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Approved)* Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18.
-- **US-86** *(Draft)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. The story stays Draft.
+- **US-86** *(Draft)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria need approval by mjbvilhena. The story stays Draft.
 
 ## Epic E9: Reminders and expiry
 
@@ -176,7 +176,7 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. Every remaining story is also listed under its parent epic above. Not implemented.
 
 - US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
-- US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. US-73, US-74, and US-76 are placeholders. They have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are not ready for review. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. US-86 stays Draft. Security criteria approved by mjbvilhena on 2026-10-18. Alarms are inexact.
+- US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, and US-85 are approved. US-73, US-74, and US-76 are placeholders. They have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are not ready for review. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. US-86 stays Draft. Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest. Proposed security criteria on US-35 and US-86 need approval by mjbvilhena. Alarms are inexact.
 - The map is `docs/product/stories/TRACEABILITY.md`.
 
 ## Requirements

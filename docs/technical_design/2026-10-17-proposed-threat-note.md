@@ -4,7 +4,7 @@
 > The design band is closed. This note does not open it, does not start the threat-model gate, and does not claim the product is secure or STRIDE-compliant.
 > Skill: `sdlc-threat-modeler`. Template: `get_sdlc_template("threat model")`. Definition of Done: `get_definition_of_done("security change")`.
 > Security-change implementation DoD is unmet: there is no code. `get_domain_consultant` for capture, vault, and knowledge, and `get_layer_consultant("ui")`, returned no `DOMAIN.md` or `LAYER.md`. No MUST/NEVER rules were invented.
-> The hypotheses below point at US-64, US-75, US-78, US-79, US-80, and US-81. Those stories stay Draft.
+> The hypotheses below point at US-64, US-75, US-78, US-79, US-80, and US-81. Those story artefacts are approved. This note is not.
 
 ## Metadata
 

@@ -2,6 +2,7 @@
 
 > **Approval status: Draft. Not approved.**
 > Security criteria approved by mjbvilhena on 2026-10-18.
+> The earlier approval covers the rest.
 
 **Epic:** E8.
 
@@ -26,25 +27,29 @@ Change the passphrase.
 
 ## Acceptance criteria
 
-- **Scenario: the change** — Must if the story is built.
+- **Scenario: the change** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the correct current passphrase and a new one entered twice
   - When the change completes
   - Then the phone vault and the Drive copy are re-encrypted under the new derived key
   - And the new passphrase re-creates the key on another device
   - And the old passphrase no longer re-creates it for the current Drive copy
-- **Scenario: the current passphrase** — Must if the story is built.
+  - And the current and new passphrase fields follow US-35 "the passphrase field", and the US-35 strong-passphrase guidance is shown.
+- **Scenario: the two new passphrases differ** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given he enters two new passphrases
+  - When the two new-passphrase entries differ
+  - Then he is told, and no change starts
+- **Scenario: the current passphrase** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the vault exists
-  - When he starts a passphrase change
+  - When he starts a passphrase change from Settings, other than through "a forgotten passphrase on a phone that still holds the key"
   - Then he authenticates with the current passphrase first
 - **Scenario: a wrong current passphrase** — Must if the story is built.
   - Given he enters the current passphrase
   - When that passphrase is wrong
   - Then it is refused and nothing changes
-- **Scenario: a crash during re-encryption** — Must if the story is built.
+- **Scenario: a crash during re-encryption** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
   - Given re-encryption is interrupted by a crash
   - When the app starts again
-  - Then the vault is readable under the old passphrase or the new passphrase
-  - And it is never in a state that neither passphrase can open
+  - Then the phone vault and the Drive copy are each readable under exactly one of the old or new passphrase, and neither is left in a mixed state
 - **Scenario: another install** — Must if the story is built.
   - Given he changed the passphrase on this phone
   - When another signed-in install syncs
@@ -54,11 +59,15 @@ Change the passphrase.
   - Given zips were exported before the change
   - When the change completes
   - Then he is told those zips still open only with the old passphrase
-- **Scenario: a forgotten passphrase on a phone that still holds the key** — Should. Amendment approved by mjbvilhena on 2026-10-18.
-  - Given he has forgotten the passphrase and this phone still holds the vault key
-  - When he completes the US-37 biometric or device-PIN unlock
-  - Then that phone can set a new passphrase without the old passphrase
-  - And this re-encrypts as in the change scenario
+- **Scenario: a forgotten passphrase on a phone that still holds the key** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given this phone holds the vault key
+  - When he chooses "I've forgotten my passphrase" and completes the US-37 biometric or device-PIN unlock
+  - Then he enters a new passphrase twice without the old one
+  - And this re-encrypts as in 'the change', with the US-37 unlock in place of the current passphrase.
+- **Scenario: a cancelled or failed unlock** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given this phone holds the vault key
+  - When he chooses "I've forgotten my passphrase" and the US-37 biometric or device-PIN unlock is cancelled or fails
+  - Then nothing changes
 
 ## Analytics and observability (optional)
 

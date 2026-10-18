@@ -78,4 +78,4 @@ Paths are under `docs/product/stories/`. A story stays Draft unless its line say
 - US-61 Filter or search by where an item came from. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-65 Add a photo from the system camera. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-67 Notice a duplicate image or PDF. Could.
-- US-85 Show an image or PDF page full-screen and bright. Should. Draft.
+- US-85 Show an image or PDF page full-screen and bright. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
