@@ -104,8 +104,7 @@ The active ruleset is Protect master (id 25303010, created 2026-10-17, enforceme
 
 - Require a pull request before merging. One approving review. Code owner review is required (`.github/CODEOWNERS`). A new push dismisses stale reviews. Unattributed changes need an extra approval.
 - Allowed merge methods are merge, squash, and rebase.
-- Required status checks, and the branch must be up to date: `Secret scan`, `Markdown lint`, and `Workflow lint`.
-- `.github/workflows/qa.yml` also runs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. Those four jobs are not required checks on this ruleset.
+- Required status checks, and the branch must be up to date: `Secret scan`, `Markdown lint`, `Workflow lint`, `Build and test`, `Android lint`, `CodeQL`, and `Kotlin style`.
 - Block force-pushes and branch deletion.
 - The ruleset has no bypass actors.
 
