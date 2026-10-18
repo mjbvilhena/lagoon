@@ -32,7 +32,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - He has a list of saved topics and one place for suggestions that are waiting (A-E11-3, US-60). Acceptance: he can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
   - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Criteria follow from the ADR at the design gate (US-76). There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Criteria follow from the ADR at the design gate (US-76). There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 

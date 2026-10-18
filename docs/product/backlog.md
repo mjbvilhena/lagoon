@@ -105,10 +105,10 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, and US-50 are ap
 
 > Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt at rest. The vault key does not require user authentication. Proposed amendment. Needs approval by mjbvilhena. The key is derived from a passphrase, and a second device re-creates it. Security criteria are not approved. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
+- **US-35** *(Draft)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
-- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft.
 
 ## Epic E9: Reminders and expiry
@@ -123,7 +123,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, and US-50 are ap
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E11-topics.md`. Stories below are Draft. Provider, credential storage, and payload are US-76. Criteria follow from the ADR at the design gate. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. Do not implement.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E11-topics.md`. Stories below are Draft. Provider, credential storage, and payload are US-76. Criteria follow from the ADR at the design gate. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. Do not implement.
 
 - **US-41** *(Draft)* Extract topics when an item is saved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Not implemented. Provider, credential, and payload are US-76. Criteria follow from the ADR at the design gate.
 - **US-42** *(Draft)* Link an item to a topic that already exists and extend that topic's notes. Evidence: `docs/product/stories/US-42-link-an-existing-topic.md`. Not implemented.
@@ -180,13 +180,13 @@ The index is the full list. Every remaining story is also listed under its paren
 
 ## Requirements
 
-- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses. Forgetting the passphrase and losing the device still means the content is lost.
+- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses. Forgetting the passphrase and losing the device still means the content is lost.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 - An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The zip export is encrypted with the vault key.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until that preview is enabled.
 - ML Kit metrics are disclosed and accepted before the first OCR use. There is no telemetry off switch. Research: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
-- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. There is no cap. The topic job has its own unmetered setting.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. There is no cap. The topic job has its own unmetered setting.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - An empty title fills from the page title or the file name. Camera capture uses the system camera. Lagoon does not request `CAMERA`.
@@ -195,7 +195,7 @@ The index is the full list. Every remaining story is also listed under its paren
 ## Open questions
 
 - Sync conflicts, and how a deletion propagates. US-73. Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase.
+- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Criteria follow from the ADR at the design gate.
 
 ## Resolved
@@ -203,7 +203,7 @@ The index is the full list. Every remaining story is also listed under its paren
 - One-sided items are kept. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 - Encryption at rest, and ciphertext in Drive. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
-- There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
+- There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - English-only OCR. Inexact alarms. No Back up now.

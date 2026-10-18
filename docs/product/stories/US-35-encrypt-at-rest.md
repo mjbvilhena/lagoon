@@ -1,6 +1,7 @@
 # US-35 Encrypt the vault at rest
 
 > **Approval status: Draft. Not approved.**
+> Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E8.
 
@@ -18,43 +19,43 @@ Encrypt the vault at rest.
 
 ## Background
 
-- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
+- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
 ## Acceptance criteria
 
-- **Scenario: the warning** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: the warning** — Must
   - Given the vault key has not been created
   - When he is asked to set up the vault, including when the first share arrives before he has accepted
   - Then he sees strong-passphrase guidance, and a clear warning that the key is derived from the passphrase, that forgetting the passphrase and losing the device means the content is lost, that uninstall or clear storage destroys the Keystore copy, and that losing the signing key forces a reinstall that destroys that copy too
   - And the key is not created until he accepts that warning
   - And the first shared item is held pending until he accepts. If he declines, he is told that nothing was saved. The share is not dropped in silence
   - And that pending share stays in memory only. Nothing is written to disk in plaintext before the key exists
-- **Scenario: what "key gone" means** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: what "key gone" means** — Must
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app
   - Then he can re-create the same key by entering the passphrase
   - And if he has forgotten the passphrase and that device copy is gone, the content is lost
-- **Scenario: re-create from the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: re-create from the passphrase** — Must
   - Given the Keystore copy is gone and he still knows the passphrase
   - When he enters it
   - Then the same key is derived again, with the slow memory-hard derivation and the salt
   - And no copy of the key, wrapped or otherwise, is read from Drive or from anywhere else
-- **Scenario: passphrase forgotten and device gone** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: passphrase forgotten and device gone** — Must
   - Given he has forgotten the passphrase and the device copy is gone
   - When he opens the app
   - Then he sees that the content is lost
   - And he can start a new empty vault. The app is not left unable to open
-- **Scenario: change the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: change the passphrase** — Must
   - Given the vault exists
   - When he changes the passphrase
   - Then the vault is re-encrypted under the new derived key
-- **Scenario: a new biometric does not drop the key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a new biometric does not drop the key** — Must
   - Given the vault key exists and does not use biometric authentication
   - When he enrolls a new biometric
   - Then the vault key stays valid
-- **Scenario: no user authentication on the key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: no user authentication on the key** — Must
   - Given the vault key is created
   - When `KeyInfo` is read for that key
   - Then it reports a hardware-backed security level, StrongBox or TEE
@@ -62,19 +63,19 @@ Encrypt the vault at rest.
   - And background sync and reminders can decrypt while the phone is locked
   - And sensitive content still needs the US-37 unlock
   - And normal use does not ask for the passphrase
-- **Scenario: data at rest** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored
   - Then those bytes are encrypted with the vault key
-- **Scenario: derived files** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: derived files** — Must
   - Given thumbnails, previews, snapshots, the OCR cache, the WebView cache, the image cache, WorkManager inputs, logs, or export temp copies exist
   - When they are on disk
   - Then they are encrypted with the vault key as well
-- **Scenario: backup of app data is off** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: backup of app data is off** — Must
   - Given the manifest
   - When it is read
   - Then `allowBackup` is false and `dataExtractionRules` exclude the vault
-- **Scenario: he can still use the app** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: he can still use the app** — Must
   - Given the key is present
   - When he saves and opens an ordinary item
   - Then the item works, and normal use, sync, and reminders do not ask for the passphrase
@@ -91,7 +92,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on the US-57 spike before FTS and SQLCipher are combined. This story does not choose the cipher.
-- The passphrase derivation above is a proposed amendment. It needs approval by mjbvilhena. The security criteria are not approved.
+- Amendment approved by mjbvilhena on 2026-10-18. Security criteria approved by mjbvilhena on 2026-10-18. This story stays Draft.
 
 ## Implementation notes
 

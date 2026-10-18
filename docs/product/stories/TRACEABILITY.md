@@ -142,7 +142,7 @@
 | US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
 | US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |
 | US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 in the phone's current local zone, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive notification is US-75. A time-zone change is US-55. |
-| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. | Traced. The vault key does not require user authentication. Proposed amendment. Needs approval by mjbvilhena. The key is derived from a passphrase, and a second device re-creates it. Security criteria are not approved. |
+| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. | Traced. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
 | US-36 | E8 | E8: "Drive stores ciphertext only." | Traced |
 | US-37 | E8 | E8: "Fingerprint or biometric lock on items marked sensitive" and "App lock is optional. The device PIN is the fallback." | Traced |
 | US-38 | E3 | E3: "An Untagged / Inbox view." | Traced |
@@ -178,8 +178,8 @@
 | US-71 | E3 | E3: the inbox can apply one filing action to several items. | Traced. |
 | US-72 | E11 | E11: a usefulness score is computed on the phone and is not sent off the phone. | Traced. |
 | US-73 | E4 | Spec open question: two edits of one item, and how a deletion propagates. | Placeholder. Not ready for review. Criteria follow from the ADR at the design gate. Not a capability. |
-| US-74 | E8 | Spec open question: how a second device re-creates the key. | Placeholder. Not ready for review. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the key from the passphrase. Criteria follow from the ADR at the design gate. Not a capability. |
-| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. Both notification versions show only "Lagoon reminder". Export waits for US-37. | Traced. There is no per-item topics control in v1. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
+| US-74 | E8 | Spec open question: how a second device re-creates the key. | Placeholder. Not ready for review. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Criteria follow from the ADR at the design gate. Not a capability. |
+| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. Both notification versions show only "Lagoon reminder". Export waits for US-37. | Traced. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
 | US-76 | E11 | Spec open question: provider, credential, and what is sent. | Placeholder. Not ready for review. Criteria follow from the ADR at the design gate. Not a capability. |
 | US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |

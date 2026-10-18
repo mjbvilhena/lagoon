@@ -103,7 +103,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
+- There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - The lock-screen reminder, the other notices, and the topic exclusion are requirements above.
 - US-37 is the unlock. Details of a sensitive item appear only after that unlock.
 

@@ -106,9 +106,9 @@ Constraints later design must not reopen unless he does:
 - Reminder time is chosen per item. The default is 09:00 in the phone's current local zone, with a per-item override. Reminders follow that zone, so a 09:00 reminder fires at 09:00 wherever the phone is. An expiry notifies 7 days before and on the day. Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. Reminders are stored and re-registered on `BOOT_COMPLETED`. `POST_NOTIFICATIONS` is requested when the first reminder is set, not at launch.
 - A page snapshot is a readable extracted copy (headings, lists, inline images downscaled and saved locally), with title, site, author, capture time, and the original URL. One sanitised archive, capped at about 10 MB, marked "partial snapshot" if truncated. It is searchable, encrypted, and synced like other content. A full-page MHTML copy is later, not v1.
 - App lock is optional. The device PIN is the fallback when there are no biometrics. The vault key does not require user authentication, so background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
-- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
+- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - Before the first OCR use he accepts a disclosure: the image and the recognized text stay on the device, and ML Kit still sends usage and diagnostic metrics to Google. Decline, or no answer, means OCR does not run and ML Kit is not started. He can withdraw that acceptance in Settings. There is no telemetry off switch.
-- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. There is no cap on topic suggestions.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. There is no cap on topic suggestions.
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock. An ordinary lock-screen reminder may show the item title and codes.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until he enables that preview.
 - The zip export is encrypted with the vault key.
@@ -119,7 +119,7 @@ Constraints later design must not reopen unless he does:
 ## Risks & Dependencies
 
 - Sync needs a Google Cloud OAuth client whose package name and signing-certificate SHA-1 match the release keystore. Until he supplies the client ID at build time, sync cannot run. The app must still install and work offline.
-- A second device can receive ciphertext. Proposed amendment. Needs approval by mjbvilhena. That device re-creates the same key from the passphrase. No copy of the key is stored on Drive. The method, parameters, and where the non-secret salt lives are US-74. Criteria follow from the ADR at the design gate. This specification does not invent a Google-derived key.
+- A second device can receive ciphertext. Amendment approved by mjbvilhena on 2026-10-18. That device re-creates the same key from the passphrase. No copy of the key is stored on Drive. The method, parameters, and where the non-secret salt lives are US-74. Criteria follow from the ADR at the design gate. This specification does not invent a Google-derived key.
 - Page fetches fail offline, on login walls, and on pages that only render in a browser. The item still keeps the URL. A snapshot exists only when a fetch succeeded.
 - Share-sheet behavior differs by OEM.
 - `appDataFolder` files do not appear in the ordinary Drive UI. That is expected, not a bug.
@@ -136,7 +136,7 @@ Constraints later design must not reopen unless he does:
 
 - What happens when the same item was edited on two devices before they sync? US-73. Criteria follow from the ADR at the design gate.
 - How does a deletion on one device propagate to the other? US-73. Criteria follow from the ADR at the design gate.
-- How do keys reach a new or second device? US-74. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase. No copy of the key is stored on Drive or anywhere else.
+- How do keys reach a new or second device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored on Drive or anywhere else.
 - Which cloud AI provider processes topics, and what are its data-retention terms? US-76. Criteria follow from the ADR at the design gate.
 - How is the topic API credential stored and protected? It must not be baked into the APK in plain form. US-76. Criteria follow from the ADR at the design gate.
 - What exactly is sent to the cloud AI? US-76. Criteria follow from the ADR at the design gate.
@@ -149,7 +149,7 @@ Constraints later design must not reopen unless he does:
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
 - One tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. Brightness goes back to normal when you close it. It works offline. A sensitive item needs unlocking first and is protected from screenshots (US-85). Amendment approved by mjbvilhena on 2026-10-18.
 - OCR is English only. Alarms are inexact. Topic suggestions have no cap.
-- There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
+- There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - An empty title on a screenshot, image, or scan fills from the file name.
@@ -160,8 +160,8 @@ Constraints later design must not reopen unless he does:
 
 | Gate | Status |
 | --- | --- |
-| This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. The passphrase sentences are a proposed amendment. They are not part of that approval. |
-| Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17. Amendments to E1, E3, E4, E8, E9, and E11 approved by mjbvilhena on 2026-10-18. The passphrase sentences in E8 are a proposed amendment. They are not part of that approval. |
+| This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. The passphrase amendment is included in that approval. |
+| Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17. Amendments to E1, E3, E4, E8, E9, and E11 approved by mjbvilhena on 2026-10-18. The passphrase amendment is included in that approval. |
 | Epic E10 | Approved by mjbvilhena on 2026-10-17. Later, not in v1. |
 | User stories | US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. |
 | Threat model, UX, test strategy, ADRs | Not started. |
