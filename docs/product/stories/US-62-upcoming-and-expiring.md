@@ -1,10 +1,11 @@
 # US-62 See what is coming due
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E9.
 
-**MoSCoW:** Should. The Upcoming list and the expired marker are Must.
+**MoSCoW:** Should. If the story is built, the Upcoming list, the expired marker, and Done on an expiry are its Must criteria.
 
 ## Title
 
@@ -20,13 +21,14 @@ See what is coming due.
 
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: exact alarms (US-77). Snooze length is 1 hour in this story.
+- A sensitive reminder or expiry notice's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content (US-75). Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 
 ## Acceptance criteria
 
 - **Scenario: the list** — Must
-  - Given items have a future reminder or a future expiry (US-34, US-54)
+  - Given items have a reminder or an expiry (US-34, US-54), including a future date and a date that has passed
   - When he opens Upcoming
-  - Then they are sorted by that date
+  - Then future dates are soonest first, then passed dates are in an Expired group, most recent first
 - **Scenario: expired** — Must
   - Given the date has passed
   - When the row is shown

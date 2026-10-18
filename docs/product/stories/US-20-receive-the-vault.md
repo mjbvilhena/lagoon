@@ -21,9 +21,14 @@ Receive the vault on another install.
 - The specification says an item that exists on only one side is kept. The merge basis for that case is a stable item id and `updatedAt` (US-56).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the same item edited on both sides, and how a deletion propagates (US-73). The options on that story are not chosen. Keys on a new device are US-74.
+- A new install needs the passphrase to re-create the key before the vault, and its reminders, are available (US-35, US-55).
 
 ## Acceptance criteria
 
+- **Scenario: passphrase not entered** — Must
+  - Given a new install has not entered the passphrase
+  - When sync would receive the vault
+  - Then the vault is not available until the passphrase re-creates the key
 - **Scenario: empty phone, existing Drive copy** — Must
   - Given this install has no items, he is signed in, and the key question in US-74 is already satisfied for this test
   - When sync receives the remote vault

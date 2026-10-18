@@ -18,8 +18,8 @@ Miguel, installing and configuring the vault himself.
 
 - **In Scope (MVP):**
   - Command-line Gradle build of a release APK.
-  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). Stories stay Draft.
-  - Application id `com.mjbvilhena.lagoon`. Stories stay Draft.
+  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). US-80 and US-81 are approved. The other stories in this epic stay Draft.
+  - Application id `com.mjbvilhena.lagoon`.
   - Signed with a self-generated release keystore. The keystore is documented. Secrets are not committed.
   - README: build, sideload (unknown sources), Google Cloud OAuth client steps (package name, SHA-1 of the signing cert he was given), and where the client ID goes.
   - Unit tests for the repository/search layer and for sync-payload and zip packaging. At least one Compose UI test.
@@ -42,13 +42,13 @@ Miguel, installing and configuring the vault himself.
 ## Risks & Dependencies
 
 - Depends on E1–E5 for there to be screens and behavior worth testing and photographing.
-- The README can name Lagoon and `com.mjbvilhena.lagoon`. Stories stay Draft. The signing SHA-1 still does not exist and must not be invented.
+- The README can name Lagoon and `com.mjbvilhena.lagoon`. US-80 and US-81 are approved. The other stories in this epic stay Draft. The signing SHA-1 still does not exist and must not be invented.
 - Screenshot capture needs an emulator or a device. Availability is unknown at drafting time.
 - The signing SHA-1 cannot be known until the keystore exists. It is an implementation output, documented in the README, not invented in this epic.
 
 ## Open Questions
 
-- The name, the application id, and the SDK levels are in the specification. Stories stay Draft.
+- The name, the application id, and the SDK levels are in the specification. US-80 and US-81 are approved. The other stories in this epic stay Draft.
 - [ ] Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt.
 - Sync merge and encryption are not open here.
 
@@ -58,5 +58,5 @@ Miguel, installing and configuring the vault himself.
 - US-25 Run the tests he named
 - US-26 Follow a README to build, sideload, and configure OAuth
 - US-27 Review screenshots of the main screens
-- US-80 Keep the permission set to an allowlist.
-- US-81 Publish a sideload signing policy.
+- US-80 Keep the permission set to an allowlist. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-81 Publish a sideload signing policy. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

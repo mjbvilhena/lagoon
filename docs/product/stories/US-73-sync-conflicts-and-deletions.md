@@ -4,7 +4,7 @@
 
 **Epic:** E4.
 
-**MoSCoW:** Not set. The question is still open.
+**MoSCoW:** Not set. This story has no MoSCoW yet. Criteria follow from the ADR at the design gate.
 
 ## Title
 
@@ -18,13 +18,15 @@ Decide sync conflicts and deletions.
 
 ## Background
 
-- Both questions stay open. Options recorded here, and not chosen, are tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option.
+- Criteria follow from the ADR at the design gate. Options recorded here, and not chosen in this story, are tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: one-sided merge, which US-20 already states.
 
 ## Acceptance criteria
 
-No Must criterion. A Must would decide the question. This artefact fails the user-story Definition of Done until the question is closed or moved.
+This story has no Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. It is a placeholder waiting on the design-gate ADR. It is not ready for review.
+
+Criteria follow from the ADR at the design gate.
 
 ## Analytics and observability (optional)
 
@@ -37,7 +39,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Open question. Listed in `docs/product/stories/REVIEW-PACK.md`.
+- Criteria follow from the ADR at the design gate.
 
 ## Implementation notes
 

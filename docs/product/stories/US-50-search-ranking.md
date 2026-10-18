@@ -1,6 +1,7 @@
 # US-50 Rank search matches
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E3.
 
@@ -25,7 +26,7 @@ Rank search matches.
 ## Acceptance criteria
 
 - **Scenario: field weights** — Must
-  - Given three ordinary items that match only in the title, only in a tag, and only in the body
+  - Given three ordinary items that match only in the title, only in a tag, and only in the body, each with the same term frequency and the same field length
   - When he searches that word
   - Then the title match ranks above the tag match, and the tag match ranks above the body match
 - **Scenario: OCR equals body** — Must

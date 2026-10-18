@@ -3,6 +3,7 @@
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -18,7 +19,7 @@ Miguel.
 
 - **In Scope (MVP):**
   - An optional expiry or reminder date on an item.
-  - He picks the time. The Settings default is 09:00 local. Each item can override that time.
+  - He picks the time. The Settings default is 09:00 in the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is. Each item can override that time.
   - An expiry notifies 7 days before the date and again on the day, at the item's time.
   - Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). No exact-alarm permission. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
   - A reminder or an expiry is registered again after a reboot, a clock change, an update, or a notification-permission change (A-E9-1, US-55). When the same date is on more than one install, only one install posts it. Acceptance: a notification is not lost because the phone restarted, and two installs do not both post it.
@@ -42,16 +43,16 @@ Miguel.
 
 - Depends on E1 items and on edit (US-12).
 - Notification permission is the platform's. If he denies it, the date is still stored and he can see it on the item. Do not invent a second channel.
-- The schedule above is the US-34 rule in the specification. Stories stay Draft.
+- The schedule above is the US-34 rule in the specification. US-34, US-55, and US-62 are approved. The other stories in this epic stay Draft.
 
 ## Open Questions
 
-- The time, the 7-day expiry warning, and inexact alarms are in the specification (US-34). Exact alarms are not an open question. Stories stay Draft.
+- The time, the 7-day expiry warning, and inexact alarms are in the specification (US-34). Exact alarms are not an open question. US-34, US-55, and US-62 are approved. The other stories in this epic stay Draft.
 
 ## Draft stories
 
-- US-34 Set a reminder or expiry and get notified
+- US-34 Set a reminder or expiry and get notified. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-54 Notify before an expiry
-- US-55 Reschedule reminders after a restart or a clock change
-- US-62 See what is coming due. Should.
+- US-55 Reschedule reminders after a restart or a clock change. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-62 See what is coming due. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-77 Keep reminders on inexact alarms.

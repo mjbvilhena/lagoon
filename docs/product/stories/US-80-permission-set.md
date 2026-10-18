@@ -1,6 +1,8 @@
 # US-80 Keep the permission set to an allowlist
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E6.
 

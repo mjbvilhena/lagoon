@@ -1,6 +1,7 @@
 # US-65 Add a photo from the camera
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.
 
@@ -24,11 +25,19 @@ Add a photo from the camera.
 
 ## Acceptance criteria
 
-- **Scenario: a new item** — Should
+- **Scenario: a new item** — Must if the story is built
   - Given he starts a capture with `ACTION_IMAGE_CAPTURE`
-  - When the system camera returns a photo and he confirms
-  - Then a new item is stored with that photo as its attachment
+  - When Lagoon passes `EXTRA_OUTPUT` and the system camera returns that photo and he confirms
+  - Then the full-resolution photo is written through `EXTRA_OUTPUT` to a non-exported FileProvider content URI in Lagoon's no-backup cache, with a one-time write grant
+  - And Lagoon does not write a copy into the shared gallery
+  - And a new item is stored with that photo as its attachment
+  - And the photo is encrypted into the vault (US-35), the plaintext file is deleted, and the URI grant is revoked
   - And the Lagoon manifest does not declare `CAMERA`
+- **Scenario: cancel** — Must if the story is built
+  - Given he starts `ACTION_IMAGE_CAPTURE`
+  - When he cancels, the camera returns nothing, or no camera app can handle the intent
+  - Then no item is stored, and the empty or partial file is deleted
+  - And a leftover plaintext file is deleted on the next launch
 - **Scenario: multi-page** — Should
   - Given he takes several photos that way into that new item
   - When he saves them
@@ -47,6 +56,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Does not block US-32.
+- The system camera app may keep its own gallery copy, and Lagoon cannot prevent that.
 
 ## Implementation notes
 

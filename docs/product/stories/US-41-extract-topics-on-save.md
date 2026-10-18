@@ -1,6 +1,7 @@
 # US-41 Extract topics when an item is saved
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E11.
 
@@ -20,7 +21,7 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. A per-item "Include in topics" control on US-75 is still open.
+- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he chooses "Get topics" on that item. That is the named control behind "unless he asks".
 - A sensitive item stays out of the call (US-75). That exclusion still applies when this switch is on.
 - The topic job keeps its own "Unmetered only" setting (US-44). Turning topics on does not use the sync preference and does not ignore that setting.
@@ -36,10 +37,19 @@ Extract topics when an item is saved.
   - When the item is saved and the earlier steps have text
   - Then the topic switch is on and a topic call is allowed, subject to the unmetered setting below
 - **Scenario: he turns it off** — Must
-  - Given he has turned the topic switch off in Settings (US-59)
+  - Given the topic switch is on and topic jobs are queued for US-44
+  - When he turns the switch off in Settings (US-59)
+  - Then every queued US-44 topic job is cancelled and is never sent
+- **Scenario: saved while off** — Must
+  - Given the topic switch is off
   - When an item is saved
-  - Then no call is made, and any topic job already queued for US-44 is cancelled and is never sent
+  - Then no call is made
   - And when he later turns the switch on, that saved item is not sent unless he chooses "Get topics" on that item
+- **Scenario: Get topics** — Must
+  - Given an ordinary item that was saved while the topic switch was off
+  - When he chooses "Get topics" on that item (item detail, US-11), including while the switch is still off
+  - Then one topic job is queued for that item under US-44, subject to the topic Unmetered-only setting
+  - And "Get topics" is not offered on a sensitive item (US-75)
 - **Scenario: a sensitive item** — Must
   - Given the topic switch is on and the item is sensitive
   - When a topic job would run
@@ -65,7 +75,7 @@ Extract topics when an item is saved.
   - When the result is stored
   - Then the item remains, no topic is created, and the status is "no topics", not "failed"
 - **Scenario: text arrives later** — Must
-  - Given the topic switch is on and an OCR retry or enrichment adds text that was not in the earlier call
+  - Given an ordinary item, the topic switch is on, and an OCR retry or enrichment adds text that was not in the earlier call
   - When that text is stored
   - Then the topic job runs again for that item
 - **Scenario: the key is not in the APK** — Must
@@ -84,7 +94,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Which fields may be sent is US-76 and is still open.
+- Which fields may be sent is US-76. Criteria follow from the ADR at the design gate.
 
 ## Implementation notes
 

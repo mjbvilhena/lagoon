@@ -4,7 +4,7 @@
 
 **Epic:** E11.
 
-**MoSCoW:** Not set. The question is still open.
+**MoSCoW:** Not set. This story has no MoSCoW yet. Criteria follow from the ADR at the design gate.
 
 ## Title
 
@@ -18,14 +18,16 @@ Decide the topic call's provider, credential, and payload.
 
 ## Background
 
-- Still open: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). A sensitive item is excluded (US-75).
-- The query and the fragment of a token-looking URL are not sent (US-79). The rest of the payload is still open.
+- Criteria follow from the ADR at the design gate: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). A sensitive item is excluded (US-75).
+- The query and the fragment of a token-looking URL are not sent (US-79). The rest of the payload follows from that ADR.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: choosing those answers in this revision.
+- Out of scope: choosing those answers in this story.
 
 ## Acceptance criteria
 
-No Must criterion. A Must would decide the question. This artefact fails the user-story Definition of Done until the question is closed or moved.
+This story has no Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. It is a placeholder waiting on the design-gate ADR. It is not ready for review.
+
+Criteria follow from the ADR at the design gate.
 
 ## Analytics and observability (optional)
 
@@ -38,7 +40,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The questions above stay open. Sensitive-item exclusion is US-75.
+- Criteria follow from the ADR at the design gate. Sensitive-item exclusion is US-75.
 
 ## Implementation notes
 

@@ -1,6 +1,8 @@
 # US-81 Publish a sideload signing policy
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E6.
 
@@ -19,6 +21,7 @@ Publish a sideload signing policy.
 ## Background
 
 - A later install uses the same application id and the same release key. The criteria below are the requirements.
+- Items not yet synced to Drive are lost with the phone's vault on uninstall.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: a self-updater. There is none. Play Store listing. Exact keystore passwords, which are never written in the repo.
 
@@ -37,7 +40,17 @@ Publish a sideload signing policy.
   - Given an installed release build with a vault
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
-  - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch destroys the Keystore key, so the vault and every zip become unreadable. Uninstall is not a way to fix or upgrade
+  - And a signing-key mismatch makes Android refuse the update. It does not remove the key.
+  - And only uninstall or clear storage removes that phone's key copy.
+  - And the Drive copy stays readable with the passphrase or from another phone that still holds the key.
+  - And each zip opens with the passphrase it was made under.
+  - And uninstall is not a way to fix or upgrade
+- **Scenario: uninstall and the passphrase** — Must.
+  - Given the vault key was derived from his passphrase
+  - When he uninstalls Lagoon or clears storage
+  - Then that phone's key copy is removed
+  - And the Drive copy stays readable with the passphrase or from another phone that still holds the key
+  - And each zip opens with the passphrase it was made under
 - **Scenario: debug builds** — Must
   - Given a debug build
   - When it is installed beside a release build
@@ -64,8 +77,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- The criteria below are the sideload signing policy.
+- The criteria above are the sideload signing policy.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file. Do not commit key material.
+Not a design spec. Do not implement from this file. Do not commit key material.

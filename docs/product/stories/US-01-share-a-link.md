@@ -37,7 +37,7 @@ Share a link into the vault.
   - Given the share includes a URL
   - When the item is stored
   - Then the item records the URL host as the source domain
-  - And the sending app is recorded only when the platform reports it. Display, search, and filter of those fields are US-61
+  - And the sending app is recorded only when the platform reports it. Display of those fields is US-10 and US-11. Filter and search of those fields are US-61
 - **Scenario: nothing to save** — Must
   - Given the share has no URL and is not plain text, an image, or a PDF
   - When the vault receives it

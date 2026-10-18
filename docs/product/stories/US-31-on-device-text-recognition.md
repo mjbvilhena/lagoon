@@ -1,6 +1,7 @@
 # US-31 Recognize English text on the device
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E7.
 
@@ -69,4 +70,4 @@ The image and the recognized text stay on the device. ML Kit's own usage and dia
 
 ## Implementation notes
 
-On-device Latin model from `com.google.mlkit:text-recognition`, bundled in the install. The Play services text-recognition artifact is absent because that thin variant collects a device identifier. Not a design spec.
+On-device Latin model from `com.google.mlkit:text-recognition`, bundled in the install. The Play services text-recognition artifact is absent because that thin variant collects a device identifier. Source: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`, which cites the Android data-disclosure page: thin features collect a device identifier, and `com.google.android.gms:play-services-mlkit-text-recognition` is the thin artifact. Not a design spec.
