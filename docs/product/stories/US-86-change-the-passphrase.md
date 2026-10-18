@@ -20,32 +20,32 @@ Change the passphrase.
 ## Background
 
 - The vault key is derived from the passphrase (US-35). Changing it re-encrypts the vault.
-- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Proposed amendment. Needs approval by mjbvilhena.
+- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Amendment approved by mjbvilhena on 2026-10-18.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74).
 
 ## Acceptance criteria
 
-- **Scenario: the change** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: the change** — Must if the story is built.
   - Given the correct current passphrase and a new one entered twice
   - When the change completes
   - Then the phone vault and the Drive copy are re-encrypted under the new derived key
   - And the new passphrase re-creates the key on another device
   - And the old passphrase no longer re-creates it for the current Drive copy
-- **Scenario: the current passphrase** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: the current passphrase** — Must if the story is built.
   - Given the vault exists
   - When he starts a passphrase change
   - Then he authenticates with the current passphrase first
-- **Scenario: a wrong current passphrase** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a wrong current passphrase** — Must if the story is built.
   - Given he enters the current passphrase
   - When that passphrase is wrong
   - Then it is refused and nothing changes
-- **Scenario: a crash during re-encryption** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a crash during re-encryption** — Must if the story is built.
   - Given re-encryption is interrupted by a crash
   - When the app starts again
   - Then the vault is readable under the old passphrase or the new passphrase
   - And it is never in a state that neither passphrase can open
-- **Scenario: another install** — Must if the story is built. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: another install** — Must if the story is built.
   - Given he changed the passphrase on this phone
   - When another signed-in install syncs
   - Then that install asks for the new passphrase
@@ -54,7 +54,7 @@ Change the passphrase.
   - Given zips were exported before the change
   - When the change completes
   - Then he is told those zips still open only with the old passphrase
-- **Scenario: a forgotten passphrase on a phone that still holds the key** — Should. Proposed amendment. Needs approval by mjbvilhena.
+- **Scenario: a forgotten passphrase on a phone that still holds the key** — Should. Amendment approved by mjbvilhena on 2026-10-18.
   - Given he has forgotten the passphrase and this phone still holds the vault key
   - When he completes the US-37 biometric or device-PIN unlock
   - Then that phone can set a new passphrase without the old passphrase

@@ -20,7 +20,7 @@ Encrypt the vault at rest.
 ## Background
 
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
-- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Proposed amendment. Needs approval by mjbvilhena.
+- If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
@@ -37,7 +37,7 @@ Encrypt the vault at rest.
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app
   - Then he can re-create the same key by entering the passphrase
-- **Scenario: re-create from the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: re-create from the passphrase** — Must.
   - Given the Keystore copy is gone and he still knows the passphrase
   - When he enters it
   - Then the same key is derived again, using the method, minimum parameters and salt named in the US-74 ADR
@@ -46,7 +46,7 @@ Encrypt the vault at rest.
   - Given the vault key exists and does not use biometric authentication
   - When he enrolls a new biometric
   - Then the vault key stays valid
-- **Scenario: no user authentication on the key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: no user authentication on the key** — Must.
   - Given the vault key is created
   - When `KeyInfo` is read for the Keystore key that holds or wraps the derived key
   - Then on API 31+ `KeyInfo.getSecurityLevel()` is StrongBox or TEE, and on API 26–30 `KeyInfo.isInsideSecureHardware()` is true
@@ -85,18 +85,18 @@ Encrypt the vault at rest.
   - Given a Drive copy of the vault already exists
   - When he starts a new empty vault
   - Then that Drive copy is not overwritten or deleted until he confirms explicitly after a warning
-- **Scenario: I've forgotten my passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: I've forgotten my passphrase** — Must.
   - Given this phone holds no key copy
   - When he chooses "I've forgotten my passphrase"
   - Then he is told the vault can't be opened on this phone without the passphrase
   - And he is offered a new empty vault, subject to the "a new empty vault" scenario
-- **Scenario: after the first unlock since boot** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: after the first unlock since boot** — Must.
   - Given he has unlocked the phone once since boot
   - When background sync or a reminder needs the vault
   - Then those jobs can decrypt while the phone is locked
   - And on API 28+ the Keystore key is created with `setUnlockedDeviceRequired(false)`
   - And on API 26–27 the key is never unlock-gated
-- **Scenario: which key is hardware-backed** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: which key is hardware-backed** — Must.
   - Given the derived key is held or wrapped
   - When `KeyInfo` is read
   - Then the check reads the Keystore key that holds or wraps the derived key
