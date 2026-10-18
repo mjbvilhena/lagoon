@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-US-85 leaves this choice to the design gate. Drafting this record is not acceptance. What "password-protected" means is decided below. The full-screen refusal in US-85 is Could, not a Must, and this record does not promote it. Nothing in this record stays under Decision pending.
+US-85 leaves this choice to the design gate. Drafting this record is not acceptance. What "password-protected" means is decided below. The full-screen refusal in US-85 is Could, not a Must, and this record does not promote it. Nothing in this record is left open.
 
 ## Context
 

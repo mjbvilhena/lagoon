@@ -39,7 +39,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - NEVER log secrets or item bodies from a use case.
 - NEVER encode SQL, HTTP, or Keystore parameters in a domain type.
-- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all Proposed. A port may accept a header value object once the ADR is accepted. A Decision pending item is not a domain rule.
+- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all Proposed. A port may accept a header value object once the ADR is accepted. A rule that exists only in a Proposed ADR is not a domain rule.
 
 ## Patterns and frameworks
 

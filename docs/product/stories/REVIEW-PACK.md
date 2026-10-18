@@ -27,7 +27,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 - What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. Criteria follow from the ADR at the design gate. Proposed record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted.
 - How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. Proposed record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted.
-- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext. Proposed record: `docs/adr/ADR-0003-topic-call.md`. Not accepted. The topic call uses the xAI Grok API, with zero data retention turned on for his xAI team. The backlog when a key is added stays Decision pending.
+- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext. Proposed record: `docs/adr/ADR-0003-topic-call.md`. Not accepted. The topic call uses the xAI Grok API, with zero data retention turned on for his xAI team. When the key is first added, Lagoon asks once, "Send N earlier items for topics?", and the default is No. Sensitive items are never counted or sent.
 
 ## Removed
 
@@ -41,4 +41,4 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## Threat note
 
-`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. The cipher and container proposal is `docs/adr/ADR-0006-cipher-and-container.md`, also Proposed. Items marked Decision pending in an ADR are not decided. UX and the test strategy are not started. Implementation has not started.
+`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. The cipher and container proposal is `docs/adr/ADR-0006-cipher-and-container.md`, also Proposed. The ADRs themselves are not accepted. UX and the test strategy are not started. Implementation has not started.

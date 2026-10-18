@@ -23,7 +23,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - If an identified topic already exists, the new item is linked to it and the topic is extended with the new information.
   - If a topic does not exist yet, he is asked whether it should be added. Nothing is created without confirmation.
   - The processor is a cloud AI. Readable content leaves the phone for that call. Topic extraction starts on for a new ordinary item. He can turn it off.
-  - Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays open. This is not approved.
+  - Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items, and the default is No. Sensitive items are never counted or sent. Per-item "Get topics" stays, and the call cap and de-duplication apply. This is not approved.
   - Drive sync stays ciphertext-only. This call is not a Drive upload.
   - Offline, the item is stored and topic processing is queued until a network exists.
   - The topic job has its own "Unmetered only" setting (US-44, US-59). That setting is not the sync preference.
@@ -53,7 +53,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 - Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is US-76. Criteria follow from the ADR at the design gate.
 - Privacy: readable content leaves the device for this call. Provider and retention terms are US-76. Criteria follow from the ADR at the design gate.
-- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays open. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items, and the default is No. Sensitive items are never counted or sent. Per-item "Get topics" stays, and the call cap and de-duplication apply. This is not approved.
 - Cost: each call can spend money. No cap is set here.
 - A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is US-76. Criteria follow from the ADR at the design gate.
 - Encryption of the vault at rest and of the Drive copy stays E8. This epic does not weaken that. It is the exception that sends readable content to a cloud AI.
@@ -62,7 +62,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
 ## Open Questions
 
 - [ ] Which AI provider, and what are its data-retention terms? US-76. Criteria follow from the ADR at the design gate.
-- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays open. This is not approved. The checkbox above is unchanged.
+- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items, and the default is No. Sensitive items are never counted or sent. Per-item "Get topics" stays, and the call cap and de-duplication apply. This is not approved. The checkbox above is unchanged.
 - [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form? US-76. Criteria follow from the ADR at the design gate.
 - [x] Sensitive items are excluded from the topic call.
 - [ ] What exactly is sent: full text, images, OCR output, or some other slice? US-76. Criteria follow from the ADR at the design gate.

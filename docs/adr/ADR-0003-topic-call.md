@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-76 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The topic call uses the xAI Grok API, and zero data retention is turned on for his xAI team. The backlog when a key is added stays open under Decision pending.
+This record answers the US-76 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The topic call uses the xAI Grok API, and zero data retention is turned on for his xAI team. When the key is first added, he is asked once about earlier ordinary items. Nothing in this record is left open.
 
 ## Context
 
@@ -45,7 +45,7 @@ Sources: [Cursor APIs overview](https://cursor.com/docs/api), [Cloud Agents API]
 
 ## Decision
 
-The topic call uses the xAI Grok API, text in and JSON out, with a key he types into Settings. Zero data retention is turned on for his xAI team. The key is stored only as vault ciphertext on that install. Images are out. The default low-cost model is grok-4.20-0309-non-reasoning. The Cursor API does not fit, because it has no general text-completion endpoint. The provider is decided. The backlog when a key is added stays Decision pending. Accepting this record would not by itself decide that backlog.
+The topic call uses the xAI Grok API, text in and JSON out, with a key he types into Settings. Zero data retention is turned on for his xAI team. The key is stored only as vault ciphertext on that install. Images are out. The default low-cost model is grok-4.20-0309-non-reasoning. The Cursor API does not fit, because it has no general text-completion endpoint. The provider is decided. When the key is first added, he is asked once whether to send earlier ordinary items, and the default is No.
 
 Rules, if this record is accepted, for the Grok path:
 
@@ -63,23 +63,10 @@ Rules, if this record is accepted, for the Grok path:
 - Two phones must not both call for the same item. Before a call, if synced provenance for that item id already records the same hash of the fields that would be sent, the call is skipped. A changed hash may call again, still inside the monthly count. Provenance is part of the records merge (ADR-0002). The API key is not.
 - The call uses HTTPS, a 60-second timeout, and at most one retry on a failure where the request was not sent. A failure after that follows US-47. The topic unmetered setting still applies (US-44). The sync preference does not.
 - The Cursor API is not called.
-- What to do with items that were saved while no key was stored is Decision pending. Until he decides, a new key does not by itself flush a backlog.
+- When the key is first added on this install, and at least one earlier ordinary item has no topic provenance, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items on this install that have no topic provenance. A sensitive item is not counted in N and is not sent. The default is No. Topics are not sent unless he chooses Yes. No, or leaving the question, sends nothing. The question is not shown again on this install, including when the key is replaced. If N is zero, the question is not shown.
+- If he chooses Yes, those ordinary items are sent under the same rules as any other topic call: the monthly cap, the provenance de-dupe, the zero-data-retention check, and the unmetered setting. A call that would pass the monthly cap is not sent. An item skipped by the cap or by de-dupe can still be sent later with per-item "Get topics" (US-41). That per-item control stays. A sensitive item is never offered it and is never sent.
 
 Default: if a new field is added to an item, it is not sent until this record, or a successor, names it.
-
-## Decision pending: mjbvilhena
-
-This is not decided. The current recommendation is what this draft would keep.
-
-### Topic backlog when a key is added
-
-Current recommendation: do not auto-flush. Items saved while the key was missing stay unsent until he uses per-item "Get topics", the same gesture US-41 uses for an item saved while the Settings switch was off.
-
-| Option | Trade-off |
-| --- | --- |
-| No auto-flush. Per-item "Get topics" | Current recommendation. A new key does not upload the whole vault. He has to ask per item. Easy to forget an item |
-| Flush every ordinary item that has no provenance yet | He does not have to remember. The first session can spend the monthly call count, and two phones that both see an empty provenance can race before sync. The de-dupe rule only helps after one provenance record has synced |
-| Flush only items saved after the key was added | Older items stay quiet. Items saved on the other phone before this phone's key existed still wait |
 
 ## Alternatives considered
 
@@ -91,12 +78,14 @@ Current recommendation: do not auto-flush. Items saved while the key was missing
 | Bake the key into the signed APK, or reuse the Drive OAuth token | No Settings field | US-41 forbids a plaintext key in the APK. The Drive token is scoped to `drive.appdata` (US-78) and is the wrong credential |
 | Send the key in the query string | Some examples do | The key then lands in URLs and in server access logs. A header avoids that |
 | Send page images or PDF bytes | The model might read a scan better | E7 keeps OCR on device. Cloud vision is out of the specification. Sensitive pages would be easy to include by mistake |
+| Send every earlier ordinary item as soon as the key is stored | He does not have to answer | He is asked once, and the default is No. An automatic send can spend the monthly call count |
+| Never ask, and leave every earlier item to per-item "Get topics" only | Nothing is sent until he remembers each item | He is asked once. No still leaves each ordinary item to "Get topics" |
 
 ## Consequences
 
-- **Positive.** The two options are named from their own docs. The recommendation can be called from the phone with a key that is not in the APK. Sensitive items and images stay off the call. Zero data retention is checked on a response header before vault text is sent. The monthly count and the cross-phone de-dupe stay. The key can move to a new phone only if he types it again, because ADR-0002 does not sync it.
-- **Negative / accepted trade-offs.** Zero data retention is on for his xAI team. A response that does not confirm it is discarded, and topics pause until he checks. The security FAQ says that, without that setting, prompts and responses are stored for 30 days. The enterprise terms still grant the API for business purposes, and this app is personal. There is no documented EU endpoint, and the low-cost model is not on the US endpoint. He pays the bill. The backlog flush is not decided. No per-item suggestion cap is added.
-- **Follow-ups.** US-76 stays a placeholder until this record is accepted. He decides the pending backlog. He is the approver.
+- **Positive.** The two options are named from their own docs. The call can be made from the phone with a key that is not in the APK. Sensitive items and images stay off the call. Zero data retention is checked on a response header before vault text is sent. The monthly count and the cross-phone de-dupe stay. When the key is first added he is asked once, and the default is No. The key can move to a new phone only if he types it again, because ADR-0002 does not sync it.
+- **Negative / accepted trade-offs.** Zero data retention is on for his xAI team. A response that does not confirm it is discarded, and topics pause until he checks. The security FAQ says that, without that setting, prompts and responses are stored for 30 days. The enterprise terms still grant the API for business purposes, and this app is personal. There is no documented EU endpoint, and the low-cost model is not on the US endpoint. He pays the bill. A No on the one-time question leaves earlier items unsent until he uses "Get topics" on each one. No per-item suggestion cap is added.
+- **Follow-ups.** US-76 stays a placeholder until this record is accepted. He is the approver.
 
 ## Compliance
 
@@ -111,7 +100,7 @@ Current recommendation: do not auto-flush. Items saved while the key was missing
 - [ ] A second install with the same item id and field hash does not call
 - [ ] The 101st call in a calendar month on one install does not leave the phone
 - [ ] Requests do not set tools, file upload, or image input
-- [ ] Adding a key does not flush a backlog unless Decision pending has been resolved that way
+- [ ] Adding a key asks once, with No as the default, and does not send earlier items unless he chooses Yes. A sensitive item is not counted and is not sent. "Get topics" still sends one ordinary item, inside the monthly cap and the de-dupe
 - [ ] The Cursor API is not called
 
 ## Related
@@ -131,7 +120,7 @@ Current recommendation: do not auto-flush. Items saved while the key was missing
 - Calling the Cursor Cloud Agents API as a substitute completion.
 - Storing a suggestion from a response that did not confirm zero data retention.
 - Continuing topic calls after a response lacked that confirmation.
-- Treating a backlog flush as already chosen.
+- Sending earlier items when the key is added without the one-time question, or counting a sensitive item in that question.
 
 ## Skill State Machine (sdlc-adr-drafter)
 

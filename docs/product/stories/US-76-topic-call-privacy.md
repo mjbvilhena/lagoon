@@ -19,7 +19,7 @@ Decide the topic call's provider, credential, and payload.
 ## Background
 
 - Criteria follow from the ADR at the design gate: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). A sensitive item is excluded (US-75).
-- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. The backlog when a key is added stays Decision pending. This placeholder still has no acceptance criteria. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items, and the default is No. Sensitive items are never counted or sent. Per-item "Get topics" stays, and the call cap and de-duplication apply. This placeholder still has no acceptance criteria. This is not approved.
 - The query and the fragment of a token-looking URL are not sent (US-79). The rest of the payload follows from that ADR.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: choosing those answers in this story.

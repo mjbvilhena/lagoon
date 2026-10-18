@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The forgotten-passphrase reset delay is decided below, and so is the unlock that reset accepts: the US-37 biometric or device PIN. The passphrase minimum and the memory-floor refusal are decided below. A vault on a phone without secure hardware is decided below. Nothing in this record stays under Decision pending.
+This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. The forgotten-passphrase reset delay is decided below, and so is the unlock that reset accepts: the US-37 biometric or device PIN. The passphrase minimum and the memory-floor refusal are decided below. A vault on a phone without secure hardware is decided below. Nothing in this record is left open.
 
 ## Context
 

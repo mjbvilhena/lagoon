@@ -37,7 +37,7 @@ Proposed. Not approval. None of these files change approved specification, epic,
 | Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Proposed. Needs approval by mjbvilhena. Prerequisite for US-35 implementation. US-35 is not edited. |
 | Threat model | `docs/technical_design/threat-model.md` | Proposed. Needs approval by mjbvilhena. |
 
-UX and the test strategy are not started. Choices marked Decision pending inside an ADR are not accepted with that ADR.
+UX and the test strategy are not started. A Proposed ADR is not accepted by being drafted.
 
 ## Epic map
 
