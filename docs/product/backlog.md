@@ -136,7 +136,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
 - **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
 - **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
-- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0003-gemini-topic-call.md`. Not accepted. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
+- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0003-topic-call.md`. Not accepted. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -163,7 +163,7 @@ Not approval. Needs approval by mjbvilhena. Implementation has not started. The 
 - **Layers** *(Proposed)* `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, `docs/layers/data/LAYER.md`.
 - **ADR-0001** *(Proposed)* Argon2id vault key. The forgotten-passphrase reset accepts the US-37 biometric or device PIN, keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. A cancel keeps items saved on the resetting phone during those 24 hours. Passphrase floor and phones without secure hardware stay Decision pending. Placeholder US-74 points here. `docs/adr/ADR-0001-argon2id-vault-key.md`.
 - **ADR-0002** *(Proposed)* Sync conflicts and deletions. Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
-- **ADR-0003** *(Proposed)* Paid Gemini topic call. Placeholder US-76 points here. `docs/adr/ADR-0003-gemini-topic-call.md`.
+- **ADR-0003** *(Proposed)* Topic call. The recommendation is the xAI Grok API. The Cursor API does not fit. The provider stays Decision pending. The topic backlog when a key is added stays a separate pending choice. Placeholder US-76 points here. `docs/adr/ADR-0003-topic-call.md`.
 - **ADR-0004** *(Proposed)* ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
 - **ADR-0005** *(Proposed)* PDF rendering on API 26–29, isolated process, no PDF password. The definition of password-protected is Decision pending. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
 - **ADR-0006** *(Proposed)* Cipher and container. Prerequisite for US-35 implementation. US-35 is not edited. `docs/adr/ADR-0006-cipher-and-container.md`.

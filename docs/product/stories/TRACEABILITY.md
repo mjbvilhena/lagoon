@@ -14,7 +14,7 @@
 - Upcoming shows only the one reminder or the one expiry.
 - Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - There is no cap on topic suggestions.
-- US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. They are not ready for review. They are not capabilities. Each points at a Proposed ADR and does not gain criteria from it. US-73 → `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. US-74 → `docs/adr/ADR-0001-argon2id-vault-key.md`. US-76 → `docs/adr/ADR-0003-gemini-topic-call.md`. Status of each: Proposed. Needs approval by mjbvilhena.
+- US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. They are not ready for review. They are not capabilities. Each points at a Proposed ADR and does not gain criteria from it. US-73 → `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. US-74 → `docs/adr/ADR-0001-argon2id-vault-key.md`. US-76 → `docs/adr/ADR-0003-topic-call.md`. Status of each: Proposed. Needs approval by mjbvilhena.
 - US-85 is approved. One tap on an image or PDF page opens it full-screen at maximum brightness. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-86 is approved. Changing the passphrase re-encrypts the vault. Security criteria approved by mjbvilhena on 2026-10-18.
 - US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
@@ -31,7 +31,7 @@ Proposed. Not approval. None of these files change approved specification, epic,
 | Data layer | `docs/layers/data/LAYER.md` | Proposed. Needs approval by mjbvilhena. |
 | Vault key | `docs/adr/ADR-0001-argon2id-vault-key.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-74 points here. |
 | Sync conflicts | `docs/adr/ADR-0002-sync-conflicts-and-deletions.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-73 points here. |
-| Topic call | `docs/adr/ADR-0003-gemini-topic-call.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-76 points here. |
+| Topic call | `docs/adr/ADR-0003-topic-call.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-76 points here. |
 | ML Kit metrics | `docs/adr/ADR-0004-ml-kit-telemetry.md` | Proposed. Needs approval by mjbvilhena. |
 | PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Proposed. Needs approval by mjbvilhena. |
 | Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Proposed. Needs approval by mjbvilhena. Prerequisite for US-35 implementation. US-35 is not edited. |
@@ -202,7 +202,7 @@ UX and the test strategy are not started. Choices marked Decision pending inside
 | US-73 | E4 | Spec open question: two edits of one item, and how a deletion propagates. | Placeholder. Not ready for review. Proposed ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not a capability. |
 | US-74 | E8 | Spec open question: how a second device re-creates the key. | Placeholder. Not ready for review. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. No copy of the key is stored anywhere off the phone. Proposed ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. A reset of a forgotten passphrase from a phone that still holds the key is US-86. That reset keeps the Drive copy on the old passphrase for 24 hours. The spec amendment is not approved. Not a capability. |
 | US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. Both notification versions show only "Lagoon reminder". Export waits for US-37. | Traced. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. |
-| US-76 | E11 | Spec open question: provider, credential, and what is sent. | Placeholder. Not ready for review. Proposed ADR: `docs/adr/ADR-0003-gemini-topic-call.md`. Not a capability. |
+| US-76 | E11 | Spec open question: provider, credential, and what is sent. | Placeholder. Not ready for review. Proposed ADR: `docs/adr/ADR-0003-topic-call.md`. Not a capability. |
 | US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
 | US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |

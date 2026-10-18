@@ -67,7 +67,7 @@ Default: any new ML Kit feature (barcode, face, or another recognizer) is out un
 - Domain consultant `vault`. Layer consultants `ui` and `data`.
 - US-07, US-31, US-59.
 - Research input `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
-- ADR-0003, which is a different Google service and does send vault text.
+- ADR-0003, which is the topic call and does send ordinary vault text. It is not ML Kit.
 
 ## Anti-patterns
 

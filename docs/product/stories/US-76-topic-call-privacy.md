@@ -41,7 +41,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Criteria follow from the ADR at the design gate. Sensitive-item exclusion is US-75.
-- Proposed record: `docs/adr/ADR-0003-gemini-topic-call.md`. Status: Proposed. Needs approval by mjbvilhena. This story stays a placeholder. It does not gain acceptance criteria from that record.
+- Proposed record: `docs/adr/ADR-0003-topic-call.md`. Status: Proposed. Needs approval by mjbvilhena. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 

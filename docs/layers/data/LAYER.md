@@ -39,8 +39,8 @@ Where the named capabilities live:
 | Drive API | HTTP via the official client | Scope `drive.appdata` only (US-78) |
 | AlarmManager | import | Inexact `setAndAllowWhileIdle` only (US-77 is Draft; the spec already requires inexact alarms) |
 | ML Kit text-recognition, bundled | import | `com.google.mlkit:text-recognition` after US-07 acceptance (ADR-0004). Datatransport components are named on the US-80 allowlist or removed |
-| Gemini HTTP client | import | The same OkHttp or `HttpURLConnection` stack as link preview. Key in the `x-goog-api-key` header (ADR-0003). No second generative SDK |
-| OkHttp or `HttpURLConnection` | import | Link preview (US-79) and the Gemini HTTP client |
+| Topic HTTP client | import | The same OkHttp or `HttpURLConnection` stack as link preview. Key in the `Authorization: Bearer` header to `https://api.x.ai/v1` (ADR-0003). No second generative SDK, and no Cursor agent SDK |
+| OkHttp or `HttpURLConnection` | import | Link preview (US-79) and the topic HTTP client |
 
 If a dependency is missing from this table, treat it as **disallowed** until a human updates the file.
 

@@ -38,7 +38,7 @@ Rules, if this record is accepted:
 - Personal-note entries are the merged-notes option. An entry is identified by its own timestamp and text. Both sides' entries are kept. The winner's `updatedAt` does not delete a note that exists only on the other side.
 - Topics are a union by topic id. A recorded removal of a topic stays removed. A suggestion is not confirmed by the merge. Suggestions are a union by name. A recorded decline of a name stays declined, and an older suggestion of that name does not reappear. Decline behaviour in the product is US-46, which is Draft. This bullet is only the merge.
 - Check-ins stay per install. They are not last-writer-wins. Each records file carries that install's check-in. US-55 reads those check-ins: newest posts, a sole signed-in install that holds the key always posts, and equal check-ins are broken by the lower install id.
-- Settings. The Gemini API key, the billed-project confirmation, and ML Kit acceptance stay on the install that stored them. They are not in the synced records. This record does not sync the Gemini key. Other non-secret settings (theme, reminder default, the topic switch, unmetered flags) follow the later `updatedAt`, with the same install-id tie-break.
+- Settings. The topic API key and ML Kit acceptance stay on the install that stored them. They are not in the synced records. This record does not sync the topic key. Other non-secret settings (theme, reminder default, the topic switch, unmetered flags) follow the later `updatedAt`, with the same install-id tie-break.
 - Attachments that exist on either side are both kept. A removal is a record (attachment id, timestamp, install id), not an in-place delete of the immutable file. An older records file does not put a removed attachment back. The file itself becomes eligible for garbage collection with the tombstone rules below.
 - Undo. US-13 undo, before that window ends, writes nothing remote and does not start trash.
 - Trash. When the undo window ends, the item enters trash on this install only, for 30 days. Thirty days is 30 × 24 hours from the instant it entered trash, on this phone's clock. Trash is not uploaded. No tombstone is written. The records file this install uploads still carries the item as a live item, so another install does not see a delete. On this phone the item is absent from search and its reminders are paused (US-66). The other phone still has the live item. An id that is only in trash here, with no tombstone, is still a one-sided live item on the other phone and is kept (US-20).
@@ -66,7 +66,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 ## Consequences
 
 - **Positive.** One phone cannot replace the other phone's file. One-sided items still merge. Tags and attachments from both sides survive unless a removal was recorded. A failed listing does not wipe the phone.
-- **Negative / accepted trade-offs.** Each install stores a full snapshot, so Drive holds one current file per install plus immutable attachments. Clocks can still be wrong, and an equal timestamp is the only place the install id steps in. For 30 days the other phone still shows an item he deleted here. After the tombstone, a later edit does not bring the item back, except an edit that itself happened during the trash window and arrives late. Tombstones then live at least 90 days, and after garbage collection an old zip can resurrect an item. The Gemini key does not travel with the vault; a new phone needs it typed again. A later edit on another phone can clear the sensitive mark. That is accepted. There is no extra control.
+- **Negative / accepted trade-offs.** Each install stores a full snapshot, so Drive holds one current file per install plus immutable attachments. Clocks can still be wrong, and an equal timestamp is the only place the install id steps in. For 30 days the other phone still shows an item he deleted here. After the tombstone, a later edit does not bring the item back, except an edit that itself happened during the trash window and arrives late. Tombstones then live at least 90 days, and after garbage collection an old zip can resurrect an item. The topic API key does not travel with the vault; a new phone needs it typed again. A later edit on another phone can clear the sensitive mark. That is accepted. There is no extra control.
 - **Follow-ups.** US-73 stays a placeholder until this record is accepted and criteria are added in a later edit. US-66 carries the trash behaviour for story review. He is the approver. The sensitive-mark rule and the delete rule above are decided. Accepting this whole record is still open.
 
 ## Compliance
@@ -76,7 +76,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 - [ ] Equal `updatedAt` values resolve to the lower install id by plain string comparison
 - [ ] Tags are the union minus recorded removals, and attachments present on either side are kept until a removal is recorded
 - [ ] Check-ins are not overwritten by the other install's file
-- [ ] The Gemini API key, billed-project confirmation, and ML Kit acceptance are absent from the synced records
+- [ ] The topic API key and ML Kit acceptance are absent from the synced records
 - [ ] For 30 days after trash starts, the upload contains no tombstone for that id, and the other install still has the item
 - [ ] A restore during those 30 days, or another install's `updatedAt` later than the trash instant, brings the item back and does not write a tombstone
 - [ ] When the 30 days end with the item still in trash, a tombstone is written and the other install drops the item
@@ -96,7 +96,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 - A shared file with a hopeful if-match.
 - Treating an empty listing as a delete.
 - Resolving a conflict by forking a new id.
-- Syncing the Gemini API key because the rest of Settings syncs.
+- Syncing the topic API key because the rest of Settings syncs.
 - Using Drive's revision list as the item merge.
 - Keeping the sensitive mark sticky across phones.
 - Treating a Proposed merge rule as implemented.
