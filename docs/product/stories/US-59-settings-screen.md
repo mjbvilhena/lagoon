@@ -58,6 +58,12 @@ Use one Settings screen.
   - Then Settings says the key is not copied from the other phone and must be typed again
   - And Settings shows how many topic calls this install has made this month
   - And that count is not a cap and is not synced
+- **Scenario: no passphrase recall check** — Should
+  - Proposed amendment. Needs approval by mjbvilhena.
+  - Given he opens Settings
+  - When the screen is shown
+  - Then there is no "Check my passphrase" control
+  - And the app shows no periodic reminder to re-enter the passphrase
 
 ## Analytics and observability (optional)
 

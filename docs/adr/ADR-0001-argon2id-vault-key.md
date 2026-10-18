@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Decided by mjbvilhena; this record is Proposed until he approves it. Those decisions are the forgotten-passphrase reset, the US-37 biometric or device PIN that reset accepts, the passphrase length, the memory-floor refusal, and a vault on a phone without secure hardware. The passphrase recall check is listed under Decision pending. It is not one of those decisions.
+This record answers the US-74 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Decided by mjbvilhena; this record is Proposed until he approves it. Those decisions are the forgotten-passphrase reset, the US-37 biometric or device PIN that reset accepts, the passphrase length, the memory-floor refusal, a vault on a phone without secure hardware, and no passphrase recall check.
 
 ## Context
 
@@ -51,24 +51,11 @@ Rules, if this record is accepted:
 - Cancelling. Any other install that holds the old vault key may cancel, once. A second cancel does nothing. The cancel is a record under the old key in that install's records file. The resetting phone reads those files before it re-keys Drive. If a cancel is present, Drive is not re-keyed and stays on the old passphrase. The resetting phone does not cancel its own reset. Items saved on the resetting phone during the 24 hours are kept. Before the new local snapshot is discarded, that phone copies them into a restored vault under the old passphrase. An item that exists only in the new local vault is copied in whole. An item that is also in the old Drive copy, and was edited on this phone after the local re-encrypt, is merged onto the restored vault by the ordinary field rules (ADR-0002): the later `updatedAt` wins, and a tie goes to the lower install id. Attachments saved with those items are copied with them. A delete made only in the new local snapshot is not kept: the restored vault keeps the old Drive copy of that item. The restored file for this install is written at a generation higher than the new-key copy being discarded. The new local snapshot is discarded only after that restored file is readable under the old passphrase. The new passphrase opens nothing. The kept items open with the old passphrase.
 - Crash safety (US-86) still holds. At every step the phone vault is wholly under the old passphrase or wholly under the new one, and the Drive copy is wholly under the old passphrase or wholly under the new one. Neither file is mixed. During the 24 hours the phone is under the new passphrase, after its local re-encrypt has completed, and Drive is under the old one. A crash during the local re-encrypt leaves the phone wholly old or wholly new, and leaves Drive old. Re-keying Drive writes a complete new generation and replaces the old Drive generation only after that write finishes. A crash there leaves Drive wholly old or wholly new, and leaves the phone new. A cancel writes the kept items into a complete generation under the old passphrase and discards the new local generation only after that generation is readable under the old passphrase. A crash there leaves the phone wholly new, with the reset still pending, or wholly old, with the kept items inside the old vault and the cancel finished, and leaves Drive old. The resetting phone keeps a local wrap of the old key until Drive is re-keyed or the cancel finishes, so it can still read the old Drive copy and the cancel. That wrap stays on the phone. It is deleted when the wait ends or the cancel finishes. Another install does not overwrite the Drive copy.
 - Drive keeps a purgeable revision for about 30 days, and purges it sooner once a file has 100 revisions that are not marked Keep Forever and a new revision is uploaded. Only a revision marked Keep Forever is kept past that purge, and only a Keep Forever revision of a blob file can be downloaded through the API. This app does not set Keep Forever, and it does not delete revisions. An old revision is therefore not downloadable through the API. A zip he keeps is outside that purge and can still open with the old passphrase. US-86's sentence that old revisions may open with the old passphrase stays as written. Source: [Manage revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+- There is no passphrase recall check. Settings has no "Check my passphrase" control. There is no periodic reminder to re-enter the passphrase. Decided by mjbvilhena; this record is Proposed until he approves it. The warning when no phone holds the key remains the control. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. The app offers no aid to remember the passphrase.
 - Proposed, and not one of the decisions above. While a forgotten-passphrase reset is pending, "Disconnect and delete Lagoon data from Drive" (US-78) requires the current passphrase. The US-37 prompt alone is not enough on that path. A thief who knows the PIN could otherwise delete the Drive data and skip the wait. The story wording is a proposed amendment on US-78.
 - A crash leaves the phone vault and the Drive copy each readable under exactly one passphrase (US-86). On a normal passphrase change, the other install asks for the new passphrase and does not overwrite the re-encrypted vault. On a forgotten-passphrase reset, the other install keeps the old passphrase until the Drive copy is re-keyed, and during the 24 hours it shows the notice instead of asking for the new passphrase.
 
 Default for a new case: if a parameter is missing or outside the floor and ceiling, refuse to derive.
-
-## Decision pending: mjbvilhena
-
-This is not decided.
-
-### Passphrase recall check
-
-Current recommendation: none. The warning when no phone holds the key is the control. A recall prompt is not a second factor.
-
-| Option | Trade-off |
-| --- | --- |
-| None | Recommendation. He is not drilled. A forgotten passphrase on a phone that holds no key still loses the content |
-| Optional, in Settings | He can test himself when he chooses. Nothing prompts him, so he may never use it |
-| Optional, with occasional prompts | He practises. A prompt does not protect a stolen phone, and it interrupts ordinary use |
 
 ## Alternatives considered
 
@@ -85,11 +72,13 @@ Current recommendation: none. The warning when no phone holds the key is the con
 | Lower memory, iterations, or parallelism when the phone cannot meet the memory floor | That phone could still set up a vault | The phone refuses to set up a vault. The parameters are not lowered |
 | Refuse a vault when the key is not hardware-backed | Matches the US-35 `KeyInfo` scenario on every phone | A phone without secure hardware can still create a vault. He accepts the warning first. The key on that phone is not hardware-backed |
 | Keep the derived key only in memory, and ask for the passphrase on every launch | Nothing software-wrapped sits at rest | Sync and reminders after the first unlock since boot must decrypt without the passphrase. The key stays in the Keystore, software-backed when secure hardware is missing |
+| A "Check my passphrase" control in Settings | He could test the passphrase when he chooses | There is no passphrase recall check. Settings has no such control. The warning when no phone holds the key is the control |
+| A periodic reminder to re-enter the passphrase | He would practise | There is no periodic reminder. A reminder is not a second factor, and the app offers no aid to remember the passphrase |
 
 ## Consequences
 
 - **Positive.** A second device needs the passphrase and the clear header, not a key file. The parameters have a floor and a ceiling a test can refuse. A phone that cannot meet the memory floor does not get a weaker vault. A passphrase outside 12 to 128 Unicode code points after NFC, or one on the bundled common-password list, never reaches the KDF. Salt and parameter tampering fails the container tag. A rolled-back snapshot of one phone's file carries an older generation for that file. A wrong guess on the phone is delayed, and the delay stays at 32 seconds instead of ending. A forgotten-passphrase reset does not re-key Drive until 24 hours have passed and no other phone that holds the key has cancelled. During that wait the resetting phone does not upload. When Drive is re-keyed, every current file, including another phone's file and a dead phone's file, is under the new key. A phone without secure hardware can still hold a vault after he accepts the warning.
-- **Negative / accepted trade-offs.** 64 MiB and three iterations will be slow on the named API 26 phone. That cost is the point of a memory-hard KDF. A phone that cannot allocate the memory floor cannot set up a vault. Parallelism 1 is below RFC 9106's four lanes, for the reason stated above. Offline guessing against a Drive copy or a zip does not wait 32 seconds. A 12-character passphrase of ordinary words can still be guessed offline. Old revisions remain decryptable with the old passphrase until Drive purges them, and a zip he keeps remains decryptable after that. During the 24-hour wait the resetting phone's vault is already under the new passphrase. A sole phone has no other install to show the notice, so nothing can cancel unless some install derives the old key during the wait. A known PIN still opens sensitive items on the stolen phone, because the reset accepts that PIN. On a phone without secure hardware the key is not hardware-backed, and someone with that phone could extract it. He is warned before setup, and the same warning stays in Settings.
+- **Negative / accepted trade-offs.** 64 MiB and three iterations will be slow on the named API 26 phone. That cost is the point of a memory-hard KDF. A phone that cannot allocate the memory floor cannot set up a vault. Parallelism 1 is below RFC 9106's four lanes, for the reason stated above. Offline guessing against a Drive copy or a zip does not wait 32 seconds. A 12-character passphrase of ordinary words can still be guessed offline. Old revisions remain decryptable with the old passphrase until Drive purges them, and a zip he keeps remains decryptable after that. During the 24-hour wait the resetting phone's vault is already under the new passphrase. A sole phone has no other install to show the notice, so nothing can cancel unless some install derives the old key during the wait. A known PIN still opens sensitive items on the stolen phone, because the reset accepts that PIN. On a phone without secure hardware the key is not hardware-backed, and someone with that phone could extract it. He is warned before setup, and the same warning stays in Settings. There is no passphrase recall check, no "Check my passphrase" control, and no periodic reminder. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. The app offers no aid to remember the passphrase. That is accepted. Decided by mjbvilhena; this record is Proposed until he approves it.
 - **Follow-ups.** ADR-0006 names the ciphers that use this 32-byte key. US-57 still has to show search and encryption together. US-74 stays a placeholder until mjbvilhena accepts this record and a later story edit adds criteria. He is the approver.
 
 ## Compliance
@@ -108,6 +97,7 @@ Current recommendation: none. The warning when no phone holds the key is the con
 - [ ] A passphrase shorter than 12 Unicode code points after NFC, longer than 128, or on the bundled common-password list, is refused before the KDF. There is no strength meter
 - [ ] A phone whose native allocator cannot obtain 65536 KiB refuses setup and refuses re-creating a vault from Drive, and does not lower memory, iterations, or parallelism
 - [ ] A phone without the hardware level can create a vault only after he accepts the warning. Declining deletes the software entry and writes no vault. The warning stays in Settings and is not a second gate
+- [ ] Settings has no "Check my passphrase" control, and the app shows no periodic reminder to re-enter the passphrase
 - [ ] PBKDF2, scrypt, a pure-Java Argon2, and a Drive-stored wrapped data key are forbidden
 
 ## Related
@@ -132,6 +122,7 @@ Current recommendation: none. The warning when no phone holds the key is the con
 - Refusing to create a vault because the key is not hardware-backed.
 - Creating a software-backed vault without the accepted warning.
 - Asking for the passphrase on every launch because secure hardware is missing.
+- A "Check my passphrase" control, or a periodic reminder to re-enter the passphrase.
 - Dropping items saved on the resetting phone during the 24 hours when a cancel restores the old vault.
 - Re-keying Drive as soon as a forgotten-passphrase reset finishes on the phone, or starting the 24 hours before the marker is on Drive.
 - Treating this Proposed record as permission to implement.
