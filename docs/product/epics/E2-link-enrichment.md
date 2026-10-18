@@ -39,12 +39,12 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 
 - Depends on E1 to have a link item to enrich.
 - Many pages will return little or no readable text. That is an expected miss, not a failed save.
-- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33). That shape is in the specification. Stories stay Draft. There is no manual-backup size warning.
+- Preview images and snapshots are stored files and are part of sync and the zip. The snapshot cap is about 10 MB (US-33). That shape is in the specification. US-79 is approved. The other stories in this epic stay Draft. There is no manual-backup size warning.
 
 ## Open Questions
 
 - OCR is in v1 and lives in E7. This epic does not perform it.
-- Snapshot shape is the US-33 rule in the specification: a sanitised readable archive, not MHTML in v1. Stories stay Draft.
+- Snapshot shape is the US-33 rule in the specification: a sanitised readable archive, not MHTML in v1. US-79 is approved. The other stories in this epic stay Draft.
 - [ ] No question was opened here about which HTML fields count as description. Technical design should say which signals are tried, without inventing a success rate.
 
 ## Draft stories
@@ -53,4 +53,4 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 - US-09 Keep the URL when enrichment does not run
 - US-33 Keep an offline snapshot of a saved page
 - US-70 See what is not ready for offline. Could.
-- US-79 Skip unsafe link previews.
+- US-79 Skip unsafe link previews. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

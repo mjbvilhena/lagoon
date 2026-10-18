@@ -66,9 +66,9 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Draft stories
 
-These stay Draft. Paths are under `docs/product/stories/`.
+A story stays Draft unless its line says Approved. Paths are under `docs/product/stories/`.
 
-- US-41 Extract topics when an item is saved
+- US-41 Extract topics when an item is saved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-42 Link an item to a topic the vault already has
 - US-43 Confirm a topic before it is created
 - US-44 Queue topic processing while offline

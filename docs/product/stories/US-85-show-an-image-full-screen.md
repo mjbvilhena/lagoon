@@ -14,7 +14,7 @@ Show an image or PDF page full-screen and bright.
 
 **As a** person named Miguel
 **I want** to open an image or a PDF page full-screen at maximum brightness
-**So that** I can read an image or PDF page from the phone without another app
+**So that** I can show a code, voucher, or boarding pass from the phone without another app
 
 ## Background
 
@@ -25,7 +25,7 @@ Show an image or PDF page full-screen and bright.
 
 ## Acceptance criteria
 
-- **Scenario: full screen** — Should
+- **Scenario: full screen** — Must if the story is built
   - Given an ordinary item has an image or a PDF page
   - When he taps that image or PDF page once
   - Then it opens full-screen
@@ -53,14 +53,25 @@ Show an image or PDF page full-screen and bright.
 - **Scenario: a sensitive item** — Must if the story is built
   - Given the image or PDF page is on a sensitive item and he has not completed the US-37 unlock
   - When he taps it
-  - Then the full-screen view does not open
-  - And after the US-37 unlock, the same tap opens it
+  - Then the US-37 prompt is shown first
+  - And on success the image or PDF page opens full-screen
+  - And on cancel nothing is shown
   - And `FLAG_SECURE` applies for that view, as US-75 says
-- **Scenario: nothing written in the clear** — Should
+- **Scenario: swipe to the next or previous page or image** — Should
+  - Given the full-screen view is open on a PDF page or an image attachment, for example a family boarding-pass PDF with one page per passenger
+  - When he swipes to the next or the previous
+  - Then he moves to the next or previous PDF page, or to the item's next or previous image attachment
+  - And he does not leave the full-screen view
+  - And brightness and keep-screen-on stay in effect
+- **Scenario: a password-protected PDF** — Could
+  - Given the PDF is password-protected
+  - When he opens it full-screen
+  - Then it follows US-04
+- **Scenario: nothing written in the clear** — Must if the story is built
   - Given he opens an image or a PDF page full-screen
   - When the page is rendered
   - Then no plaintext decoded image or rendered page is written to disk
-- **Scenario: close** — Should
+- **Scenario: close** — Must if the story is built
   - Given the full-screen view is open
   - When he uses the Close control
   - Then the view closes and brightness goes back to normal
@@ -79,6 +90,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - The E1 wording for this story is approved. Amendment approved by mjbvilhena on 2026-10-18. This story stays Draft.
+- Android `PdfRenderer` needs a file descriptor on `minSdk` 26–30, so rendering a decrypted PDF without a plaintext file may need a bundled renderer or `memfd`. That choice is decided at the design gate. It also affects US-04 and US-11.
 
 ## Implementation notes
 

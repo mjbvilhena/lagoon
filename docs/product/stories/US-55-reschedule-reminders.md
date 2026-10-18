@@ -19,6 +19,7 @@ Reschedule reminders after a restart or a clock change.
 ## Background
 
 - Alarms stay inexact. Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
+- A new install needs the passphrase to re-create the key before the vault and its reminders are available (US-35).
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: exact alarms (US-77).
 
@@ -32,6 +33,19 @@ Reschedule reminders after a restart or a clock change.
   - Given a reminder is set for 09:00
   - When the phone's time zone changes
   - Then that reminder fires at 09:00 in the new local zone
+- **Scenario: the new zone has already passed that time** — Must
+  - Given a reminder is set for 09:00 today
+  - When the phone's time zone changes and 09:00 today has already passed in the new zone
+  - Then that reminder fires once, as soon as possible
+  - And it is not skipped and it is not fired twice
+- **Scenario: a daylight-saving gap** — Must
+  - Given a reminder time falls in a gap when the clock springs forward
+  - When that local day arrives
+  - Then the reminder fires at the first valid time after the gap
+- **Scenario: a repeated hour** — Must
+  - Given a reminder time falls in an hour that happens twice when the clock falls back
+  - When that local day arrives
+  - Then the reminder fires once
 - **Scenario: app start** — Must
   - Given notification permission may have changed while the app was closed
   - When he opens the app
@@ -58,6 +72,10 @@ Reschedule reminders after a restart or a clock change.
   - Then that install does not post from its local vault
   - And the reason is the release: sign-out writes the US-55 release marker before the US-78 revoke, so the duty has left that install
   - And an install that has never signed in still posts, because it has no release marker and there is no other install to take the duty
+- **Scenario: a new install** — Must
+  - Given a new install has not entered the passphrase
+  - When a reminder time arrives
+  - Then reminders are not available until the passphrase re-creates the key
 - **Scenario: sign-out warning** — Must
   - Given this phone is the only signed-in install
   - When he signs out

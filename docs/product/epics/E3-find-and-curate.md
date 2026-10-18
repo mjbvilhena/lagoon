@@ -50,11 +50,11 @@ Miguel, looking back through what he kept.
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
 - Ranking is the US-15 rule in the specification: weighted BM25, including OCR text. US-15 and US-50 are approved. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
-- Rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. Stories stay Draft.
+- Rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. US-15, US-50, and US-64 are approved. The other stories in this epic stay Draft.
 
 ## Open Questions
 
-- Tag rename-and-merge, the inbox, and date sort are in the specification. US-15 and US-50 are approved. The other stories in this epic stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
+- Tag rename-and-merge, the inbox, and date sort are in the specification. US-15, US-50, and US-64 are approved. The other stories in this epic stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 
 ## Draft stories
 
@@ -70,6 +70,6 @@ Miguel, looking back through what he kept.
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
 - US-57 Prove search on an encrypted database
-- US-64 Share or open an item in another app. Should.
+- US-64 Share or open an item in another app. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-66 Keep a trash beyond undo. Should.
 - US-71 Triage the inbox in a batch. Could.

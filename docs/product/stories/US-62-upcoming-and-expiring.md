@@ -1,6 +1,7 @@
 # US-62 See what is coming due
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E9.
 

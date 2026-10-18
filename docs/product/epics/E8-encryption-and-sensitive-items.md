@@ -45,17 +45,18 @@ Miguel, including on a second device that should see the same vault and not a pl
 - Depends on E4 for the sync path. Sync of readable data on a second device depends on how keys move.
 - Threat model (`sdlc-threat-modeler`) is required before implementation. Not started.
 - Key transport is US-74. Criteria follow from the ADR at the design gate. App lock is optional, with a device-PIN fallback. The vault key does not require user authentication.
-- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
+- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. Proposed amendment. Needs approval by mjbvilhena. 'Stored on Drive or anywhere else' changes to 'stored anywhere off the phone.' On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 
 ## Open Questions
 
-- [ ] How keys reach a new or second device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored on Drive or anywhere else.
+- [ ] How keys reach a new or second device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored on Drive or anywhere else. Proposed amendment. Needs approval by mjbvilhena. 'Stored on Drive or anywhere else' changes to 'stored anywhere off the phone.'
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 
 ## Draft stories
 
-- US-35 Encrypt the vault at rest
+- US-35 Encrypt the vault at rest. Draft.
 - US-36 Sync only ciphertext
 - US-37 Lock sensitive items with a biometric
 - US-74 Decide how the vault key reaches another device. Placeholder. Not ready for review. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase.
-- US-75 Limit what a sensitive item reveals.
+- US-75 Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-86 Change the passphrase. Should. Draft. Proposed security criteria. Needs approval by mjbvilhena.

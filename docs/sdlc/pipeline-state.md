@@ -12,7 +12,7 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 | Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. The passphrase amendment is included in that approval. |
 | Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. The E1 full-screen sentence for US-85 is approved. The passphrase amendment is included in that approval. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
 | Story refine | `docs/product/stories/` and `INDEX.md` | US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
-| Story approval | US-15, US-31, US-34, US-40, US-50 | Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft. US-73, US-74, and US-76 are placeholders and are not ready for review. |
+| Story approval | US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80 | Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft. US-73, US-74, and US-76 are placeholders and are not ready for review. US-86 is Draft. Proposed security criteria. Needs approval by mjbvilhena. |
 | Technical design / ADRs | No ADR | Not started. ML Kit research input: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | `docs/technical_design/2026-10-17-proposed-threat-note.md` | Not started as a gate. The note is unapproved hypotheses. It does not open the design band. |
@@ -22,7 +22,7 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 
 ## Stop
 
-**Epic gate passed.** US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. Implementation has not started.
+**Epic gate passed.** US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft. Implementation has not started.
 
 The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. The Protect master ruleset requires those seven checks, and the branch must be up to date. There are no bypass actors. The Android jobs no-op until a Gradle project exists.
 
@@ -50,7 +50,7 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 
 ## History
 
-The specification and epics E1–E11 were approved on 2026-10-17. The specification amendment of 2026-10-18 is approved. Amendments to E1, E3, E4, E8, E9, and E11 were approved on 2026-10-18. US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft. US-85 is Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. Amendment approved by mjbvilhena on 2026-10-18 for the passphrase-derived vault key. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
+The specification and epics E1–E11 were approved on 2026-10-17. The specification amendment of 2026-10-18 is approved. Amendments to E1, E3, E4, E8, E9, and E11 were approved on 2026-10-18. US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. US-35 and US-81 stay Draft. Proposed additions on US-35, US-81, and US-86 need approval by mjbvilhena. US-85 is Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. US-86 is Draft. Amendment approved by mjbvilhena on 2026-10-18 for the passphrase-derived vault key. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
 
 ## Memory
 

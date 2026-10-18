@@ -1,7 +1,7 @@
 # User story index
 
 > Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
-> US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft.
+> US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. The other stories stay Draft.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -47,7 +47,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-38 | File new captures from an Untagged inbox. | E3 | Must | `docs/product/stories/US-38-untagged-inbox.md` | Draft |
 | US-39 | Sort and filter the list by when it was saved. | E3 | Must | `docs/product/stories/US-39-sort-and-filter-by-date.md` | Draft |
 | US-40 | Fill an empty title from the page or the file. | E1 | Must | `docs/product/stories/US-40-autofill-title.md` | Approved |
-| US-41 | Extract topics when an item is saved. | E11 | Must | `docs/product/stories/US-41-extract-topics-on-save.md` | Draft |
+| US-41 | Extract topics when an item is saved. | E11 | Must | `docs/product/stories/US-41-extract-topics-on-save.md` | Approved |
 | US-42 | Link an item to a topic the vault already has. | E11 | Must | `docs/product/stories/US-42-link-an-existing-topic.md` | Draft |
 | US-43 | Confirm a topic before it is created. | E11 | Must | `docs/product/stories/US-43-confirm-a-new-topic.md` | Draft |
 | US-44 | Queue topic processing while offline. | E11 | Must | `docs/product/stories/US-44-queue-topics-offline.md` | Draft |
@@ -67,10 +67,10 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-58 | Run enrichment, snapshot, OCR, and topics in that order. | E1 | Must | `docs/product/stories/US-58-background-pipeline.md` | Draft |
 | US-59 | Use one Settings screen. | E4 | Must | `docs/product/stories/US-59-settings-screen.md` | Draft |
 | US-60 | Browse topics and pending suggestions. | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
-| US-61 | Filter or search by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Draft |
-| US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Draft |
-| US-64 | Share or open an item in another app. | E3 | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Draft |
-| US-65 | Add a photo from the camera. | E1 | Should | `docs/product/stories/US-65-in-app-camera.md` | Draft |
+| US-61 | Filter or search by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Approved |
+| US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Approved |
+| US-64 | Share or open an item in another app. | E3 | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Approved |
+| US-65 | Add a photo from the camera. | E1 | Should | `docs/product/stories/US-65-in-app-camera.md` | Approved |
 | US-66 | Keep a trash beyond undo. | E3 | Should | `docs/product/stories/US-66-trash.md` | Draft |
 | US-67 | Notice a duplicate image or PDF. | E1 | Could | `docs/product/stories/US-67-duplicate-files.md` | Draft |
 | US-70 | See what is not ready for offline. | E2 | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
@@ -78,23 +78,24 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-72 | Score whether topics are useful. | E11 | Could | `docs/product/stories/US-72-topic-usefulness.md` | Draft |
 | US-73 | Decide sync conflicts and deletions. | E4 | Not set | `docs/product/stories/US-73-sync-conflicts-and-deletions.md` | Placeholder |
 | US-74 | Decide how the vault key reaches another device. | E8 | Not set | `docs/product/stories/US-74-key-transport.md` | Placeholder |
-| US-75 | Limit what a sensitive item reveals. | E8 | Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Draft |
+| US-75 | Limit what a sensitive item reveals. | E8 | Must | `docs/product/stories/US-75-sensitive-item-handling.md` | Approved |
 | US-76 | Decide the topic call's provider, credential, and payload. | E11 | Not set | `docs/product/stories/US-76-topic-call-privacy.md` | Placeholder |
 | US-77 | Keep reminders on inexact alarms. | E9 | Must | `docs/product/stories/US-77-exact-alarms.md` | Draft |
-| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Draft |
-| US-79 | Skip unsafe link previews. | E2 | Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
-| US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Draft |
+| US-78 | Keep Drive to app data, and sign out without deleting the phone. | E4 | Must | `docs/product/stories/US-78-drive-scope-and-sign-out.md` | Approved |
+| US-79 | Skip unsafe link previews. | E2 | Must | `docs/product/stories/US-79-link-preview-skipping.md` | Approved |
+| US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Approved |
 | US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
 | US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Draft |
+| US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Draft |
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-40, and US-50 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
+US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
 
-Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft.
+Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. US-35 and US-81 stay Draft. Proposed additions on US-35, US-81, and US-86 need approval by mjbvilhena.
 
 Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. Every other story with Given/When/Then passes artefact shape only. Implementation is not Done.
 
-US-61 is a Should in epic E1. The story stays Draft.
+US-61 is a Should in epic E1. The story is approved. US-86 stays Draft.
 
 A compact review list is `docs/product/stories/REVIEW-PACK.md`.

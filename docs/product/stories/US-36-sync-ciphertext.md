@@ -21,9 +21,14 @@ Sync only ciphertext.
 - Everything synced is client-side ciphertext. The zip (US-21) is encrypted with the vault key.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: key transport (US-74). What a sensitive item reveals in an export is US-75. The topic call is not a Drive upload (US-41).
+- A new install needs the passphrase to re-create the key before the vault, and its reminders, are available (US-35, US-55).
 
 ## Acceptance criteria
 
+- **Scenario: a new install** — Must
+  - Given a new install has the Drive ciphertext and has not entered the passphrase
+  - When he opens the app
+  - Then the vault is not available until the passphrase re-creates the key
 - **Scenario: the upload is ciphertext** — Must
   - Given a seeded sentinel is in an item
   - When the sync payload is built

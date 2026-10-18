@@ -57,7 +57,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 ## Open Questions
 
 - One tap, then a non-blocking chip row, title auto-fill, inbox, and date sort are in the specification. See US-28, US-38, US-39, and US-40. Edit later is US-12. US-40 is approved. The other stories in this epic stay Draft unless a line below says Approved.
-- The name is Lagoon. The application id is `com.mjbvilhena.lagoon`. They do not block saving. Play Store and trademark checks for Lagoon were not done. Stories stay Draft.
+- The name is Lagoon. The application id is `com.mjbvilhena.lagoon`. They do not block saving. Play Store and trademark checks for Lagoon were not done. A story stays Draft unless its line says Approved.
 
 ## Draft stories
 
@@ -75,7 +75,7 @@ Paths are under `docs/product/stories/`. A story stays Draft unless its line say
 - US-40 Fill the title from the page or the file. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-49 Update a link that was saved before, and undo that update.
 - US-58 Run enrichment, snapshot, OCR, and topics in that order
-- US-61 Filter or search by where an item came from. Should.
-- US-65 Add a photo from the system camera. Should.
+- US-61 Filter or search by where an item came from. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-65 Add a photo from the system camera. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-67 Notice a duplicate image or PDF. Could.
 - US-85 Show an image or PDF page full-screen and bright. Should. Draft.
