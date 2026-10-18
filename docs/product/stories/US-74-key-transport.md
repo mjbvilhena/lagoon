@@ -18,7 +18,7 @@ Decide how the vault key reaches another device.
 
 ## Background
 
-- Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. 'Stored on Drive or anywhere else' changes to 'stored anywhere off the phone.' Forgetting the passphrase and losing the device still means the content is lost. The exact method, parameters, and where the non-secret salt lives are settled in the ADR at the design gate.
+- Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. Forgetting the passphrase and losing the device still means the content is lost. The exact method, parameters, and where the non-secret salt lives are settled in the ADR at the design gate.
 - The zip is encrypted with the vault key (US-21). Criteria follow from the ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: inventing a Google-derived key. Choosing the derivation method, the parameters, or where the non-secret salt lives.

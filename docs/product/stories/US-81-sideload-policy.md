@@ -38,7 +38,7 @@ Publish a sideload signing policy.
   - Given an installed release build with a vault
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
-  - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch destroys the Keystore key, so the vault and every zip become unreadable. Uninstall is not a way to fix or upgrade
+  - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch removes that phone's key copy. The Drive copy and zips stay readable with the passphrase. Content is lost only if the passphrase is forgotten and no phone still holds the key. Uninstall is not a way to fix or upgrade. Proposed security criterion. Needs approval by mjbvilhena.
 - **Scenario: uninstall and the passphrase** — Must
   - Given the vault key was derived from his passphrase
   - When he uninstalls Lagoon
