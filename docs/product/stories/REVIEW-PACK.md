@@ -3,7 +3,7 @@
 > **Approval status: Draft. Not approved.**
 > Listing a story here is not a sign-off.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
 
 ## Requirements
 

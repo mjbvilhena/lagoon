@@ -1,7 +1,7 @@
 # User story index
 
 > Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
-> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved.
+> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -71,7 +71,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Approved |
 | US-64 | Share or open an item in another app. | E3 | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Approved |
 | US-65 | Add a photo from the camera. | E1 | Should | `docs/product/stories/US-65-in-app-camera.md` | Approved |
-| US-66 | Keep a trash beyond undo. | E3 | Should | `docs/product/stories/US-66-trash.md` | Proposed for story review |
+| US-66 | Keep a trash beyond undo. | E3 | Must | `docs/product/stories/US-66-trash.md` | Proposed for story review |
 | US-67 | Notice a duplicate image or PDF. | E1 | Could | `docs/product/stories/US-67-duplicate-files.md` | Draft |
 | US-70 | See what is not ready for offline. | E2 | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
 | US-71 | Triage the inbox in a batch. | E3 | Could | `docs/product/stories/US-71-inbox-multi-select.md` | Draft |
@@ -90,7 +90,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 are approved. Amendment approved by mjbvilhena on 2026-10-18.
 

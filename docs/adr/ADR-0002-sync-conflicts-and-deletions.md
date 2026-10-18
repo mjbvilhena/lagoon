@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-73 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Decided by mjbvilhena; this record is Proposed until he approves it. Those decisions are the sensitive mark, the synced in-trash field, and retiring a lost phone only through "Forget this phone". Whether US-66 is Must or Should is under Decision pending.
+This record answers the US-73 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Decided by mjbvilhena; this record is Proposed until he approves it. Those decisions are the sensitive mark, the synced in-trash field, retiring a lost phone only through "Forget this phone", and US-66 as Must for v1. v1 does not ship without trash.
 
 ## Context
 
@@ -24,7 +24,7 @@ Doing nothing lets the last phone to upload replace the other phone's vault.
 
 Recommended option: each install writes only its own records file, as immutable generations of a full snapshot. Attachments are separate immutable files. Each install downloads the other installs' files and merges them locally. Scalar fields use the later `updatedAt`, and an equal `updatedAt` is broken by the lower install id. Tags are a union unless a removal is recorded. Personal-note entries from both sides are kept.
 
-The sensitive mark is not sticky across phones. It merges like any other scalar field. Decided by mjbvilhena; this record is Proposed until he approves it. The in-trash state syncs like a field, with later-edit-wins. On every phone a trashed item is hidden and its reminders are silenced, and he can restore it from any phone. A later content edit brings it back. The tombstone, which is the permanent delete, spreads only after 30 days. Decided by mjbvilhena; this record is Proposed until he approves it. A lost phone's Drive file is retired only through "Forget this phone", never automatically. Decided by mjbvilhena; this record is Proposed until he approves it.
+The sensitive mark is not sticky across phones. It merges like any other scalar field. Decided by mjbvilhena; this record is Proposed until he approves it. The in-trash state syncs like a field, with later-edit-wins. On every phone a trashed item is hidden and its reminders are silenced, and he can restore it from any phone. A later content edit brings it back. The tombstone, which is the permanent delete, spreads only after 30 days. US-66 is Must for v1. v1 does not ship without it, so a delete does not become a tombstone by skipping trash. Decided by mjbvilhena; this record is Proposed until he approves it. A lost phone's Drive file is retired only through "Forget this phone", never automatically. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 Rules, if this record is accepted:
 
@@ -46,7 +46,7 @@ Rules, if this record is accepted:
 - Attachments that exist on either side are both kept. A removal is a record (attachment id, timestamp, install id), not an in-place delete of the immutable file. An older records file does not put a removed attachment back. The file itself becomes eligible for garbage collection with the tombstone rules below.
 - A receiving install applies a records file when that file is valid. It does not wait until every attachment the file names has been downloaded. The item is available from the records file. An attachment that is not local yet is shown as not downloaded, and it is fetched after. The item is not held back for that fetch.
 - Undo. US-13 undo, before that window ends, writes nothing remote and does not start trash.
-- Trash. Decided by mjbvilhena; this record is Proposed until he approves it. When the undo window ends, this install sets `inTrash` and `trashedAt`. `trashedAt` is the UTC instant the undo window ended, in epoch milliseconds. `updatedAt` becomes the later of now and one millisecond after the previous `updatedAt`. Those fields sync in the records file. They are not local-only. No tombstone is written yet. Thirty days is 30 × 24 hours after `trashedAt`. Each phone reads that deadline on its own clock.
+- Trash. Decided by mjbvilhena; this record is Proposed until he approves it. US-66 is Must for v1. v1 does not ship without it. When the undo window ends, this install sets `inTrash` and `trashedAt`. `trashedAt` is the UTC instant the undo window ended, in epoch milliseconds. `updatedAt` becomes the later of now and one millisecond after the previous `updatedAt`. Those fields sync in the records file. They are not local-only. No tombstone is written yet. A delete does not become a tombstone by skipping trash. Thirty days is 30 × 24 hours after `trashedAt`. Each phone reads that deadline on its own clock.
 - The in-trash field merges like any other scalar: the later `updatedAt` wins, and a tie goes to the lower install id. A later trash mark beats an earlier restore. A later restore beats an earlier trash mark.
 - On every phone that has merged `inTrash`, the item is hidden from the home list, search, Upcoming, tag views, the inbox, and topic views. Its reminders are silenced, including on the phone US-55 would pick. Its expiry notices are paused. A queued topic job for it is not sent. He can open Trash on any of those phones and restore it.
 - Restore. Any phone may restore it during those 30 days. Restore clears `inTrash` and `trashedAt`, sets `updatedAt` to the restore time, and uploads that record. The item returns on every phone that merges it. Reminders are scheduled again. No tombstone is written.
@@ -63,19 +63,6 @@ Rules, if this record is accepted:
 
 Default: an unexpected duplicate id is a conflict, never a second item. A failed download does not become a deletion.
 
-## Decision pending: mjbvilhena
-
-This is not decided.
-
-### US-66 as Must or Should
-
-Current recommendation: keep Should. The story stays in v1 as a Should until he promotes it.
-
-| Option | Trade-off |
-| --- | --- |
-| Should | Recommendation. v1 can still drop the story. If it is dropped, the 30-day wait has no trash to wait in, and the tombstone rule in this record has nothing to attach to |
-| Must | Delete propagation cannot ship without trash. That matches "trash is in v1", and it removes the option to cut the story |
-
 ## Alternatives considered
 
 | Option | Why it was plausible | Why it lost |
@@ -87,13 +74,14 @@ Current recommendation: keep Should. The story stays in v1 as a Should until he 
 | Merged notes only, and last-writer-wins for the rest, with no tombstone | Notes are safe, and deletes stay simple | Without a tombstone the other phone, or a zip of an older copy, puts the item back after the delete was meant to be final. The 30-day trash is the window where a later edit still brings the item back. After that, the tombstone is what stops the item coming back |
 | Tombstone as soon as undo ends, beating any later edit | A finished delete would stay finished immediately, including against an edit the other phone had not synced | That drops the other phone's content edit, and it deletes permanently before he has had 30 days to restore. The in-trash field syncs. The tombstone waits until the 30 days end |
 | Keep trash only on the deleting phone | The other phone would keep a live copy | The in-trash field syncs. Every phone hides the item and silences its reminders. He can restore it from any phone |
+| Ship the tombstone without trash | A finished delete would spread as soon as undo ends | US-66 is Must. v1 does not ship without the 30-day trash. A delete does not become a tombstone by skipping trash |
 | A sticky sensitive mark | A mark set on one phone would survive a later edit that clears it | The mark merges like any other field. The later `updatedAt` wins, and a tie goes to the lower install id. A later edit can clear the mark. That is accepted |
 
 ## Consequences
 
 - **Positive.** One phone cannot replace the other phone's file. One-sided items still merge. Tags and attachments from both sides survive unless a removal was recorded. A failed listing does not wipe the phone.
 - **Negative / accepted trade-offs.** Each install stores a full snapshot, so Drive holds one current file per install plus immutable attachments. Clocks can still be wrong, and an equal timestamp is the only place the install id steps in. A phone whose clock is ahead can write the tombstone before 30 × 24 hours of true time. For 30 days the item is hidden on every phone, and a content edit later than `trashedAt` brings it back. After the tombstone, a later edit does not bring the item back, except a content edit that itself happened during the trash window and arrives late. Tombstones then live at least 90 days, and after garbage collection an old zip can resurrect an item. The topic API key does not travel with the vault; a new phone needs it typed again. A later edit on another phone can clear the sensitive mark. That is accepted. There is no extra control.
-- **Follow-ups.** US-73 stays a placeholder until this record is accepted and criteria are added in a later edit. US-66 carries the trash behaviour for story review and stays Should until the pending choice above. He is the approver. Decided by mjbvilhena; this record is Proposed until he approves it.
+- **Follow-ups.** US-73 stays a placeholder until this record is accepted and criteria are added in a later edit. US-66 is Must for v1 and stays Proposed for story review. v1 does not ship without it. He is the approver. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 ## Compliance
 
@@ -106,7 +94,7 @@ Current recommendation: keep Should. The story stays in v1 as a Should until he 
 - [ ] Tags are the union minus recorded removals, and attachments present on either side are kept until a removal is recorded
 - [ ] Check-ins are not overwritten by the other install's file
 - [ ] The topic API key and ML Kit acceptance are absent from the synced records
-- [ ] For 30 days after `trashedAt`, the upload contains the in-trash field and no tombstone. Every phone that merges it hides the item and silences its reminders. Any phone can restore it
+- [ ] For 30 days after `trashedAt`, the upload contains the in-trash field and no tombstone. Every phone that merges it hides the item and silences its reminders. Any phone can restore it. v1 includes that trash. A delete does not skip it
 - [ ] A restore, or a content edit whose `updatedAt` is later than `trashedAt`, clears trash on every phone and does not write a tombstone. A content edit older than `trashedAt` does not clear it
 - [ ] When the 30 days end with the item still in trash, a tombstone is written and the other install drops the item
 - [ ] A tombstone is not collected before 90 days after the tombstone timestamp, or while a known install has not merged it
@@ -130,6 +118,7 @@ Current recommendation: keep Should. The story stays in v1 as a Should until he 
 - Keeping the sensitive mark sticky across phones.
 - Treating a Proposed merge rule as implemented.
 - Writing a tombstone before 30 × 24 hours after `trashedAt`.
+- Shipping a delete that becomes a tombstone without the 30-day trash.
 - Leaving a trashed item visible, or its reminder armed, on a phone that has merged `inTrash`.
 
 ## Skill State Machine (sdlc-adr-drafter)

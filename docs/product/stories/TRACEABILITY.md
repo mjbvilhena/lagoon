@@ -1,6 +1,6 @@
 # Traceability
 
-> **Draft is not approval.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved.
+> **Draft is not approval.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
 > Sources: `docs/product/vision.md`, `docs/product/specification.md`, and approved epics E1–E9 and E11. E10 is Later and is not a v1 parent.
 > A review pack, a story, or the threat note is not a source.
 
@@ -194,7 +194,7 @@ UX and the test strategy are not started. A Proposed ADR is not accepted by bein
 | US-62 | E9 | E9: a list shows items whose one reminder or one expiry is coming due. | Traced. |
 | US-64 | E3 | E3: "Sharing an item back out to other apps, as US-64 (Should)." Vision says the same. The criteria are on US-64. | Traced |
 | US-65 | E1 | E1: a new item can start from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. | Traced. |
-| US-66 | E3 | E3: after undo, a deleted item can sit in trash and be restored. Proposed amendment. Needs approval by mjbvilhena. The in-trash field syncs. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. The tombstone spreads only after 30 × 24 hours. US-66 is Proposed for story review. | Traced. |
+| US-66 | E3 | E3: after undo, a deleted item can sit in trash and be restored. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. The in-trash field syncs. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. The tombstone spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. US-66 is Proposed for story review. Decided by mjbvilhena; this record is Proposed until he approves it. | Traced. |
 | US-67 | E1 | E1: duplicate image or PDF bytes are pointed out. A repeat URL still matches under US-49. | Traced. |
 | US-70 | E2 | E2: a check lists items whose snapshot or OCR is pending, failed, or has never run. | Traced. |
 | US-71 | E3 | E3: the inbox can apply one filing action to several items. | Traced. |
