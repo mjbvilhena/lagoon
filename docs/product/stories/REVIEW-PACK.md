@@ -8,7 +8,7 @@ Stories stay Draft. The map is `docs/product/stories/TRACEABILITY.md`. The index
 ## Requirements
 
 - If the vault key is lost, the content is lost. There is no recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
-- An ordinary lock-screen reminder may show the item title and codes. A sensitive lock-screen reminder shows only "Lagoon reminder", with no title and no codes, until the device is unlocked.
+- An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive lock-screen reminder's public text is only "Lagoon reminder". Whether its private version is also only that text stays open on US-75.
 - The zip export is encrypted with the vault key.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until that preview is enabled.
 - Before the first OCR use, he accepts a disclosure: the image and the recognized text stay on the device, and ML Kit still sends usage and diagnostic metrics to Google. Decline, or no answer, means OCR does not run and ML Kit is not started. He can withdraw that acceptance in Settings. There is no telemetry off switch. The research note is `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.

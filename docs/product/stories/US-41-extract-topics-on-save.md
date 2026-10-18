@@ -36,10 +36,19 @@ Extract topics when an item is saved.
   - When the item is saved and the earlier steps have text
   - Then the topic switch is on and a topic call is allowed, subject to the unmetered setting below
 - **Scenario: he turns it off** — Must
-  - Given he has turned the topic switch off in Settings (US-59)
+  - Given the topic switch is on and topic jobs are queued for US-44
+  - When he turns the switch off in Settings (US-59)
+  - Then every queued US-44 topic job is cancelled and is never sent
+- **Scenario: saved while off** — Must
+  - Given the topic switch is off
   - When an item is saved
-  - Then no call is made, and any topic job already queued for US-44 is cancelled and is never sent
+  - Then no call is made
   - And when he later turns the switch on, that saved item is not sent unless he chooses "Get topics" on that item
+- **Scenario: Get topics** — Must
+  - Given an ordinary item that was saved while the topic switch was off
+  - When he chooses "Get topics" on that item (item detail, US-11), including while the switch is still off
+  - Then one topic job is queued for that item under US-44, subject to the topic Unmetered-only setting
+  - And "Get topics" is not offered on a sensitive item (US-75)
 - **Scenario: a sensitive item** — Must
   - Given the topic switch is on and the item is sensitive
   - When a topic job would run
@@ -65,7 +74,7 @@ Extract topics when an item is saved.
   - When the result is stored
   - Then the item remains, no topic is created, and the status is "no topics", not "failed"
 - **Scenario: text arrives later** — Must
-  - Given the topic switch is on and an OCR retry or enrichment adds text that was not in the earlier call
+  - Given an ordinary item, the topic switch is on, and an OCR retry or enrichment adds text that was not in the earlier call
   - When that text is stored
   - Then the topic job runs again for that item
 - **Scenario: the key is not in the APK** — Must

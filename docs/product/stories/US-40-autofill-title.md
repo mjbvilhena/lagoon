@@ -13,7 +13,7 @@ Fill an empty title from the page or the file.
 ## User story
 
 **As a** person named Miguel
-**I want** an empty title to fill from the page or from a readable file name
+**I want** an empty title to fill from the page or from a file name
 **So that** a one-tap save is not called Untitled
 
 ## Background
@@ -34,20 +34,20 @@ Fill an empty title from the page or the file.
   - When the title is filled
   - Then it is the host and path of the normalised URL
 - **Scenario: a token-looking link** — Must
-  - Given the link is token-looking under US-79 and he did not type a title
+  - Given the link is token-looking under US-79, he did not type a title, and no page title is available
   - When the title is filled
   - Then it is the host only, not the path
 - **Scenario: a file name** — Must
   - Given the only title source is a file name, including a screenshot, an image, or a scan
   - When the title is filled
-  - Then the file name is the title, capped at 120 characters (US-02)
+  - Then the title is the file's display name as the platform reports it, including its final extension, capped at 120 characters (US-02)
 - **Scenario: he typed a title** — Must
   - Given he typed a title, or the share had a subject
   - When enrichment or a file name arrives
   - Then that title stays
 - **Scenario: leftover text yields to a page title** — Must
   - Given the only title so far is leftover share text
-  - When a page title or a readable file name arrives
+  - When a page title or a file name arrives
   - Then that page title or file name becomes the title, and the leftover text stays in the note
 
 ## Analytics and observability (optional)

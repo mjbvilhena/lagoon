@@ -4,7 +4,7 @@
 
 **Epic:** E9.
 
-**MoSCoW:** Should. The Upcoming list and the expired marker are Must.
+**MoSCoW:** Should. If the story is built, the Upcoming list, the expired marker, and Done on an expiry are its Must criteria.
 
 ## Title
 
@@ -24,7 +24,7 @@ See what is coming due.
 ## Acceptance criteria
 
 - **Scenario: the list** — Must
-  - Given items have a future reminder or a future expiry (US-34, US-54)
+  - Given items have a reminder or an expiry (US-34, US-54), including a future date and a date that has passed
   - When he opens Upcoming
   - Then they are sorted by that date
 - **Scenario: expired** — Must

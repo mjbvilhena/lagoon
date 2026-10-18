@@ -24,39 +24,39 @@ Keep Drive to app data, and sign out without deleting the phone.
 
 ## Acceptance criteria
 
-- **Scenario: the scope** — Must
+- **Scenario: the scope** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he grants Drive access
   - When the granted scopes are read
   - Then they are exactly `drive.appdata`
-- **Scenario: the consent screen** — Must
+- **Scenario: the consent screen** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the OAuth client from US-26
   - When the consent screen is configured
   - Then it is set to "In production"
   - And the docs state the US-26 fact that an external app left in Testing, with a non-basic scope, gets a refresh token that expires in 7 days
-- **Scenario: sign out** — Must
+- **Scenario: sign out** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he is signed in
   - When he chooses Sign out
   - Then the US-55 release marker is written, and after that `clearCredentialState` runs, the Drive grant is revoked, sync jobs are cancelled, the local vault stays, and the Drive copy stays
   - And there is no third control named "disconnect but keep the Drive copy", because Sign out already does that. Deleting the Drive copy is the separate action below
-- **Scenario: delete the Drive copy** — Must
+- **Scenario: delete the Drive copy** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he chooses "Disconnect and delete Lagoon data from Drive" and confirms, after a US-37 prompt, including when app lock is off
   - When the app-data files are deleted and a following read shows they are gone
   - Then the US-55 release marker is written, and after that `revokeAccess()` runs, he can see that the Drive copy no longer exists, and the local vault is not deleted
   - And the next sign-in asks for consent again
-- **Scenario: sign-out while offline** — Must
+- **Scenario: sign-out while offline** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the phone has no network
   - When he chooses Sign out or the Drive delete
   - Then local tokens and sync jobs are cleared, the revoke is retried when a network returns, and he is told that the revoke is pending
-- **Scenario: deletion fails** — Must
+- **Scenario: deletion fails** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given that delete is in progress
   - When the app-data files are still present
   - Then `revokeAccess()` is not called, and he is told the Drive copy is still there
-- **Scenario: another account** — Must
+- **Scenario: another account** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he signs in with a different Google account
   - When sync would upload this vault
   - Then he is asked before that upload
   - And if he agrees, that account has its own Drive copy and does not read the previous account's copy
-- **Scenario: tokens stay out of logs** — Must
+- **Scenario: tokens stay out of logs** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given a token exists
   - When logs and WorkManager inputs are inspected
   - Then the token is in neither

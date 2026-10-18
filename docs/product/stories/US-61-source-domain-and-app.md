@@ -19,9 +19,9 @@ Filter by where an item came from.
 ## Background
 
 - US-01, US-02, US-03, and US-04 record the fields. The sending app is stored only when the platform reports it. An empty field does not block the save.
-- Showing the values is US-10 and US-11. Searching them is US-15. This story is the filter only.
+- Showing the values is US-10 and US-11. Epic E1 names this story for source domain and sending app, a Should. This story is the filter and the search of those fields. US-15's Must search does not include them. Epic E3's search list does not include them.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: a map of every app package. Showing the fields. Searching the fields.
+- Out of scope: a map of every app package. Showing the fields.
 
 ## Acceptance criteria
 
@@ -29,6 +29,10 @@ Filter by where an item came from.
   - Given he filters by one domain or one sending app
   - When the filter is applied
   - Then only those items are shown
+- **Scenario: source domain and sending app** — Should
+  - Given ordinary items whose only match is in the source domain or the sending app
+  - When he searches that word
+  - Then each of those items is returned
 
 ## Analytics and observability (optional)
 

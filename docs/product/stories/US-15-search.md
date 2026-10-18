@@ -18,14 +18,14 @@ Search the vault and see highlighted matches.
 
 ## Background
 
-- The specification says search covers title, body, extracted text (including text-based PDF text and OCR text once recognized), tags, and the personal note. This story also indexes snapshot text, source domain, and the sending app, each in its own column, because the review required those fields. OCR text has its own column. Weights are US-50. OCR weight equals body, per the specification.
+- The specification says search covers title, body, extracted text (including text-based PDF text and OCR text once recognized), tags, and the personal note. This story also indexes snapshot text. OCR text has its own column. Source domain and the sending app are US-61, a Should in epic E1, and are not in this Must field list. Epic E3's search list does not include them. Weights are US-50. OCR weight equals body, per the specification.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: topic names. The specification's search list does not include them. Whether a sensitive item appears in results is US-75. Ranking rules are US-50.
 
 ## Acceptance criteria
 
 - **Scenario: match in each field** — Must
-  - Given ordinary items whose only match is in one of: title, body, personal note, tags, extracted text, the OCR column, snapshot text, source domain, or sending app
+  - Given ordinary items whose only match is in one of: title, body, personal note, tags, extracted text, the OCR column, or snapshot text
   - When he searches that word
   - Then each of those items is returned
 - **Scenario: highlight** — Must

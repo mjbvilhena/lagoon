@@ -119,7 +119,7 @@
 | US-12 | E3 | E3: "Edit, including the personal note and tags." | Traced |
 | US-13 | E3 | E3: "Delete with undo." | Traced |
 | US-14 | E3 | E3: "Tag management, including rename." | Traced |
-| US-15 | E3 | Spec: "Search covers title, body, extracted text... tags, and the personal note." | Traced. Search does not include a merchant column. |
+| US-15 | E3 | Spec: "Search covers title, body, extracted text... tags, and the personal note." | Traced. Search does not include a merchant column. Source domain and sending app are US-61, not this Must. |
 | US-16 | E3 | E3: "Filter by type and by tag." | Traced |
 | US-17 | E4 | E4: "A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash." | Traced |
 | US-18 | E4 | E4: "Sign in with Google." | Traced |
@@ -135,16 +135,16 @@
 | US-28 | E1 | Spec E1 row: "last-used tags can be applied from a non-blocking chip row." | Traced. Add date is in E1. |
 | US-29 | E3 | E3: "A rename applies to every item. A case-insensitive clash asks for confirmation and then merges." | Traced |
 | US-30 | E4 | E4: "No Back up now, no Restore, no last-backup-time control." Vision says the same. | Traced |
-| US-31 | E7 | E7: "On-device text recognition for screenshots, images, and scanned PDFs." Vision: English, bundled model, disclosure. | Traced |
+| US-31 | E7 | E7: "On-device text recognition for screenshots, images, and scanned PDFs." Vision: English, bundled model, disclosure. | Traced. The thin Play services artifact is absent because it collects a device identifier. Source: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
 | US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |
-| US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 local, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. |
+| US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 local, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. A code is text already in the title. There is no separate code field. |
 | US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. Spec Q10: a lost key means the content is lost. | Traced |
 | US-36 | E8 | E8: "Drive stores ciphertext only." | Traced |
 | US-37 | E8 | E8: "Fingerprint or biometric lock on items marked sensitive" and "App lock is optional. The device PIN is the fallback." | Traced |
 | US-38 | E3 | E3: "An Untagged / Inbox view." | Traced |
 | US-39 | E3 | E3: "Sort and filter by date saved." | Traced |
-| US-40 | E1 | E1: "An empty title fills from the page title or the file name." | Traced. An empty title fills from the page title or the file name, including a screenshot, image, or scan. |
+| US-40 | E1 | E1: "An empty title fills from the page title or the file name." | Traced. An empty title fills from the page title or the file name, including a screenshot, image, or scan. The file name keeps its final extension. |
 | US-41 | E11 | E11: identify main ideas and topics. Topic extraction starts on, with an off switch. Sensitive items are excluded. There is no cap. | Traced. |
 | US-42 | E11 | E11: "If an identified topic already exists, the new item is linked to it." | Traced |
 | US-43 | E11 | E11: "A new topic is created only after he confirms." | Traced |
@@ -159,13 +159,13 @@
 | US-52 | E4 | E4: "Zip export and import." | Traced |
 | US-53 | E5 | E5 palette, Light/Dark/System, and "Dynamic color is an optional toggle." | Traced. Reduced motion is in E5. |
 | US-54 | E9 | E9: "An expiry notifies 7 days before the date and again on the day." | Traced |
-| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Re-registration and which install posts are in E9. There is no return-by or warranty. |
+| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Re-registration and which install posts are in E9. A sole signed-in install always posts. There is no return-by or warranty. |
 | US-56 | E4 | E4: "Sync merges: an item that exists on only one side is kept." | Traced |
 | US-57 | E3 | Spec US-15 line: FTS5 with an encrypted database is a design-gate risk. "Spike it early." E8 requires encryption and E3 requires search. | Traced |
 | US-58 | E1 | E1: "After the save returns, a link is enriched, then the snapshot is taken from that fetch, then OCR runs, then the topic job runs." | Traced |
 | US-59 | E4 | E4: "Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen." | Traced |
 | US-60 | E11 | E11: he is asked before a new topic is created, and an existing topic is linked. | Traced. E11 includes a list of saved topics and a place for waiting suggestions. |
-| US-61 | E1 | E1: "Source domain and sending app (US-61) are a Should." Vision says the same. | Traced |
+| US-61 | E1 | E1: "Source domain and sending app (US-61) are a Should." Vision says the same. | Traced. This story is the filter and the search of those fields. US-15 does not include them in its Must. |
 | US-62 | E9 | E9: a list shows items whose one reminder or one expiry is coming due. | Traced. |
 | US-64 | E3 | E3: "Sharing an item back out to other apps, as US-64 (Should)." Vision says the same. The criteria are on US-64. | Traced |
 | US-65 | E1 | E1: a new item can start from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. | Traced. |
@@ -176,7 +176,7 @@
 | US-72 | E11 | E11: a usefulness score is computed on the phone and is not sent off the phone. | Traced. |
 | US-73 | E4 | Spec: "Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft" stays open. "Concurrent edits and deletions are the open questions." | Traced. Placeholder for that open question, not a capability. |
 | US-74 | E8 | Spec: "Keys on a new device" is an open design-gate question. | Traced. Placeholder, not a capability. |
-| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. The lock-screen reminder is "Lagoon reminder". Export waits for US-37. | Traced. A per-item topic control and the private notification version stay open on the story. |
+| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. The lock-screen reminder is "Lagoon reminder". Export waits for US-37. | Traced. A per-item topic control and the private notification version stay on the story's open-question list, not in the acceptance criteria. The criteria are proposed security criteria. |
 | US-76 | E11 | E11 open question: provider, credential, and what is sent. Spec design gate says the same. | Traced. Placeholder, not a capability. |
 | US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |

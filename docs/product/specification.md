@@ -115,6 +115,22 @@ Constraints later design must not reopen unless he does:
 - Camera capture uses the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`.
 - The Upcoming list shows only the one reminder or the one expiry. It does not show a return-by date or a warranty end.
 
+## Risks & Dependencies
+
+- Sync needs a Google Cloud OAuth client whose package name and signing-certificate SHA-1 match the release keystore. Until he supplies the client ID at build time, sync cannot run. The app must still install and work offline.
+- A second device can receive ciphertext and still be unable to read it until he answers how keys move (open question below). This specification does not invent a passphrase or a Google-derived key.
+- Page fetches fail offline, on login walls, and on pages that only render in a browser. The item still keeps the URL. A snapshot exists only when a fetch succeeded.
+- Share-sheet behavior differs by OEM.
+- `appDataFolder` files do not appear in the ordinary Drive UI. That is expected, not a bug.
+- OCR quality varies by phone and language. No accuracy rate is set here.
+- An emulator may be unavailable for screenshots. Do not fabricate them.
+- No `DOMAIN.md` or `LAYER.md` exists. No MUST/NEVER rules were invented for them.
+- Topic extraction sends readable content off the phone to a cloud AI. That is a privacy risk he has accepted in principle. Which provider, and what that provider retains, is still open.
+- Cloud processing has a cost. No budget or per-item cap is set here.
+- Offline, the item is saved and topic processing is queued until a network exists. The vault stays usable without that call.
+- The cloud AI credential for a sideloaded APK must not be baked into the package in plain form. How it is supplied and protected is an open design-gate question.
+- Encryption, biometric lock, Drive sync, and the cloud topic call are security-sensitive. The harness has `sdlc-threat-modeler` and the `threat model` template. A threat model is required in the later design band, before implementation. `docs/technical_design/2026-10-17-proposed-threat-note.md` is not that threat model. This section does not skip the threat model and does not write it.
+
 ## Open questions
 
 - What happens when the same item was edited on two devices before they sync?

@@ -24,7 +24,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
 - **US-49** *(Draft)* Update a link that was saved before, and undo that update. Evidence: `docs/product/stories/US-49-repeat-link-update.md`. Not implemented.
 - **US-58** *(Draft)* Run enrichment, snapshot, OCR, and topics in that order. Evidence: `docs/product/stories/US-58-background-pipeline.md`. Not implemented.
-- **US-61** *(Draft)* Filter by where an item came from. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
+- **US-61** *(Draft)* Filter by where an item came from, and search those fields. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
 - **US-65** *(Draft)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
 - **US-67** *(Draft)* Notice a duplicate image or PDF. Could. Evidence: `docs/product/stories/US-67-duplicate-files.md`. Not implemented.
 
@@ -47,7 +47,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-12** *(Draft)* Edit, including why it matters. Evidence: `docs/product/stories/US-12-edit-an-item.md`. Not implemented.
 - **US-13** *(Draft)* Delete with undo. Evidence: `docs/product/stories/US-13-delete-with-undo.md`. Not implemented.
 - **US-14** *(Draft)* Tag management. Evidence: `docs/product/stories/US-14-manage-tags.md`. Not implemented.
-- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is US-57.
+- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. Source domain and sending app are not in this Must. The Room 3 / FTS5 / SQLCipher spike is US-57.
 - **US-50** *(Draft)* Rank search matches. Evidence: `docs/product/stories/US-50-search-ranking.md`. Not implemented.
 - **US-16** *(Draft)* Filter by type and tag. Evidence: `docs/product/stories/US-16-filter-by-type-and-tag.md`. Not implemented.
 - **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented.
@@ -98,7 +98,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 > Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Acceptance tests are English only. Booking references and merchants are not this story.
+- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Acceptance tests are English only. The thin Play services artifact is absent because it collects a device identifier. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
@@ -108,13 +108,13 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
 - **US-74** *(Draft)* Decide how the vault key reaches another device. Open question. No asserting criterion. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
-- **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented.
+- **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. The two open questions are not acceptance criteria. The security criteria are proposed.
 
 ## Epic E9: Reminders and expiry
 
 > Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. US-34 stays Draft.
 
-- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
+- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. A code is text already in the title. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
 - **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
 - **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
 - **US-62** *(Draft)* See what is coming due. Should. Evidence: `docs/product/stories/US-62-upcoming-and-expiring.md`. Not implemented.
@@ -182,7 +182,7 @@ The index is the full list. Every remaining story is also listed under its paren
 
 - Lost vault key: the content is lost. No recovery.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
-- An ordinary lock-screen reminder may show the item title and codes. A sensitive lock-screen reminder shows only "Lagoon reminder".
+- An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive lock-screen reminder's public text is only "Lagoon reminder".
 - The zip export is encrypted with the vault key.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until that preview is enabled.
 - ML Kit metrics are disclosed and accepted before the first OCR use. There is no telemetry off switch. Research: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.

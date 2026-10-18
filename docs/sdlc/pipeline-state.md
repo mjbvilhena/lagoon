@@ -29,7 +29,7 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 ## Requirements in force
 
 - Lost key: the content is lost. No recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
-- Ordinary lock-screen reminders may show the title and codes. A sensitive lock-screen reminder shows only "Lagoon reminder".
+- Ordinary lock-screen reminders may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive lock-screen reminder's public text is only "Lagoon reminder".
 - A token-looking URL is not auto-fetched.
 - ML Kit: disclose the metrics and require acceptance before the first OCR use. There is no telemetry off switch. The bundled model is used, and ML Kit starts only after acceptance.
 - Topic extraction starts on for a new ordinary item, with an off switch. Sensitive items are excluded. There is no cap.

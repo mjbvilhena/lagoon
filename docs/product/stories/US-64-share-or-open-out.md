@@ -24,37 +24,37 @@ Share or open an item in another app.
 
 ## Acceptance criteria
 
-- **Scenario: share an attachment, a URL, or the body** — Should
+- **Scenario: share an attachment, a URL, or the body** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given an ordinary item has an attachment, a source URL, or body text
   - When he chooses Share and does not pick a part
   - Then the share uses attachments first, then the URL, then the body text
   - And "note text" in this story means that body, not the "why it matters" note
   - And he can instead send one attachment, the URL, or the body
-- **Scenario: every attachment** — Should
+- **Scenario: every attachment** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given an ordinary item has more than one attachment
   - When he chooses to share all of them
   - Then one send includes every attachment
-- **Scenario: the other app receives a stream** — Should
+- **Scenario: the other app receives a stream** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he shares an attachment
   - When the other app reads it
   - Then the bytes are a `ParcelFileDescriptor` pipe from a non-exported FileProvider, with a one-time read grant, the URI is not `file://`, and no plaintext copy is written for that share
-- **Scenario: a temp copy** — Should
+- **Scenario: a temp copy** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given a pipe cannot be used and a temp copy cannot be avoided
   - When the other app returns, or 15 minutes pass, or the next launch runs
   - Then that copy is gone, and the URI grant is revoked when the copy is wiped
-- **Scenario: a link** — Should
+- **Scenario: a link** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given he opens a source URL
   - When Open with runs
   - Then it uses Custom Tabs or `ACTION_VIEW`, the scheme is `http` or `https` only, and no WebView loads the page
-- **Scenario: photo location** — Should
+- **Scenario: photo location** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the attachment is a photo that carries location or device fields in EXIF or XMP
   - When he shares it and he has not asked to keep location
   - Then the shared bytes do not include those EXIF or XMP location fields or device fields
-- **Scenario: a sensitive item** — Should
+- **Scenario: a sensitive item** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the item is marked sensitive
   - When he chooses Share or Open with
   - Then US-37 unlocks it first and he sees a warning before either one continues
-- **Scenario: the vault stays here** — Should
+- **Scenario: the vault stays here** — Should. Proposed security criterion. Needs approval by mjbvilhena.
   - Given any share
   - When the sheet is built
   - Then the database, the vault key, and snapshot internals are not among the choices

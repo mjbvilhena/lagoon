@@ -24,32 +24,32 @@ Publish a sideload signing policy.
 
 ## Acceptance criteria
 
-- **Scenario: the release key** — Must
+- **Scenario: the release key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the release signing key
   - When the policy is followed
   - Then the key is kept offline, two encrypted backups of it exist outside the repo, and the published record is the SHA-256 of the certificate and the SHA-256 of the release APK
-- **Scenario: the APK signatures** — Must
+- **Scenario: the APK signatures** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given a release APK
   - When CI runs `apksigner verify --print-certs` on the release APK
   - Then that APK is the artefact CI verifies, it is signed with v2 and v3, the printed certificate matches the published certificate SHA-256, and the APK file's SHA-256 matches the published APK SHA-256
   - And the policy says whether a v3 rotation proof is kept with the offline key. If no rotation has happened, the published certificate is the one that command prints
-- **Scenario: an upgrade keeps the vault** — Must
+- **Scenario: an upgrade keeps the vault** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given an installed release build with a vault
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
   - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch destroys the Keystore key, so the vault and every zip become unreadable. Uninstall is not a way to fix or upgrade
-- **Scenario: debug builds** — Must
+- **Scenario: debug builds** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given a debug build
   - When it is installed beside a release build
   - Then its application id ends in `.debug`
-- **Scenario: developer verification** — Must
+- **Scenario: developer verification** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the policy page
   - When it is read
   - Then it follows [Register for limited distribution](https://developer.android.com/developer-verification/guides/limited-distribution), last updated 2026-09-30 UTC: the account is free, it does not ask for a government ID, and it shares with up to 20 devices
   - And it follows the [verification overview](https://developer.android.com/developer-verification/guides), last updated 2026-08-18 UTC: enforcement named there starts on 2026-09-30 in Brazil, Indonesia, Singapore, and Thailand, and then those protections expand globally to all certified Android devices in 2027, which covers a device in Ireland. The ADB workflow stays the same
   - And before 2027 the package `com.mjbvilhena.lagoon` is registered with the release key under a limited-distribution account. ADB stays the fallback
   - And two-step verification and a payments profile are optional on that account. They are not required by the scenarios above
-- **Scenario: no self-updater** — Must
+- **Scenario: no self-updater** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the app
   - When he looks for an update control
   - Then the app does not download or install its own update
