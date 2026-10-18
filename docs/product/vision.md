@@ -37,4 +37,4 @@ No numeric target was set. Success is the outcome above: he can install the sign
 - No second person in the same vault.
 - No image editor and no PDF editor.
 - Trip or collection grouping is later (E10), not v1.
-- The topic provider, what the call sends, how a key reaches a new phone, and sync conflicts are still open. This vision does not decide them.
+- The topic provider, what the call sends, how a key reaches a new phone, and sync conflicts follow from the ADR at the design gate. This vision does not decide them.

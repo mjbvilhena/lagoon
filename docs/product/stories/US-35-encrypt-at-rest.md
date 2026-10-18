@@ -20,7 +20,7 @@ Encrypt the vault at rest.
 
 - If the vault key is lost, the content is lost. There is no recovery.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). Whether the Keystore key is bound to device authentication stays open. This story does not choose it. It does set `setInvalidatedByBiometricEnrollment(false)`.
+- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). The vault key is not bound to device authentication. It does set `setInvalidatedByBiometricEnrollment(false)`.
 
 ## Acceptance criteria
 
@@ -44,10 +44,12 @@ Encrypt the vault at rest.
   - Given the key exists
   - When he enrolls a new biometric
   - Then the key stays valid. The Keystore entry is created with `setInvalidatedByBiometricEnrollment(false)`
-- **Scenario: the OS authentication state** — open
-  - Given the key exists
-  - When the OS authentication state changes
-  - Then this story does not say whether the key stays valid. Whether the key is auth-bound stays open
+- **Scenario: no user authentication on the key** — Must
+  - Given the vault key is created
+  - When background sync or a reminder needs the vault
+  - Then the key is a hardware-backed Android Keystore key that does not require user authentication
+  - And those jobs can decrypt while the phone is locked
+  - And sensitive content still needs the US-37 unlock
 - **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored

@@ -18,7 +18,7 @@ Miguel.
 
 - **In Scope (MVP):**
   - An optional expiry or reminder date on an item.
-  - He picks the time. The Settings default is 09:00 local. Each item can override that time.
+  - He picks the time. The Settings default is 09:00 in the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is. Each item can override that time.
   - An expiry notifies 7 days before the date and again on the day, at the item's time.
   - Alarms are inexact (`setWindow` or `setAndAllowWhileIdle`). No exact-alarm permission. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
   - A reminder or an expiry is registered again after a reboot, a clock change, an update, or a notification-permission change (A-E9-1, US-55). When the same date is on more than one install, only one install posts it. Acceptance: a notification is not lost because the phone restarted, and two installs do not both post it.

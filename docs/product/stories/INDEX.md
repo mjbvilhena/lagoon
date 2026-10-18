@@ -85,10 +85,13 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-79 | Skip unsafe link previews. | E2 | Must | `docs/product/stories/US-79-link-preview-skipping.md` | Draft |
 | US-80 | Keep the permission set to an allowlist. | E6 | Must | `docs/product/stories/US-80-permission-set.md` | Draft |
 | US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Draft |
+| US-85 | Show an image full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Draft |
 
 No story is Done. Implementation has not started. No story status is Approved.
 
-Artefact Definition of Done: US-73, US-74, and US-76 have no asserting criterion because the question is still open. US-77 has asserting criteria and stays Draft. Every other story passes artefact shape only.
+Security criteria on US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft.
+
+Artefact Definition of Done: US-73, US-74, and US-76 have no asserting criterion. Criteria follow from the ADR at the design gate. US-77 has asserting criteria and stays Draft. US-85 stays Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. Every other story passes artefact shape only.
 
 US-61 is a Should in epic E1. The story stays Draft.
 

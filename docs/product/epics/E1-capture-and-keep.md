@@ -33,6 +33,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
   - He can start a new item from the camera (A-E1-5, US-65, Should). Acceptance: a page can be kept without a share from another app. That capture uses the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`.
   - Saving an image or a PDF whose bytes match an item already stored tells him it is a duplicate (A-E1-6, US-67, Could). Acceptance: he can avoid a second copy of the same file. A repeat URL still matches under the second-share rule (US-49).
   - Source domain and sending app (US-61) are a Should.
+  - One tap on an image attachment opens it full-screen, with screen brightness at maximum, and brightness is restored on exit (US-85, Should). It works offline. A sensitive item needs the US-37 unlock first. `FLAG_SECURE` applies for a sensitive item, as US-75 says. Proposed amendment. Needs approval by mjbvilhena.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one. Source domain and sending app are in scope above as a Should (US-61).
 
@@ -76,3 +77,4 @@ These are not approved. Paths are under `docs/product/stories/`.
 - US-61 Filter by where an item came from. Should.
 - US-65 Add a photo from the system camera. Should.
 - US-67 Notice a duplicate image or PDF. Could.
+- US-85 Show an image full-screen and bright. Should. Proposed amendment. Needs approval by mjbvilhena.

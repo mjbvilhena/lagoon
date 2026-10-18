@@ -53,7 +53,7 @@ Miguel, looking back through what he kept.
 
 ## Open Questions
 
-- Tag rename-and-merge, the inbox, and date sort are in the specification. Stories stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions on sync stay open on E4.
+- Tag rename-and-merge, the inbox, and date sort are in the specification. Stories stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 
 ## Draft stories
 

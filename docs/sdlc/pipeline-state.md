@@ -9,8 +9,8 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 | State | Evidence | Status |
 | --- | --- | --- |
 | Vision | `docs/product/vision.md` | Approved by mjbvilhena on 2026-10-17. |
-| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. |
-| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Where an epic file has an amendment line, that line is also approved by mjbvilhena on 2026-10-17. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
+| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. |
+| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Where an epic file has an amendment line, that line is also approved by mjbvilhena on 2026-10-17. E1 has one proposed full-screen sentence for US-85. That sentence needs approval by mjbvilhena. It is not approved. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
 | Story refine | `docs/product/stories/` and `INDEX.md` | Draft. Not approved. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
 | Story approval | No story signed | Not given. |
 | Technical design / ADRs | No ADR | Not started. ML Kit research input: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
@@ -29,28 +29,27 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 ## Requirements in force
 
 - Lost key: the content is lost. No recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
-- Ordinary lock-screen reminders may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive lock-screen reminder's public text is only "Lagoon reminder".
+- Ordinary lock-screen reminders may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
+- The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
+- There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
+- Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - A token-looking URL is not auto-fetched.
 - ML Kit: disclose the metrics and require acceptance before the first OCR use. There is no telemetry off switch. The bundled model is used, and ML Kit starts only after acceptance.
-- Topic extraction starts on for a new ordinary item, with an off switch. Sensitive items are excluded. There is no cap.
+- Topic extraction starts on for a new ordinary item, with an off switch. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. There is no cap.
 - An empty title fills from the page title or the file name. Camera capture uses the system camera. Lagoon does not request `CAMERA`.
 - Upcoming is the one reminder or the one expiry. Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - v1 is epics E1–E9 and E11. E10 is later.
 
 ## Open questions
 
-- Sync conflicts and how a deletion propagates (US-73).
-- How the vault key reaches a new device (US-74).
-- Topic provider, retention, credential supply, and payload (US-76).
-- Whether 09:00 follows a fixed zone. Stories use the device local zone.
-- Full-screen QR and barcode display. No story.
-- A per-item "Include in topics" control (US-75).
-- Whether a sensitive notification's private version is also only "Lagoon reminder".
-- Whether the vault key is bound to device authentication (US-35 does not choose it).
+- Sync conflicts and how a deletion propagates (US-73). Criteria follow from the ADR at the design gate.
+- How the vault key reaches a new device (US-74). Criteria follow from the ADR at the design gate.
+- Topic provider, retention, credential supply, and payload (US-76). Criteria follow from the ADR at the design gate.
+- Full-screen image view is US-85. It is pending approval of the E1 amendment.
 
 ## History
 
-The specification and epics E1–E11 were approved on 2026-10-17. Stories were drafted and remain Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. The epics cover the stories that remain. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
+The specification and epics E1–E11 were approved on 2026-10-17. The specification amendment of 2026-10-18 is approved. Stories were drafted and remain Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Security criteria on US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft. US-85 is Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
 
 ## Memory
 

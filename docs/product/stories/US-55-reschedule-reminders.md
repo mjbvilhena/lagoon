@@ -18,7 +18,7 @@ Reschedule reminders after a restart or a clock change.
 
 ## Background
 
-- Alarms stay inexact. The time is the device local zone. Whether 09:00 follows a fixed zone instead stays open.
+- Alarms stay inexact. Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: exact alarms (US-77).
 
@@ -27,7 +27,11 @@ Reschedule reminders after a restart or a clock change.
 - **Scenario: boot, clock, update, permission** — Must
   - Given a reminder or expiry is stored
   - When the device boots, the clock or time zone changes, the app is updated, or notification permission changes
-  - Then the inexact alarms are registered again from the stored local time
+  - Then the inexact alarms are registered again for that wall-clock time in the phone's current local zone
+- **Scenario: a time-zone change** — Must
+  - Given a reminder is set for 09:00
+  - When the phone's time zone changes
+  - Then that reminder fires at 09:00 in the new local zone
 - **Scenario: app start** — Must
   - Given notification permission may have changed while the app was closed
   - When he opens the app

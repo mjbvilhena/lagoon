@@ -27,6 +27,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-61** *(Draft)* Filter by where an item came from, and search those fields. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
 - **US-65** *(Draft)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
 - **US-67** *(Draft)* Notice a duplicate image or PDF. Could. Evidence: `docs/product/stories/US-67-duplicate-files.md`. Not implemented.
+- **US-85** *(Draft)* Show an image full-screen and bright. Should. Evidence: `docs/product/stories/US-85-show-an-image-full-screen.md`. Not implemented. The E1 wording is a proposed amendment. It needs approval by mjbvilhena.
 
 ## Epic E2: Link enrichment
 
@@ -66,13 +67,13 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-18** *(Draft)* Sign in. Evidence: `docs/product/stories/US-18-sign-in-and-sync.md`. Not implemented. Drive scope and sign-out are US-78.
 - **US-19** *(Draft)* Unmetered-only background sync, default on. Evidence: `docs/product/stories/US-19-unmetered-sync.md`. Not implemented. `WorkManager` `UNMETERED`.
 - **US-30** *(Draft)* Absence of manual backup and restore controls. Evidence: `docs/product/stories/US-30-no-manual-backup.md`. Not implemented.
-- **US-20** *(Draft)* New install receives one-sided items. Evidence: `docs/product/stories/US-20-receive-the-vault.md`. Not implemented. Conflicts and deletions are US-73 and stay open.
+- **US-20** *(Draft)* New install receives one-sided items. Evidence: `docs/product/stories/US-20-receive-the-vault.md`. Not implemented. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 - **US-21** *(Draft)* Zip export encrypted with the vault key. Evidence: `docs/product/stories/US-21-export-a-zip.md`. Not implemented. Import is US-52.
 - **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78.
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 - **US-56** *(Draft)* Keep a stable identity for each item. Evidence: `docs/product/stories/US-56-item-data-model.md`. Not implemented.
 - **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
-- **US-73** *(Draft)* Decide sync conflicts and deletions. Open question. No asserting criterion. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
+- **US-73** *(Draft)* Decide sync conflicts and deletions. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
 - **US-78** *(Draft)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
 
 ## Epic E5: Look and feel
@@ -104,11 +105,11 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 > Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
-- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
+- **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. The vault key does not require user authentication. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
+- **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
-- **US-74** *(Draft)* Decide how the vault key reaches another device. Open question. No asserting criterion. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
-- **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. The two open questions are not acceptance criteria. The security criteria are proposed.
+- **US-74** *(Draft)* Decide how the vault key reaches another device. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft.
 
 ## Epic E9: Reminders and expiry
 
@@ -122,9 +123,9 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 ## Epic E11: Topics
 
-> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E11-topics.md`. Stories below are Draft. Provider, credential storage, and payload stay open. Sensitive items are excluded from the topic call. Do not implement.
+> Goal: In v1. Identify main ideas and topics when an item is shared or added. Link and extend a topic that already exists. Ask before creating a new one. Cloud AI, with readable content leaving the phone. Drive sync stays ciphertext. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E11-topics.md`. Stories below are Draft. Provider, credential storage, and payload are US-76. Criteria follow from the ADR at the design gate. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. Do not implement.
 
-- **US-41** *(Draft)* Extract topics when an item is saved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Not implemented. The four design-gate questions stay open.
+- **US-41** *(Draft)* Extract topics when an item is saved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Not implemented. Provider, credential, and payload are US-76. Criteria follow from the ADR at the design gate.
 - **US-42** *(Draft)* Link an item to a topic that already exists and extend that topic's notes. Evidence: `docs/product/stories/US-42-link-an-existing-topic.md`. Not implemented.
 - **US-43** *(Draft)* Ask before creating a topic. Decline creates nothing. Evidence: `docs/product/stories/US-43-confirm-a-new-topic.md`. Not implemented.
 - **US-44** *(Draft)* Save offline and queue topic processing. Evidence: `docs/product/stories/US-44-queue-topics-offline.md`. Not implemented.
@@ -134,7 +135,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
 - **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
 - **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
-- **US-76** *(Draft)* Decide the topic call's provider, credential, and payload. Open question. No asserting criterion. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
+- **US-76** *(Draft)* Decide the topic call's provider, credential, and payload. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -166,7 +167,6 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 
 ## Proposed, no stories
 
-- Full-screen QR and barcode display. Still open.
 - OCR for languages other than English. Later option. v1 acceptance tests stay English-only (US-31).
 - Picking out booking references and merchants. Later, unless it falls out of OCR with no extra product scope.
 
@@ -175,34 +175,36 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. Every remaining story is also listed under its parent epic above. All stay Draft. Not implemented.
 
 - US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
-- US-73, US-74, and US-76 have no asserting criterion. The questions stay open. US-77 has criteria and stays Draft. Alarms are inexact.
+- US-73, US-74, and US-76 have no asserting criterion. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. US-85 stays Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. Alarms are inexact.
 - The map is `docs/product/stories/TRACEABILITY.md`.
 
 ## Requirements
 
 - Lost vault key: the content is lost. No recovery.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
-- An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive lock-screen reminder's public text is only "Lagoon reminder".
+- An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The zip export is encrypted with the vault key.
 - A token-looking URL is not auto-fetched. A foggy placeholder is shown until that preview is enabled.
 - ML Kit metrics are disclosed and accepted before the first OCR use. There is no telemetry off switch. Research: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
-- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. Sensitive items are excluded. There is no cap. The topic job has its own unmetered setting.
+- Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. There is no cap. The topic job has its own unmetered setting.
+- The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
+- Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - An empty title fills from the page title or the file name. Camera capture uses the system camera. Lagoon does not request `CAMERA`.
 - Upcoming is the one reminder or the one expiry. Alarms are inexact.
 
 ## Open questions
 
-- Sync conflicts, and how a deletion propagates. US-73. The options on that story are not chosen.
-- How the vault key reaches a new device. US-74.
-- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76.
-- Whether 09:00 follows a fixed zone instead of the device local zone. Stories use the device local zone.
-- Full-screen QR and barcode display. No story.
-- A per-item "Include in topics" control. US-75.
-- Whether a sensitive notification's private version is also only "Lagoon reminder". US-75.
-- Whether the vault key is bound to device authentication. US-35 does not choose it.
+- Sync conflicts, and how a deletion propagates. US-73. Criteria follow from the ADR at the design gate.
+- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate.
+- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Criteria follow from the ADR at the design gate.
+- Full-screen image view is US-85. It is pending approval of the E1 amendment.
 
 ## Resolved
 
-- One-sided items are kept. Conflicts and deletions stay open.
-- Encryption at rest, and ciphertext in Drive. Key transport stays open.
+- One-sided items are kept. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
+- Encryption at rest, and ciphertext in Drive. Key transport is US-74. Criteria follow from the ADR at the design gate.
+- The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
+- There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
+- A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
+- Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - English-only OCR. Inexact alarms. No Back up now.

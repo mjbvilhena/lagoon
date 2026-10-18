@@ -27,7 +27,7 @@ Miguel, on this phone and on a later install of the same app.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
   - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
-  - Each item keeps one id and an updated time across an edit, a repeat save, and a sync (A-E4-2, US-56). Acceptance: an edit or a second device does not fork the item. Which side wins when two updates share that id stays the open question on US-73.
+  - Each item keeps one id and an updated time across an edit, a repeat save, and a sync (A-E4-2, US-56). Acceptance: an edit or a second device does not fork the item. Which side wins when two updates share that id is US-73. Criteria follow from the ADR at the design gate.
   - Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen (A-E4-3, US-59). Acceptance: he does not hunt through the app for those controls. The screen has no Back up now, no Restore, and no last-backup time. Each control keeps the behavior of its own story.
   - Sign-out does not delete the vault on the phone (A-E4-4, US-78). Drive access stays `appDataFolder`. Acceptance: the phone vault remains after sign-out. The rest of the scope and sign-out behavior is the criteria on US-78.
 - **Future Scope (v2+):** Nothing named here.
@@ -50,15 +50,15 @@ Miguel, on this phone and on a later install of the same app.
 
 ## Risks & Dependencies
 
-- Depends on E1 for items and files, and on E8 for ciphertext. Key transport to the second device is open. This epic does not invent it.
-- Concurrent edits and deletion propagation are open. Stories do not pick a winner or a delete rule.
+- Depends on E1 for items and files, and on E8 for ciphertext. Key transport to the second device is US-74. Criteria follow from the ADR at the design gate. This epic does not invent it.
+- Concurrent edits and deletion propagation are US-73. Criteria follow from the ADR at the design gate. Stories do not pick a winner or a delete rule.
 - OAuth client setup is E6's README, after a real SHA-1 exists.
 
 ## Open Questions
 
-- [ ] Same item edited on two devices.
-- [ ] How deletions propagate.
-- [ ] How keys reach the second device. Owned with E8.
+- [ ] Same item edited on two devices. US-73. Criteria follow from the ADR at the design gate.
+- [ ] How deletions propagate. US-73. Criteria follow from the ADR at the design gate.
+- [ ] How keys reach the second device. US-74. Criteria follow from the ADR at the design gate. Owned with E8.
 - One-sided items are kept. That question is closed.
 
 ## Draft stories
@@ -73,5 +73,5 @@ Miguel, on this phone and on a later install of the same app.
 - US-51 Sync in the background and show errors
 - US-56 Keep a stable identity for each item
 - US-59 Use one Settings screen
-- US-73 Decide sync conflicts and deletions. Open question.
+- US-73 Decide sync conflicts and deletions. Criteria follow from the ADR at the design gate.
 - US-78 Drive scope and sign-out.

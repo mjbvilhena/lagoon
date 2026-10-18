@@ -20,7 +20,7 @@ Extract topics when an item is saved.
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
 - Domain constraints: no `DOMAIN.md` for capture, vault, or knowledge. No MUST/NEVER rules. Do not invent any.
-- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. A per-item "Include in topics" control on US-75 is still open.
+- Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
 - The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he chooses "Get topics" on that item. That is the named control behind "unless he asks".
 - A sensitive item stays out of the call (US-75). That exclusion still applies when this switch is on.
 - The topic job keeps its own "Unmetered only" setting (US-44). Turning topics on does not use the sync preference and does not ignore that setting.
@@ -93,7 +93,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Which fields may be sent is US-76 and is still open.
+- Which fields may be sent is US-76. Criteria follow from the ADR at the design gate.
 
 ## Implementation notes
 

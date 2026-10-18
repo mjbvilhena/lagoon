@@ -31,7 +31,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
   - He has a list of saved topics and one place for suggestions that are waiting (A-E11-3, US-60). Acceptance: he can open a subject and answer a suggestion without a prompt on every save. Nothing is created without confirmation.
   - A usefulness score for topics is computed on the phone (A-E11-4, US-72, Could). Acceptance: he is not asked to hand-label items, and the score is not sent off the phone.
 - **Future Scope (v2+):** Nothing named.
-- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Those stay open. Sensitive items are excluded from the topic call. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
+- **Out of Scope / Non-Goals:** Cloud OCR or a cloud vision API (E7 stays on-device). Creating a topic without his confirmation. Choosing the provider, the retention terms, the credential store, or the exact payload. Criteria follow from the ADR at the design gate (US-76). There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else. The topic job's own "Unmetered only" setting is in scope above (US-44, US-59). That setting is not the sync preference.
 
 ## Core Workflows
 
@@ -49,19 +49,19 @@ Miguel, saving into the vault and later looking across items that share a subjec
 
 ## Risks & Dependencies
 
-- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is open.
-- Privacy: readable content leaves the device for this call. Provider and retention terms are not chosen.
+- Depends on E1 for an item to process. Text from E2, E7, and the snapshot may be part of what could be sent. What is actually sent is US-76. Criteria follow from the ADR at the design gate.
+- Privacy: readable content leaves the device for this call. Provider and retention terms are US-76. Criteria follow from the ADR at the design gate.
 - Cost: each call can spend money. No cap is set here.
-- A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is open.
+- A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is US-76. Criteria follow from the ADR at the design gate.
 - Encryption of the vault at rest and of the Drive copy stays E8. This epic does not weaken that. It is the exception that sends readable content to a cloud AI.
 - Threat model is required later and is not started.
 
 ## Open Questions
 
-- [ ] Which AI provider, and what are its data-retention terms?
-- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form?
+- [ ] Which AI provider, and what are its data-retention terms? US-76. Criteria follow from the ADR at the design gate.
+- [ ] How is the API key or credential stored and protected, with no key baked into the APK in plain form? US-76. Criteria follow from the ADR at the design gate.
 - [x] Sensitive items are excluded from the topic call.
-- [ ] What exactly is sent: full text, images, OCR output, or some other slice?
+- [ ] What exactly is sent: full text, images, OCR output, or some other slice? US-76. Criteria follow from the ADR at the design gate.
 
 ## Draft stories
 
@@ -77,4 +77,4 @@ These stay Draft. Paths are under `docs/product/stories/`.
 - US-48 Manage a topic that is already saved.
 - US-60 Browse topics and pending suggestions
 - US-72 Score whether topics are useful. Could.
-- US-76 Decide the topic call's provider, credential, and payload. Open question.
+- US-76 Decide the topic call's provider, credential, and payload. Criteria follow from the ADR at the design gate.

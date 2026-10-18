@@ -14,7 +14,8 @@
 - Upcoming shows only the one reminder or the one expiry.
 - Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - There is no cap on topic suggestions.
-- US-73, US-74, and US-76 stay open questions. They are not capabilities.
+- US-73, US-74, and US-76 have no asserting criterion. Criteria follow from the ADR at the design gate. They are not capabilities.
+- US-85 is Draft. One tap on an image attachment opens it full-screen at maximum brightness. It is pending approval of the E1 amendment.
 
 ## Epic map
 
@@ -100,6 +101,7 @@
 | US-79 Skip unsafe link previews. | E2 | traced | A-E2-1 |
 | US-80 Keep the permission set to an allowlist. | E6 | traced | A-E6-1 |
 | US-81 Publish a sideload signing policy. | E6 | traced | A-E6-2 |
+| US-85 Show an image full-screen and bright. | E1 | pending | Proposed amendment. Needs approval by mjbvilhena. |
 
 ## Every story
 
@@ -138,8 +140,8 @@
 | US-31 | E7 | E7: "On-device text recognition for screenshots, images, and scanned PDFs." Vision: English, bundled model, disclosure. | Traced. The thin Play services artifact is absent because it collects a device identifier. Source: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
 | US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |
-| US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 local, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. A code is text already in the title. There is no separate code field. |
-| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. Spec Q10: a lost key means the content is lost. | Traced |
+| US-34 | E9 | E9: "An optional expiry or reminder date on an item." Spec US-34 line: 09:00 in the phone's current local zone, inexact, `POST_NOTIFICATIONS` at the first reminder. | Traced. An ordinary lock-screen reminder may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive notification is US-75. A time-zone change is US-55. |
+| US-35 | E8 | E8: "Encrypted database and encrypted attachment files" and keys in Android Keystore. Spec: a lost key means the content is lost. | Traced. The vault key is a hardware-backed Android Keystore key that does not require user authentication. |
 | US-36 | E8 | E8: "Drive stores ciphertext only." | Traced |
 | US-37 | E8 | E8: "Fingerprint or biometric lock on items marked sensitive" and "App lock is optional. The device PIN is the fallback." | Traced |
 | US-38 | E3 | E3: "An Untagged / Inbox view." | Traced |
@@ -159,7 +161,7 @@
 | US-52 | E4 | E4: "Zip export and import." | Traced |
 | US-53 | E5 | E5 palette, Light/Dark/System, and "Dynamic color is an optional toggle." | Traced. Reduced motion is in E5. |
 | US-54 | E9 | E9: "An expiry notifies 7 days before the date and again on the day." | Traced |
-| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Re-registration and which install posts are in E9. A sole signed-in install always posts. There is no return-by or warranty. |
+| US-55 | E9 | E9: "Reminders are stored and re-registered on `BOOT_COMPLETED`." | Traced. Re-registration and which install posts are in E9. A sole signed-in install always posts. A 09:00 reminder fires at 09:00 in the phone's current local zone after a time-zone change. There is no return-by or warranty. |
 | US-56 | E4 | E4: "Sync merges: an item that exists on only one side is kept." | Traced |
 | US-57 | E3 | Spec US-15 line: FTS5 with an encrypted database is a design-gate risk. "Spike it early." E8 requires encryption and E3 requires search. | Traced |
 | US-58 | E1 | E1: "After the save returns, a link is enriched, then the snapshot is taken from that fetch, then OCR runs, then the topic job runs." | Traced |
@@ -174,12 +176,13 @@
 | US-70 | E2 | E2: a check lists items whose snapshot or OCR is pending, failed, or has never run. | Traced. |
 | US-71 | E3 | E3: the inbox can apply one filing action to several items. | Traced. |
 | US-72 | E11 | E11: a usefulness score is computed on the phone and is not sent off the phone. | Traced. |
-| US-73 | E4 | Spec: "Inventing a conflict algorithm, a deletion rule, or a key-recovery design in this draft" stays open. "Concurrent edits and deletions are the open questions." | Traced. Placeholder for that open question, not a capability. |
-| US-74 | E8 | Spec: "Keys on a new device" is an open design-gate question. | Traced. Placeholder, not a capability. |
-| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. The lock-screen reminder is "Lagoon reminder". Export waits for US-37. | Traced. A per-item topic control and the private notification version stay on the story's open-question list, not in the acceptance criteria. The criteria are proposed security criteria. |
-| US-76 | E11 | E11 open question: provider, credential, and what is sent. Spec design gate says the same. | Traced. Placeholder, not a capability. |
+| US-73 | E4 | Spec open question: two edits of one item, and how a deletion propagates. | Traced. Criteria follow from the ADR at the design gate. Not a capability. |
+| US-74 | E8 | Spec open question: how keys reach a new device. | Traced. Criteria follow from the ADR at the design gate. Not a capability. |
+| US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. Both notification versions show only "Lagoon reminder". Export waits for US-37. | Traced. There is no per-item topics control in v1. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft. |
+| US-76 | E11 | Spec open question: provider, credential, and what is sent. | Traced. Criteria follow from the ADR at the design gate. Not a capability. |
 | US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
 | US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |
 | US-80 | E6 | E6: the release app requests only the permissions the product needs. `CAMERA` and exact-alarm permissions are absent. | Traced. |
 | US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. |
+| US-85 | E1 | E1 full-screen sentence is a proposed amendment. It is not approved epic text. | Pending approval by mjbvilhena. |
