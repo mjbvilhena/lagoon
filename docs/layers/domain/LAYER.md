@@ -12,7 +12,7 @@ Business invariants live in `docs/domain/vault/DOMAIN.md`. This file is the Kotl
 
 - **Responsibility:** entities, value objects, use cases, and repository ports for `com.mjbvilhena.lagoon.domain`.
 - **Not responsible for:** Compose, Room, Keystore, Drive, WorkManager, HTTP, PDF libraries, or ML Kit.
-- **Typical entry points:** use cases the UI calls (`CaptureShare`, `SaveItem`, `Search`, `SetReminder`, `ChangePassphrase`). Ports the data layer implements (`VaultStore`, `SyncPort`, `SearchIndex`, `Clock`, `TopicClient`, `PageRenderer`). Gradle module `:domain`.
+- **Typical entry points:** use cases the UI calls (`CaptureShare`, `SaveItem`, `Search`, `SetReminder`, `ChangePassphrase`, `ResetPassphrase`). Ports the data layer implements (`VaultStore`, `SyncPort`, `SearchIndex`, `Clock`, `TopicClient`, `PageRenderer`). `PageRenderer` returns a byte buffer or a failure. It does not return an Android `Bitmap`. Gradle module `:domain`.
 
 ## Allowed dependencies
 

@@ -22,7 +22,7 @@ Where the named capabilities live:
 | Sync | `data.sync` | WorkManager, Drive `appDataFolder`, one records file per install. Merge through the domain port. Conflict rule is ADR-0002 once accepted |
 | Search | `data.search` | The FTS index behind `SearchIndex`. Weights stay in the domain |
 | Reminders | `data.reminder` | Inexact `setAndAllowWhileIdle`. Reschedule on every US-55 trigger. Notification text follows US-34 and US-75 |
-| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Reject `file://` and Lagoon's own FileProvider URIs. Cap one image at 20 MiB. Keep a pre-key share off disk. The Activity is the UI layer |
+| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Proposed amendment. Needs approval by mjbvilhena. Needs a story. Reject `file://` and Lagoon's own FileProvider URIs, and refuse a single image larger than 20 MiB. No story states those two rules. The 20 MiB figure is US-31's OCR input cap, not an intake cap. Keep a pre-key share off disk. The Activity is the UI layer |
 
 ## Allowed dependencies
 
@@ -30,14 +30,14 @@ Where the named capabilities live:
 | --- | --- | --- |
 | Domain layer | implement ports | `com.mjbvilhena.lagoon.domain` only |
 | Room | import | Spec requires Room with FTS. Engine for encryption plus FTS waits on US-57 |
-| SQLCipher | import | Database encryption in ADR-0006. US-57 still has to show FTS with it |
+| SQLCipher | import | Database encryption in ADR-0006. The subkey is raw key data, `PRAGMA key = "x'<64 hex>'"`, and `temp_store` is `MEMORY`. US-57 still has to show FTS with it |
 | Native Argon2id | import | JNI to the PHC reference. Not a pure-Java port (ADR-0001) |
 | Android Keystore | import | AES-256-GCM wrap. No user authentication (US-35, ADR-0001) |
 | PdfBox-Android | import | Extract, and render on API 26–29, inside the isolated process (ADR-0005) |
 | Credential Manager or AuthorizationClient | import | Drive sign-in. Not a WebView. Scope `drive.appdata` only (US-78) |
 | WorkManager | import | Sync and background jobs. Unmetered constraint from US-19 and US-44 |
 | Drive API | HTTP via the official client | Scope `drive.appdata` only (US-78) |
-| AlarmManager | import | Inexact `setAndAllowWhileIdle` only (US-77 is Draft; the spec already requires inexact alarms) |
+| AlarmManager | import | Inexact alarms only. The spec allows `setWindow` or `setAndAllowWhileIdle`. This layer narrows that to `setAndAllowWhileIdle` (US-77 is Draft; the spec already requires inexact alarms) |
 | ML Kit text-recognition, bundled | import | `com.google.mlkit:text-recognition` after US-07 acceptance (ADR-0004). Datatransport components are named on the US-80 allowlist or removed |
 | Topic HTTP client | import | The same OkHttp or `HttpURLConnection` stack as link preview. Key in the `Authorization: Bearer` header to `https://api.x.ai/v1` (ADR-0003). The default low-cost model is grok-4.20-0309-non-reasoning. A response whose `x-zero-data-retention` header is not `true` is discarded, and topic calls pause until he checks. No second generative SDK, and no Cursor agent SDK |
 | OkHttp or `HttpURLConnection` | import | Link preview (US-79) and the topic HTTP client |
@@ -52,7 +52,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 ## MUST rules (technical)
 
-- MUST encrypt vault bytes before they touch disk, using the vault key, including the derived files US-35 lists.
+- MUST encrypt vault bytes before they touch disk, using the vault key, including the derived files US-35 lists. SQLCipher uses `PRAGMA temp_store = MEMORY`, as ADR-0006 states once that record is accepted.
 - MUST keep the salt and KDF parameters in a header that can be read before decrypt. MUST keep the wrapped key blob on the phone only.
 - MUST send Drive file names and metadata with no title and no tag (US-36).
 - MUST NOT create a software-backed vault key unless he has accepted the warning in ADR-0001. MUST NOT ask for the passphrase on every launch because secure hardware is missing.
@@ -60,10 +60,10 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - MUST remove `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and call `MlKit.initialize` only after acceptance, and only once per process (US-07, ADR-0004).
 - MUST keep the manifest allowlist in US-80, including ML Kit datatransport components named or removed (ADR-0004). `allowBackup` false and vault exclusion in `dataExtractionRules` (US-35).
 - MUST post sensitive notifications as public and private text "Lagoon reminder" (US-75).
-- MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start.
+- MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start. The spec also allows `setWindow`. This layer's narrower choice is Proposed. Needs approval by mjbvilhena.
 - MUST accept share bytes that are a link, plain text, an image, or a PDF. A PDF share that is not a PDF is still rejected (US-04, Draft). Image and text shares are not rejected for being non-PDF.
-- MUST reject a share URI whose scheme is `file`, and MUST reject a URI from Lagoon's own FileProvider.
-- MUST refuse a single image larger than 20 MiB at intake. That figure is the same cap US-31 uses for image bytes.
+- Proposed amendment. Needs approval by mjbvilhena. Needs a story. Reject a share URI whose scheme is `file`, and reject a URI from Lagoon's own FileProvider. Refuse a single image larger than 20 MiB at intake. The 20 MiB figure is US-31's OCR input cap, not an intake cap. No story states these rules, so they are not acceptance criteria.
+- A release build strips `Log`. Crash and exception text carries no item body (T-31). Proposed. Needs approval by mjbvilhena.
 - MUST wipe a share temp file on return, within 15 minutes, and on next launch, and revoke the URI grant with that wipe (US-64).
 
 ## NEVER rules (technical)

@@ -23,7 +23,7 @@ Encrypt the vault at rest.
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
 - Proposed amendment. Needs approval by mjbvilhena. On that reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A phone that holds no key still follows "I've forgotten my passphrase" and does not use this reset. A normal passphrase change, where he enters the current passphrase, does not wait. This is not approved.
-- Proposed amendment. Needs approval by mjbvilhena. A passphrase of fewer than 12 characters is refused, and a passphrase on the bundled common-password list is refused, before the KDF runs. There is no strength meter. The strong-passphrase guidance still shows. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower memory, iterations, or parallelism. The scenarios whose title line carries this same marker are not approved. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. A character is one Unicode code point after NFC. A passphrase shorter than 12 or longer than 128 is refused, and a passphrase on the bundled common-password list is refused, before the KDF runs. There is no strength meter. The strong-passphrase guidance still shows. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and refuses to re-create one from Drive. It does not lower memory, iterations, or parallelism. The test is a failed native allocation of 65536 KiB, not `isLowRamDevice()`. The scenarios whose title line carries this same marker are not approved. This is not approved.
 - Proposed amendment. Needs approval by mjbvilhena. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it. This is not approved.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
@@ -39,7 +39,7 @@ Encrypt the vault at rest.
   - And that pending share stays in memory only. Nothing is written to disk in plaintext before the key exists
 - **Scenario: a passphrase under the minimum** — Proposed amendment. Needs approval by mjbvilhena.
   - Given he is setting up the vault
-  - When the passphrase is fewer than 12 characters, or it is on the bundled common-password list
+  - When the passphrase is shorter than 12 Unicode code points after NFC, longer than 128, or on the bundled common-password list
   - Then the passphrase is refused
   - And the KDF does not run
   - And there is no strength meter
@@ -70,6 +70,7 @@ Encrypt the vault at rest.
   - And background sync and reminders can decrypt while the phone is locked, after the first unlock since boot
   - And sensitive content still needs the US-37 unlock
   - And normal use does not ask for the passphrase
+- Proposed amendment. Needs approval by mjbvilhena. The hardware check in "no user authentication on the key" has an exception when this phone has no secure hardware and he has accepted the warning in "a phone without secure hardware". `isUserAuthenticationRequired` stays false. This is not approved.
 - **Scenario: data at rest** — Must
   - Given the key exists
   - When the database and attachment files are stored
@@ -118,6 +119,7 @@ Encrypt the vault at rest.
   - Then the check reads the Keystore key that holds or wraps the derived key
   - And on API 31+ `KeyInfo.getSecurityLevel()` is StrongBox or TEE
   - And on API 26–30 `KeyInfo.isInsideSecureHardware()` is true
+- Proposed amendment. Needs approval by mjbvilhena. The hardware check in "which key is hardware-backed" has the same exception. A phone without secure hardware, after that warning, may report a software-backed key. This is not approved.
 - **Scenario: a phone without secure hardware** — Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone's Keystore cannot keep the vault key in secure hardware
   - When he sets up a vault

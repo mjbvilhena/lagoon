@@ -57,6 +57,7 @@ Change the passphrase.
   - When another signed-in install syncs
   - Then that install asks for the new passphrase
   - And it does not overwrite the re-encrypted vault
+- Proposed amendment. Needs approval by mjbvilhena. "another install" asks for the new passphrase after a normal change, and after the 24 hours of a forgotten-passphrase reset end with no cancel. During those 24 hours the Drive copy still opens with the old passphrase. This is not approved.
 - **Scenario: old zips** — Should
   - Given zips were exported before the change
   - When the change completes
@@ -103,7 +104,7 @@ Change the passphrase.
   - Then the phone vault and the Drive copy are each readable under exactly one passphrase, and neither is mixed
 - **Scenario: a new passphrase under the minimum** — Proposed amendment. Needs approval by mjbvilhena.
   - Given he enters a new passphrase, on a normal change or on a forgotten-passphrase reset
-  - When that passphrase is fewer than 12 characters, or it is on the bundled common-password list
+  - When that passphrase is shorter than 12 Unicode code points after NFC, longer than 128, or on the bundled common-password list
   - Then the passphrase is refused and no change starts
   - And there is no strength meter
 

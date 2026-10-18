@@ -29,8 +29,10 @@ Recommended option: on API 26–29, render and extract with a bundled library (P
 
 Rules, if this record is accepted:
 
-- Both `PdfRenderer` and PdfBox run in a service declared with `android:isolatedProcess="true"`. A plain `android:process` is a separate process with the same UID, and it can still read the vault. An isolated process cannot. Decrypted bytes reach it through the binder call or a descriptor that process can read, not through a vault path. The service is not exported (US-80).
-- Render a page at full resolution, the page's own pixel size, with no preview downscale. A barcode on that page has to be readable from that bitmap. The UI may scale a copy for display. The bitmap used for a scan is the full-resolution one. One page is rendered at a time (the platform renderer already allows only one open page). Bitmaps stay in memory (US-85).
+- Both `PdfRenderer` and PdfBox run in a service declared with `android:isolatedProcess="true"`. A plain `android:process` is a separate process with the same UID, and it can still read the vault. An isolated process cannot. Decrypted bytes reach it through a memory-backed descriptor, not through a vault path and not as a byte array in a Parcel. The service is not exported (US-80).
+- PDF bytes and rendered bitmaps do not cross that process inline in a Parcel. Binder's transaction buffer is shared by the process and is about 1 MB, and a larger payload throws `TransactionTooLargeException`. The transport is a memory-backed file descriptor. `HardwareBuffer` is API 26. `SharedMemory` is API 27. API 26 uses a memory file descriptor or a `HardwareBuffer`. API 27 and newer may use `SharedMemory`. There is never a plaintext PDF file.
+- `PdfRenderer.Page` `getWidth` and `getHeight` are in points, 1/72 inch, not pixels. The page is rendered at screen width times display density, so it is never shown upscaled from a smaller bitmap. On pinch-zoom the visible region is rendered again (US-85). One page is open at a time. Bitmaps stay in memory.
+- The barcode test decodes from the bitmap shown on screen. It does not add a new ML Kit barcode feature. If that bitmap cannot be allocated, rendering fails closed and no cache file is written.
 - Before US-85 implementation is treated as done, one text page and one scanned page are timed on a phone running API 26, 27, 28, or 29. The record names the model and the API level, and it says whether a barcode on the fixture page decodes. This record sets no pass or fail duration. A slow phone is not a reason to drop full resolution without a new ADR.
 - API 26–29 does not call platform `PdfRenderer` at all. That avoids a plaintext file, and it avoids the API 27 sticky `SecurityException`.
 - API 30+ may call `PdfRenderer` only with a seekable anonymous descriptor (`memfd`) filled from the decrypted bytes. The descriptor is closed with the renderer. Nothing is written to a file for the renderer.
@@ -54,15 +56,16 @@ Default: a PDF whose encryption cannot be classified is not passed to a renderer
 
 ## Consequences
 
-- **Positive.** API 26–29 never needs a plaintext PDF file. Both renderers are isolated from the vault. A barcode is scanned from a full-resolution bitmap. API 35 does not grow a password prompt the stories forbid.
-- **Negative / accepted trade-offs.** Two renderers, both in an isolated process, which means a binder or a descriptor instead of a file path. memfd rendering and a full-resolution bitmap can fail closed on a very large page. Full-screen quality may differ between PdfBox and Pdfium. A PDF that needs a password to open is stored and is not searchable. An owner password does not make a file password-protected.
+- **Positive.** API 26–29 never needs a plaintext PDF file. Both renderers are isolated from the vault. A barcode is scanned from the bitmap shown on screen. API 35 does not grow a password prompt the stories forbid.
+- **Negative / accepted trade-offs.** Two renderers, both in an isolated process, which means a memory-backed descriptor instead of a file path or a Parcel. A page rendered at screen width times display density, and a pinch-zoom re-render, can fail closed on a very large page. Full-screen quality may differ between PdfBox and Pdfium. A PDF that needs a password to open is stored and is not searchable. An owner password does not make a file password-protected.
 - **Follow-ups.** The isolated service must stay inside the US-80 export rules. The API 26–29 benchmark is evidence, not a threshold. He is the approver.
 
 ## Compliance
 
 - [ ] An API 26–29 test renders a text-layer page with no file under the cache or files directory created for the renderer
 - [ ] The renderer service is `android:isolatedProcess="true"` for both PdfRenderer and PdfBox, and it is not exported
-- [ ] A barcode fixture is decoded from the full-resolution bitmap, not from a downscaled preview
+- [ ] A barcode fixture is decoded from the bitmap shown on screen. The page is rendered at screen width times display density, and pinch-zoom re-renders the visible region
+- [ ] PDF bytes and bitmaps cross the isolated process only on a memory-backed descriptor. API 26 does not require `SharedMemory`. No plaintext PDF file is written
 - [ ] A phone on API 26, 27, 28, or 29 has a recorded model, API level, render time, and barcode result
 - [ ] No test calls `setPassword` or stores a PDF password
 - [ ] API 30+ renderer input is an anonymous descriptor
@@ -82,6 +85,8 @@ Default: a PDF whose encryption cannot be classified is not passed to a renderer
 - Copying the decrypted PDF into `cacheDir` for the renderer.
 - Treating PdfBox-Android in US-04's story text as already accepted. This record is the acceptance point, and it is still Proposed.
 - Using `android:process` and calling it isolated. The same UID can read the vault.
+- Treating `getWidth` and `getHeight` as pixels, or showing a page upscaled from a smaller bitmap.
+- Putting PDF bytes or a bitmap in a Parcel that crosses the isolated process.
 - Downscaling the only bitmap and then expecting a barcode to scan.
 - Treating an owner-password PDF as password-protected.
 - Asking for a password so a PDF that needs one can open.

@@ -37,6 +37,7 @@ Delete an item and undo that delete.
   - When the deferred delete runs, including after the process was killed in between
   - Then the item, its FTS row, reminders, topic links, queued topic job, pending suggestions, and the AI topic notes written from this item are gone
   - And the Drive copy is left for US-73. This story does not delete it
+- Proposed amendment. Needs approval by mjbvilhena. If US-66 is in the build, the hard delete in "the confirmation ends" moves the item into the synced trash instead. The cleanup in that scenario runs when the tombstone is written. This is not approved.
 - **Scenario: a topic note from this item** — Must
   - Given a topic note was written from this item
   - When the hard delete finishes

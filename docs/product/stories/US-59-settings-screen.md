@@ -43,6 +43,21 @@ Use one Settings screen.
   - Given he opens Settings
   - When the screen is shown
   - Then he can read the same disclosure US-07 requires before the first OCR use, he can see whether he has accepted it, and he can withdraw that acceptance. There is no control that disables ML Kit usage or diagnostic telemetry inside the SDK
+- **Scenario: forget this phone** — Should
+  - Proposed amendment. Needs approval by mjbvilhena.
+  - Given another install has a records file
+  - When he chooses "Forget this phone" and names that other install
+  - Then that install's records file is deleted from Drive
+  - And this phone's own file is not deleted
+  - And the passphrase does not change
+  - And no job retires a file because of age, silence, or a missed check-in
+- **Scenario: the topic key and the call count** — Should
+  - Proposed amendment. Needs approval by mjbvilhena.
+  - Given this phone has no topic key stored
+  - When he opens Settings
+  - Then Settings says the key is not copied from the other phone and must be typed again
+  - And Settings shows how many topic calls this install has made this month
+  - And that count is not a cap and is not synced
 
 ## Analytics and observability (optional)
 

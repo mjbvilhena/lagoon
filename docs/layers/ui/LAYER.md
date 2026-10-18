@@ -14,7 +14,7 @@ Business rules live in `docs/domain/vault/DOMAIN.md`. This file only says where 
 - **Not responsible for:** encryption, Drive, Room, FTS, KDF, ML Kit calls, PDF parsing, alarm scheduling, or topic HTTP. Those are the data layer.
 - **Typical entry points:** `com.mjbvilhena.lagoon.ui` (Compose), plus the launcher activity and the exported share target that the manifest allows (US-80). Module `:app` constructs the graph. Feature composables may not. Gradle module `:ui`.
 
-Share intake lives here only as the `ACTION_SEND` entry. It maps the incoming intent to a domain capture command. It does not write the database and it does not decrypt. It does not accept a `file://` URI or a URI from Lagoon's own FileProvider. The data layer enforces that rejection and the 20 MiB image cap.
+Share intake lives here only as the `ACTION_SEND` entry. It maps the incoming intent to a domain capture command. It does not write the database and it does not decrypt. Proposed amendment. Needs approval by mjbvilhena. Needs a story. It does not accept a `file://` URI or a URI from Lagoon's own FileProvider, and the data layer proposes a 20 MiB image cap. No story states those rules. The 20 MiB figure is US-31's OCR input cap.
 
 ## Allowed dependencies
 
