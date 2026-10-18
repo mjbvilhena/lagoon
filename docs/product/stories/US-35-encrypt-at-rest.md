@@ -3,7 +3,6 @@
 > **Approval status: Approved.**
 > Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
-> The earlier approval covers the rest.
 
 **Epic:** E8.
 
@@ -53,7 +52,7 @@ Encrypt the vault at rest.
   - When `KeyInfo` is read for the Keystore key that holds or wraps the derived key
   - Then on API 31+ `KeyInfo.getSecurityLevel()` is StrongBox or TEE, and on API 26–30 `KeyInfo.isInsideSecureHardware()` is true
   - And `isUserAuthenticationRequired` is false
-  - And background sync and reminders can decrypt while the phone is locked, after the first unlock since boot. Proposed security criterion. Needs approval by mjbvilhena.
+  - And background sync and reminders can decrypt while the phone is locked, after the first unlock since boot
   - And sensitive content still needs the US-37 unlock
   - And normal use does not ask for the passphrase
 - **Scenario: data at rest** — Must
@@ -117,7 +116,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on the US-57 spike before FTS and SQLCipher are combined. This story does not choose the cipher.
-- Amendment approved by mjbvilhena on 2026-10-18. Security criteria approved by mjbvilhena on 2026-10-18. The earlier approval covers the rest.
+- Amendment approved by mjbvilhena on 2026-10-18.
 - Changing the passphrase is US-86. It is not a criterion of this story.
 - When the device has no hardware-backed Keystore, the fallback is decided at the design gate.
 
