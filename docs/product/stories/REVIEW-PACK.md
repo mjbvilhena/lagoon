@@ -24,9 +24,9 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## Open questions
 
-- What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. Criteria follow from the ADR at the design gate.
-- How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
-- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext.
+- What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. Criteria follow from the ADR at the design gate. Proposed record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted.
+- How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. Proposed record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted.
+- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext. Proposed record: `docs/adr/ADR-0003-gemini-topic-call.md`. Not accepted.
 
 ## Removed
 
@@ -40,4 +40,4 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## Threat note
 
-`docs/technical_design/2026-10-17-proposed-threat-note.md` is unapproved hypotheses. It is not a threat model. The design band is closed.
+`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. UX and the test strategy are not started. Implementation has not started.

@@ -2,7 +2,7 @@
 
 Inspection date: 2026-10-18. Conductor: `sdlc-conductor`. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
-Templates and Definition of Done checks were imported from `third_party/ai-sdlc-harness/mcp-server/src/server.py` with the virtualenv Python. No `DOMAIN.md` or `LAYER.md` was found. No MUST/NEVER rules were invented.
+Templates and Definition of Done checks were read with `get_sdlc_template` and `get_definition_of_done` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604` (`lifecycle pipeline`, `domain`, `layer`, `adr`, `threat model`, `security change`). `get_domain_consultant("vault")` and `get_layer_consultant` for `ui`, `domain`, and `data` now resolve to the Proposed files below. Capture and knowledge are not separate domains.
 
 ## Legal state
 
@@ -13,16 +13,16 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 | Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. The E1 full-screen sentence for US-85 is approved. The passphrase amendment is included in that approval. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
 | Story refine | `docs/product/stories/` and `INDEX.md` | US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
 | Story approval | US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, US-86 | Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft. US-73, US-74, and US-76 are placeholders and are not ready for review. Security criteria approved by mjbvilhena on 2026-10-18. |
-| Technical design / ADRs | No ADR | Not started. ML Kit research input: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
+| Technical design / ADRs | `docs/adr/ADR-0001-argon2id-vault-key.md`, `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`, `docs/adr/ADR-0003-gemini-topic-call.md`, `docs/adr/ADR-0004-ml-kit-telemetry.md`, `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Proposed. Needs approval by mjbvilhena. Not accepted. ML Kit research input remains `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. The content cipher, mode, and key size still have no ADR. |
 | UX | No UX artefact | Not started. |
-| Test strategy / threat model | `docs/technical_design/2026-10-17-proposed-threat-note.md` | Not started as a gate. The note is unapproved hypotheses. It does not open the design band. |
-| Domain / layer | No `DOMAIN.md` or `LAYER.md` | Not started. |
+| Test strategy / threat model | `docs/technical_design/threat-model.md` | Threat model Proposed. Needs approval by mjbvilhena. Not accepted. Test strategy is not started. `docs/technical_design/2026-10-17-proposed-threat-note.md` stays an earlier hypothesis list. |
+| Domain / layer | `docs/domain/vault/DOMAIN.md`, `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, `docs/layers/data/LAYER.md` | Proposed. Needs approval by mjbvilhena. Not accepted. |
 | Repository checks | `.github/workflows/qa.yml` | In place. Not a product approval. The workflow runs seven jobs. The Protect master ruleset requires all seven. See `docs/sdlc/repository-setup.md`. |
 | Implement | No application code | Not started. |
 
 ## Stop
 
-**Epic gate passed.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Implementation has not started.
+**Epic gate passed.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Domain, layer, ADRs, and the threat model are Proposed and are not accepted. Implementation has not started.
 
 The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. The Protect master ruleset requires those seven checks, and the branch must be up to date. There are no bypass actors. The Android jobs no-op until a Gradle project exists.
 
@@ -44,9 +44,9 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 
 ## Open questions
 
-- Sync conflicts and how a deletion propagates (US-73). Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device (US-74). Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
-- Topic provider, retention, credential supply, and payload (US-76). Criteria follow from the ADR at the design gate.
+- Sync conflicts and how a deletion propagates (US-73). Proposed answer: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted. The story stays a placeholder.
+- How the vault key reaches a new device (US-74). Proposed answer: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted. The story stays a placeholder. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
+- Topic provider, retention, credential supply, and payload (US-76). Proposed answer: `docs/adr/ADR-0003-gemini-topic-call.md`. Not accepted. The story stays a placeholder.
 
 ## History
 
@@ -58,7 +58,8 @@ The specification and epics E1–E11 were approved on 2026-10-17. The specificat
 | --- | --- |
 | Vision ↔ spec | The vision states the current product. The specification is approved. |
 | User-story index | `docs/product/stories/INDEX.md`. Review pack: `docs/product/stories/REVIEW-PACK.md`. Traceability: `docs/product/stories/TRACEABILITY.md`. |
-| Threat note | `docs/technical_design/2026-10-17-proposed-threat-note.md`. Not an approved threat model. |
-| ML Kit input | `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. Not an ADR. |
+| Threat model | `docs/technical_design/threat-model.md`. Proposed. Needs approval by mjbvilhena. The 2026-10-17 note is not this model. |
+| Domain and layers | `docs/domain/vault/DOMAIN.md` and the three `docs/layers/*/LAYER.md` files. Proposed. Needs approval by mjbvilhena. |
+| ML Kit input | `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. Input only. The decision record is ADR-0004, still Proposed. |
 
-UX, an approved threat model, and technical design stay closed until story approval, or until a skip is recorded here. Implementation stays closed.
+UX and the test strategy are not started. Technical design and the threat model are drafted and not accepted. Implementation stays closed.

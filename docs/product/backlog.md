@@ -6,7 +6,7 @@
 
 ## Gate
 
-Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Domain, layers, ADRs, and the threat model are Proposed and are not accepted. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
@@ -73,7 +73,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 - **US-56** *(Draft)* Keep a stable identity for each item. Evidence: `docs/product/stories/US-56-item-data-model.md`. Not implemented.
 - **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
-- **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
+- **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
 - **US-78** *(Approved)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
 
 ## Epic E5: Look and feel
@@ -103,12 +103,12 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. Cipher waits for an ADR. Threat model not started.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. The content cipher still waits for an ADR. Threat model: `docs/technical_design/threat-model.md`, Proposed, not accepted.
 
 - **US-35** *(Approved)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
-- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Approved)* Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18.
 - **US-86** *(Approved)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
@@ -136,7 +136,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
 - **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
 - **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
-- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
+- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Proposed ADR: `docs/adr/ADR-0003-gemini-topic-call.md`. Not accepted. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -155,14 +155,26 @@ Checks from the harness mapping are in the tree. That is not product approval. E
 - **Protect master status checks** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
 - **Protect master bypass** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
 
+## Proposed design gate
+
+Not approval. Needs approval by mjbvilhena. Implementation has not started. The map is `docs/product/stories/TRACEABILITY.md`.
+
+- **Domain** *(Proposed)* `docs/domain/vault/DOMAIN.md`.
+- **Layers** *(Proposed)* `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, `docs/layers/data/LAYER.md`.
+- **ADR-0001** *(Proposed)* Argon2id vault key. Placeholder US-74 points here. `docs/adr/ADR-0001-argon2id-vault-key.md`.
+- **ADR-0002** *(Proposed)* Sync conflicts and deletions. Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
+- **ADR-0003** *(Proposed)* Paid Gemini topic call. Placeholder US-76 points here. `docs/adr/ADR-0003-gemini-topic-call.md`.
+- **ADR-0004** *(Proposed)* ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
+- **ADR-0005** *(Proposed)* PDF rendering on API 26–29, and no PDF password. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
+- **Threat model** *(Proposed)* `docs/technical_design/threat-model.md`. The 2026-10-17 note is an earlier hypothesis list.
+
 ## Not started, and not skipped
 
-These need a later explicit go-ahead after the gates. No skip sentence was recorded.
+These need a later explicit go-ahead. No skip sentence was recorded.
 
 - UX design (`sdlc-ux-designer`)
-- Technical design: RFC, API design, ADRs (`sdlc-rfc-drafter`, `sdlc-api-designer`, `sdlc-adr-drafter`), including the cipher
-- Test strategy and threat model (`sdlc-test-planner`, `sdlc-threat-modeler`). A threat model is required before implementation because of encryption, biometric lock, and Drive sync. It is not written.
-- `DOMAIN.md` / `LAYER.md` (no bound has been designed, so the architect skills were not run, and no MUST/NEVER rules were invented)
+- Content cipher, mode, and key size. The specification still waits on that ADR. This design gate does not choose it.
+- Test strategy (`sdlc-test-planner`)
 - App implementation (`sdlc-implementer`)
 - Verification skills (test writer, UI tests beyond the plan, code review, security review)
 
@@ -195,9 +207,9 @@ The index is the full list. Every remaining story is also listed under its paren
 
 ## Open questions
 
-- Sync conflicts, and how a deletion propagates. US-73. Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
-- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Criteria follow from the ADR at the design gate.
+- Sync conflicts, and how a deletion propagates. US-73. Proposed ADR-0002. Not accepted.
+- How the vault key reaches a new device. US-74. Proposed ADR-0001. Not accepted. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
+- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Proposed ADR-0003. Not accepted.
 
 ## Resolved
 

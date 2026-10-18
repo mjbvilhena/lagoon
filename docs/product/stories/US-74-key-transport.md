@@ -42,6 +42,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Criteria follow from the ADR at the design gate.
+- Proposed record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Status: Proposed. Needs approval by mjbvilhena. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 
