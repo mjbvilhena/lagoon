@@ -44,7 +44,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 
 ### Aggregates
 
-- **Item.** Consistency boundary for attachments, notes, tags on that item, the sensitive mark, and the one reminder or expiry. Deleting it removes its FTS row, reminders, topic links, queued topic job, pending suggestions, and topic notes written from it, once undo has ended. That cleanup list is US-13 only, and US-13 is Draft. How that delete reaches another phone is proposed in ADR-0002, and delete versus a later edit is Decision pending there.
+- **Item.** Consistency boundary for attachments, notes, tags on that item, the sensitive mark, and the one reminder or expiry. Deleting it removes its FTS row, reminders, topic links, queued topic job, pending suggestions, and topic notes written from it, once undo has ended. That cleanup list is US-13 only, and US-13 is Draft. After undo, the item stays in trash on this phone for 30 days. The delete does not spread. A restore, or a later edit on another phone, brings it back. When the 30 days end, a tombstone spreads, and an id with a tombstone is not a one-sided item the other phone keeps. That rule is decided in ADR-0002. The ADR is still Proposed, so the rule is not a MUST. The spec amendment that says the same thing is not approved.
 - **Tag.** The name is the identity, compared case-insensitively (spec, US-29). US-29 is Draft. The specification already states rename-and-merge.
 - **Topic.** Links and notes. Sensitive topic notes stay hidden until the US-37 unlock (US-75). Unlink and merge of a saved topic are US-48 only, and US-48 is Draft.
 
@@ -76,7 +76,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - MUST encrypt the database, attachment files, and derived files (thumbnails, previews, snapshots, OCR cache, WebView cache, image cache, WorkManager inputs, logs, export temp copies) with the vault key (US-35).
 - MUST keep `allowBackup` false and exclude the vault from `dataExtractionRules` (US-35).
 - MUST upload only ciphertext, under opaque Drive names, with granted scopes exactly `drive.appdata` (US-36, US-78).
-- MUST keep an item that exists on only one side (spec, US-20). Two edits of one id, and deletion propagation, wait on ADR-0002.
+- MUST keep an item that exists on only one side and has no tombstone (spec, US-20). Field merge for two edits of one id is proposed in ADR-0002 and is not a MUST while that ADR is Proposed. Deletion propagation is the decided 30-day trash rule in ADR-0002, and it is not a MUST while that ADR and the spec amendment are unapproved.
 - MUST union tags, keep existing text, and append a dated note when the same normalised URL is shared again (spec, US-49).
 - MUST search title, body, extracted text, OCR text, tags, and the personal note with the specified BM25 weights: title 10, tags 5, personal note 3, body and extracted text 1, OCR text 1 (spec, US-15, US-50).
 - MUST exclude a sensitive item's title, snippet, thumbnail, and OCR text in rows and search, and exclude it from search highlights, topic calls, and both notification versions, until the rules in US-75 are met.
@@ -109,7 +109,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - A failed link fetch keeps the URL (US-09).
 - Enrichment, snapshot, OCR, and topic outcomes that are still pending stay visible as pending or failed, not as invented text (US-31, US-70).
 - Provenance for a topic result records item id, fields sent, timestamp, and model or prompt version. It does not record the credential or the passphrase (US-41).
-- No retention period is stated for vault content beyond the product rules. Trash duration is not decided (US-66, Draft).
+- No retention period is stated for ordinary vault content beyond the product rules. Trash is 30 days on the phone that deleted the item, then a tombstone. Tombstone garbage collection stays as ADR-0002 states it: until every known install has merged the tombstone, and at least 90 days after the tombstone. US-66 is Proposed for story review, not approved. The spec amendment is not approved. This file does not make those durations a MUST.
 - Drive keeps old revisions for about 30 days or about 100 revisions, whichever keeps more, unless keep-forever is set. ADR-0001 proposes that the app does not set keep-forever and does not delete revisions. US-86 already says an old revision or an old zip may open with the old passphrase. A zip he keeps is outside that purge. That sentence is not a change to US-86.
 
 ## Change control

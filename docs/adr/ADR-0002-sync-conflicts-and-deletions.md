@@ -4,7 +4,7 @@
 
 Proposed. Needs approval by mjbvilhena.
 
-This record answers the US-73 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Delete versus a later edit stays open under Decision pending. The sensitive mark does not. That rule is decided below. This record is still Proposed.
+This record answers the US-73 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Delete versus a later edit is decided below. The sensitive mark is decided below. This record is still Proposed.
 
 ## Context
 
@@ -24,7 +24,7 @@ Doing nothing lets the last phone to upload replace the other phone's vault.
 
 Recommended option: each install writes only its own records file, as immutable generations of a full snapshot. Attachments are separate immutable files. Each install downloads the other installs' files and merges them locally. Scalar fields use the later `updatedAt`, and an equal `updatedAt` is broken by the lower install id. Tags are a union unless a removal is recorded. Personal-note entries from both sides are kept.
 
-The sensitive mark is decided. It is not sticky across phones. It merges like any other scalar field. Delete versus a later edit is not decided. It stays under Decision pending.
+The sensitive mark is decided. It is not sticky across phones. It merges like any other scalar field. Delete versus a later edit is decided. A delete stays in local trash for 30 days. A later edit during that time is kept, and the item comes back. Only after those 30 days does the delete become a tombstone.
 
 Rules, if this record is accepted:
 
@@ -40,24 +40,16 @@ Rules, if this record is accepted:
 - Check-ins stay per install. They are not last-writer-wins. Each records file carries that install's check-in. US-55 reads those check-ins: newest posts, a sole signed-in install that holds the key always posts, and equal check-ins are broken by the lower install id.
 - Settings. The Gemini API key, the billed-project confirmation, and ML Kit acceptance stay on the install that stored them. They are not in the synced records. This record does not sync the Gemini key. Other non-secret settings (theme, reminder default, the topic switch, unmetered flags) follow the later `updatedAt`, with the same install-id tie-break.
 - Attachments that exist on either side are both kept. A removal is a record (attachment id, timestamp, install id), not an in-place delete of the immutable file. An older records file does not put a removed attachment back. The file itself becomes eligible for garbage collection with the tombstone rules below.
-- A delete that has finished the US-13 undo window writes a tombstone for that id. Undo before that window ends writes nothing remote. US-66 trash duration is not decided here. Until a later story sets it, "final" means the undo window has ended. Whether that tombstone beats a later edit is Decision pending.
-- Tombstone lifetime. A tombstone is kept until every install that currently has a records file has merged a generation containing it, and at least 90 days have passed since the tombstone timestamp. Then garbage collection may drop the tombstone and any attachment objects that no remaining record references. After that collection, a zip or a phone that never merged can bring the item back. An install that still has a records file and has not merged keeps the tombstone alive past 90 days. Garbage collection does not run because a listing failed.
+- Undo. US-13 undo, before that window ends, writes nothing remote and does not start trash.
+- Trash. When the undo window ends, the item enters trash on this install only, for 30 days. Thirty days is 30 × 24 hours from the instant it entered trash, on this phone's clock. Trash is not uploaded. No tombstone is written. The records file this install uploads still carries the item as a live item, so another install does not see a delete. On this phone the item is absent from search and its reminders are paused (US-66). The other phone still has the live item. An id that is only in trash here, with no tombstone, is still a one-sided live item on the other phone and is kept (US-20).
+- Restore. If he restores the item during those 30 days, it leaves trash on this phone. It returns to search, its reminders are scheduled again, and its `updatedAt` becomes the restore time. That later record syncs as a live item. No tombstone is written.
+- A later edit while the item is in trash. If another install has the same id with an `updatedAt` later than the instant the item entered trash, that edit is kept. The item leaves trash and comes back, using the ordinary field rules (later `updatedAt`, tie broken by the lower install id). The edit is not dropped. The same is true of a zip import whose `updatedAt` is later than that instant. An equal `updatedAt` uses the lower install id: if that id is the other install, the item comes back; if it is this install, trash stands. A record older than the trash instant does not clear trash and does not remove the item from the other phone.
+- An edit that happened during the 30 days is not lost if it arrives late. If a tombstone has already been written, and a record then arrives whose `updatedAt` is after the trash instant and before the tombstone timestamp, the item comes back and the tombstone is dropped. That record is merged with the ordinary field rules.
+- Tombstone. If 30 days pass with no restore and no edit that brings the item back, this install writes a tombstone for that id and uploads it. The tombstone then spreads. Other installs drop the item. A tombstone wins over a later `updatedAt` of that same id, over an older record, and over a zip import, except for the late edit in the bullet above. The one-sided rule does not apply to an id that has a tombstone. The id is known. It is not an item the other side merely lacks. He can save a new item, which gets a new id.
+- Tombstone lifetime. A tombstone is kept until every install that currently has a records file has merged a generation containing it, and at least 90 days have passed since the tombstone timestamp. Then garbage collection may drop the tombstone and any attachment objects that no remaining record references. After that collection, a zip or a phone that never merged can bring the item back. An install that still has a records file and has not merged keeps the tombstone alive past 90 days. Garbage collection does not run because a listing failed. The 90 days start at the tombstone, not at the start of trash.
 - Old Drive revisions of an install's own file are not a second sync head. A lower generation is refused (ADR-0001, ADR-0006). Drive's own purge of revisions is ADR-0001.
 
 Default: an unexpected duplicate id is a conflict, never a second item. A failed download does not become a deletion.
-
-## Decision pending: mjbvilhena
-
-These are not decided. The current recommendation is what this draft would keep. It is not a rule until he chooses.
-
-### Delete versus a later edit
-
-Current recommendation: a tombstone wins over a later `updatedAt` of that same id. The other phone, an older record, and a zip import do not recreate it. He can save a new item, which gets a new id. The one-sided rule does not apply to an id that has a tombstone.
-
-| Option | Trade-off |
-| --- | --- |
-| Tombstone wins over a later edit | Current recommendation. A finished delete stays finished. An edit typed on the other phone before it saw the delete is dropped |
-| The later edit wins and clears the tombstone | That edit survives. The item comes back, which is the outcome US-73 wrote down as an option ("a deleted item must not come back") and did not choose |
 
 ## Alternatives considered
 
@@ -67,14 +59,15 @@ Current recommendation: a tombstone wins over a later `updatedAt` of that same i
 | Whole-file last upload wins | One blob, no merge code | The other phone's items and edits disappear. That breaks US-20 and the stable id |
 | The whole tag set comes from the later `updatedAt` | One clock, which US-56 already has | A tag that exists only on the older side disappears, and a removal cannot be told from "this snapshot never had the tag". A recorded removal plus a union keeps both the add and the removal |
 | Per-field clocks | A tag and a title could move independently with a true last writer | US-56 and E4 give one `updatedAt` per item. The tie-break is the install id, not a second clock |
-| Merged notes only, and last-writer-wins for the rest, with no tombstone | Notes are safe, and deletes stay simple | Without a tombstone the other phone, or a zip of an older copy, puts the item back. How a tombstone interacts with a later edit is left pending rather than dropped |
+| Merged notes only, and last-writer-wins for the rest, with no tombstone | Notes are safe, and deletes stay simple | Without a tombstone the other phone, or a zip of an older copy, puts the item back after the delete was meant to be final. The 30-day trash is the window where a later edit still brings the item back. After that, the tombstone is what stops the item coming back |
+| Tombstone as soon as undo ends, beating any later edit | A finished delete would stay finished immediately, including against an edit the other phone had not synced | That drops the other phone's edit, and it deletes remotely before he has had 30 days to restore. Trash stays local for 30 days. The tombstone waits until that time ends |
 | A sticky sensitive mark | A mark set on one phone would survive a later edit that clears it | The mark merges like any other field. The later `updatedAt` wins, and a tie goes to the lower install id. A later edit can clear the mark. That is accepted |
 
 ## Consequences
 
 - **Positive.** One phone cannot replace the other phone's file. One-sided items still merge. Tags and attachments from both sides survive unless a removal was recorded. A failed listing does not wipe the phone.
-- **Negative / accepted trade-offs.** Each install stores a full snapshot, so Drive holds one current file per install plus immutable attachments. Clocks can still be wrong, and an equal timestamp is the only place the install id steps in. Tombstones live at least 90 days, and after garbage collection an old zip can resurrect an item. The Gemini key does not travel with the vault; a new phone needs it typed again. A later edit on another phone can clear the sensitive mark. That is accepted. There is no extra control. Delete versus a later edit is not decided.
-- **Follow-ups.** US-73 stays a placeholder until this record is accepted and criteria are added in a later edit. US-66 still owns how long trash keeps an item. He decides the pending delete rule. He is the approver. The sensitive-mark rule above is decided. Accepting this whole record is still open.
+- **Negative / accepted trade-offs.** Each install stores a full snapshot, so Drive holds one current file per install plus immutable attachments. Clocks can still be wrong, and an equal timestamp is the only place the install id steps in. For 30 days the other phone still shows an item he deleted here. After the tombstone, a later edit does not bring the item back, except an edit that itself happened during the trash window and arrives late. Tombstones then live at least 90 days, and after garbage collection an old zip can resurrect an item. The Gemini key does not travel with the vault; a new phone needs it typed again. A later edit on another phone can clear the sensitive mark. That is accepted. There is no extra control.
+- **Follow-ups.** US-73 stays a placeholder until this record is accepted and criteria are added in a later edit. US-66 carries the trash behaviour for story review. He is the approver. The sensitive-mark rule and the delete rule above are decided. Accepting this whole record is still open.
 
 ## Compliance
 
@@ -84,9 +77,11 @@ Current recommendation: a tombstone wins over a later `updatedAt` of that same i
 - [ ] Tags are the union minus recorded removals, and attachments present on either side are kept until a removal is recorded
 - [ ] Check-ins are not overwritten by the other install's file
 - [ ] The Gemini API key, billed-project confirmation, and ML Kit acceptance are absent from the synced records
-- [ ] A tombstone is not collected before 90 days or while a known install has not merged it
+- [ ] For 30 days after trash starts, the upload contains no tombstone for that id, and the other install still has the item
+- [ ] A restore during those 30 days, or another install's `updatedAt` later than the trash instant, brings the item back and does not write a tombstone
+- [ ] When the 30 days end with the item still in trash, a tombstone is written and the other install drops the item
+- [ ] A tombstone is not collected before 90 days after the tombstone timestamp, or while a known install has not merged it
 - [ ] The sensitive mark follows the later `updatedAt`, ties go to the lower install id, and a sticky mark is not implemented
-- [ ] Delete versus a later edit is not coded as if Decision pending had been resolved
 - [ ] The Drive file name still carries no title
 
 ## Related
@@ -104,7 +99,8 @@ Current recommendation: a tombstone wins over a later `updatedAt` of that same i
 - Syncing the Gemini API key because the rest of Settings syncs.
 - Using Drive's revision list as the item merge.
 - Keeping the sensitive mark sticky across phones.
-- Treating a Proposed merge rule, or a pending delete rule, as implemented.
+- Treating a Proposed merge rule as implemented.
+- Writing a tombstone before the 30 days of local trash have ended.
 
 ## Skill State Machine (sdlc-adr-drafter)
 

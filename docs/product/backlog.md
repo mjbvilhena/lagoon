@@ -2,11 +2,11 @@
 
 > Statuses describe evidence in the tree on 2026-10-18. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
-> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft.
+> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved.
 
 ## Gate
 
-Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Domain, layers, ADRs, and the threat model are Proposed and are not accepted. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Domain, layers, ADRs, and the threat model are Proposed and are not accepted. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
@@ -56,7 +56,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-39** *(Draft)* Sort and filter by date saved. Evidence: `docs/product/stories/US-39-sort-and-filter-by-date.md`. Not implemented.
 - **US-57** *(Draft)* Prove that search and encryption can run together. Evidence: `docs/product/stories/US-57-fts5-sqlcipher-spike.md`. Not implemented.
 - **US-64** *(Approved)* Share or open an item in another app. Should. Evidence: `docs/product/stories/US-64-share-or-open-out.md`. Not implemented.
-- **US-66** *(Draft)* Keep a trash beyond undo. Should. Evidence: `docs/product/stories/US-66-trash.md`. Not implemented. How long trash keeps an item is not decided.
+- **US-66** *(Proposed for story review)* Keep a trash beyond undo. Should. In v1. Not approved. Evidence: `docs/product/stories/US-66-trash.md`. Not implemented. Proposed amendment. Needs approval by mjbvilhena. Trash keeps a deleted item for 30 days on that phone. The delete stays local until the 30 days end, then becomes a tombstone.
 - **US-71** *(Draft)* Triage the inbox in a batch. Could. Evidence: `docs/product/stories/US-71-inbox-multi-select.md`. Not implemented.
 
 ## Epic E4: Seamless sync

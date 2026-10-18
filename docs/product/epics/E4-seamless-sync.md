@@ -25,6 +25,7 @@ Miguel, on this phone and on a later install of the same app.
   - Sign in with Google (Google Sign-In / Credential Manager). A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash.
   - Unmetered-only preference for background sync (`WorkManager` `UNMETERED`).
   - A new install or second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept.
+  - Proposed amendment. Needs approval by mjbvilhena. A delete stays in local trash for 30 days and does not spread (US-66, in v1). A restore, or a later edit on another phone during those 30 days, brings the item back. When the 30 days end, the delete becomes a tombstone and spreads. Sync still keeps an item that exists on only one side. A tombstoned id is not that item.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
   - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
@@ -59,6 +60,7 @@ Miguel, on this phone and on a later install of the same app.
 
 - [ ] Same item edited on two devices. US-73. Criteria follow from the ADR at the design gate.
 - [ ] How deletions propagate. US-73. Criteria follow from the ADR at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. Deletion propagation is the 30-day local trash, then a tombstone, in the scope bullet above. An item with a tombstone is not kept as a one-sided item. This is not approved.
 - [ ] How keys reach the second device. US-74. Criteria follow from the ADR at the design gate. Owned with E8.
 - One-sided items are kept. That question is closed.
 

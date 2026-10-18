@@ -30,7 +30,7 @@ Miguel, looking back through what he kept.
   - Filter by type and by tag.
   - Sharing an item back out to other apps, as US-64 (Should). The acceptance criteria are on that story.
   - Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair (A-E3-1, US-57). Acceptance: search and encryption are not built on a combination that cannot run.
-  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Should). Acceptance: delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
+  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Should). Acceptance: delete with undo (US-13) still exists. Proposed amendment. Needs approval by mjbvilhena. US-66 is in v1. Trash keeps the item for 30 days on this phone. During those 30 days the delete stays on this phone, he can restore it, and a later edit on another phone brings it back. When the 30 days end, the delete becomes a tombstone and spreads. An id with a tombstone is not a one-sided item that the other phone keeps.
   - The Untagged inbox can apply one filing action to several items at once (A-E3-3, US-71, Could). Acceptance: filing does not require opening each row. Filing one item at a time still works.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** A numeric latency SLO. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1). Sharing an item back out is in scope above as US-64, a Should.
@@ -71,5 +71,5 @@ Miguel, looking back through what he kept.
 - US-39 Sort and filter by the date saved
 - US-57 Prove search on an encrypted database
 - US-64 Share or open an item in another app. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-66 Keep a trash beyond undo. Should.
+- US-66 Keep a trash beyond undo. Should. Proposed amendment. Needs approval by mjbvilhena. In v1. Proposed for story review. Not approved.
 - US-71 Triage the inbox in a batch. Could.

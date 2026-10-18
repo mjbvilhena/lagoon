@@ -91,6 +91,7 @@ Constraints later design must not reopen unless he does:
 ## Product rules
 
 - There is no Back up now, no Restore, and no last-backup time. The phone is first. Sync runs when connectivity allows. A new install or a second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept. Zip export and import stay as a fallback.
+- Proposed amendment. Needs approval by mjbvilhena. US-66 is in v1. After undo, a deleted item stays in trash on that phone for 30 days. During those 30 days the delete stays on that phone, he can restore the item, and a later edit on another phone is not lost: the item comes back. When the 30 days end, the delete becomes a tombstone and spreads to the other phones. An item that exists on only one side is still kept. An item with a tombstone is not that case: the id is known, and the other phone does not keep it.
 - The database and attachment files are encrypted at rest. Keys are in Android Keystore. Drive stores only ciphertext. The cipher itself waits for an ADR.
 - Topic extraction may send readable content to a cloud AI. Drive sync stays ciphertext-only. That call is not a license for cloud OCR.
 - In v1: on-device OCR for screenshots, images, and scanned PDFs; an optional reminder or expiry, with a notification; more than one attachment; an offline snapshot of a saved page, keeping the original URL; a biometric lock on items marked sensitive.
@@ -137,6 +138,7 @@ Constraints later design must not reopen unless he does:
 
 - What happens when the same item was edited on two devices before they sync? US-73. Criteria follow from the ADR at the design gate.
 - How does a deletion on one device propagate to the other? US-73. Criteria follow from the ADR at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. The deletion answer proposed for that question is the product rule above: 30 days of local trash, then a tombstone. An item with a tombstone is not kept as a one-sided item. That answer is not approved.
 - How do keys reach a new or second device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored anywhere off the phone.
 - Which cloud AI provider processes topics, and what are its data-retention terms? US-76. Criteria follow from the ADR at the design gate.
 - How is the topic API credential stored and protected? It must not be baked into the APK in plain form. US-76. Criteria follow from the ADR at the design gate.
@@ -168,3 +170,5 @@ Constraints later design must not reopen unless he does:
 | Threat model, UX, test strategy, ADRs | Not started. |
 
 The specification gate and the epic gate have passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Implementation has not started.
+
+Proposed amendment. Needs approval by mjbvilhena. US-66 is in v1 and is Proposed for story review. It is not approved. The approval table above is unchanged.
