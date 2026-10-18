@@ -2,7 +2,6 @@
 
 > **Approval status: Draft. Not approved.**
 > Security criteria approved by mjbvilhena on 2026-10-18.
-> Proposed additions below need approval by mjbvilhena.
 
 **Epic:** E8.
 
@@ -20,7 +19,7 @@ Encrypt the vault at rest.
 
 ## Background
 
-- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. Proposed amendment. Needs approval by mjbvilhena. 'Stored on Drive or anywhere else' changes to 'stored anywhere off the phone.' On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
+- Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. 'Stored on Drive or anywhere else' changes to 'stored anywhere off the phone.' On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
@@ -76,31 +75,31 @@ Encrypt the vault at rest.
   - Given the key is present
   - When he saves and opens an ordinary item
   - Then the item works, and normal use, sync, and reminders do not ask for the passphrase
-- **Scenario: a wrong passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a wrong passphrase** — Must
   - Given he enters a passphrase
   - When that passphrase is wrong
   - Then he is told it is wrong
   - And nothing is changed or deleted
-- **Scenario: the passphrase field** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: the passphrase field** — Must
   - Given he types the passphrase
   - When the field is shown
   - Then keyboard learning and suggestions are off (`IME_FLAG_NO_PERSONALIZED_LEARNING`) and the input type is a password
   - And the screen uses `FLAG_SECURE`
   - And the passphrase is never logged or written to disk
-- **Scenario: a new empty vault** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a new empty vault** — Must
   - Given a Drive copy of the vault already exists
   - When he starts a new empty vault
   - Then that Drive copy is not overwritten or deleted until he confirms explicitly after a warning
-- **Scenario: I've forgotten my passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: I've forgotten my passphrase** — Must
   - Given no device holds the key copy
   - When he chooses "I've forgotten my passphrase"
   - Then the content is treated as lost
-- **Scenario: after the first unlock since boot** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: after the first unlock since boot** — Must
   - Given he has unlocked the phone once since boot
   - When background sync or a reminder needs the vault
   - Then those jobs can decrypt while the phone is locked
   - And the Keystore key is created with `setUnlockedDeviceRequired(false)`
-- **Scenario: which key is hardware-backed** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: which key is hardware-backed** — Must
   - Given the derived key is held or wrapped
   - When `KeyInfo` is read
   - Then the check reads the Keystore key that holds or wraps the derived key
@@ -120,7 +119,6 @@ Not applicable. No analytics.
 - Depends on the US-57 spike before FTS and SQLCipher are combined. This story does not choose the cipher.
 - Amendment approved by mjbvilhena on 2026-10-18. Security criteria approved by mjbvilhena on 2026-10-18. This story stays Draft.
 - Changing the passphrase is US-86. It is not a criterion of this story.
-- Proposed additions below the sign-off need approval by mjbvilhena.
 
 ## Implementation notes
 

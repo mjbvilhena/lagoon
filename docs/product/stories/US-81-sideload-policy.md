@@ -2,7 +2,6 @@
 
 > **Approval status: Draft. Not approved.**
 > Security criteria approved by mjbvilhena on 2026-10-18.
-> Proposed additions below need approval by mjbvilhena.
 
 **Epic:** E6.
 
@@ -40,7 +39,7 @@ Publish a sideload signing policy.
   - When a newer APK is installed with the same application id, the same signing key, and a higher `versionCode`
   - Then the vault is still there after the upgrade
   - And the policy says, with a pointer to US-35, that uninstall, clear storage, or a signing-key mismatch destroys the Keystore key, so the vault and every zip become unreadable. Uninstall is not a way to fix or upgrade
-- **Scenario: uninstall and the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: uninstall and the passphrase** — Must
   - Given the vault key was derived from his passphrase
   - When he uninstalls Lagoon
   - Then the phone's key copy is removed

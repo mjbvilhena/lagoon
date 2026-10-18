@@ -92,7 +92,7 @@ No story is Done. Implementation has not started.
 
 US-15, US-31, US-34, US-40, US-41, US-50, US-61, US-62, US-64, US-65, US-75, US-78, US-79, and US-80 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
 
-Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. US-35 and US-81 stay Draft. Proposed additions on US-35, US-81, and US-86 need approval by mjbvilhena.
+Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 stay Draft.
 
 Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. Every other story with Given/When/Then passes artefact shape only. Implementation is not Done.
 

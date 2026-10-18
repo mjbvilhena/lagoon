@@ -1,7 +1,7 @@
 # US-86 Change the passphrase
 
 > **Approval status: Draft. Not approved.**
-> Proposed security criteria. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E8.
 
@@ -25,21 +25,21 @@ Change the passphrase.
 
 ## Acceptance criteria
 
-- **Scenario: the current passphrase** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: the current passphrase** — Should
   - Given the vault exists
   - When he starts a passphrase change
   - Then he authenticates with the current passphrase first
-- **Scenario: a crash during re-encryption** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: a crash during re-encryption** — Should
   - Given re-encryption is interrupted by a crash
   - When the app starts again
   - Then the vault is readable under the old passphrase or the new passphrase
   - And it is never readable under neither
-- **Scenario: another install** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: another install** — Should
   - Given he changed the passphrase on this phone
   - When another signed-in install syncs
   - Then that install asks for the new passphrase
   - And it does not overwrite the re-encrypted vault
-- **Scenario: old copies** — Should. Proposed security criterion. Needs approval by mjbvilhena.
+- **Scenario: old copies** — Should
   - Given old Drive revisions and old zips exist
   - When the passphrase has changed
   - Then what happens to those copies is decided at the design gate (US-74 ADR)
@@ -56,7 +56,6 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - US-35 holds setup and re-create. This story stays Draft.
-- Proposed security criteria. Needs approval by mjbvilhena.
 
 ## Implementation notes
 
