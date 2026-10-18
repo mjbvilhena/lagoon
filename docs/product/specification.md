@@ -2,7 +2,7 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.
+> Amendment approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 
@@ -143,8 +143,8 @@ Constraints later design must not reopen unless he does:
 
 | Gate | Status |
 | --- | --- |
-| This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST. |
-| Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST. |
+| This specification | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. |
+| Epics E1–E9 and E11 | Approved by mjbvilhena on 2026-10-17. Epic amendments approved by mjbvilhena on 2026-10-17. |
 | Epic E10 | Approved by mjbvilhena on 2026-10-17. Later, not in v1. |
 | User stories | Draft. Not approved. |
 | Threat model, UX, test strategy, ADRs | Not started. |

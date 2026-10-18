@@ -1,4 +1,4 @@
-# US-52 Import a zip
+# US-52 Import a zip and merge it
 
 > **Approval status: Draft. Not approved.**
 

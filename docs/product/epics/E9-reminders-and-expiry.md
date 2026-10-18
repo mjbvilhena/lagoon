@@ -2,7 +2,7 @@
 
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
-> Epic amendments approved by mjbvilhena on 2026-10-17 at 20:02 IST.
+> Epic amendments approved by mjbvilhena on 2026-10-17.
 
 ## Background & Value Proposition
 

@@ -1,4 +1,4 @@
-# US-24 Install a signed release APK
+# US-24 Install a signed release APK without the Play Store
 
 > **Approval status: Draft. Not approved.**
 

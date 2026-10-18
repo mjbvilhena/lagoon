@@ -1,6 +1,6 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-17. **Draft is not approval.** **Not started is not a skip.**
+> Statuses describe evidence in the tree on 2026-10-18. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
 > The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. Stories stay Draft.
 
@@ -22,6 +22,11 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented.
 - **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented.
 - **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
+- **US-49** *(Draft)* Update a link that was saved before, and undo that update. Evidence: `docs/product/stories/US-49-repeat-link-update.md`. Not implemented.
+- **US-58** *(Draft)* Run enrichment, snapshot, OCR, and topics in that order. Evidence: `docs/product/stories/US-58-background-pipeline.md`. Not implemented.
+- **US-61** *(Draft)* Filter by where an item came from. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
+- **US-65** *(Draft)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
+- **US-67** *(Draft)* Notice a duplicate image or PDF. Could. Evidence: `docs/product/stories/US-67-duplicate-files.md`. Not implemented.
 
 ## Epic E2: Link enrichment
 
@@ -30,6 +35,8 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-08** *(Draft)* Enrich a link. Evidence: `docs/product/stories/US-08-enrich-a-link.md`. Not implemented.
 - **US-09** *(Draft)* Keep the URL when enrichment fails. Evidence: `docs/product/stories/US-09-keep-the-url-when-enrichment-fails.md`. Not implemented.
 - **US-33** *(Draft)* Offline snapshot: one sanitised readable archive, about 10 MB, original URL kept. Evidence: `docs/product/stories/US-33-offline-page-snapshot.md`. Not implemented. MHTML is later.
+- **US-70** *(Draft)* See what is not ready for offline. Could. Evidence: `docs/product/stories/US-70-offline-readiness.md`. Not implemented.
+- **US-79** *(Draft)* Skip unsafe link previews. Evidence: `docs/product/stories/US-79-link-preview-skipping.md`. Not implemented.
 
 ## Epic E3: Find and curate
 
@@ -40,11 +47,16 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-12** *(Draft)* Edit, including why it matters. Evidence: `docs/product/stories/US-12-edit-an-item.md`. Not implemented.
 - **US-13** *(Draft)* Delete with undo. Evidence: `docs/product/stories/US-13-delete-with-undo.md`. Not implemented.
 - **US-14** *(Draft)* Tag management. Evidence: `docs/product/stories/US-14-manage-tags.md`. Not implemented.
-- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
+- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. The Room 3 / FTS5 / SQLCipher spike is US-57.
+- **US-50** *(Draft)* Rank search matches. Evidence: `docs/product/stories/US-50-search-ranking.md`. Not implemented.
 - **US-16** *(Draft)* Filter by type and tag. Evidence: `docs/product/stories/US-16-filter-by-type-and-tag.md`. Not implemented.
 - **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented.
 - **US-38** *(Draft)* Untagged / Inbox view. Evidence: `docs/product/stories/US-38-untagged-inbox.md`. Not implemented. A view, not a stored Inbox tag.
 - **US-39** *(Draft)* Sort and filter by date saved. Evidence: `docs/product/stories/US-39-sort-and-filter-by-date.md`. Not implemented.
+- **US-57** *(Draft)* Prove that search and encryption can run together. Evidence: `docs/product/stories/US-57-fts5-sqlcipher-spike.md`. Not implemented.
+- **US-64** *(Draft)* Share or open an item in another app. Should. Evidence: `docs/product/stories/US-64-share-or-open-out.md`. Not implemented.
+- **US-66** *(Draft)* Keep a trash beyond undo. Should. Evidence: `docs/product/stories/US-66-trash.md`. Not implemented. How long trash keeps an item is not decided.
+- **US-71** *(Draft)* Triage the inbox in a batch. Could. Evidence: `docs/product/stories/US-71-inbox-multi-select.md`. Not implemented.
 
 ## Epic E4: Seamless sync
 
@@ -58,6 +70,10 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-21** *(Draft)* Zip export encrypted with the vault key. Evidence: `docs/product/stories/US-21-export-a-zip.md`. Not implemented. Import is US-52.
 - **US-51** *(Draft)* Background sync worker and plain-language errors. Evidence: `docs/product/stories/US-51-sync-worker-and-errors.md`. Not implemented. Sign-out is US-78.
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
+- **US-56** *(Draft)* Keep a stable identity for each item. Evidence: `docs/product/stories/US-56-item-data-model.md`. Not implemented.
+- **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
+- **US-73** *(Draft)* Decide sync conflicts and deletions. Open question. No asserting criterion. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
+- **US-78** *(Draft)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
 
 ## Epic E5: Look and feel
 
@@ -65,6 +81,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 - **US-22** *(Draft)* Light, Dark, or System theme. System is the default. Evidence: `docs/product/stories/US-22-calm-appearance.md`. Not implemented. Accent: light about `#0F766E`, dark about `#2DD4BF`, dark text on the dark accent (black or `#003731`). Never use `#0F766E` on dark surfaces.
 - **US-23** *(Draft)* Icon and the name Lagoon. Evidence: `docs/product/stories/US-23-icon-and-name.md`. Not implemented. Play Store and trademark checks were not done.
+- **US-53** *(Draft)* Use the teal palette, optional dynamic color, and reduced motion. Evidence: `docs/product/stories/US-53-palette-and-motion.md`. Not implemented.
 
 ## Epic E6: Installable release
 
@@ -74,6 +91,8 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-25** *(Draft)* Search, sync/zip packaging, and a basic Compose test. Evidence: `docs/product/stories/US-25-automated-tests.md`. Not implemented. Packaging tests cover ciphertext, not a live Drive call.
 - **US-26** *(Draft)* README for build, sideload, and OAuth. Evidence: `docs/product/stories/US-26-readme-build-and-oauth.md`. The root README does not yet contain those steps, because there is no app. That absence is correct. Application id `com.mjbvilhena.lagoon`. SHA-1 is still unknown. The README must not document a Back up now or a Restore button.
 - **US-27** *(Draft)* Screenshots. Evidence: `docs/product/stories/US-27-screenshots.md`. Not started. No images were fabricated. Settings shows sync state, not a backup button.
+- **US-80** *(Draft)* Keep the permission set to an allowlist. Evidence: `docs/product/stories/US-80-permission-set.md`. Not implemented.
+- **US-81** *(Draft)* Publish a sideload signing policy. Evidence: `docs/product/stories/US-81-sideload-policy.md`. Not implemented.
 
 ## Epic E7: On-device text recognition
 
@@ -88,6 +107,8 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
+- **US-74** *(Draft)* Decide how the vault key reaches another device. Open question. No asserting criterion. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented.
 
 ## Epic E9: Reminders and expiry
 
@@ -96,6 +117,8 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
 - **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
 - **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
+- **US-62** *(Draft)* See what is coming due. Should. Evidence: `docs/product/stories/US-62-upcoming-and-expiring.md`. Not implemented.
+- **US-77** *(Draft)* Keep reminders on inexact alarms. Evidence: `docs/product/stories/US-77-exact-alarms.md`. Not implemented. Alarms are inexact.
 
 ## Epic E11: Topics
 
@@ -108,6 +131,10 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-45** *(Draft)* Open a topic and see its items and summary. Evidence: `docs/product/stories/US-45-read-a-topic.md`. Not implemented.
 - **US-46** *(Draft)* Reject, rename, or merge a suggested topic. Evidence: `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md`. Not implemented. Does not merge two topics that already exist.
 - **US-47** *(Draft)* A failed topic call leaves the item and creates no topic. Evidence: `docs/product/stories/US-47-topic-call-fails.md`. Not implemented.
+- **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
+- **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
+- **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
+- **US-76** *(Draft)* Decide the topic call's provider, credential, and payload. Open question. No asserting criterion. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -116,13 +143,15 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 ## Specification and vision
 
 - **Vision** *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/vision.md`. It states the current product. It does not describe backup or restore controls.
-- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17 at 15:55 IST.)* Evidence: `docs/product/specification.md`. This does not approve the stories.
+- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/specification.md`. This does not approve the stories.
 
 ## Repository setup
 
-Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree.
+Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree. The Protect master ruleset requires Secret scan, Markdown lint, and Workflow lint. The other four jobs run and are not required checks.
 
 - **Harness install** *(In place)* Cursor skills under `.cursor/commands/`. Submodule `third_party/ai-sdlc-harness` at `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. Evidence: `docs/sdlc/harness-install.md`.
+- **Protect master status checks** *(Not started)* Decide whether Build and test, Android lint, Kotlin style, and CodeQL become required checks. The workflow runs them. Ruleset 25303010 does not require them. Evidence: GitHub ruleset API on 2026-10-18. `docs/sdlc/repository-setup.md`.
+- **Protect master bypass** *(Not started)* Decide whether an admin may bypass the ruleset when merging a pull request. The ruleset has no bypass actors. Evidence: ruleset 25303010, `bypass_actors` null, on 2026-10-18.
 
 ## Not started, and not skipped
 
@@ -143,10 +172,9 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 
 ## Stories
 
-The index is the full list. All remaining stories are Draft. Not implemented.
+The index is the full list. Every remaining story is also listed under its parent epic above. All stay Draft. Not implemented.
 
 - US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
-- US-48, US-62, US-65, US-66, US-67, US-70, US-71, and US-72 stay.
 - US-73, US-74, and US-76 have no asserting criterion. The questions stay open. US-77 has criteria and stays Draft. Alarms are inexact.
 - The map is `docs/product/stories/TRACEABILITY.md`.
 

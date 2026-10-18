@@ -1,4 +1,4 @@
-# US-49 Update a link that was saved before
+# US-49 Update a link that was saved before, and undo that update
 
 > **Approval status: Draft. Not approved.**
 

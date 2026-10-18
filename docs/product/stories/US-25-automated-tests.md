@@ -1,4 +1,4 @@
-# US-25 Run the tests he named
+# US-25 Cover search, sync and zip packaging, and a basic screen with automated tests
 
 > **Approval status: Draft. Not approved.**
 
