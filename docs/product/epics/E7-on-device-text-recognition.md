@@ -33,13 +33,13 @@ Miguel, searching something he saved as an image or a scan.
 ## Risks & Dependencies
 
 - Depends on E1 for the file and E3 for search.
-- v1 language scope is English. Stories stay Draft. The bundled Latin-script model still fits. Other languages are later. The sideload ABI note is a design-gate build choice.
+- v1 language scope is English. US-31 is approved. The bundled Latin-script model still fits. Other languages are later. The sideload ABI note is a design-gate build choice.
 - Recognized text is vault data. It is covered by E8 encryption once that epic exists. This epic does not design the cipher.
 
 ## Open Questions
 
-- v1 OCR language is English in US-31. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. Stories stay Draft.
+- v1 OCR language is English in US-31. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. US-31 is approved.
 
 ## Draft stories
 
-- US-31 Recognize text on the device
+- US-31 Recognize text on the device. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

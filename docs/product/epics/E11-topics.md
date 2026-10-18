@@ -4,6 +4,7 @@
 > Approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -77,4 +78,4 @@ These stay Draft. Paths are under `docs/product/stories/`.
 - US-48 Manage a topic that is already saved.
 - US-60 Browse topics and pending suggestions
 - US-72 Score whether topics are useful. Could.
-- US-76 Decide the topic call's provider, credential, and payload. Criteria follow from the ADR at the design gate.
+- US-76 Decide the topic call's provider, credential, and payload. Placeholder. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate.

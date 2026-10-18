@@ -1,4 +1,4 @@
-# US-61 Filter by where an item came from
+# US-61 Filter or search by where an item came from
 
 > **Approval status: Draft. Not approved.**
 
@@ -8,12 +8,12 @@
 
 ## Title
 
-Filter by where an item came from.
+Filter or search by where an item came from.
 
 ## User story
 
 **As a** person named Miguel
-**I want** to filter by the source domain or the sending app
+**I want** to filter or search by the source domain or the sending app
 **So that** I can find what I saved from one site or one app
 
 ## Background

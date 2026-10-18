@@ -4,7 +4,7 @@
 
 **Epic:** E4.
 
-**MoSCoW:** Not set. Criteria follow from the ADR at the design gate.
+**MoSCoW:** Not set. This story has no MoSCoW yet. Criteria follow from the ADR at the design gate.
 
 ## Title
 
@@ -23,6 +23,8 @@ Decide sync conflicts and deletions.
 - Out of scope: one-sided merge, which US-20 already states.
 
 ## Acceptance criteria
+
+This story has no Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. It is a placeholder waiting on the design-gate ADR. It is not ready for review.
 
 Criteria follow from the ADR at the design gate.
 

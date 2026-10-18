@@ -4,6 +4,7 @@
 > Approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -33,7 +34,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
   - He can start a new item from the camera (A-E1-5, US-65, Should). Acceptance: a page can be kept without a share from another app. That capture uses the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`.
   - Saving an image or a PDF whose bytes match an item already stored tells him it is a duplicate (A-E1-6, US-67, Could). Acceptance: he can avoid a second copy of the same file. A repeat URL still matches under the second-share rule (US-49).
   - Source domain and sending app (US-61) are a Should.
-  - One tap on an image attachment opens it full-screen, with screen brightness at maximum, and brightness is restored on exit (US-85, Should). It works offline. A sensitive item needs the US-37 unlock first. `FLAG_SECURE` applies for a sensitive item, as US-75 says. Proposed amendment. Needs approval by mjbvilhena.
+  - One tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. Brightness goes back to normal when you close it. It works offline. A sensitive item needs unlocking first and is protected from screenshots (US-85, Should).
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** Fetching page details and snapshots (E2). Search polish (E3). Sync (E4). OCR (E7, which is in v1 but not this epic). Editing pixels or PDF pages. A maximum attachment count. He did not set one. Source domain and sending app are in scope above as a Should (US-61).
 
@@ -55,12 +56,12 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 
 ## Open Questions
 
-- One tap, then a non-blocking chip row, title auto-fill, inbox, and date sort are in the specification. See US-28, US-38, US-39, and US-40. Edit later is US-12. Stories stay Draft.
+- One tap, then a non-blocking chip row, title auto-fill, inbox, and date sort are in the specification. See US-28, US-38, US-39, and US-40. Edit later is US-12. US-40 is approved. The other stories in this epic stay Draft unless a line below says Approved.
 - The name is Lagoon. The application id is `com.mjbvilhena.lagoon`. They do not block saving. Play Store and trademark checks for Lagoon were not done. Stories stay Draft.
 
 ## Draft stories
 
-These are not approved. Paths are under `docs/product/stories/`.
+Paths are under `docs/product/stories/`. A story stays Draft unless its line says Approved.
 
 - US-01 Share a link into the vault
 - US-02 Share plain text into the vault
@@ -71,10 +72,10 @@ These are not approved. Paths are under `docs/product/stories/`.
 - US-07 Use the vault offline, with no analytics
 - US-28 File a capture with last-used tags
 - US-32 Keep more than one attachment on an item
-- US-40 Fill the title from the page or the file
+- US-40 Fill the title from the page or the file. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-49 Update a link that was saved before, and undo that update.
 - US-58 Run enrichment, snapshot, OCR, and topics in that order
-- US-61 Filter by where an item came from. Should.
+- US-61 Filter or search by where an item came from. Should.
 - US-65 Add a photo from the system camera. Should.
 - US-67 Notice a duplicate image or PDF. Could.
-- US-85 Show an image full-screen and bright. Should. Proposed amendment. Needs approval by mjbvilhena.
+- US-85 Show an image or PDF page full-screen and bright. Should. Draft.

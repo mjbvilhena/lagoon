@@ -45,7 +45,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-15 and US-35 stay drafts until this note exists. A fallback, Room 2 FTS4 plus app-side ranking, may be recorded. It is not chosen here.
+- US-15 is approved as an artefact. US-35 stays Draft until this note exists. A fallback, Room 2 FTS4 plus app-side ranking, may be recorded. It is not chosen here.
 
 ## Implementation notes
 

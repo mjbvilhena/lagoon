@@ -4,7 +4,7 @@
 
 **Epic:** E8.
 
-**MoSCoW:** Not set. Criteria follow from the ADR at the design gate.
+**MoSCoW:** Not set. This story has no MoSCoW yet. Criteria follow from the ADR at the design gate.
 
 ## Title
 
@@ -13,16 +13,19 @@ Decide how the vault key reaches another device.
 ## User story
 
 **As a** person named Miguel
-**I want** a second device to read the vault, once I have decided how the key gets there
+**I want** a second device to re-create the vault key from the passphrase
 **So that** ciphertext on Drive is not a dead end
 
 ## Background
 
-- A lost key means the content is lost, with no recovery (US-35). The zip is encrypted with the vault key (US-21). Criteria follow from the ADR at the design gate.
+- Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. Forgetting the passphrase and losing the device still means the content is lost. The exact method, parameters, and where the non-secret salt lives are settled in the ADR at the design gate.
+- The zip is encrypted with the vault key (US-21). Criteria follow from the ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: inventing a Google-derived key or a passphrase here.
+- Out of scope: inventing a Google-derived key. Choosing the derivation method, the parameters, or where the non-secret salt lives.
 
 ## Acceptance criteria
+
+This story has no Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. It is a placeholder waiting on the design-gate ADR. It is not ready for review.
 
 Criteria follow from the ADR at the design gate.
 

@@ -27,7 +27,7 @@ See what is coming due.
 - **Scenario: the list** — Must
   - Given items have a reminder or an expiry (US-34, US-54), including a future date and a date that has passed
   - When he opens Upcoming
-  - Then they are sorted by that date
+  - Then future dates are soonest first, then passed dates are in an Expired group, most recent first
 - **Scenario: expired** — Must
   - Given the date has passed
   - When the row is shown

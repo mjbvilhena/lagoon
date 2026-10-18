@@ -4,6 +4,7 @@
 > Approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -48,12 +49,12 @@ Miguel, looking back through what he kept.
 ## Risks & Dependencies
 
 - Depends on E1 for items and on E2 for extracted page text and preview images to be present when enrichment worked.
-- Ranking is the US-15 rule in the specification: weighted BM25, including OCR text. Stories stay Draft. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
+- Ranking is the US-15 rule in the specification: weighted BM25, including OCR text. US-15 and US-50 are approved. The Room 3 / FTS5 / SQLCipher spike is a design-gate risk.
 - Rename applies to every item. A case-insensitive name clash asks for confirmation and then merges. See US-29. Stories stay Draft.
 
 ## Open Questions
 
-- Tag rename-and-merge, the inbox, and date sort are in the specification. Stories stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
+- Tag rename-and-merge, the inbox, and date sort are in the specification. US-15 and US-50 are approved. The other stories in this epic stay Draft. Sync merge and encryption are resolved on E4 and E8. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 
 ## Draft stories
 
@@ -62,8 +63,8 @@ Miguel, looking back through what he kept.
 - US-12 Edit an item, including why it matters
 - US-13 Delete an item and undo it
 - US-14 Manage tags
-- US-15 Search with ranked, highlighted matches
-- US-50 Rank search matches.
+- US-15 Search with ranked, highlighted matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-50 Rank search matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-16 Filter by type and by tag
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox

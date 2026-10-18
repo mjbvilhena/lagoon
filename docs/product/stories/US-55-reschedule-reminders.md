@@ -43,23 +43,25 @@ Reschedule reminders after a restart or a clock change.
 - **Scenario: which device posts** — Must
   - Given the same reminder has synced to more than one install
   - When the time arrives
-  - Then the install with the newest check-in posts, and only that install posts
-  - And the 7-day rule hands the duty over only when another signed-in install has checked in more recently. A sole signed-in install always posts, however old its check-in is
-  - And when another signed-in install has the more recent check-in, and this install's check-in is more than 7 days old, that newer install posts and this one does not
+  - Then the signed-in install with the newest check-in posts, and only that install posts
+  - And a sole signed-in install always posts, however old its check-in is
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
   - And a check-in is the timestamp an install writes when the app is opened or when a sync succeeds
   - And the same rule covers a reminder and an expiry
-- **Scenario: one install past 7 days** — Must
-  - Given one signed-in install whose last check-in is more than 7 days old
-  - When a reminder time arrives
-  - Then that install posts
+- **Scenario: two installs** — Must
+  - Given install A checked in 2 days ago and install B checked in 1 day ago, and both are signed in
+  - When the reminder time arrives
+  - Then B posts and A does not
 - **Scenario: a signed-out install** — Must
   - Given an install is signed out
   - When the time arrives
   - Then that install does not post from its local vault
   - And the reason is the release: sign-out writes the US-55 release marker before the US-78 revoke, so the duty has left that install
   - And an install that has never signed in still posts, because it has no release marker and there is no other install to take the duty
-  - And when no other signed-in install has checked in, sign-out tells him before it completes (US-78) that reminders will stop on this phone until he signs in again
+- **Scenario: sign-out warning** — Must
+  - Given this phone is the only signed-in install
+  - When he signs out
+  - Then before sign-out finishes he is told that reminders and expiry notices will stop
 
 ## Analytics and observability (optional)
 

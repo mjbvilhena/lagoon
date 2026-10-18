@@ -24,7 +24,7 @@ Add a photo from the camera.
 
 ## Acceptance criteria
 
-- **Scenario: a new item** — Should
+- **Scenario: a new item** — Must if the story is built
   - Given he starts a capture with `ACTION_IMAGE_CAPTURE`
   - When Lagoon passes `EXTRA_OUTPUT` and the system camera returns that photo and he confirms
   - Then the full-resolution photo is written through `EXTRA_OUTPUT` to a non-exported FileProvider content URI in Lagoon's no-backup cache, with a one-time write grant

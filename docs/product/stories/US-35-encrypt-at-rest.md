@@ -13,63 +13,71 @@ Encrypt the vault at rest.
 ## User story
 
 **As a** person named Miguel
-**I want** the database, the files, and the copies derived from them to be encrypted, and to be warned that a lost key cannot be recovered
-**So that** a copy of the phone's storage does not contain the vault in the clear, and I am not promised a recovery that does not exist
+**I want** the database, the files, and the copies derived from them to be encrypted, and to be able to re-create the vault key from a passphrase I choose
+**So that** a copy of the phone's storage does not contain the vault in the clear, and another device can re-create the same key
 
 ## Background
 
-- If the vault key is lost, the content is lost. There is no recovery.
+- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored on Drive or anywhere else. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault. Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
-- Out of scope: the algorithm, mode, and key size (an ADR). How a key reaches a second device (US-74). The vault key is not bound to device authentication. It does set `setInvalidatedByBiometricEnrollment(false)`.
+- Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.
 
 ## Acceptance criteria
 
-- **Scenario: the warning** — Must
+- **Scenario: the warning** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the vault key has not been created
   - When he is asked to set up the vault, including when the first share arrives before he has accepted
-  - Then he sees a clear warning that if the key is lost the content is lost and there is no recovery, that uninstall or clear storage destroys the key, and that losing the signing key forces a reinstall that destroys it too
+  - Then he sees strong-passphrase guidance, and a clear warning that the key is derived from the passphrase, that forgetting the passphrase and losing the device means the content is lost, that uninstall or clear storage destroys the Keystore copy, and that losing the signing key forces a reinstall that destroys that copy too
   - And the key is not created until he accepts that warning
   - And the first shared item is held pending until he accepts. If he declines, he is told that nothing was saved. The share is not dropped in silence
   - And that pending share stays in memory only. Nothing is written to disk in plaintext before the key exists
-- **Scenario: what "key gone" means** — Must
+- **Scenario: what "key gone" means** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the Keystore entry is missing, or the vault cannot be unwrapped with that key
   - When he opens the app
-  - Then the key is treated as gone
-- **Scenario: no recovery path** — Must
-  - Given the key was created and is then gone
+  - Then he can re-create the same key by entering the passphrase
+  - And if he has forgotten the passphrase and that device copy is gone, the content is lost
+- **Scenario: re-create from the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given the Keystore copy is gone and he still knows the passphrase
+  - When he enters it
+  - Then the same key is derived again, with the slow memory-hard derivation and the salt
+  - And no copy of the key, wrapped or otherwise, is read from Drive or from anywhere else
+- **Scenario: passphrase forgotten and device gone** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given he has forgotten the passphrase and the device copy is gone
   - When he opens the app
-  - Then he sees that the content is lost, and there is no restore, reset, or "forgot key" flow
+  - Then he sees that the content is lost
   - And he can start a new empty vault. The app is not left unable to open
-- **Scenario: a new biometric does not drop the key** — Must
-  - Given the key exists
+- **Scenario: change the passphrase** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given the vault exists
+  - When he changes the passphrase
+  - Then the vault is re-encrypted under the new derived key
+- **Scenario: a new biometric does not drop the key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
+  - Given the vault key exists and does not use biometric authentication
   - When he enrolls a new biometric
-  - Then the key stays valid. The Keystore entry is created with `setInvalidatedByBiometricEnrollment(false)`
-- **Scenario: no user authentication on the key** — Must
+  - Then the vault key stays valid
+- **Scenario: no user authentication on the key** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the vault key is created
-  - When background sync or a reminder needs the vault
-  - Then the key is a hardware-backed Android Keystore key that does not require user authentication
-  - And those jobs can decrypt while the phone is locked
+  - When `KeyInfo` is read for that key
+  - Then it reports a hardware-backed security level, StrongBox or TEE
+  - And `isUserAuthenticationRequired` is false
+  - And background sync and reminders can decrypt while the phone is locked
   - And sensitive content still needs the US-37 unlock
-- **Scenario: data at rest** — Must
+  - And normal use does not ask for the passphrase
+- **Scenario: data at rest** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the key exists
   - When the database and attachment files are stored
   - Then those bytes are encrypted with the vault key
-- **Scenario: derived files** — Must
+- **Scenario: derived files** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given thumbnails, previews, snapshots, the OCR cache, the WebView cache, the image cache, WorkManager inputs, logs, or export temp copies exist
   - When they are on disk
   - Then they are encrypted with the vault key as well
-- **Scenario: backup of app data is off** — Must
+- **Scenario: backup of app data is off** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the manifest
   - When it is read
   - Then `allowBackup` is false and `dataExtractionRules` exclude the vault
-- **Scenario: a share temp copy another app must read** — Must
-  - Given a temp copy has to be readable by another app
-  - When it is created
-  - Then encrypting that copy is not this story. US-64 holds it
-- **Scenario: he can still use the app** — Must
+- **Scenario: he can still use the app** — Must. Proposed security criterion. Needs approval by mjbvilhena.
   - Given the key is present
   - When he saves and opens an ordinary item
-  - Then the item works without a second passphrase prompt for that ordinary item
+  - Then the item works, and normal use, sync, and reminders do not ask for the passphrase
 
 ## Analytics and observability (optional)
 
@@ -83,7 +91,8 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on the US-57 spike before FTS and SQLCipher are combined. This story does not choose the cipher.
+- The passphrase derivation above is a proposed amendment. It needs approval by mjbvilhena. The security criteria are not approved.
 
 ## Implementation notes
 
-Android Keystore holds the key. Not a design spec.
+Android Keystore holds the derived key, or a hardware-backed Keystore key wraps it. Not a design spec.

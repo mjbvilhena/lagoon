@@ -3,11 +3,12 @@
 > **Approval status: Draft. Not approved.**
 > Listing a story here is not a sign-off. No story is Approved.
 
-Stories stay Draft. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
+US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
 
 ## Requirements
 
-- If the vault key is lost, the content is lost. There is no recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
+- App lock is optional. The device PIN is the fallback when there are no biometrics. The vault key does not require user authentication.
+- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses, so entering it on any device re-creates the same key. No copy of the key is stored on Drive or anywhere else. Forgetting the passphrase and losing the device still means the content is lost. US-35 security criteria are not approved.
 - An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication, so background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
 - There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
@@ -24,9 +25,8 @@ Stories stay Draft. The map is `docs/product/stories/TRACEABILITY.md`. The index
 ## Open questions
 
 - What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. Criteria follow from the ADR at the design gate.
-- How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate.
+- How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase.
 - Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext.
-- Full-screen image view is US-85. It is pending approval of the E1 amendment.
 
 ## Removed
 
@@ -36,7 +36,7 @@ US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Those numbers are not 
 
 Artefact shape is the user-story Definition of Done: As a / I want / So that, and Given / When / Then. An open question is not answered here.
 
-US-73, US-74, and US-76 have no asserting Must criterion. Criteria follow from the ADR at the design gate. US-77 has asserting criteria and stays Draft. US-85 stays Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. No story is Done. There is no app.
+US-15, US-31, US-34, US-40, and US-50 are approved. US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. No story is Done. There is no app.
 
 ## Threat note
 

@@ -2,11 +2,11 @@
 
 > Statuses describe evidence in the tree on 2026-10-18. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
-> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. Stories stay Draft.
+> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft.
 
 ## Gate
 
-Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
@@ -21,13 +21,13 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-07** *(Draft)* Offline use, no analytics library the app chooses. ML Kit metrics are disclosed and accepted before the first OCR use. Evidence: `docs/product/stories/US-07-offline-and-no-analytics.md`. Not implemented.
 - **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented.
 - **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented.
-- **US-40** *(Draft)* Fill an empty title from the page title or file name. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
+- **US-40** *(Approved)* Fill an empty title from the page title or file name. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
 - **US-49** *(Draft)* Update a link that was saved before, and undo that update. Evidence: `docs/product/stories/US-49-repeat-link-update.md`. Not implemented.
 - **US-58** *(Draft)* Run enrichment, snapshot, OCR, and topics in that order. Evidence: `docs/product/stories/US-58-background-pipeline.md`. Not implemented.
-- **US-61** *(Draft)* Filter by where an item came from, and search those fields. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
+- **US-61** *(Draft)* Filter or search by where an item came from. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
 - **US-65** *(Draft)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
 - **US-67** *(Draft)* Notice a duplicate image or PDF. Could. Evidence: `docs/product/stories/US-67-duplicate-files.md`. Not implemented.
-- **US-85** *(Draft)* Show an image full-screen and bright. Should. Evidence: `docs/product/stories/US-85-show-an-image-full-screen.md`. Not implemented. The E1 wording is a proposed amendment. It needs approval by mjbvilhena.
+- **US-85** *(Draft)* Show an image or PDF page full-screen and bright. Should. Evidence: `docs/product/stories/US-85-show-an-image-full-screen.md`. Not implemented. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. The story stays Draft.
 
 ## Epic E2: Link enrichment
 
@@ -48,8 +48,8 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-12** *(Draft)* Edit, including why it matters. Evidence: `docs/product/stories/US-12-edit-an-item.md`. Not implemented.
 - **US-13** *(Draft)* Delete with undo. Evidence: `docs/product/stories/US-13-delete-with-undo.md`. Not implemented.
 - **US-14** *(Draft)* Tag management. Evidence: `docs/product/stories/US-14-manage-tags.md`. Not implemented.
-- **US-15** *(Draft)* Ranked, highlighted search. Weighted BM25 as recommended. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. Source domain and sending app are not in this Must. The Room 3 / FTS5 / SQLCipher spike is US-57.
-- **US-50** *(Draft)* Rank search matches. Evidence: `docs/product/stories/US-50-search-ranking.md`. Not implemented.
+- **US-15** *(Approved)* Ranked, highlighted search. Weighted BM25 as recommended. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-15-search.md`. Not implemented. Source domain and sending app are not in this Must. The Room 3 / FTS5 / SQLCipher spike is US-57.
+- **US-50** *(Approved)* Rank search matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-50-search-ranking.md`. Not implemented.
 - **US-16** *(Draft)* Filter by type and tag. Evidence: `docs/product/stories/US-16-filter-by-type-and-tag.md`. Not implemented.
 - **US-29** *(Draft)* Rename a tag everywhere. A case-insensitive clash asks, then merges. Evidence: `docs/product/stories/US-29-rename-a-tag.md`. Not implemented.
 - **US-38** *(Draft)* Untagged / Inbox view. Evidence: `docs/product/stories/US-38-untagged-inbox.md`. Not implemented. A view, not a stored Inbox tag.
@@ -73,7 +73,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 - **US-56** *(Draft)* Keep a stable identity for each item. Evidence: `docs/product/stories/US-56-item-data-model.md`. Not implemented.
 - **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
-- **US-73** *(Draft)* Decide sync conflicts and deletions. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
+- **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
 - **US-78** *(Draft)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
 
 ## Epic E5: Look and feel
@@ -97,25 +97,25 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 
 ## Epic E7: On-device text recognition
 
-> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. US-31 stays Draft. Text-layer PDFs stay in US-04 and are not OCR.
+> Goal: In v1. Recognize text in screenshots, images, and scanned PDFs on the device so search can find it. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E7-on-device-text-recognition.md`. US-31 is approved. Text-layer PDFs stay in US-04 and are not OCR.
 
-- **US-31** *(Draft, in v1)* On-device English recognition. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Acceptance tests are English only. The thin Play services artifact is absent because it collects a device identifier. Booking references and merchants are not this story.
+- **US-31** *(Approved, in v1)* On-device English recognition. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The bundled ML Kit Latin-script model still fits. The first OCR use waits on the US-07 disclosure. Evidence: `docs/product/stories/US-31-on-device-text-recognition.md`. Not started. Acceptance tests are English only. The thin Play services artifact is absent because it collects a device identifier. Booking references and merchants are not this story.
 
 ## Epic E8: Encryption and sensitive items
 
 > Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. Stories stay Draft. Cipher waits for an ADR. Threat model not started.
 
-- **US-35** *(Draft)* Encrypt at rest. Lost key means the content is lost. The vault key does not require user authentication. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
+- **US-35** *(Draft)* Encrypt at rest. The vault key does not require user authentication. Proposed amendment. Needs approval by mjbvilhena. The key is derived from a passphrase, and a second device re-creates it. Security criteria are not approved. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
-- **US-74** *(Draft)* Decide how the vault key reaches another device. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Draft)* Limit what a sensitive item reveals. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. The story stays Draft.
 
 ## Epic E9: Reminders and expiry
 
-> Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. US-34 stays Draft.
+> Goal: Optional expiry or reminder date on an item, with a notification. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E9-reminders-and-expiry.md`. US-34 is approved.
 
-- **US-34** *(Draft)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. A code is text already in the title. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
+- **US-34** *(Approved)* Set a reminder. Inexact alarms. Lock-screen title and codes for an ordinary item. A code is text already in the title. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-34-set-a-reminder.md`. Not implemented. Exact alarms are closed on US-77.
 - **US-54** *(Draft)* Expiry notices, 7 days and the day. Evidence: `docs/product/stories/US-54-expiry-notices.md`. Not implemented.
 - **US-55** *(Draft)* Reschedule after boot, clock, update, or permission change. Evidence: `docs/product/stories/US-55-reschedule-reminders.md`. Not implemented.
 - **US-62** *(Draft)* See what is coming due. Should. Evidence: `docs/product/stories/US-62-upcoming-and-expiring.md`. Not implemented.
@@ -135,7 +135,7 @@ Spec gate passed. Epic gate passed. Stopped at story review. Stories stay Draft.
 - **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
 - **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
 - **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
-- **US-76** *(Draft)* Decide the topic call's provider, credential, and payload. Criteria follow from the ADR at the design gate. No asserting criterion. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
+- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -175,12 +175,12 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. Every remaining story is also listed under its parent epic above. All stay Draft. Not implemented.
 
 - US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
-- US-73, US-74, and US-76 have no asserting criterion. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. US-85 stays Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. Alarms are inexact.
+- US-15, US-31, US-34, US-40, and US-50 are approved. US-73, US-74, and US-76 are placeholders. They have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are not ready for review. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. US-85 stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. Alarms are inexact.
 - The map is `docs/product/stories/TRACEABILITY.md`.
 
 ## Requirements
 
-- Lost vault key: the content is lost. No recovery.
+- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses. Forgetting the passphrase and losing the device still means the content is lost.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 - An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The zip export is encrypted with the vault key.
@@ -195,9 +195,8 @@ The index is the full list. Every remaining story is also listed under its paren
 ## Open questions
 
 - Sync conflicts, and how a deletion propagates. US-73. Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate.
+- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase.
 - Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Criteria follow from the ADR at the design gate.
-- Full-screen image view is US-85. It is pending approval of the E1 amendment.
 
 ## Resolved
 
@@ -208,3 +207,4 @@ The index is the full list. Every remaining story is also listed under its paren
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - English-only OCR. Inexact alarms. No Back up now.
+- One tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. Brightness goes back to normal when you close it. It works offline. A sensitive item needs unlocking first and is protected from screenshots (US-85). Amendment approved by mjbvilhena on 2026-10-18.

@@ -9,10 +9,10 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 | State | Evidence | Status |
 | --- | --- | --- |
 | Vision | `docs/product/vision.md` | Approved by mjbvilhena on 2026-10-17. |
-| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. |
-| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Where an epic file has an amendment line, that line is also approved by mjbvilhena on 2026-10-17. E1 has one proposed full-screen sentence for US-85. That sentence needs approval by mjbvilhena. It is not approved. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
-| Story refine | `docs/product/stories/` and `INDEX.md` | Draft. Not approved. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
-| Story approval | No story signed | Not given. |
+| Product spec | `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. The passphrase sentences are a proposed amendment. They are not part of that approval. |
+| Epic approval | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. The E1 full-screen sentence for US-85 is approved. The passphrase sentences in E8 are a proposed amendment. They are not part of that approval. E1–E9 and E11 are v1. E10 is Later, not in v1, and has no stories. |
+| Story refine | `docs/product/stories/` and `INDEX.md` | US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused. |
+| Story approval | US-15, US-31, US-34, US-40, US-50 | Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft. US-73, US-74, and US-76 are placeholders and are not ready for review. |
 | Technical design / ADRs | No ADR | Not started. ML Kit research input: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | UX | No UX artefact | Not started. |
 | Test strategy / threat model | `docs/technical_design/2026-10-17-proposed-threat-note.md` | Not started as a gate. The note is unapproved hypotheses. It does not open the design band. |
@@ -22,13 +22,15 @@ Templates and Definition of Done checks were imported from `third_party/ai-sdlc-
 
 ## Stop
 
-**Epic gate passed. Stopped at story review.** Stories stay Draft. Implementation has not started.
+**Epic gate passed.** US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. Implementation has not started.
 
 The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `master`. Changes go through a pull request. `.github/workflows/qa.yml` runs Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, and CodeQL. The Protect master ruleset requires those seven checks, and the branch must be up to date. There are no bypass actors. The Android jobs no-op until a Gradle project exists.
 
 ## Requirements in force
 
-- Lost key: the content is lost. No recovery. App lock is optional. The device PIN is the fallback when there are no biometrics.
+- App lock is optional. The device PIN is the fallback when there are no biometrics.
+- One tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. Brightness goes back to normal when you close it. It works offline. A sensitive item needs unlocking first and is protected from screenshots (US-85). Amendment approved by mjbvilhena on 2026-10-18.
+- Proposed amendment. Needs approval by mjbvilhena. The vault key is derived from a passphrase he chooses. Forgetting the passphrase and losing the device still means the content is lost. The method stays in the US-74 ADR.
 - Ordinary lock-screen reminders may show the title and codes. A code is text already in the title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
 - There is no per-item topics control in v1. Sensitive items are always excluded, and the Settings switch covers everything else.
@@ -43,13 +45,12 @@ The public repository is `github.com/mjbvilhena/lagoon`. The default branch is `
 ## Open questions
 
 - Sync conflicts and how a deletion propagates (US-73). Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device (US-74). Criteria follow from the ADR at the design gate.
+- How the vault key reaches a new device (US-74). Criteria follow from the ADR at the design gate. Proposed amendment. Needs approval by mjbvilhena. A second device re-creates the same key from the passphrase.
 - Topic provider, retention, credential supply, and payload (US-76). Criteria follow from the ADR at the design gate.
-- Full-screen image view is US-85. It is pending approval of the E1 amendment.
 
 ## History
 
-The specification and epics E1–E11 were approved on 2026-10-17. The specification amendment of 2026-10-18 is approved. Stories were drafted and remain Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Security criteria on US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft. US-85 is Draft. Its E1 wording is a proposed amendment and needs approval by mjbvilhena. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
+The specification and epics E1–E11 were approved on 2026-10-17. The specification amendment of 2026-10-18 is approved. Amendments to E1, E3, E4, E8, E9, and E11 were approved on 2026-10-18. US-15, US-31, US-34, US-40, and US-50 are approved. The other stories stay Draft. US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Security criteria on US-64, US-75, US-78, US-79, US-80, and US-81 were approved by mjbvilhena on 2026-10-18. Those stories stay Draft. US-85 is Draft. Amendment approved by mjbvilhena on 2026-10-18 for its E1 wording. The passphrase sentences are a proposed amendment. An empty title fills from the file name. Camera capture uses the system camera and does not request `CAMERA`. Upcoming is the one reminder or the one expiry. Alarms are inexact. Topic suggestions have no cap.
 
 ## Memory
 

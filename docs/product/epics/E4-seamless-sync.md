@@ -3,6 +3,7 @@
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -73,5 +74,5 @@ Miguel, on this phone and on a later install of the same app.
 - US-51 Sync in the background and show errors
 - US-56 Keep a stable identity for each item
 - US-59 Use one Settings screen
-- US-73 Decide sync conflicts and deletions. Criteria follow from the ADR at the design gate.
+- US-73 Decide sync conflicts and deletions. Placeholder. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate.
 - US-78 Drive scope and sign-out.

@@ -3,6 +3,7 @@
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-18.
 
 ## Background & Value Proposition
 
@@ -42,15 +43,15 @@ Miguel.
 
 - Depends on E1 items and on edit (US-12).
 - Notification permission is the platform's. If he denies it, the date is still stored and he can see it on the item. Do not invent a second channel.
-- The schedule above is the US-34 rule in the specification. Stories stay Draft.
+- The schedule above is the US-34 rule in the specification. US-34 is approved. The other stories in this epic stay Draft.
 
 ## Open Questions
 
-- The time, the 7-day expiry warning, and inexact alarms are in the specification (US-34). Exact alarms are not an open question. Stories stay Draft.
+- The time, the 7-day expiry warning, and inexact alarms are in the specification (US-34). Exact alarms are not an open question. US-34 is approved. The other stories in this epic stay Draft.
 
 ## Draft stories
 
-- US-34 Set a reminder or expiry and get notified
+- US-34 Set a reminder or expiry and get notified. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-54 Notify before an expiry
 - US-55 Reschedule reminders after a restart or a clock change
 - US-62 See what is coming due. Should.
