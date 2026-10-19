@@ -33,7 +33,8 @@ Update a link that was saved before, and undo that update.
   - When he shares the second URL
   - Then a new item is stored
 - **Scenario: the existing item is updated** — Must
-  - Given the normalised URL matches an item
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. A match that is in trash is "the match is in trash", not this scenario.
+  - Given the normalised URL matches an item that is not in trash
   - When the share is stored
   - Then the preview and snapshot refresh only when a fetch supplies them, tags are unioned, existing text is not overwritten, and the new note is appended under a date separator `YYYY-MM-DD`
   - And last-saved moves to this save, created stays the first save, and he sees "Saved before, added to existing" with Undo and "Keep separate"
@@ -50,12 +51,26 @@ Update a link that was saved before, and undo that update.
   - When he chooses "Keep separate"
   - Then the original item is restored and a second item holds this share
 - **Scenario: the match is in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given the normalised URL matches an item that is in trash
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
-  - And a duplicate item is not created
-  - And whether he can decline that offer, and whether a new note or new tags are kept if he accepts, is an open question in US-66. It is not decided here.
+  - And the ordinary update of that item does not run yet
+- **Scenario: he accepts the restore** — Must
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given that offer is showing
+  - When he accepts
+  - Then that accept is a restore of the matched item, as in US-66
+  - And the ordinary update does not run
+  - And the restored item's other fields are unchanged
+  - And a second item is not created
+  - And `trashChangedAt` is the restore time, and that write does not set `userEditedAt`
+- **Scenario: he declines the restore** — Must
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given that offer is showing
+  - When he declines
+  - Then the share is saved as a new, separate item
+  - And the trashed item stays in trash
 - **Scenario: snackbar closes** — Must
   - Given he does not choose Undo or "Keep separate"
   - When the snackbar closes

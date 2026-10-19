@@ -34,10 +34,17 @@ Import a zip and merge it.
   - Then both the local-only and zip-only items are kept
 - **Scenario: trash state is kept** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
-  - Given the zip includes an item with `inTrash`, `trashedAt`, and `trashChangedAt`
+  - Given the zip includes an item with `inTrash`, `trashedAt`, and `trashChangedAt`, and 30 × 24 hours after `trashedAt` have not ended on this phone's clock
   - When he imports it
   - Then that item stays in trash
   - And carrying those fields does not, by itself, clear trash
+- **Scenario: the trash time has already ended** — Must
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given the zip includes an item with `inTrash` set, and 30 × 24 hours after `trashedAt` have already ended on this phone's clock
+  - When he imports it
+  - Then that item is deleted for good straight away
+  - And the import writes the tombstone, the permanent-delete record, for that id
+  - And the item is not left in trash
 - **Scenario: not a vault zip** — Must
   - Given he picks a file that is not a versioned vault zip
   - When import runs

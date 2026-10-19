@@ -48,6 +48,14 @@ Notify before an expiry.
   - Given the expiry day has passed
   - When he opens the item
   - Then the item shows that it is expired
+- **Scenario: a notice that came due in trash** — Must
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given an expiry notice was already due to fire, the item then went to trash, and that notice's time passed while the item was in trash
+  - When he restores the item, or a later user edit brings it out of trash
+  - Then that notice is shown once, right after the item leaves trash
+  - And it is not shown twice
+  - And this is an exception to "09:00 today has passed" and "a past date"
+  - And those two scenarios still hold when he sets an expiry whose time has already passed: the date is stored and no notice is scheduled for that passed time
 
 ## Analytics and observability (optional)
 
