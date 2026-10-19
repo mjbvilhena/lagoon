@@ -6,7 +6,7 @@
 
 **MoSCoW:** Must. v1.
 
-Proposed amendment. Needs approval by mjbvilhena. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. This is not approved.
+Proposed amendment. Needs approval by mjbvilhena. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it. Proposed. Needs approval by mjbvilhena. This is not approved.
 
 ## Title
 

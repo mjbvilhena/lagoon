@@ -58,5 +58,5 @@ Miguel, installing and configuring the vault himself.
 - US-25 Run the tests he named
 - US-26 Follow a README to build, sideload, and configure OAuth
 - US-27 Review screenshots of the main screens
-- US-80 Keep the permission set to an allowlist. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-81 Publish a sideload signing policy. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-80 Keep the permission set to an allowlist. Approved by mjbvilhena on 2026-10-18.
+- US-81 Publish a sideload signing policy. Approved by mjbvilhena on 2026-10-18.

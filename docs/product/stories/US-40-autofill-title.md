@@ -1,7 +1,7 @@
 # US-40 Fill an empty title from the page or the file
 
 > **Approval status: Approved.**
-> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E1.
 

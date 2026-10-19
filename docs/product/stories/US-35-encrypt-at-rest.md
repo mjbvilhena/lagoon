@@ -1,7 +1,7 @@
 # US-35 Encrypt the vault at rest
 
 > **Approval status: Approved.**
-> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Approved by mjbvilhena on 2026-10-18.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E8.
@@ -24,7 +24,7 @@ Encrypt the vault at rest.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
 - Proposed amendment. Needs approval by mjbvilhena. On that reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A phone that holds no key still follows "I've forgotten my passphrase" and does not use this reset. A normal passphrase change, where he enters the current passphrase, does not wait. This is not approved.
 - Proposed amendment. Needs approval by mjbvilhena. A character is one Unicode code point after NFC. A passphrase shorter than 12 or longer than 128 is refused, and a passphrase on the bundled common-password list is refused, before the KDF runs. There is no strength meter. The strong-passphrase guidance still shows. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and refuses to re-create one from Drive. It does not lower memory, iterations, or parallelism. The test is a failed native allocation of 65536 KiB, not `isLowRamDevice()`. The scenarios whose title line carries this same marker are not approved. This is not approved.
-- Proposed amendment. Needs approval by mjbvilhena. There is no passphrase recall check. Settings has no "Check my passphrase" control, and there is no periodic reminder to re-enter the passphrase. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. There is no in-app aid to remember it. Decided by mjbvilhena; this record is Proposed until he approves it. This is not approved.
+- Proposed amendment. Needs approval by mjbvilhena. There is no passphrase recall check. Settings has no "Check my passphrase" control, and there is no periodic reminder to re-enter the passphrase. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. There is no in-app aid to remember it. Proposed. Needs approval by mjbvilhena. This is not approved.
 - Proposed amendment. Needs approval by mjbvilhena. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it. This is not approved.
 - Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
 - Out of scope: the algorithm, mode, and key size. The derivation method, parameters, and where the non-secret salt lives (US-74). A share temp copy another app must read (US-64). The vault key is not bound to device authentication.

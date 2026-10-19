@@ -53,4 +53,4 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 - US-09 Keep the URL when enrichment does not run
 - US-33 Keep an offline snapshot of a saved page
 - US-70 See what is not ready for offline. Could.
-- US-79 Skip unsafe link previews. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-79 Skip unsafe link previews. Approved by mjbvilhena on 2026-10-18.

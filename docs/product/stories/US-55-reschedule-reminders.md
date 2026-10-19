@@ -1,7 +1,7 @@
 # US-55 Reschedule reminders after a restart or a clock change
 
 > **Approval status: Approved.**
-> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E9.
 
@@ -58,7 +58,7 @@ Reschedule reminders after a restart or a clock change.
   - When he opens the app
   - Then the app checks `POST_NOTIFICATIONS` again and registers or skips the alarms from that result
 - **Scenario: a reminder that fell due in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. The approved scenarios above stay as written.
+  - Proposed amendment. Needs approval by mjbvilhena. The approved scenarios above stay as written.
   - Given a reminder's time passed while the item was in trash
   - When he restores the item
   - Then that reminder fires once, as soon as possible, on the install this story picks

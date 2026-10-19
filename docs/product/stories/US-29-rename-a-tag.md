@@ -43,7 +43,7 @@ Rename a tag, merging only after he confirms a clash.
   - When he tries to rename
   - Then the tag is unchanged
 - **Scenario: a trashed item keeps its trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Proposed amendment. Needs approval by mjbvilhena.
   - Given the tag is on an item that is in trash
   - When he renames or merges that tag
   - Then that item shows the new name and stays in trash
