@@ -19,7 +19,7 @@ Use the teal palette, optional dynamic color, and reduced motion.
 ## Background
 
 - The specification's Q3 consensus says the light accent is about `#0F766E` and the dark accent is about `#2DD4BF`. The UX gate can still check the values. In dark mode the color on the accent is dark (black or `#003731`). Never use `#0F766E` on dark surfaces.
-- Domain constraints: no `DOMAIN.md`. No `LAYER.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree, and Proposed layer files are in `docs/layers/`. They are not a MUST while unapproved. Do not invent further rules.
 - Out of scope: choosing a different accent. Wallpaper color is not the default.
 
 ## Acceptance criteria

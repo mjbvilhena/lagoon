@@ -19,7 +19,7 @@ Share an image into the vault.
 ## Background
 
 - The bytes have to be copied during the share, because the sending app may delete its copy.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: the in-app camera (US-65), image editing, and cloud vision. On API 26 or 27, HEIC or HEIF bytes are kept and the item has no preview.
 
 ## Acceptance criteria

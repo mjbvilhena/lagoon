@@ -19,7 +19,7 @@ Import a zip and merge it.
 ## Background
 
 - Import merges the way US-20 merges one-sided items. It is not a restore button.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a conflicting id (US-73) and an import when this device has no key (US-74).
 
 ## Acceptance criteria

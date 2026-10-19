@@ -1,7 +1,7 @@
 # US-64 Share or open an item in another app
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E3.
@@ -21,7 +21,7 @@ Share or open an item in another app.
 ## Background
 
 - Sharing out is a Should in E3. The criteria below are the requirements.
-- Domain constraints: `get_domain_consultant("capture")` and `get_domain_consultant("vault")` found no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: sharing the database, the vault key, or snapshot internals. Key transport (US-74).
 
 ## Acceptance criteria

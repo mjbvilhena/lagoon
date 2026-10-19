@@ -1,7 +1,7 @@
 # US-80 Keep the permission set to an allowlist
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E6.
@@ -20,7 +20,7 @@ Keep the permission set to an allowlist.
 
 ## Background
 
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: exact alarms (US-77). They stay out of the allowlist. Camera capture uses the system camera, so `CAMERA` stays absent.
 
 ## Acceptance criteria

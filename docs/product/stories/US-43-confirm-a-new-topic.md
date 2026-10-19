@@ -19,7 +19,7 @@ Confirm a topic before it is created.
 ## Background
 
 - Suggestions live in one pending place near the Inbox (US-60).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: linking a name that already matches (US-42).
 
 ## Acceptance criteria

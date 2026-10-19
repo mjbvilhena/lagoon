@@ -19,7 +19,7 @@ Run enrichment, snapshot, OCR, and topics in that order.
 ## Background
 
 - Order: the save returns first. Then enrichment for a link. Then the snapshot from that same fetch. Then OCR. Then the topic job.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: the topic payload (US-76).
 
 ## Acceptance criteria

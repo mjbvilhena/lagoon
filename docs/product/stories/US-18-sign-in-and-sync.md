@@ -19,7 +19,7 @@ Sign in so the vault can sync.
 ## Background
 
 - Sign-in uses Credential Manager and the Identity AuthorizationClient. This story ends when the grant exists. It does not upload.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a Back up now button, the WorkManager worker (US-51), ciphertext rules (US-36), and key transport (US-74). Drive scope and sign-out are US-78. The approved specification names `appDataFolder`.
 
 ## Acceptance criteria

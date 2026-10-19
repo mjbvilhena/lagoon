@@ -51,8 +51,8 @@ Miguel.
 
 ## Draft stories
 
-- US-34 Set a reminder or expiry and get notified. Approved by mjbvilhena on 2026-10-18.
+- US-34 Set a reminder or expiry and get notified. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-54 Notify before an expiry
-- US-55 Reschedule reminders after a restart or a clock change. Approved by mjbvilhena on 2026-10-18.
-- US-62 See what is coming due. Should. Approved by mjbvilhena on 2026-10-18.
+- US-55 Reschedule reminders after a restart or a clock change. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-62 See what is coming due. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-77 Keep reminders on inexact alarms.

@@ -19,7 +19,7 @@ See that sync is not configured.
 ## Background
 
 - There is no Back up now and no Restore. The screen explains that background sync is not configured.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: sign-in (US-18) and the sync worker (US-51).
 
 ## Acceptance criteria

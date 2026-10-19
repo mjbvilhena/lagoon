@@ -19,7 +19,7 @@ Share a link into the vault.
 ## Background
 
 - A link he sees in another app stays in that app until the vault can take a share.
-- Domain constraints: `get_domain_consultant("capture")` found no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: fetching the page (US-08, US-33), a repeat of the same page (US-49), last-used tags (US-28), title fill when he did not supply a subject (US-40), search, and sync. Tracking-parameter match rules live in US-49.
 
 ## Acceptance criteria

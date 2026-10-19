@@ -19,7 +19,7 @@ Edit a saved item.
 ## Background
 
 - Create-time auto-title (US-05) does not run again on edit. An edit cannot leave the title empty.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: merging two items, and the topic-call privacy questions (US-76).
 
 ## Acceptance criteria

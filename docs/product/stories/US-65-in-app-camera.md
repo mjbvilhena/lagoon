@@ -1,7 +1,7 @@
 # US-65 Add a photo from the camera
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.
 
@@ -19,7 +19,7 @@ Add a photo from the camera.
 
 ## Background
 
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - The photo comes from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. The US-80 allowlist stays as it is.
 - Out of scope: the share sheet and the document picker (US-03, US-32). Declaring `CAMERA` in the Lagoon manifest.
 

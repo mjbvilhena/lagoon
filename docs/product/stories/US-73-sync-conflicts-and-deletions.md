@@ -19,7 +19,7 @@ Decide sync conflicts and deletions.
 ## Background
 
 - Criteria follow from the ADR at the design gate. Options recorded here, and not chosen in this story, are tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: one-sided merge, which US-20 already states.
 
 ## Acceptance criteria

@@ -19,7 +19,7 @@ Share a PDF into the vault.
 ## Background
 
 - The file is part of the vault that background sync and the zip carry. It is not a separate backup.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a PDF editor, cloud OCR, and asking him for a PDF password. v1 stores no PDF passwords.
 - Proposed amendment. Needs approval by mjbvilhena. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password is stored, its text is extracted, and it is searchable as a normal PDF. It is not marked "text not extracted" because of that owner password. This is not approved.
 

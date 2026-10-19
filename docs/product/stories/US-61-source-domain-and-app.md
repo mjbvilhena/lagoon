@@ -1,7 +1,7 @@
 # US-61 Filter or search by where an item came from
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.
 
@@ -21,7 +21,7 @@ Filter or search by where an item came from.
 
 - US-01, US-02, US-03, and US-04 record the fields. The sending app is stored only when the platform reports it. An empty field does not block the save.
 - Showing the values is US-10 and US-11. Epic E1 names this story for source domain and sending app, a Should. This story is the filter and the search of those fields. US-15's Must search does not include them. Epic E3's search list does not include them.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a map of every app package. Showing the fields.
 
 ## Acceptance criteria

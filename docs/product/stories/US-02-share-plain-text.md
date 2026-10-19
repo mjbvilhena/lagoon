@@ -19,7 +19,7 @@ Share plain text into the vault.
 ## Background
 
 - Text shared from another app is not a link item unless the text contains a URL.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: OCR, topics, and the repeat-URL update (US-49). An empty title is capped at 120 characters.
 
 ## Acceptance criteria

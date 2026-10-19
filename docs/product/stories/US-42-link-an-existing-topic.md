@@ -19,7 +19,7 @@ Link an item to a topic the vault already has.
 ## Background
 
 - The four privacy questions are US-76 and US-75. This story does not repeat them.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: creating a topic (US-43) and merging two saved topics (US-48).
 
 ## Acceptance criteria

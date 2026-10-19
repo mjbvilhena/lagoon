@@ -1,7 +1,7 @@
 # US-40 Fill an empty title from the page or the file
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.
 
@@ -20,7 +20,7 @@ Fill an empty title from the page or the file.
 ## Background
 
 - He typed a title: it stays (US-08, US-12).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: using the first OCR line as the title.
 - The title order, shared with US-01 and US-02, is: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking).
 

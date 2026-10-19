@@ -42,4 +42,4 @@ Miguel, searching something he saved as an image or a scan.
 
 ## Draft stories
 
-- US-31 Recognize text on the device. Approved by mjbvilhena on 2026-10-18.
+- US-31 Recognize text on the device. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

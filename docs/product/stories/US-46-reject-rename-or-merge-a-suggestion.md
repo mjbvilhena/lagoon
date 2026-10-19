@@ -19,7 +19,7 @@ Reject, rename, or merge a suggested topic.
 ## Background
 
 - A suggestion is not a topic until he confirms it.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: merging two topics that are already saved (US-48). That is not a Must of this story.
 
 ## Acceptance criteria

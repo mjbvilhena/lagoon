@@ -19,7 +19,7 @@ Show a launcher icon and the name Lagoon.
 ## Background
 
 - The approved specification names the app Lagoon.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a Play Store listing, and a second check that the recommendation "is not approval".
 
 ## Acceptance criteria

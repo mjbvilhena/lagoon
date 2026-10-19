@@ -1,7 +1,7 @@
 # US-31 Recognize English text on the device
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E7.
 
@@ -20,7 +20,7 @@ Recognize English text on the device.
 ## Background
 
 - v1 OCR is English only. Other languages are out of scope.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: merchants, booking references, and cloud OCR. The page cap below makes the job testable.
 
 ## Acceptance criteria

@@ -19,7 +19,7 @@ Filter items by type and by tag.
 ## Background
 
 - Several tags combine as AND. Source filters are US-61.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: saved searches.
 
 ## Acceptance criteria

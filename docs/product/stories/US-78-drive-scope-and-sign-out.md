@@ -1,7 +1,7 @@
 # US-78 Keep Drive to app data, and sign out without deleting the phone
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E4.
@@ -21,7 +21,7 @@ Keep Drive to app data, and sign out without deleting the phone.
 ## Background
 
 - Drive access stays `appDataFolder`. Sign-out does not delete the vault on the phone. The criteria below are the requirements.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: sync conflicts and deletion propagation (US-73). Key transport (US-74).
 
 ## Acceptance criteria

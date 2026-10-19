@@ -72,10 +72,10 @@ Paths are under `docs/product/stories/`. A story stays Draft unless its line say
 - US-07 Use the vault offline, with no analytics
 - US-28 File a capture with last-used tags
 - US-32 Keep more than one attachment on an item
-- US-40 Fill the title from the page or the file. Approved by mjbvilhena on 2026-10-18.
+- US-40 Fill the title from the page or the file. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-49 Update a link that was saved before, and undo that update.
 - US-58 Run enrichment, snapshot, OCR, and topics in that order
-- US-61 Filter or search by where an item came from. Should. Approved by mjbvilhena on 2026-10-18.
-- US-65 Add a photo from the system camera. Should. Approved by mjbvilhena on 2026-10-18.
+- US-61 Filter or search by where an item came from. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-65 Add a photo from the system camera. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-67 Notice a duplicate image or PDF. Could.
-- US-85 Show an image or PDF page full-screen and bright. Should. Approved by mjbvilhena on 2026-10-18.
+- US-85 Show an image or PDF page full-screen and bright. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

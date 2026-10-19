@@ -19,7 +19,7 @@ Sort and filter the list by when it was saved.
 ## Background
 
 - Boundaries use the device local zone. The sort key is last-saved. An edit does not move last-saved (US-12).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: an upcoming view (US-62, Should).
 
 ## Acceptance criteria

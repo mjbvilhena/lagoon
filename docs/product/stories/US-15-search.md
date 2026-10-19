@@ -1,7 +1,7 @@
 # US-15 Search the vault and see highlighted matches
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E3.
 
@@ -20,7 +20,7 @@ Search the vault and see highlighted matches.
 ## Background
 
 - The specification says search covers title, body, extracted text (including text-based PDF text and OCR text once recognized), tags, and the personal note. This story also indexes snapshot text. OCR text has its own column. Source domain and the sending app are US-61, a Should in epic E1, and are not in this Must field list. Epic E3's search list does not include them. Weights are US-50. OCR weight equals body, per the specification.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: topic names. The specification's search list does not include them. Whether a sensitive item appears in results is US-75. Ranking rules are US-50.
 
 ## Acceptance criteria

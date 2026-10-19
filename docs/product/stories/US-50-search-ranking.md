@@ -1,7 +1,7 @@
 # US-50 Rank search matches
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E3.
 
@@ -20,7 +20,7 @@ Rank search matches.
 ## Background
 
 - Starting weights, as consensus already recorded in the specification: title 10, tags 5, personal note 3, body 1, extracted text 1, OCR text 1. Snapshot text, source domain, and sending app are weight 1, the same as body.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: changing these weights in Settings. The FTS engine spike is US-57.
 
 ## Acceptance criteria

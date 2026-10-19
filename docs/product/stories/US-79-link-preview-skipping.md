@@ -1,7 +1,7 @@
 # US-79 Skip unsafe link previews
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E2.
@@ -22,7 +22,7 @@ Skip unsafe link previews.
 
 - The vault does not auto-fetch a token-looking URL. It shows a foggy placeholder and asks whether to enable the preview for that link. A fetch happens only after he says yes.
 - The host rules and the detector are the criteria below.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: the offline snapshot viewer making its own network calls. It does not.
 
 ## Acceptance criteria

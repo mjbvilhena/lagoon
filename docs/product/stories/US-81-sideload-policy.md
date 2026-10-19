@@ -1,7 +1,7 @@
 # US-81 Publish a sideload signing policy
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-18.
 
 **Epic:** E6.
@@ -22,7 +22,7 @@ Publish a sideload signing policy.
 
 - A later install uses the same application id and the same release key. The criteria below are the requirements.
 - Items not yet synced to Drive are lost with the phone's vault on uninstall.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a self-updater. There is none. Play Store listing. Exact keystore passwords, which are never written in the repo.
 
 ## Acceptance criteria

@@ -6,7 +6,7 @@
 
 **MoSCoW:** Must. v1.
 
-Proposed amendment. Needs approval by mjbvilhena. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it. Proposed. Needs approval by mjbvilhena. This is not approved.
+Proposed amendment. Needs approval by mjbvilhena. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. This is not approved.
 
 ## Title
 
@@ -21,7 +21,7 @@ Delete an item and undo that delete.
 ## Background
 
 - "Leaves that confirmation" means he dismisses the undo snackbar, navigates away from the screen that shows it, or the snackbar times out. A deferred hard delete is stored, so process death after that point still completes the delete.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: a trash folder (US-66), and how a deletion propagates to Drive or another device (US-73). This story does not delete the Drive copy.
 
 ## Acceptance criteria

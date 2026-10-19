@@ -1,7 +1,7 @@
 # US-34 Set a reminder
 
 > **Approval status: Approved.**
-> Approved by mjbvilhena on 2026-10-18.
+> Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E9.
 
@@ -22,7 +22,7 @@ Set a reminder.
 - A reminder is one optional date-time. An expiry is a different kind of date and is US-54. An item has at most one of them, matching the specification's "expiry or reminder".
 - Default time is 09:00 in the phone's current local zone, with a per-item override. Reminders follow that zone, so a 09:00 reminder fires at 09:00 wherever the phone is. A time-zone change is US-55.
 - A lock-screen notification for an ordinary item may show the item title and codes. A code is text already in that title. There is no separate code field. US-63 is removed, so there is no mark-as-code action. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code (US-75).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: exact alarms, expiry lead times (US-54), reschedule triggers (US-55). Sensitive lock-screen text is decided on US-75.
 
 ## Acceptance criteria

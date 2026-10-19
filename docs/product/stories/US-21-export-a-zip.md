@@ -20,7 +20,7 @@ Export a zip to a place he chooses.
 
 - He picks the location with the system create-document flow. The file has a format version.
 - The zip export is encrypted with the vault key.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: how much a file name or size reveals (sensitive-item export is US-75), and import on a device that has no key (US-74). The cipher algorithm is still an ADR.
 
 ## Acceptance criteria

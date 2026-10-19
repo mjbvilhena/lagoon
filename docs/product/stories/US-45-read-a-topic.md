@@ -19,7 +19,7 @@ Read a topic.
 ## Background
 
 - The summary is the notes. It is not a new AI call.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
 - Out of scope: editing an item (US-12) and search ranking (US-50).
 
 ## Acceptance criteria
