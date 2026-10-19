@@ -50,11 +50,12 @@ Update a link that was saved before, and undo that update.
   - When he chooses "Keep separate"
   - Then the original item is restored and a second item holds this share
 - **Scenario: the match is in trash** — Must
-  - Proposed.
+  - Proposed amendment. Needs approval by mjbvilhena.
   - Given the normalised URL matches an item that is in trash
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
   - And a duplicate item is not created
+  - And whether he can decline that offer, and whether a new note or new tags are kept if he accepts, is an open question in US-66. It is not decided here.
 - **Scenario: snackbar closes** — Must
   - Given he does not choose Undo or "Keep separate"
   - When the snackbar closes

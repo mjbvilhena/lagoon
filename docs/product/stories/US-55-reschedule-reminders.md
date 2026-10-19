@@ -60,9 +60,11 @@ Reschedule reminders after a restart or a clock change.
 - **Scenario: a reminder that fell due in trash** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. The approved scenarios above stay as written.
   - Given a reminder's time passed while the item was in trash
-  - When he restores the item
+  - When he restores the item, or a later user edit brings it out of trash
   - Then that reminder fires once, as soon as possible, on the install this story picks
   - And it is not fired twice
+  - And that once-only fire is a synced fired state, so another phone does not fire it again
+  - And reminders are scheduled again on that path, as they are on restore
 - **Scenario: delete and undo** — Must
   - Given he deletes the item
   - When the delete is pending

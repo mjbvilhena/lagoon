@@ -33,8 +33,8 @@ Import a zip and merge it.
   - When he imports
   - Then both the local-only and zip-only items are kept
 - **Scenario: trash state is kept** — Must
-  - Proposed.
-  - Given the zip includes an item with `inTrash` and `trashedAt`
+  - Proposed amendment. Needs approval by mjbvilhena.
+  - Given the zip includes an item with `inTrash`, `trashedAt`, and `trashChangedAt`
   - When he imports it
   - Then that item stays in trash
   - And carrying those fields does not, by itself, clear trash
