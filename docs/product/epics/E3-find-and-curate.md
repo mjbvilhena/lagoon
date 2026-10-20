@@ -74,5 +74,6 @@ Miguel, looking back through what he kept.
 - US-57 Prove search on an encrypted database
 - US-64 Share or open an item in another app. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-66 Keep a trash beyond undo. Must. Amendment approved by mjbvilhena on 2026-10-20.
-- Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Proposed for story review. Not approved. Decided by mjbvilhena; this record is Proposed until he approves it.
+- Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it.
+- Proposed for story review. Not approved. Decided by mjbvilhena; this record is Proposed until he approves it.
 - US-71 Triage the inbox in a batch. Could.

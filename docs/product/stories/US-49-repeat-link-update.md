@@ -89,6 +89,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on US-01. A URL typed in US-06 uses this match.
+- Open question, not a rule. US-66 can leave two live items that share one URL: he declined the restore of a trashed match, then later restored that trashed item. This story matches one item that is not in trash. It does not say which of those two items a later share updates.
 - Preview and snapshot refresh only when US-08 and US-33 can supply them. A failed fetch does not clear what is already stored.
 - Re-index and topic re-queue on this update are US-58.
 

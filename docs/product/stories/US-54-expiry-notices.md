@@ -54,6 +54,7 @@ Notify before an expiry.
   - When he restores the item, or a later user edit brings it out of trash
   - Then that notice is shown once, right after the item leaves trash
   - And it is not shown twice
+  - And the 7-day notice and the day-of notice are each shown once if that notice came due while the item was in trash
   - And this is an exception to "09:00 today has passed" and "a past date"
   - And those two scenarios still hold when he sets an expiry whose time has already passed: the date is stored and no notice is scheduled for that passed time
 
