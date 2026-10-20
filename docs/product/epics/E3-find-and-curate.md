@@ -5,6 +5,7 @@
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-18.
+> Amendment approved by mjbvilhena on 2026-10-20.
 
 ## Background & Value Proposition
 
@@ -30,8 +31,8 @@ Miguel, looking back through what he kept.
   - Filter by type and by tag.
   - Sharing an item back out to other apps, as US-64 (Should). The acceptance criteria are on that story.
   - Room FTS5 search is proved against the encrypted database before search and at-rest encryption are built on that pair (A-E3-1, US-57). Acceptance: search and encryption are not built on a combination that cannot run.
-  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Should). Acceptance: delete with undo (US-13) still exists. How long trash keeps an item is not decided here.
-  - Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt`. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. When 30 × 24 hours after that instant end, the delete becomes a tombstone and spreads. A delete does not become a tombstone by skipping trash. An id with a tombstone is not a one-sided item that the other phone keeps. Decided by mjbvilhena; this record is Proposed until he approves it. This amendment is not approval of the story. This is not approved.
+  - After the undo snackbar is gone, a deleted item can sit in trash and be restored (A-E3-2, US-66, Must). Acceptance: delete with undo (US-13) still exists. Trash keeps an item for 30 × 24 hours. Amendment approved by mjbvilhena on 2026-10-20. This amendment is not approval of the story.
+  - Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt`. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. When 30 × 24 hours after that instant end, the delete becomes a tombstone and spreads. A delete does not become a tombstone by skipping trash. An id with a tombstone is not a one-sided item that the other phone keeps. Decided by mjbvilhena; this record is Proposed until he approves it. This amendment is not approval of the story.
   - The Untagged inbox can apply one filing action to several items at once (A-E3-3, US-71, Could). Acceptance: filing does not require opening each row. Filing one item at a time still works.
 - **Future Scope (v2+):** Nothing scheduled.
 - **Out of Scope / Non-Goals:** A numeric latency SLO. A merge that is not the confirmed rename in US-29. OCR itself (E7). Trip grouping (E10, not v1). Sharing an item back out is in scope above as US-64, a Should.
@@ -72,6 +73,6 @@ Miguel, looking back through what he kept.
 - US-39 Sort and filter by the date saved
 - US-57 Prove search on an encrypted database
 - US-64 Share or open an item in another app. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-66 Keep a trash beyond undo. Should.
-- Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Proposed for story review. Not approved. Decided by mjbvilhena; this record is Proposed until he approves it.
+- US-66 Keep a trash beyond undo. Must. Amendment approved by mjbvilhena on 2026-10-20.
+- Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Proposed for story review. Not approved. Decided by mjbvilhena; this record is Proposed until he approves it.
 - US-71 Triage the inbox in a batch. Could.

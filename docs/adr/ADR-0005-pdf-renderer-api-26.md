@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed. Needs approval by mjbvilhena.
+Accepted. Approved by mjbvilhena on 2026-10-20.
 
 US-85 leaves this choice to the design gate. Drafting this record is not acceptance. What "password-protected" means is decided below. The full-screen refusal in US-85 is Could, not a Must, and this record does not promote it. Nothing in this record is left open.
 
@@ -83,7 +83,7 @@ Default: a PDF whose encryption cannot be classified is not passed to a renderer
 
 - A password field "only on API 35".
 - Copying the decrypted PDF into `cacheDir` for the renderer.
-- Treating PdfBox-Android in US-04's story text as already accepted. This record is the acceptance point, and it is still Proposed.
+- Treating PdfBox-Android in US-04's story text as already accepted. This record is accepted. Approved by mjbvilhena on 2026-10-20. US-04 stays Draft.
 - Using `android:process` and calling it isolated. The same UID can read the vault.
 - Treating `getWidth` and `getHeight` as pixels, or showing a page upscaled from a smaller bitmap.
 - Putting PDF bytes or a bitmap in a Parcel that crosses the isolated process.
@@ -104,4 +104,4 @@ stateDiagram-v2
     Rejected --> [*]
 ```
 
-Status: Proposed. Needs approval by mjbvilhena.
+Status: Accepted. Approved by mjbvilhena on 2026-10-20.

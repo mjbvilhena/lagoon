@@ -3,13 +3,13 @@
 > **Approval status: Draft. Not approved.**
 > Listing a story here is not a sign-off.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
 
 ## Requirements
 
 - App lock is optional. The device PIN is the fallback when there are no biometrics. The vault key does not require user authentication.
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, so entering it on any device re-creates the same key. No copy of the key is stored anywhere off the phone. Forgetting the passphrase and losing the device still means the content is lost. Security criteria approved by mjbvilhena on 2026-10-18. US-35 is approved. Changing the passphrase is US-86. US-86 is approved. If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86.
-- Proposed amendment. Needs approval by mjbvilhena. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A normal passphrase change, where he enters the current passphrase, does not wait. This is not approved.
+- Amendment approved by mjbvilhena on 2026-10-20. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A normal passphrase change, where he enters the current passphrase, does not wait.
 - An ordinary lock-screen reminder may show the item title and codes. A code is text already in that title. There is no separate code field. A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - The derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so background sync and reminders can decrypt while the phone is locked, after the first unlock since boot. Sensitive content still needs the US-37 unlock.
 - There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
@@ -25,9 +25,9 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## Open questions
 
-- What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. Criteria follow from the ADR at the design gate. Proposed record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not accepted.
-- How does the vault key reach a new device? US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. Proposed record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Not accepted.
-- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. Criteria follow from the ADR at the design gate. The APK must not contain the key in plaintext. Proposed record: `docs/adr/ADR-0003-topic-call.md`. Not accepted. The topic call uses the xAI Grok API, with zero data retention turned on for his xAI team. When the key is first added, Lagoon asks once, "Send N earlier items for topics?", and the default is No. Sensitive items are never counted or sent.
+- What happens when the same item was edited on two devices, and how does a deletion propagate? US-73. The story stays a placeholder. Accepted record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Approved by mjbvilhena on 2026-10-20.
+- How does the vault key reach a new device? US-74. The story stays a placeholder. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. Accepted record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Approved by mjbvilhena on 2026-10-20.
+- Which topic provider is used, what it retains and whether it trains, how the credential is supplied, and what the call sends? US-76. The story stays a placeholder. The APK must not contain the key in plaintext. Accepted record: `docs/adr/ADR-0003-topic-call.md`. Approved by mjbvilhena on 2026-10-20. The topic call uses the xAI Grok API, with zero data retention turned on for his xAI team. When the key is first added, Lagoon asks once, "Send N earlier items for topics?", and the default is No. Sensitive items are never counted or sent.
 
 ## Removed
 
@@ -37,7 +37,7 @@ US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Those numbers are not 
 
 Artefact shape is the user-story Definition of Done: As a / I want / So that, and Given / When / Then. An open question is not answered here.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. No story is Done. There is no app.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. The ADRs they point at are accepted. Approved by mjbvilhena on 2026-10-20. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. No story is Done. There is no app.
 
 ## For mjbvilhena
 
@@ -57,4 +57,4 @@ These items are not approved. They are not decisions.
 
 ## Threat note
 
-`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Proposed. Needs approval by mjbvilhena. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. Neither file is accepted. The cipher and container proposal is `docs/adr/ADR-0006-cipher-and-container.md`, also Proposed. The ADRs themselves are not accepted. UX and the test strategy are not started. Implementation has not started.
+`docs/technical_design/threat-model.md` is the design-gate threat model. Status: Approved. Approved by mjbvilhena on 2026-10-20. `docs/technical_design/2026-10-17-proposed-threat-note.md` remains an earlier hypothesis list. The cipher and container record is `docs/adr/ADR-0006-cipher-and-container.md`, accepted. Approved by mjbvilhena on 2026-10-20. ADR-0001 through ADR-0006 are accepted. UX and the test strategy are not started. Implementation has not started.

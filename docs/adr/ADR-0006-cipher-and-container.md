@@ -2,17 +2,17 @@
 
 ## Status
 
-Proposed. Needs approval by mjbvilhena.
+Accepted. Approved by mjbvilhena on 2026-10-20.
 
 This record is a prerequisite for implementing US-35. It does not add acceptance criteria to that story, and it does not edit it. Drafting it is not acceptance. The specification still says the cipher waits for an ADR. This is that proposal. It is not approval of the specification sentence.
 
 ## Context
 
-US-35 requires the database, attachment files, and derived files to be encrypted with the vault key. US-36 and US-21 require the Drive copy and the zip to be ciphertext under that same key. The specification left the algorithm, mode, and key size for an ADR. ADR-0001, once accepted, supplies a 32-byte key from Argon2id and forbids a second wrapped key on Drive. US-57 still has to show that search and encryption work together. US-86 requires a crash during re-encryption to leave the phone vault and the Drive copy each readable under exactly one passphrase.
+US-35 requires the database, attachment files, and derived files to be encrypted with the vault key. US-36 and US-21 require the Drive copy and the zip to be ciphertext under that same key. The specification left the algorithm, mode, and key size for an ADR. Accepted ADR-0001 supplies a 32-byte key from Argon2id and forbids a second wrapped key on Drive. US-57 still has to show that search and encryption work together. US-86 requires a crash during re-encryption to leave the phone vault and the Drive copy each readable under exactly one passphrase.
 
 Drive file names stay opaque (US-36). A temp plaintext PDF or a plaintext SQLite file is a derived file US-35 and US-85 refuse.
 
-Domain and layer consultants: `docs/domain/vault/DOMAIN.md`, `docs/layers/data/LAYER.md`. Both are Proposed.
+Domain and layer consultants: `docs/domain/vault/DOMAIN.md`, `docs/layers/data/LAYER.md`. Both are approved. Approved by mjbvilhena on 2026-10-20.
 
 Doing nothing leaves every implementation free to pick a different cipher for the database, the files, and the zip.
 
@@ -78,7 +78,7 @@ Default: a container whose magic, version, or tag is not this layout is not decr
 - Reusing a GCM nonce under one subkey.
 - Writing the generation only in a clear field and trusting it.
 - Extracting a zip entry before checking its path.
-- Treating this Proposed record as permission to implement, or editing US-35 to cite it before he accepts it.
+- Treating acceptance of this record as permission to start implementation, or editing the approved text of US-35. Implementation has not started.
 
 ## Skill State Machine (sdlc-adr-drafter)
 
@@ -93,4 +93,4 @@ stateDiagram-v2
     Rejected --> [*]
 ```
 
-Status: Proposed. Needs approval by mjbvilhena.
+Status: Accepted. Approved by mjbvilhena on 2026-10-20.

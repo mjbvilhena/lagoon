@@ -4,7 +4,7 @@ This file is a **Layer Consultant** payload. The MCP tool `get_layer_consultant`
 
 **Quality bar:** An agent can accept or reject a change in this layer using only this file plus the diff.
 
-**Status: Proposed. Needs approval by mjbvilhena.**
+**Status: Approved. Approved by mjbvilhena on 2026-10-20.**
 
 Business invariants live in `docs/domain/vault/DOMAIN.md`. This layer stores and moves bytes. It does not invent product rules.
 
@@ -18,11 +18,11 @@ Where the named capabilities live:
 
 | Capability | Package | Calls |
 | --- | --- | --- |
-| Encryption and KDF | `data.crypto` | Keystore wrap, header read, encrypt-before-write. Parameters come from ADR-0001 once accepted. Cipher and container come from ADR-0006 once accepted |
-| Sync | `data.sync` | WorkManager, Drive `appDataFolder`, one records file per install. Merge through the domain port. Conflict rule is ADR-0002 once accepted |
+| Encryption and KDF | `data.crypto` | Keystore wrap, header read, encrypt-before-write. Parameters come from accepted ADR-0001. Cipher and container come from accepted ADR-0006 |
+| Sync | `data.sync` | WorkManager, Drive `appDataFolder`, one records file per install. Merge through the domain port. Conflict rule is accepted ADR-0002 |
 | Search | `data.search` | The FTS index behind `SearchIndex`. Weights stay in the domain |
 | Reminders | `data.reminder` | Inexact `setAndAllowWhileIdle`. Reschedule on every US-55 trigger. Notification text follows US-34 and US-75 |
-| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Proposed amendment. Needs approval by mjbvilhena. Needs a story. Reject `file://` and Lagoon's own FileProvider URIs, and refuse a single image larger than 20 MiB. No story states those two rules. The 20 MiB figure is US-31's OCR input cap, not an intake cap. Keep a pre-key share off disk. The Activity is the UI layer |
+| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Approved by mjbvilhena on 2026-10-20. Needs a story. Reject `file://` and Lagoon's own FileProvider URIs, and refuse a single image larger than 20 MiB. No story states those two rules. The 20 MiB figure is US-31's OCR input cap, not an intake cap. Keep a pre-key share off disk. The Activity is the UI layer |
 
 ## Allowed dependencies
 
@@ -60,10 +60,10 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - MUST remove `com.google.mlkit.common.internal.MlKitInitProvider` with `tools:node="remove"` and call `MlKit.initialize` only after acceptance, and only once per process (US-07, ADR-0004).
 - MUST keep the manifest allowlist in US-80, including ML Kit datatransport components named or removed (ADR-0004). `allowBackup` false and vault exclusion in `dataExtractionRules` (US-35).
 - MUST post sensitive notifications as public and private text "Lagoon reminder" (US-75).
-- MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start. The spec also allows `setWindow`. This layer's narrower choice is Proposed. Needs approval by mjbvilhena.
+- MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start. The spec also allows `setWindow`. This layer's narrower choice is Approved by mjbvilhena on 2026-10-20.
 - MUST accept share bytes that are a link, plain text, an image, or a PDF. A PDF share that is not a PDF is still rejected (US-04, Draft). Image and text shares are not rejected for being non-PDF.
-- Proposed amendment. Needs approval by mjbvilhena. Needs a story. Reject a share URI whose scheme is `file`, and reject a URI from Lagoon's own FileProvider. Refuse a single image larger than 20 MiB at intake. The 20 MiB figure is US-31's OCR input cap, not an intake cap. No story states these rules, so they are not acceptance criteria.
-- A release build strips `Log`. Crash and exception text carries no item body (T-31). Proposed. Needs approval by mjbvilhena.
+- Approved by mjbvilhena on 2026-10-20. Needs a story. Reject a share URI whose scheme is `file`, and reject a URI from Lagoon's own FileProvider. Refuse a single image larger than 20 MiB at intake. The 20 MiB figure is US-31's OCR input cap, not an intake cap. No story states these rules, so they are not acceptance criteria.
+- A release build strips `Log`. Crash and exception text carries no item body (T-31). Approved by mjbvilhena on 2026-10-20.
 - MUST wipe a share temp file on return, within 15 minutes, and on next launch, and revoke the URI grant with that wipe (US-64).
 
 ## NEVER rules (technical)
@@ -79,7 +79,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 ## Patterns and frameworks
 
 - Kotlin. Room is the local store. WorkManager is the background runner. Both are specification constraints.
-- Cipher, container, and the AES-256-GCM Keystore wrap are proposed in ADR-0001 and ADR-0006. They are not accepted. This layer must not pretend they are.
+- Cipher, container, and the AES-256-GCM Keystore wrap are accepted ADR-0001 and accepted ADR-0006. Approved by mjbvilhena on 2026-10-20. Implementation has not started.
 - Gradle modules, once implementation starts: `:domain` is pure Kotlin with no Android dependency, `:data` implements the ports, `:ui` does not depend on `:data`, `:data` does not depend on `:ui`, and `:app` is the only module that depends on both `:data` and `:ui`. An architecture test fails the build when that graph breaks. No Gradle project exists yet. This file is the rule that project has to meet.
 - Repository tests cover search ranking and ciphertext packaging without a live Drive call (US-25).
 
@@ -88,11 +88,11 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - No analytics SDK.
 - Sync and topic failures use the plain sentences the stories name. No vault bytes in the message.
 - Preview and topic calls are bounded by the timeouts above. KDF retry delay is ADR-0001, enforced in `data.crypto`, not in the UI timer alone.
-- Secrets are not in source. The OAuth client id is build-time configuration (spec). The topic key is entered at runtime and stored as vault ciphertext (ADR-0003, once accepted).
+- Secrets are not in source. The OAuth client id is build-time configuration (spec). The topic key is entered at runtime and stored as vault ciphertext (accepted ADR-0003).
 
 ## Change control
 
-A layer ADR is required for a new datastore, a new network SDK, a cipher choice, or dropping encrypt-before-write. US-57 is the gate for the FTS and encryption combination. This file is Proposed.
+A layer ADR is required for a new datastore, a new network SDK, a cipher choice, or dropping encrypt-before-write. US-57 is the gate for the FTS and encryption combination. This file is approved. Approved by mjbvilhena on 2026-10-20.
 
 ## Anti-patterns
 
@@ -112,4 +112,4 @@ stateDiagram-v2
     Implementation --> [*]
 ```
 
-Status: Proposed. Needs approval by mjbvilhena.
+Status: Approved. Approved by mjbvilhena on 2026-10-20.

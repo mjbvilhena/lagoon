@@ -46,4 +46,4 @@ From that server, this run called:
 - `get_domain_consultant("vault")`, `get_domain_consultant("knowledge")`, and `get_domain_consultant("capture")` — no `DOMAIN.md` files exist
 - `get_layer_consultant("ui")` — no `LAYER.md` files exist
 
-No domain or layer rules were invented to fill those misses. That list is what the setup run found. `docs/domain/vault/DOMAIN.md` and `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md` are now in the tree. They are Proposed. Needs approval by mjbvilhena. They are not approved.
+No domain or layer rules were invented to fill those misses. That list is what the setup run found. `docs/domain/vault/DOMAIN.md` and `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md` are now in the tree. They are approved. Approved by mjbvilhena on 2026-10-20.

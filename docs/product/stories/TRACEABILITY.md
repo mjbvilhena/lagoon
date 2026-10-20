@@ -1,6 +1,6 @@
 # Traceability
 
-> **Draft is not approval.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
+> **Draft is not approval.** US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
 > Sources: `docs/product/vision.md`, `docs/product/specification.md`, and approved epics E1–E9 and E11. E10 is Later and is not a v1 parent.
 > A review pack, a story, or the threat note is not a source.
 
@@ -14,30 +14,30 @@
 - Upcoming shows only the one reminder or the one expiry.
 - Alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 - There is no cap on topic suggestions.
-- US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. They are not ready for review. They are not capabilities. Each points at a Proposed ADR and does not gain criteria from it. US-73 → `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. US-74 → `docs/adr/ADR-0001-argon2id-vault-key.md`. US-76 → `docs/adr/ADR-0003-topic-call.md`. Status of each: Proposed. Needs approval by mjbvilhena.
+- US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. They are not ready for review. They are not capabilities. Each points at an accepted ADR and does not gain criteria from it. US-73 → `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. US-74 → `docs/adr/ADR-0001-argon2id-vault-key.md`. US-76 → `docs/adr/ADR-0003-topic-call.md`. Status of each: Accepted. Approved by mjbvilhena on 2026-10-20.
 - US-85 is approved. One tap on an image or PDF page opens it full-screen at maximum brightness. Amendment approved by mjbvilhena on 2026-10-18 for the E1 wording. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-86 is approved. Changing the passphrase re-encrypts the vault. Security criteria approved by mjbvilhena on 2026-10-18.
 - US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 ## Design artefacts
 
-Proposed. Not approval. None of these files change approved specification, epic, or story wording.
+Approved by mjbvilhena on 2026-10-20. The marked specification and epic amendments of that date are approved. US-66 stays Proposed for story review. None of these files add acceptance criteria to a story.
 
 | Artefact | Path | Status |
 | --- | --- | --- |
-| Domain | `docs/domain/vault/DOMAIN.md` | Proposed. Needs approval by mjbvilhena. |
-| UI layer | `docs/layers/ui/LAYER.md` | Proposed. Needs approval by mjbvilhena. |
-| Domain layer | `docs/layers/domain/LAYER.md` | Proposed. Needs approval by mjbvilhena. |
-| Data layer | `docs/layers/data/LAYER.md` | Proposed. Needs approval by mjbvilhena. |
-| Vault key | `docs/adr/ADR-0001-argon2id-vault-key.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-74 points here. |
-| Sync conflicts | `docs/adr/ADR-0002-sync-conflicts-and-deletions.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-73 points here. |
-| Topic call | `docs/adr/ADR-0003-topic-call.md` | Proposed. Needs approval by mjbvilhena. Placeholder US-76 points here. |
-| ML Kit metrics | `docs/adr/ADR-0004-ml-kit-telemetry.md` | Proposed. Needs approval by mjbvilhena. |
-| PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Proposed. Needs approval by mjbvilhena. |
-| Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Proposed. Needs approval by mjbvilhena. Prerequisite for US-35 implementation. US-35 is not edited. |
-| Threat model | `docs/technical_design/threat-model.md` | Proposed. Needs approval by mjbvilhena. |
+| Domain | `docs/domain/vault/DOMAIN.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| UI layer | `docs/layers/ui/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| Domain layer | `docs/layers/domain/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| Data layer | `docs/layers/data/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| Vault key | `docs/adr/ADR-0001-argon2id-vault-key.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-74 points here. |
+| Sync conflicts | `docs/adr/ADR-0002-sync-conflicts-and-deletions.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-73 points here. |
+| Topic call | `docs/adr/ADR-0003-topic-call.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-76 points here. |
+| ML Kit metrics | `docs/adr/ADR-0004-ml-kit-telemetry.md` | Accepted. Approved by mjbvilhena on 2026-10-20. |
+| PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Accepted. Approved by mjbvilhena on 2026-10-20. |
+| Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Prerequisite for US-35 implementation. US-35 is not edited. |
+| Threat model | `docs/technical_design/threat-model.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
 
-UX and the test strategy are not started. A Proposed ADR is not accepted by being drafted.
+UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20.
 
 ## Epic map
 
@@ -194,19 +194,19 @@ UX and the test strategy are not started. A Proposed ADR is not accepted by bein
 | US-62 | E9 | E9: a list shows items whose one reminder or one expiry is coming due. | Traced. |
 | US-64 | E3 | E3: "Sharing an item back out to other apps, as US-64 (Should)." Vision says the same. The criteria are on US-64. | Traced |
 | US-65 | E1 | E1: a new item can start from the system camera through `ACTION_IMAGE_CAPTURE`. Lagoon does not request `CAMERA`. | Traced. |
-| US-66 | E3 | E3: after undo, a deleted item can sit in trash and be restored. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. The in-trash field merges by the later `trashChangedAt`, not by `updatedAt`. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. The tombstone spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. US-66 is Proposed for story review. Decided by mjbvilhena; this record is Proposed until he approves it. | Traced. |
+| US-66 | E3 | E3: after undo, a deleted item can sit in trash and be restored. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. The in-trash field merges by the later `trashChangedAt`, not by `updatedAt`. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. The tombstone spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. US-66 is Proposed for story review. Decided by mjbvilhena; this record is Proposed until he approves it. | Traced. |
 | US-67 | E1 | E1: duplicate image or PDF bytes are pointed out. A repeat URL still matches under US-49. | Traced. |
 | US-70 | E2 | E2: a check lists items whose snapshot or OCR is pending, failed, or has never run. | Traced. |
 | US-71 | E3 | E3: the inbox can apply one filing action to several items. | Traced. |
 | US-72 | E11 | E11: a usefulness score is computed on the phone and is not sent off the phone. | Traced. |
-| US-73 | E4 | Spec open question: two edits of one item, and how a deletion propagates. | Placeholder. Not ready for review. Proposed ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Not a capability. |
-| US-74 | E8 | Spec open question: how a second device re-creates the key. | Placeholder. Not ready for review. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. No copy of the key is stored anywhere off the phone. Proposed ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. A reset of a forgotten passphrase from a phone that still holds the key is US-86. That reset keeps the Drive copy on the old passphrase for 24 hours. The spec amendment is not approved. Not a capability. |
+| US-73 | E4 | Spec open question: two edits of one item, and how a deletion propagates. | Placeholder. Not ready for review. Accepted ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Approved by mjbvilhena on 2026-10-20. Not a capability. |
+| US-74 | E8 | Spec open question: how a second device re-creates the key. | Placeholder. Not ready for review. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. No copy of the key is stored anywhere off the phone. Accepted ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. Approved by mjbvilhena on 2026-10-20. A reset of a forgotten passphrase from a phone that still holds the key is US-86. That reset keeps the Drive copy on the old passphrase for 24 hours. Amendment approved by mjbvilhena on 2026-10-20. Not a capability. |
 | US-75 | E8 | E8: before unlock, list, search, screenshot, and cache hide a sensitive item. Both notification versions show only "Lagoon reminder". Export waits for US-37. | Traced. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. |
-| US-76 | E11 | Spec open question: provider, credential, and what is sent. | Placeholder. Not ready for review. Proposed ADR: `docs/adr/ADR-0003-topic-call.md`. Not a capability. |
+| US-76 | E11 | Spec open question: provider, credential, and what is sent. | Placeholder. Not ready for review. Accepted ADR: `docs/adr/ADR-0003-topic-call.md`. Approved by mjbvilhena on 2026-10-20. Not a capability. |
 | US-77 | E9 | E9: alarms are inexact. Lagoon never requests `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`. | Traced. |
 | US-78 | E4 | E4: sign-out does not delete the phone vault. Drive stays `appDataFolder`. | Traced. |
 | US-79 | E2 | E2: a token-looking URL is not auto-fetched. The other skip rules are the criteria on US-79. | Traced. |
 | US-80 | E6 | E6: the release app requests only the permissions the product needs. `CAMERA` and exact-alarm permissions are absent. | Traced. |
 | US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. |
 | US-85 | E1 | E1: one tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. | Traced. Approved. Amendment approved by mjbvilhena on 2026-10-18. A swipe moves to the next or previous PDF page, or to the item's next or previous image attachment, in attachment order, including every page of each PDF, without leaving full-screen and without wrapping. A password-protected PDF does not open full-screen. |
-| US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Proposed amendment, not approved: a forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. A cancel keeps items saved on the resetting phone during those 24 hours. A normal change does not wait. The reset accepts the US-37 biometric or device PIN. |
+| US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. A forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. A cancel keeps items saved on the resetting phone during those 24 hours. A normal change does not wait. The reset accepts the US-37 biometric or device PIN. |

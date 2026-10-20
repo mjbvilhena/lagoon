@@ -39,8 +39,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Criteria follow from the ADR at the design gate.
-- Proposed record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Status: Proposed. Needs approval by mjbvilhena. This story stays a placeholder. It does not gain acceptance criteria from that record.
+- The ADR is accepted. This story stays a placeholder.
+- Accepted record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Status: Accepted. Approved by mjbvilhena on 2026-10-20. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 

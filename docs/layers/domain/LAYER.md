@@ -4,7 +4,7 @@ This file is a **Layer Consultant** payload. The MCP tool `get_layer_consultant`
 
 **Quality bar:** An agent can accept or reject a change in this layer using only this file plus the diff.
 
-**Status: Proposed. Needs approval by mjbvilhena.**
+**Status: Approved. Approved by mjbvilhena on 2026-10-20.**
 
 Business invariants live in `docs/domain/vault/DOMAIN.md`. This file is the Kotlin module boundary, not a second copy of those rules.
 
@@ -39,7 +39,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - NEVER log secrets or item bodies from a use case.
 - NEVER encode SQL, HTTP, or Keystore parameters in a domain type.
-- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all Proposed. A port may accept a header value object once the ADR is accepted. A rule that exists only in a Proposed ADR is not a domain rule.
+- NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all accepted. Approved by mjbvilhena on 2026-10-20. A rule in those ADRs is a domain rule.
 
 ## Patterns and frameworks
 
@@ -55,7 +55,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 ## Change control
 
-A layer ADR is required to add an Android or network dependency here, or to move a business rule into the data layer. This file is Proposed.
+A layer ADR is required to add an Android or network dependency here, or to move a business rule into the data layer. This file is approved. Approved by mjbvilhena on 2026-10-20.
 
 ## Anti-patterns
 
@@ -75,4 +75,4 @@ stateDiagram-v2
     Implementation --> [*]
 ```
 
-Status: Proposed. Needs approval by mjbvilhena.
+Status: Approved. Approved by mjbvilhena on 2026-10-20.

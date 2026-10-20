@@ -4,6 +4,7 @@
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-18.
+> Amendment approved by mjbvilhena on 2026-10-20.
 
 ## Background & Value Proposition
 
@@ -25,8 +26,8 @@ Miguel, on this phone and on a later install of the same app.
   - Sign in with Google (Google Sign-In / Credential Manager). A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash.
   - Unmetered-only preference for background sync (`WorkManager` `UNMETERED`).
   - A new install or second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept.
-  - Proposed amendment. Needs approval by mjbvilhena. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt` (US-66, Must, in v1). v1 does not ship without it. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. The tombstone, the permanent delete, spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. Sync still keeps an item that exists on only one side. A tombstoned id is not that item. Decided by mjbvilhena; this record is Proposed until he approves it. This is not approved.
-  - Proposed amendment. Needs approval by mjbvilhena. A lost phone's Drive file is retired only through "Forget this phone" in Settings. The action names one other install, deletes that install's records file, and does not change the passphrase. It is never automatic. This is not approved.
+  - Amendment approved by mjbvilhena on 2026-10-20. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt` (US-66, Must, in v1). v1 does not ship without it. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. The tombstone, the permanent delete, spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. Sync still keeps an item that exists on only one side. A tombstoned id is not that item. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Amendment approved by mjbvilhena on 2026-10-20. A lost phone's Drive file is retired only through "Forget this phone" in Settings. The action names one other install, deletes that install's records file, and does not change the passphrase. It is never automatic.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
   - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
@@ -61,7 +62,7 @@ Miguel, on this phone and on a later install of the same app.
 
 - [ ] Same item edited on two devices. US-73. Criteria follow from the ADR at the design gate.
 - [ ] How deletions propagate. US-73. Criteria follow from the ADR at the design gate.
-- Proposed amendment. Needs approval by mjbvilhena. Deletion propagation is the synced in-trash field, then a tombstone after 30 × 24 hours, in the scope bullet above. US-66 is Must. v1 does not ship without that trash. An item with a tombstone is not kept as a one-sided item. This is not approved.
+- Amendment approved by mjbvilhena on 2026-10-20. Deletion propagation is the synced in-trash field, then a tombstone after 30 × 24 hours, in the scope bullet above. US-66 is Must. v1 does not ship without that trash. An item with a tombstone is not kept as a one-sided item.
 - [ ] How keys reach the second device. US-74. Criteria follow from the ADR at the design gate. Owned with E8.
 - One-sided items are kept. That question is closed.
 

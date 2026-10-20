@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed. Needs approval by mjbvilhena.
+Accepted. Approved by mjbvilhena on 2026-10-20.
 
 This record turns the research note `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md` into a decision. The note is not an ADR. Drafting this record is not acceptance.
 
@@ -88,4 +88,4 @@ stateDiagram-v2
     Rejected --> [*]
 ```
 
-Status: Proposed. Needs approval by mjbvilhena.
+Status: Accepted. Approved by mjbvilhena on 2026-10-20.
