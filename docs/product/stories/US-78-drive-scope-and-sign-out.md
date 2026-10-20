@@ -21,7 +21,7 @@ Keep Drive to app data, and sign out without deleting the phone.
 ## Background
 
 - Drive access stays `appDataFolder`. Sign-out does not delete the vault on the phone. The criteria below are the requirements.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: sync conflicts and deletion propagation (US-73). Key transport (US-74).
 
 ## Acceptance criteria

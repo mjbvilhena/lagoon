@@ -19,7 +19,7 @@ Sync in the background and show errors.
 ## Background
 
 - The specification names WorkManager for background sync. The trigger is not "while the app is running".
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: the cipher (an ADR), key transport (US-74), conflict rules (US-73), and sign-out. Sign-out is US-78.
 
 ## Acceptance criteria

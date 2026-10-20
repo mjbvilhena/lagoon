@@ -19,7 +19,7 @@ Review screenshots of the main screens.
 ## Background
 
 - No images are fabricated. Settings shows sync state, not a backup button.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: a marketing page, and a Back up now control in the settings shot.
 
 ## Acceptance criteria

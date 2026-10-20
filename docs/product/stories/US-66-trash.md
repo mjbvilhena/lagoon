@@ -18,7 +18,7 @@ Keep a trash beyond undo.
 
 ## Background
 
-- Domain constraints: Proposed `docs/domain/vault/DOMAIN.md` describes the same trash rule. No MUST is in force while that file and ADR-0002 are unapproved. Do not invent a second rule.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` describes the same trash rule. That file is approved, and ADR-0002 is accepted. Approved by mjbvilhena on 2026-10-20. Do not invent a second rule.
 - Out of scope: US-13, which remains the undo path.
 - Proposed amendment. Needs approval by mjbvilhena. v1 has no Delete forever, no Delete now, and no Empty trash. The only permanent delete is the tombstone after 30 × 24 hours.
 - Proposed amendment. Needs approval by mjbvilhena. Trash is opened from Settings (US-59). The layout of that screen waits for the UX artefact.
@@ -250,7 +250,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
-- Proposed amendment. Needs approval by mjbvilhena. This story is Must. v1 does not ship without it. The field rule and the tombstone are ADR-0002, which is still Proposed. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
+- Proposed amendment. Needs approval by mjbvilhena. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes
 

@@ -19,7 +19,7 @@ Browse saved items, newest first.
 ## Background
 
 - The sort key is last-saved, not created. A new save and a repeat share (US-49) move last-saved. An edit moves only `updatedAt` (US-12) and does not move the row.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: date filters and other sort directions (US-39). What a sensitive row reveals before unlock is US-75.
 - A home row does not render a link preview image. The foggy placeholder from US-79 is not drawn on the row.
 

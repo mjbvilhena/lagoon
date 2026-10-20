@@ -19,7 +19,7 @@ Cover search, sync and zip packaging, and a basic screen with automated tests.
 ## Background
 
 - Packaging tests cover ciphertext rules that are testable without a live Drive call.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: a live Drive call, and an emulator for this story. Screenshots stay on an emulator in US-27. Kotlin style is in `.github/workflows/qa.yml` and is in scope for the build, not out of scope.
 
 ## Acceptance criteria

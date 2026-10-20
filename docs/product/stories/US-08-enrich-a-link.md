@@ -19,7 +19,7 @@ Enrich a saved link from the page.
 ## Background
 
 - The save in US-01 or US-06 already finished. This fetch does not block that save.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: the offline snapshot file (US-33) except that its readable text comes from this same fetch. A failed fetch is US-09. Which fetches are skipped is US-79.
 
 ## Acceptance criteria

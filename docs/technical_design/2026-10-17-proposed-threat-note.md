@@ -1,9 +1,9 @@
 # Proposed threat note, 2026-10-17
 
 > **Status: Proposed. Not an approved threat model.**
-> The design-gate threat model is `docs/technical_design/threat-model.md`. That file is Proposed and is not accepted. This note stays an earlier hypothesis list. It does not claim the product is secure or STRIDE-compliant.
+> The design-gate threat model is `docs/technical_design/threat-model.md`. That file is approved. Approved by mjbvilhena on 2026-10-20. This note stays an earlier hypothesis list. It does not claim the product is secure or STRIDE-compliant.
 > Skill: `sdlc-threat-modeler`. Template: `get_sdlc_template("threat model")`. Definition of Done: `get_definition_of_done("security change")`.
-> Security-change implementation DoD is unmet: there is no code. When this note was written, `get_domain_consultant` for capture, vault, and knowledge, and `get_layer_consultant("ui")`, returned no `DOMAIN.md` or `LAYER.md`. Those files now exist as Proposed. See `docs/domain/vault/DOMAIN.md`, `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md`. This note did not invent their rules.
+> Security-change implementation DoD is unmet: there is no code. When this note was written, `get_domain_consultant` for capture, vault, and knowledge, and `get_layer_consultant("ui")`, returned no `DOMAIN.md` or `LAYER.md`. Those files are approved. Approved by mjbvilhena on 2026-10-20. See `docs/domain/vault/DOMAIN.md`, `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md`. This note did not invent their rules.
 > The hypotheses below point at US-64, US-75, US-78, US-79, US-80, and US-81. Those story artefacts are approved. This note is not.
 
 ## Metadata

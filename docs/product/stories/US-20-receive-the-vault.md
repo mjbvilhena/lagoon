@@ -19,7 +19,7 @@ Receive the vault on another install.
 ## Background
 
 - The specification says an item that exists on only one side is kept. The merge basis for that case is a stable item id and `updatedAt` (US-56).
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: the same item edited on both sides, and how a deletion propagates (US-73). The options on that story are not chosen. Keys on a new device are US-74.
 - A new install needs the passphrase to re-create the key before the vault, and its reminders, are available (US-35, US-55).
 

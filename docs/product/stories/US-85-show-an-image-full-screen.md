@@ -21,7 +21,7 @@ Show an image or PDF page full-screen and bright.
 
 - One tap opens an image or a rendered PDF page, for example a boarding pass PDF.
 - Brightness uses only this window's override: `WindowManager.LayoutParams.screenBrightness = 1.0f`. Lagoon does not request `WRITE_SETTINGS`. The system brightness setting is unchanged. The US-80 permission list is unchanged.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Proposed amendment. Needs approval by mjbvilhena. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal. The scenario "a password-protected PDF" stays as written for a PDF that needs a password to open. This is not approved.
 - Out of scope: editing the image or the page. The system camera (US-65).
 

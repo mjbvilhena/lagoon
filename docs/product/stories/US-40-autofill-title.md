@@ -20,7 +20,7 @@ Fill an empty title from the page or the file.
 ## Background
 
 - He typed a title: it stays (US-08, US-12).
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: using the first OCR line as the title.
 - The title order, shared with US-01 and US-02, is: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking).
 

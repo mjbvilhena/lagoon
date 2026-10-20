@@ -19,7 +19,7 @@ Do not offer backup or restore controls.
 ## Background
 
 - The approved specification forbids Back up now, Restore, a last-backup time, a manual size warning, and a roaming warning tied to a manual backup.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: the zip fallback (US-21, US-52), which is not a backup button.
 
 ## Acceptance criteria

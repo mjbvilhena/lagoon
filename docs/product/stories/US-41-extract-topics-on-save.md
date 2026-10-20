@@ -20,7 +20,7 @@ Extract topics when an item is saved.
 ## Background
 
 - The call is a cloud AI. Readable content may leave the phone. Drive sync stays ciphertext and is not this call. Topics are not tags, and every result is marked as AI-generated.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: linking (US-42), creating (US-43), the offline queue mechanics (US-44), the pipeline order (US-58), and the topic page (US-45). Provider, credential storage, and payload slice are US-76. There is no cap on topic suggestions. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - The topic switch lives in Settings (US-59). It starts on. He can turn it off. Items saved while it is off are not sent later unless he chooses "Get topics" on that item. That is the named control behind "unless he asks".
 - Proposed amendment. Needs approval by mjbvilhena. When the xAI key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items on this install that have no topic provenance, and the default is No. A sensitive item is not counted and is not sent. "Get topics" on one ordinary item stays. There is no monthly cap. Settings shows this month's call count on this install. That count is not synced. De-duplication still applies. This is not approved.

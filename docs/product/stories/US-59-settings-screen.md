@@ -19,7 +19,7 @@ Use one Settings screen.
 ## Background
 
 - This screen hosts controls defined by other stories. It does not add Back up now.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: the sign-out behavior. The row is only a slot. The behavior is US-78.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference.
 - The ML Kit disclosure is a slot. The behavior is US-07. It is not a telemetry off switch. Google's docs do not state a switch. Settings can withdraw the acceptance.

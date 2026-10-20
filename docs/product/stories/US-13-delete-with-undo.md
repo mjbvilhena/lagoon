@@ -21,7 +21,7 @@ Delete an item and undo that delete.
 ## Background
 
 - "Leaves that confirmation" means he dismisses the undo snackbar, navigates away from the screen that shows it, or the snackbar times out. A deferred hard delete is stored, so process death after that point still completes the delete.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: a trash folder (US-66), and how a deletion propagates to Drive or another device (US-73). This story does not delete the Drive copy.
 
 ## Acceptance criteria

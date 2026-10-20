@@ -19,7 +19,7 @@ See what is coming due.
 
 ## Background
 
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: exact alarms (US-77). Snooze length is 1 hour in this story.
 - A sensitive reminder or expiry notice's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content (US-75). Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 

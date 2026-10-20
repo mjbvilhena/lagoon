@@ -19,7 +19,7 @@ Install a signed release APK without the Play Store.
 ## Background
 
 - The approved specification sets `minSdk` 26 and `compileSdk` and `targetSdk` 37. The application id is `com.mjbvilhena.lagoon`.
-- Domain constraints: a Proposed `docs/domain/vault/DOMAIN.md` is in the tree. It is not a MUST while it is unapproved. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
 - Out of scope: Play Store listing, and what to do about 2027 sideload developer verification. That question is in `docs/product/stories/REVIEW-PACK.md`.
 
 ## Acceptance criteria
