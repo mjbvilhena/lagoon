@@ -79,7 +79,8 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 ## Patterns and frameworks
 
 - Kotlin. Room is the local store. WorkManager is the background runner. Both are specification constraints.
-- Cipher, container, and the AES-256-GCM Keystore wrap are accepted ADR-0001 and accepted ADR-0006. Approved by mjbvilhena on 2026-10-20. Implementation has not started.
+- Cipher, container, and the AES-256-GCM Keystore wrap are accepted ADR-0001 and accepted ADR-0006. Approved by mjbvilhena on 2026-10-20.
+- Proposed amendment. Needs approval by mjbvilhena. Implementation has not started.
 - Gradle modules, once implementation starts: `:domain` is pure Kotlin with no Android dependency, `:data` implements the ports, `:ui` does not depend on `:data`, `:data` does not depend on `:ui`, and `:app` is the only module that depends on both `:data` and `:ui`. An architecture test fails the build when that graph breaks. No Gradle project exists yet. This file is the rule that project has to meet.
 - Repository tests cover search ranking and ciphertext packaging without a live Drive call (US-25).
 

@@ -97,7 +97,7 @@ A forgotten passphrase, together with losing every phone that holds the key, mea
 - A "secure" or "STRIDE-compliant" claim.
 - Inventing a CVE number. The API 27 renderer bug is cited by its public issuetracker id in ADR-0005, not as a new CVE.
 - Marking a hypothesis as something observed in an app. There is no app.
-- Treating acceptance of this model as a certification, or as implementation. Implementation has not started.
+- Proposed amendment. Needs approval by mjbvilhena. Treating acceptance of this model as a certification, or as implementation. Implementation has not started.
 - A passphrase recall check, a "Check my passphrase" control, or a periodic reminder to re-enter the passphrase.
 
 Status: Approved. Approved by mjbvilhena on 2026-10-20.

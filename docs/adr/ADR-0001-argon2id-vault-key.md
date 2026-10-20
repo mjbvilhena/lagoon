@@ -125,7 +125,7 @@ Default for a new case: if a parameter is missing or outside the floor and ceili
 - A "Check my passphrase" control, or a periodic reminder to re-enter the passphrase.
 - Dropping items saved on the resetting phone during the 24 hours when a cancel restores the old vault.
 - Re-keying Drive as soon as a forgotten-passphrase reset finishes on the phone, or starting the 24 hours before the marker is on Drive.
-- Treating acceptance of this record as permission to start implementation. Implementation has not started.
+- Proposed amendment. Needs approval by mjbvilhena. Treating acceptance of this record as permission to start implementation. Implementation has not started.
 
 ## Skill State Machine (sdlc-adr-drafter)
 
