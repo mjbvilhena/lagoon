@@ -4,7 +4,7 @@
 
 **Epic:** E3.
 
-**MoSCoW:** Must. v1. Delete with undo is US-13. v1 does not ship without this story. Decided by mjbvilhena; Proposed until he approves it.
+**MoSCoW:** Must. v1. Delete with undo is US-13. v1 does not ship without this story. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 ## Title
 
@@ -48,7 +48,7 @@ Keep a trash beyond undo.
   - And topic notes written from it are hidden while it is in trash
 - **Scenario: trash view** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
-  - Given an item is in trash
+  - Given an item is in trash and the item is not sensitive
   - When he opens Trash from Settings
   - Then he sees its type, its title, the days left, and Restore
   - And days left is the whole days until 30 × 24 hours after `trashedAt`, rounded up on this phone's clock, so the last day shows 1
@@ -57,6 +57,7 @@ Keep a trash beyond undo.
   - And there is no Delete forever, no Delete now, and no Empty trash
   - And Trash offers Restore and does not offer editing
   - And Proposed amendment. Needs approval by mjbvilhena. Opening that row shows the item read-only
+  - And Proposed amendment. Needs approval by mjbvilhena. What a sensitive Trash row shows, including whether its title shows, is pending Miguel's security decision. This scenario does not decide it.
   - And the exact layout waits for the UX artefact
 - **Scenario: restore from any phone** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
@@ -196,9 +197,9 @@ Keep a trash beyond undo.
 - **Scenario: a sensitive item in trash** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given a sensitive item is in trash
-  - When Trash is shown before the US-37 unlock
-  - Then that row uses the US-75 neutral form
-  - And its title is not shown until that unlock
+  - When he opens Trash
+  - Then what that row shows, including whether the title shows, is pending Miguel's security decision
+  - And this record does not decide it
 - **Scenario: the 30 days end** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone has merged `inTrash` and the item is still in trash

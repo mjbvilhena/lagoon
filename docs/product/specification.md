@@ -179,8 +179,10 @@ Constraints later design must not reopen unless he does:
 | User stories | US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. |
 | Threat model, UX, test strategy, ADRs | Not started. |
 
+Proposed amendment. Needs approval by mjbvilhena. The user-stories row says the other stories stay Draft. US-66 is not Draft. It is Proposed for story review and is approved by no one. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. That row is not edited.
+
+Proposed amendment. Needs approval by mjbvilhena. The row that says the threat model and the ADRs are not started does not match the tree. A threat model is Proposed at `docs/technical_design/threat-model.md`. ADR-0001 through ADR-0006 are Proposed. UX and the test strategy are not started. None of those files is approved. That row is not edited.
+
 The specification gate and the epic gate have passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. Implementation has not started.
 
-Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. It is Proposed for story review. It is not approved. The approval table above is unchanged.
-
-Proposed amendment. Needs approval by mjbvilhena. A threat model is Proposed at `docs/technical_design/threat-model.md`. ADR-0001 through ADR-0006 are Proposed. UX and the test strategy are not started. The approval-table row that says the threat model and the ADRs are not started does not match the tree. None of those files is approved. This is not approved.
+Proposed amendment. Needs approval by mjbvilhena. The sentence above says the other stories stay Draft. US-66 is Proposed for story review, not Draft, and is approved by no one.

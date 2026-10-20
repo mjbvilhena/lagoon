@@ -90,7 +90,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. That list is not one sign-off by every reviewer on every story. Each story file names its own reviewers. Mikey's Leisure Assistant's approvals on 2026-10-18 are US-35, US-81, US-85, US-86, and US-55. US-66 is Proposed for story review and is approved by nobody yet. The other stories stay Draft. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-66 is Proposed for story review and is approved by no one. The other stories stay Draft. Proposed amendment. Needs approval by mjbvilhena. US-66 is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it.
 
 Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 are approved. Amendment approved by mjbvilhena on 2026-10-18.
 
