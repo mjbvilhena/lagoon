@@ -21,7 +21,7 @@ Filter or search by where an item came from.
 
 - US-01, US-02, US-03, and US-04 record the fields. The sending app is stored only when the platform reports it. An empty field does not block the save.
 - Showing the values is US-10 and US-11. Epic E1 names this story for source domain and sending app, a Should. This story is the filter and the search of those fields. US-15's Must search does not include them. Epic E3's search list does not include them.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a map of every app package. Showing the fields.
 
 ## Acceptance criteria

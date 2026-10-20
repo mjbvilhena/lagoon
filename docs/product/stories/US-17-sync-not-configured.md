@@ -19,7 +19,7 @@ See that sync is not configured.
 ## Background
 
 - There is no Back up now and no Restore. The screen explains that background sync is not configured.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: sign-in (US-18) and the sync worker (US-51).
 
 ## Acceptance criteria

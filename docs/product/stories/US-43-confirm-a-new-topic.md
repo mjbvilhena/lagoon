@@ -19,7 +19,7 @@ Confirm a topic before it is created.
 ## Background
 
 - Suggestions live in one pending place near the Inbox (US-60).
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: linking a name that already matches (US-42).
 
 ## Acceptance criteria

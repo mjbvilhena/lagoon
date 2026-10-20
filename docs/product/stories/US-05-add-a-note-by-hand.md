@@ -19,7 +19,7 @@ Add a note by hand.
 ## Background
 
 - Creating a note may fill a title. Editing later is US-12 and refuses an empty title. Those rules do not clash: auto-title runs only when he saves a new note without typing a title.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: changing an existing title to empty (US-12 refuses that).
 
 ## Acceptance criteria

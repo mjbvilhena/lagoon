@@ -19,7 +19,7 @@ Sort and filter the list by when it was saved.
 ## Background
 
 - Boundaries use the device local zone. The sort key is last-saved. An edit does not move last-saved (US-12).
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: an upcoming view (US-62, Should).
 
 ## Acceptance criteria

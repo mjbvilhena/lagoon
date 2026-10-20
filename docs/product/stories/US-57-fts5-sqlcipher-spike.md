@@ -20,7 +20,7 @@ Prove that search and encryption can run together.
 
 - FTS5 needs a bundled SQLite. Stock SQLite on `minSdk` 26 has no FTS5. Room 2 has FTS4. SQLCipher is not yet shown to work with that bundle.
 - The user-story Definition of Done allows a chore when the request asked for one.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: choosing the cipher. That stays an ADR.
 
 ## Acceptance criteria

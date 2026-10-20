@@ -19,7 +19,7 @@ Share plain text into the vault.
 ## Background
 
 - Text shared from another app is not a link item unless the text contains a URL.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: OCR, topics, and the repeat-URL update (US-49). An empty title is capped at 120 characters.
 
 ## Acceptance criteria

@@ -1,6 +1,8 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
+> The non-security parts are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> The security parts stay Proposed for mjbvilhena. They are what a sensitive Trash row shows, the scenario "a sensitive item in trash", and the items in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". This story is not approved until he approves those parts.
 
 **Epic:** E3.
 
@@ -131,7 +133,7 @@ Keep a trash beyond undo.
   - And the restore's `trashChangedAt` is after the `trashedAt` of the trash that the tombstone ended, and before the earliest tombstone timestamp when several phones wrote one
   - Then the item comes back on every phone, out of trash
   - And the tombstone is dropped
-  - And a phone that had already removed the item rebuilds what US-13 removes when the tombstone is written: the search index, reminders, with the one missed fire, topic links, the queued topic job, pending suggestions, and the AI topic notes, and it re-fetches attachments from Drive. No topic call is sent
+  - And a phone that had already removed the item rebuilds what US-13 removes when the tombstone is written: the search index, reminders, with the one missed fire, topic links, the queued topic job rebuilt as held, pending suggestions, and the AI topic notes, and it re-fetches attachments from Drive. No topic call is sent
   - And a user edit made before that deadline, arriving after the tombstone, does the same when its `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one
   - And a system write does not
 - **Scenario: a background write has not seen the trash** — Must
@@ -180,7 +182,7 @@ Keep a trash beyond undo.
   - And the trashed item stays in trash
 - **Scenario: a zip keeps the trash state** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
-  - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt`
+  - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
   - When he exports a zip and later imports that zip
   - Then the zip includes that item with `inTrash`, `trashedAt`, and `trashChangedAt`
   - And the import keeps the item in trash
@@ -191,26 +193,20 @@ Keep a trash beyond undo.
   - Then that item is deleted for good straight away
   - And the import writes the tombstone, the permanent-delete record, for that id
   - And the item is not left in trash
-- **Scenario: a zip after a later restore** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
-  - Given the item was restored after the zip was exported, so this phone's `trashChangedAt` is later than the zip's
-  - When he imports that zip
-  - Then the zip's trash state does not apply
-  - And no tombstone is written
-  - And nothing changes
 - **Scenario: a zip after a later user edit** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
   - When he imports that zip
   - Then the zip's trash state does not apply
   - And no tombstone is written
-  - And nothing changes
+  - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: a zip does not re-trash a later change** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
-  - Given this phone's record of that id has a `trashChangedAt` later than the zip's
+  - Given this phone's record of that id has a `trashChangedAt` later than the zip's, including a restore after the export
   - When he imports that zip
   - Then the zip does not re-trash the item
-  - And nothing changes
+  - And the zip's trash state does not apply
+  - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: trash during a cancelled reset** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given a forgotten-passphrase reset is in its 24 hours on this phone, and this phone does not upload
@@ -236,7 +232,7 @@ Keep a trash beyond undo.
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone never merged `inTrash` for that item
   - When a tombstone for that id arrives
-  - Then this phone drops the item and does not keep the id as a one-sided item
+  - Then Unless the user-edit case below applies, this phone drops the item and does not keep the id as a one-sided item
   - And this phone does not start the 30 × 24 hours, because it never merged the trash
   - And if this phone holds a user edit whose `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one, it keeps the item, drops the tombstone, and that edit brings the item back on every phone
   - And it shows no couldn't-be-kept notice

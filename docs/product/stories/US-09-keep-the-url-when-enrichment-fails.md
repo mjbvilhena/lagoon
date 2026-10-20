@@ -19,7 +19,7 @@ Keep the link when the page cannot be fetched.
 ## Background
 
 - The item already exists before the fetch.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: retry policy beyond the Should scenario. Topic queueing is US-44.
 
 ## Acceptance criteria

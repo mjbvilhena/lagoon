@@ -20,7 +20,7 @@ Lock sensitive items, and optionally lock the app.
 
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 - What lists, search, notifications, export, the cloud call, and screenshots show for a sensitive item is US-75.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: those display questions (US-75).
 
 ## Acceptance criteria

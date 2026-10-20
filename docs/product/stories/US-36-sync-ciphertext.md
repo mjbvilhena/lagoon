@@ -19,7 +19,7 @@ Sync only ciphertext.
 ## Background
 
 - Everything synced is client-side ciphertext. The zip (US-21) is encrypted with the vault key.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: key transport (US-74). What a sensitive item reveals in an export is US-75. The topic call is not a Drive upload (US-41).
 - A new install needs the passphrase to re-create the key before the vault, and its reminders, are available (US-35, US-55).
 

@@ -19,7 +19,7 @@ Update a link that was saved before, and undo that update.
 ## Background
 
 - US-01 stores a new link. This story is only the repeat.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: choosing which query parameters count as tracking beyond the list below. Order ids and booking ids are not tracking. Conflict sync is US-73.
 
 ## Acceptance criteria

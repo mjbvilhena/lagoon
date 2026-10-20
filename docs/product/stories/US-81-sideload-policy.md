@@ -22,7 +22,7 @@ Publish a sideload signing policy.
 
 - A later install uses the same application id and the same release key. The criteria below are the requirements.
 - Items not yet synced to Drive are lost with the phone's vault on uninstall.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a self-updater. There is none. Play Store listing. Exact keystore passwords, which are never written in the repo.
 
 ## Acceptance criteria

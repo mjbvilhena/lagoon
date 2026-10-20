@@ -19,7 +19,7 @@ Manage tags on saved items.
 ## Background
 
 - Tags are not topics. Topics are AI-generated and are marked as such (US-41).
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a separate merge action. The only tag merge is the confirmed rename in US-29.
 
 ## Acceptance criteria

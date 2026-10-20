@@ -20,7 +20,7 @@ Recognize English text on the device.
 ## Background
 
 - v1 OCR is English only. Other languages are out of scope.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: merchants, booking references, and cloud OCR. The page cap below makes the job testable.
 
 ## Acceptance criteria

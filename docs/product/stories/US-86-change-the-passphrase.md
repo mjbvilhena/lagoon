@@ -24,7 +24,7 @@ Change the passphrase.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Amendment approved by mjbvilhena on 2026-10-18.
 - Proposed amendment. Needs approval by mjbvilhena. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A normal passphrase change, where he enters the current passphrase, re-encrypts the phone and the Drive copy without that wait. The phone vault and the Drive copy each stay readable under exactly one passphrase. The scenarios whose title line carries this same marker are not approved. The approved scenarios stay as written.
 - Proposed amendment. Needs approval by mjbvilhena. A new passphrase of fewer than 12 characters is refused, and a new passphrase on the bundled common-password list is refused. There is no strength meter. This is not approved.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74).
 
 ## Acceptance criteria
@@ -92,7 +92,7 @@ Change the passphrase.
   - When the resetting phone reads that cancel
   - Then the Drive copy stays on the old passphrase
   - And items saved on the resetting phone during those 24 hours are copied into the restored vault under the old passphrase
-  - And a trash or a restore made on that phone during the wait is a record change merged by `trashChangedAt`, copied into that restored vault by the ordinary field rules, and is not dropped as a delete made only in the new snapshot
+  - Proposed amendment. Needs approval by mjbvilhena. A trash or a restore made on that phone during the wait is a record change merged by `trashChangedAt`, copied into that restored vault by the ordinary field rules, and is not dropped as a delete made only in the new snapshot
   - And the new local generation is discarded only after that restored vault is readable under the old passphrase
   - And the new passphrase opens nothing
 - **Scenario: a normal change skips the wait** — Proposed amendment. Needs approval by mjbvilhena.

@@ -19,7 +19,7 @@ Read a saved item.
 ## Background
 
 - Detail shows the stored fields. It does not invent missing ones.
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: what a locked sensitive row shows in the list (US-75). Editing is US-12.
 
 ## Acceptance criteria

@@ -21,7 +21,7 @@ Reschedule reminders after a restart or a clock change.
 
 - Alarms stay inexact. Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - A new install needs the passphrase to re-create the key before the vault and its reminders are available (US-35).
-- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. ADR rules in it are MUST. Do not invent further rules.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: exact alarms (US-77).
 
 ## Acceptance criteria
