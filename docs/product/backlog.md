@@ -1,6 +1,6 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-19. **Draft is not approval.** **Not started is not a skip.**
+> Statuses describe evidence in the tree on 2026-10-21. The 2026-10-19 review section below is that day's record. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
 > The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. The non-security parts of US-66 are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The security parts stay Proposed for mjbvilhena. They are what a sensitive Trash row shows, the scenario "a sensitive item in trash", and the items in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". This story is not approved until he approves those parts. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it.
 
@@ -226,8 +226,17 @@ The index is the full list. Every remaining story is also listed under its paren
 
 ## Docs review 2026-10-19
 
-These are not new decisions. The records they name are approved. Approved by mjbvilhena on 2026-10-20.
+These are not new decisions. The records they name are approved. Approved by mjbvilhena on 2026-10-20. Re-checked on 2026-10-21. The three items below still match the files. Status unchanged.
 
 - **Sensitive-mark merge clock** *(Done)* T-26 merges the sensitive mark by the later `userEditedAt`, and a tie goes to the lower install id, as ADR-0002 does for other user fields. Evidence: `docs/technical_design/threat-model.md`, `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Both files are approved. Approved by mjbvilhena on 2026-10-20.
 - **ADR-0002 summary against its rules** *(Done)* The Decision summary says user fields merge by the later `userEditedAt`, only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` clears trash, in-trash state merges by `trashChangedAt` rather than `updatedAt`, and the tombstone spreads after 30 × 24 hours. Evidence: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. The record is accepted. Approved by mjbvilhena on 2026-10-20.
 - **Story lines that say no domain file** *(Done)* Story lines name `docs/domain/vault/DOMAIN.md`. That file is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. The specification sentence that the cipher waits for an ADR is unchanged.
+
+## Docs review 2026-10-21
+
+These are not decisions. They do not approve a story, an amendment, or implementation. The draft pull request stays open.
+
+- **E11 stories do not all stay Draft** *(Not done)* `docs/product/specification.md` still says the E11 stories stay Draft. That sentence is unchanged from master `419bad39`. US-41 is approved. Evidence: `docs/product/stories/US-41-extract-topics-on-save.md`. Align the specification sentence with the story file. Do not edit the story.
+- **US-66 is not approved by no one** *(Not done)* The specification approval table, and the paragraph under it, say US-66 is approved by no one. The story file, `docs/product/stories/INDEX.md`, `docs/product/stories/TRACEABILITY.md`, this backlog, and `docs/sdlc/pipeline-state.md` record delegated approval of the non-security parts on 2026-10-20. The security parts stay unapproved, and the story stays not approved. `docs/product/epics/E3-find-and-curate.md` still says the other stories in that epic stay Draft, and its US-66 lines do not record the non-security approval. Align those status lines with the story file. Do not mark the story approved.
+- **Placeholder approval lines say Draft** *(Not done)* The approval lines on US-73, US-74, and US-76 say Draft. Not approved. The same files say they are placeholders, have no Given/When/Then, and do not meet the user-story Definition of Done. The index, this backlog, and `docs/product/stories/TRACEABILITY.md` call them Placeholder. That split is already on master `419bad39`. Align the approval line with the placeholder wording. Do not add acceptance criteria in that edit.
+- **ML Kit input still says not to draft an ADR** *(Not done)* `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md` next steps say not to draft an ADR from that note. The file is unchanged from master `419bad39`. ADR-0004 is accepted. Approved by mjbvilhena on 2026-10-20. US-07 and US-59 are still Draft, which that note also says. Point the next step at ADR-0004. Do not rewrite the research conclusion.
