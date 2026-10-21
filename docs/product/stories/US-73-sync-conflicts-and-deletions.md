@@ -1,6 +1,6 @@
 # US-73 Decide sync conflicts and deletions
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E4.
 

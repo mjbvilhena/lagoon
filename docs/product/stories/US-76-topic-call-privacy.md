@@ -1,6 +1,6 @@
 # US-76 Decide the topic call's provider, credential, and payload
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E11.
 

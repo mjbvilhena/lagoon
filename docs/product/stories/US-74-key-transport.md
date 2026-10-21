@@ -1,6 +1,6 @@
 # US-74 Decide how the vault key reaches another device
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E8.
 
