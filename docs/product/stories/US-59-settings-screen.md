@@ -54,7 +54,7 @@ Use one Settings screen.
   - And no job retires a file because of age, silence, or a missed check-in
   - And the behavior is US-87
 - **Scenario: the topic key and the call count** — Should
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given this phone has no topic key stored
   - When he opens Settings
   - Then Settings says the key is not copied from the other phone and must be typed again
@@ -68,7 +68,7 @@ Use one Settings screen.
   - And the Trash behavior is US-66
   - And this is the entry to the Must trash view
 - **Scenario: no passphrase recall check** — Should
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given he opens Settings
   - When the screen is shown
   - Then there is no "Check my passphrase" control

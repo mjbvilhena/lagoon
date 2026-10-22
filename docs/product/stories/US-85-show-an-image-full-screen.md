@@ -22,7 +22,7 @@ Show an image or PDF page full-screen and bright.
 - One tap opens an image or a rendered PDF page, for example a boarding pass PDF.
 - Brightness uses only this window's override: `WindowManager.LayoutParams.screenBrightness = 1.0f`. Lagoon does not request `WRITE_SETTINGS`. The system brightness setting is unchanged. The US-80 permission list is unchanged.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
-- Proposed amendment. Needs approval by mjbvilhena. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal. The scenario "a password-protected PDF" stays as written for a PDF that needs a password to open. This is not approved.
+- Security criteria approved by mjbvilhena on 2026-10-22. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal. The scenario "a password-protected PDF" stays as written for a PDF that needs a password to open.
 - Out of scope: editing the image or the page. The system camera (US-65).
 
 ## Acceptance criteria
@@ -74,7 +74,7 @@ Show an image or PDF page full-screen and bright.
   - And he is told the PDF is password-protected
   - And he is offered to open it in another app (US-64)
   - And no password is asked for or stored
-- **Scenario: an owner password only** — Proposed amendment. Needs approval by mjbvilhena.
+- **Scenario: an owner password only** — Security criteria approved by mjbvilhena on 2026-10-22.
   - Given the PDF does not need a password to open, and it is restricted only by an owner password
   - When he taps a page
   - Then it opens, renders, and is searchable as a normal PDF
