@@ -65,14 +65,14 @@ Miguel, looking back through what he kept.
 - US-12 Edit an item, including why it matters
 - US-13 Delete an item and undo it
 - US-14 Manage tags
-- US-15 Search with ranked, highlighted matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-50 Rank search matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-15 Search with ranked, highlighted matches. Scout, approved under Miguel's delegation of 2026-10-17. Mikey's Dev Bot, approved under Miguel's delegation of 2026-10-17. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Household Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-10-17.
+- US-50 Rank search matches. Scout, approved under Miguel's delegation of 2026-10-17. Mikey's Dev Bot, approved under Miguel's delegation of 2026-10-17. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Household Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-10-17.
 - US-16 Filter by type and by tag
 - US-29 Rename a tag, and merge when the name exists
 - US-38 See untagged items in an inbox
 - US-39 Sort and filter by the date saved
 - US-57 Prove search on an encrypted database
-- US-64 Share or open an item in another app. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- US-64 Share or open an item in another app. Should. Scout, approved under Miguel's delegation of 2026-10-17. Mikey's Dev Bot, approved under Miguel's delegation of 2026-10-17. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Household Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-10-17.
 - US-66 Keep a trash beyond undo. Must. Amendment approved by mjbvilhena on 2026-10-20.
 - Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it.
 - Proposed for story review. Not approved. Amendment approved by mjbvilhena on 2026-10-22.

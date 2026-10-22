@@ -1,7 +1,7 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
-> Non-security parts at 3d4554f: Scout, approved under Miguel's delegation of 2026-10-17. Text added after 3d4554f is Proposed for story review.
+> Non-security parts at 3d4554f: Scout, approved under Miguel's delegation of 2026-10-17. Household, approved under Miguel's delegation of 2026-10-17, for the non-security parts at 5e96b39. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17, for the non-security parts at 3d4554f and e355d1d. Text added after 3d4554f is Proposed for story review.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
@@ -201,7 +201,7 @@ Keep a trash beyond undo.
   - When he shares that URL again
   - Then Lagoon asks him which item to update
   - And that choice is US-49
-  - Security criteria approved by mjbvilhena on 2026-10-22. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: a zip keeps the trash state** — Must
@@ -303,35 +303,48 @@ Keep a trash beyond undo.
   - And it appears once, when the dropped user edit is merged, and not again after a restart or a later sync
   - And it fires only for a dropped user edit, never for OCR, a preview, or another system write
   - And the exact text waits for the UX artefact
-- **Scenario: own records file missing but install id not in forgotten-installs: local vault kept, phone re-uploads** — Must
+- **Scenario: own records file missing and this install is not forgotten: local vault kept, phone uploads** — Must
   - Given this phone's records file is not on Drive
-  - And the forgotten-installs file was read successfully and this install's id is not in it, or that read failed or the listing was empty, or the Drive copy was removed by US-78, or this phone never uploaded a records file
+  - And every forgotten-installs file was read successfully and this install's id is in none of them, or a successful listing finds no forgotten-installs file
   - When the next sync runs
   - Then the local vault is kept
-  - And this phone re-uploads its records file
-  - Amendment approved by mjbvilhena on 2026-10-22. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+  - And this phone uploads its records file
+  - Decided by mjbvilhena; this record is Proposed until he approves it. If every forgotten-installs file reads successfully and this install's id is in none of them, or a successful listing finds no forgotten-installs file, the phone keeps the local vault and uploads its records file. A missing records file alone, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+- **Scenario: forgotten-installs read or listing failed: local vault kept, no upload** — Must
+  - Given this phone's records file is not on Drive
+  - And any forgotten-installs read failed, or the listing failed
+  - When the next sync runs
+  - Then the local vault is kept
+  - And this phone does not upload
+  - And it retries until a later sync reads it successfully
+  - Decided by mjbvilhena; this record is Proposed until he approves it. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: two or more trashed items match** — Must
   - Given the repeat-link match (US-49) finds two or more items that are in trash, and no item that is not in trash matches
   - When he shares that URL again
   - Then the which-item picker lists those trashed matches
   - And the chosen item gets the restore offer
   - And the ordinary update does not run
-  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
-- **Scenario: a forgotten phone returns after tombstone cleanup** — Must
-  - Given this install's id is listed in the forgotten-installs file
-  - When the next sync reads that file successfully and finds this install's id
-  - Then the phone discards its local copies and rebuilds from Drive
+  - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
+- **Scenario: a forgotten phone returns** — Must
+  - Given every forgotten-installs file was read successfully and one of them contains this install's id
+  - When the next sync finds that
+  - Then the passphrase step is the one in US-87, and until that step succeeds the phone discards nothing and does not upload
+  - And when that step succeeds, the phone discards its local copies and rebuilds from Drive
   - And items permanently deleted stay gone
   - And that phone's unsynced local edits are lost
-  - And he sees a short notice that those unsynced local edits were lost
+  - And he sees a short notice that those unsynced local edits were lost only when something was actually lost
   - And after rebuilding, it rejoins with a new install id
-  - And it uploads a new records file
+  - And it uploads a new records file under its new install id and the current key version
+  - And the old id stays in the forgotten-installs file
   - And attachments of items that are live or in trash are rebuilt from Drive
   - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
-  - And it shows a short in-app notice for that cleanup
+  - And it shows a short in-app notice for that cleanup only when attachment files were actually deleted
   - And that notice uses neutral wording and names no item title
   - And the exact text waits for the UX artefact
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. The passphrase step for a returning forgotten phone is the one in US-87. Until that step succeeds, the phone discards nothing and does not upload.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
   - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
   - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
@@ -350,7 +363,7 @@ Not applicable. No analytics.
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
 - Two or more trashed items that share one URL, and no item that is not in trash matches, are "two or more trashed items match".
-- A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup". Detection is the forgotten-installs file in US-87. The orphan cleanup runs after the rebuild.
+- A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild.
 - Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes

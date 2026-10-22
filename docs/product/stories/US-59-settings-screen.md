@@ -54,8 +54,10 @@ Use one Settings screen.
   - And the passphrase does not change
   - And no job retires a file because of age, silence, or a missed check-in
   - And the behavior is US-87
-  - And that install's id is written into the forgotten-installs file when that records file is deleted
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there, as in US-87. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+  - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back before that records file is deleted
+  - And if that write or that read-back fails, nothing is deleted and he is told
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Each phone that runs Forget this phone writes only its own forgotten-installs file, and no other phone writes that file, except a re-key, which rewrites every forgotten-installs file under the new key version and never deletes one. Forget this phone writes that other install's id into this phone's forgotten-installs file and reads that file back before it deletes the other install's records file. If that write or that read-back fails, nothing is deleted and he is told.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
 - **Scenario: the topic key and the call count** — Should
   - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given this phone has no topic key stored

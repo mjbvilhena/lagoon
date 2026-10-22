@@ -47,7 +47,7 @@ Update a link that was saved before, and undo that update.
   - Then Lagoon asks him which item to update
   - And the update does not run until he chooses
   - And the item he chooses is updated as in "the existing item is updated"
-  - Security criteria approved by mjbvilhena on 2026-10-22. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: the previous preview stays while the snackbar is open** — Must
   - Given that snackbar is showing
@@ -63,7 +63,7 @@ Update a link that was saved before, and undo that update.
   - Then the original item is restored and a second item holds this share
 - **Scenario: the match is in trash** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
-  - Given the normalised URL matches an item that is in trash, and no item that is not in trash matches
+  - Given the normalised URL matches exactly one item that is in trash, and no item that is not in trash matches
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
   - And the ordinary update of that item does not run
@@ -85,7 +85,6 @@ Update a link that was saved before, and undo that update.
   - Then the new share's note is added as a new personal-note entry with its own id under a date separator `YYYY-MM-DD`, the tags are unioned, and `userEditedAt` is not set
   - And the ordinary update does not run
   - And the restored item's other fields are unchanged
-  - And that accept does not set `userEditedAt`
   - Amendment approved by mjbvilhena on 2026-10-22. On an accepted restore offer, the new share's note is added as a new personal-note entry with its own id under a date separator `YYYY-MM-DD`, the tags are unioned, and `userEditedAt` is not set. That is an explicit exception to the note-edit rule.
 - **Scenario: two or more trashed items match** — Must
   - Given the normalised URL matches two or more items that are in trash, and no item that is not in trash matches
@@ -93,7 +92,9 @@ Update a link that was saved before, and undo that update.
   - Then the which-item picker lists those trashed matches
   - And the chosen item gets the restore offer
   - And the ordinary update does not run
-  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
+  - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: he declines the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
