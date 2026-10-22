@@ -24,7 +24,7 @@ Use one Settings screen.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference.
 - The ML Kit disclosure is a slot. The behavior is US-07. It is not a telemetry off switch. Google's docs do not state a switch. Settings can withdraw the acceptance.
 - The topic switch starts on. He can turn it off. The behavior is US-41. The topic "Unmetered only" setting stays separate (US-44).
-- Proposed amendment. Needs approval by mjbvilhena. Trash is opened from this screen. The behavior is US-66. The layout waits for the UX artefact.
+- Amendment approved by mjbvilhena on 2026-10-22. Trash is opened from this screen. The behavior is US-66. The layout waits for the UX artefact.
 
 ## Acceptance criteria
 
@@ -45,7 +45,7 @@ Use one Settings screen.
   - When the screen is shown
   - Then he can read the same disclosure US-07 requires before the first OCR use, he can see whether he has accepted it, and he can withdraw that acceptance. There is no control that disables ML Kit usage or diagnostic telemetry inside the SDK
 - **Scenario: forget this phone** — Should
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given another install has a records file
   - When he chooses "Forget this phone" and names that other install
   - Then that install's records file is deleted from Drive
@@ -61,7 +61,7 @@ Use one Settings screen.
   - And Settings shows how many topic calls this install has made this month
   - And that count is not a cap and is not synced
 - **Scenario: Trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash
   - When he opens Settings
   - Then he can open Trash from this screen

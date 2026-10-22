@@ -43,7 +43,7 @@ Export a zip to a place he chooses.
   - When the file is written
   - Then he sees that the file opens only with this vault's key, and that it cannot be opened on a replacement phone until US-74 is decided
 - **Scenario: trash is included** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash
   - When he exports
   - Then the zip includes that item with `inTrash`, `trashedAt`, and `trashChangedAt`

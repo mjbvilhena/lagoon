@@ -6,7 +6,7 @@
 
 **Epic:** E3.
 
-**MoSCoW:** Must. v1. Delete with undo is US-13. v1 does not ship without this story. Decided by mjbvilhena; this record is Proposed until he approves it.
+**MoSCoW:** Must. v1. Delete with undo is US-13. v1 does not ship without this story. Amendment approved by mjbvilhena on 2026-10-22.
 
 ## Title
 
@@ -22,15 +22,15 @@ Keep a trash beyond undo.
 
 - Domain constraints: `docs/domain/vault/DOMAIN.md` describes the same trash rule. That file is approved, and ADR-0002 is accepted. Approved by mjbvilhena on 2026-10-20. Do not invent a second rule.
 - Out of scope: US-13, which remains the undo path.
-- Proposed amendment. Needs approval by mjbvilhena. v1 has no Delete forever, no Delete now, and no Empty trash. The only permanent delete is the tombstone after 30 × 24 hours.
-- Proposed amendment. Needs approval by mjbvilhena. Trash is opened from Settings (US-59). The layout of that screen waits for the UX artefact.
-- Trash is Must for v1. v1 does not ship without it. When undo ends, this phone sets `inTrash`, `trashedAt`, and `trashChangedAt` to that instant. `trashChangedAt` changes only on a trash write or a restore write. A background write does not set it. In-trash state merges by the later `trashChangedAt`, and an equal `trashChangedAt` uses the lower install id. `updatedAt` does not decide trash. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. A user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept while the item stays in trash. A reminder that fell due in trash fires once on restore, and once when a later user edit brings the item out. An expiry notice that came due while the item was in trash is shown once, right after restore, and once when a later user edit brings the item out. That show is the exception to US-54's rule that a passed time schedules no notice. If he declines the offer to restore a trashed URL, the share is saved as a new, separate item and the trashed item stays in trash. If he accepts, that accept is a restore. A zip import of an item whose 30 × 24 hours after `trashedAt` have already ended deletes it for good and writes the tombstone at import only when this phone has no record of that id with a later `trashChangedAt` and no user edit with a later `userEditedAt`. A later restore or a later user edit means the zip's trash state does not apply and no tombstone is written. A topic job held back while the item was in trash is not sent when the item leaves trash, on restore or by a later user edit. It waits until he taps "Get topics". An edit from an offline phone that arrives for an item already permanently deleted is dropped, except the late restore or the late user edit from the trash window, and the phone that held the edit shows a short in-app notice, once, that the edit couldn't be kept. The exact text waits for the UX artefact. A restore made before the deadline that arrives after a tombstone brings the item back. That comparison uses the earliest tombstone timestamp when several phones wrote one, and the `trashedAt` of the trash that the tombstone ended. The tombstone, the permanent delete, spreads only after 30 × 24 hours from `trashedAt`. A delete does not become a tombstone by skipping trash. An id with a tombstone is not a one-sided item the other phone keeps. Decided by mjbvilhena; this record is Proposed until he approves it. The precise field rule is ADR-0002.
+- Amendment approved by mjbvilhena on 2026-10-22. v1 has no Delete forever, no Delete now, and no Empty trash. The only permanent delete is the tombstone after 30 × 24 hours.
+- Amendment approved by mjbvilhena on 2026-10-22. Trash is opened from Settings (US-59). The layout of that screen waits for the UX artefact.
+- Trash is Must for v1. v1 does not ship without it. When undo ends, this phone sets `inTrash`, `trashedAt`, and `trashChangedAt` to that instant. `trashChangedAt` changes only on a trash write or a restore write. A background write does not set it. In-trash state merges by the later `trashChangedAt`, and an equal `trashChangedAt` uses the lower install id. `updatedAt` does not decide trash. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. A user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept while the item stays in trash. A reminder that fell due in trash fires once on restore, and once when a later user edit brings the item out. An expiry notice that came due while the item was in trash is shown once, right after restore, and once when a later user edit brings the item out. That show is the exception to US-54's rule that a passed time schedules no notice. If he declines the offer to restore a trashed URL, the share is saved as a new, separate item and the trashed item stays in trash. If he accepts, that accept is a restore. A zip import of an item whose 30 × 24 hours after `trashedAt` have already ended deletes it for good and writes the tombstone at import only when this phone has no record of that id with a later `trashChangedAt` and no user edit with a later `userEditedAt`. A later restore or a later user edit means the zip's trash state does not apply and no tombstone is written. A topic job held back while the item was in trash is not sent when the item leaves trash, on restore or by a later user edit. It waits until he taps "Get topics". An edit from an offline phone that arrives for an item already permanently deleted is dropped, except the late restore or the late user edit from the trash window, and the phone that held the edit shows a short in-app notice, once, that the edit couldn't be kept. The exact text waits for the UX artefact. A restore made before the deadline that arrives after a tombstone brings the item back. That comparison uses the earliest tombstone timestamp when several phones wrote one, and the `trashedAt` of the trash that the tombstone ended. The tombstone, the permanent delete, spreads only after 30 × 24 hours from `trashedAt`. A delete does not become a tombstone by skipping trash. An id with a tombstone is not a one-sided item the other phone keeps. Amendment approved by mjbvilhena on 2026-10-22. The precise field rule is ADR-0002.
 - `trashedAt`, `trashChangedAt`, `updatedAt`, and `userEditedAt` are UTC instants, epoch milliseconds. Each phone checks the 30 × 24 hour deadline on its own clock. A clock set ahead can write `trashChangedAt` or the tombstone early. That residual is T-28. No guard is chosen.
 
 ## Acceptance criteria
 
 - **Scenario: trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item has been deleted and the undo window is open
   - When the undo window ends
   - Then the item is in trash, `trashedAt` and `trashChangedAt` are that instant, and no tombstone is written
@@ -40,7 +40,7 @@ Keep a trash beyond undo.
   - And `updatedAt` does not decide trash
   - And each phone checks that deadline on its own clock
 - **Scenario: hidden on every phone** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone has merged `inTrash` and the 30 × 24 hours have not ended
   - When he looks at the home list, search, Upcoming, a tag view, the inbox, or a topic view
   - Then the item is absent
@@ -49,7 +49,7 @@ Keep a trash beyond undo.
   - And a queued topic job for it is not sent (US-44)
   - And topic notes written from it are hidden while it is in trash
 - **Scenario: trash view** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash and the item is not sensitive
   - When he opens Trash from Settings
   - Then he sees its type, its title, the days left, and Restore
@@ -58,9 +58,9 @@ Keep a trash beyond undo.
   - And once this phone has removed the item, the row is gone
   - And there is no Delete forever, no Delete now, and no Empty trash
   - And Trash offers Restore and does not offer editing
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - And opening that row shows the item read-only
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
   - And the exact layout waits for the UX artefact
 - **Scenario: restore from any phone** — Must
@@ -140,20 +140,20 @@ Keep a trash beyond undo.
   - And a user edit made before that deadline, arriving after the tombstone, does the same when its `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one
   - And a system write does not
 - **Scenario: a background write has not seen the trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone has not synced the trash
   - When OCR, a preview refresh, or another background write bumps `updatedAt`
   - Then that write does not set `trashChangedAt`
   - And when the trash record is merged, the item is in trash
 - **Scenario: a stale background write after restore** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the item was restored, and another phone still has the older trash
   - When that other phone's background write bumps `updatedAt` and does not set a newer `trashChangedAt`
   - Then the restore's `trashChangedAt` stands
   - And the item stays restored
   - And the stale `inTrash` is not applied
 - **Scenario: restore and re-trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given one phone restores the item and another phone trashes it again
   - When both records are merged
   - Then the later `trashChangedAt` wins
@@ -200,7 +200,7 @@ Keep a trash beyond undo.
   - And that choice is US-49
   - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: a zip keeps the trash state** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
   - When he exports a zip and later imports that zip
   - Then the zip includes that item with `inTrash`, `trashedAt`, and `trashChangedAt`
@@ -216,21 +216,21 @@ Keep a trash beyond undo.
   - And the item is not left in trash
   - Security criteria approved by mjbvilhena on 2026-10-22. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files.
 - **Scenario: a zip after a later user edit** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
   - When he imports that zip
   - Then the zip's trash state does not apply
   - And no tombstone is written
   - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: a zip does not re-trash a later change** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone's record of that id has a `trashChangedAt` later than the zip's, including a restore after the export
   - When he imports that zip
   - Then the zip does not re-trash the item
   - And the zip's trash state does not apply
   - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: trash during a cancelled reset** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given a forgotten-passphrase reset is in its 24 hours on this phone, and this phone does not upload
   - When he trashes an item or restores one during that wait, and another phone cancels the reset
   - Then that trash or restore is a record change merged by `trashChangedAt`, and it does not set `userEditedAt`
@@ -253,7 +253,7 @@ Keep a trash beyond undo.
   - Then the US-37 unlock is required first
   - And a cancelled or failed unlock changes nothing
 - **Scenario: the 30 days end** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone has merged `inTrash` and the item is still in trash
   - When 30 × 24 hours after `trashedAt` end on this phone's clock
   - Then this phone removes it as US-13 removes a finished delete, and writes a tombstone for that id
@@ -261,7 +261,7 @@ Keep a trash beyond undo.
   - And the other phone does not keep that id as a one-sided item
   - Security criteria approved by mjbvilhena on 2026-10-22. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files.
 - **Scenario: a phone that never merged the trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone never merged `inTrash` for that item
   - When a tombstone for that id arrives
   - Then Unless the user-edit case below applies, this phone drops the item and does not keep the id as a one-sided item
@@ -323,7 +323,7 @@ Not applicable. No analytics.
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup".
 - Two live items that share one URL are "a later share matches two live items". The choice is US-49.
-- Proposed amendment. Needs approval by mjbvilhena. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
+- Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes
 

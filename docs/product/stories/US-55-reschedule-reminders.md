@@ -58,7 +58,7 @@ Reschedule reminders after a restart or a clock change.
   - When he opens the app
   - Then the app checks `POST_NOTIFICATIONS` again and registers or skips the alarms from that result
 - **Scenario: a reminder that fell due in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. The approved scenarios above stay as written.
+  - Amendment approved by mjbvilhena on 2026-10-22. The approved scenarios above stay as written.
   - Given a reminder's time passed while the item was in trash
   - When he restores the item, or a later user edit brings it out of trash
   - Then that reminder fires once, as soon as possible, on the install this story picks
@@ -66,7 +66,7 @@ Reschedule reminders after a restart or a clock change.
   - And that once-only fire is a synced fired state, so another phone does not fire it again
   - And reminders are scheduled again on that path, as they are on restore
 - **Scenario: an expiry notice that came due in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. The approved scenarios above stay as written.
+  - Amendment approved by mjbvilhena on 2026-10-22. The approved scenarios above stay as written.
   - Given an expiry notice's time passed while the item was in trash
   - When he restores the item, or a later user edit brings it out of trash
   - Then that notice is shown once, right after the item leaves trash, on the install this story picks

@@ -6,7 +6,7 @@
 
 **MoSCoW:** Must. v1.
 
-Proposed amendment. Needs approval by mjbvilhena. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it. Decided by mjbvilhena; this record is Proposed until he approves it. This is not approved.
+Amendment approved by mjbvilhena on 2026-10-22. US-66, the trash beyond this undo, is Must for v1. v1 does not ship without it.
 
 ## Title
 
@@ -40,7 +40,7 @@ Delete an item and undo that delete.
   - Then the item moves into trash. It is not gone
   - And its FTS row, reminders, topic links, queued topic job, pending suggestions, and the AI topic notes written from this item are removed when the tombstone is written, not when undo ends
   - And the Drive copy is left for US-73. This story does not delete it
-- Proposed amendment. Needs approval by mjbvilhena. When undo ends, the hard delete in "the confirmation ends" moves the item into the synced trash. The cleanup in that scenario runs when the tombstone is written. v1 does not ship without US-66. A delete does not become a tombstone by skipping trash. This is not approved.
+- Amendment approved by mjbvilhena on 2026-10-22. When undo ends, the hard delete in "the confirmation ends" moves the item into the synced trash. The cleanup in that scenario runs when the tombstone is written. v1 does not ship without US-66. A delete does not become a tombstone by skipping trash.
 - **Scenario: a topic note from this item** — Must
   - Given a topic note was written from this item
   - When the tombstone is written
@@ -59,7 +59,7 @@ Not applicable. No analytics.
 
 - US-45 reads the topic after this delete and no longer shows that note.
 - Reminder cancel and restore are also US-55.
-- Proposed amendment. Needs approval by mjbvilhena. US-66 depends on the cleanup in "the confirmation ends". That cleanup runs when the tombstone is written. US-66 is the trash beyond this undo.
+- Amendment approved by mjbvilhena on 2026-10-22. US-66 depends on the cleanup in "the confirmation ends". That cleanup runs when the tombstone is written. US-66 is the trash beyond this undo.
 
 ## Implementation notes
 

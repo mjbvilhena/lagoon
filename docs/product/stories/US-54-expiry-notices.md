@@ -49,7 +49,7 @@ Notify before an expiry.
   - When he opens the item
   - Then the item shows that it is expired
 - **Scenario: a notice that came due in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an expiry notice was already due to fire, the item then went to trash, and that notice's time passed while the item was in trash
   - When he restores the item, or a later user edit brings it out of trash
   - Then that notice is shown once, right after the item leaves trash

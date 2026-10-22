@@ -33,7 +33,7 @@ Import a zip and merge it.
   - When he imports
   - Then both the local-only and zip-only items are kept
 - **Scenario: trash state is kept** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the zip includes an item with `inTrash`, `trashedAt`, and `trashChangedAt`, and 30 × 24 hours after `trashedAt` have not ended on this phone's clock, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
   - When he imports it
   - Then that item stays in trash
@@ -41,14 +41,14 @@ Import a zip and merge it.
   - And a later `trashChangedAt` on this phone, including a restore after the export, means the zip does not re-trash the item
   - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: the trash time has already ended** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the zip includes an item with `inTrash` set, and 30 × 24 hours after `trashedAt` have already ended on this phone's clock, and this phone has no record of that id with a later `trashChangedAt` and no user edit with a later `userEditedAt`
   - When he imports it
   - Then that item is deleted for good straight away
   - And the import writes the tombstone, the permanent-delete record, for that id
   - And the item is not left in trash
 - **Scenario: a later user edit** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
   - When he imports that zip
   - Then the zip's trash state does not apply
