@@ -34,7 +34,7 @@ Update a link that was saved before, and undo that update.
   - Then a new item is stored
 - **Scenario: the existing item is updated** — Must
   - Amendment approved by mjbvilhena on 2026-10-22. A match that is in trash is "the match is in trash", not this scenario. Two or more live matches are "two or more live items match", not this scenario.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
   - Given the normalised URL matches one item that is not in trash
   - When the share is stored
   - Then the preview and snapshot refresh only when a fetch supplies them, tags are unioned, existing text is not overwritten, and the new note is appended under a date separator `YYYY-MM-DD`
@@ -47,7 +47,7 @@ Update a link that was saved before, and undo that update.
   - And the update does not run until he chooses
   - And the item he chooses is updated as in "the existing item is updated"
   - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Dismissing the which-item picker saves the share as a new item.
+  - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: the previous preview stays while the snackbar is open** — Must
   - Given that snackbar is showing
   - When he has not chosen Undo or "Keep separate"
@@ -67,7 +67,7 @@ Update a link that was saved before, and undo that update.
   - Then the match finds that item and offers to restore it
   - And the ordinary update of that item does not run
   - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
 - **Scenario: he accepts the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
@@ -85,7 +85,7 @@ Update a link that was saved before, and undo that update.
   - And the ordinary update does not run
   - And the restored item's other fields are unchanged
   - And that accept does not set `userEditedAt`
-  - Decided by mjbvilhena; this record is Proposed until he approves it. On an accepted restore offer, tags are combined (union), the new note is added as an extra note entry, and this does not set `userEditedAt`. That is an explicit exception to the note-edit rule.
+  - Amendment approved by mjbvilhena on 2026-10-22. On an accepted restore offer, tags are combined (union), the new note is added as an extra note entry, and this does not set `userEditedAt`. That is an explicit exception to the note-edit rule.
 - **Scenario: he declines the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
