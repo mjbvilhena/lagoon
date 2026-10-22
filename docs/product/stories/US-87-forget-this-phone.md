@@ -74,7 +74,7 @@ Not applicable. No analytics.
 
 - US-37 is the unlock. US-59 hosts the control. The behavior is this story.
 - US-78 is a different control. US-86 is the re-key. This action is neither.
-- Open question, not a rule. A phone forgotten with "Forget this phone" comes back after the tombstone was garbage-collected. ADR-0002 says that phone uploads a new records file and does not bring back a collected tombstone. It does not say what happens to attachment bytes that phone still holds.
+- A forgotten phone that returns after the tombstone was garbage-collected still uploads a new records file and does not bring back a collected tombstone. Attachment files that belong to no live item are US-66.
 
 ## Implementation notes
 

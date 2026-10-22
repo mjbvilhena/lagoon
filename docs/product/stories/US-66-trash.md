@@ -297,6 +297,15 @@ Keep a trash beyond undo.
   - And it appears once, when the dropped user edit is merged, and not again after a restart or a later sync
   - And it fires only for a dropped user edit, never for OCR, a preview, or another system write
   - And the exact text waits for the UX artefact
+- **Scenario: a forgotten phone returns after tombstone cleanup** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given a phone was forgotten with "Forget this phone", and it returns after the tombstone was garbage-collected
+  - When that phone still holds attachment files that belong to no live item
+  - Then it deletes those attachment files
+  - And it shows a short in-app notice
+  - And that notice uses neutral wording and names no item title
+  - And the exact text waits for the UX artefact
+  - And it uploads a new records file and does not bring back a collected tombstone
 
 ## Analytics and observability (optional)
 
@@ -310,7 +319,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
-- Open question, not a rule. A phone forgotten with "Forget this phone" comes back after the tombstone was garbage-collected. ADR-0002 says that phone uploads a new records file and does not bring back a collected tombstone. It does not say what happens to attachment bytes that phone still holds.
+- A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup".
 - Two live items that share one URL are "a later share matches two live items". The choice is US-49.
 - Proposed amendment. Needs approval by mjbvilhena. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 

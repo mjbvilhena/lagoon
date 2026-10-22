@@ -108,7 +108,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   Proposed amendment. Needs approval by mjbvilhena.
 
-  Open question, not a rule: attachment bytes still held by a phone forgotten with "Forget this phone", when that phone comes back after the tombstone was garbage-collected. This record says that phone does not bring back a collected tombstone. It does not say what happens to those bytes.
+  A forgotten phone that returns after the tombstone was garbage-collected deletes attachment files that belong to no live item and shows a short in-app notice. The notice uses neutral wording and names no item title. The exact text waits for the UX artefact. That phone still uploads a new records file and does not bring back a collected tombstone.
 
 ## Compliance
 
