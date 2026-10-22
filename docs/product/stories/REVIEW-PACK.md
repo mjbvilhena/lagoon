@@ -41,12 +41,12 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## For mjbvilhena
 
-The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The in-app dropped-edit notice for a sensitive item is approved. The missed reminder and the expiry notice that fire once on restore of a sensitive item are approved. Zip export of sensitive items that are in Trash is approved. A sensitive item restored from Trash, or rebuilt after a late restore, is approved. Toggling the sensitive mark on or off is approved. The other items are not approved. They are not decisions.
+The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The in-app dropped-edit notice for a sensitive item is approved. The missed reminder and the expiry notice that fire once on restore of a sensitive item are approved. Zip export of sensitive items that are in Trash is approved. A sensitive item restored from Trash, or rebuilt after a late restore, is approved. Toggling the sensitive mark on or off is approved. The clock warning is approved. The warning threshold and text are not decided. The other items are not approved. They are not decisions.
 
 - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
 - Security criteria approved by mjbvilhena on 2026-10-22. Opening or restoring a sensitive item from Trash requires the US-37 unlock first. A cancelled or failed unlock changes nothing.
-- A phone whose clock is ahead can write a tombstone before 30 × 24 hours of true time. That residual is T-28. One option, not chosen in these records, is to check that clock against Drive server time before writing the tombstone.
+- Explicitly approved by mjbvilhena on 2026-10-22. Lagoon shows a warning when this phone's clock is badly out compared with Drive's server time. Merges are unchanged and the residual risk is accepted (T-28). A clock set ahead can still write `trashChangedAt` or the tombstone early. The warning threshold and text are not decided.
 - After the tombstone, an earlier Drive revision of a records file can remain for a while. "Gone for good" in US-66 is not literal for that window. The app does not set Keep Forever and does not delete revisions.
 - Security criteria approved by mjbvilhena on 2026-10-22. Toggling the sensitive mark on or off counts as a user edit, so it sets `userEditedAt` and brings a trashed item out of trash.
 - "Forget this phone" retires another install's records file from Settings. It has no story of its own, and it has no stated unlock step.
@@ -55,7 +55,6 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - Security criteria approved by mjbvilhena on 2026-10-22. A missed reminder or expiry notice that fires once on restore of a sensitive item uses the US-34/US-75 public neutral notification form.
 - Security criteria approved by mjbvilhena on 2026-10-22. Zip export of sensitive items that are in Trash follows exactly the same US-75 rules as live sensitive items. Whether the import that reads that zip follows US-75 is not decided.
 - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
-- `trashChangedAt` shares the T-28 clock-skew residual. A clock set ahead can write it early. Checking that clock against Drive server time is still not chosen.
 
 ## Threat note
 

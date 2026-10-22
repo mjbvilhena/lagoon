@@ -75,6 +75,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
 - **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Accepted ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Approved by mjbvilhena on 2026-10-20. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
 - **US-78** *(Approved)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
+- **Clock warning** *(Not done)* No story yet. Lagoon shows a warning when this phone's clock is badly out compared with Drive's server time. Merges are unchanged and the residual risk is accepted. Evidence: T-28 in `docs/technical_design/threat-model.md` and `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. The warning threshold and text are not decided. Not implemented.
 
 ## Epic E5: Look and feel
 
