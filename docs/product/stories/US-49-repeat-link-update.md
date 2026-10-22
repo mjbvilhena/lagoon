@@ -47,7 +47,7 @@ Update a link that was saved before, and undo that update.
   - Then Lagoon asks him which item to update
   - And the update does not run until he chooses
   - And the item he chooses is updated as in "the existing item is updated"
-  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: the previous preview stays while the snackbar is open** — Must
   - Given that snackbar is showing
@@ -94,7 +94,7 @@ Update a link that was saved before, and undo that update.
   - And the ordinary update does not run
   - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: he declines the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing

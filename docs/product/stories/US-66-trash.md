@@ -201,7 +201,7 @@ Keep a trash beyond undo.
   - When he shares that URL again
   - Then Lagoon asks him which item to update
   - And that choice is US-49
-  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: a zip keeps the trash state** — Must
@@ -309,7 +309,7 @@ Keep a trash beyond undo.
   - When the next sync runs
   - Then the local vault is kept
   - And this phone uploads its records file
-  - Decided by mjbvilhena; this record is Proposed until he approves it. If every forgotten-installs file reads successfully and this install's id is in none of them, or a successful listing finds no forgotten-installs file, the phone keeps the local vault and uploads its records file. A missing records file alone, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+  - Amendment approved by mjbvilhena on 2026-10-22. If every forgotten-installs file reads successfully and this install's id is in none of them, or a successful listing finds no forgotten-installs file, the phone keeps the local vault and uploads its records file. A missing records file alone, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
 - **Scenario: forgotten-installs read or listing failed: local vault kept, no upload** — Must
   - Given this phone's records file is not on Drive
   - And any forgotten-installs read failed, or the listing failed
@@ -317,7 +317,7 @@ Keep a trash beyond undo.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - Decided by mjbvilhena; this record is Proposed until he approves it. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
+  - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: two or more trashed items match** — Must
   - Given the repeat-link match (US-49) finds two or more items that are in trash, and no item that is not in trash matches
   - When he shares that URL again
@@ -326,7 +326,7 @@ Keep a trash beyond undo.
   - And the ordinary update does not run
   - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
   - When the next sync finds that
@@ -343,8 +343,8 @@ Keep a trash beyond undo.
   - And it shows a short in-app notice for that cleanup only when attachment files were actually deleted
   - And that notice uses neutral wording and names no item title
   - And the exact text waits for the UX artefact
-  - Decided by mjbvilhena; this record is Proposed until he approves it. The passphrase step for a returning forgotten phone is the one in US-87. Until that step succeeds, the phone discards nothing and does not upload.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
+  - Security criteria approved by mjbvilhena on 2026-10-22. The passphrase step for a returning forgotten phone is the one in US-87. Until that step succeeds, the phone discards nothing and does not upload.
+  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
   - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
   - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
