@@ -198,6 +198,7 @@ Keep a trash beyond undo.
   - Then that item is deleted for good straight away
   - And the import writes the tombstone, the permanent-delete record, for that id
   - And the item is not left in trash
+  - Security criteria approved by mjbvilhena on 2026-10-22. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files.
 - **Scenario: a zip after a later user edit** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
@@ -240,6 +241,7 @@ Keep a trash beyond undo.
   - Then this phone removes it as US-13 removes a finished delete, and writes a tombstone for that id
   - And a tombstone for the same id written by another phone is the same delete
   - And the other phone does not keep that id as a one-sided item
+  - Security criteria approved by mjbvilhena on 2026-10-22. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files.
 - **Scenario: a phone that never merged the trash** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone never merged `inTrash` for that item

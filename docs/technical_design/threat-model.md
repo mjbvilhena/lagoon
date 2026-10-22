@@ -93,6 +93,7 @@ A forgotten passphrase, together with losing every phone that holds the key, mea
 
 - Proposed amendment. Needs approval by mjbvilhena. Toggling the sensitive mark on or off counts as a user edit, so it sets `userEditedAt` and brings a trashed item out of trash (T-26).
 - Proposed amendment. Needs approval by mjbvilhena. Lagoon shows a warning when this phone's clock is badly out compared with Drive's server time. Merges are unchanged and the residual risk is accepted (T-28). The warning threshold and text are not decided here.
+- Proposed amendment. Needs approval by mjbvilhena. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files (T-5). `revisions.delete` allows the `drive.appdata` scope. It applies to a binary file, and it cannot delete the last remaining revision. The head revision is never auto-purged. A non-head revision that is not Keep Forever is purgeable. `revisions.list` may omit older revisions when the history is large.
 
 ## Anti-patterns
 
