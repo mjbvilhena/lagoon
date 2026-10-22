@@ -56,7 +56,7 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - Security criteria approved by mjbvilhena on 2026-10-22. Zip export of sensitive items that are in Trash follows exactly the same US-75 rules as live sensitive items.
 - Security criteria approved by mjbvilhena on 2026-10-22. Zip import of sensitive items, live or trashed, follows US-75; they stay sensitive and locked, with text/OCR kept out of search until unlock.
 - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
-- Security criteria approved by mjbvilhena on 2026-10-22. If either of two live items matched by a later share is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+- Security criteria approved by mjbvilhena on 2026-10-22. If either of two or more live items matched by a later share is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
 
 ## Threat note
 

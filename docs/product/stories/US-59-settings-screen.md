@@ -44,8 +44,9 @@ Use one Settings screen.
   - Given he opens Settings
   - When the screen is shown
   - Then he can read the same disclosure US-07 requires before the first OCR use, he can see whether he has accepted it, and he can withdraw that acceptance. There is no control that disables ML Kit usage or diagnostic telemetry inside the SDK
-- **Scenario: forget this phone** — Should
+- **Scenario: forget this phone** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. This scenario is Must. The US-37 unlock is required first. A cancelled or failed unlock changes nothing, as in US-87.
   - Given another install has a records file
   - When he chooses "Forget this phone" and names that other install
   - Then that install's records file is deleted from Drive

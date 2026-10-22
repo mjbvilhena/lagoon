@@ -170,6 +170,7 @@ Keep a trash beyond undo.
   - Then the match offers to restore that item
   - And the ordinary update of that item does not run
   - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
 - **Scenario: he accepts the restore of a shared URL** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
@@ -188,19 +189,22 @@ Keep a trash beyond undo.
   - And the ordinary update does not run, so there is no preview or snapshot refresh, last-saved does not move, and the "Saved before" snackbar is not shown
   - And the restored item's other fields are unchanged
   - And that accept does not set `userEditedAt`
+  - Decided by mjbvilhena; this record is Proposed until he approves it. On an accepted restore offer, tags are combined (union), the new note is added as an extra note entry, and this does not set `userEditedAt`. That is an explicit exception to the note-edit rule.
 - **Scenario: he declines the restore of a shared URL** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
   - When he declines
   - Then the share is saved as a new, separate item
   - And the trashed item stays in trash
-- **Scenario: a later share matches two live items** — Must
+- **Scenario: a later share matches two or more live items** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
-  - Given two live items share one URL, including after he declined the restore and later restored the trashed item
+  - Given two or more live items share one URL, including after he declined the restore and later restored the trashed item
   - When he shares that URL again
   - Then Lagoon asks him which item to update
   - And that choice is US-49
   - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: a zip keeps the trash state** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
@@ -310,6 +314,8 @@ Keep a trash beyond undo.
   - And the exact text waits for the UX artefact
   - And it uploads a new records file and does not bring back a collected tombstone
   - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone knows it was forgotten when its own records file is missing from Drive. After rebuilding, it rejoins with a new install id.
+  - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
 
 ## Analytics and observability (optional)
 
@@ -324,7 +330,7 @@ Not applicable. No analytics.
 
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup".
-- Two live items that share one URL are "a later share matches two live items". The choice is US-49.
+- Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
 - Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes

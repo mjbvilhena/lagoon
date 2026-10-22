@@ -46,6 +46,7 @@ Keep Drive to app data, and sign out without deleting the phone.
   - Then the US-55 release marker is written, and after that `revokeAccess()` runs, he can see that the Drive copy no longer exists, and the local vault is not deleted
   - And the next sign-in asks for consent again
 - Security criteria approved by mjbvilhena on 2026-10-22. While a forgotten-passphrase reset is pending, "delete the Drive copy" also requires the current passphrase. The US-37 prompt alone is not enough on that path.
+- Security criteria approved by mjbvilhena on 2026-10-22. During a pending passphrase reset, Forget this phone requires the current passphrase, the same as that Drive delete. The US-37 prompt alone is not enough on that path.
 - **Scenario: sign-out while offline** — Must
   - Given the phone has no network
   - When he chooses Sign out or the Drive delete

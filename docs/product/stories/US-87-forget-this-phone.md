@@ -52,6 +52,8 @@ Forget this phone.
   - And the passphrase does not change
   - And no key version is minted
   - And US-55 stops counting that install's check-in
+  - Security criteria approved by mjbvilhena on 2026-10-22. Forget this phone does not revoke a stolen phone. Revoking a stolen phone is a passphrase change (US-86) and Google sign-out.
+  - Security criteria approved by mjbvilhena on 2026-10-22. During a pending passphrase reset, Forget this phone requires the current passphrase, the same as US-78.
   - Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone first merges that install's latest records file. If the read fails, nothing is deleted and the user is told.
 - **Scenario: Drive does not delete** — Must
   - Given he has confirmed one other install
@@ -81,6 +83,8 @@ Forget this phone.
   - And it does not restore the deleted file
   - And it does not bring back a tombstone that has already been collected
   - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone knows it was forgotten when its own records file is missing from Drive. After rebuilding, it rejoins with a new install id.
+  - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
 
 ## Analytics and observability (optional)
 
