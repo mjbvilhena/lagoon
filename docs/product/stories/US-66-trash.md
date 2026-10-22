@@ -126,6 +126,7 @@ Keep a trash beyond undo.
   - Then that reminder fires once, as soon as possible, on the install US-55 picks
   - And it is not fired twice
   - And that once-only fire is a synced fired state, so another phone does not fire it again
+  - Security criteria approved by mjbvilhena on 2026-10-22. A missed reminder or expiry notice that fires once on restore of a sensitive item uses the US-34/US-75 public neutral notification form.
 - **Scenario: a restore that arrives after the tombstone** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given he restored the item before 30 × 24 hours after `trashedAt`
@@ -252,6 +253,7 @@ Keep a trash beyond undo.
   - And it is not shown twice
   - And the 7-day notice and the day-of notice (US-54) are each shown once if that notice came due while the item was in trash
   - And that once-only show is a synced fired state (US-56), the same kind as the missed reminder
+  - Security criteria approved by mjbvilhena on 2026-10-22. A missed reminder or expiry notice that fires once on restore of a sensitive item uses the US-34/US-75 public neutral notification form.
   - And this is the exception to US-54 named in that story. Setting an expiry whose time has already passed still schedules no notice
 - **Scenario: a held topic job** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
