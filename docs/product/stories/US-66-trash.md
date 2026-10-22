@@ -80,7 +80,7 @@ Keep a trash beyond undo.
   - And topic notes written from it show again
   - And a topic job that was held back while the item was in trash is not sent (US-44)
   - And that job waits until he taps "Get topics" on the item
-- **Scenario: a later user edit** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given the item is in trash, and the edit comes from a phone that has not synced that trash, or from a zip import
   - When that edit's `userEditedAt` is later than `trashChangedAt`
@@ -135,6 +135,7 @@ Keep a trash beyond undo.
   - Then the item comes back on every phone, out of trash
   - And the tombstone is dropped
   - And a phone that had already removed the item rebuilds what US-13 removes when the tombstone is written: the search index, reminders, with the one missed fire, topic links, the queued topic job rebuilt as held, pending suggestions, and the AI topic notes, and it re-fetches attachments from Drive. No topic call is sent
+  - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
   - And a user edit made before that deadline, arriving after the tombstone, does the same when its `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one
   - And a system write does not
 - **Scenario: a background write has not seen the trash** — Must
