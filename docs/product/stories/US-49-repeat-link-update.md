@@ -33,7 +33,7 @@ Update a link that was saved before, and undo that update.
   - When he shares the second URL
   - Then a new item is stored
 - **Scenario: the existing item is updated** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Amendment approved by mjbvilhena on 2026-10-22. A match that is in trash is "the match is in trash", not this scenario. Two live matches are "two live items match", not this scenario.
+  - Amendment approved by mjbvilhena on 2026-10-22. A match that is in trash is "the match is in trash", not this scenario. Two live matches are "two live items match", not this scenario.
   - Given the normalised URL matches one item that is not in trash
   - When the share is stored
   - Then the preview and snapshot refresh only when a fetch supplies them, tags are unioned, existing text is not overwritten, and the new note is appended under a date separator `YYYY-MM-DD`
@@ -59,14 +59,14 @@ Update a link that was saved before, and undo that update.
   - When he chooses "Keep separate"
   - Then the original item is restored and a second item holds this share
 - **Scenario: the match is in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Amendment approved by mjbvilhena on 2026-10-22.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the normalised URL matches an item that is in trash
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
   - And the ordinary update of that item does not run yet
   - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
 - **Scenario: he accepts the restore** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Amendment approved by mjbvilhena on 2026-10-22.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
   - When he accepts
   - Then that accept is a restore of the matched item, as in US-66
@@ -83,7 +83,7 @@ Update a link that was saved before, and undo that update.
   - And the restored item's other fields are unchanged
   - And that accept does not set `userEditedAt`
 - **Scenario: he declines the restore** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Amendment approved by mjbvilhena on 2026-10-22.
+  - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
   - When he declines
   - Then the share is saved as a new, separate item
