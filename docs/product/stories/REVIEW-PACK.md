@@ -41,7 +41,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## For mjbvilhena
 
-The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The in-app dropped-edit notice for a sensitive item is approved. The missed reminder and the expiry notice that fire once on restore of a sensitive item are approved. The other items are not approved. They are not decisions.
+The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The in-app dropped-edit notice for a sensitive item is approved. The missed reminder and the expiry notice that fire once on restore of a sensitive item are approved. Zip export of sensitive items that are in Trash is approved. The other items are not approved. They are not decisions.
 
 - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
@@ -53,7 +53,7 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
 - Security criteria approved by mjbvilhena on 2026-10-22. The in-app dropped-edit notice for a sensitive item is neutral (no title) until the US-37 unlock, then shows the title.
 - Security criteria approved by mjbvilhena on 2026-10-22. A missed reminder or expiry notice that fires once on restore of a sensitive item uses the US-34/US-75 public neutral notification form.
-- A zip that carries a sensitive item in trash. Whether that export and the import that reads it follow US-75 is not decided.
+- Security criteria approved by mjbvilhena on 2026-10-22. Zip export of sensitive items that are in Trash follows exactly the same US-75 rules as live sensitive items. Whether the import that reads that zip follows US-75 is not decided.
 - `trashChangedAt` shares the T-28 clock-skew residual. A clock set ahead can write it early. Checking that clock against Drive server time is still not chosen.
 
 ## Threat note
