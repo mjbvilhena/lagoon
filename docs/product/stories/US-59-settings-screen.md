@@ -54,6 +54,8 @@ Use one Settings screen.
   - And the passphrase does not change
   - And no job retires a file because of age, silence, or a missed check-in
   - And the behavior is US-87
+  - And that install's id is written into the forgotten-installs file when that records file is deleted
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there, as in US-87. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
 - **Scenario: the topic key and the call count** — Should
   - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given this phone has no topic key stored

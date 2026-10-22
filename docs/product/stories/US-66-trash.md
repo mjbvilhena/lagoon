@@ -1,8 +1,7 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
-> The non-security parts are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-> That approval covers the non-security text as it stood at 5e96b39; text added later is Proposed for story review.
+> Non-security parts at 3d4554f: Scout, approved under Miguel's delegation of 2026-10-17. Text added after 3d4554f is Proposed for story review.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
@@ -165,7 +164,7 @@ Keep a trash beyond undo.
   - And `updatedAt` does not choose either outcome
 - **Scenario: a shared URL whose item is in trash** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
-  - Given the repeat-link match (US-49) finds an item that is in trash
+  - Given the repeat-link match (US-49) finds an item that is in trash, and no item that is not in trash matches
   - When he shares that URL again
   - Then the match offers to restore that item
   - And the ordinary update of that item does not run
@@ -185,11 +184,11 @@ Keep a trash beyond undo.
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the restore offer for a shared URL is showing, and the new share has a note or tags
   - When he accepts
-  - Then that note and those tags are added to the restored item the same way US-49 adds them on a live update: the note is appended under a date separator `YYYY-MM-DD`, and the tags are unioned
+  - Then the new share's note is added as a new personal-note entry with its own id under a date separator `YYYY-MM-DD`, the tags are unioned, and `userEditedAt` is not set
   - And the ordinary update does not run, so there is no preview or snapshot refresh, last-saved does not move, and the "Saved before" snackbar is not shown
   - And the restored item's other fields are unchanged
   - And that accept does not set `userEditedAt`
-  - Amendment approved by mjbvilhena on 2026-10-22. On an accepted restore offer, tags are combined (union), the new note is added as an extra note entry, and this does not set `userEditedAt`. That is an explicit exception to the note-edit rule.
+  - Amendment approved by mjbvilhena on 2026-10-22. On an accepted restore offer, the new share's note is added as a new personal-note entry with its own id under a date separator `YYYY-MM-DD`, the tags are unioned, and `userEditedAt` is not set. That is an explicit exception to the note-edit rule.
 - **Scenario: he declines the restore of a shared URL** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
@@ -202,7 +201,7 @@ Keep a trash beyond undo.
   - When he shares that URL again
   - Then Lagoon asks him which item to update
   - And that choice is US-49
-  - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+  - Security criteria approved by mjbvilhena on 2026-10-22. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
 - **Scenario: a zip keeps the trash state** — Must
@@ -269,7 +268,7 @@ Keep a trash beyond undo.
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone never merged `inTrash` for that item
   - When a tombstone for that id arrives
-  - Then, unless the L270 case applies, this phone drops the item and does not keep the id as a one-sided item
+  - Then, unless the user-edit case below applies, this phone drops the item and does not keep the id as a one-sided item
   - And this phone does not start the 30 × 24 hours, because it never merged the trash
   - And if this phone holds a user edit whose `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one, it keeps the item, drops the tombstone, and that edit brings the item back on every phone
   - And it shows no couldn't-be-kept notice
@@ -304,18 +303,38 @@ Keep a trash beyond undo.
   - And it appears once, when the dropped user edit is merged, and not again after a restart or a later sync
   - And it fires only for a dropped user edit, never for OCR, a preview, or another system write
   - And the exact text waits for the UX artefact
+- **Scenario: own records file missing but install id not in forgotten-installs: local vault kept, phone re-uploads** — Must
+  - Given this phone's records file is not on Drive
+  - And the forgotten-installs file was read successfully and this install's id is not in it, or that read failed or the listing was empty, or the Drive copy was removed by US-78, or this phone never uploaded a records file
+  - When the next sync runs
+  - Then the local vault is kept
+  - And this phone re-uploads its records file
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+- **Scenario: two or more trashed items match** — Must
+  - Given the repeat-link match (US-49) finds two or more items that are in trash, and no item that is not in trash matches
+  - When he shares that URL again
+  - Then the which-item picker lists those trashed matches
+  - And the chosen item gets the restore offer
+  - And the ordinary update does not run
+  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
 - **Scenario: a forgotten phone returns after tombstone cleanup** — Must
-  - Amendment approved by mjbvilhena on 2026-10-22.
-  - Given a phone was forgotten with "Forget this phone", and it returns after the tombstone was garbage-collected
-  - When that phone still holds attachment files that belong to no live item
-  - Then it deletes those attachment files
-  - And it shows a short in-app notice
+  - Given this install's id is listed in the forgotten-installs file
+  - When the next sync reads that file successfully and finds this install's id
+  - Then the phone discards its local copies and rebuilds from Drive
+  - And items permanently deleted stay gone
+  - And that phone's unsynced local edits are lost
+  - And he sees a short notice that those unsynced local edits were lost
+  - And after rebuilding, it rejoins with a new install id
+  - And it uploads a new records file
+  - And attachments of items that are live or in trash are rebuilt from Drive
+  - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
+  - And it shows a short in-app notice for that cleanup
   - And that notice uses neutral wording and names no item title
   - And the exact text waits for the UX artefact
-  - And it uploads a new records file and does not bring back a collected tombstone
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone knows it was forgotten when its own records file is missing from Drive. After rebuilding, it rejoins with a new install id.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
 
 ## Analytics and observability (optional)
 
@@ -329,8 +348,9 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
-- A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup".
 - Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
+- Two or more trashed items that share one URL, and no item that is not in trash matches, are "two or more trashed items match".
+- A forgotten phone that returns after tombstone cleanup is "a forgotten phone returns after tombstone cleanup". Detection is the forgotten-installs file in US-87. The orphan cleanup runs after the rebuild.
 - Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes

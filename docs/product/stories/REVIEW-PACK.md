@@ -3,7 +3,7 @@
 > **Approval status: Draft. Not approved.**
 > Listing a story here is not a sign-off.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-66, which is Proposed for story review and is not approved. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-49, US-66, and US-87, which are Proposed for story review and are not approved. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
 
 ## Requirements
 
@@ -57,6 +57,12 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - Security criteria approved by mjbvilhena on 2026-10-22. Zip import of sensitive items, live or trashed, follows US-75; they stay sensitive and locked, with text/OCR kept out of search until unlock.
 - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
 - Security criteria approved by mjbvilhena on 2026-10-22. If either of two or more live items matched by a later share is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
+- Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
+- Decided by mjbvilhena; this record is Proposed until he approves it. The forgotten-installs file is a single Drive file that lists forgotten install ids. Forget this phone writes that install's id into it when it deletes that install's records file. A returning phone treats itself as forgotten only when the next sync reads that file successfully and finds its own install id there. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault. After rebuilding, the phone rejoins with a new install id.
+- Decided by mjbvilhena; this record is Proposed until he approves it. Each install's records file carries that install's device name and model. Forget this phone shows the device name, the model, the install label, and the last check-in.
+- Decided by mjbvilhena; this record is Proposed until he approves it. During a pending forgotten-passphrase reset, the current passphrase is the old passphrase until the reset completes. The new passphrase counts only after the reset completes.
+- Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone shows a short notice when unsynced local edits are lost.
+- Decided by mjbvilhena; this record is Proposed until he approves it. The returning phone's orphan-attachment cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
 
 ## Threat note
 

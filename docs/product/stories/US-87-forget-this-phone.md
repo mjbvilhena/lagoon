@@ -35,7 +35,7 @@ Forget this phone.
 - **Scenario: which phone** — Must
   - Given the US-37 unlock succeeded, and at least one other install has a records file
   - When the list is shown
-  - Then he sees each other install, with its device name, its model, and its last check-in date
+  - Then he sees each other install, with its device name, its model, its install label, and its last check-in date
   - And this install is not listed
   - And when he chooses one, Lagoon asks him to confirm, naming that install
   - And cancelling changes nothing
@@ -52,9 +52,11 @@ Forget this phone.
   - And the passphrase does not change
   - And no key version is minted
   - And US-55 stops counting that install's check-in
+  - And that install's id is written into the forgotten-installs file
   - Security criteria approved by mjbvilhena on 2026-10-22. Forget this phone does not revoke a stolen phone. Revoking a stolen phone is a passphrase change (US-86) and Google sign-out.
-  - Security criteria approved by mjbvilhena on 2026-10-22. During a pending passphrase reset, Forget this phone requires the current passphrase, the same as US-78.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. During a pending forgotten-passphrase reset, Forget this phone requires the current passphrase, the same as US-78. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes.
   - Amendment approved by mjbvilhena on 2026-10-22. Forget this phone first merges that install's latest records file. If the read fails, nothing is deleted and the user is told.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone writes that install's id into the forgotten-installs file, a single Drive file that lists forgotten install ids, when it deletes that install's records file.
 - **Scenario: Drive does not delete** — Must
   - Given he has confirmed one other install
   - When the phone is offline, or Drive returns an error
@@ -76,15 +78,31 @@ Forget this phone.
   - When tombstones are collected
   - Then they no longer wait for that install to merge a file
   - And collection still waits for every install that still has a file, and for the 90 days after the tombstone timestamp
+- **Scenario: own records file missing but install id not in forgotten-installs: local vault kept, phone re-uploads** — Must
+  - Given this phone's records file is not on Drive
+  - And the forgotten-installs file was read successfully and this install's id is not in it, or that read failed or the listing was empty, or the Drive copy was removed by US-78, or this phone never uploaded a records file
+  - When the next sync runs
+  - Then the local vault is kept
+  - And this phone re-uploads its records file
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
 - **Scenario: the phone returns** — Must
-  - Given that records file was deleted
-  - When the forgotten phone returns and he enters the passphrase
-  - Then it uploads a new records file under the current key version
-  - And it does not restore the deleted file
-  - And it does not bring back a tombstone that has already been collected
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone knows it was forgotten when its own records file is missing from Drive. After rebuilding, it rejoins with a new install id.
+  - Given this install's id is listed in the forgotten-installs file
+  - When the next sync reads that file successfully and finds this install's id
+  - Then he is asked for the passphrase before the local copies are discarded, because the vault is rebuilt from Drive and those copies will be lost
+  - And during a pending forgotten-passphrase reset that passphrase is the old passphrase until the reset completes, and the new passphrase counts only after the reset completes
+  - And the phone discards its local copies and rebuilds from Drive
+  - And items permanently deleted stay gone
+  - And that phone's unsynced local edits are lost
+  - And he sees a short notice that those unsynced local edits were lost
+  - And it uploads a new records file under the current key version
+  - And after rebuilding, it rejoins with a new install id
+  - And attachments of items that are live or in trash are rebuilt from Drive
+  - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. He is asked for the passphrase at that sync, before the local copies are discarded, because rebuilding from Drive needs the vault key. Until a pending forgotten-passphrase reset completes, that passphrase is the old passphrase. The new passphrase counts only after the reset completes.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive.
 
 ## Analytics and observability (optional)
 
@@ -97,10 +115,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- US-37 is the unlock. US-59 hosts the control. The behavior is this story.
+- US-37 is the unlock. US-59 hosts the control. US-78 is the Drive delete, a different control, and it does not mark an install forgotten. US-86 is the passphrase change. The behavior is this story.
 - ADR-0001, ADR-0002, and US-55. US-55 stops counting the forgotten install's check-in.
-- US-78 is a different control. US-86 is the re-key. This action is neither.
-- A forgotten phone that returns after the tombstone was garbage-collected still uploads a new records file and does not bring back a collected tombstone. Attachment files that belong to no live item are US-66.
+- A forgotten phone that returns rebuilds from Drive. Attachment files that belong to no item that is live or in trash are US-66. That cleanup is local only, and it runs after the rebuild.
 
 ## Implementation notes
 
