@@ -221,6 +221,7 @@ Keep a trash beyond undo.
   - And the cancel does not drop it as a delete made only in the new snapshot
   - And it is copied into the restored vault under the old passphrase
   - And the later `trashChangedAt` wins, and an equal `trashChangedAt` uses the lower install id
+  - Security criteria approved by mjbvilhena on 2026-10-22. A trash or restore made during a cancelled forgotten-passphrase reset wait merges by `trashChangedAt` as usual, and each phone and the Drive copy stays readable under exactly one passphrase.
 - **Scenario: a sensitive item in trash** — Must
   - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given a sensitive item is in trash

@@ -92,7 +92,7 @@ Change the passphrase.
   - When the resetting phone reads that cancel
   - Then the Drive copy stays on the old passphrase
   - And items saved on the resetting phone during those 24 hours are copied into the restored vault under the old passphrase
-  - Proposed amendment. Needs approval by mjbvilhena. A trash or a restore made on that phone during the wait is a record change merged by `trashChangedAt`, copied into that restored vault by the ordinary field rules, and is not dropped as a delete made only in the new snapshot
+  - Security criteria approved by mjbvilhena on 2026-10-22. A trash or a restore made on that phone during the wait is a record change merged by `trashChangedAt`, copied into that restored vault by the ordinary field rules, and is not dropped as a delete made only in the new snapshot
   - And the new local generation is discarded only after that restored vault is readable under the old passphrase
   - And the new passphrase opens nothing
 - **Scenario: a normal change skips the wait** — Proposed amendment. Needs approval by mjbvilhena.
