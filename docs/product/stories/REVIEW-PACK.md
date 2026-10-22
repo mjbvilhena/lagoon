@@ -41,11 +41,11 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## For mjbvilhena
 
-The sensitive Trash row is approved. The other items are not approved. They are not decisions.
+The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The other items are not approved. They are not decisions.
 
 - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
-- Whether opening a sensitive item from Trash needs the US-37 unlock, and whether restoring a sensitive item needs that unlock.
+- Security criteria approved by mjbvilhena on 2026-10-22. Opening or restoring a sensitive item from Trash requires the US-37 unlock first. A cancelled or failed unlock changes nothing.
 - A phone whose clock is ahead can write a tombstone before 30 × 24 hours of true time. That residual is T-28. One option, not chosen in these records, is to check that clock against Drive server time before writing the tombstone.
 - After the tombstone, an earlier Drive revision of a records file can remain for a while. "Gone for good" in US-66 is not literal for that window. The app does not set Keep Forever and does not delete revisions.
 - A change to the sensitive mark counts as a content edit. A later toggle on another phone can bring a trashed item back, and can clear the mark. That sits with the T-26 residual.

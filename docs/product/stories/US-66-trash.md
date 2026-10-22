@@ -222,6 +222,12 @@ Keep a trash beyond undo.
   - Then that row is neutral (no title or preview) until he unlocks
   - And after unlock it shows the title
   - And screenshots of Trash are blocked while it is shown
+- **Scenario: open or restore a sensitive item from Trash** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a sensitive item is in trash
+  - When he opens it from Trash, or restores it from Trash
+  - Then the US-37 unlock is required first
+  - And a cancelled or failed unlock changes nothing
 - **Scenario: the 30 days end** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone has merged `inTrash` and the item is still in trash
