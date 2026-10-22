@@ -33,11 +33,19 @@ Update a link that was saved before, and undo that update.
   - When he shares the second URL
   - Then a new item is stored
 - **Scenario: the existing item is updated** — Must
-  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. A match that is in trash is "the match is in trash", not this scenario.
-  - Given the normalised URL matches an item that is not in trash
+  - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it. A match that is in trash is "the match is in trash", not this scenario. Two live matches are "two live items match", not this scenario.
+  - Given the normalised URL matches one item that is not in trash
   - When the share is stored
   - Then the preview and snapshot refresh only when a fetch supplies them, tags are unioned, existing text is not overwritten, and the new note is appended under a date separator `YYYY-MM-DD`
   - And last-saved moves to this save, created stays the first save, and he sees "Saved before, added to existing" with Undo and "Keep separate"
+- **Scenario: two live items match** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given the normalised URL matches two items that are not in trash
+  - When he shares that URL again
+  - Then Lagoon asks him which item to update
+  - And the update does not run until he chooses
+  - And the item he chooses is updated as in "the existing item is updated"
+  - Proposed amendment. Needs approval by mjbvilhena. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title. This is not approved.
 - **Scenario: the previous preview stays while the snackbar is open** — Must
   - Given that snackbar is showing
   - When he has not chosen Undo or "Keep separate"
@@ -98,7 +106,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Depends on US-01. A URL typed in US-06 uses this match.
-- Open question, not a rule. US-66 can leave two live items that share one URL: he declined the restore of a trashed match, then later restored that trashed item. This story matches one item that is not in trash. It does not say which of those two items a later share updates.
+- Two live items that share one URL, including after he declined a trashed match and later restored it, are "two live items match".
 - Preview and snapshot refresh only when US-08 and US-33 can supply them. A failed fetch does not clear what is already stored.
 - Re-index and topic re-queue on this update are US-58.
 

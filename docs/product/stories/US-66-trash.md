@@ -192,6 +192,13 @@ Keep a trash beyond undo.
   - When he declines
   - Then the share is saved as a new, separate item
   - And the trashed item stays in trash
+- **Scenario: a later share matches two live items** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given two live items share one URL, including after he declined the restore and later restored the trashed item
+  - When he shares that URL again
+  - Then Lagoon asks him which item to update
+  - And that choice is US-49
+  - Proposed amendment. Needs approval by mjbvilhena. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title. This is not approved.
 - **Scenario: a zip keeps the trash state** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
@@ -304,7 +311,7 @@ Not applicable. No analytics.
 
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - Open question, not a rule. A phone forgotten with "Forget this phone" comes back after the tombstone was garbage-collected. ADR-0002 says that phone uploads a new records file and does not bring back a collected tombstone. It does not say what happens to attachment bytes that phone still holds.
-- Open question, not a rule. He declines the restore of a shared URL, so a new item is saved, and he later restores the trashed item. Two live items then share one URL. A later share is US-49's match. US-49 does not say which of those two items is updated.
+- Two live items that share one URL are "a later share matches two live items". The choice is US-49.
 - Proposed amendment. Needs approval by mjbvilhena. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes
