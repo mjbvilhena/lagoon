@@ -22,7 +22,7 @@ Where the named capabilities live:
 | Sync | `data.sync` | WorkManager, Drive `appDataFolder`, one records file per install. Merge through the domain port. Conflict rule is accepted ADR-0002 |
 | Search | `data.search` | The FTS index behind `SearchIndex`. Weights stay in the domain |
 | Reminders | `data.reminder` | Inexact `setAndAllowWhileIdle`. Reschedule on every US-55 trigger. Notification text follows US-34 and US-75 |
-| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Approved by mjbvilhena on 2026-10-20. Needs a story. Reject `file://` and Lagoon's own FileProvider URIs, and refuse a single image larger than 20 MiB. No story states those two rules. The 20 MiB figure is US-31's OCR input cap, not an intake cap. Keep a pre-key share off disk. The Activity is the UI layer |
+| Share intake bytes | `data.capture` | Read the content URI for a link, plain text, an image, or a PDF. Approved by mjbvilhena on 2026-10-20. Reject `file://` and Lagoon's own FileProvider URIs, and refuse a single image larger than 20 MiB. Those rules are US-01. The 20 MiB figure is the same figure as US-31's OCR input cap. Keep a pre-key share off disk. The Activity is the UI layer |
 
 ## Allowed dependencies
 
@@ -62,7 +62,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - MUST post sensitive notifications as public and private text "Lagoon reminder" (US-75).
 - MUST schedule reminders with `setAndAllowWhileIdle`, and MUST reschedule on every US-55 trigger: boot, clock or time zone change, app update, notification permission change, and app start. The spec also allows `setWindow`. This layer's narrower choice is Approved by mjbvilhena on 2026-10-20.
 - MUST accept share bytes that are a link, plain text, an image, or a PDF. A PDF share that is not a PDF is still rejected (US-04, Draft). Image and text shares are not rejected for being non-PDF.
-- Approved by mjbvilhena on 2026-10-20. Needs a story. Reject a share URI whose scheme is `file`, and reject a URI from Lagoon's own FileProvider. Refuse a single image larger than 20 MiB at intake. The 20 MiB figure is US-31's OCR input cap, not an intake cap. No story states these rules, so they are not acceptance criteria.
+- Approved by mjbvilhena on 2026-10-20. Reject a share URI whose scheme is `file`, and reject a URI from Lagoon's own FileProvider. Refuse a single image larger than 20 MiB at intake. Those rules are US-01. The 20 MiB figure is the same figure as US-31's OCR input cap.
 - A release build strips `Log`. Crash and exception text carries no item body (T-31). Approved by mjbvilhena on 2026-10-20.
 - MUST wipe a share temp file on return, within 15 minutes, and on next launch, and revoke the URI grant with that wipe (US-64).
 

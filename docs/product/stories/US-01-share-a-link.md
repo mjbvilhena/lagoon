@@ -46,6 +46,22 @@ Share a link into the vault.
   - Given the shared URL still differs from every stored link after the normalisation in US-49
   - When he shares it
   - Then a new item is stored and the repeat snackbar from US-49 is not shown
+- **Scenario: a file URI is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a share of a link, plain text, an image, or a PDF whose URI scheme is `file`
+  - When he chooses Lagoon on the share sheet
+  - Then the share is refused and no item is stored
+- **Scenario: Lagoon's own FileProvider URI is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a share URI from Lagoon's own FileProvider
+  - When he chooses Lagoon on the share sheet
+  - Then the share is refused and no item is stored
+- **Scenario: an image over 20 MiB is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given one image share is larger than 20 MiB
+  - When he chooses Lagoon on the share sheet
+  - Then that image is refused at intake and no item is stored
+  - And 20 MiB is the figure the data layer names beside US-31's OCR input cap
 
 ## Analytics and observability (optional)
 
