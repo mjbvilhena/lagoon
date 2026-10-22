@@ -40,7 +40,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - NEVER log secrets or item bodies from a use case.
 - NEVER encode SQL, HTTP, or Keystore parameters in a domain type.
 - NEVER decide the content cipher, the KDF parameters, or the topic vendor inside a use case. Those are ADR-0001, ADR-0003, and ADR-0006, all accepted. Approved by mjbvilhena on 2026-10-20. A rule in those ADRs is a domain rule.
-- Proposed amendment. Needs approval by mjbvilhena. This file no longer says a port may accept a header value object once the ADR is accepted.
+- Amendment approved by mjbvilhena on 2026-10-22. This file no longer says a port may accept a header value object once the ADR is accepted.
 
 ## Patterns and frameworks
 

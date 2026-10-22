@@ -78,7 +78,7 @@ Default: a container whose magic, version, or tag is not this layout is not decr
 - Reusing a GCM nonce under one subkey.
 - Writing the generation only in a clear field and trusting it.
 - Extracting a zip entry before checking its path.
-- Proposed amendment. Needs approval by mjbvilhena. Treating acceptance of this record as permission to start implementation, or editing the approved text of US-35. Implementation has not started.
+- Amendment approved by mjbvilhena on 2026-10-22. Treating acceptance of this record as permission to start implementation, or editing the approved text of US-35. Implementation has not started.
 
 ## Skill State Machine (sdlc-adr-drafter)
 

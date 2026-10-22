@@ -84,7 +84,7 @@ Default: a PDF whose encryption cannot be classified is not passed to a renderer
 - A password field "only on API 35".
 - Copying the decrypted PDF into `cacheDir` for the renderer.
 - Treating PdfBox-Android in US-04's story text as already accepted. This record is accepted. Approved by mjbvilhena on 2026-10-20.
-- Proposed amendment. Needs approval by mjbvilhena. US-04 stays Draft.
+- Amendment approved by mjbvilhena on 2026-10-22. US-04 stays Draft.
 - Using `android:process` and calling it isolated. The same UID can read the vault.
 - Treating `getWidth` and `getHeight` as pixels, or showing a page upscaled from a smaller bitmap.
 - Putting PDF bytes or a bitmap in a Parcel that crosses the isolated process.
