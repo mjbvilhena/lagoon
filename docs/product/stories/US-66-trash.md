@@ -99,6 +99,7 @@ Keep a trash beyond undo.
   - And a topic job that was held back while the item was in trash is not sent (US-44)
   - And that job waits until he taps "Get topics" on the item
   - And a user edit is a change he makes to the title, body, personal notes, tags on that item, reminder, expiry, attachments, or the sensitive mark
+  - Security criteria approved by mjbvilhena on 2026-10-22. Toggling the sensitive mark on or off counts as a user edit, so it sets `userEditedAt` and brings a trashed item out of trash.
   - And that edit sets `userEditedAt`
   - And a write that only sets or clears `inTrash` is not that edit
   - And Trash offers Restore and does not offer editing, so this edit is not made from the Trash row
