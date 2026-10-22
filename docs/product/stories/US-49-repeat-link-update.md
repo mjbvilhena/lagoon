@@ -63,7 +63,7 @@ Update a link that was saved before, and undo that update.
   - Given the normalised URL matches an item that is in trash
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
-  - And the ordinary update of that item does not run yet
+  - And the ordinary update of that item does not run
   - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
 - **Scenario: he accepts the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
@@ -112,4 +112,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Not a design spec. No `LAYER.md` exists.
+Not a design spec. The layer records exist: `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md`.

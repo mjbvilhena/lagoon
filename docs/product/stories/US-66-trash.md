@@ -2,6 +2,7 @@
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
 > The non-security parts are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> That approval covers the non-security text as it stood at 5e96b39; text added later is Proposed for story review.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
@@ -81,6 +82,7 @@ Keep a trash beyond undo.
   - And a topic job that was held back while the item was in trash is not sent (US-44)
   - And that job waits until he taps "Get topics" on the item
   - Security criteria approved by mjbvilhena on 2026-10-22. A sensitive item restored from Trash, or rebuilt on another phone after a late restore, follows US-75 and US-37 exactly as before it was trashed, including its text/OCR kept out of search until unlock.
+- **Scenario: a later user edit** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the item is in trash, and the edit comes from a phone that has not synced that trash, or from a zip import
   - When that edit's `userEditedAt` is later than `trashChangedAt`
@@ -175,7 +177,7 @@ Keep a trash beyond undo.
   - Then that accept is a restore of the matched item
   - And `inTrash` and `trashedAt` are cleared, `trashChangedAt` is the restore time, and that write does not set `userEditedAt`
   - And the restored item's other fields are unchanged, apart from the new share's note and tags
-  - And the ordinary update does not run
+  - And the ordinary update does not run, so there is no preview or snapshot refresh, last-saved does not move, and the "Saved before" snackbar is not shown
   - And a second item is not created
   - And the restore in "restore from any phone" applies, including reminders, the one missed-reminder fire, the one expiry notice that came due in trash, and topic notes shown again
 - **Scenario: the accepted restore keeps the new note and tags** — Must
@@ -183,7 +185,7 @@ Keep a trash beyond undo.
   - Given the restore offer for a shared URL is showing, and the new share has a note or tags
   - When he accepts
   - Then that note and those tags are added to the restored item the same way US-49 adds them on a live update: the note is appended under a date separator `YYYY-MM-DD`, and the tags are unioned
-  - And the ordinary update does not run
+  - And the ordinary update does not run, so there is no preview or snapshot refresh, last-saved does not move, and the "Saved before" snackbar is not shown
   - And the restored item's other fields are unchanged
   - And that accept does not set `userEditedAt`
 - **Scenario: he declines the restore of a shared URL** — Must
@@ -220,7 +222,6 @@ Keep a trash beyond undo.
   - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
   - When he imports that zip
   - Then the zip's trash state does not apply
-  - And no tombstone is written
   - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: a zip does not re-trash a later change** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
@@ -264,7 +265,7 @@ Keep a trash beyond undo.
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given this phone never merged `inTrash` for that item
   - When a tombstone for that id arrives
-  - Then Unless the user-edit case below applies, this phone drops the item and does not keep the id as a one-sided item
+  - Then, unless the L270 case applies, this phone drops the item and does not keep the id as a one-sided item
   - And this phone does not start the 30 × 24 hours, because it never merged the trash
   - And if this phone holds a user edit whose `userEditedAt` is after `trashChangedAt` and before the earliest tombstone timestamp when several phones wrote one, it keeps the item, drops the tombstone, and that edit brings the item back on every phone
   - And it shows no couldn't-be-kept notice

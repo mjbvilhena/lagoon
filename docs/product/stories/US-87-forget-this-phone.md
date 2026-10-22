@@ -1,6 +1,6 @@
 # US-87 Forget this phone
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Proposed for story review.**
 
 **Epic:** E4.
 
@@ -14,7 +14,7 @@ Forget this phone.
 
 **As a** person named Miguel
 **I want** a Settings button that retires a lost phone's Drive sync file, and never does that on its own
-**So that** a phone I no longer have stops holding a records file, and a silent phone is not retired for me
+**So that** Drive no longer keeps that phone's records file, and a silent phone is not retired for me
 
 ## Background
 
@@ -32,6 +32,18 @@ Forget this phone.
   - Then the US-37 unlock is required first
   - And a cancelled or failed unlock changes nothing
   - Security criteria approved by mjbvilhena on 2026-10-22. "Forget this phone" requires the US-37 unlock first. A cancelled or failed unlock changes nothing.
+- **Scenario: which phone** — Must
+  - Given the US-37 unlock succeeded, and at least one other install has a records file
+  - When the list is shown
+  - Then he sees each other install, with its device name, its model, and its last check-in date
+  - And this install is not listed
+  - And when he chooses one, Lagoon asks him to confirm, naming that install
+  - And cancelling changes nothing
+- **Scenario: no other phone** — Must
+  - Given no other install has a records file
+  - When the US-37 unlock has succeeded
+  - Then it says there is no other phone to forget
+  - And it deletes nothing
 - **Scenario: one other install** — Must
   - Given the US-37 unlock succeeded
   - When he names one other install and "Forget this phone" runs
@@ -39,6 +51,13 @@ Forget this phone.
   - And the install he is holding is not retired
   - And the passphrase does not change
   - And no key version is minted
+  - And US-55 stops counting that install's check-in
+- **Scenario: Drive does not delete** — Must
+  - Given he has confirmed one other install
+  - When the phone is offline, or Drive returns an error
+  - Then nothing is deleted
+  - And he sees an error
+  - And he can retry
 - **Scenario: never automatic** — Must
   - Given an install has a records file
   - When that phone is old, silent, or misses a check-in
@@ -73,9 +92,10 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - US-37 is the unlock. US-59 hosts the control. The behavior is this story.
+- ADR-0001, ADR-0002, and US-55. US-55 stops counting the forgotten install's check-in.
 - US-78 is a different control. US-86 is the re-key. This action is neither.
 - A forgotten phone that returns after the tombstone was garbage-collected still uploads a new records file and does not bring back a collected tombstone. Attachment files that belong to no live item are US-66.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file.
+Not a design spec. The story is Proposed for story review. Do not implement from this file.
