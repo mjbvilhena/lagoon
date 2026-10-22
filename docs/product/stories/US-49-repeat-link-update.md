@@ -56,6 +56,7 @@ Update a link that was saved before, and undo that update.
   - When he shares that URL again
   - Then the match finds that item and offers to restore it
   - And the ordinary update of that item does not run yet
+  - Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
 - **Scenario: he accepts the restore** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given that offer is showing

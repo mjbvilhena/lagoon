@@ -41,7 +41,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## For mjbvilhena
 
-The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The other items are not approved. They are not decisions.
+The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The other items are not approved. They are not decisions.
 
 - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
@@ -50,7 +50,7 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - After the tombstone, an earlier Drive revision of a records file can remain for a while. "Gone for good" in US-66 is not literal for that window. The app does not set Keep Forever and does not delete revisions.
 - A change to the sensitive mark counts as a content edit. A later toggle on another phone can bring a trashed item back, and can clear the mark. That sits with the T-26 residual.
 - "Forget this phone" retires another install's records file from Settings. It has no story of its own, and it has no stated unlock step.
-- The offer to restore a trashed item when the same URL is shared again can show that item's title. Whether a sensitive item's title is shown on that offer is not decided.
+- Security criteria approved by mjbvilhena on 2026-10-22. When a re-shared link matches a sensitive item in Trash, the restore offer is neutral (no title or preview) before unlock and shows the title only after the US-37 unlock.
 - The reminder that fires once after an item leaves trash. Whether a sensitive item's notification uses only "Lagoon reminder" is not decided.
 - A zip that carries a sensitive item in trash. Whether that export and the import that reads it follow US-75 is not decided.
 - `trashChangedAt` shares the T-28 clock-skew residual. A clock set ahead can write it early. Checking that clock against Drive server time is still not chosen.
