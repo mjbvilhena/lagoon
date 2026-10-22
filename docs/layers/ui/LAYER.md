@@ -69,7 +69,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 ## Change control
 
-A layer ADR is required to add a UI toolkit, to let a composable import the data layer, or to drop a MUST. This file is approved. Approved by mjbvilhena on 2026-10-20.
+A layer ADR is required to add a UI toolkit, to let a composable import the data layer, or to drop a MUST. This file is approved. Approved by mjbvilhena on 2026-10-20. US-49 is Proposed for story review and is not approved.
 
 ## Anti-patterns
 

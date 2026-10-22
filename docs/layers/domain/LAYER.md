@@ -56,7 +56,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 ## Change control
 
-A layer ADR is required to add an Android or network dependency here, or to move a business rule into the data layer. This file is approved. Approved by mjbvilhena on 2026-10-20.
+A layer ADR is required to add an Android or network dependency here, or to move a business rule into the data layer. This file is approved. Approved by mjbvilhena on 2026-10-20. US-49 is Proposed for story review and is not approved.
 
 ## Anti-patterns
 

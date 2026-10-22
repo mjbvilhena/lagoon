@@ -54,9 +54,9 @@ Forget this phone.
   - And US-55 stops counting that install's check-in
   - And that install's id is written into the forgotten-installs file
   - Security criteria approved by mjbvilhena on 2026-10-22. Forget this phone does not revoke a stolen phone. Revoking a stolen phone is a passphrase change (US-86) and Google sign-out.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. During a pending forgotten-passphrase reset, Forget this phone requires the current passphrase, the same as US-78. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes.
+  - Security criteria approved by mjbvilhena on 2026-10-22. During a pending forgotten-passphrase reset, Forget this phone requires the current passphrase, the same as US-78. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes.
   - Amendment approved by mjbvilhena on 2026-10-22. Forget this phone first merges that install's latest records file. If the read fails, nothing is deleted and the user is told.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone writes that install's id into the forgotten-installs file, a single Drive file that lists forgotten install ids, when it deletes that install's records file.
+  - Amendment approved by mjbvilhena on 2026-10-22. Forget this phone writes that install's id into the forgotten-installs file, a single Drive file that lists forgotten install ids, when it deletes that install's records file.
 - **Scenario: Drive does not delete** — Must
   - Given he has confirmed one other install
   - When the phone is offline, or Drive returns an error
@@ -84,7 +84,7 @@ Forget this phone.
   - When the next sync runs
   - Then the local vault is kept
   - And this phone re-uploads its records file
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
+  - Amendment approved by mjbvilhena on 2026-10-22. A missing records file alone, a failed or empty listing, a US-78 Drive delete, or a never-uploaded phone never wipes the local vault.
 - **Scenario: the phone returns** — Must
   - Given this install's id is listed in the forgotten-installs file
   - When the next sync reads that file successfully and finds this install's id
@@ -98,11 +98,11 @@ Forget this phone.
   - And after rebuilding, it rejoins with a new install id
   - And attachments of items that are live or in trash are rebuilt from Drive
   - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. He is asked for the passphrase at that sync, before the local copies are discarded, because rebuilding from Drive needs the vault key. Until a pending forgotten-passphrase reset completes, that passphrase is the old passphrase. The new passphrase counts only after the reset completes.
+  - Amendment approved by mjbvilhena on 2026-10-22. A returning phone treats itself as forgotten only when it reads the forgotten-installs file successfully and finds its own install id there. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id.
+  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
+  - Security criteria approved by mjbvilhena on 2026-10-22. He is asked for the passphrase at that sync, before the local copies are discarded, because rebuilding from Drive needs the vault key. Until a pending forgotten-passphrase reset completes, that passphrase is the old passphrase. The new passphrase counts only after the reset completes.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive.
+  - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive.
 
 ## Analytics and observability (optional)
 

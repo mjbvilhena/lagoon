@@ -35,7 +35,7 @@ Update a link that was saved before, and undo that update.
 - **Scenario: the existing item is updated** — Must
   - Amendment approved by mjbvilhena on 2026-10-22. A match that is in trash is "the match is in trash", not this scenario. Two or more live matches are "two or more live items match", not this scenario.
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Two or more trashed matches and no item that is not in trash matches are "two or more trashed items match", not this scenario.
+  - Amendment approved by mjbvilhena on 2026-10-22. Two or more trashed matches and no item that is not in trash matches are "two or more trashed items match", not this scenario.
   - Given the normalised URL matches one item that is not in trash
   - When the share is stored
   - Then the preview and snapshot refresh only when a fetch supplies them, tags are unioned, existing text is not overwritten, and the new note is appended under a date separator `YYYY-MM-DD`
@@ -93,7 +93,7 @@ Update a link that was saved before, and undo that update.
   - Then the which-item picker lists those trashed matches
   - And the chosen item gets the restore offer
   - And the ordinary update does not run
-  - Decided by mjbvilhena; this record is Proposed until he approves it. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer. If the chosen item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title, the same as the live picker.
 - **Scenario: he declines the restore** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given that offer is showing
