@@ -87,6 +87,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Approved |
 | US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Approved |
 | US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Approved |
+| US-87 | Forget this phone. | E4 | Must | `docs/product/stories/US-87-forget-this-phone.md` | Draft |
 
 No story is Done. Implementation has not started.
 

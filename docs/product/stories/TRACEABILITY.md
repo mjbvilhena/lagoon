@@ -125,6 +125,7 @@ UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted
 | US-81 Publish a sideload signing policy. | E6 | traced | A-E6-2. Approved. |
 | US-85 Show an image or PDF page full-screen and bright. | E1 | traced | Approved. Amendment approved by mjbvilhena on 2026-10-18. |
 | US-86 Change the passphrase. | E8 | traced | Approved. Security criteria approved by mjbvilhena on 2026-10-18. |
+| US-87 Forget this phone. | E4 | traced | E4 scope: a lost phone's Drive file is retired only through "Forget this phone". Draft. Not approved. |
 
 ## Every story
 
@@ -210,3 +211,4 @@ UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted
 | US-81 | E6 | E6: a later install signed with the same release key can replace the app without losing the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. |
 | US-85 | E1 | E1: one tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. | Traced. Approved. Amendment approved by mjbvilhena on 2026-10-18. A swipe moves to the next or previous PDF page, or to the item's next or previous image attachment, in attachment order, including every page of each PDF, without leaving full-screen and without wrapping. A password-protected PDF does not open full-screen. |
 | US-86 | E8 | E8: changing the passphrase means re-encrypting the vault. | Traced. Approved. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. A forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. A cancel keeps items saved on the resetting phone during those 24 hours. A normal change does not wait. The reset accepts the US-37 biometric or device PIN. |
+| US-87 | E4 | E4: a lost phone's Drive file is retired only through "Forget this phone" in Settings. The action names one other install, deletes that install's records file, and does not change the passphrase. It is never automatic. | Traced. Draft. Not approved. |

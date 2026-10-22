@@ -52,6 +52,7 @@ Use one Settings screen.
   - And this phone's own file is not deleted
   - And the passphrase does not change
   - And no job retires a file because of age, silence, or a missed check-in
+  - And the behavior is US-87
 - **Scenario: the topic key and the call count** — Should
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone has no topic key stored
