@@ -58,6 +58,8 @@ Import a zip and merge it.
   - Given he picks a file that is not a versioned vault zip
   - When import runs
   - Then the local vault is unchanged and he sees that the file was not a vault export
+- **Scenario: a sensitive item in the zip** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22. Zip import of sensitive items, live or trashed, follows US-75; they stay sensitive and locked, with text/OCR kept out of search until unlock.
 
 ## Analytics and observability (optional)
 

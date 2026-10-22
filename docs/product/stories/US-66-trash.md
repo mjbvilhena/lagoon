@@ -206,6 +206,7 @@ Keep a trash beyond undo.
   - Then the zip includes that item with `inTrash`, `trashedAt`, and `trashChangedAt`
   - And the import keeps the item in trash
   - Security criteria approved by mjbvilhena on 2026-10-22. Zip export of sensitive items that are in Trash follows exactly the same US-75 rules as live sensitive items.
+  - Security criteria approved by mjbvilhena on 2026-10-22. Zip import of sensitive items, live or trashed, follows US-75; they stay sensitive and locked, with text/OCR kept out of search until unlock.
 - **Scenario: a zip whose trash time has already ended** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given the zip includes an item with `inTrash` set, and 30 × 24 hours after `trashedAt` have already ended on the importing phone's clock, and this phone has no record of that id with a later `trashChangedAt` and no user edit with a later `userEditedAt`
