@@ -41,9 +41,9 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 
 ## For mjbvilhena
 
-These items are not approved. They are not decisions.
+The sensitive Trash row is approved. The other items are not approved. They are not decisions.
 
-- What a Trash row for a sensitive item shows, and what it hides. The open list is the type, the Sensitive mark, days left, and Restore. The open list of what stays hidden is the title, a thumbnail, a snippet, and OCR text.
+- Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Whether the Trash screen follows the US-75 rules after the US-37 unlock. Those rules are `FLAG_SECURE` while sensitive titles are shown, and a return to the neutral form when the app goes to the background.
 - Whether opening a sensitive item from Trash needs the US-37 unlock, and whether restoring a sensitive item needs that unlock.
 - A phone whose clock is ahead can write a tombstone before 30 × 24 hours of true time. That residual is T-28. One option, not chosen in these records, is to check that clock against Drive server time before writing the tombstone.

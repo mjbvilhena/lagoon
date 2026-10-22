@@ -2,7 +2,7 @@
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
 > The non-security parts are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-> The security parts stay Proposed for mjbvilhena. They are what a sensitive Trash row shows, the scenario "a sensitive item in trash", and the items in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". This story is not approved until he approves those parts.
+> The other security parts stay Proposed for mjbvilhena. They are the remaining items in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". This story is not approved until he approves those parts.
 
 **Epic:** E3.
 
@@ -61,7 +61,7 @@ Keep a trash beyond undo.
   - Proposed amendment. Needs approval by mjbvilhena.
   - And opening that row shows the item read-only
   - Proposed amendment. Needs approval by mjbvilhena.
-  - And what a sensitive Trash row shows, including whether its title shows, is pending Miguel's security decision. This scenario does not decide it.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
   - And the exact layout waits for the UX artefact
 - **Scenario: restore from any phone** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
@@ -216,11 +216,12 @@ Keep a trash beyond undo.
   - And it is copied into the restored vault under the old passphrase
   - And the later `trashChangedAt` wins, and an equal `trashChangedAt` uses the lower install id
 - **Scenario: a sensitive item in trash** — Must
-  - Proposed amendment. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given a sensitive item is in trash
   - When he opens Trash
-  - Then what that row shows, including whether the title shows, is pending Miguel's security decision
-  - And this record does not decide it
+  - Then that row is neutral (no title or preview) until he unlocks
+  - And after unlock it shows the title
+  - And screenshots of Trash are blocked while it is shown
 - **Scenario: the 30 days end** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given this phone has merged `inTrash` and the item is still in trash
