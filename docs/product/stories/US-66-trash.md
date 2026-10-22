@@ -1,7 +1,7 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
-> Non-security parts at 3d4554f: Scout, approved under Miguel's delegation of 2026-10-17. Household, approved under Miguel's delegation of 2026-10-17, for the non-security parts at 5e96b39. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17, for the non-security parts at 3d4554f and e355d1d. Text added after 3d4554f is Proposed for story review.
+> Non-security parts at 5e96b39: Scout, approved under Miguel's delegation of 2026-10-17. Mikey's Dev Bot, approved under Miguel's delegation of 2026-10-17. Mikey's Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Household Assistant, approved under Miguel's delegation of 2026-10-17. Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-10-17. Text added after 5e96b39 is Proposed for story review.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
@@ -164,7 +164,7 @@ Keep a trash beyond undo.
   - And `updatedAt` does not choose either outcome
 - **Scenario: a shared URL whose item is in trash** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
-  - Given the repeat-link match (US-49) finds an item that is in trash, and no item that is not in trash matches
+  - Given the repeat-link match (US-49) finds exactly one item that is in trash, and no item that is not in trash matches
   - When he shares that URL again
   - Then the match offers to restore that item
   - And the ordinary update of that item does not run
@@ -336,8 +336,12 @@ Keep a trash beyond undo.
   - And that phone's unsynced local edits are lost
   - And he sees a short notice that those unsynced local edits were lost only when something was actually lost
   - And after rebuilding, it rejoins with a new install id
+  - And the old id stays in the forgotten-installs file of the phone that forgot it
+  - And that forgotten-installs file stays on Drive unchanged and is still read
+  - And Forget this phone never deletes that file, and the ids in it stay forgotten
+  - And only a US-78 delete removes these files
+  - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
   - And it uploads a new records file under its new install id and the current key version
-  - And the old id stays in the forgotten-installs file
   - And attachments of items that are live or in trash are rebuilt from Drive
   - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
   - And it shows a short in-app notice for that cleanup only when attachment files were actually deleted
@@ -345,7 +349,7 @@ Keep a trash beyond undo.
   - And the exact text waits for the UX artefact
   - Security criteria approved by mjbvilhena on 2026-10-22. The passphrase step for a returning forgotten phone is the one in US-87. Until that step succeeds, the phone discards nothing and does not upload.
   - Amendment approved by mjbvilhena on 2026-10-22. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
+  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so only when something was actually lost.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
   - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
 
@@ -363,7 +367,7 @@ Not applicable. No analytics.
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
 - Two or more trashed items that share one URL, and no item that is not in trash matches, are "two or more trashed items match".
-- A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild.
+- A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
 - Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes

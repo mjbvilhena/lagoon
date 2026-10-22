@@ -47,24 +47,27 @@ Forget this phone.
 - **Scenario: one other install** — Must
   - Given the US-37 unlock succeeded
   - When he names one other install and "Forget this phone" runs
-  - Then that install's records file is deleted from Drive
+  - Then this phone uploads its own merged records file
+  - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back
+  - And if that write or that read-back fails, nothing is deleted and he is told
+  - And that install's records file is deleted from Drive
   - And the install he is holding is not retired
   - And the passphrase does not change
   - And no key version is minted
   - And US-55 stops counting that install's check-in
-  - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back before the records file is deleted
-  - And if that write or that read-back fails, nothing is deleted and he is told
   - Security criteria approved by mjbvilhena on 2026-10-22. Forget this phone does not revoke a stolen phone. Revoking a stolen phone is a passphrase change (US-86) and Google sign-out.
   - Security criteria approved by mjbvilhena on 2026-10-22. During a pending forgotten-passphrase reset, Forget this phone requires the current passphrase, the same as US-78. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes.
   - Amendment approved by mjbvilhena on 2026-10-22. Forget this phone first merges that install's latest records file. If the read fails, nothing is deleted and the user is told.
   - Amendment approved by mjbvilhena on 2026-10-22. Each phone that runs Forget this phone writes only its own forgotten-installs file, and no other phone writes that file, except a re-key, which rewrites every forgotten-installs file under the new key version and never deletes one. Forget this phone writes that other install's id into this phone's forgotten-installs file and reads that file back before it deletes the other install's records file. If that write or that read-back fails, nothing is deleted and he is told.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Before a phone forgets another, it uploads its own merged records file.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
 - **Scenario: Drive does not delete** — Must
   - Given he has confirmed one other install
-  - When the phone is offline, or Drive returns an error
-  - Then nothing is deleted
-  - And he sees an error
-  - And he can retry
-  - And if the write of this phone's forgotten-installs file or the read-back of that file fails, nothing is deleted and he is told
+  - And this phone has written that install's id into this phone's forgotten-installs file and read that file back
+  - When the delete of that install's records file fails
+  - Then that forgotten-installs entry stays
+  - And he is told that phone will be forgotten at its next sync
+  - And the delete is retried
 - **Scenario: never automatic** — Must
   - Given an install has a records file
   - When that phone is old, silent, or misses a check-in
@@ -101,18 +104,25 @@ Forget this phone.
   - Then he is asked for the passphrase before the local copies are discarded, because the vault is rebuilt from Drive and those copies will be lost
   - And during a pending forgotten-passphrase reset that passphrase is the old passphrase until the reset completes, and the new passphrase counts only after the reset completes
   - And cancelling that prompt or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync
+  - And a forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files
+  - And a newer-key file is not a read failure
   - And when the passphrase is accepted, the phone discards its local copies and rebuilds from Drive
   - And items permanently deleted stay gone
   - And that phone's unsynced local edits are lost
   - And he sees a short notice that those unsynced local edits were lost only when something was actually lost
-  - And it uploads a new records file under its new install id and the current key version
-  - And the old id stays in the forgotten-installs file
   - And after rebuilding, it rejoins with a new install id
+  - And the old id stays in the forgotten-installs file of the phone that forgot it
+  - And that forgotten-installs file stays on Drive unchanged and is still read
+  - And Forget this phone never deletes that file, and the ids in it stay forgotten
+  - And only a US-78 delete removes these files
+  - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
+  - And it uploads a new records file under its new install id and the current key version
   - And attachments of items that are live or in trash are rebuilt from Drive
   - And after that rebuild, attachment files that belong to no item that is live or in trash are deleted on this phone only, never as a Drive object
   - Amendment approved by mjbvilhena on 2026-10-22. A returning phone reads every forgotten-installs file. It treats itself as forgotten only when every one of those files was read successfully and one of them contains its install id. If any read fails, or the listing fails, it keeps the local vault, does not upload, and retries at a later sync. The trigger is the next sync that finds the entry. After rebuilding, the phone rejoins with a new install id. It uploads a new records file under its new install id and the current key version, and the old id stays in the forgotten-installs file.
-  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so.
+  - Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so only when something was actually lost.
   - Security criteria approved by mjbvilhena on 2026-10-22. He is asked for the passphrase at that sync, before the local copies are discarded, because rebuilding from Drive needs the vault key. Cancelling that prompt or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. Until a pending forgotten-passphrase reset completes, that passphrase is the old passphrase. The new passphrase counts only after the reset completes.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
   - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object.
   - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive.
 
@@ -131,6 +141,8 @@ Not applicable. No analytics.
 - ADR-0001, ADR-0002, and US-55. US-55 stops counting the forgotten install's check-in.
 - A forgotten phone that returns rebuilds from Drive. Attachment files that belong to no item that is live or in trash are US-66. That cleanup is local only, and it runs after the rebuild.
 - A re-key rewrites every forgotten-installs file under the new key version and never deletes one.
+- Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
+- Decided by mjbvilhena; this record is Proposed until he approves it. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
 
 ## Implementation notes
 
