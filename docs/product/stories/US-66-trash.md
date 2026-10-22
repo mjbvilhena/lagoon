@@ -270,6 +270,7 @@ Keep a trash beyond undo.
   - And the item stays deleted
   - And the phone that held the dropped user edit shows a short notice that the edit couldn't be kept
   - And that notice is in the app, not a system notification
+  - Security criteria approved by mjbvilhena on 2026-10-22. The in-app dropped-edit notice for a sensitive item is neutral (no title) until the US-37 unlock, then shows the title.
   - And it appears once, when the dropped user edit is merged, and not again after a restart or a later sync
   - And it fires only for a dropped user edit, never for OCR, a preview, or another system write
   - And the exact text waits for the UX artefact
