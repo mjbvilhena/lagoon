@@ -2,7 +2,7 @@
 
 > **Approval status: Proposed for story review. Needs approval by mjbvilhena.**
 > The non-security parts are approved. Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-> The other security parts stay Proposed for mjbvilhena. They are the remaining items in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". This story is not approved until he approves those parts.
+> Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
 
