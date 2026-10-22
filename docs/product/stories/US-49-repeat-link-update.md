@@ -63,9 +63,17 @@ Update a link that was saved before, and undo that update.
   - When he accepts
   - Then that accept is a restore of the matched item, as in US-66
   - And the ordinary update does not run
-  - And the restored item's other fields are unchanged
+  - And the restored item's other fields are unchanged, apart from the new share's note and tags
   - And a second item is not created
   - And `trashChangedAt` is the restore time, and that write does not set `userEditedAt`
+- **Scenario: the accepted restore keeps the new note and tags** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given the restore offer is showing, and the new share has a note or tags
+  - When he accepts
+  - Then that note and those tags are added to the restored item the same way a live update adds them: the note is appended under a date separator `YYYY-MM-DD`, and the tags are unioned
+  - And the ordinary update does not run
+  - And the restored item's other fields are unchanged
+  - And that accept does not set `userEditedAt`
 - **Scenario: he declines the restore** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given that offer is showing

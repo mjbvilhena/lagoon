@@ -174,10 +174,18 @@ Keep a trash beyond undo.
   - When he accepts
   - Then that accept is a restore of the matched item
   - And `inTrash` and `trashedAt` are cleared, `trashChangedAt` is the restore time, and that write does not set `userEditedAt`
-  - And the restored item's other fields are unchanged
+  - And the restored item's other fields are unchanged, apart from the new share's note and tags
   - And the ordinary update does not run
   - And a second item is not created
   - And the restore in "restore from any phone" applies, including reminders, the one missed-reminder fire, the one expiry notice that came due in trash, and topic notes shown again
+- **Scenario: the accepted restore keeps the new note and tags** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Given the restore offer for a shared URL is showing, and the new share has a note or tags
+  - When he accepts
+  - Then that note and those tags are added to the restored item the same way US-49 adds them on a live update: the note is appended under a date separator `YYYY-MM-DD`, and the tags are unioned
+  - And the ordinary update does not run
+  - And the restored item's other fields are unchanged
+  - And that accept does not set `userEditedAt`
 - **Scenario: he declines the restore of a shared URL** — Must
   - Proposed amendment. Needs approval by mjbvilhena. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Given that offer is showing
