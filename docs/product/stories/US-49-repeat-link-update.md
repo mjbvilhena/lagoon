@@ -45,7 +45,7 @@ Update a link that was saved before, and undo that update.
   - Then Lagoon asks him which item to update
   - And the update does not run until he chooses
   - And the item he chooses is updated as in "the existing item is updated"
-  - Proposed amendment. Needs approval by mjbvilhena. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title. This is not approved.
+  - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: the previous preview stays while the snackbar is open** — Must
   - Given that snackbar is showing
   - When he has not chosen Undo or "Keep separate"

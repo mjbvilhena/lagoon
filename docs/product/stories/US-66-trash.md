@@ -198,7 +198,7 @@ Keep a trash beyond undo.
   - When he shares that URL again
   - Then Lagoon asks him which item to update
   - And that choice is US-49
-  - Proposed amendment. Needs approval by mjbvilhena. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title. This is not approved.
+  - Security criteria approved by mjbvilhena on 2026-10-22. If either matching item is sensitive, that item in the picker is neutral (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: a zip keeps the trash state** — Must
   - Proposed amendment. Needs approval by mjbvilhena.
   - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
