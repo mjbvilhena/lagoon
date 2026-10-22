@@ -244,6 +244,7 @@ Keep a trash beyond undo.
   - Then that row is neutral (no title or preview) until he unlocks
   - And after unlock it shows the title
   - And screenshots of Trash are blocked while it is shown
+  - Security criteria approved by mjbvilhena on 2026-10-22. After the US-37 unlock, the Trash screen follows the same US-75 sensitive rules as anywhere else in Lagoon.
 - **Scenario: open or restore a sensitive item from Trash** — Must
   - Security criteria approved by mjbvilhena on 2026-10-22.
   - Given a sensitive item is in trash
