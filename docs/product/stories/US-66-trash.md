@@ -309,6 +309,7 @@ Keep a trash beyond undo.
   - And that notice uses neutral wording and names no item title
   - And the exact text waits for the UX artefact
   - And it uploads a new records file and does not bring back a collected tombstone
+  - Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
 
 ## Analytics and observability (optional)
 

@@ -110,6 +110,10 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   A forgotten phone that returns after the tombstone was garbage-collected deletes attachment files that belong to no live item and shows a short in-app notice. The notice uses neutral wording and names no item title. The exact text waits for the UX artefact. That phone still uploads a new records file and does not bring back a collected tombstone.
 
+  Decided by mjbvilhena; this record is Proposed until he approves it. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost.
+
+  Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone first merges that install's latest records file. If the read fails, nothing is deleted and the user is told.
+
 ## Compliance
 
 - [ ] Each install writes only its own records file, except the re-key that deletes old-key files after a merge, and readers use the highest generation per install id
