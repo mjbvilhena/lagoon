@@ -85,6 +85,7 @@ Reschedule reminders after a restart or a clock change.
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
   - And an install writes a check-in, and counts as newest, only once it holds the vault key
   - And a check-in is the timestamp that install writes when the app is opened or when a sync succeeds, after it holds the vault key
+  - And forgotten installs and installs with a pending delete are not counted as active phones
   - And the same rule covers a reminder and an expiry
 - **Scenario: two installs** — Must
   - Given install A checked in 2 days ago and install B checked in 1 day ago, and both are signed in

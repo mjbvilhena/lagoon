@@ -36,10 +36,11 @@ Forget this phone.
   - Given the US-37 unlock succeeded, and at least one other install has a records file
   - When the list is shown
   - Then he sees each other install, with its device name, its model, and its last check-in date
-  - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
+  - And an install whose records-file delete is pending shows as "will be forgotten at its next sync". Decided by mjbvilhena; this record is Proposed until he approves it.
   - And this install is not listed
   - And when he chooses one, Lagoon asks him to confirm, naming that install
   - And cancelling changes nothing
+  - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 - **Scenario: no other phone** — Must
   - Given no other install has a records file
   - When the US-37 unlock has succeeded
@@ -49,6 +50,7 @@ Forget this phone.
   - Given the US-37 unlock succeeded
   - When he names one other install and "Forget this phone" runs
   - Then this phone uploads its own merged records file
+  - And if that upload fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Security criteria approved by mjbvilhena on 2026-10-23. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
   - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back
   - And if that write or that read-back fails, nothing is deleted and he is told
@@ -70,9 +72,15 @@ Forget this phone.
   - When the delete of that install's records file fails
   - Then that forgotten-installs entry stays
   - And he is told that phone will be forgotten at its next sync
-  - And the delete is retried
+  - And the delete is retried at each later sync of this phone until that records file is gone. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 - **Scenario: the forgotten phone syncs before the retry** — Must
+  - Given this phone has written another install's id into its forgotten-installs file and read it back, and the delete of that install's records file is still pending. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - When that forgotten phone syncs before the retry has deleted that records file. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - Then it is handled as in "the phone returns". Decided by mjbvilhena; this record is Proposed until he approves it.
+  - And its old records file is not used in the rebuild. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - And US-55 does not count it as an active phone. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - And this phone's retry still deletes that old records file, and never the new records file the rejoined phone uploads under its new install id. Decided by mjbvilhena; this record is Proposed until he approves it.
   - Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
 - **Scenario: never automatic** — Must
   - Given an install has a records file
@@ -99,24 +107,26 @@ Forget this phone.
 - **Scenario: forgotten-installs read or listing failed: local vault kept, no upload** — Must
   - Given this phone's records file is not on Drive
   - And any forgotten-installs read failed, or the listing failed
-  - And a file under a newer key is not a failed read
   - When the next sync runs
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - Security criteria approved by mjbvilhena on 2026-10-23. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
+  - And a file under a newer key is not a failed read
+  - And the sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully. Proposed amendment. Needs approval by mjbvilhena.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: files are under a newer key** — Must
-  - Given a forgotten phone returns after a passphrase change and finds the forgotten-installs files under a newer key
+  - Given this phone holds an older key version than the files on Drive. Decided by mjbvilhena; this record is Proposed until he approves it.
   - When the next sync runs
   - Then it asks for the new passphrase first and then reads the forgotten-installs files
   - And a newer-key file is not a read failure
   - And cancelling that prompt or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync
   - Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
+  - If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'. Decided by mjbvilhena; this record is Proposed until he approves it.
 - **Scenario: the phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
   - When the next sync finds that
   - Then he is asked for the passphrase before the local copies are discarded, because the vault is rebuilt from Drive and those copies will be lost
+  - And if the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'. Decided by mjbvilhena; this record is Proposed until he approves it.
   - And during a pending forgotten-passphrase reset that passphrase is the old passphrase until the reset completes, and the new passphrase counts only after the reset completes
   - And cancelling that prompt or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync
   - And when the passphrase is accepted, the phone discards its local copies and rebuilds from Drive
@@ -125,10 +135,10 @@ Forget this phone.
   - And he sees a short notice that those unsynced local edits were lost only when something was actually lost
   - And after rebuilding, it rejoins with a new install id
   - And the old id stays in the forgotten-installs file of the phone that forgot it
-  - And that forgotten-installs file stays on Drive unchanged and is still read
+  - And that forgotten-installs file stays on Drive and is still read, and this rebuild does not change it
   - And the old id is never removed from that file
   - And Forget this phone never deletes that file, and the ids in it stay forgotten
-  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id stays on Drive unchanged and is still read; the rebuild does not delete or replace it
+  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Decided by mjbvilhena; this record is Proposed until he approves it.
   - And only a US-78 delete removes these files
   - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
   - And it uploads a new records file under its new install id and the current key version
@@ -154,9 +164,7 @@ Not applicable. No analytics.
 - US-37 is the unlock. US-59 hosts the control. US-78 is the Drive delete, a different control, and it does not mark an install forgotten. US-86 is the passphrase change. The behavior is this story.
 - ADR-0001, ADR-0002, and US-55. US-55 stops counting the forgotten install's check-in.
 - A forgotten phone that returns rebuilds from Drive. Attachment files that belong to no item that is live or in trash are US-66. That cleanup is local only, and it runs after the rebuild.
-- A re-key rewrites every forgotten-installs file under the new key version and never deletes one.
-- Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
-- Security criteria approved by mjbvilhena on 2026-10-23. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
+- Forgotten-installs files are "one other install" and "the phone returns".
 
 ## Implementation notes
 

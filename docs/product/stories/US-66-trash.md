@@ -326,7 +326,8 @@ Keep a trash beyond undo.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - Security criteria approved by mjbvilhena on 2026-10-23. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
+  - And a file under a newer key is not a failed read. Decided by mjbvilhena; this record is Proposed until he approves it.
+  - And the sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully. Proposed amendment. Needs approval by mjbvilhena.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
@@ -338,10 +339,10 @@ Keep a trash beyond undo.
   - And he sees a short notice that those unsynced local edits were lost only when something was actually lost
   - And after rebuilding, it rejoins with a new install id
   - And the old id stays in the forgotten-installs file of the phone that forgot it
-  - And that forgotten-installs file stays on Drive unchanged and is still read
+  - And that forgotten-installs file stays on Drive and is still read, and this rebuild does not change it
   - And the old id is never removed from that file
   - And Forget this phone never deletes that file, and the ids in it stay forgotten
-  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id stays on Drive unchanged and is still read; the rebuild does not delete or replace it
+  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Decided by mjbvilhena; this record is Proposed until he approves it.
   - And only a US-78 delete removes these files
   - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
   - And it uploads a new records file under its new install id and the current key version
@@ -370,7 +371,7 @@ Not applicable. No analytics.
 - Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
 - Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
 - Two or more trashed items that share one URL, and no item that is not in trash matches, are "two or more trashed items match".
-- A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
+- A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild. The forgotten-installs file rules are in that scenario.
 - Amendment approved by mjbvilhena on 2026-10-22. This story is Must. v1 does not ship without it. The field rule and the tombstone are accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. A delete does not become a tombstone by skipping trash. v1 has no Delete forever, no Delete now, and no Empty trash. A clock set ahead can write the tombstone early. That residual is T-28.
 
 ## Implementation notes
