@@ -1,7 +1,7 @@
 # US-66 Keep a trash beyond undo
 
 > **Approval status: Proposed for story review. Non-security parts approved.**
-> Approved on 2026-10-20 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
 
 **Epic:** E3.
@@ -204,6 +204,15 @@ Keep a trash beyond undo.
   - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
   - Amendment approved by mjbvilhena on 2026-10-22. When a share matches live and trashed items, trashed matches are ignored. The live item is updated, or the which-item picker is shown when two or more live items match. There is no restore offer.
   - Amendment approved by mjbvilhena on 2026-10-22. Dismissing the which-item picker saves the share as a new item.
+- **Scenario: two or more trashed items match** — Must
+  - Given the repeat-link match (US-49) finds two or more items that are in trash, and no item that is not in trash matches
+  - When he shares that URL again
+  - Then the which-item picker lists those trashed matches
+  - And the chosen item gets the restore offer
+  - And the ordinary update does not run
+  - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
+  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
+  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: a zip keeps the trash state** — Must
   - Amendment approved by mjbvilhena on 2026-10-22.
   - Given an item is in trash, and 30 × 24 hours after `trashedAt` have not ended, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
@@ -317,16 +326,8 @@ Keep a trash beyond undo.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
+  - Decided by mjbvilhena; this record is Proposed until he approves it. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
-- **Scenario: two or more trashed items match** — Must
-  - Given the repeat-link match (US-49) finds two or more items that are in trash, and no item that is not in trash matches
-  - When he shares that URL again
-  - Then the which-item picker lists those trashed matches
-  - And the chosen item gets the restore offer
-  - And the ordinary update does not run
-  - And dismissing the picker saves the share as a new item, and the trashed items stay in trash
-  - Amendment approved by mjbvilhena on 2026-10-22. When a share matches two or more trashed items and no item that is not in trash matches, the which-item picker lists the trashed matches, and the chosen one gets the restore offer.
-  - Security criteria approved by mjbvilhena on 2026-10-22. In both which-item pickers, every sensitive item listed shows a neutral row (no title or preview) until the US-37 unlock, then it shows the title.
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
   - When the next sync finds that
@@ -338,7 +339,9 @@ Keep a trash beyond undo.
   - And after rebuilding, it rejoins with a new install id
   - And the old id stays in the forgotten-installs file of the phone that forgot it
   - And that forgotten-installs file stays on Drive unchanged and is still read
+  - And the old id is never removed from that file
   - And Forget this phone never deletes that file, and the ids in it stay forgotten
+  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id stays on Drive unchanged and is still read; the rebuild does not delete or replace it
   - And only a US-78 delete removes these files
   - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
   - And it uploads a new records file under its new install id and the current key version
