@@ -19,7 +19,7 @@ Share a link into the vault.
 ## Background
 
 - A link he sees in another app stays in that app until the vault can take a share.
-- Domain constraints: `get_domain_consultant("capture")` found no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: fetching the page (US-08, US-33), a repeat of the same page (US-49), last-used tags (US-28), title fill when he did not supply a subject (US-40), search, and sync. Tracking-parameter match rules live in US-49.
 
 ## Acceptance criteria
@@ -46,6 +46,22 @@ Share a link into the vault.
   - Given the shared URL still differs from every stored link after the normalisation in US-49
   - When he shares it
   - Then a new item is stored and the repeat snackbar from US-49 is not shown
+- **Scenario: a file URI is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a share of a link, plain text, an image, or a PDF whose URI scheme is `file`
+  - When he chooses Lagoon on the share sheet
+  - Then the share is refused and no item is stored
+- **Scenario: Lagoon's own FileProvider URI is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a share URI from Lagoon's own FileProvider
+  - When he chooses Lagoon on the share sheet
+  - Then the share is refused and no item is stored
+- **Scenario: an image over 20 MiB is refused** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given one image share is larger than 20 MiB
+  - When he chooses Lagoon on the share sheet
+  - Then that image is refused at intake and no item is stored
+  - And 20 MiB is the figure the data layer names beside US-31's OCR input cap
 
 ## Analytics and observability (optional)
 

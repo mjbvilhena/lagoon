@@ -1,0 +1,9 @@
+title = "Lagoon"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Published Grok model id, not a credential"
+regexTarget = "secret"
+regexes = ['''grok-4\.20-0309-non-reasoning''']

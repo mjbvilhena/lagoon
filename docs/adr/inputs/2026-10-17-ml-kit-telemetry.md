@@ -85,7 +85,7 @@ Official Google ML Kit documentation does not give an app a switch that turns of
 
 - **Chosen option:** Option 2.
 - **Rationale:** The terms, the Android data-disclosure page, the `MlKit` initialization reference, and the text-recognition guide do not document a developer switch that disables usage or diagnostic telemetry. The requirement is then disclosure and acceptance. Option 3 would cancel on-device OCR, which stays in v1.
-- **Next steps:** The acceptance criteria are on US-07 and US-59. Both stories stay Draft. Do not implement. Do not fill a Play Data safety form from this note. Do not draft an ADR from this note.
+- **Next steps:** The acceptance criteria are on US-07 and US-59. Both stories stay Draft. Do not implement. Do not fill a Play Data safety form from this note. ADR-0004 is the accepted decision from this note. Approved by mjbvilhena on 2026-10-20. See `docs/adr/ADR-0004-ml-kit-telemetry.md`.
 
 ## Bundled model and init timing
 

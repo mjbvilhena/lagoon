@@ -49,7 +49,7 @@ Miguel.
 
 - The time, the 7-day expiry warning, and inexact alarms are in the specification (US-34). Exact alarms are not an open question. US-34, US-55, and US-62 are approved. The other stories in this epic stay Draft.
 
-## Draft stories
+## Stories
 
 - US-34 Set a reminder or expiry and get notified. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-54 Notify before an expiry

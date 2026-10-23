@@ -19,7 +19,7 @@ Import a zip and merge it.
 ## Background
 
 - Import merges the way US-20 merges one-sided items. It is not a restore button.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a conflicting id (US-73) and an import when this device has no key (US-74).
 
 ## Acceptance criteria
@@ -32,10 +32,34 @@ Import a zip and merge it.
   - Given this vault already has other items and no id is in conflict
   - When he imports
   - Then both the local-only and zip-only items are kept
+- **Scenario: trash state is kept** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22.
+  - Given the zip includes an item with `inTrash`, `trashedAt`, and `trashChangedAt`, and 30 × 24 hours after `trashedAt` have not ended on this phone's clock, and this phone has no record of that id with a later `trashChangedAt` and no later `userEditedAt`
+  - When he imports it
+  - Then that item stays in trash
+  - And carrying those fields does not, by itself, clear trash
+  - And a later `trashChangedAt` on this phone, including a restore after the export, means the zip does not re-trash the item
+  - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
+- **Scenario: the trash time has already ended** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22.
+  - Given the zip includes an item with `inTrash` set, and 30 × 24 hours after `trashedAt` have already ended on this phone's clock, and this phone has no record of that id with a later `trashChangedAt` and no user edit with a later `userEditedAt`
+  - When he imports it
+  - Then that item is deleted for good straight away
+  - And the import writes the tombstone, the permanent-delete record, for that id
+  - And the item is not left in trash
+- **Scenario: a later user edit** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22.
+  - Given this phone holds a user edit of that id made after the export, so its `userEditedAt` is later than the zip's `trashChangedAt`
+  - When he imports that zip
+  - Then the zip's trash state does not apply
+  - And no tombstone is written
+  - And the trash state does not change and no tombstone is written; user fields still merge by `userEditedAt`
 - **Scenario: not a vault zip** — Must
   - Given he picks a file that is not a versioned vault zip
   - When import runs
   - Then the local vault is unchanged and he sees that the file was not a vault export
+- **Scenario: a sensitive item in the zip** — Must
+  - Security criteria approved by mjbvilhena on 2026-10-22. Zip import of sensitive items, live or trashed, follows US-75; they stay sensitive and locked, with text/OCR kept out of search until unlock.
 
 ## Analytics and observability (optional)
 

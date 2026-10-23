@@ -40,6 +40,6 @@ Miguel, searching something he saved as an image or a scan.
 
 - v1 OCR language is English in US-31. Other languages are a later backlog option. The `arm64` filter versus per-ABI APKs choice waits for design. US-31 is approved.
 
-## Draft stories
+## Stories
 
 - US-31 Recognize text on the device. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

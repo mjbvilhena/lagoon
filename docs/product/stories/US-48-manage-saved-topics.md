@@ -19,7 +19,7 @@ Manage a topic that is already saved.
 ## Background
 
 - This is not the suggestion flow (US-46). Topics are not tags.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: creating the topic (US-43), and splitting one topic into two. Split is not in this story.
 - Declining a suggestion blocks that suggestion on that item (US-46). Deleting a saved topic does not block the name from being suggested again.
 

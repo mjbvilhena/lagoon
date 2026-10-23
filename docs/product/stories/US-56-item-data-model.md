@@ -19,7 +19,7 @@ Keep a stable identity for each item.
 ## Background
 
 - The user-story Definition of Done allows a chore when the request asked for one. This is that chore.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the conflict rule when two `updatedAt` values exist for one id (US-73).
 
 ## Acceptance criteria

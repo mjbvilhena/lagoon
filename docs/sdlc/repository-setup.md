@@ -26,9 +26,9 @@ The root `README.md` only describes the app. These paths are the rest of the not
 | Path | What it is |
 | --- | --- |
 | `docs/product/vision.md` | Current vision. Restates the approved specification, epics E1–E9 and E11, and the approved amendment. |
-| `docs/product/specification.md` | Approved product specification (`c288b7e`) |
-| `docs/product/epics/` | Approved epics E1–E11 (`98275b3`). E10 is Later, not in v1 |
-| `docs/product/stories/` | Draft user stories and the index |
+| `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. |
+| `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. E10 is Later, not in v1. |
+| `docs/product/stories/` | Story files and `docs/product/stories/INDEX.md`. The approval line on each file is the status. |
 | `docs/product/backlog.md` | Draft backlog |
 | `docs/sdlc/pipeline-state.md` | Current gate and what has not been started |
 | `docs/sdlc/harness-install.md` | Harness pin, installer, MCP command |

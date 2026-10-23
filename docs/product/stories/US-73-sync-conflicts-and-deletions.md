@@ -1,6 +1,6 @@
 # US-73 Decide sync conflicts and deletions
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E4.
 
@@ -19,7 +19,7 @@ Decide sync conflicts and deletions.
 ## Background
 
 - Criteria follow from the ADR at the design gate. Options recorded here, and not chosen in this story, are tombstones, per-field last-writer-wins, and merged notes. "A deleted item must not come back" is the same kind of option.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: one-sided merge, which US-20 already states.
 
 ## Acceptance criteria
@@ -39,7 +39,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Criteria follow from the ADR at the design gate.
+- The ADR is accepted. This story stays a placeholder.
+- Accepted record: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Status: Accepted. Approved by mjbvilhena on 2026-10-20. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 

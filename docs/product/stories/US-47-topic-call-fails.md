@@ -19,7 +19,7 @@ Keep the item when the topic call fails.
 ## Background
 
 - Status values are shared with US-41 and US-44: queued, failed, no topics.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: an automatic retry schedule and a cost cap. Neither was set.
 
 ## Acceptance criteria

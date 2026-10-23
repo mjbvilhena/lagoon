@@ -19,7 +19,7 @@ Keep reminders on inexact alarms.
 ## Background
 
 - E9 and the specification say inexact alarms.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a later change that would amend E9. None is open now.
 
 ## Acceptance criteria

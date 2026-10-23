@@ -19,7 +19,7 @@ File new captures from an Untagged inbox.
 ## Background
 
 - A note is not a tag. The inbox is a view, not a stored tag.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: multi-select triage (US-71, Could).
 
 ## Acceptance criteria

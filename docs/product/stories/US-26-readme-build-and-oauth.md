@@ -19,7 +19,7 @@ Follow written steps to build, sideload, and create the OAuth client.
 ## Background
 
 - There is no app yet, so those steps are not in the tree. That absence is correct until implementation.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: documenting a Back up now or Restore button.
 
 ## Acceptance criteria

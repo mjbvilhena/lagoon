@@ -19,7 +19,7 @@ Add a URL by hand.
 ## Background
 
 - A typed URL is a link item. Enrichment is not required for the save.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the page fetch (US-08). A URL typed without a scheme is treated as https so the scenario is testable.
 
 ## Acceptance criteria

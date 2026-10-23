@@ -1,6 +1,6 @@
 # US-74 Decide how the vault key reaches another device
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E8.
 
@@ -20,7 +20,7 @@ Decide how the vault key reaches another device.
 
 - Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. Forgetting the passphrase and losing the device still means the content is lost. The exact method, parameters, and where the non-secret salt lives are settled in the ADR at the design gate.
 - The zip is encrypted with the vault key (US-21). Criteria follow from the ADR at the design gate.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: inventing a Google-derived key. Choosing the derivation method, the parameters, or where the non-secret salt lives.
 - Design-gate inputs for the US-74 ADR, not criteria of this story: envelope encryption, or a full re-encrypt, when the passphrase changes (US-86). The KDF choice, for example Argon2id, the salt size, and the parameters that travel with every Drive copy and zip, timed on a low-end phone. The minimum passphrase strength and the retry delay.
 
@@ -41,7 +41,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Criteria follow from the ADR at the design gate.
+- The ADR is accepted. This story stays a placeholder.
+- Accepted record: `docs/adr/ADR-0001-argon2id-vault-key.md`. Status: Accepted. Approved by mjbvilhena on 2026-10-20. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 

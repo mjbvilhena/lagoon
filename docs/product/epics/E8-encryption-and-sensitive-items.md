@@ -5,6 +5,7 @@
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-18.
+> Amendment approved by mjbvilhena on 2026-10-20.
 
 ## Background & Value Proposition
 
@@ -23,6 +24,10 @@ Miguel, including on a second device that should see the same vault and not a pl
   - Keys held in Android Keystore.
   - Client-side end-to-end encryption of everything synced to Drive. Drive stores ciphertext only.
   - Fingerprint or biometric lock on items marked sensitive, tied to this encryption work.
+  - Amendment approved by mjbvilhena on 2026-10-20. A forgotten-passphrase reset, after the US-37 unlock on a phone that still holds the key, re-keys the phone vault and leaves the Drive copy on the old passphrase for 24 hours. During those 24 hours every other phone that holds the key shows a notice and can cancel the reset. A normal passphrase change, where he enters the current passphrase, re-encrypts the phone and the Drive copy without that wait. The phone vault and the Drive copy each stay readable under exactly one passphrase.
+  - Amendment approved by mjbvilhena on 2026-10-20. A character is one Unicode code point after NFC. A passphrase shorter than 12 or longer than 128 is refused, and a passphrase on the bundled common-password list is refused. There is no strength meter. Setup still gives strong-passphrase guidance. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower the parameters.
+  - Amendment approved by mjbvilhena on 2026-10-20. There is no passphrase recall check. Settings has no "Check my passphrase" control, and there is no periodic reminder to re-enter the passphrase. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. There is no in-app aid to remember it. Amendment approved by mjbvilhena on 2026-10-22.
+  - Amendment approved by mjbvilhena on 2026-10-20. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it.
   - App lock is optional. The device PIN is the fallback when there are no biometrics.
   - Before unlock, a list, a search result, a screenshot, and a cache do not show a sensitive item's title, body, note, OCR text, or thumbnail (A-E8-1, US-75). A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock. Export of a sensitive item waits for the US-37 unlock. The rest of the handling is the criteria on US-75. Sensitive items are excluded from the topic call (E11). There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - **Future Scope (v2+):** Nothing named.
@@ -47,13 +52,17 @@ Miguel, including on a second device that should see the same vault and not a pl
 - Key transport is US-74. Criteria follow from the ADR at the design gate. App lock is optional, with a device-PIN fallback. The vault key does not require user authentication.
 - Amendment approved by mjbvilhena on 2026-10-18. The vault key is derived from a passphrase he chooses, with a slow memory-hard key derivation and a salt, so entering the passphrase on any device re-creates the same key. No copy of the key, wrapped or otherwise, is stored anywhere off the phone. On the phone the derived key is held in the Android Keystore, or wrapped by a hardware-backed Keystore key, without user authentication, so normal use, sync, and reminders need no passphrase. Changing the passphrase means re-encrypting the vault (US-86). Forgetting the passphrase and losing the device still means the content is lost. Setup gives strong-passphrase guidance. The exact method, parameters, and where the non-secret salt lives are settled in the US-74 ADR at the design gate.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in US-86. Amendment approved by mjbvilhena on 2026-10-18.
+- Amendment approved by mjbvilhena on 2026-10-20. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed to the new one. During those 24 hours every other phone that holds the key shows a notice and can cancel the reset. A normal passphrase change, where he enters the current passphrase, re-encrypts the phone and the Drive copy without that wait. The phone vault and the Drive copy each stay readable under exactly one passphrase.
+- Amendment approved by mjbvilhena on 2026-10-20. A character is one Unicode code point after NFC. A passphrase shorter than 12 or longer than 128 is refused, and a passphrase on the bundled common-password list is refused. There is no strength meter. Setup still gives strong-passphrase guidance. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower the parameters.
+- Amendment approved by mjbvilhena on 2026-10-20. There is no passphrase recall check. Settings has no "Check my passphrase" control, and there is no periodic reminder to re-enter the passphrase. A forgotten passphrase, together with losing every phone that holds the key, means the content is lost. There is no in-app aid to remember it. Amendment approved by mjbvilhena on 2026-10-22.
+- Amendment approved by mjbvilhena on 2026-10-20. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it.
 
 ## Open Questions
 
 - [ ] How keys reach a new or second device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored anywhere off the phone.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 
-## Draft stories
+## Stories
 
 - US-35 Encrypt the vault at rest. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-18.
 - US-36 Sync only ciphertext

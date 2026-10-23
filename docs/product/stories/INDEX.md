@@ -1,7 +1,7 @@
 # User story index
 
 > Listing a story here is not a sign-off. The map is `docs/product/stories/TRACEABILITY.md`.
-> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft.
+> US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-49, US-66, and US-87, which are Proposed for story review and are not approved. The non-security parts of US-49 are approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The non-security parts of US-66 are approved. Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22.
 
 File names that said backup were renamed to match seamless sync. The index paths are the current files.
 
@@ -55,7 +55,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-46 | Reject, rename, or merge a suggested topic. | E11 | Must | `docs/product/stories/US-46-reject-rename-or-merge-a-suggestion.md` | Draft |
 | US-47 | Keep the item when the topic call fails. | E11 | Must | `docs/product/stories/US-47-topic-call-fails.md` | Draft |
 | US-48 | Manage a topic that is already saved. | E11 | Must | `docs/product/stories/US-48-manage-saved-topics.md` | Draft |
-| US-49 | Update a link that was saved before, and undo that update. | E1 | Must | `docs/product/stories/US-49-repeat-link-update.md` | Draft |
+| US-49 | Update a link that was saved before, and undo that update. | E1 | Must | `docs/product/stories/US-49-repeat-link-update.md` | Proposed for story review. Non-security parts approved |
 | US-50 | Rank search matches. | E3 | Must | `docs/product/stories/US-50-search-ranking.md` | Approved |
 | US-51 | Sync in the background and show errors. | E4 | Must | `docs/product/stories/US-51-sync-worker-and-errors.md` | Draft |
 | US-52 | Import a zip and merge it. | E4 | Must | `docs/product/stories/US-52-import-a-zip.md` | Draft |
@@ -69,9 +69,9 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-60 | Browse topics and pending suggestions. | E11 | Must | `docs/product/stories/US-60-topic-list-and-pending.md` | Draft |
 | US-61 | Filter or search by where an item came from. | E1 | Should | `docs/product/stories/US-61-source-domain-and-app.md` | Approved |
 | US-62 | See what is coming due. | E9 | Should | `docs/product/stories/US-62-upcoming-and-expiring.md` | Approved |
-| US-64 | Share or open an item in another app. | E3 | Proposed Should | `docs/product/stories/US-64-share-or-open-out.md` | Approved |
+| US-64 | Share or open an item in another app. | E3 | Should | `docs/product/stories/US-64-share-or-open-out.md` | Approved |
 | US-65 | Add a photo from the camera. | E1 | Should | `docs/product/stories/US-65-in-app-camera.md` | Approved |
-| US-66 | Keep a trash beyond undo. | E3 | Should | `docs/product/stories/US-66-trash.md` | Draft |
+| US-66 | Keep a trash beyond undo. | E3 | Must | `docs/product/stories/US-66-trash.md` | Proposed for story review. Non-security parts approved |
 | US-67 | Notice a duplicate image or PDF. | E1 | Could | `docs/product/stories/US-67-duplicate-files.md` | Draft |
 | US-70 | See what is not ready for offline. | E2 | Could | `docs/product/stories/US-70-offline-readiness.md` | Draft |
 | US-71 | Triage the inbox in a batch. | E3 | Could | `docs/product/stories/US-71-inbox-multi-select.md` | Draft |
@@ -87,10 +87,11 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-81 | Publish a sideload signing policy. | E6 | Must | `docs/product/stories/US-81-sideload-policy.md` | Approved |
 | US-85 | Show an image or PDF page full-screen and bright. | E1 | Should | `docs/product/stories/US-85-show-an-image-full-screen.md` | Approved |
 | US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Approved |
+| US-87 | Forget this phone. | E4 | Must | `docs/product/stories/US-87-forget-this-phone.md` | Proposed for story review |
 
 No story is Done. Implementation has not started.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The other stories stay Draft.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-49, US-66, and US-87 are Proposed for story review and are not approved. The non-security parts of US-49 are approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The non-security parts of US-66 are approved. Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena". The other stories stay Draft. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22.
 
 Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 are approved. Amendment approved by mjbvilhena on 2026-10-18.
 
