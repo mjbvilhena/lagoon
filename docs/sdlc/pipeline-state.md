@@ -1,6 +1,6 @@
 # Pipeline state
 
-Inspection date: 2026-10-19. Conductor: `sdlc-conductor`. A docs review on this date did not accept any Proposed record and did not start implementation. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
+Inspection date: 2026-10-23. Conductor: `sdlc-conductor`. A docs review on this date did not accept any Proposed record and did not start implementation. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
 Templates and Definition of Done checks were read with `get_sdlc_template` and `get_definition_of_done` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604` (`lifecycle pipeline`, `domain`, `layer`, `adr`, `threat model`, `security change`). `get_domain_consultant("vault")` and `get_layer_consultant` for `ui`, `domain`, and `data` now resolve to the approved files below. Approved by mjbvilhena on 2026-10-20. Capture and knowledge are not separate domains.
 

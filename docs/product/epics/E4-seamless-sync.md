@@ -29,9 +29,9 @@ Miguel, on this phone and on a later install of the same app.
   - Amendment approved by mjbvilhena on 2026-10-20. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt` (US-66, Must, in v1). v1 does not ship without it. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. The tombstone, the permanent delete, spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash. Sync still keeps an item that exists on only one side. A tombstoned id is not that item. Amendment approved by mjbvilhena on 2026-10-22.
   - Amendment approved by mjbvilhena on 2026-10-20. A lost phone's Drive file is retired only through "Forget this phone" in Settings. The action names one other install, deletes that install's records file, and does not change the passphrase. It is never automatic.
   - Amendment approved by mjbvilhena on 2026-10-22. Each phone that runs Forget this phone writes only its own forgotten-installs file, except a re-key, which rewrites every forgotten-installs file under the new key version and never deletes one. Forget this phone writes the other install's id into that file and reads it back before it deletes the other install's records file. If that write or that read-back fails, nothing is deleted and he is told. A returning phone reads every such file. The rest of that rule is ADR-0002.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Before a phone forgets another, it uploads its own merged records file.
+  - Amendment approved by mjbvilhena on 2026-10-23. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
+  - Amendment approved by mjbvilhena on 2026-10-23. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
+  - Security criteria approved by mjbvilhena on 2026-10-23. Before a phone forgets another, it uploads its own merged records file.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
   - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
@@ -70,7 +70,7 @@ Miguel, on this phone and on a later install of the same app.
 - [ ] How keys reach the second device. US-74. Criteria follow from the ADR at the design gate. Owned with E8.
 - One-sided items are kept. That question is closed.
 
-## Draft stories
+## Stories
 
 - US-17 See that sync is not configured
 - US-18 Sign in and let the vault sync

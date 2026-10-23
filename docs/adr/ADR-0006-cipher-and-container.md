@@ -4,7 +4,7 @@
 
 Accepted. Approved by mjbvilhena on 2026-10-20.
 
-This record is a prerequisite for implementing US-35. It does not add acceptance criteria to that story, and it does not edit it. Drafting it is not acceptance. The specification still says the cipher waits for an ADR. This is that proposal. It is not approval of the specification sentence.
+This record is a prerequisite for implementing US-35. It does not add acceptance criteria to that story, and it does not edit it. Drafting it is not acceptance. The specification still says the cipher waits for an ADR. This is that record. It is not approval of the specification sentence.
 
 ## Context
 

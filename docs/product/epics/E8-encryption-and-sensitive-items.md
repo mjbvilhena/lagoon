@@ -62,7 +62,7 @@ Miguel, including on a second device that should see the same vault and not a pl
 - [ ] How keys reach a new or second device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. No copy of the key is stored anywhere off the phone.
 - App lock is optional. The device PIN is the fallback when there are no biometrics.
 
-## Draft stories
+## Stories
 
 - US-35 Encrypt the vault at rest. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-18.
 - US-36 Sync only ciphertext

@@ -47,7 +47,7 @@ Miguel, saving links from a browser, YouTube, X, or a URL he typed.
 - Snapshot shape is the US-33 rule in the specification: a sanitised readable archive, not MHTML in v1. US-79 is approved. The other stories in this epic stay Draft.
 - [ ] No question was opened here about which HTML fields count as description. Technical design should say which signals are tried, without inventing a success rate.
 
-## Draft stories
+## Stories
 
 - US-08 Enrich a link when the page can be fetched
 - US-09 Keep the URL when enrichment does not run

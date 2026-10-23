@@ -68,7 +68,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
 - [x] Sensitive items are excluded from the topic call.
 - [ ] What exactly is sent: full text, images, OCR output, or some other slice? US-76. Criteria follow from the ADR at the design gate.
 
-## Draft stories
+## Stories
 
 A story stays Draft unless its line says Approved. Paths are under `docs/product/stories/`.
 

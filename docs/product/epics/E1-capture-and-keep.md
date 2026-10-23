@@ -59,7 +59,7 @@ Miguel. His pain is that a link, a passage, an image, or a PDF he cares about st
 - One tap, then a non-blocking chip row, title auto-fill, inbox, and date sort are in the specification. See US-28, US-38, US-39, and US-40. Edit later is US-12. US-40 is approved. The other stories in this epic stay Draft unless a line below says Approved.
 - The name is Lagoon. The application id is `com.mjbvilhena.lagoon`. They do not block saving. Play Store and trademark checks for Lagoon were not done. A story stays Draft unless its line says Approved.
 
-## Draft stories
+## Stories
 
 Paths are under `docs/product/stories/`. A story stays Draft unless its line says Approved.
 

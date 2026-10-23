@@ -16,7 +16,7 @@ Delete an item and undo that delete.
 
 **As a** person named Miguel
 **I want** to delete an item and undo that delete until I leave the confirmation
-**So that** a mistake does not destroy the item, and a finished delete really removes it
+**So that** a mistake does not destroy the item, and a finished delete moves the item to trash
 
 ## Background
 

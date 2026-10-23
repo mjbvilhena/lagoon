@@ -39,9 +39,7 @@ Artefact shape is the user-story Definition of Done: As a / I want / So that, an
 
 US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders. The ADRs they point at are accepted. Approved by mjbvilhena on 2026-10-20. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. No story is Done. There is no app.
 
-## For mjbvilhena
-
-The sensitive Trash row is approved. Opening or restoring a sensitive item from Trash is approved. The restore offer for a sensitive item in Trash is approved. The in-app dropped-edit notice for a sensitive item is approved. The missed reminder and the expiry notice that fire once on restore of a sensitive item are approved. Zip export of sensitive items that are in Trash is approved. A sensitive item restored from Trash, or rebuilt after a late restore, is approved. Toggling the sensitive mark on or off is approved. The clock warning is approved. The warning threshold and text are not decided. The permanent-delete wording and the older-revision delete are approved. The unlock for Forget this phone is approved. US-87 is Proposed for story review. After the US-37 unlock, the Trash screen follows the same US-75 sensitive rules as anywhere else. Zip import of sensitive items, live or trashed, follows US-75. The sensitive two-item picker is approved.
+## Criteria
 
 - Security criteria approved by mjbvilhena on 2026-10-22. In Trash, a sensitive item's row is neutral (no title or preview) until he unlocks; after unlock it shows the title, and screenshots of Trash are blocked while it is shown.
 - Security criteria approved by mjbvilhena on 2026-10-22. After the US-37 unlock, the Trash screen follows the same US-75 sensitive rules as anywhere else in Lagoon.
@@ -68,11 +66,15 @@ The sensitive Trash row is approved. Opening or restoring a sensitive item from 
 - Amendment approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive. The cleanup deletes local copies only, never a Drive object.
 - Amendment approved by mjbvilhena on 2026-10-22. That cleanup notice shows only when attachment files were actually deleted.
 - Security criteria approved by mjbvilhena on 2026-10-22. US-78 warns that the Drive delete only lasts if every other phone is signed out first. The delete also removes the forgotten-installs files, so a forgotten phone that returns afterwards can bring deleted items back.
-- Decided by mjbvilhena; this record is Proposed until he approves it. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
-- Decided by mjbvilhena; this record is Proposed until he approves it. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
-- Decided by mjbvilhena; this record is Proposed until he approves it. Before a phone forgets another, it uploads its own merged records file.
-- Decided by mjbvilhena; this record is Proposed until he approves it. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
-- Decided by mjbvilhena; this record is Proposed until he approves it. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
+- Amendment approved by mjbvilhena on 2026-10-23. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
+- Amendment approved by mjbvilhena on 2026-10-23. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file stays on Drive unchanged and is still read. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
+- Security criteria approved by mjbvilhena on 2026-10-23. Before a phone forgets another, it uploads its own merged records file.
+- Security criteria approved by mjbvilhena on 2026-10-23. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
+- Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
+
+## For mjbvilhena
+
+The clock-warning threshold and text are not decided. Specification line 70 still needs approval by mjbvilhena. That line keeps a conflict algorithm, a deletion rule, and a key-recovery design out of the specification, and says the criteria follow from the ADR at the design gate.
 
 ## Threat note
 
