@@ -326,7 +326,7 @@ Keep a trash beyond undo.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - Decided by mjbvilhena; this record is Proposed until he approves it. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
+  - Security criteria approved by mjbvilhena on 2026-10-23. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id

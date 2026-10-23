@@ -36,7 +36,7 @@ Forget this phone.
   - Given the US-37 unlock succeeded, and at least one other install has a records file
   - When the list is shown
   - Then he sees each other install, with its device name, its model, and its last check-in date
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
+  - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
   - And this install is not listed
   - And when he chooses one, Lagoon asks him to confirm, naming that install
   - And cancelling changes nothing
@@ -49,7 +49,7 @@ Forget this phone.
   - Given the US-37 unlock succeeded
   - When he names one other install and "Forget this phone" runs
   - Then this phone uploads its own merged records file
-  - Decided by mjbvilhena; this record is Proposed until he approves it. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
+  - Security criteria approved by mjbvilhena on 2026-10-23. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
   - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back
   - And if that write or that read-back fails, nothing is deleted and he is told
   - And that install's records file is deleted from Drive
@@ -71,9 +71,9 @@ Forget this phone.
   - Then that forgotten-installs entry stays
   - And he is told that phone will be forgotten at its next sync
   - And the delete is retried
-  - Decided by mjbvilhena; this record is Proposed until he approves it. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
+  - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 - **Scenario: the forgotten phone syncs before the retry** — Must
-  - Decided by mjbvilhena; this record is Proposed until he approves it. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
+  - Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
 - **Scenario: never automatic** — Must
   - Given an install has a records file
   - When that phone is old, silent, or misses a check-in
@@ -104,7 +104,7 @@ Forget this phone.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - Decided by mjbvilhena; this record is Proposed until he approves it. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
+  - Security criteria approved by mjbvilhena on 2026-10-23. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: files are under a newer key** — Must
   - Given a forgotten phone returns after a passphrase change and finds the forgotten-installs files under a newer key

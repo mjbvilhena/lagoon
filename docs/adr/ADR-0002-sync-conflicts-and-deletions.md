@@ -95,7 +95,7 @@ Rules, if this record is accepted:
 - Tombstone garbage collection. An install with no records file is not an install that currently has one. Tombstones no longer wait for the forgotten install to merge a file. Collection still waits for every install that still has a file, and for the 90 days after the tombstone timestamp.
 - Re-keying. Forgetting does not change the passphrase and does not mint a key version. A re-key that happens later, or one already in progress, has no file left for that install to rewrite. The re-key rule still merges and then rewrites or deletes every current file under an older key version, including a phone he has not forgotten, except forgotten-installs files, which are rewritten and never deleted. If he forgets a phone whose file is already under the current key, that file is deleted and is not rewritten. A forgotten phone that later returns uploads a new records file under the current key version after he enters the passphrase. It does not restore the deleted file, and it does not bring back a tombstone that has already been collected.
 - Amendment approved by mjbvilhena on 2026-10-22. A re-key rewrites or deletes every current file under an older key version, except forgotten-installs files, which are rewritten and never deleted.
-- Proposed amendment. Needs approval by mjbvilhena. The re-key rule still merges and then rewrites or deletes every current file under an older key version, including a phone he has not forgotten, except forgotten-installs files, which are rewritten and never deleted.
+- Amendment approved by mjbvilhena on 2026-10-23. The re-key rule still merges and then rewrites or deletes every current file under an older key version, including a phone he has not forgotten, except forgotten-installs files, which are rewritten and never deleted.
 - Amendment approved by mjbvilhena on 2026-10-22. That return is a rebuild from Drive, and the phone rejoins with a new install id. The new records file is that rebuild, under the new install id and the current key version. The old id stays in the forgotten-installs file.
 
 Default: an unexpected duplicate id is a conflict, never a second item. A failed download does not become a deletion.
@@ -140,13 +140,13 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   Security criteria approved by mjbvilhena on 2026-10-23. Before a phone forgets another, it uploads its own merged records file.
 
-  Decided by mjbvilhena; this record is Proposed until he approves it. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
+  Security criteria approved by mjbvilhena on 2026-10-23. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
 
-  Decided by mjbvilhena; this record is Proposed until he approves it. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
+  Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 
-  Decided by mjbvilhena; this record is Proposed until he approves it. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
+  Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
 
-  Decided by mjbvilhena; this record is Proposed until he approves it. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
+  Security criteria approved by mjbvilhena on 2026-10-23. After repeated failed forgotten-installs reads, the phone shows a notice that sync is paused because Drive files can't be read, and it keeps retrying.
 
   Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
 
@@ -163,7 +163,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 ## Compliance
 
 - [ ] Each install writes only its own records file, except the re-key that deletes old-key files after a merge, and readers use the highest generation per install id
-- [ ] Proposed amendment. Needs approval by mjbvilhena. Forgotten-installs files are rewritten on a re-key, never deleted, and read back.
+- [ ] Amendment approved by mjbvilhena on 2026-10-23. Forgotten-installs files are rewritten on a re-key, never deleted, and read back.
 - [ ] A local edit does not store an `updatedAt` earlier than the previous one. Note entries keep a stable id
 - [ ] An item is available before every attachment has downloaded. A full disk leaves the current snapshot in place
 - [ ] "Forget this phone" deletes that other install's records file, drops it from tombstone garbage collection, and does not re-key. No job retires a file for age or silence
