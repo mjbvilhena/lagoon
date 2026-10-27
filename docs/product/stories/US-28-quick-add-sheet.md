@@ -19,7 +19,7 @@ Optionally tag a save from the last-used tags.
 ## Background
 
 - The save already finished in one tap. Last-used tags are the tags he applied most recently, up to 8, newest first.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: blocking the save on this row.
 
 ## Acceptance criteria

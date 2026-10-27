@@ -18,7 +18,7 @@ Keep more than one attachment on an item.
 
 ## Background
 
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the in-app camera and multi-page scan (US-65, Could).
 
 ## Acceptance criteria

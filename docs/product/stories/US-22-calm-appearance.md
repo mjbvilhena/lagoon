@@ -19,7 +19,7 @@ Choose light, dark, or the system theme.
 ## Background
 
 - System is the default and follows Android. The choice applies immediately and survives a restart.
-- Domain constraints: no `DOMAIN.md`. No `LAYER.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved, and the layer files in `docs/layers/` are approved. Approved by mjbvilhena on 2026-10-20. ADR rules in the domain file are MUST. Do not invent further rules.
 - Out of scope: accent colors, dynamic color, and motion (US-53). A later UX check of the accent is not an acceptance criterion of this story.
 
 ## Acceptance criteria

@@ -19,7 +19,7 @@ Rename a tag, merging only after he confirms a clash.
 ## Background
 
 - A case-only rename sets the display name. It does not merge and it does not ask.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a separate merge button. This confirmed rename is the only tag merge.
 
 ## Acceptance criteria
@@ -42,6 +42,12 @@ Rename a tag, merging only after he confirms a clash.
   - Given the new name is blank
   - When he tries to rename
   - Then the tag is unchanged
+- **Scenario: a trashed item keeps its trash** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22.
+  - Given the tag is on an item that is in trash
+  - When he renames or merges that tag
+  - Then that item shows the new name and stays in trash
+  - And the rename does not set `userEditedAt` and does not clear `inTrash`
 - **Scenario: search follows** — Must
   - Given he renamed a tag
   - When he searches the new name

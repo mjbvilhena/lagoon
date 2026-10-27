@@ -21,7 +21,7 @@ Keep Drive to app data, and sign out without deleting the phone.
 ## Background
 
 - Drive access stays `appDataFolder`. Sign-out does not delete the vault on the phone. The criteria below are the requirements.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: sync conflicts and deletion propagation (US-73). Key transport (US-74).
 
 ## Acceptance criteria
@@ -45,6 +45,9 @@ Keep Drive to app data, and sign out without deleting the phone.
   - When the app-data files are deleted and a following read shows they are gone
   - Then the US-55 release marker is written, and after that `revokeAccess()` runs, he can see that the Drive copy no longer exists, and the local vault is not deleted
   - And the next sign-in asks for consent again
+- Security criteria approved by mjbvilhena on 2026-10-22. US-78 warns that the Drive delete only lasts if every other phone is signed out first. The delete also removes the forgotten-installs files, so a forgotten phone that returns afterwards can bring deleted items back.
+- Security criteria approved by mjbvilhena on 2026-10-22. While a forgotten-passphrase reset is pending, "delete the Drive copy" also requires the current passphrase. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes. The US-37 prompt alone is not enough on that path.
+- Security criteria approved by mjbvilhena on 2026-10-22. During a pending forgotten-passphrase reset, Forget this phone requires the current passphrase, the same as that Drive delete. Until the reset completes, the current passphrase is the old passphrase. The new passphrase counts only after the reset completes. The US-37 prompt alone is not enough on that path.
 - **Scenario: sign-out while offline** — Must
   - Given the phone has no network
   - When he chooses Sign out or the Drive delete

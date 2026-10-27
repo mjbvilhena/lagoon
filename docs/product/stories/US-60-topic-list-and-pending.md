@@ -19,7 +19,7 @@ Browse topics and pending suggestions.
 ## Background
 
 - Confirm and decline rules are US-43.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: inventing a topic that has no items.
 
 ## Acceptance criteria

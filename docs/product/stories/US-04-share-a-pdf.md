@@ -19,8 +19,9 @@ Share a PDF into the vault.
 ## Background
 
 - The file is part of the vault that background sync and the zip carry. It is not a separate backup.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a PDF editor, cloud OCR, and asking him for a PDF password. v1 stores no PDF passwords.
+- Security criteria approved by mjbvilhena on 2026-10-22. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password is stored, its text is extracted, and it is searchable as a normal PDF. It is not marked "text not extracted" because of that owner password.
 
 ## Acceptance criteria
 
@@ -36,6 +37,12 @@ Share a PDF into the vault.
   - Given the PDF is password-protected
   - When it is stored
   - Then v1 stores no PDF password, the file is still stored and openable, and the item is marked "text not extracted"
+- **Scenario: an owner password only** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given the PDF does not need a password to open, and it is restricted only by an owner password
+  - When it is stored
+  - Then it is stored, rendered, and searchable as a normal PDF
+  - And a text layer is extracted as in "text the PDF already contains"
+  - And no password is asked for or stored
 - **Scenario: mixed pages** — Must
   - Given some pages have a text layer and some do not
   - When extraction finishes

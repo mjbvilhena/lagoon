@@ -1,6 +1,6 @@
 # US-76 Decide the topic call's provider, credential, and payload
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Placeholder. Not approved.**
 
 **Epic:** E11.
 
@@ -19,8 +19,9 @@ Decide the topic call's provider, credential, and payload.
 ## Background
 
 - Criteria follow from the ADR at the design gate: which provider and its retention and training terms, how the credential is supplied in a sideloaded APK, and what is sent. The APK must not contain the key in plaintext (US-41). A sensitive item is excluded (US-75).
+- Security criteria approved by mjbvilhena on 2026-10-22. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not include `x-zero-data-retention` set to `true` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once: "Send N earlier items for topics?" N is the number of earlier ordinary items on this install that have no topic provenance, and the default is No. A sensitive item is not counted and is not sent. Per-item "Get topics" stays. There is no monthly cap. Settings shows this month's call count on this install. That count is not synced. De-duplication still applies. The enterprise terms, including the business-purposes grant, are accepted for this personal vault. Governing law is Texas. Data transfer is under the standard contractual clauses. There is no EU region. This placeholder still has no acceptance criteria.
 - The query and the fragment of a token-looking URL are not sent (US-79). The rest of the payload follows from that ADR.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: choosing those answers in this story.
 
 ## Acceptance criteria
@@ -40,7 +41,8 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Criteria follow from the ADR at the design gate. Sensitive-item exclusion is US-75.
+- The ADR is accepted. This story stays a placeholder. Sensitive-item exclusion is US-75.
+- Accepted record: `docs/adr/ADR-0003-topic-call.md`. Status: Accepted. Approved by mjbvilhena on 2026-10-20. This story stays a placeholder. It does not gain acceptance criteria from that record.
 
 ## Implementation notes
 

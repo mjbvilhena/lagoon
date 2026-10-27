@@ -46,7 +46,7 @@ Miguel, using the app every time he saves or looks something up.
 - The name, the teal accent, and Light, Dark, or System are in the specification. Stories stay Draft. The UX gate may still adjust the accent.
 - Sync merge and encryption are not questions for this epic.
 
-## Draft stories
+## Stories
 
 - US-22 Choose light, dark, or the system theme
 - US-23 Show a launcher icon and the name Lagoon

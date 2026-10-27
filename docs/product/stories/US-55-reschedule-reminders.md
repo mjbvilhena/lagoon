@@ -2,6 +2,7 @@
 
 > **Approval status: Approved.**
 > Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Amendment approved by mjbvilhena on 2026-10-23. Forgotten installs and installs with a pending delete are not counted when picking the newest check-in.
 
 **Epic:** E9.
 
@@ -21,7 +22,7 @@ Reschedule reminders after a restart or a clock change.
 
 - Alarms stay inexact. Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - A new install needs the passphrase to re-create the key before the vault and its reminders are available (US-35).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: exact alarms (US-77).
 
 ## Acceptance criteria
@@ -57,6 +58,22 @@ Reschedule reminders after a restart or a clock change.
   - Given notification permission may have changed while the app was closed
   - When he opens the app
   - Then the app checks `POST_NOTIFICATIONS` again and registers or skips the alarms from that result
+- **Scenario: a reminder that fell due in trash** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22. The approved scenarios above stay as written.
+  - Given a reminder's time passed while the item was in trash
+  - When he restores the item, or a later user edit brings it out of trash
+  - Then that reminder fires once, as soon as possible, on the install this story picks
+  - And it is not fired twice
+  - And that once-only fire is a synced fired state, so another phone does not fire it again
+  - And reminders are scheduled again on that path, as they are on restore
+- **Scenario: an expiry notice that came due in trash** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22. The approved scenarios above stay as written.
+  - Given an expiry notice's time passed while the item was in trash
+  - When he restores the item, or a later user edit brings it out of trash
+  - Then that notice is shown once, right after the item leaves trash, on the install this story picks
+  - And it is not shown twice
+  - And that once-only show is a synced fired state, so another phone does not show it again
+  - And this is the exception in US-54. A passed time that he sets still schedules no notice
 - **Scenario: delete and undo** — Must
   - Given he deletes the item
   - When the delete is pending
@@ -69,6 +86,7 @@ Reschedule reminders after a restart or a clock change.
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
   - And an install writes a check-in, and counts as newest, only once it holds the vault key
   - And a check-in is the timestamp that install writes when the app is opened or when a sync succeeds, after it holds the vault key
+  - Amendment approved by mjbvilhena on 2026-10-23. And forgotten installs and installs with a pending delete are not counted when picking the newest check-in
   - And the same rule covers a reminder and an expiry
 - **Scenario: two installs** — Must
   - Given install A checked in 2 days ago and install B checked in 1 day ago, and both are signed in

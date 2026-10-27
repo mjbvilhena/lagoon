@@ -20,7 +20,7 @@ Keep the permission set to an allowlist.
 
 ## Background
 
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: exact alarms (US-77). They stay out of the allowlist. Camera capture uses the system camera, so `CAMERA` stays absent.
 
 ## Acceptance criteria

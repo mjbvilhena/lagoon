@@ -19,7 +19,7 @@ Use the saved vault with no network and no analytics.
 ## Background
 
 - The phone is the primary copy. Analytics, usage telemetry, and a crash-reporting product are out of the specification. The app still does not add Firebase Analytics, Crashlytics, or another usage-analytics library.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a page fetch while offline (US-09) and the topic call (US-44). Those wait. They do not block reading what is already stored.
 - Official Google ML Kit docs do not document a switch that disables usage or diagnostic telemetry, so the requirement is disclosure and acceptance before the first OCR use, not a Settings toggle. The research note is `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
 - The image and the recognized text stay on the device. The disclosure is about ML Kit's metrics, not about sending the image.

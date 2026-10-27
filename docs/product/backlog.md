@@ -1,12 +1,12 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-18. **Draft is not approval.** **Not started is not a skip.**
+> Statuses describe evidence in the tree on 2026-10-23 and were re-checked on 2026-10-27. The 2026-10-19 review section below is that day's record. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
-> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft.
+> The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-64, US-65, US-66, US-75, US-78, US-79, US-80, US-81, US-85, US-86, and US-87 are approved. The other stories stay Draft. US-49 is approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-87 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-66 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it.
 
 ## Gate
 
-Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft. See `docs/sdlc/pipeline-state.md`.
+Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-64, US-65, US-66, US-75, US-78, US-79, US-80, US-81, US-85, US-86, and US-87 are approved. The other stories stay Draft. US-49 is approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-87 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-66 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Domain, layers, ADR-0001 through ADR-0006, and the threat model are approved. Approved by mjbvilhena on 2026-10-20. See `docs/sdlc/pipeline-state.md`.
 
 ## Epic E1: Capture and keep
 
@@ -22,7 +22,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-28** *(Draft)* Last-used tag chips after the one-tap save. Evidence: `docs/product/stories/US-28-quick-add-sheet.md`. Not implemented.
 - **US-32** *(Draft)* More than one attachment on an item. Evidence: `docs/product/stories/US-32-multiple-attachments.md`. Not implemented.
 - **US-40** *(Approved)* Fill an empty title from the page title or file name. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-40-autofill-title.md`. Not implemented.
-- **US-49** *(Draft)* Update a link that was saved before, and undo that update. Evidence: `docs/product/stories/US-49-repeat-link-update.md`. Not implemented.
+- **US-49** *(Approved)* Update a link that was saved before, and undo that update. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-49-repeat-link-update.md`. Not implemented.
 - **US-58** *(Draft)* Run enrichment, snapshot, OCR, and topics in that order. Evidence: `docs/product/stories/US-58-background-pipeline.md`. Not implemented.
 - **US-61** *(Approved)* Filter or search by where an item came from. Should. Evidence: `docs/product/stories/US-61-source-domain-and-app.md`. Not implemented.
 - **US-65** *(Approved)* Add a photo from the camera. Should. Evidence: `docs/product/stories/US-65-in-app-camera.md`. Not implemented.
@@ -56,7 +56,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-39** *(Draft)* Sort and filter by date saved. Evidence: `docs/product/stories/US-39-sort-and-filter-by-date.md`. Not implemented.
 - **US-57** *(Draft)* Prove that search and encryption can run together. Evidence: `docs/product/stories/US-57-fts5-sqlcipher-spike.md`. Not implemented.
 - **US-64** *(Approved)* Share or open an item in another app. Should. Evidence: `docs/product/stories/US-64-share-or-open-out.md`. Not implemented.
-- **US-66** *(Draft)* Keep a trash beyond undo. Should. Evidence: `docs/product/stories/US-66-trash.md`. Not implemented. How long trash keeps an item is not decided.
+- **US-66** *(Approved)* Keep a trash beyond undo. Must. In v1. v1 does not ship without it. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. Evidence: `docs/product/stories/US-66-trash.md`. Not implemented. Amendment approved by mjbvilhena on 2026-10-22. The in-trash state merges by the later `trashChangedAt`, not by `updatedAt`. On every phone the item is hidden and its reminders are silenced, and he can restore it from any phone. The tombstone spreads only after 30 × 24 hours. A delete does not become a tombstone by skipping trash.
 - **US-71** *(Draft)* Triage the inbox in a batch. Could. Evidence: `docs/product/stories/US-71-inbox-multi-select.md`. Not implemented.
 
 ## Epic E4: Seamless sync
@@ -73,8 +73,10 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-52** *(Draft)* Import a zip and merge one-sided items. Evidence: `docs/product/stories/US-52-import-a-zip.md`. Not implemented.
 - **US-56** *(Draft)* Keep a stable identity for each item. Evidence: `docs/product/stories/US-56-item-data-model.md`. Not implemented.
 - **US-59** *(Draft)* Use one Settings screen. Evidence: `docs/product/stories/US-59-settings-screen.md`. Not implemented.
-- **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
+- **US-73** *(Placeholder)* Decide sync conflicts and deletions. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Accepted ADR: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Approved by mjbvilhena on 2026-10-20. Evidence: `docs/product/stories/US-73-sync-conflicts-and-deletions.md`. Not implemented.
 - **US-78** *(Approved)* Keep Drive to app data, and sign out without deleting the phone. Evidence: `docs/product/stories/US-78-drive-scope-and-sign-out.md`. Not implemented.
+- **US-87** *(Approved)* Forget this phone. A Settings button retires one other install's Drive records file and is never automatic. Evidence: `docs/product/stories/US-87-forget-this-phone.md`. Not implemented. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The unlock criterion requires the US-37 unlock first. A cancelled or failed unlock changes nothing. Security criteria approved by mjbvilhena on 2026-10-22. Security criteria approved by mjbvilhena on 2026-10-23. Those marks cover every marked security criterion in that story.
+- **Clock warning** *(Not done)* No story yet. Lagoon shows a warning when this phone's clock is badly out compared with Drive's server time. Merges are unchanged and the residual risk is accepted. Evidence: T-28 in `docs/technical_design/threat-model.md` and `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. The warning threshold and text are not decided. Not implemented.
 
 ## Epic E5: Look and feel
 
@@ -103,14 +105,15 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 
 ## Epic E8: Encryption and sensitive items
 
-> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. Cipher waits for an ADR. Threat model not started.
+> Goal: Encrypt the database and attachment files at rest, keys in Android Keystore. Sync only ciphertext. Biometric lock on items marked sensitive. *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/epics/E8-encryption-and-sensitive-items.md`. US-35, US-75, and US-86 are approved. The other stories in this epic stay Draft. Security criteria on US-35 and US-86 were approved by mjbvilhena on 2026-10-18. Accepted cipher and container: `docs/adr/ADR-0006-cipher-and-container.md`. Approved by mjbvilhena on 2026-10-20. The specification still says the cipher waits for an ADR. That sentence is not edited. Threat model: `docs/technical_design/threat-model.md`, approved. Approved by mjbvilhena on 2026-10-20.
 
 - **US-35** *(Approved)* Encrypt at rest. The vault key does not require user authentication. Amendment approved by mjbvilhena on 2026-10-18. The key is derived from a passphrase, and a second device re-creates it. Security criteria approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-35-encrypt-at-rest.md`. Not implemented.
 - **US-36** *(Draft)* Sync only ciphertext. Evidence: `docs/product/stories/US-36-sync-ciphertext.md`. Not implemented. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - **US-37** *(Draft)* Sensitive items use a biometric. App lock is optional, with the device PIN when there is no biometric. Evidence: `docs/product/stories/US-37-biometric-lock.md`. Not implemented. What a sensitive item reveals is US-75.
-- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
+- **US-74** *(Placeholder)* Decide how the vault key reaches another device. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Accepted ADR: `docs/adr/ADR-0001-argon2id-vault-key.md`. Approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the key from the passphrase. Evidence: `docs/product/stories/US-74-key-transport.md`. Not implemented.
 - **US-75** *(Approved)* Limit what a sensitive item reveals. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Evidence: `docs/product/stories/US-75-sensitive-item-handling.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18.
 - **US-86** *(Approved)* Change the passphrase. Should. Evidence: `docs/product/stories/US-86-change-the-passphrase.md`. Not implemented. Security criteria approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-18. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-10-22. A forgotten-passphrase reset keeps the Drive copy on the old passphrase for 24 hours.
 
 ## Epic E9: Reminders and expiry
 
@@ -136,7 +139,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-48** *(Draft)* Manage a topic that is already saved. Evidence: `docs/product/stories/US-48-manage-saved-topics.md`. Not implemented.
 - **US-60** *(Draft)* Browse topics and pending suggestions. Evidence: `docs/product/stories/US-60-topic-list-and-pending.md`. Not implemented.
 - **US-72** *(Draft)* Score whether topics are useful. Could. Evidence: `docs/product/stories/US-72-topic-usefulness.md`. Not implemented. The score stays on the phone.
-- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
+- **US-76** *(Placeholder)* Decide the topic call's provider, credential, and payload. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Accepted ADR: `docs/adr/ADR-0003-topic-call.md`. Approved by mjbvilhena on 2026-10-20. Evidence: `docs/product/stories/US-76-topic-call-privacy.md`. Not implemented.
 
 ## Epic E10: Trip and collection grouping
 
@@ -145,24 +148,36 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 ## Specification and vision
 
 - **Vision** *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/vision.md`. It states the current product. It does not describe backup or restore controls.
-- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/specification.md`. This does not approve the stories.
+- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18.)* Evidence: `docs/product/specification.md`. This does not approve the stories. The 2026-10-18 amendment includes the passphrase. Amendment approved by mjbvilhena on 2026-10-20.
 
 ## Repository setup
 
 Checks from the harness mapping are in the tree. That is not product approval. Evidence: `docs/sdlc/repository-setup.md`, `.github/workflows/qa.yml` (Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL), `.github/CODEOWNERS`, `.gitignore`, `README.md`. The older `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` files are not in the tree. The Protect master ruleset requires Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, and Kotlin style. The branch must be up to date. There are no bypass actors.
 
 - **Harness install** *(In place)* Cursor skills under `.cursor/commands/`. Submodule `third_party/ai-sdlc-harness` at `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. Evidence: `docs/sdlc/harness-install.md`.
-- **Protect master status checks** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
-- **Protect master bypass** *(Done)* Decided by mjbvilhena on 2026-10-18: all seven checks required, no bypass.
+- **Protect master status checks** *(Done)* Approved by mjbvilhena on 2026-10-18. All seven checks are required, and there are no bypass actors.
+- **Protect master bypass** *(Done)* Approved by mjbvilhena on 2026-10-18. All seven checks are required, and there are no bypass actors.
+
+## Design gate
+
+Approved by mjbvilhena on 2026-10-20. Implementation has not started. The map is `docs/product/stories/TRACEABILITY.md`.
+
+- **Domain** *(Approved)* `docs/domain/vault/DOMAIN.md`. Approved by mjbvilhena on 2026-10-20.
+- **Layers** *(Approved)* `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, `docs/layers/data/LAYER.md`. Approved by mjbvilhena on 2026-10-20.
+- **ADR-0001** *(Accepted)* Approved by mjbvilhena on 2026-10-20. Argon2id vault key. The forgotten-passphrase reset accepts the US-37 biometric or device PIN, keeps the Drive copy on the old passphrase for 24 hours, and another phone that holds the key can cancel. A cancel keeps items saved on the resetting phone during those 24 hours. The passphrase is 12 to 128 Unicode code points after NFC, the bundled common-password list is blocked, and there is no strength meter. A phone that cannot meet the Argon2id memory floor refuses to set up a vault and does not lower the parameters. A phone without secure hardware can still create a vault after he accepts the warning that someone with the phone could extract the key. That warning stays in Settings and is not a second gate. There is no passphrase recall check, no "Check my passphrase" control, and no periodic reminder. Placeholder US-74 points here. `docs/adr/ADR-0001-argon2id-vault-key.md`.
+- **ADR-0002** *(Accepted)* Approved by mjbvilhena on 2026-10-20. Sync conflicts and deletions. US-66 is Must for v1. v1 does not ship without trash. The in-trash field syncs. On every phone a trashed item is hidden and its reminders are silenced, and he can restore it from any phone. Only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` brings it back. In-trash state merges by `trashChangedAt`, not by `updatedAt`. A system write does not. An older user edit is kept. A reminder that fell due in trash fires once on restore. A restore made before the deadline that arrives after a tombstone brings the item back. The tombstone spreads only after 30 × 24 hours. A lost phone's file is retired only through "Forget this phone". Placeholder US-73 points here. `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`.
+- **ADR-0003** *(Accepted)* Approved by mjbvilhena on 2026-10-20. Topic call. The topic call uses the xAI Grok API. Zero data retention is turned on for his xAI team. The default low-cost model is grok-4.20-0309-non-reasoning. A response that does not confirm `x-zero-data-retention` is discarded, and topics pause until he checks. When the key is first added, Lagoon asks once, "Send N earlier items for topics?", and the default is No. N is the number of earlier ordinary items on this install that have no topic provenance. A sensitive item is not counted and is not sent. Per-item "Get topics" stays. There is no monthly cap. Settings shows this month's call count on this install. That count is not synced. De-duplication still applies. The enterprise terms, including the business-purposes grant, are accepted for this personal vault. Governing law is Texas. Data transfer is under the standard contractual clauses. There is no EU region. Placeholder US-76 points here. `docs/adr/ADR-0003-topic-call.md`.
+- **ADR-0004** *(Accepted)* Approved by mjbvilhena on 2026-10-20. ML Kit disclosure gate. `docs/adr/ADR-0004-ml-kit-telemetry.md`. Research input stays `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
+- **ADR-0005** *(Accepted)* Approved by mjbvilhena on 2026-10-20. PDF rendering on API 26–29, isolated process, no PDF password. A password-protected PDF means only a PDF that needs a password to open. A PDF restricted only by an owner password opens, renders, and is searchable as normal. `docs/adr/ADR-0005-pdf-renderer-api-26.md`.
+- **ADR-0006** *(Accepted)* Approved by mjbvilhena on 2026-10-20. Cipher and container. Prerequisite for US-35 implementation. US-35 is not edited. `docs/adr/ADR-0006-cipher-and-container.md`.
+- **Threat model** *(Approved)* `docs/technical_design/threat-model.md`. Approved by mjbvilhena on 2026-10-20. The 2026-10-17 note is an earlier hypothesis list.
 
 ## Not started, and not skipped
 
-These need a later explicit go-ahead after the gates. No skip sentence was recorded.
+These need a later explicit go-ahead. No skip sentence was recorded.
 
 - UX design (`sdlc-ux-designer`)
-- Technical design: RFC, API design, ADRs (`sdlc-rfc-drafter`, `sdlc-api-designer`, `sdlc-adr-drafter`), including the cipher
-- Test strategy and threat model (`sdlc-test-planner`, `sdlc-threat-modeler`). A threat model is required before implementation because of encryption, biometric lock, and Drive sync. It is not written.
-- `DOMAIN.md` / `LAYER.md` (no bound has been designed, so the architect skills were not run, and no MUST/NEVER rules were invented)
+- Test strategy (`sdlc-test-planner`)
 - App implementation (`sdlc-implementer`)
 - Verification skills (test writer, UI tests beyond the plan, code review, security review)
 
@@ -176,7 +191,7 @@ These need a later explicit go-ahead after the gates. No skip sentence was recor
 The index is the full list. Every remaining story is also listed under its parent epic above. Not implemented.
 
 - US-63, US-68, US-69, US-82, US-83, and US-84 are removed. Numbers are not reused.
-- US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. US-73, US-74, and US-76 are placeholders. They have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are not ready for review. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. Alarms are inexact.
+- US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-64, US-65, US-66, US-75, US-78, US-79, US-80, US-81, US-85, US-86, and US-87 are approved. US-73, US-74, and US-76 are placeholders. They have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are not ready for review. Criteria follow from the ADR at the design gate. US-77 has criteria and stays Draft. Amendment approved by mjbvilhena on 2026-10-18 for the US-85 E1 wording. Security criteria approved by mjbvilhena on 2026-10-18. Alarms are inexact.
 - The map is `docs/product/stories/TRACEABILITY.md`.
 
 ## Requirements
@@ -189,23 +204,56 @@ The index is the full list. Every remaining story is also listed under its paren
 - ML Kit metrics are disclosed and accepted before the first OCR use. There is no telemetry off switch. Research: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`.
 - Topic extraction starts on for a new ordinary item. He can turn it off in Settings. There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off. There is no cap. The topic job has its own unmetered setting.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
+- Amendment approved by mjbvilhena on 2026-10-20. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - An empty title fills from the page title or the file name. Camera capture uses the system camera. Lagoon does not request `CAMERA`.
 - Upcoming is the one reminder or the one expiry. Alarms are inexact.
 
 ## Open questions
 
-- Sync conflicts, and how a deletion propagates. US-73. Criteria follow from the ADR at the design gate.
-- How the vault key reaches a new device. US-74. Criteria follow from the ADR at the design gate. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase.
-- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Criteria follow from the ADR at the design gate.
+- Sync conflicts, and how a deletion propagates. US-73. Accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. The story stays a placeholder.
+- How the vault key reaches a new device. US-74. Accepted ADR-0001. Approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-18. A second device re-creates the same key from the passphrase. The story stays a placeholder.
+- Topic provider, retention and training, how the credential is supplied, and what is sent. US-76. Accepted ADR-0003. Approved by mjbvilhena on 2026-10-20. The story stays a placeholder. The topic call uses the xAI Grok API, with zero data retention turned on for his xAI team. When the key is first added, Lagoon asks once, "Send N earlier items for topics?", and the default is No. Sensitive items are never counted or sent.
 
 ## Resolved
 
 - One-sided items are kept. Conflicts and deletions are US-73. Criteria follow from the ADR at the design gate.
 - Encryption at rest, and ciphertext in Drive. Key transport is US-74. Criteria follow from the ADR at the design gate.
 - The vault key is a hardware-backed Android Keystore key that does not require user authentication. Background sync and reminders can decrypt while the phone is locked. Sensitive content still needs the US-37 unlock.
+- Amendment approved by mjbvilhena on 2026-10-20. A phone whose key is not hardware-backed can still set up a vault. Before setup it shows: "This phone cannot keep the vault key in secure hardware. Someone with this phone could extract the key." He has to accept that warning, or no vault is created. The same warning stays in Settings on that phone for as long as the key is not hardware-backed. Settings does not ask him to accept it again. It is not shown as a gate on later opens. A phone whose key is hardware-backed does not show it.
 - There is no per-item topics opt-out switch in v1. Sensitive items are always excluded, the Settings switch covers everything else, and "Get topics" lets him send one ordinary item saved while the switch was off.
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock.
 - Reminders follow the phone's current local zone. A 09:00 reminder fires at 09:00 wherever the phone is.
 - English-only OCR. Inexact alarms. No Back up now.
 - One tap on an image or PDF page opens it full-screen at maximum brightness, with pinch-zoom and the screen kept on. Brightness goes back to normal when you close it. It works offline. A sensitive item needs unlocking first and is protected from screenshots (US-85). Amendment approved by mjbvilhena on 2026-10-18.
+
+## Docs review 2026-10-19
+
+These are not new decisions. The records they name are approved. Approved by mjbvilhena on 2026-10-20. Re-checked on 2026-10-21. The three items below still match the files. Status unchanged.
+
+- **Sensitive-mark merge clock** *(Done)* T-26 merges the sensitive mark by the later `userEditedAt`, and a tie goes to the lower install id, as ADR-0002 does for other user fields. Evidence: `docs/technical_design/threat-model.md`, `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. Both files are approved. Approved by mjbvilhena on 2026-10-20.
+- **ADR-0002 summary against its rules** *(Done)* The Decision summary says user fields merge by the later `userEditedAt`, only a user-initiated edit whose `userEditedAt` is later than `trashChangedAt` clears trash, in-trash state merges by `trashChangedAt` rather than `updatedAt`, and the tombstone spreads after 30 × 24 hours. Evidence: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`. The record is accepted. Approved by mjbvilhena on 2026-10-20.
+- **Story lines that say no domain file** *(Done)* Story lines name `docs/domain/vault/DOMAIN.md`. That file is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. The specification sentence that the cipher waits for an ADR is unchanged.
+
+## Docs review 2026-10-21
+
+These are not decisions. They do not approve a story, an amendment, or implementation. The draft pull request stays open.
+
+- **E11 stories do not all stay Draft** *(Done)* `docs/product/specification.md` says US-41 is approved, US-76 is a placeholder and is not approved, and the other E11 stories stay Draft. US-41 was not edited.
+- **US-66 is approved** *(Done)* The specification approval table, the paragraph under it, and `docs/product/epics/E3-find-and-curate.md` record the approval. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. US-66 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- **Placeholder approval lines say Draft** *(Done)* The approval lines on US-73, US-74, and US-76 say Placeholder. Not approved. No acceptance criteria were added.
+- **ML Kit input still says not to draft an ADR** *(Done)* The next step points at ADR-0004. That record is accepted. Approved by mjbvilhena on 2026-10-20. The research conclusion is unchanged. US-07 and US-59 stay Draft.
+
+## Docs review 2026-10-27
+
+The items below match the files. No story is Done. There is no app. The pull request stays open.
+
+- **US-66 backlog marker** *(Done)* The story file says Approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The backlog marker matches the story file and `docs/product/stories/INDEX.md`. Evidence: `docs/product/stories/US-66-trash.md`.
+- **Earlier review items** *(Done)* The 2026-10-19 and 2026-10-21 items were re-checked. Their evidence still matches the files. Status unchanged. The Protect master ruleset was read again on 2026-10-27. It still requires Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, and Kotlin style, the branch must be up to date, and there are no bypass actors. That item stays Done.
+- **US-55 newest check-in line** *(Done)* Amendment approved by mjbvilhena on 2026-10-23. `docs/product/stories/US-55-reschedule-reminders.md` says forgotten installs and installs with a pending delete are not counted when picking the newest check-in.
+- **Offline syncs and the sync-paused count** *(Done)* US-87, US-66, ADR-0002, `docs/domain/vault/DOMAIN.md`, and `docs/product/stories/REVIEW-PACK.md` say an offline sync neither counts toward nor resets the run of 3 consecutive syncs with a failed forgotten-installs read or listing. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+- **Sync-paused notice wording** *(Done)* The sync-paused notice is named only. Its exact text waits for the UX artefact. Evidence: `docs/adr/ADR-0002-sync-conflicts-and-deletions.md`, `docs/product/stories/US-66-trash.md`, and `docs/product/stories/US-87-forget-this-phone.md`.
+- **Specification US-66 delegated dates** *(Done)* Amendment approved by mjbvilhena on 2026-10-24. `docs/product/specification.md` dates the US-66 delegated line 2026-10-27, matching `docs/product/stories/US-66-trash.md`.
+- **Specification line 70** *(Done)* `docs/product/specification.md` points conflicts and deletions, including trash, at the accepted ADR-0002, and key transport and the forgotten-passphrase reset at the accepted ADR-0001. US-73 and US-74 stay placeholders. `docs/product/stories/REVIEW-PACK.md` no longer lists that specification line as open. The clock-warning threshold and text stay the Not done item under Epic E4.
+- **US-87 delegated sign-off line** *(Done)* `docs/product/stories/US-87-forget-this-phone.md` is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- **ADR-0002 line 129** *(Done)* Amendment approved by mjbvilhena on 2026-10-23. Amendment approved by mjbvilhena on 2026-10-22. The returning phone's short notice keeps the sentence that the notice shows only when something was actually lost.

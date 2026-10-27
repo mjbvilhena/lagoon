@@ -22,7 +22,9 @@ Change the passphrase.
 
 - The vault key is derived from the passphrase (US-35). Changing it re-encrypts the vault.
 - If he forgets the passphrase while a phone still holds the vault key, that phone can set a new passphrase after the US-37 biometric or device-PIN unlock, without the old passphrase. This re-encrypts as in this story. Amendment approved by mjbvilhena on 2026-10-18.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Security criteria approved by mjbvilhena on 2026-10-22. On that forgotten-passphrase reset, the Drive copy keeps the old passphrase for 24 hours before it is re-keyed. During those 24 hours every other phone that holds the key shows a notice and can cancel. A normal passphrase change, where he enters the current passphrase, re-encrypts the phone and the Drive copy without that wait. The phone vault and the Drive copy each stay readable under exactly one passphrase. The approved scenarios stay as written.
+- Security criteria approved by mjbvilhena on 2026-10-22. A new passphrase of fewer than 12 characters is refused, and a new passphrase on the bundled common-password list is refused. There is no strength meter.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the derivation method, the parameters, and where the non-secret salt lives (US-74).
 
 ## Acceptance criteria
@@ -55,6 +57,7 @@ Change the passphrase.
   - When another signed-in install syncs
   - Then that install asks for the new passphrase
   - And it does not overwrite the re-encrypted vault
+- Security criteria approved by mjbvilhena on 2026-10-22. "another install" asks for the new passphrase after a normal change, and after the 24 hours of a forgotten-passphrase reset end with no cancel. During those 24 hours the Drive copy still opens with the old passphrase.
 - **Scenario: old zips** — Should
   - Given zips were exported before the change
   - When the change completes
@@ -68,6 +71,43 @@ Change the passphrase.
   - Given this phone holds the vault key
   - When he chooses "I've forgotten my passphrase" and the US-37 biometric or device-PIN unlock is cancelled or fails
   - Then nothing changes
+- **Scenario: the Drive copy waits** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given this phone holds the vault key and he finishes the forgotten-passphrase reset
+  - When the local re-encrypt completes
+  - Then the phone vault is under the new passphrase
+  - And the Drive copy keeps the old passphrase for 24 hours
+  - And every other phone that holds the key shows a notice and can cancel
+  - And the notice has no passphrase and no item content
+- **Scenario: he has only one phone** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given no other phone holds the key
+  - When the forgotten-passphrase reset finishes
+  - Then nobody is shown the notice
+  - And the Drive copy still keeps the old passphrase for 24 hours
+- **Scenario: the resetting phone goes offline** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given the forgotten-passphrase reset has re-encrypted the phone
+  - When that phone is offline before the pending-reset marker is on Drive
+  - Then the Drive copy stays on the old passphrase and the 24 hours have not started
+- **Scenario: cancelling the reset** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given another phone that holds the key cancels during the 24 hours
+  - When the resetting phone reads that cancel
+  - Then the Drive copy stays on the old passphrase
+  - And items saved on the resetting phone during those 24 hours are copied into the restored vault under the old passphrase
+  - Security criteria approved by mjbvilhena on 2026-10-22. A trash or a restore made on that phone during the wait is a record change merged by `trashChangedAt`, copied into that restored vault by the ordinary field rules, and is not dropped as a delete made only in the new snapshot
+  - And the new local generation is discarded only after that restored vault is readable under the old passphrase
+  - And the new passphrase opens nothing
+- **Scenario: a normal change skips the wait** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given he enters the current passphrase
+  - When the change completes
+  - Then the phone vault and the Drive copy are re-encrypted without the 24-hour wait
+- **Scenario: crash safety during the wait** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given a crash during the forgotten-passphrase reset, while Drive is re-keyed, or while a cancel is applied
+  - When the app starts again
+  - Then the phone vault and the Drive copy are each readable under exactly one passphrase, and neither is mixed
+- **Scenario: a new passphrase under the minimum** — Security criteria approved by mjbvilhena on 2026-10-22.
+  - Given he enters a new passphrase, on a normal change or on a forgotten-passphrase reset
+  - When that passphrase is shorter than 12 Unicode code points after NFC, longer than 128, or on the bundled common-password list
+  - Then the passphrase is refused and no change starts
+  - And there is no strength meter
 
 ## Analytics and observability (optional)
 

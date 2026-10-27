@@ -52,7 +52,7 @@ Miguel, installing and configuring the vault himself.
 - [ ] Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt.
 - Sync merge and encryption are not open here.
 
-## Draft stories
+## Stories
 
 - US-24 Install a signed release APK
 - US-25 Run the tests he named

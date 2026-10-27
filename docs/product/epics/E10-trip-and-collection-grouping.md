@@ -29,6 +29,6 @@ None in v1.
 
 None. This epic is later, not v1. No stories.
 
-## Draft stories
+## Stories
 
 None.

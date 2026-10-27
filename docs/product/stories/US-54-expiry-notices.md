@@ -19,7 +19,7 @@ Notify before an expiry.
 ## Background
 
 - An item has either a reminder (US-34) or an expiry, not both.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: exact alarms (US-77) and the upcoming list (US-62).
 
 ## Acceptance criteria
@@ -48,6 +48,15 @@ Notify before an expiry.
   - Given the expiry day has passed
   - When he opens the item
   - Then the item shows that it is expired
+- **Scenario: a notice that came due in trash** — Must
+  - Amendment approved by mjbvilhena on 2026-10-22.
+  - Given an expiry notice was already due to fire, the item then went to trash, and that notice's time passed while the item was in trash
+  - When he restores the item, or a later user edit brings it out of trash
+  - Then that notice is shown once, right after the item leaves trash
+  - And it is not shown twice
+  - And the 7-day notice and the day-of notice are each shown once if that notice came due while the item was in trash
+  - And this is an exception to "09:00 today has passed" and "a past date"
+  - And those two scenarios still hold when he sets an expiry whose time has already passed: the date is stored and no notice is scheduled for that passed time
 
 ## Analytics and observability (optional)
 

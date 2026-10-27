@@ -19,7 +19,7 @@ Prefer an unmetered network for background sync.
 ## Background
 
 - The specification sets the preference to Unmetered only, default on, via WorkManager `UNMETERED`. There is no roaming warning, because that warning belonged to Back up now.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: a manual "sync now" action.
 
 ## Acceptance criteria

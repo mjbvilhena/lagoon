@@ -19,7 +19,7 @@ Keep an offline snapshot of a saved page.
 ## Background
 
 - One fetch with US-08. Cap about 10 MB in the specification. This story uses 10 MiB.
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: MHTML. Which fetches are skipped is US-79.
 
 ## Acceptance criteria

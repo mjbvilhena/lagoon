@@ -22,7 +22,7 @@ Limit what a sensitive item reveals.
 
 - US-37 still requires a biometric or device credential before the body.
 - A sensitive notification's public version and private version show only "Lagoon reminder", with no title and no code, even when the phone is unlocked or set to show all content. Tapping it opens Lagoon. The item's details appear after the US-37 unlock. A code is text already in the item title (US-34). There is no separate code field. An ordinary item may still show its title and codes (US-34).
-- Domain constraints: no `DOMAIN.md`. No MUST/NEVER rules. Do not invent any.
+- Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the topic provider and payload (US-76). Ordinary lock-screen text (US-34).
 
 ## Acceptance criteria
