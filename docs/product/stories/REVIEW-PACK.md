@@ -3,7 +3,7 @@
 > **Approval status: Draft. Not approved.**
 > Listing a story here is not a sign-off.
 
-US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-49, US-66, and US-87, which are Proposed for story review and are not approved. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
+US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-65, US-75, US-78, US-79, US-80, US-81, US-85, and US-86 are approved. The other stories stay Draft, except US-49, US-66, and US-87, which are Proposed for story review and are not approved. The non-security parts of US-49 are approved. The non-security parts of US-87 are approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. The non-security parts of US-66 are approved. Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22. The map is `docs/product/stories/TRACEABILITY.md`. The index is `docs/product/stories/INDEX.md`.
 
 ## Requirements
 
@@ -67,19 +67,20 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-50, US-55, US-61, US-62, US-64, US-
 - Amendment approved by mjbvilhena on 2026-10-22. That cleanup notice shows only when attachment files were actually deleted.
 - Security criteria approved by mjbvilhena on 2026-10-22. US-78 warns that the Drive delete only lasts if every other phone is signed out first. The delete also removes the forgotten-installs files, so a forgotten phone that returns afterwards can bring deleted items back.
 - Amendment approved by mjbvilhena on 2026-10-23. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
-- Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id. Amendment approved by mjbvilhena on 2026-10-23.
+- Amendment approved by mjbvilhena on 2026-10-23. Security criteria approved by mjbvilhena on 2026-10-23. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
 - Security criteria approved by mjbvilhena on 2026-10-23. Before a phone forgets another, it uploads its own merged records file.
 - Security criteria approved by mjbvilhena on 2026-10-23. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
 - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
-- Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
-- The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully. Amendment approved by mjbvilhena on 2026-10-23.
+- Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted when picking the newest check-in (US-55), and this phone's retry still deletes it.
+- Amendment approved by mjbvilhena on 2026-10-23. The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
+- Proposed amendment. Needs approval by mjbvilhena. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
 - Security criteria approved by mjbvilhena on 2026-10-23. A re-key reads back each forgotten-installs file it rewrites and retries if an entry is missing. After a re-key, each phone re-reads its own forgotten-installs file and re-adds any missing id it wrote.
 - Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
-- If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'. Security criteria approved by mjbvilhena on 2026-10-23.
+- Security criteria approved by mjbvilhena on 2026-10-23. If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'.
 
 ## For mjbvilhena
 
-The clock-warning threshold and text are not decided. Specification line 70 still needs approval by mjbvilhena. That line keeps a conflict algorithm, a deletion rule, and a key-recovery design out of the specification, and says the criteria follow from the ADR at the design gate.
+The clock-warning threshold and text are not decided.
 
 ## Threat note
 

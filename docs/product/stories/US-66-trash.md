@@ -326,9 +326,17 @@ Keep a trash beyond undo.
   - Then the local vault is kept
   - And this phone does not upload
   - And it retries until a later sync reads it successfully
-  - And a file under a newer key is not a failed read. Security criteria approved by mjbvilhena on 2026-10-23.
-  - And the sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully. Amendment approved by mjbvilhena on 2026-10-23.
+  - Security criteria approved by mjbvilhena on 2026-10-23. And a file under a newer key is not a failed read.
+  - Amendment approved by mjbvilhena on 2026-10-23. And the sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+  - Decided by mjbvilhena; this record is Proposed until he approves it. The sync-paused notice is named only. Its exact text waits for the UX artefact.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
+- **Scenario: an offline sync does not count toward the sync-paused notice** — Must
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Given Drive is not reachable
+  - Decided by mjbvilhena; this record is Proposed until he approves it. When a sync runs
+  - Decided by mjbvilhena; this record is Proposed until he approves it. Then that offline sync does not count toward the 3 consecutive failed syncs for the sync-paused notice
+  - Decided by mjbvilhena; this record is Proposed until he approves it. And it does not reset that run
+  - Decided by mjbvilhena; this record is Proposed until he approves it. And only a sync that reaches Drive and fails to read or list a forgotten-installs file counts
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
   - When the next sync finds that
@@ -342,7 +350,7 @@ Keep a trash beyond undo.
   - And that forgotten-installs file stays on Drive and is still read, and this rebuild does not change it
   - And the old id is never removed from that file
   - And Forget this phone never deletes that file, and the ids in it stay forgotten
-  - And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Security criteria approved by mjbvilhena on 2026-10-23.
+  - Amendment approved by mjbvilhena on 2026-10-23. Security criteria approved by mjbvilhena on 2026-10-23. And if this phone had itself forgotten other installs, its own forgotten-installs file under its old install id keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids.
   - And only a US-78 delete removes these files
   - And a rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id
   - And it uploads a new records file under its new install id and the current key version

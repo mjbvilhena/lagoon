@@ -126,7 +126,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   Amendment approved by mjbvilhena on 2026-10-22. That cleanup notice shows only when attachment files were actually deleted.
 
-  Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so only when something was actually lost.
+  Amendment approved by mjbvilhena on 2026-10-23. Amendment approved by mjbvilhena on 2026-10-22. A returning forgotten phone discards its local copies and rebuilds from Drive. Items permanently deleted stay gone, and that phone's unsynced local edits are lost. It shows a short notice saying so only when something was actually lost.
 
   Amendment approved by mjbvilhena on 2026-10-22. The short notice that unsynced local edits were lost shows only when something was actually lost.
 
@@ -136,7 +136,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   Amendment approved by mjbvilhena on 2026-10-23. If the records-file delete fails after the forgotten-installs entry is written and read back, the entry stays. He is told that phone will be forgotten at its next sync, and the delete is retried.
 
-  Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id. Amendment approved by mjbvilhena on 2026-10-23.
+  Amendment approved by mjbvilhena on 2026-10-23. Security criteria approved by mjbvilhena on 2026-10-23. Forget this phone never deletes the forgotten phone's own forgotten-installs file, and the ids in it stay forgotten. A rebuilt or rejoined phone's old forgotten-installs file keeps the same ids. Forget and rebuild never change it. A re-key may rewrite it under the new key with the same ids. Only a US-78 delete removes these files. A rejoined phone that later runs Forget writes a new forgotten-installs file under its new install id.
 
   Security criteria approved by mjbvilhena on 2026-10-23. Before a phone forgets another, it uploads its own merged records file.
 
@@ -144,12 +144,14 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 
   Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 
-  Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted as an active phone (US-55), and this phone's retry still deletes it.
+  Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted when picking the newest check-in (US-55), and this phone's retry still deletes it.
 
-  The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully. Amendment approved by mjbvilhena on 2026-10-23.
+  Amendment approved by mjbvilhena on 2026-10-23. The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
+  Proposed amendment. Needs approval by mjbvilhena. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+  Proposed amendment. Needs approval by mjbvilhena. The sync-paused notice is named only. Its exact text waits for the UX artefact.
 
   Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
-  If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'. Security criteria approved by mjbvilhena on 2026-10-23.
+  Security criteria approved by mjbvilhena on 2026-10-23. If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'.
 
   Security criteria approved by mjbvilhena on 2026-10-22. Forget this phone does not revoke a stolen phone. Revoking a stolen phone is a passphrase change (US-86) and Google sign-out.
 
@@ -164,7 +166,7 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
 ## Compliance
 
 - [ ] Each install writes only its own records file, except the re-key that deletes old-key files after a merge, and readers use the highest generation per install id
-- [x] Amendment approved by mjbvilhena on 2026-10-23. Forgotten-installs files are rewritten on a re-key, never deleted, and read back.
+- [ ] Amendment approved by mjbvilhena on 2026-10-23. Forgotten-installs files are rewritten on a re-key, never deleted, and read back.
 - [ ] A local edit does not store an `updatedAt` earlier than the previous one. Note entries keep a stable id
 - [ ] An item is available before every attachment has downloaded. A full disk leaves the current snapshot in place
 - [ ] "Forget this phone" deletes that other install's records file, drops it from tombstone garbage collection, and does not re-key. No job retires a file for age or silence

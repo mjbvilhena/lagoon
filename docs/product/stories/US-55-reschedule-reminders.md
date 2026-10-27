@@ -2,6 +2,7 @@
 
 > **Approval status: Approved.**
 > Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Amendment approved by mjbvilhena on 2026-10-23. Forgotten installs and installs with a pending delete are not counted when picking the newest check-in.
 
 **Epic:** E9.
 
@@ -85,7 +86,7 @@ Reschedule reminders after a restart or a clock change.
   - And when two check-ins are equal, the lower install id, by plain string comparison, posts
   - And an install writes a check-in, and counts as newest, only once it holds the vault key
   - And a check-in is the timestamp that install writes when the app is opened or when a sync succeeds, after it holds the vault key
-  - And forgotten installs and installs with a pending delete are not counted as active phones
+  - Amendment approved by mjbvilhena on 2026-10-23. And forgotten installs and installs with a pending delete are not counted when picking the newest check-in
   - And the same rule covers a reminder and an expiry
 - **Scenario: two installs** — Must
   - Given install A checked in 2 days ago and install B checked in 1 day ago, and both are signed in
