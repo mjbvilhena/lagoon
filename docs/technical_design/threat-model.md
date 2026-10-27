@@ -11,6 +11,8 @@
 
 **Status: Approved. Approved by mjbvilhena on 2026-10-20.**
 
+Amendment approved by mjbvilhena on 2026-10-27.
+
 Skill: `sdlc-threat-modeler`. The note `docs/technical_design/2026-10-17-proposed-threat-note.md` is an older hypothesis list. It is not this model.
 
 Security-change Definition of Done is not met. There is no application code, so authentication checks, negative tests, and runtime audit events cannot be shown. This file is the threat review. It contains no exploit procedure and no certification claim. Approved by mjbvilhena on 2026-10-20. The ADRs are accepted. There is still no application code.
@@ -108,7 +110,7 @@ A forgotten passphrase, together with losing every phone that holds the key, mea
 - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 - Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted when picking the newest check-in (US-55), and this phone's retry still deletes it.
 - Amendment approved by mjbvilhena on 2026-10-23. The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
-- Proposed amendment. Needs approval by mjbvilhena. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+- Security criteria approved by mjbvilhena on 2026-10-27. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
 - Security criteria approved by mjbvilhena on 2026-10-22. The known risk next to T-23 is that the US-78 delete also removes the forgotten-installs files, so a forgotten phone that returns afterwards can bring deleted items back. US-78 warns that the Drive delete only lasts if every other phone is signed out first.
 - Security criteria approved by mjbvilhena on 2026-10-22. On a returning forgotten phone, cancelling the passphrase prompt or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync.
 - Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.

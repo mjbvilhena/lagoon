@@ -26,7 +26,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 | Path | What it is |
 | --- | --- |
 | `docs/product/vision.md` | Current vision. Restates the approved specification, epics E1–E9 and E11, and the approved amendment. |
-| `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-22. Amendment approved by mjbvilhena on 2026-10-24. |
+| `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-22. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27. |
 | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. E10 is Later, not in v1. |
 | `docs/product/stories/` | Story files and `docs/product/stories/INDEX.md`. The approval line on each file is the status. |
 | `docs/product/backlog.md` | Draft backlog |

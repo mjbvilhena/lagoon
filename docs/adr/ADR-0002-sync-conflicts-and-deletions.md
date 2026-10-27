@@ -4,6 +4,8 @@
 
 Accepted. Approved by mjbvilhena on 2026-10-20.
 
+Amendment approved by mjbvilhena on 2026-10-27.
+
 This record answers the US-73 placeholder. It does not add acceptance criteria to that story. Drafting it is not acceptance. Approved by mjbvilhena on 2026-10-20. Those decisions are the sensitive mark, the synced in-trash field, retiring a lost phone only through "Forget this phone", and US-66 as Must for v1. v1 does not ship without trash.
 
 ## Context
@@ -147,8 +149,8 @@ Default: an unexpected duplicate id is a conflict, never a second item. A failed
   Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted when picking the newest check-in (US-55), and this phone's retry still deletes it.
 
   Amendment approved by mjbvilhena on 2026-10-23. The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
-  Proposed amendment. Needs approval by mjbvilhena. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
-  Proposed amendment. Needs approval by mjbvilhena. The sync-paused notice is named only. Its exact text waits for the UX artefact.
+  Security criteria approved by mjbvilhena on 2026-10-27. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+  Amendment approved by mjbvilhena on 2026-10-27. The sync-paused notice is named only. Its exact text waits for the UX artefact.
 
   Security criteria approved by mjbvilhena on 2026-10-23. A forgotten phone that returns after a passphrase change, and finds the files under a newer key, asks for the new passphrase first and then reads the forgotten-installs files. Cancelling or entering a wrong passphrase discards nothing, the phone does not upload, and it asks again at the next sync. A newer-key file is not a read failure.
   Security criteria approved by mjbvilhena on 2026-10-23. If the passphrase was already accepted at this sync in the newer-key scenario ("files are under a newer key"), he is not asked again in 'the phone returns'.

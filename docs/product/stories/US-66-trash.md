@@ -3,6 +3,7 @@
 > **Approval status: Proposed for story review. Non-security parts approved.**
 > Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
+> Amendment approved by mjbvilhena on 2026-10-27.
 
 **Epic:** E3.
 
@@ -328,15 +329,16 @@ Keep a trash beyond undo.
   - And it retries until a later sync reads it successfully
   - Security criteria approved by mjbvilhena on 2026-10-23. And a file under a newer key is not a failed read.
   - Amendment approved by mjbvilhena on 2026-10-23. And the sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
-  - Decided by mjbvilhena; this record is Proposed until he approves it. The sync-paused notice is named only. Its exact text waits for the UX artefact.
+  - Security criteria approved by mjbvilhena on 2026-10-27. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+  - Amendment approved by mjbvilhena on 2026-10-27. The sync-paused notice is named only. Its exact text waits for the UX artefact.
   - Amendment approved by mjbvilhena on 2026-10-22. If any forgotten-installs read fails, or the listing fails, the phone keeps the local vault, does not upload, and retries until a later sync reads it successfully.
 - **Scenario: an offline sync does not count toward the sync-paused notice** — Must
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Given Drive is not reachable
-  - Decided by mjbvilhena; this record is Proposed until he approves it. When a sync runs
-  - Decided by mjbvilhena; this record is Proposed until he approves it. Then that offline sync does not count toward the 3 consecutive failed syncs for the sync-paused notice
-  - Decided by mjbvilhena; this record is Proposed until he approves it. And it does not reset that run
-  - Decided by mjbvilhena; this record is Proposed until he approves it. And only a sync that reaches Drive and fails to read or list a forgotten-installs file counts
+  - Security criteria approved by mjbvilhena on 2026-10-27.
+  - Given Drive is not reachable
+  - When a sync runs
+  - Then that offline sync does not count toward the 3 consecutive failed syncs for the sync-paused notice
+  - And it does not reset that run
+  - And only a sync that reaches Drive and fails to read or list a forgotten-installs file counts
 - **Scenario: a forgotten phone returns** — Must
   - Given every forgotten-installs file was read successfully and one of them contains this install's id
   - When the next sync finds that

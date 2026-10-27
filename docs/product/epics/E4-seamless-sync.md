@@ -5,6 +5,7 @@
 > Epic amendments approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-18.
 > Amendment approved by mjbvilhena on 2026-10-20.
+> Amendment approved by mjbvilhena on 2026-10-27.
 
 ## Background & Value Proposition
 
@@ -36,7 +37,7 @@ Miguel, on this phone and on a later install of the same app.
   - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
   - Security criteria approved by mjbvilhena on 2026-10-23. If the forgotten phone syncs before the retry deletes its records file, it is handled as a returning forgotten phone. Its old records file is not used in the rebuild and is not counted when picking the newest check-in (US-55), and this phone's retry still deletes it.
   - Amendment approved by mjbvilhena on 2026-10-23. The sync-paused notice shows after 3 consecutive syncs with a failed forgotten-installs read or listing, and clears at the first sync that reads every forgotten-installs file successfully.
-  - Proposed amendment. Needs approval by mjbvilhena. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
+  - Security criteria approved by mjbvilhena on 2026-10-27. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
   - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
