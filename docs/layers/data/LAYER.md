@@ -93,7 +93,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 ## Change control
 
-A layer ADR is required for a new datastore, a new network SDK, a cipher choice, or dropping encrypt-before-write. US-57 is the gate for the FTS and encryption combination. This file is approved. Approved by mjbvilhena on 2026-10-20. US-49 is Proposed for story review and is not approved.
+A layer ADR is required for a new datastore, a new network SDK, a cipher choice, or dropping encrypt-before-write. US-57 is the gate for the FTS and encryption combination. This file is approved. Approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-27. US-49 is approved.
 
 ## Anti-patterns
 

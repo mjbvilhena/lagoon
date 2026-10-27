@@ -1,6 +1,6 @@
 # US-49 Update a link that was saved before, and undo that update
 
-> **Approval status: Proposed for story review. Non-security parts approved.**
+> **Approval status: Approved.**
 > Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 
 **Epic:** E1.

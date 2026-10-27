@@ -90,4 +90,4 @@ Miguel, on this phone and on a later install of the same app.
 - US-59 Use one Settings screen
 - US-73 Decide sync conflicts and deletions. Placeholder. Not ready for review. No Given/When/Then and no MoSCoW yet. It does not meet the user-story Definition of Done. Criteria follow from the ADR at the design gate.
 - US-78 Drive scope and sign-out. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-87 Forget this phone. Proposed for story review. Non-security parts approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- Amendment approved by mjbvilhena on 2026-10-27. US-87 Forget this phone. Approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.

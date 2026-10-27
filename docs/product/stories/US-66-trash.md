@@ -1,8 +1,8 @@
 # US-66 Keep a trash beyond undo
 
-> **Approval status: Proposed for story review. Non-security parts approved.**
-> Approved on 2026-10-22 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-> Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark. This story is not approved. What is still open is named in `docs/product/stories/REVIEW-PACK.md` under "For mjbvilhena".
+> **Approval status: Approved.**
+> Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-10-22. The written security criteria in this story carry that mark.
 > Amendment approved by mjbvilhena on 2026-10-27.
 
 **Epic:** E3.

@@ -1,7 +1,7 @@
 # US-87 Forget this phone
 
-> **Approval status: Proposed for story review. Non-security parts approved.**
-> Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+> **Approval status: Approved.**
+> Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 > Amendment approved by mjbvilhena on 2026-10-27.
 
 **Epic:** E4.
@@ -52,7 +52,7 @@ Forget this phone.
   - Given the US-37 unlock succeeded
   - When he names one other install and "Forget this phone" runs
   - Then this phone uploads its own merged records file
-  - Security criteria approved by mjbvilhena on 2026-10-23. If the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
+  - Security criteria approved by mjbvilhena on 2026-10-23. And if the upload of this phone's own merged records file before Forget fails, or the phone is offline, nothing is written or deleted, he is told, and he can retry.
   - And this phone writes that install's id into this phone's forgotten-installs file and reads that file back
   - And if that write or that read-back fails, nothing is deleted and he is told
   - And that install's records file is deleted from Drive
@@ -73,7 +73,7 @@ Forget this phone.
   - When the delete of that install's records file fails
   - Then that forgotten-installs entry stays
   - And he is told that phone will be forgotten at its next sync
-  - Security criteria approved by mjbvilhena on 2026-10-23. A failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
+  - Security criteria approved by mjbvilhena on 2026-10-23. And a failed records-file delete is retried at each later sync of this phone until that records file is gone. Until then, that phone shows as pending ("will be forgotten at its next sync") in the Forget this phone list.
 - **Scenario: the forgotten phone syncs before the retry** — Must
   - Security criteria approved by mjbvilhena on 2026-10-23. Given this phone has written another install's id into its forgotten-installs file and read it back, and the delete of that install's records file is still pending.
   - Security criteria approved by mjbvilhena on 2026-10-23. When that forgotten phone syncs before the retry has deleted that records file.
@@ -176,4 +176,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Not a design spec. The story is Proposed for story review. Non-security parts approved. Do not implement from this file.
+Not a design spec. Do not implement from this file.

@@ -5,6 +5,7 @@
 > Amendment approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
 > Amendment approved by mjbvilhena on 2026-10-18.
+> Amendment approved by mjbvilhena on 2026-10-27.
 
 ## Background & Value Proposition
 
@@ -73,7 +74,7 @@ Paths are under `docs/product/stories/`. A story stays Draft unless its line say
 - US-28 File a capture with last-used tags
 - US-32 Keep more than one attachment on an item
 - US-40 Fill the title from the page or the file. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
-- US-49 Update a link that was saved before, and undo that update. Proposed for story review. Non-security parts approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- Amendment approved by mjbvilhena on 2026-10-27. US-49 Update a link that was saved before, and undo that update. Approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-58 Run enrichment, snapshot, OCR, and topics in that order
 - US-61 Filter or search by where an item came from. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-65 Add a photo from the system camera. Should. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
