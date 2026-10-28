@@ -148,7 +148,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 ## Specification and vision
 
 - **Vision** *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/vision.md`. It states the current product. It does not describe backup or restore controls.
-- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18.)* Evidence: `docs/product/specification.md`. This does not approve the stories. The 2026-10-18 amendment includes the passphrase. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27.
+- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18.)* Evidence: `docs/product/specification.md`. This does not approve the stories. The 2026-10-18 amendment includes the passphrase. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27. Amendment approved by mjbvilhena on 2026-10-28.
 
 ## Repository setup
 
@@ -260,9 +260,9 @@ The items below match the files. No story is Done. There is no app. The pull req
 
 ## Docs review 2026-10-28
 
-Re-checked against master `04e1e9d576d92be9f5253f5c882cb21a828af832`. No open pull request. The seven required checks on that commit are green. No story is Done. There is no app. This review does not approve a story, an amendment, or implementation.
+Re-checked against master `04e1e9d576d92be9f5253f5c882cb21a828af832`. No open pull request. The seven required checks on that commit are green. No story is Done. There is no app. Amendment approved by mjbvilhena on 2026-10-28.
 
-- **E11 threat-model sentence** *(Done)* `docs/product/epics/E11-topics.md` states that the design-gate threat model is `docs/technical_design/threat-model.md`. Approved by mjbvilhena on 2026-10-20. Proposed amendment. Needs approval by mjbvilhena.
-- **Specification epic-amendment dates** *(Done)* The epic gate row in `docs/product/specification.md` includes the 2026-10-27 amendments on E1, E3, and E4. Proposed amendment. Needs approval by mjbvilhena. Amendments to E1, E3, and E4 approved by mjbvilhena on 2026-10-27. The headers of E1, E3, and E4 carry Amendment approved by mjbvilhena on 2026-10-27.
-- **Product specification amendment dates** *(Done)* The specification bullet in this file now includes Amendment approved by mjbvilhena on 2026-10-24 and Amendment approved by mjbvilhena on 2026-10-27, matching the specification header.
+- **E11 threat-model sentence** *(Done)* `docs/product/epics/E11-topics.md` states that the design-gate threat model is `docs/technical_design/threat-model.md`. Approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-28. The E11 header carries Amendment approved by mjbvilhena on 2026-10-28.
+- **Specification epic-amendment dates** *(Done)* The epic gate row in `docs/product/specification.md` includes the 2026-10-27 amendments on E1, E3, and E4. Amendment approved by mjbvilhena on 2026-10-28. Amendments to E1, E3, and E4 approved by mjbvilhena on 2026-10-27. The headers of E1, E3, and E4 carry Amendment approved by mjbvilhena on 2026-10-27. The E11 header and the specification header carry Amendment approved by mjbvilhena on 2026-10-28.
+- **Product specification amendment dates** *(Done)* The specification bullet in this file now includes Amendment approved by mjbvilhena on 2026-10-24, Amendment approved by mjbvilhena on 2026-10-27, and Amendment approved by mjbvilhena on 2026-10-28, matching the specification header.
 - **Earlier review items** *(Done)* The 2026-10-19, 2026-10-21, and 2026-10-27 items were re-checked. Their evidence still matches the files. Status unchanged. The Protect master ruleset was read on 2026-10-28. It still requires Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, and Kotlin style. The branch must be up to date. There are no bypass actors.
