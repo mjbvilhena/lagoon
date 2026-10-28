@@ -1,6 +1,6 @@
 # Product backlog
 
-> Statuses describe evidence in the tree on 2026-10-23 and were re-checked on 2026-10-27. The 2026-10-19 review section below is that day's record. **Draft is not approval.** **Not started is not a skip.**
+> Statuses describe evidence in the tree on 2026-10-23 and were re-checked on 2026-10-27 and on 2026-10-28. The 2026-10-19 review section below is that day's record. **Draft is not approval.** **Not started is not a skip.**
 > No story is Done. There is no app.
 > The specification and epics E1–E11 are approved by mjbvilhena on 2026-10-17. E10 is Later, not in v1. US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-64, US-65, US-66, US-75, US-78, US-79, US-80, US-81, US-85, US-86, and US-87 are approved. The other stories stay Draft. US-49 is approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-87 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-66 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it.
 
@@ -148,7 +148,7 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 ## Specification and vision
 
 - **Vision** *(Approved by mjbvilhena on 2026-10-17.)* Evidence: `docs/product/vision.md`. It states the current product. It does not describe backup or restore controls.
-- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18.)* Evidence: `docs/product/specification.md`. This does not approve the stories. The 2026-10-18 amendment includes the passphrase. Amendment approved by mjbvilhena on 2026-10-20.
+- **Product specification** *(Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18.)* Evidence: `docs/product/specification.md`. This does not approve the stories. The 2026-10-18 amendment includes the passphrase. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27.
 
 ## Repository setup
 
@@ -257,3 +257,12 @@ The items below match the files. No story is Done. There is no app. The pull req
 - **Specification line 70** *(Done)* `docs/product/specification.md` points conflicts and deletions, including trash, at the accepted ADR-0002, and key transport and the forgotten-passphrase reset at the accepted ADR-0001. US-73 and US-74 stay placeholders. `docs/product/stories/REVIEW-PACK.md` no longer lists that specification line as open. The clock-warning threshold and text stay the Not done item under Epic E4.
 - **US-87 delegated sign-off line** *(Done)* `docs/product/stories/US-87-forget-this-phone.md` is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - **ADR-0002 line 129** *(Done)* Amendment approved by mjbvilhena on 2026-10-23. Amendment approved by mjbvilhena on 2026-10-22. The returning phone's short notice keeps the sentence that the notice shows only when something was actually lost.
+
+## Docs review 2026-10-28
+
+Re-checked against master `04e1e9d576d92be9f5253f5c882cb21a828af832`. No open pull request. The seven required checks on that commit are green. No story is Done. There is no app. This review does not approve a story, an amendment, or implementation.
+
+- **E11 threat-model sentence** *(Not done)* `docs/product/epics/E11-topics.md` says the threat model is required later and is not started. The threat model is `docs/technical_design/threat-model.md`. Approved by mjbvilhena on 2026-10-20. The epic sentence is not edited. Whether to change it is not decided.
+- **Specification epic-amendment dates** *(Not done)* The epic gate row in `docs/product/specification.md` lists epic amendments through Amendment approved by mjbvilhena on 2026-10-20. The headers of E1, E3, and E4 also say Amendment approved by mjbvilhena on 2026-10-27. The specification row is not edited. Whether to add that date is not decided.
+- **Product specification amendment dates** *(Done)* The specification bullet in this file now includes Amendment approved by mjbvilhena on 2026-10-24 and Amendment approved by mjbvilhena on 2026-10-27, matching the specification header.
+- **Earlier review items** *(Done)* The 2026-10-19, 2026-10-21, and 2026-10-27 items were re-checked. Their evidence still matches the files. Status unchanged. The Protect master ruleset was read on 2026-10-28. It still requires Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, and Kotlin style. The branch must be up to date. There are no bypass actors.
