@@ -58,7 +58,7 @@ Miguel, saving into the vault and later looking across items that share a subjec
 - Cost: each call can spend money. No cap is set here.
 - A sideloaded APK must not contain the API key in plain form. How the credential is supplied and protected is US-76. Criteria follow from the ADR at the design gate.
 - Encryption of the vault at rest and of the Drive copy stays E8. This epic does not weaken that. It is the exception that sends readable content to a cloud AI.
-- Threat model is required later and is not started.
+- Proposed amendment. Needs approval by mjbvilhena. The design-gate threat model is `docs/technical_design/threat-model.md`. Approved by mjbvilhena on 2026-10-20.
 
 ## Open Questions
 
