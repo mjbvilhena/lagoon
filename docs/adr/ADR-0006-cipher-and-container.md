@@ -51,6 +51,8 @@ The replacement, if this amendment is approved:
 
 The accepted sentences above stay in this record until this amendment is approved.
 
+Proposed amendment. Needs approval by mjbvilhena. Original: "The replacement, if this amendment is approved:" Replacement: "The replacement:" Original: "The accepted sentences above stay in this record until this amendment is approved." Replacement: "The accepted sentences above stay in this record and are not deleted. For file, attachment, derived-file, Drive records, and zip payloads, the amendment approved by mjbvilhena on 2026-10-29 supersedes the accepted sentences that give each segment a fresh 96-bit nonce from `SecureRandom` with the segment index inside that nonce, and the accepted sentences that authenticate the clear header as GCM additional authenticated data."
+
 Default: a container whose magic, version, or tag is not this layout is not decrypted and is not imported.
 
 ## Alternatives considered
