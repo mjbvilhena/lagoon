@@ -39,8 +39,10 @@ Approved by mjbvilhena on 2026-10-20. The marked specification and epic amendmen
 | PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Accepted. Approved by mjbvilhena on 2026-10-20. |
 | Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Prerequisite for US-35 implementation. US-35 is not edited. |
 | Threat model | `docs/technical_design/threat-model.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| UX design | `docs/technical_design/ux-design.md` | Proposed. Not approved. |
+| Test plan | `docs/technical_design/test-plan.md` | Proposed. Not approved. |
 
-UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20.
+UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20. Proposed files exist and are not approved: `docs/technical_design/ux-design.md` and `docs/technical_design/test-plan.md`. The sentence that they are not started stays until mjbvilhena approves the specification amendment.
 
 ## Epic map
 

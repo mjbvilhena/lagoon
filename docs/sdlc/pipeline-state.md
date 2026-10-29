@@ -1,8 +1,10 @@
 # Pipeline state
 
-Inspection date: 2026-10-28. Conductor: `sdlc-conductor`. Amendment approved by mjbvilhena on 2026-10-28. Implementation has not started. The design-band draft below sits on master `f9a9a772d96c33fdf30e123e7eb623e595e09030`. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
+Inspection date: 2026-10-29. Conductor: `sdlc-conductor`. Amendment approved by mjbvilhena on 2026-10-28. Implementation has not started. Master is `f9a9a772d96c33fdf30e123e7eb623e595e09030`. The design-band drafts are on this branch in open pull request #10. They are not on master. They are Proposed. Not approved. Runtime graph: `get_sdlc_template("lifecycle pipeline")` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
 A later pass the same day called `get_sdlc_template` for `lifecycle pipeline`, `ux design`, `test_plan`, `e2e_test_plan`, `pr`, and `user story`, and `get_definition_of_done` for `ui change`, `pr`, `feature`, `user story`, and `security change`. `get_domain_consultant("vault")` and `get_layer_consultant` for `ui`, `domain`, and `data` resolved. Skills for the draft: `sdlc-ux-designer` and `sdlc-test-planner`. Memory sync is `sdlc-conductor` Job B. The pull-request text follows `sdlc-pr-summarizer`.
+
+The 2026-10-29 review read `lifecycle pipeline`, `docs backlog review`, `pr`, `ux design`, `test plan`, and `user story` through `get_sdlc_template`, and Definition of Done for `user story`, `pr`, and `epic`. `get_domain_consultant("vault")` and `get_layer_consultant` for `ui`, `domain`, and `data` resolved.
 
 Templates and Definition of Done checks were read with `get_sdlc_template` and `get_definition_of_done` from harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`. The 2026-10-28 review read `lifecycle pipeline`, `docs backlog review`, `pr`, `user story`, `adr`, `product spec`, `threat model`, `domain`, and `layer`, plus Definition of Done for `user story`, `pr`, and `epic`. `get_domain_consultant("vault")` and `get_layer_consultant` for `ui`, `domain`, and `data` resolve to the approved files below. Approved by mjbvilhena on 2026-10-20. Capture and knowledge are not separate domains.
 
