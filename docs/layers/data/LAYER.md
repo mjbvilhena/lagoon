@@ -44,6 +44,8 @@ Where the named capabilities live:
 
 If a dependency is missing from this table, treat it as **disallowed** until a human updates the file.
 
+Proposed amendment. Needs approval by mjbvilhena. Add `com.google.crypto.tink:tink-android:1.24.0` to the allowed dependencies, and only for streaming encryption of files, derived files, Drive records, and zip entries, as proposed ADR-0007 (`AES256_GCM_HKDF_1MB`). It is not a dependency for SQLCipher, Argon2id, or the Keystore wrap. The accepted table above is unchanged. This paragraph does not change the status line of this file.
+
 ## Forbidden dependencies
 
 - NEVER import Compose or `com.mjbvilhena.lagoon.ui`.

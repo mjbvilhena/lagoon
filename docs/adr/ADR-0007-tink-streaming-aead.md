@@ -12,13 +12,13 @@ This record does not change the Accepted status of ADR-0001 or ADR-0006. It does
 
 Accepted ADR-0006 encrypts files, attachments, derived files, Drive records, and zip payloads with AES-256-GCM in fixed-size segments. It does not name the segment length or a library. The database stays SQLCipher 4. The root key stays the Argon2id output from accepted ADR-0001. HKDF-SHA256 still derives one subkey per purpose.
 
-A streaming seal has to encrypt a large file without holding it twice. Tink's published template `AES256_GCM_HKDF_1MB` is that construction: AES-256-GCM, HKDF with HMAC-SHA256, and a ciphertext segment size of 1048576 bytes (1 MB). The same parameters are `Aes256GcmHkdf1MB` in Tink's C++ templates: 32-byte IKM, 32-byte derived key, HKDF HMAC-SHA256, ciphertext segment size 1048576, output prefix RAW.
+A streaming seal has to encrypt a large file without holding it twice. In `com.google.crypto.tink:tink-android:1.24.0`, `PredefinedStreamingAeadParameters.AES256_GCM_HKDF_1MB` sets a 32-byte main key, HKDF HMAC-SHA256, a 32-byte derived AES-GCM key, and a ciphertext segment size of 1048576 bytes. `com.google.crypto.tink.subtle.AesGcmHkdfStreaming` is the implementation.
 
 Doing nothing leaves the segment length and the nonce construction open, which is what the test plan had recorded.
 
 Non-goals: SQLCipher page encryption, the Argon2id KDF, the purpose split of the HKDF subkeys, and the Android Keystore wrap. The wrap stays AES-256-GCM with the nonce from the Keystore, as ADR-0001 states. That wrap is not streaming and is not this template.
 
-Domain consultant `vault`. Layer consultant `data`. The data layer's allowed-dependency table does not name Tink. This record does not edit that file.
+Domain consultant `vault`. Layer consultant `data`. The accepted allowed-dependency table does not name Tink. A proposed amendment on that file names `com.google.crypto.tink:tink-android:1.24.0` for these streams only. That amendment is not acceptance of the table.
 
 ## Decision
 
@@ -28,10 +28,11 @@ Where it applies: attachment files, derived files (thumbnails, previews, snapsho
 
 Rules:
 
-- The template parameters are fixed: 32-byte IKM, HKDF HMAC-SHA256, 32-byte derived AES-GCM key, ciphertext segment size 1048576, output prefix RAW. A 4 KB template is not this decision.
+- The template parameters are fixed: 32-byte IKM, HKDF HMAC-SHA256, 32-byte derived AES-GCM key, ciphertext segment size 1048576. A 4 KB template is not this decision. The GCM tag is 16 bytes. On the key-manager path `firstSegmentOffset` is 0.
 - The IKM is the purpose subkey. It is not a second key stored on Drive or in the zip. No Tink keyset is written to disk.
-- Tink's published framing is the stream. The header is a 1-byte header length, a 32-byte salt, and a 7-byte nonce prefix. The file key is `HKDF(ikm=purpose subkey, salt=salt, info=associated data, length=32)`. Each segment nonce is that 7-byte prefix, the segment number as a 32-bit integer, and a last-segment flag, 12 bytes in all. Full segments after the first are 1048576 ciphertext bytes. The first segment is shorter by the header, and by the ciphertext offset when that offset is not zero, so that header, offset, and first segment align to 1048576. The last segment may be shorter. A segment whose tag fails fails the object.
-- The clear header from ADR-0006 (magic `LAGOON` and NUL, version, KDF parameters, key version, install id, and object kind) stays in front of the Tink stream and is the associated data. Zip entry names stay opaque ids.
+- The header is 40 bytes: a length byte whose value is 40, a 32-byte random salt, and a 7-byte random nonce prefix. The salt and the prefix are chosen once per stream. `Hkdf.computeHkdf("HmacSha256", ikm, salt, associatedData, 32)` runs once per stream. That 32-byte key encrypts every segment. HKDF does not run again for each segment.
+- The nonce is 12 bytes, big-endian: the 7-byte prefix, the segment number as a 32-bit unsigned integer, and one flag byte that is 1 on the last segment and 0 otherwise. Segments are encrypted with no GCM associated data. Full segments after the first are 1048576 ciphertext bytes. The first segment's ciphertext is 1048536 bytes, including its tag. The last segment may be shorter. A segment whose tag fails fails the object.
+- The clear header from ADR-0006 (magic `LAGOON` and NUL, version, KDF parameters, key version, install id, and object kind) stays in front of the Tink stream and is the HKDF info. Zip entry names stay opaque ids.
 - A new streaming container that is not one of those object kinds uses this same template. It does not pick another segment size.
 
 What this stops: an app-built AES-256-GCM seal that draws a fresh 96-bit nonce from `SecureRandom` for each segment of a file, Drive record, or zip entry.
@@ -47,10 +48,10 @@ What this stops: an app-built AES-256-GCM seal that draws a fresh 96-bit nonce f
 ## Consequences
 
 - **Positive.** The segment length is 1048576 ciphertext bytes. A large file is sealed in segments. The purpose subkeys and Argon2id are unchanged.
-- **Negative / accepted trade-offs.** Tink requires a second HKDF. ADR-0006's purpose HKDF still produces the 32-byte IKM. Tink then runs HKDF-SHA256 from that IKM, the random salt, and the associated data. That second HKDF is required by `AES256_GCM_HKDF_1MB`. It does not replace the purpose HKDF, and it does not change Argon2id or SQLCipher 4.
-- **Negative / accepted trade-offs.** Tink does not take an app-supplied 96-bit `SecureRandom` nonce per segment. The 7-byte prefix is random per stream. The segment number and the last-segment flag occupy the rest of the 12-byte nonce. ADR-0006's accepted sentences still describe a `SecureRandom` nonce and a segment index inside that nonce. Those sentences are not rewritten here.
-- **Negative / accepted trade-offs.** Tink binds associated data as HKDF info. Segments are encrypted with no GCM associated data. ADR-0006's accepted text says the clear header is additional authenticated data on the container ciphertext. The observable result is the same: a changed header, install id, or object kind fails decryption and is reported as a wrong passphrase, as ADR-0006 already requires for a tag failure on an in-bounds header. The mechanism is the HKDF info, not a GCM tag over the header. That difference is not written into ADR-0006's accepted rules.
-- **Follow-ups.** The data layer's allowed-dependency table does not list Tink. Adding that dependency is a later edit of `docs/layers/data/LAYER.md`, and it needs approval by mjbvilhena. This record does not make that edit. ADR-0006 carries a proposed amendment that names this template and the 1 MB size. That amendment is not acceptance of ADR-0006's existing text.
+- **Negative / accepted trade-offs.** Tink requires a second HKDF, once per stream. ADR-0006's purpose HKDF still produces the 32-byte IKM. Tink then runs HKDF-SHA256 from that IKM, the per-stream salt, and the associated data, and reuses the 32-byte result for every segment. That call is `Hkdf.computeHkdf("HmacSha256", ikm, salt, associatedData, 32)` in tink-android 1.24.0. It does not replace the purpose HKDF, and it does not change Argon2id or SQLCipher 4.
+- **Negative / accepted trade-offs.** Tink does not take an app-supplied 96-bit `SecureRandom` nonce per segment. The 7-byte prefix is random per stream. The segment number and the last-segment flag occupy the rest of the 12-byte nonce. ADR-0006's accepted sentences still describe a `SecureRandom` nonce and a segment index inside that nonce. Those sentences are not rewritten. The proposed replacement is the amendment on ADR-0006.
+- **Negative / accepted trade-offs.** Tink binds associated data as HKDF info. `Cipher.doFinal` is called with no GCM associated data. ADR-0006's accepted text says the clear header is additional authenticated data on the container ciphertext. The observable result is the same: a changed header, install id, or object kind fails decryption and is reported as a wrong passphrase, as ADR-0006 already requires for a tag failure on an in-bounds header. The mechanism is the HKDF info, not a GCM tag over the header. The accepted sentences stay. The proposed replacement is the amendment on ADR-0006.
+- **Follow-ups.** `docs/layers/data/LAYER.md` has a proposed amendment for `com.google.crypto.tink:tink-android:1.24.0`, limited to these streams. The accepted dependency table is unchanged. ADR-0006's proposed amendment is the same scheme as this record. Neither amendment accepts the accepted text.
 
 ## Compliance
 

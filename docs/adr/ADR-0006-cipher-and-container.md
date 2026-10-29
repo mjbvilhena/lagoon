@@ -38,7 +38,18 @@ Rules, if this record is accepted:
 - Zip reading rejects a path that is absolute, contains `..`, or would extract outside the destination directory. It stops at 10000 entries, at 2 GiB of uncompressed bytes in total, and at a single entry whose uncompressed size is more than 100 times its compressed size. A stop leaves the vault unchanged. Export uses that same 2 GiB uncompressed cap and splits the export rather than writing a zip the importer would refuse.
 - Attachment bytes on Drive are separate immutable objects, named by the hash of the ciphertext, as ADR-0002 describes. They use this same file container. Replacing an object does not rewrite an old hash.
 
-Proposed amendment. Needs approval by mjbvilhena. The fixed-size segment for the file, Drive, and zip AES-256-GCM containers is 1 MB, using Tink AES256_GCM_HKDF_1MB. The proposal is `docs/adr/ADR-0007-tink-streaming-aead.md`. This line does not change the Accepted status of this record.
+Proposed amendment. Needs approval by mjbvilhena. For file, attachment, derived-file, Drive records, and zip payloads, this proposal replaces the accepted sentences that give each segment a fresh 96-bit nonce from `SecureRandom` with the segment index inside that nonce, and the accepted sentences that authenticate the clear header as GCM additional authenticated data. The replacement is Tink `AES256_GCM_HKDF_1MB` from `com.google.crypto.tink:tink-android:1.24.0`, class `com.google.crypto.tink.subtle.AesGcmHkdfStreaming`, parameters `PredefinedStreamingAeadParameters.AES256_GCM_HKDF_1MB`. It does not replace SQLCipher 4, the purpose HKDF, Argon2id, or the Keystore wrap. The proposal is `docs/adr/ADR-0007-tink-streaming-aead.md`. This paragraph does not change the Accepted status of this record.
+
+The replacement, if this amendment is approved:
+
+- Parameters: 32-byte IKM, HKDF HMAC-SHA256, a 32-byte derived AES-GCM key, ciphertext segment size 1048576, and a 16-byte GCM tag. On the key-manager path `firstSegmentOffset` is 0.
+- Header, 40 bytes: a length byte whose value is 40, a 32-byte random salt, and a 7-byte random nonce prefix. The salt and the prefix are chosen once per stream.
+- One HKDF-SHA256 per stream: `Hkdf.computeHkdf("HmacSha256", ikm, salt, associatedData, 32)`. That 32-byte key encrypts every segment. HKDF does not run again for each segment.
+- Nonce, 12 bytes, big-endian: the 7-byte prefix, the segment number as a 32-bit unsigned integer, and one flag byte that is 1 on the last segment and 0 otherwise. `Cipher.doFinal` is called with no GCM associated data.
+- Associated data is the HKDF info. The clear header (magic `LAGOON` and NUL, version, KDF parameters, key version, install id, and object kind) is that associated data. Changing it changes the derived key, so decryption fails. It is not a GCM tag over the header.
+- Segments after the first are 1048576 ciphertext bytes when they are full. The first segment's ciphertext is 1048536 bytes, which is 1048576 minus the 40-byte header, including its tag. The last segment may be shorter.
+
+The accepted sentences above stay in this record until this amendment is approved.
 
 Default: a container whose magic, version, or tag is not this layout is not decrypted and is not imported.
 

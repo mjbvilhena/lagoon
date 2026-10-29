@@ -31,13 +31,13 @@ Approved by mjbvilhena on 2026-10-20. The marked specification and epic amendmen
 | Domain | `docs/domain/vault/DOMAIN.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
 | UI layer | `docs/layers/ui/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
 | Domain layer | `docs/layers/domain/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
-| Data layer | `docs/layers/data/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
+| Data layer | `docs/layers/data/LAYER.md` | Approved. Approved by mjbvilhena on 2026-10-20. Proposed amendment. Needs approval by mjbvilhena. The amendment adds `com.google.crypto.tink:tink-android:1.24.0` for streaming file, Drive, and zip encryption only. The accepted text is unchanged. |
 | Vault key | `docs/adr/ADR-0001-argon2id-vault-key.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-74 points here. |
 | Sync conflicts | `docs/adr/ADR-0002-sync-conflicts-and-deletions.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-73 points here. |
 | Topic call | `docs/adr/ADR-0003-topic-call.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Placeholder US-76 points here. |
 | ML Kit metrics | `docs/adr/ADR-0004-ml-kit-telemetry.md` | Accepted. Approved by mjbvilhena on 2026-10-20. |
 | PDF rendering | `docs/adr/ADR-0005-pdf-renderer-api-26.md` | Accepted. Approved by mjbvilhena on 2026-10-20. |
-| Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Prerequisite for US-35 implementation. US-35 is not edited. Proposed amendment. Needs approval by mjbvilhena. That line names 1 MB segments and Tink AES256_GCM_HKDF_1MB. The Accepted status is unchanged. |
+| Cipher and container | `docs/adr/ADR-0006-cipher-and-container.md` | Accepted. Approved by mjbvilhena on 2026-10-20. Prerequisite for US-35 implementation. US-35 is not edited. Proposed amendment. Needs approval by mjbvilhena. The amendment proposes replacing the per-segment `SecureRandom` nonce and the clear header as GCM additional authenticated data with Tink `AES256_GCM_HKDF_1MB` from `com.google.crypto.tink:tink-android:1.24.0`. The accepted sentences stay. The Accepted status is unchanged. |
 | Streaming containers | `docs/adr/ADR-0007-tink-streaming-aead.md` | Proposed. Not approved. Decided by mjbvilhena; this record is Proposed until he approves it. |
 | Threat model | `docs/technical_design/threat-model.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
 | UX design | `docs/technical_design/ux-design.md` | Proposed. Not approved. |
