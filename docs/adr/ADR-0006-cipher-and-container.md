@@ -38,6 +38,8 @@ Rules, if this record is accepted:
 - Zip reading rejects a path that is absolute, contains `..`, or would extract outside the destination directory. It stops at 10000 entries, at 2 GiB of uncompressed bytes in total, and at a single entry whose uncompressed size is more than 100 times its compressed size. A stop leaves the vault unchanged. Export uses that same 2 GiB uncompressed cap and splits the export rather than writing a zip the importer would refuse.
 - Attachment bytes on Drive are separate immutable objects, named by the hash of the ciphertext, as ADR-0002 describes. They use this same file container. Replacing an object does not rewrite an old hash.
 
+Proposed amendment. Needs approval by mjbvilhena. The fixed-size segment for the file, Drive, and zip AES-256-GCM containers is 1 MB, using Tink AES256_GCM_HKDF_1MB. The proposal is `docs/adr/ADR-0007-tink-streaming-aead.md`. This line does not change the Accepted status of this record.
+
 Default: a container whose magic, version, or tag is not this layout is not decrypted and is not imported.
 
 ## Alternatives considered
