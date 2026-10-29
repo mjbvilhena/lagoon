@@ -2,9 +2,9 @@
 
 ## Status
 
-Proposed. 2026-10-29.
+Accepted. 2026-10-29.
 
-Decided by mjbvilhena; this record is Proposed until he approves it.
+Approved by mjbvilhena on 2026-10-29.
 
 This record does not change the Accepted status of ADR-0001 or ADR-0006. It does not approve a story.
 
