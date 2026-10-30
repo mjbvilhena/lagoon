@@ -19,9 +19,17 @@ The script checks that the working copy of `ux-design.md` matches `UX_COMMIT`, a
 
 Open `index.html` in a browser. No server and no network are required. Each screen is 360 by 800 CSS pixels inside a device frame. System, Light, and Dark above the frame preview the palette. System is selected by default.
 
-## Publish
+## Deploy
 
-These files are static. GitHub Pages, when it serves the `gh-pages` branch at `/`, should receive the contents of this directory at the site root, including `.nojekyll`. There is no site generator and no extra build step.
+These files are static. There is no build step. `.nojekyll` is in this directory.
+
+`.github/workflows/pages.yml` uploads `docs/mockups`, including hidden files, so `.nojekyll` is in the site root and GitHub Pages does not run Jekyll. The workflow uses the official actions `actions/checkout`, `actions/configure-pages`, `actions/upload-pages-artifact`, and `actions/deploy-pages`. It does not use a secret or a personal access token.
+
+A push to `master` that changes `docs/mockups/**` or `.github/workflows/pages.yml` runs the workflow. `workflow_dispatch` can start it from any branch, including before merge.
+
+`GITHUB_TOKEN` cannot turn Pages on. Once, set **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+
+The `gh-pages` branch is not deleted by this workflow. After the Pages source is GitHub Actions, that branch is optional.
 
 ## Pages
 
