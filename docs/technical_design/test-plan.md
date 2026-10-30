@@ -1,6 +1,6 @@
 # Test plan
 
-**Status: Proposed.** This artefact is not approved and not agreed. It waits for mjbvilhena to walk through it. It does not approve a story, and it does not say any story is Done.
+**Status: Approved.** Approved by mjbvilhena on 2026-10-30. It does not approve a story, and it does not say any story is Done.
 
 Template shape: `get_sdlc_template("test_plan")`, with the journey section in the shape of `get_sdlc_template("e2e_test_plan")`. Skill: `sdlc-test-planner`. Harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
@@ -26,7 +26,7 @@ Definition of Done checks that were read, and what they still require after this
 
 ## Scope
 
-- **In:** Unit and integration behavior for the domain, the data adapters, SQLCipher with FTS, Argon2id, the accepted ciphers, the proposed Tink streaming containers, sync merge, tombstones, forgotten-installs, Compose checks named by US-25 and by the UX artefact, and the journeys in the end-to-end section.
+- **In:** Unit and integration behavior for the domain, the data adapters, SQLCipher with FTS, Argon2id, the accepted ciphers, the Tink streaming containers in accepted ADR-0007, sync merge, tombstones, forgotten-installs, Compose checks named by US-25 and by the UX artefact, and the journeys in the end-to-end section.
 - **Out:** A live Google Drive call (US-25). A production account. Load tests. A visual snapshot farm. E10. Choosing a cipher (already accepted in ADR-0006). Writing the US-57 spike result (that note is the spike's own deliverable, not this plan). Executable tests in this change.
 - **Oracles:** A story Then, a MUST or NEVER in `docs/domain/vault/DOMAIN.md` or a `LAYER.md`, or a rule in an accepted ADR. A test that needs a behavior none of those state is not added.
 
@@ -40,12 +40,12 @@ The repo has no test sources and no test runner dependency. This plan does not s
 | Data integration | JVM, and an Android test only where Keystore, SQLCipher, or ML Kit cannot be faked | No live Drive. |
 | SQLCipher and FTS | US-57: a small test app on an API 26 emulator and on an arm64 phone | Before search and encryption are built on that pair. |
 | Compose | Robolectric, JVM (US-25) | At least one screen's main control. Further screens use the same runner. |
-| Journey | JVM + Robolectric only, for J-1 through J-12 | No instrumented runner and no emulator runner for these journeys. Decided by mjbvilhena; this record is Proposed until he approves it. |
+| Journey | JVM + Robolectric only, for J-1 through J-12 | No instrumented runner and no emulator runner for these journeys. Approved by mjbvilhena on 2026-10-30. |
 | CI | `qa.yml`: Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, Kotlin style, CodeQL | A failed assertion fails the job (US-25). |
 
 ### Tink
 
-Streaming file, Drive, and zip containers use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. Decided by mjbvilhena; this record is Proposed until he approves it. The proposal is `docs/adr/ADR-0007-tink-streaming-aead.md`. Argon2id, the purpose HKDF, and SQLCipher 4 stay as accepted ADR-0001 and ADR-0006 state them. The Keystore wrap stays the ADR-0001 AES-256-GCM wrap and does not use this template. This plan stays Proposed.
+Streaming file, Drive, and zip containers use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. Approved by mjbvilhena on 2026-10-30. The decision is accepted `docs/adr/ADR-0007-tink-streaming-aead.md`. Argon2id, the purpose HKDF, and SQLCipher 4 stay as accepted ADR-0001 and ADR-0006 state them. The Keystore wrap stays the ADR-0001 AES-256-GCM wrap and does not use this template.
 
 ### UX artefact
 
@@ -83,11 +83,11 @@ Ordered by user and data risk. Status is planned. Nothing here is implemented.
 | TP-24 | US-81 sideload policy: the release signing story's published rule is the oracle. A test checks the policy file and the build type that policy names, once those files exist. This plan does not invent a second signing scheme. | integration | An unsigned or differently signed APK is treated as the release | planned |
 | TP-25 | Repeat URL normalisation (scheme, `www`, trailing slash, fragment, `utm_*` and tracking parameters, host case) updates one item, unions tags, appends a dated note, and does not overwrite text. The snackbar is "Saved before, added to existing" with Undo and "Keep separate". Trashed matches are ignored when a live match exists. | integration | A second item, or a note he typed is overwritten | planned |
 | TP-26 | Full-screen sets `screenBrightness` to `1.0f` on that window, does not request `WRITE_SETTINGS`, keeps the screen on until close, does not write a decoded image or a rendered page to disk, and does not open a PDF that needs a password. An owner-password-only PDF still opens. A sensitive item prompts before the view and uses `FLAG_SECURE`. | integration | Brightness is a system setting, or a password is stored | planned |
-| TP-27 | Compose. The passphrase field is a password input with `IME_FLAG_NO_PERSONALIZED_LEARNING`, and that screen uses `FLAG_SECURE`. Settings is one screen and has no Back up now, no Restore, no last-backup time, and no "Check my passphrase". Theme defaults to System. Light accent `#0F766E`, dark accent `#2DD4BF`, on-accent text in dark mode black or `#003731`, and `#0F766E` is not a dark-surface color. Dynamic color is off until toggled, and the toggle is absent on API 30 and below. Animator scale 0 completes the action with no motion. US-25 finds Settings' main control by its accessible name. Decided by mjbvilhena; this record is Proposed until he approves it. The story file is not edited. | Compose | A backup button appears, or the dark accent is unreadable | planned |
+| TP-27 | Compose. The passphrase field is a password input with `IME_FLAG_NO_PERSONALIZED_LEARNING`, and that screen uses `FLAG_SECURE`. Settings is one screen and has no Back up now, no Restore, no last-backup time, and no "Check my passphrase". Theme defaults to System. Light accent `#0F766E`, dark accent `#2DD4BF`, on-accent text in dark mode black or `#003731`, and `#0F766E` is not a dark-surface color. Dynamic color is off until toggled, and the toggle is absent on API 30 and below. Animator scale 0 completes the action with no motion. US-25 finds Settings' main control by its accessible name. Approved by mjbvilhena on 2026-10-30. | Compose | A backup button appears, or the dark accent is unreadable | planned |
 | TP-28 | Module graph, once Gradle exists: `:domain` has no Android dependency, `:ui` does not depend on `:data`, `:data` does not depend on `:ui`, `:app` is the only module that depends on both. The architecture test fails the build otherwise. | unit | A composable imports SQLCipher or Drive | planned |
 | TP-29 | Zip reading rejects an absolute path, `..`, and a path that escapes the destination. It stops at 10000 entries, 2 GiB uncompressed in total, and a single entry whose uncompressed size is more than 100 times its compressed size. A stop leaves the vault unchanged. | integration | A zip replaces the vault or writes outside the destination | planned |
 | TP-30 | A failed assertion fails CI (US-25). Kotlin style runs `ktlintCheck` or `detekt` once Gradle exists, as `qa.yml` already says. | CI | A red test is ignored | planned |
-| TP-31 | File, attachment, derived-file, Drive records, and zip payloads use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. The same associated data is required to decrypt. SQLCipher and the Keystore wrap do not use that template. Decided by mjbvilhena; this record is Proposed until he approves it. | integration | A platform GCM seal or a different segment size ships | planned |
+| TP-31 | File, attachment, derived-file, Drive records, and zip payloads use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. The same associated data is required to decrypt. SQLCipher and the Keystore wrap do not use that template. Approved by mjbvilhena on 2026-10-30. | integration | A platform GCM seal or a different segment size ships | planned |
 
 Happy paths are the success column of each row. Failure and empty paths are the risk column and the unhappy table. This change is not a bugfix, so there is no old-code regression row.
 
@@ -134,7 +134,7 @@ Draft stories are still the oracle for rows that cite them. A Draft story is not
 - [x] Framework and paths match the repo: JVM, Robolectric, `qa.yml`, and no runner the repo does not have.
 - [x] No secrets or production URLs in this plan.
 - [x] Not a bugfix, so there is no test-that-failed-on-old-code requirement.
-- [x] Domain and layer constraints that affect setup are noted: fake ports, no live Drive, SQLCipher raw key, architecture test, and proposed ADR-0007 for the streaming containers.
+- [x] Domain and layer constraints that affect setup are noted: fake ports, no live Drive, SQLCipher raw key, architecture test, and accepted ADR-0007 for the streaming containers.
 
 ## End-to-end test plan
 
@@ -145,7 +145,7 @@ Journeys below are the user-visible outcomes the stories require. `sdlc-e2e-scri
 | Field | Value |
 | --- | --- |
 | Journeys in scope | J-1 through J-12 |
-| Runner | JVM + Robolectric only for J-1 through J-12. No instrumented runner and no emulator runner for these journeys. Decided by mjbvilhena; this record is Proposed until he approves it. US-25 names that runner for its Compose screen and excludes an emulator from that story. US-27 screenshots and the US-57 spike are not these journeys. |
+| Runner | JVM + Robolectric only for J-1 through J-12. No instrumented runner and no emulator runner for these journeys. Approved by mjbvilhena on 2026-10-30. US-25 names that runner for its Compose screen and excludes an emulator from that story. US-27 screenshots and the US-57 spike are not these journeys. |
 | Base URL source | None. There is no web app. The subject is the installed app on a local or CI device. |
 | Layer constraints | UI consultant: Compose talks to domain use cases, not to Drive or SQLCipher. |
 
@@ -279,14 +279,14 @@ Visual snapshot farms, load tests, a live Drive tenant, Play Store review, and E
 - A streaming container that is not Tink `AES256_GCM_HKDF_1MB`, or a full ciphertext segment that is not 1048576 bytes.
 - An instrumented or emulator runner for J-1 through J-12.
 
-## Closed in this plan, still Proposed
+## Closed in this plan
 
-These four are no longer open questions. The plan as a whole stays Proposed. Decided by mjbvilhena; this record is Proposed until he approves it.
+These four are no longer open questions. Approved by mjbvilhena on 2026-10-30.
 
 1. **Journey runner.** J-1 through J-12 run on JVM + Robolectric only. No instrumented or emulator runner is planned for them.
-2. **Tink.** Streaming AES-256-GCM uses Tink `AES256_GCM_HKDF_1MB`, as proposed ADR-0007. SQLCipher 4, Argon2id, the purpose HKDF, and the Keystore wrap stay as the accepted ADRs state them.
+2. **Tink.** Streaming AES-256-GCM uses Tink `AES256_GCM_HKDF_1MB`, as accepted ADR-0007. SQLCipher 4, Argon2id, the purpose HKDF, and the Keystore wrap stay as the accepted ADRs state them.
 3. **GCM segment length.** 1 MB. A full ciphertext segment is 1048576 bytes.
-4. **US-25 screen.** The named screen in this plan is Settings. The story file is not edited.
+4. **US-25 screen.** The named screen in this plan is Settings. Amendment approved by mjbvilhena on 2026-10-30. US-25 stays Draft.
 
 ## Open questions
 

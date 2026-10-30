@@ -41,9 +41,9 @@ Approved by mjbvilhena on 2026-10-20. The marked specification and epic amendmen
 | Streaming containers | `docs/adr/ADR-0007-tink-streaming-aead.md` | Accepted. Approved by mjbvilhena on 2026-10-29. Amendment approved by mjbvilhena on 2026-10-29. The status-wording replacements beside the stale sentences are approved. The original sentences stay. |
 | Threat model | `docs/technical_design/threat-model.md` | Approved. Approved by mjbvilhena on 2026-10-20. |
 | UX design | `docs/technical_design/ux-design.md` | Proposed. Not approved. |
-| Test plan | `docs/technical_design/test-plan.md` | Proposed. Not approved. |
+| Test plan | `docs/technical_design/test-plan.md` | Approved. Approved by mjbvilhena on 2026-10-30. |
 
-UX and the test strategy are not started. ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20. Proposed files exist and are not approved: `docs/technical_design/ux-design.md` and `docs/technical_design/test-plan.md`. The sentence that they are not started stays until mjbvilhena approves the specification amendment.
+UX design is Proposed. Not approved. The test plan is approved. Approved by mjbvilhena on 2026-10-30. ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20. The specification sentence that UX and the test strategy are not started stays until mjbvilhena approves that amendment. US-25 stays Draft. Amendment approved by mjbvilhena on 2026-10-30. The Compose screen is Settings.
 
 ## Epic map
 
