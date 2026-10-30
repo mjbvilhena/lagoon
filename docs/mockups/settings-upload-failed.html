@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings — Lagoon review aid</title>
+<link rel="stylesheet" href="mockups.css">
+</head>
+<body>
+<header class="review-banner">
+<p>Review aid only. docs/technical_design/ux-design.md is the source of truth. If this mockup and that file disagree, the file wins.</p>
+<p>Built from ux-design.md commit <code>29c343afe30a9124c7788e212e1ee94e51192df7</code>.</p>
+</header>
+<main class="wrap">
+<p><a href="index.html">All screens</a></p>
+<h1>Settings</h1>
+<p>Upload failed</p>
+<p>UX design section: <a href="https://github.com/mjbvilhena/lagoon/blob/29c343afe30a9124c7788e212e1ee94e51192df7/docs/technical_design/ux-design.md#settings">Settings</a> · <a href="https://github.com/mjbvilhena/lagoon/blob/29c343afe30a9124c7788e212e1ee94e51192df7/docs/technical_design/ux-design.md#copy">Copy</a></p>
+
+<fieldset class="preview">
+  <legend>Preview theme</legend>
+  <label><input type="radio" name="preview" id="preview-system" checked> System</label>
+  <label><input type="radio" name="preview" id="preview-light"> Light</label>
+  <label><input type="radio" name="preview" id="preview-dark"> Dark</label>
+</fieldset>
+<p class="fine">System is the default. This preview follows the browser when System is selected. On the phone, System follows Android. These radios are review controls. They are not a second Settings screen.</p>
+<p class="fine">Dashed labels inside the frame are review annotations, not product copy. Empty optional fields are omitted in the product. An annotation marks a sample value or a control the UX file does not give.</p>
+
+
+<div class="stage"><div class="device"><div class="screen"><div class="screen-scroll"><p class="app-title">Settings</p><fieldset class="choice"><legend>Theme</legend><label><input type="radio" name="in-app-theme" disabled> Light</label><label><input type="radio" name="in-app-theme" disabled> Dark</label><label><input type="radio" name="in-app-theme" checked disabled> System</label></fieldset><p>Dynamic color [off]</p><p>Sync</p><p>The upload failed. The item on this phone is still here.</p><p>Unmetered only [on]</p><button type="button" class="btn">Sign in</button><button type="button" class="btn">Sign out</button><button type="button" class="btn">Disconnect and delete Lagoon data from Drive</button><button type="button" class="btn">Forget this phone</button><p>Reminder default time 09:00</p><p>Notifications <span class="slot"><span class="slot-name">state</span><span class="slot-gap">not specified in ux-design.md</span></span></p><p>App lock [off]</p><p>Topics [on]</p><p>Topics unmetered only [ ]</p><p>This month's topic calls N</p><p>The topic key is not copied from the other phone. Type it again on this phone.</p><p>Text recognition</p><p>The image and the recognized text stay on this phone. They are not sent to Google. ML Kit sends usage and diagnostic metrics to Google over HTTPS. ML Kit does not transfer them to third parties. ML Kit may contact Google for model updates and bug fixes. This app has no switch to turn those metrics off. The metrics are: device information and ML hardware accelerators, package name and version, per-installation identifiers, performance metrics, API configuration, input and output size, feature version, event types, and error codes.</p><p>Accepted: yes or no</p><button type="button" class="btn">Withdraw acceptance</button><button type="button" class="btn">Export zip</button><button type="button" class="btn">Import zip</button><button type="button" class="btn">Trash</button></div></div></div></div>
+
+<h2>Not specified in ux-design.md</h2><ul><li>Only the sync sentence differs from the Sync is not configured page.</li></ul>
+<h2>Specified for this state</h2><ul><li>Local save still works. The app does not crash when sync is not configured.</li></ul>
+<p class="fine">Gaps shared by every page are listed on <a href="index.html#gaps">the index</a>.</p>
+</main>
+</body>
+</html>

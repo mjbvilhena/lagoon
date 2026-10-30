@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pending suggestions — Lagoon review aid</title>
+<link rel="stylesheet" href="mockups.css">
+</head>
+<body>
+<header class="review-banner">
+<p>Review aid only. docs/technical_design/ux-design.md is the source of truth. If this mockup and that file disagree, the file wins.</p>
+<p>Built from ux-design.md commit <code>29c343afe30a9124c7788e212e1ee94e51192df7</code>.</p>
+</header>
+<main class="wrap">
+<p><a href="index.html">All screens</a></p>
+<h1>Pending suggestions</h1>
+<p>One suggestion</p>
+<p>UX design section: <a href="https://github.com/mjbvilhena/lagoon/blob/29c343afe30a9124c7788e212e1ee94e51192df7/docs/technical_design/ux-design.md#pending-suggestions">Pending suggestions</a></p>
+
+<fieldset class="preview">
+  <legend>Preview theme</legend>
+  <label><input type="radio" name="preview" id="preview-system" checked> System</label>
+  <label><input type="radio" name="preview" id="preview-light"> Light</label>
+  <label><input type="radio" name="preview" id="preview-dark"> Dark</label>
+</fieldset>
+<p class="fine">System is the default. This preview follows the browser when System is selected. On the phone, System follows Android. These radios are review controls. They are not a second Settings screen.</p>
+<p class="fine">Dashed labels inside the frame are review annotations, not product copy. Empty optional fields are omitted in the product. An annotation marks a sample value or a control the UX file does not give.</p>
+
+
+<div class="stage"><div class="device"><div class="screen"><div class="screen-scroll"><p class="app-title">Pending suggestions</p><p><span class="slot"><span class="slot-name">name</span><span class="slot-gap">not specified in ux-design.md</span></span></p><p><span class="slot"><span class="slot-name">quote</span><span class="slot-gap">not specified in ux-design.md</span></span></p><div class="btn-row"><button type="button" class="btn">Confirm</button><button type="button" class="btn">Decline</button></div></div></div></div></div>
+
+<h2>Not specified in ux-design.md</h2><ul><li>Rename and merge are named as rules and are not drawn. No control labels for them are specified.</li></ul>
+<h2>Specified for this state</h2><ul><li>A place next to the Inbox, not a prompt on every save.</li><li>Confirm, decline, rename, and merge keep the rules in US-43 and US-46.</li><li>Declining does not delete the item.</li></ul>
+<p class="fine">Gaps shared by every page are listed on <a href="index.html#gaps">the index</a>.</p>
+</main>
+</body>
+</html>

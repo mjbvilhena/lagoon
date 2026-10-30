@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a URL — Lagoon review aid</title>
+<link rel="stylesheet" href="mockups.css">
+</head>
+<body>
+<header class="review-banner">
+<p>Review aid only. docs/technical_design/ux-design.md is the source of truth. If this mockup and that file disagree, the file wins.</p>
+<p>Built from ux-design.md commit <code>29c343afe30a9124c7788e212e1ee94e51192df7</code>.</p>
+</header>
+<main class="wrap">
+<p><a href="index.html">All screens</a></p>
+<h1>Add a URL</h1>
+<p>Fields</p>
+<p>UX design section: <a href="https://github.com/mjbvilhena/lagoon/blob/29c343afe30a9124c7788e212e1ee94e51192df7/docs/technical_design/ux-design.md#add-a-url">Add a URL</a></p>
+
+<fieldset class="preview">
+  <legend>Preview theme</legend>
+  <label><input type="radio" name="preview" id="preview-system" checked> System</label>
+  <label><input type="radio" name="preview" id="preview-light"> Light</label>
+  <label><input type="radio" name="preview" id="preview-dark"> Dark</label>
+</fieldset>
+<p class="fine">System is the default. This preview follows the browser when System is selected. On the phone, System follows Android. These radios are review controls. They are not a second Settings screen.</p>
+<p class="fine">Dashed labels inside the frame are review annotations, not product copy. Empty optional fields are omitted in the product. An annotation marks a sample value or a control the UX file does not give.</p>
+
+
+<div class="stage"><div class="device"><div class="screen"><div class="screen-scroll"><label class="field">URL<input type="text" autocomplete="off" spellcheck="false"></label><label class="field">Title (optional)<input type="text" autocomplete="off" spellcheck="false"></label><button type="button" class="btn">Save</button></div></div></div></div>
+
+<h2>Not specified in ux-design.md</h2><ul><li>No screen title is specified.</li></ul>
+<h2>Specified for this state</h2><ul><li>The URL is kept even when enrichment has not run.</li><li>An empty title follows US-40.</li><li>No sentence is specified for an empty URL. None is drawn.</li></ul>
+<p class="fine">Gaps shared by every page are listed on <a href="index.html#gaps">the index</a>.</p>
+</main>
+</body>
+</html>
