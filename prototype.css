@@ -1,97 +1,15 @@
-/* Review aid. 360 by 800 CSS pixels stand in for 360 by 800 dp.
-   Accents: light #0F766E, dark #2DD4BF, on dark accent #003731.
-   #0F766E is not used when the phone theme is dark. */
-
-:root {
-  color-scheme: light;
-  --page: #e6e4df;
-  --page-ink: #1c1b19;
-  --banner: #efece6;
-  --banner-ink: #44403c;
-}
+/* Accents: light #0F766E, dark #2DD4BF, on dark accent #003731.
+   #0F766E is not used when the theme is dark. */
 
 * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--page);
-  color: var(--page-ink);
-  font-family: system-ui, sans-serif;
-}
-
-.banner {
-  margin: 0;
-  padding: 6px 12px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.35;
-  background: var(--banner);
-  color: var(--banner-ink);
-}
-
-.review-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 12px 0;
-  font-size: 14px;
-}
-
-.review-bar fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.review-bar legend {
-  padding: 0;
-  margin-right: 4px;
-  font-size: 14px;
-}
-
-.review-bar label { display: inline-flex; gap: 4px; align-items: center; }
-
-.jump select {
-  font: inherit;
-  max-width: 280px;
-  padding: 4px 8px;
-}
-
-.stage {
-  display: flex;
-  justify-content: center;
-  padding: 12px 12px 20px;
-}
-
-.noscript, .unspecified {
-  max-width: 40rem;
-  margin: 0 auto 28px;
-  padding: 0 16px;
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.unspecified summary { cursor: pointer; font-weight: 650; }
-
-.device {
-  width: 360px;
-  height: 800px;
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 24px;
-  position: relative;
+html {
+  height: 100%;
+  color-scheme: light;
   background: var(--surface);
   color: var(--on-surface);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
   font-family: system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
   --surface: #f7f6f4;
   --surface-container: #eeefed;
   --surface-container-high: #e4e8e6;
@@ -109,10 +27,9 @@ body {
   --inverse: #2f3130;
   --inverse-on: #f1f1ef;
   --scrim: rgba(0, 0, 0, 0.45);
-  color-scheme: light;
 }
 
-.device[data-theme="dark"] {
+html[data-theme="dark"] {
   color-scheme: dark;
   --surface: #101211;
   --surface-container: #1c1f1e;
@@ -133,52 +50,61 @@ body {
   --scrim: rgba(0, 0, 0, 0.6);
 }
 
-.device[data-dynamic="on"][data-theme="light"] {
+html[data-dynamic="on"][data-theme="light"] {
   --primary: #6750a4;
   --on-primary: #ffffff;
   --primary-container: #eaddff;
   --on-primary-container: #21005d;
 }
 
-.device[data-dynamic="on"][data-theme="dark"] {
+html[data-dynamic="on"][data-theme="dark"] {
   --primary: #d0bcff;
   --on-primary: #000000;
   --primary-container: #4f378b;
   --on-primary-container: #eaddff;
 }
 
-.device[data-bright="on"] {
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--on-surface);
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
+
+#app[data-bright="on"] {
   background: #ffffff;
   color: #1a1c1b;
 }
 
 button, input, textarea, select { font: inherit; color: inherit; }
 
+button, a, input, select, textarea { touch-action: manipulation; }
+
+input, select, textarea { font-size: 16px; }
+
 button { cursor: pointer; }
 
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-}
-
-.status {
-  height: 32px;
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.status-icons { display: flex; gap: 6px; align-items: center; }
-
-.status svg, .lock svg { width: 16px; height: 16px; fill: currentColor; display: block; }
-
-.lock {
-  width: 14px;
-  height: 14px;
 }
 
 .appbar {
@@ -271,28 +197,6 @@ button { cursor: pointer; }
 
 .nav svg { width: 24px; height: 24px; fill: currentColor; }
 
-.gesture {
-  height: 16px;
-  width: 100%;
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: inherit;
-}
-
-.gesture i {
-  width: 96px;
-  height: 4px;
-  border-radius: 4px;
-  background: var(--on-surface);
-  opacity: 0.22;
-  display: block;
-}
-
 .row, .row-main {
   width: 100%;
   text-align: left;
@@ -358,7 +262,7 @@ button { cursor: pointer; }
 .fab {
   position: absolute;
   right: 16px;
-  bottom: 104px;
+  bottom: calc(96px + env(safe-area-inset-bottom));
   z-index: 2;
   height: 56px;
   padding: 0 20px;
@@ -426,7 +330,7 @@ button { cursor: pointer; }
     linear-gradient(160deg, #d5dddb, #eef2f1 42%, #c5d0cd);
 }
 
-.device[data-theme="dark"] .fog {
+html[data-theme="dark"] .fog {
   background:
     radial-gradient(circle at 30% 38%, rgba(255, 255, 255, 0.14), transparent 42%),
     radial-gradient(circle at 72% 64%, rgba(80, 100, 96, 0.5), transparent 46%),
@@ -608,7 +512,7 @@ button { cursor: pointer; }
   position: absolute;
   left: 12px;
   right: 12px;
-  bottom: 24px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
   z-index: 6;
   display: flex;
 }
@@ -629,7 +533,7 @@ button { cursor: pointer; }
 
 .snack button { color: #2dd4bf; background: transparent; border: 0; min-height: 40px; font-weight: 500; }
 
-.device[data-theme="dark"] .snack button { color: #003731; }
+html[data-theme="dark"] .snack button { color: #003731; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
 
@@ -765,7 +669,7 @@ mark {
 .squircle.cam { background: #3d4a4a; }
 .squircle.msg { background: #1b6b4a; }
 
-.device[data-theme="dark"] .squircle.lagoon { background: #134e4a; color: #2dd4bf; }
+html[data-theme="dark"] .squircle.lagoon { background: #134e4a; color: #2dd4bf; }
 
 .preview-card {
   margin: 12px 16px;

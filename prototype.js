@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var device = document.getElementById("device");
+  var device = document.getElementById("app");
   var NOW = "2026-10-31T12:00:00Z";
   var demoPhrase = ["island", "ferry", "2026"].join("-");
   var commonList = ["letmeinplease1", "adminadmin1234", "qwertyuiopasdf", "iloveyou12345"];
@@ -591,11 +591,6 @@
     showQuick(addItem({ type: "link", title: title, url: url, source: hostOf(url), preview: tokenLooking(url) ? "fog" : "none" }));
   }
 
-  function statusBar() {
-    var lock = secureNow() ? '<span class="lock" role="img" aria-label="Screen capture blocked">' + I.lock + "</span>" : "";
-    return '<div class="status"><span>09:41</span><span class="status-icons">' + lock + svg('<path d="M2 16h4v3H2zm5-4h4v7H7zm5-3h4v10h-4zm5-4h4v14h-4z"/>') + svg('<path d="M3 8h18v10H3zM6 6h2V4H6zm10 0h2V4h-2z"/>') + "</span></div>";
-  }
-
   function secureNow() {
     if (["passphrase", "passphrase-decline", "change", "change-saved", "reset", "returning"].indexOf(S.screen) !== -1) return true;
     if (S.screen === "trash") return true;
@@ -635,10 +630,6 @@
       var on = S.screen === it[0] ? ' aria-current="page"' : "";
       return '<button type="button" data-act="tab" data-tab="' + it[0] + '"' + on + '><span class="ico">' + it[2] + "</span>" + esc(it[1]) + "</button>";
     }).join("") + "</nav>";
-  }
-
-  function gesture() {
-    return '<button type="button" class="gesture" data-act="back" aria-label="Back"><i></i></button>';
   }
 
   function row(it, act) {
@@ -1147,13 +1138,13 @@
       return '<button type="button" data-act="share-pick" data-payload="' + p[0] + '" aria-pressed="' + (S.sharePayload === p[0] ? "true" : "false") + '">' + esc(p[1]) + "</button>";
     }).join("");
     var preview = S.sharePayload === "text" ? "Spring tide is on Sunday." : S.sharePayload;
-    return statusBar() + '<div class="share-app"><div class="preview-card">' + esc(preview) + '</div><div class="scrim sheet-wrap" data-act="share-close"><div class="sheet" data-act="stop"><div class="handle"></div><div class="payloads">' + chips + '</div><div class="targets"><button type="button" class="app-ico" data-act="share-lagoon"><span class="squircle lagoon">' + I.home + '</span>Lagoon</button><span class="app-ico"><span class="squircle alt"></span>Messages</span></div></div></div></div>' + gesture();
+    return '<div class="share-app"><div class="preview-card">' + esc(preview) + '</div><div class="scrim sheet-wrap" data-act="share-close"><div class="sheet" data-act="stop"><div class="handle"></div><div class="payloads">' + chips + '</div><div class="targets"><button type="button" class="app-ico" data-act="share-lagoon"><span class="squircle lagoon">' + I.home + '</span>Lagoon</button><span class="app-ico"><span class="squircle alt"></span>Messages</span></div></div></div></div>';
   }
 
   function launcherScreen(shade) {
     var theme = resolvedTheme();
     var icon = '<span class="squircle lagoon">' + I.home + "</span>";
-    var html = statusBar() + '<div class="launcher"><p class="clock-big">09:41</p>';
+    var html = '<div class="launcher"><p class="clock-big">09:41</p>';
     if (shade) {
       var title = shade === "sensitive" ? COPY.reminder : "Gate 4B boarding";
       var text = shade === "sensitive" ? COPY.reminder : "Gate 4B boarding";
@@ -1165,13 +1156,13 @@
 
   function cameraScreen() {
     if (S.screen === "camera-missing") {
-      return statusBar() + '<div class="finder"></div><p class="empty">No camera app</p><div class="form-actions">' + btn("camera-cancel", "Cancel", "btn-text") + "</div>" + gesture();
+      return '<div class="finder"></div><p class="empty">No camera app</p><div class="form-actions">' + btn("camera-cancel", "Cancel", "btn-text") + "</div>";
     }
-    return statusBar() + '<div class="finder"></div><div class="form-actions">' + btn("camera-cancel", "Cancel", "btn-text") + btn("camera-confirm", "Confirm", "btn-filled") + "</div>" + gesture();
+    return '<div class="finder"></div><div class="form-actions">' + btn("camera-cancel", "Cancel", "btn-text") + btn("camera-confirm", "Confirm", "btn-filled") + "</div>";
   }
 
   function viewerScreen() {
-    return statusBar() + '<div class="viewer-bar">' + iconBtn("viewer-close", "Close", I.close) + "<p>" + esc(S.viewerLabel || "") + '</p></div><div class="viewer-body"></div>' + gesture();
+    return '<div class="viewer-bar">' + iconBtn("viewer-close", "Close", I.close) + "<p>" + esc(S.viewerLabel || "") + '</p></div><div class="viewer-body"></div>';
   }
 
   function frame() {
@@ -1181,10 +1172,10 @@
     if (S.screen === "share") return shareScreen();
     if (S.screen === "camera" || S.screen === "camera-missing") return cameraScreen();
     if (S.screen === "viewer") return viewerScreen();
-    if (S.screen === "fullscreen") return statusBar() + renderFullscreen() + gesture();
+    if (S.screen === "fullscreen") return renderFullscreen();
     var animate = lastScreen !== S.screen;
     lastScreen = S.screen;
-    return statusBar() + appBar() + '<div class="content ' + (animate ? "content-in" : "") + '">' + body() + "</div>" + nav() + gesture() + overlays();
+    return appBar() + '<div class="content ' + (animate ? "content-in" : "") + '">' + body() + "</div>" + nav() + overlays();
   }
 
   function captureFocus() {
@@ -1228,21 +1219,20 @@
     }, 400);
   }
 
-  function syncOutside() {
-    document.querySelectorAll('input[name="preview"]').forEach(function (el) {
-      el.checked = el.value === S.theme;
-    });
+  function paintChrome() {
+    var theme = resolvedTheme();
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.dynamic = S.dynamic ? "on" : "off";
+    device.dataset.bright = S.bright ? "on" : "off";
+    device.dataset.screen = S.screen;
+    var meta = document.getElementById("theme-color");
+    if (meta) meta.setAttribute("content", S.bright ? "#ffffff" : (theme === "dark" ? "#101211" : "#f7f6f4"));
   }
 
   function render() {
     var saved = captureFocus();
-    device.dataset.theme = resolvedTheme();
-    device.dataset.dynamic = S.dynamic ? "on" : "off";
-    device.dataset.secure = secureNow() ? "on" : "off";
-    device.dataset.bright = S.bright ? "on" : "off";
-    device.dataset.screen = S.screen;
+    paintChrome();
     device.innerHTML = frame();
-    syncOutside();
     restoreFocus(saved);
     if (S.focusDialog) {
       var b = device.querySelector(".dialog button, .sheet button");
@@ -2002,10 +1992,17 @@
     clock: function () { prep({ screen: "home", clock: true }); }
   };
 
+  function routeFromHash() {
+    var h = location.hash.replace(/^#/, "");
+    if (h.charAt(0) === "/") h = h.slice(1);
+    return h;
+  }
+
   function applyJump(id) {
     if (!jumps[id]) return;
     jumps[id]();
-    if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+    var next = "#/" + id;
+    if (location.hash !== next) history.replaceState(null, "", next);
   }
 
   function onClick(e) {
@@ -2032,7 +2029,7 @@
       else setBind(t.dataset.bind, t.value);
     }
     if (t.dataset && t.dataset.bind === "theme") {
-      try { localStorage.setItem("lagoon-review-theme", S.theme); } catch (err) { /* ignore */ }
+      try { localStorage.setItem("lagoon-theme", S.theme); } catch (err) { /* ignore */ }
     }
     if (t.dataset && t.dataset.change === "dynamic") S.dynamic = t.checked;
     if (t.dataset && t.dataset.change === "lock") S.appLock = t.checked;
@@ -2045,49 +2042,11 @@
     render();
   }
 
-  var GROUPS = [
-    ["Passphrase", [["passphrase", "Passphrase setup"], ["passphrase-hardware", "Hardware warning"], ["passphrase-memory", "Low memory"], ["passphrase-decline", "After Decline"], ["change-pass", "Change passphrase"], ["change-pass-saved", "Change passphrase saved"], ["pass-wrong", "Wrong passphrase"], ["reset-local", "Forgotten-passphrase reset"], ["reset-waiting", "Reset is waiting"], ["returning", "Returning phone"], ["returning-lost", "Returning phone, edits lost"]]],
-    ["Home", [["home", "Home list"], ["home-empty", "Home, empty"], ["home-paused", "Home, sync paused"], ["home-filter-empty", "Home, filter matches nothing"], ["home-loading", "Home, loading"]]],
-    ["Item", [["detail", "Item detail"], ["detail-preview", "Skipped preview"], ["detail-failed", "Enrichment failed"], ["detail-locked", "Sensitive locked"], ["detail-sensitive", "Sensitive open"], ["edit", "Edit item"], ["edit-title", "Title required"], ["edit-sent", "Already sent"], ["fullscreen", "Full screen"], ["pdf-password", "PDF password-protected"]]],
-    ["Search and add", [["search", "Search"], ["search-miss", "Search miss"], ["quick-add", "Quick-add row"], ["quick-add-empty", "Quick-add, no tags"], ["add-note", "Add a note"], ["add-note-empty", "Add a note, empty"], ["add-url", "Add a URL"], ["picker", "Which item?"], ["picker-trash", "Which item, trash"]]],
-    ["Settings", [["settings", "Settings"], ["settings-signed-in", "Signed in"], ["settings-signed-out", "Not signed in"], ["settings-revoked", "Sign-in revoked"], ["settings-full", "Drive full"], ["settings-upload", "Upload failed"], ["settings-paused", "Sync paused"], ["settings-api30", "API 30"], ["settings-hardware", "Hardware warning"], ["settings-ocr-yes", "Text recognition accepted"], ["settings-ocr-no", "Text recognition not accepted"], ["settings-key", "Topic key missing"], ["settings-key-stored", "Topic key stored"], ["drive-delete", "Disconnect and delete"], ["sign-in", "Google sign-in"]]],
-    ["Trash and forget", [["trash", "Trash"], ["trash-deadline", "Trash after deadline"], ["trash-read", "Trash read-only"], ["forget", "Forget this phone"], ["forget-empty", "No other phone"], ["forget-failed", "Nothing was forgotten"]]],
-    ["Topics", [["topics", "Topics"], ["topics-empty", "Topics empty"], ["suggestions", "Pending suggestions"], ["topic", "Topic detail"], ["topic-empty", "Nothing linked"], ["topic-sensitive", "Sensitive link hidden"], ["topic-try", "Try again"], ["topic-none", "No topics"], ["send-earlier", "Send earlier items"], ["disclosure", "ML Kit disclosure"]]],
-    ["Upcoming and inbox", [["upcoming", "Upcoming"], ["inbox", "Inbox"]]],
-    ["Notices", [["snack-undo", "Undo"], ["snack-repeat", "Repeat link"], ["dropped", "Dropped edit"], ["dropped-title", "Dropped edit and title"], ["files-removed", "Files removed"], ["edits-lost", "Edits lost"], ["reminder", "Ordinary reminder"], ["reminder-sensitive", "Sensitive reminder"], ["clock", "Clock warning"]]],
-    ["System", [["share", "Share in"], ["biometric", "Biometric prompt"], ["camera", "System camera"], ["camera-missing", "No camera app"], ["viewer", "Link viewer"], ["launcher", "Launcher"]]]
-  ];
-
   function boot() {
     try {
-      var saved = localStorage.getItem("lagoon-review-theme");
+      var saved = localStorage.getItem("lagoon-theme");
       if (saved === "light" || saved === "dark" || saved === "system") S.theme = saved;
     } catch (e) { /* ignore */ }
-    var sel = document.getElementById("jump");
-    GROUPS.forEach(function (group) {
-      var og = document.createElement("optgroup");
-      og.label = group[0];
-      group[1].forEach(function (pair) {
-        var op = document.createElement("option");
-        op.value = pair[0];
-        op.textContent = pair[1];
-        og.appendChild(op);
-      });
-      sel.appendChild(og);
-    });
-    sel.addEventListener("change", function () {
-      if (!sel.value) return;
-      applyJump(sel.value);
-      render();
-    });
-    document.querySelectorAll('input[name="preview"]').forEach(function (el) {
-      el.addEventListener("change", function () {
-        if (!el.checked) return;
-        S.theme = el.value;
-        try { localStorage.setItem("lagoon-review-theme", S.theme); } catch (err) { /* ignore */ }
-        render();
-      });
-    });
     device.addEventListener("click", onClick);
     device.addEventListener("input", onInput);
     device.addEventListener("change", onChange);
@@ -2110,7 +2069,13 @@
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
       if (S.theme === "system") render();
     });
-    var hash = location.hash.replace(/^#/, "");
+    window.addEventListener("hashchange", function () {
+      var id = routeFromHash();
+      if (!jumps[id]) return;
+      jumps[id]();
+      render();
+    });
+    var hash = routeFromHash();
     if (jumps[hash]) applyJump(hash);
     else jumps.passphrase();
     render();
