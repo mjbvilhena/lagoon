@@ -88,6 +88,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - Vault key → the derived key that encrypts vault bytes. Passphrase → the secret he types to re-create that key. Salt → the non-secret header value.
 - Code → words already in the title (US-34). Never add a code field.
 - Sync → background ciphertext to Drive `appDataFolder`. Never call it backup or restore. There is no Back up now, no Restore, and no last-backup time (spec, US-30).
+- Proposed amendment. Needs approval by mjbvilhena. Original: "There is no Back up now, no Restore, and no last-backup time (spec, US-30)." Replacement: "There is no Back up now, no backup Restore, and no last-backup time (spec, US-30). Restore on Trash is US-66. There is no backup Restore in v1." The ban on calling sync "backup" or "restore" stays.
 - Banned aliases: backup button, restore button, merchant, booking reference, return-by, warranty end, trip, collection. Those are out of v1 or removed.
 
 ## Integrations and boundaries
@@ -131,6 +132,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - NEVER auto-fetch a token-looking URL (US-79).
 - NEVER request `CAMERA`, `SCHEDULE_EXACT_ALARM`, `USE_EXACT_ALARM`, or `WRITE_SETTINGS` (US-65, US-77, US-80, US-85).
 - NEVER offer Back up now, Restore, or a last-backup time (spec, US-30).
+- Proposed amendment. Needs approval by mjbvilhena. Original: "NEVER offer Back up now, Restore, or a last-backup time (spec, US-30)." Replacement: "NEVER offer Back up now, a backup Restore, or a last-backup time (spec, US-30). Restore on Trash and on the trash which-item picker is US-66. There is no backup Restore in v1."
 - NEVER delete the phone vault on sign-out (US-78).
 - NEVER invent a code field, a merchant, a trip, or a return-by date.
 

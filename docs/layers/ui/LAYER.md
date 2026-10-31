@@ -50,6 +50,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 - NEVER log a passphrase, token, vault key, or item body.
 - NEVER request `CAMERA`, exact-alarm permissions, or storage permissions (US-80).
 - NEVER put a Back up now or Restore control on screen (US-30).
+- Proposed amendment. Needs approval by mjbvilhena. Original: "NEVER put a Back up now or Restore control on screen (US-30)." Replacement: "NEVER put a Back up now control, a backup Restore control, or a last-backup time on screen (US-30). Restore on Trash and on the trash which-item picker is US-66, not this ban. There is no backup Restore in v1."
 - NEVER write a decoded image or a rendered PDF page to disk (US-85).
 - NEVER show a sensitive title, snippet, thumbnail, or code in a row or a notification payload built by UI. Notification text policy is the domain rule in US-34 and US-75; the poster is the data layer.
 

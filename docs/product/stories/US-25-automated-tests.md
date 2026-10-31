@@ -33,9 +33,10 @@ Cover search, sync and zip packaging, and a basic screen with automated tests.
   - When the sync payload and the zip are built
   - Then the zip is encrypted with the vault key, so the sentinel cannot be read without that key, and neither payload contains the header `SQLite format 3`
 - **Scenario: Compose UI** — Must
-  - Given the named screen
+  - Amendment approved by mjbvilhena on 2026-10-30.
+  - Given Settings
   - When the UI test runs on the JVM with Robolectric
-  - Then it finds that screen's main control
+  - Then it finds Settings' main control by its accessible name
 - **Scenario: failures are failures** — Must
   - Given a test assertion fails
   - When CI runs
