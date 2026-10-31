@@ -1,0 +1,30 @@
+name: Dispatch Pages
+
+on:
+  push:
+    branches: [gh-pages]
+
+# actions: write is the grant that creates a workflow_dispatch.
+# contents: read is the grant that checks pages.yml on master.
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    name: Dispatch master Pages workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch master Pages workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if ! gh api "/repos/${GITHUB_REPOSITORY}/contents/.github/workflows/pages.yml?ref=master" > /dev/null; then
+            echo "pages.yml is not on master yet. Skipping dispatch."
+            exit 0
+          fi
+          jq -n --arg sha "$GITHUB_SHA" '{ref:"master", inputs:{wip_sha:$sha}}' \
+            | gh api --method POST --input - \
+              -H "Accept: application/vnd.github+json" \
+              "/repos/${GITHUB_REPOSITORY}/actions/workflows/pages.yml/dispatches"
