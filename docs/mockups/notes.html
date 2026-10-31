@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Lagoon review notes</title>
+<link rel="icon" href="data:,">
+<style>
+  body { margin: 0; font: 16px/1.45 system-ui, sans-serif; color: #1c1b19; background: #f7f6f4; }
+  main { max-width: 42rem; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.5rem; font-weight: 500; }
+  h2 { font-size: 1.15rem; margin-top: 1.6rem; }
+  a { color: #0f766e; }
+  .notice { padding: 12px; background: #efece6; border-radius: 8px; }
+  ul { padding-left: 1.2rem; }
+  li { margin: 0.25rem 0; }
+</style>
+</head>
+<body>
+<main>
+<p class="notice">Review aid only. docs/technical_design/ux-design.md is the source of truth. If this mockup and that file disagree, the file wins.</p>
+<p>This prototype was built from the approved file docs/technical_design/ux-design.md. Approved by mjbvilhena on 2026-10-31. The choices under Decisions now in ux-design.md are decisions in that file. The clock-warning threshold is still open.</p>
+<p><a href="index.html">Open the app</a>. With no hash, it starts at passphrase setup. A hash opens one screen, for example <a href="index.html#/trash">#/trash</a>.</p>
+<p>The demo vault passphrase is island-ferry-2026.</p>
+
+<h2>Restore</h2>
+<p>Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1. Backup Restore, Back up now, and a last-backup time are not shown. Delete forever, Delete now, and Empty trash are not shown: the file and US-66 say v1 does not have them.</p>
+
+<h2>Decisions now in ux-design.md</h2>
+<ul>
+  <li>Navigation chrome. A Material 3 navigation bar has Home, Search, Inbox, Topics, and Settings. Upcoming is a button on the Home app bar. Pending suggestions is a button on Inbox. Back is the app-bar arrow.</li>
+  <li>Settings order follows the wireframe. Change passphrase and Set a new passphrase are rows under Trash.</li>
+  <li>Passphrase guidance on setup: “Choose a passphrase of 12 to 128 characters that you do not use anywhere else.” The loss warning states the facts from the passphrase wireframe: the key is derived from the passphrase, forgetting it and losing the device means the content is lost, uninstall or clear storage destroys the Keystore copy, and losing the signing key forces a reinstall that destroys that copy too.</li>
+  <li>Undo snackbar duration is 8 seconds. The words beside Undo are “In trash”.</li>
+  <li>The fog is a grey-green blur with no text and no page content.</li>
+  <li>Dynamic color, when on, uses light accent #6750A4 with white on it, and dark accent #D0BCFF with black #000000 on it. Teal stays the accent while dynamic color is off.</li>
+  <li>The launcher icon is a teal rounded square and a simple wave.</li>
+  <li>Type is the browser system-ui font.</li>
+  <li>Clock warning text, only on <a href="index.html#/clock">#/clock</a>: “This phone's clock does not match Drive.” That text is a decision in the file. No threshold is applied. The threshold is still open.</li>
+</ul>
+<h2>Prototype detail the file does not specify</h2>
+<ul>
+  <li>Light surfaces are #F7F6F4, #EEEFED, and #E4E8E6. Dark surfaces are #101211, #1C1F1E, and #262928. On-surface text is #1A1C1B in light and #E3E3E1 in dark. Text on #0F766E is white. Text on #2DD4BF is #003731. A dark snackbar action uses #2DD4BF so #0F766E is not drawn on a dark surface.</li>
+  <li>The system status bar and gesture bar are not drawn. The layout uses safe-area insets so the app bars sit clear of them. The launcher clock reads 09:41. FLAG_SECURE is not painted.</li>
+  <li>Corner radius, spacing, and 48px targets follow common Material 3 sizes.</li>
+  <li>Sample titles, notes, tags, dates, sources, URLs, devices, topics, and quotes are synthetic. Dates use YYYY-MM-DD. Type words are Note, Link, Image, and PDF. Reminder and expiry markers use those words plus the date. This month's topic calls start at 3.</li>
+  <li>The common-password check uses a short sample list, not the real bundled list. Refusal sentences are “Use 12 to 128 characters.” and “That passphrase is too common.” If the two new fields differ, the sentence is “The new passphrase does not match.” A wrong passphrase shows “Wait, then try again.” and the remaining seconds.</li>
+  <li>After a normal passphrase change, the sentence is “Zips you already exported still open only with the old passphrase.”</li>
+  <li>Low memory: “This phone cannot allocate 65536 KiB, so a vault cannot be created.” Decline after a waiting share: “Nothing was saved.” Decline with no share: “No vault was created.”</li>
+  <li>Share samples on the sheet are Link, Text, Image, PDF, Empty text, file URI, FileProvider, Over 20 MiB, Not a PDF, Repeat link, Two matches, and Trash match. Refusals use “Nothing was saved.” and a button OK. A shared link with no page title yet uses the URL as its title, at most 120 characters. URL matching follows the US-49 normalisation cases. A token-looking URL is one whose query contains token, access_token, or key.</li>
+  <li>Home filters are menus for type, tag, source, and date. An empty vault hides them. A miss or an empty filter has no sentence. Search shows no rows until there is a query. The Home app bar also has Camera and Add.</li>
+  <li>Add note, Add a URL, and Edit use those names in the app bar. An empty URL shows “A URL is required.” Tags on Edit are a comma-separated field. Add date offers one reminder or one expiry, default time 09:00. The first date asks “Allow Lagoon to send notifications?” with Allow and Don’t allow.</li>
+  <li>The affirmative control on “Send N earlier items for topics?” is Yes. No is the default. N is the count of ordinary items with no topic provenance.</li>
+  <li>Disconnect and delete uses the action name as the title. The body is “This lasts only if every other phone is signed out first, because forgotten-installs files are removed too.” Confirm and Cancel follow. There is no success sentence.</li>
+  <li>Export zip and Import zip open a file sheet and then close. Sign-in is a sheet for miguel@example.com and the Drive app-data grant. The grant line is “Allow Lagoon to use its Drive app data folder.”</li>
+  <li>In-app notices that are not the Undo or repeat snackbars use a dialog. The passphrase-reset banner is on Home. Dropped edit, removed files, and lost edits are dialogs.</li>
+  <li>Full-screen pages can be swiped, pinched, scrolled, or stepped with the arrow keys, plus, and minus. A page count is shown. Close is the only named control. Brightness is drawn as a white window.</li>
+  <li>A locked PDF shows the story mark “text not extracted” on the item, and “This PDF is password-protected.” if full screen is requested. Open leaves the app for the viewer. No password field is shown.</li>
+  <li>The biometric prompt accepts a tap on the mark, or Use PIN and any 4 digits. API 26–29 is not a separate device setting here. Use PIN is always available.</li>
+  <li>Loading is a circular indicator during passphrase accept, preview fetch, sign-in, camera confirm, and a returning-phone rebuild, and on the Home loading link. Its accessible name is “Loading”.</li>
+  <li>API 30 is only the <a href="index.html#/settings-api30">#/settings-api30</a> link that hides Dynamic color. There is no in-app API control.</li>
+  <li>The link viewer does not load a page. It shows the host on an empty surface.</li>
+  <li>No camera app uses the sentence “No camera app.” Cancel stores nothing.</li>
+  <li>Quick-add Add note writes the personal note under YYYY-MM-DD. Choosing a tag adds it to the new item.</li>
+  <li>Which-item uses the wireframe label dismiss. When every match is in trash, Restore is on each of those rows.</li>
+  <li>Empty topic, empty inbox, and empty trash have no extra sentence unless the file gives one. Topic list empty uses “There are no topics.” Topic detail empty uses “Nothing is linked.”</li>
+  <li>A sensitive topic link shows Sensitive and hides the title, note, and quote until unlock.</li>
+  <li>Try again and No topics are dialogs on the item. Without a topic key, Get topics shows the missing-key sentence.</li>
+  <li>Returning-phone heading is “Enter the passphrase” and the confirm control is Continue. Cancel or a wrong passphrase discards nothing.</li>
+  <li>The launcher is a drawn system surface. Other icons are Phone, Messages, and Camera. Messages opens the share sheet.</li>
+</ul>
+
+<h2>Screens</h2>
+<h3>Passphrase</h3>
+<ul>
+  <li><a href="index.html#/passphrase">Passphrase setup</a></li>
+  <li><a href="index.html#/passphrase-hardware">Hardware warning</a></li>
+  <li><a href="index.html#/passphrase-memory">Low memory</a></li>
+  <li><a href="index.html#/passphrase-decline">After Decline</a></li>
+  <li><a href="index.html#/change-pass">Change passphrase</a></li>
+  <li><a href="index.html#/change-pass-saved">Change passphrase saved</a></li>
+  <li><a href="index.html#/pass-wrong">Wrong passphrase</a></li>
+  <li><a href="index.html#/reset-local">Forgotten-passphrase reset</a></li>
+  <li><a href="index.html#/reset-waiting">Reset is waiting</a></li>
+  <li><a href="index.html#/returning">Returning phone</a></li>
+  <li><a href="index.html#/returning-lost">Returning phone, edits lost</a></li>
+</ul>
+<h3>Home</h3>
+<ul>
+  <li><a href="index.html#/home">Home list</a></li>
+  <li><a href="index.html#/home-empty">Home, empty</a></li>
+  <li><a href="index.html#/home-paused">Home, sync paused</a></li>
+  <li><a href="index.html#/home-filter-empty">Home, filter matches nothing</a></li>
+  <li><a href="index.html#/home-loading">Home, loading</a></li>
+</ul>
+<h3>Item</h3>
+<ul>
+  <li><a href="index.html#/detail">Item detail</a></li>
+  <li><a href="index.html#/detail-preview">Skipped preview</a></li>
+  <li><a href="index.html#/detail-failed">Enrichment failed</a></li>
+  <li><a href="index.html#/detail-locked">Sensitive locked</a></li>
+  <li><a href="index.html#/detail-sensitive">Sensitive open</a></li>
+  <li><a href="index.html#/edit">Edit item</a></li>
+  <li><a href="index.html#/edit-title">Title required</a></li>
+  <li><a href="index.html#/edit-sent">Already sent</a></li>
+  <li><a href="index.html#/fullscreen">Full screen</a></li>
+  <li><a href="index.html#/pdf-password">PDF password-protected</a></li>
+</ul>
+<h3>Search and add</h3>
+<ul>
+  <li><a href="index.html#/search">Search</a></li>
+  <li><a href="index.html#/search-miss">Search miss</a></li>
+  <li><a href="index.html#/quick-add">Quick-add row</a></li>
+  <li><a href="index.html#/quick-add-empty">Quick-add, no tags</a></li>
+  <li><a href="index.html#/add-note">Add a note</a></li>
+  <li><a href="index.html#/add-note-empty">Add a note, empty</a></li>
+  <li><a href="index.html#/add-url">Add a URL</a></li>
+  <li><a href="index.html#/picker">Which item?</a></li>
+  <li><a href="index.html#/picker-trash">Which item, trash</a></li>
+</ul>
+<h3>Settings</h3>
+<ul>
+  <li><a href="index.html#/settings">Settings</a></li>
+  <li><a href="index.html#/settings-signed-in">Signed in</a></li>
+  <li><a href="index.html#/settings-signed-out">Not signed in</a></li>
+  <li><a href="index.html#/settings-revoked">Sign-in revoked</a></li>
+  <li><a href="index.html#/settings-full">Drive full</a></li>
+  <li><a href="index.html#/settings-upload">Upload failed</a></li>
+  <li><a href="index.html#/settings-paused">Sync paused</a></li>
+  <li><a href="index.html#/settings-api30">API 30</a></li>
+  <li><a href="index.html#/settings-hardware">Hardware warning</a></li>
+  <li><a href="index.html#/settings-ocr-yes">Text recognition accepted</a></li>
+  <li><a href="index.html#/settings-ocr-no">Text recognition not accepted</a></li>
+  <li><a href="index.html#/settings-key">Topic key missing</a></li>
+  <li><a href="index.html#/settings-key-stored">Topic key stored</a></li>
+  <li><a href="index.html#/drive-delete">Disconnect and delete</a></li>
+  <li><a href="index.html#/sign-in">Google sign-in</a></li>
+</ul>
+<h3>Trash and forget</h3>
+<ul>
+  <li><a href="index.html#/trash">Trash</a></li>
+  <li><a href="index.html#/trash-deadline">Trash after deadline</a></li>
+  <li><a href="index.html#/trash-read">Trash read-only</a></li>
+  <li><a href="index.html#/forget">Forget this phone</a></li>
+  <li><a href="index.html#/forget-empty">No other phone</a></li>
+  <li><a href="index.html#/forget-failed">Nothing was forgotten</a></li>
+</ul>
+<h3>Topics</h3>
+<ul>
+  <li><a href="index.html#/topics">Topics</a></li>
+  <li><a href="index.html#/topics-empty">Topics empty</a></li>
+  <li><a href="index.html#/suggestions">Pending suggestions</a></li>
+  <li><a href="index.html#/topic">Topic detail</a></li>
+  <li><a href="index.html#/topic-empty">Nothing linked</a></li>
+  <li><a href="index.html#/topic-sensitive">Sensitive link hidden</a></li>
+  <li><a href="index.html#/topic-try">Try again</a></li>
+  <li><a href="index.html#/topic-none">No topics</a></li>
+  <li><a href="index.html#/send-earlier">Send earlier items</a></li>
+  <li><a href="index.html#/disclosure">ML Kit disclosure</a></li>
+</ul>
+<h3>Upcoming and inbox</h3>
+<ul>
+  <li><a href="index.html#/upcoming">Upcoming</a></li>
+  <li><a href="index.html#/inbox">Inbox</a></li>
+</ul>
+<h3>Notices</h3>
+<ul>
+  <li><a href="index.html#/snack-undo">Undo</a></li>
+  <li><a href="index.html#/snack-repeat">Repeat link</a></li>
+  <li><a href="index.html#/dropped">Dropped edit</a></li>
+  <li><a href="index.html#/dropped-title">Dropped edit and title</a></li>
+  <li><a href="index.html#/files-removed">Files removed</a></li>
+  <li><a href="index.html#/edits-lost">Edits lost</a></li>
+  <li><a href="index.html#/reminder">Ordinary reminder</a></li>
+  <li><a href="index.html#/reminder-sensitive">Sensitive reminder</a></li>
+  <li><a href="index.html#/clock">Clock warning</a></li>
+</ul>
+<h3>System</h3>
+<ul>
+  <li><a href="index.html#/share">Share in</a></li>
+  <li><a href="index.html#/biometric">Biometric prompt</a></li>
+  <li><a href="index.html#/camera">System camera</a></li>
+  <li><a href="index.html#/camera-missing">No camera app</a></li>
+  <li><a href="index.html#/viewer">Link viewer</a></li>
+  <li><a href="index.html#/launcher">Launcher</a></li>
+</ul>
+</main>
+</body>
+</html>
