@@ -70,6 +70,7 @@ Amendment approved by mjbvilhena on 2026-10-29. Original: "The proposed replacem
 - Domain consultant `vault`. Layer consultant `data`.
 - Accepted ADR-0001 (Argon2id root, Keystore wrap). Accepted ADR-0006 (purpose HKDF, SQLCipher 4, clear header, fixed-size segments).
 - `docs/technical_design/test-plan.md`, row TP-31. That plan is Proposed.
+- Proposed amendment. Needs approval by mjbvilhena. Original: "`docs/technical_design/test-plan.md`, row TP-31. That plan is Proposed." Replacement: "`docs/technical_design/test-plan.md`, row TP-31. That plan is approved. Approved by mjbvilhena on 2026-10-30. Amendment approved by mjbvilhena on 2026-10-31."
 
 ## Anti-patterns
 

@@ -86,7 +86,7 @@ This screen does not add an analytics library. The ML Kit disclosure is US-07.
 ## Design and a11y notes
 
 - No placeholder sentences in the shipped UI.
-- Exact layout waits for the UX artefact, which does not exist.
+- Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31).
 
 ## Dependencies and risks
 

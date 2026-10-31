@@ -166,6 +166,7 @@ Not applicable. No analytics.
 
 - The control is named "Forget this phone". No placeholder sentences.
 - Exact layout waits for the UX artefact, which does not exist.
+- Proposed amendment. Needs approval by mjbvilhena. Original: "Exact layout waits for the UX artefact, which does not exist." Replacement: "Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31)."
 
 ## Dependencies and risks
 

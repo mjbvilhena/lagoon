@@ -45,6 +45,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-
 - Security criteria approved by mjbvilhena on 2026-10-22. After the US-37 unlock, the Trash screen follows the same US-75 sensitive rules as anywhere else in Lagoon.
 - Security criteria approved by mjbvilhena on 2026-10-22. Opening or restoring a sensitive item from Trash requires the US-37 unlock first. A cancelled or failed unlock changes nothing.
 - Security criteria approved by mjbvilhena on 2026-10-22. Lagoon shows a warning when this phone's clock is badly out compared with Drive's server time. Merges are unchanged and the residual risk is accepted (T-28). A clock set ahead can still write `trashChangedAt` or the tombstone early. The warning threshold and text are not decided.
+- Proposed amendment. Needs approval by mjbvilhena. The warning text is "This phone's clock does not match Drive." Approved by mjbvilhena on 2026-10-31, in `docs/technical_design/ux-design.md`. A 24-hour threshold is proposed in that file and is not approved. The security-criteria sentence above is unchanged.
 - Security criteria approved by mjbvilhena on 2026-10-22. The permanent delete does not promise the item is gone for good. Encrypted copies may remain in Drive's old file versions for a while. After a permanent delete, Lagoon also deletes the older Drive revisions of its sync files. The last remaining revision cannot be deleted. `revisions.list` may omit older revisions when the history is large.
 - Security criteria approved by mjbvilhena on 2026-10-22. Toggling the sensitive mark on or off counts as a user edit, so it sets `userEditedAt` and brings a trashed item out of trash.
 - Security criteria approved by mjbvilhena on 2026-10-22. "Forget this phone" is US-87. It requires the US-37 unlock first. A cancelled or failed unlock changes nothing. US-87 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
@@ -80,7 +81,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-
 
 ## For mjbvilhena
 
-The clock-warning text is "This phone's clock does not match Drive." The threshold is not decided.
+The clock-warning text is "This phone's clock does not match Drive." A 24-hour threshold is proposed in `docs/technical_design/ux-design.md` and is not approved.
 
 ## Threat note
 
