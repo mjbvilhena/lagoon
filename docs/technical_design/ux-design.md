@@ -1,6 +1,6 @@
 # UX design
 
-**Status: Proposed.** This artefact is not approved and not agreed. It waits for mjbvilhena to walk through it. Do not treat it as approval of a story, an epic, or a specification sentence.
+**Status: Approved.** Approved by mjbvilhena on 2026-10-31. Do not treat it as approval of a story, an epic, or a specification sentence.
 
 Template shape: `get_sdlc_template("ux design")`. Skill: `sdlc-ux-designer`. Harness commit `398bbcb2eb81e687e7e8e72560c1b7e0de9e2604`.
 
@@ -11,10 +11,10 @@ Template shape: `get_sdlc_template("ux design")`. Skill: `sdlc-ux-designer`. Har
 | Slice / epic | v1 epics E1–E9 and E11. E10 is later and has no screens here. |
 | Stories / AC cited | The 22 approved stories, plus the existing Draft story specs the approved epics already name. Paths are in Evidence. |
 | Related spec | `docs/product/vision.md`, `docs/product/specification.md`, `docs/product/epics/E5-look-and-feel.md` |
-| Status | Proposed |
+| Status | Approved by mjbvilhena on 2026-10-31. |
 | Skip? | no |
 
-The harness template lists Draft / Review / Agreed. This file uses **Proposed** because that is the status until mjbvilhena walks through it. Proposed is not Agreed.
+The harness template lists Draft / Review / Agreed. This file is approved. Approved by mjbvilhena on 2026-10-31.
 
 ## Evidence
 
@@ -32,7 +32,7 @@ Accepted records: ADR-0001, ADR-0002, ADR-0003, ADR-0004, ADR-0005, ADR-0006, an
 
 Definition of Done `ui change` was read. It is implement and verify work. It is not permission to add screens. Keyboard, accessible names, errors on fields, no color-only meaning, and reduced motion are constraints on the screens the stories already name.
 
-No earlier UX artefact exists. Several stories say the exact layout or the exact text waits for this file. Those texts are proposed below. They stay Proposed with this file.
+No earlier UX artefact exists. Several stories say the exact layout or the exact text waits for this file. Those texts are in this file.
 
 ### Appearance tokens
 
@@ -48,11 +48,11 @@ E5 and the specification fix these. This proposal records them and does not adju
 | Dark surfaces | Never use `#0F766E` on a dark surface. | specification, E5, US-53 |
 | Dynamic color | Optional. Off on a fresh install. Teal is the fallback. The toggle is hidden on API 30 and below. On API 31 or newer, turning it on uses system dynamic colors when the system supplies them, otherwise teal. Dynamic color does not choose light or dark. | US-53, E5, specification |
 | Motion | When the system animator duration scale is 0, every action on these screens completes with no motion, and no information is only motion. | US-53, E5, `ui change` DoD |
-| Type | Calm, generous whitespace, refined type. E5 does not pick a typeface. No typeface is proposed. | E5 |
+| Type | Calm, generous whitespace, refined type. The typeface is system-ui. | E5 |
 | Clutter | No lorem ipsum and no "TODO" sentences in the shipped UI. | E5, US-53 |
-| Launcher | A launcher icon made for this app, and the short name Lagoon. The icon drawing is not in the stories. | US-23, vision |
+| Launcher | A launcher icon made for this app, and the short name Lagoon. The icon is a teal rounded square and a simple wave. | US-23, vision |
 
-Light uses the light palette. Dark uses the dark palette. That holds when he chose the mode and when System followed the phone.
+Light uses the light palette. Dark uses the dark palette. That holds when he chose the mode and when System followed the phone. When Dynamic color is on, the light accent is `#6750A4` with white on it, and the dark accent is `#D0BCFF` with black `#000000` on it. Teal stays the accent while Dynamic color is off.
 
 ### Layer constraints on every screen
 
@@ -88,7 +88,7 @@ Actor in every row is Miguel, the only person named in the vision. Draft means t
 | Full screen | He taps an image or a PDF page once | Full screen, window brightness `1.0f`, pinch-zoom, screen kept on, offline. Close restores brightness and ends keep-on. Swipe moves to the next or previous page or image in attachment order and does not wrap. | Sensitive and locked: US-37 first; cancel shows nothing; `FLAG_SECURE` on success. A PDF that needs a password to open does not open full screen. He is told it is password-protected and can open it in another app. No password field. An owner-password-only PDF opens as a normal PDF. | US-85 Approved, ADR-0005 |
 | Sensitive item | He marks an item sensitive, or opens one | Lists show type and "Sensitive" until one US-37 unlock in this session, then the title. Backgrounding the app returns rows to the neutral form. Body waits for the prompt. | Cancelled unlock shows no body. Both notification versions are only "Lagoon reminder". Export waits for unlock. Topic calls exclude the item. | US-37 Draft, US-75 Approved, US-34 Approved |
 | Reminder and expiry | He sets a date on the quick-add row or on the item | Default time 09:00 in the phone's current local zone. One reminder or one expiry. `POST_NOTIFICATIONS` is asked at the first reminder, not at launch. | Skipping Add date leaves no date. Alarms stay inexact. Upcoming, if built, lists soonest first, then an Expired group. Done stops further notices for that expiry. Snooze is 1 hour. | US-34 Approved, US-54 Draft, US-55 Approved, US-62 Approved, US-77 Draft |
-| Topics | An ordinary item is saved with the Settings switch on | After enrich, snapshot, and OCR, a topic call may run. Pending suggestions sit next to the Inbox. He confirms before a new topic exists. | The switch off skips the call. "Get topics" sends one ordinary item. A sensitive item is never sent. Failure keeps the item and shows "Try again", unless the credential is blocked. Empty result says no topics, not failed. | US-41 Approved, US-42–US-48 Draft, US-60 Draft, ADR-0003 |
+| Topics | An ordinary item is saved with the Settings switch on | After enrich, snapshot, and OCR, a topic call may run. Pending suggestions is a button on Inbox. He confirms before a new topic exists. | The switch off skips the call. "Get topics" sends one ordinary item. A sensitive item is never sent. Failure keeps the item and shows "Try again", unless the credential is blocked. Empty result says no topics, not failed. | US-41 Approved, US-42–US-48 Draft, US-60 Draft, ADR-0003 |
 | Settings and sync | He opens the one Settings screen | Controls in the Settings wireframe. Sign-in is the Google sheet. Signed-in state is a sentence on Settings. | No client ID: "Sync is not configured." The app does not crash and local save still works. Revoked sign-in, Drive full, and upload failure use the sentences in Copy. No Back up now and no Restore. | US-59 Draft, US-17 Draft, US-18 Draft, US-19 Draft, US-30 Draft, US-51 Draft, US-22 Draft, US-53 Draft |
 | Forget this phone | He chooses "Forget this phone" | US-37 unlock, then a list of other installs (device name, model, last check-in). Confirm names that install. This phone uploads its merged file, writes and reads back its forgotten-installs file, then deletes that other records file. | Cancelled unlock changes nothing. No other phone: "There is no other phone to forget." A failed write, read-back, or pre-upload tells him and deletes nothing. A failed records delete stays pending: "will be forgotten at its next sync". | US-87 Approved, US-59 Draft, ADR-0002 |
 | Sync paused | A sync reaches Drive and cannot read or list a forgotten-installs file | After 3 such syncs in a row, the banner in Copy is shown. The first sync that reads every forgotten-installs file successfully removes it. The local vault stays. This phone does not upload while a read or listing has failed. | An offline sync, when Drive is not reachable, does not count and does not reset the run. A newer-key file is not a read failure. | US-66 Approved, US-87 Approved, ADR-0002 |
@@ -103,15 +103,15 @@ Out of scope for these flows: E10 trip grouping, a second person, an image edito
 
 ## Wireframes
 
-Regions only. Pixel mockups are not in the stories. Anything not named by a story is an open question, not a control.
+Regions only. Pixel mockups are not in the stories.
 
-The stories do not name a bottom bar, a drawer, or a tab strip. Those are not drawn. How he moves between Home, Search, Upcoming, Inbox, Topics, and Settings is open question 1.
+A Material 3 navigation bar has Home, Search, Inbox, Topics, and Settings. Upcoming is a button on the Home app bar. Pending suggestions is a button on Inbox. Back is the app-bar arrow.
 
 ### Home list
 
 ```text
 +----------------------------------+
-| Lagoon                           |
+| Lagoon              [Upcoming]   |
 |----------------------------------|
 | [sync-paused banner, only when   |
 |  the rule below is true]         |
@@ -244,7 +244,7 @@ Live matches, when any exist, are the only rows, and there is no restore offer. 
 
 ### Settings
 
-One screen. Proposed order, open question 2. No second settings screen.
+One screen. The order is this wireframe. Change passphrase and Set a new passphrase open from the rows under Trash. No second settings screen.
 
 ```text
 +----------------------------------+
@@ -284,13 +284,15 @@ One screen. Proposed order, open question 2. No second settings screen.
 | Export zip                       |
 | Import zip                       |
 | Trash                            |
+| Change passphrase                |
+| Set a new passphrase             |
 |----------------------------------|
 | [hardware warning, only when     |
 |  the key is not hardware-backed] |
 +----------------------------------+
 ```
 
-Absent on this screen and on every other screen: Back up now, Restore, last-backup time, "Check my passphrase", a periodic passphrase reminder, a telemetry off switch, a per-item topics opt-out, and a strength meter.
+Absent on this screen and on every other screen: Back up now, last-backup time, "Check my passphrase", a periodic passphrase reminder, a telemetry off switch, a per-item topics opt-out, and a strength meter. Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1.
 
 The hardware warning, when shown, is the specification sentence. It is not a second accept gate.
 
@@ -356,7 +358,9 @@ Brightness override is `1.0f` for this window only. The system brightness settin
 ```text
 +----------------------------------+
 | Set a passphrase                 |
-| [strong-passphrase guidance]     |
+| Choose a passphrase of 12 to 128 |
+| characters that you do not use   |
+| anywhere else.                   |
 | [loss warning]                   |
 | Passphrase                       |
 | [Accept]                         |
@@ -364,7 +368,7 @@ Brightness override is `1.0f` for this window only. The system brightness settin
 +----------------------------------+
 ```
 
-`FLAG_SECURE`. Password input. No strength meter. No "Check my passphrase". Decline tells him nothing was saved when a share was waiting, and writes nothing. The loss warning states that the key is derived from the passphrase, that forgetting it and losing the device means the content is lost, that uninstall or clear storage destroys the Keystore copy, and that losing the signing key forces a reinstall that destroys that copy too. The exact guidance sentences beyond those facts are open question 3.
+`FLAG_SECURE`. Password input. No strength meter. No "Check my passphrase". Decline tells him nothing was saved when a share was waiting, and writes nothing. The loss warning states that the key is derived from the passphrase, that forgetting it and losing the device means the content is lost, that uninstall or clear storage destroys the Keystore copy, and that losing the signing key forces a reinstall that destroys that copy too. The guidance sentence is: Choose a passphrase of 12 to 128 characters that you do not use anywhere else.
 
 If the key will not be hardware-backed, the specification warning is on this screen before any vault bytes are written. Decline deletes the software Keystore entry and writes no vault.
 
@@ -470,12 +474,12 @@ Future dates are soonest first. Passed dates are in Expired, most recent first. 
 
 ```text
 +----------------------------------+
-| Inbox                            |
+| Inbox      [Pending suggestions] |
 | [untagged rows, same as Home]    |
 +----------------------------------+
 ```
 
-Untagged is a view, not a stored Inbox tag. Pending suggestions are reached from here. US-71 batch filing is Could and is not drawn.
+Untagged is a view, not a stored Inbox tag. Pending suggestions is a button on Inbox. US-71 batch filing is Could and is not drawn.
 
 ### Link preview prompt
 
@@ -489,7 +493,7 @@ On item detail, in place of a preview image. Not on the home row.
 +----------------------------------+
 ```
 
-The fog is an image, not a sentence of filler copy. The image does not show the page. Yes fetches once. No, or leaving, keeps the fog.
+The fog is an image, not a sentence of filler copy. It is a grey-green blur with no text and no page content. Yes fetches once. No, or leaving, keeps the fog.
 
 ### Sync-paused banner
 
@@ -521,7 +525,7 @@ Those stories deferred the exact text to this artefact. The sentence in the bann
 
 | Notice | When | Form |
 | --- | --- | --- |
-| Undo | After delete, until he dismisses it, leaves that screen, or it times out | Snackbar. Action: Undo. |
+| Undo | After delete, until he dismisses it, leaves that screen, or it times out | Snackbar. The words beside Undo are "In trash". It times out after 8 seconds. Action: Undo. |
 | Repeat link | A normalised URL matches a saved item | Snackbar: "Saved before, added to existing". Actions: Undo, "Keep separate". |
 | Dropped edit | Once, when a dropped user edit is merged. Not after a restart. Not for OCR, a preview, or another system write. | In-app. Not a system notification. |
 | Orphan files removed | After a returning phone rebuilds, and only when attachment files were actually deleted | In-app. Neutral. No item title. |
@@ -529,9 +533,9 @@ Those stories deferred the exact text to this artefact. The sentence in the bann
 | Passphrase reset waiting | Another phone holds the key and a pending-reset marker is on Drive | System notification and the in-app banner above. |
 | Ordinary reminder | The install US-55 picks posts it | System notification. Title and codes from the item title. No separate code field. |
 | Sensitive reminder or expiry | Same install | Public and private text are only "Lagoon reminder". |
-| Clock | This phone's clock is badly out compared with Drive | Not designed. Threshold and text are not decided. |
+| Clock | This phone's clock does not match Drive | The text is "This phone's clock does not match Drive." The threshold is open. |
 
-The undo snackbar's timeout length is not in US-13. It is open question 4.
+The undo snackbar times out after 8 seconds. The words beside Undo are "In trash".
 
 ### System surfaces that are not Lagoon screens
 
@@ -539,11 +543,11 @@ The undo snackbar's timeout length is not in US-13. It is open question 4.
 - The biometric prompt, and "Use PIN" on API 26–29 (US-37).
 - The system camera (US-65).
 - Custom Tabs or the external viewer (US-64).
-- The launcher icon and the name Lagoon (US-23). The icon art is not specified.
+- The launcher icon and the name Lagoon (US-23). The icon is a teal rounded square and a simple wave.
 
 ## Copy
 
-Strings the stories already fix are marked Story. Strings this proposal fills, because a story or ADR deferred the exact text, are marked Proposed. Proposed strings are not approved.
+Strings the stories already fix are marked Story. Strings this file fills, because a story or ADR deferred the exact text, are marked Proposed. The strings in this table are the text of this file.
 
 | Screen | Element | Copy | Source |
 | --- | --- | --- | --- |
@@ -609,21 +613,15 @@ Strings the stories already fix are marked Story. Strings this proposal fills, b
 | Disclosure | Actions | Accept, Decline | Proposed. US-07 names accept and decline and does not name the buttons. |
 | Disclosure | Settings | Withdraw acceptance | Proposed label. US-07 requires withdraw. |
 | Passphrase | Retry | Wait, then try again. | Proposed. ADR-0001 fixes the delays and says a wrong passphrase is reported. It does not fix the sentence. |
+| Passphrase | Guidance | Choose a passphrase of 12 to 128 characters that you do not use anywhere else. | US-35 requires the guidance. |
+| Delete | Snackbar | In trash | The action is Undo. The snackbar times out after 8 seconds. |
+| Clock | Warning | This phone's clock does not match Drive. | The threshold is open. |
 
-No screen uses "Check my passphrase", "Back up now", or "Restore".
+No screen uses "Check my passphrase" or "Back up now". Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1.
 
 ## Open questions
 
-1. **Navigation chrome.** The stories name Home, Search, Upcoming, Inbox, Topics, pending suggestions next to the Inbox, and Settings. They do not say how he moves among them. This file does not add a bottom bar, a drawer, or tabs. mjbvilhena can name that chrome.
-2. **Settings order.** The controls are the ones US-59, US-66, US-78, and US-87 name. The order in the wireframe is a proposal.
-3. **Strong-passphrase guidance.** US-35 requires the guidance and the loss facts. It does not write the guidance sentences. The loss facts are in the passphrase wireframe. The guidance wording is still open.
-4. **Undo snackbar duration.** US-13 says the snackbar can time out and does not say how long.
-5. **Fog art.** US-79 requires a foggy placeholder image with no page content. It does not specify the pixels. This proposal uses a neutral fog with no text from the page.
-6. **Dynamic color and on-accent text.** The dark-text rule is stated for the teal accent. US-53 does not say whether black or `#003731` still applies when dynamic color replaces teal.
-7. **Launcher icon art.** US-23 requires an icon made for this app and the name Lagoon. It does not specify the drawing.
-8. **Typeface.** E5 does not pick one. None is proposed.
-9. **Clock warning.** T-28 and the backlog say Lagoon shows a warning when this phone's clock is badly out compared with Drive. The threshold and the text are not decided. This file does not invent them.
-10. **Proposed sentences in the Copy table.** Any row marked Proposed can be replaced without changing the story. The sync-paused sentence is the one ADR-0002, US-66, and US-87 explicitly deferred.
+1. **Clock-warning threshold.** The warning text is "This phone's clock does not match Drive." How far out the clock must be before that warning shows is not set. That threshold is still open.
 
 ## Relationship
 
@@ -631,8 +629,8 @@ Upstream claims are the vision, the specification, the epics, and the story file
 
 Parallel records are ADR-0001 through ADR-0006 and `docs/technical_design/threat-model.md`. Where a story and a layer file use the same rule, both are cited. No conflict was found that this file had to pick a side for. US-57 is a spike about FTS5 and SQLCipher. It has no screen.
 
-`docs/technical_design/test-plan.md` plans how these screens and the domain rules are proved. It is also Proposed.
+`docs/technical_design/test-plan.md` plans how these screens and the domain rules are proved. It is approved. Approved by mjbvilhena on 2026-10-30.
 
 Keyboard access, accessible names, and the `ui change` checks are implement and verify work. This file does not claim a conformance result.
 
-Implementation stays closed until mjbvilhena approves this file, or records an explicit skip. A merged pull request is not that approval.
+This file is approved. Approved by mjbvilhena on 2026-10-31. Implementation has not started. A merged pull request is not that approval.

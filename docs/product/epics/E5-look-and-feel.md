@@ -3,6 +3,7 @@
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-10-31.
 
 ## Background & Value Proposition
 
@@ -38,7 +39,7 @@ Miguel, using the app every time he saves or looks something up.
 
 ## Risks & Dependencies
 
-- The name Lagoon, the teal accent, dark on-accent text, and optional dynamic color are in the specification. Stories stay Draft. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design has not started.
+- The name Lagoon, the teal accent, dark on-accent text, and optional dynamic color are in the specification. Stories stay Draft. Play Store and trademark checks for Lagoon were not done. The UX gate can still check the accent. UX design is approved. Approved by mjbvilhena on 2026-10-31.
 - This epic does not pick a typeface. The accent values are not a finished visual design.
 
 ## Open Questions
