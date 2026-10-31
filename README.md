@@ -2,7 +2,7 @@
 
 Review aid only. `docs/technical_design/ux-design.md` is the source of truth. If this mockup and that file disagree, the file wins.
 
-The status of that file is Proposed. This prototype is not an approval of it.
+This prototype was built from the approved file. Approved by mjbvilhena on 2026-10-31. The placeholders it used for navigation, Settings order, passphrase guidance, the undo snackbar, the fog, Dynamic color on-accent colors, the launcher mark, the system-ui typeface, and the clock-warning text are now decisions in that file. The clock-warning threshold is still open.
 
 Open `index.html` in a browser. No server and no network are required. The page is the app, edge to edge. On a wide window the app stays a phone width and the surrounding page uses the same surface colour. Theme follows the system until Settings changes it. Add it to the home screen to open it full screen.
 

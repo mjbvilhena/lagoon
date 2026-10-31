@@ -20,26 +20,26 @@
 <body>
 <main>
 <p class="notice">Review aid only. docs/technical_design/ux-design.md is the source of truth. If this mockup and that file disagree, the file wins.</p>
+<p>This prototype was built from the approved file docs/technical_design/ux-design.md. Approved by mjbvilhena on 2026-10-31. The choices under Decisions now in ux-design.md are decisions in that file. The clock-warning threshold is still open.</p>
 <p><a href="index.html">Open the app</a>. With no hash, it starts at passphrase setup. A hash opens one screen, for example <a href="index.html#/trash">#/trash</a>.</p>
 <p>The demo vault passphrase is island-ferry-2026.</p>
 
-<h2>Restore conflict</h2>
-<p>Trash shows Restore, as the Trash wireframe, the Copy table, and approved US-66 require. A later Copy sentence says no screen uses Restore. Backup Restore, Back up now, and a last-backup time are not shown. Delete forever, Delete now, and Empty trash are not shown: the file and US-66 say v1 does not have them.</p>
+<h2>Restore</h2>
+<p>Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1. Backup Restore, Back up now, and a last-backup time are not shown. Delete forever, Delete now, and Empty trash are not shown: the file and US-66 say v1 does not have them.</p>
 
-<h2>Not specified in ux-design.md</h2>
-<h3>Open questions</h3>
+<h2>Decisions now in ux-design.md</h2>
 <ul>
-  <li>Navigation chrome. A Material 3 navigation bar has Home, Search, Inbox, Topics, and Settings. Upcoming is a button on the Home app bar. Pending suggestions is a button on Inbox. Back is the app-bar arrow. The file draws none of these.</li>
-  <li>Settings order follows the wireframe. Change passphrase and Set a new passphrase are extra rows under Trash, because the file does not say where those screens open.</li>
+  <li>Navigation chrome. A Material 3 navigation bar has Home, Search, Inbox, Topics, and Settings. Upcoming is a button on the Home app bar. Pending suggestions is a button on Inbox. Back is the app-bar arrow.</li>
+  <li>Settings order follows the wireframe. Change passphrase and Set a new passphrase are rows under Trash.</li>
   <li>Passphrase guidance on setup: “Choose a passphrase of 12 to 128 characters that you do not use anywhere else.” The loss warning states the facts from the passphrase wireframe: the key is derived from the passphrase, forgetting it and losing the device means the content is lost, uninstall or clear storage destroys the Keystore copy, and losing the signing key forces a reinstall that destroys that copy too.</li>
   <li>Undo snackbar duration is 8 seconds. The words beside Undo are “In trash”.</li>
   <li>The fog is a grey-green blur with no text and no page content.</li>
   <li>Dynamic color, when on, uses light accent #6750A4 with white on it, and dark accent #D0BCFF with black #000000 on it. Teal stays the accent while dynamic color is off.</li>
-  <li>The launcher icon is a teal rounded square and a simple wave. It is not final art.</li>
+  <li>The launcher icon is a teal rounded square and a simple wave.</li>
   <li>Type is the browser system-ui font.</li>
-  <li>Clock warning text, only on <a href="index.html#/clock">#/clock</a>: “This phone's clock does not match Drive.” No threshold is applied.</li>
+  <li>Clock warning text, only on <a href="index.html#/clock">#/clock</a>: “This phone's clock does not match Drive.” That text is a decision in the file. No threshold is applied. The threshold is still open.</li>
 </ul>
-<h3>Other placeholders</h3>
+<h2>Prototype detail the file does not specify</h2>
 <ul>
   <li>Light surfaces are #F7F6F4, #EEEFED, and #E4E8E6. Dark surfaces are #101211, #1C1F1E, and #262928. On-surface text is #1A1C1B in light and #E3E3E1 in dark. Text on #0F766E is white. Text on #2DD4BF is #003731. A dark snackbar action uses #2DD4BF so #0F766E is not drawn on a dark surface.</li>
   <li>The system status bar and gesture bar are not drawn. The layout uses safe-area insets so the app bars sit clear of them. The launcher clock reads 09:41. FLAG_SECURE is not painted.</li>
