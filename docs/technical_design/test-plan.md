@@ -51,6 +51,8 @@ Streaming file, Drive, and zip containers use Tink `AES256_GCM_HKDF_1MB`. A full
 
 `docs/technical_design/ux-design.md` is Proposed. Rows that lock a sentence marked Proposed in that file fail if the string drifts from that file, and they are re-pointed if mjbvilhena changes the sentence before approval. They do not approve the sentence.
 
+Proposed amendment. Needs approval by mjbvilhena. Original: "`docs/technical_design/ux-design.md` is Proposed. Rows that lock a sentence marked Proposed in that file fail if the string drifts from that file, and they are re-pointed if mjbvilhena changes the sentence before approval. They do not approve the sentence." Replacement: "`docs/technical_design/ux-design.md` is approved. Approved by mjbvilhena on 2026-10-31. Rows that lock a sentence in that file fail if the string drifts from that file. A sentence in that file marked Proposed amendment is not approved. Those rows are re-pointed if mjbvilhena changes the sentence before he approves the amendment. They do not approve the sentence."
+
 ## Risk-based coverage
 
 Ordered by user and data risk. Status is planned. Nothing here is implemented.
@@ -88,6 +90,35 @@ Ordered by user and data risk. Status is planned. Nothing here is implemented.
 | TP-29 | Zip reading rejects an absolute path, `..`, and a path that escapes the destination. It stops at 10000 entries, 2 GiB uncompressed in total, and a single entry whose uncompressed size is more than 100 times its compressed size. A stop leaves the vault unchanged. | integration | A zip replaces the vault or writes outside the destination | planned |
 | TP-30 | A failed assertion fails CI (US-25). Kotlin style runs `ktlintCheck` or `detekt` once Gradle exists, as `qa.yml` already says. | CI | A red test is ignored | planned |
 | TP-31 | File, attachment, derived-file, Drive records, and zip payloads use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. The same associated data is required to decrypt. SQLCipher and the Keystore wrap do not use that template. Approved by mjbvilhena on 2026-10-30. Amendment approved by mjbvilhena on 2026-10-31. The Tink segment number stays strictly below 2^32 per stream, as ADR-0006's approved amendment states. Encrypting beyond that bound is refused. The check is cheap and needs no 4 PiB file, for example a unit test at the boundary on the segment counter or Tink's own guard. | integration | A platform GCM seal or a different segment size ships, or a segment number that is not strictly below 2^32 is written | planned |
+| TP-32 | Clock warning. A sync that reads back a records file this phone uploaded on that sync compares this phone's clock with that file's Drive `modifiedTime`. The warning "This phone's clock does not match Drive." is shown when the absolute difference is 24 hours or more, and not when it is under 24 hours. A later comparison under 24 hours clears it. Another install's `modifiedTime` does not show it. No read-back on this sync leaves the warning as it was. Merge, `trashChangedAt`, and the tombstone do not change on either side of the threshold. The 24-hour figure is the proposed amendment in `docs/technical_design/ux-design.md` and is not approved. | integration | A day of skew is silent, or the warning is treated as a merge guard | planned |
+
+Proposed amendment. Needs approval by mjbvilhena. TP-32 is added. It does not approve the 24-hour threshold. Citations for the existing rows, with no change to their behavior text:
+
+- TP-01, TP-02, TP-03, and TP-05 cite ADR-0001, US-35, and specification Product rules (passphrase length, memory floor, no strength meter).
+- TP-04 cites ADR-0001, ADR-0006, US-35, and US-36. US-36 stays Draft. It also cites T-24.
+- TP-06 and TP-07 cite ADR-0001 and ADR-0006. TP-07 also cites T-20.
+- TP-08 cites specification Product rules for the FTS5 spike. US-57 stays Draft.
+- TP-09 cites US-15, US-50, and specification Product rules (the weights).
+- TP-10 cites US-75. US-37 stays Draft.
+- TP-11 cites ADR-0002 and specification Product rules (an item on only one side is kept). US-20 stays Draft.
+- TP-12 and TP-13 cite ADR-0002 and US-66.
+- TP-14, TP-15, TP-16, and TP-17 cite ADR-0002 and US-87. TP-15 also cites US-66.
+- TP-18 cites ADR-0001 and US-86.
+- TP-19 cites US-79 and specification Product rules (a token-looking URL is not auto-fetched).
+- TP-20 cites US-31, ADR-0004, and specification Product rules (the disclosure). US-07 stays Draft.
+- TP-21 cites ADR-0003, US-41, and US-75.
+- TP-22 cites US-34, US-55, US-75, and specification Product rules (inexact alarms and "Lagoon reminder").
+- TP-23 cites US-80 and US-35. The `file://` refusal is US-01, which stays Draft.
+- TP-24 cites US-81.
+- TP-25 cites US-49, ADR-0002, and specification Product rules (repeat URL).
+- TP-26 cites US-85 and ADR-0005.
+- TP-27 cites US-35, E5, and specification Product rules (accents and dynamic color). US-25, US-22, US-53, and US-30 stay Draft.
+- TP-28 cites `docs/layers/domain/LAYER.md` and `docs/layers/data/LAYER.md` for the module graph.
+- TP-29 cites ADR-0006 and T-21. US-21 and US-52 stay Draft.
+- TP-30 cites `.github/workflows/qa.yml`. US-25 stays Draft.
+- J-6 also cites specification Product rules and E5, the same sources as the Theme flow. US-22, US-53, US-30, and US-59 stay Draft.
+
+Proposed amendment. Needs approval by mjbvilhena. In TP-27 and in the Settings unhappy row, "no Restore" means no backup Restore. Trash, opened from Settings, still has Restore (US-66). There is no backup Restore in v1.
 
 Happy paths are the success column of each row. Failure and empty paths are the risk column and the unhappy table. This change is not a bugfix, so there is no old-code regression row.
 
@@ -104,6 +135,7 @@ Draft stories are still the oracle for rows that cite them. A Draft story is not
 - ML Kit is not initialized in the unit tests. The disclosure test asserts the initialize function was not called.
 - SQLCipher tests use a temporary directory that is deleted at the end. `temp_store = MEMORY` is asserted from the connection, not from a file appearing.
 - Compose tests use the strings in `docs/technical_design/ux-design.md`. They do not invent a second sentence.
+- Proposed amendment. Needs approval by mjbvilhena. The fake `SyncPort` can return `modifiedTime` on a file this phone just uploaded. Tests set that instant. They do not call live Drive. This is the clock for TP-32.
 - Randomness: salt and nonce tests use a seeded `SecureRandom` stand-in where the test needs a known nonce, and a real `SecureRandom` only for the "two nonces differ" check.
 
 ## Unhappy paths
@@ -128,6 +160,10 @@ Draft stories are still the oracle for rows that cite them. A Draft story is not
 | Empty vault on the home screen | "Nothing is saved yet." | TP-27 |
 | Empty search | No rows. Not an error dialog. | TP-09 |
 | Settings | No Back up now, Restore, last-backup time, or "Check my passphrase". | TP-27 |
+| Clock skew of 24 hours against this phone's read-back `modifiedTime` | "This phone's clock does not match Drive." Merge and trash rules unchanged. | TP-32 |
+| Clock skew under 24 hours | The warning is absent, or it clears if it was showing. | TP-32 |
+
+Proposed amendment. Needs approval by mjbvilhena. The two clock rows above are part of TP-32. They do not approve the threshold.
 
 ## Definition of ready for this plan
 
@@ -291,3 +327,5 @@ These four are no longer open questions. Approved by mjbvilhena on 2026-10-30.
 ## Open questions
 
 5. **Proposed UX strings.** Journey assertions follow `docs/technical_design/ux-design.md`. If those sentences change before approval, the assertions change with them. They are not a second copy of the product decision.
+
+Proposed amendment. Needs approval by mjbvilhena. Original: "Journey assertions follow `docs/technical_design/ux-design.md`. If those sentences change before approval, the assertions change with them. They are not a second copy of the product decision." Replacement: "Journey assertions follow `docs/technical_design/ux-design.md`. That file is approved. Approved by mjbvilhena on 2026-10-31. An assertion that locks a Proposed amendment in that file changes if he changes the amendment before he approves it. The assertion does not approve the amendment."

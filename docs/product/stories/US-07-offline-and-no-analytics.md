@@ -72,7 +72,7 @@ The specification forbids an analytics product the app chooses. This story's Mus
 ## Design and a11y notes
 
 - Offline use has no extra screen. No placeholder sentences.
-- Exact disclosure sentences wait for the UX artefact, which does not exist. The facts in the disclosure scenario are the ones that must be present.
+- Exact disclosure sentences are in `docs/technical_design/ux-design.md` (approved 2026-10-31). The facts in the disclosure scenario are the ones that must be present.
 
 ## Dependencies and risks
 
