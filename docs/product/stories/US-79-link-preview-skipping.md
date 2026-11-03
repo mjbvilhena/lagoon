@@ -92,8 +92,7 @@ Not applicable. No analytics.
 
 - The prompt asks whether to enable the preview for that link. The foggy image is not a sentence of placeholder copy.
 - "Fetch preview" has a name. No placeholder sentences.
-- Exact layout waits for the UX artefact, which does not exist.
-- Proposed amendment. Needs approval by mjbvilhena. Original: "Exact layout waits for the UX artefact, which does not exist." Replacement: "Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31)."
+- Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31). Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Dependencies and risks
 
