@@ -18,7 +18,7 @@ See that sync is not configured.
 
 ## Background
 
-- There is no Back up now and no Restore. The screen explains that background sync is not configured.
+- There is no Back up now, no backup Restore, and no last-backup time. Restore from Trash stays in scope as US-66. There is no backup Restore in v1. Amendment approved by mjbvilhena on 2026-11-03. This amendment is not approval of the story. The screen explains that background sync is not configured.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: sign-in (US-18) and the sync worker (US-51).
 
@@ -35,7 +35,7 @@ See that sync is not configured.
 - **Scenario: no manual sync controls** — Must
   - Given he looks through Settings and the home screen
   - When the screens are shown
-  - Then there is no Back up now, no Restore, and no last-backup time
+  - Then there is no Back up now, no backup Restore, and no last-backup time, and Restore from Trash stays in scope as US-66
 - **Scenario: zip still available** — Must
   - Given sync is not configured
   - When he looks for the zip actions

@@ -3,6 +3,7 @@
 > **Approval status: Approved.**
 > Approved by mjbvilhena on 2026-10-17.
 > Epic amendments approved by mjbvilhena on 2026-10-17.
+> Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Background & Value Proposition
 
@@ -37,7 +38,7 @@ Miguel, installing and configuring the vault himself.
    - The app opens without a Play Store account and without an OAuth client ID.
 2. **Turn sync on later**
    - He follows the README, creates an OAuth client for the package name and SHA-1, puts the client ID in the build-time config, and rebuilds.
-   - Until he does that, E4's unconfigured sync state is what he sees. There is no Back up now and no Restore.
+   - Until he does that, E4's unconfigured sync state is what he sees. There is no Back up now, no backup Restore, and no last-backup time. Restore from Trash stays in scope as US-66. There is no backup Restore in v1. Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Risks & Dependencies
 
