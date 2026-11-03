@@ -12,4 +12,4 @@ The files are static. `.nojekyll` is in this directory so GitHub Pages does not 
 
 `.github/workflows/pages.yml` publishes two copies. The stable copy is this directory on `master`, at the [site root](https://mjbvilhena.github.io/lagoon/). The work-in-progress copy is the `gh-pages` branch, under [/wip/](https://mjbvilhena.github.io/lagoon/wip/). Reviewer notes are [notes.html](notes.html) on each copy. A hash opens one screen, for example [index.html#/trash](index.html#/trash). Paths, the web manifest `scope` and `start_url`, and those hashes are relative to the copy, so both URLs resolve them. There is no service worker.
 
-The repository Pages source has to be GitHub Actions before either URL is served from that workflow. That setting is still a manual step.
+The repository Pages source is GitHub Actions. The Pages API reports `build_type` `workflow`. The site root is this directory on `master`.

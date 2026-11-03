@@ -13,7 +13,7 @@ Structured from `get_sdlc_template("repository setup")` and `get_definition_of_d
 | --- | --- |
 | Target Repository | `github.com/mjbvilhena/lagoon` (public). Default branch `master`. |
 | Primary Tech Stack | Markdown product docs now. Kotlin, Jetpack Compose, and Gradle are named for a later app and are not in the tree. |
-| CI/CD System | GitHub Actions (`.github/workflows/qa.yml`) |
+| CI/CD System | GitHub Actions. Required checks are `.github/workflows/qa.yml`. `.github/workflows/pages.yml` publishes the mockups and is not a required check. |
 
 ## Purpose Summary
 
@@ -26,7 +26,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 | Path | What it is |
 | --- | --- |
 | `docs/product/vision.md` | Current vision. Restates the approved specification, epics E1–E9 and E11, and the approved amendment. |
-| `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-22. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27. |
+| `docs/product/specification.md` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18. Amendment approved by mjbvilhena on 2026-10-20. Amendment approved by mjbvilhena on 2026-10-22. Amendment approved by mjbvilhena on 2026-10-24. Amendment approved by mjbvilhena on 2026-10-27. Amendment approved by mjbvilhena on 2026-10-28. Amendment approved by mjbvilhena on 2026-10-31. |
 | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. E10 is Later, not in v1. |
 | `docs/product/stories/` | Story files and `docs/product/stories/INDEX.md`. The approval line on each file is the status. |
 | `docs/product/backlog.md` | Draft backlog |
@@ -35,6 +35,8 @@ The root `README.md` only describes the app. These paths are the rest of the not
 | `docs/sdlc/repository-setup.md` | Draft repository checks |
 | `.cursor/commands/` | Installed harness skills and rules |
 | `third_party/ai-sdlc-harness` | Harness submodule |
+| `docs/mockups/` | Static UX review prototype. `docs/technical_design/ux-design.md` is the source of truth. |
+| `.github/workflows/pages.yml` | Publishes that prototype. Not one of the seven required checks. |
 
 ## Stack mapping
 
