@@ -19,6 +19,7 @@ Use one Settings screen.
 ## Background
 
 - This screen hosts controls defined by other stories. It does not add Back up now.
+- Amendment approved by mjbvilhena on 2026-11-03. This amendment is not approval of the story. There is no backup Restore in v1. Restore from Trash stays in scope as US-66.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: the sign-out behavior. The row is only a slot. The behavior is US-78.
 - The topic job's own "Unmetered only" control (US-44) is separate from the sync preference.
@@ -35,7 +36,7 @@ Use one Settings screen.
 - **Scenario: no backup controls** — Must
   - Given that screen
   - When he reads it
-  - Then there is no Back up now, no Restore, and no last-backup time
+  - Then there is no Back up now, no backup Restore, and no last-backup time, and Restore from Trash stays in scope as US-66
 - **Scenario: the topic switch** — Must
   - Given a fresh install
   - When he opens Settings

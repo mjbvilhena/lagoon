@@ -166,7 +166,7 @@ UX design is approved. Approved by mjbvilhena on 2026-10-31. The test plan is ap
 | US-27 | E6 | E6: "Screenshots: home, search results, item detail, share-to-save, and settings." | Traced |
 | US-28 | E1 | Spec E1 row: "last-used tags can be applied from a non-blocking chip row." | Traced. Add date is in E1. |
 | US-29 | E3 | E3: "A rename applies to every item. A case-insensitive clash asks for confirmation and then merges." | Traced |
-| US-30 | E4 | E4: "No Back up now, no Restore, no last-backup-time control." Vision says the same. | Traced |
+| US-30 | E4 | E4: "No Back up now, no backup Restore, no last-backup-time control." Restore from Trash stays in scope as US-66. There is no backup Restore in v1. Vision says the same. | Traced |
 | US-31 | E7 | E7: "On-device text recognition for screenshots, images, and scanned PDFs." Vision: English, bundled model, disclosure. | Traced. The thin Play services artifact is absent because it collects a device identifier. Source: `docs/adr/inputs/2026-10-17-ml-kit-telemetry.md`. |
 | US-32 | E1 | E1: "An item can hold more than one attachment." Vision says the same. | Traced |
 | US-33 | E2 | E2: "keep an offline snapshot... and always keep the original URL." Spec US-33 line: sanitised archive, about 10 MB, searchable. | Traced |

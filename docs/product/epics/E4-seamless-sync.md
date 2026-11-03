@@ -6,6 +6,7 @@
 > Amendment approved by mjbvilhena on 2026-10-18.
 > Amendment approved by mjbvilhena on 2026-10-20.
 > Amendment approved by mjbvilhena on 2026-10-27.
+> Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Background & Value Proposition
 
@@ -23,7 +24,7 @@ Miguel, on this phone and on a later install of the same app.
   - Background sync of the vault (database and attachments) through the Drive API `appDataFolder`. Not Android Auto Backup.
   - `appDataFolder` stays hidden in the Drive UI.
   - On-device first. The app works fully offline. Sync runs when connectivity allows.
-  - No Back up now, no Restore, no last-backup-time control, no size warning, and no roaming warning on a manual backup.
+  - No Back up now, no backup Restore, no last-backup-time control, no size warning, and no roaming warning on a manual backup. Restore from Trash stays in scope as US-66. There is no backup Restore in v1. Amendment approved by mjbvilhena on 2026-11-03.
   - Sign in with Google (Google Sign-In / Credential Manager). A missing OAuth client ID leaves sync unconfigured, explains that, and does not crash.
   - Unmetered-only preference for background sync (`WorkManager` `UNMETERED`).
   - A new install or second device signs in and receives the vault. Sync merges: an item that exists on only one side is kept.
@@ -40,9 +41,9 @@ Miguel, on this phone and on a later install of the same app.
   - Security criteria approved by mjbvilhena on 2026-10-27. An offline sync, when Drive is not reachable, neither counts toward the 3 consecutive failed syncs for the sync-paused notice nor resets that run. Only a sync that reaches Drive and fails to read or list a forgotten-installs file counts.
   - Zip export and import on device storage, as a fallback. It does not replace sync.
   - Bytes sent to Drive are ciphertext (E8). This epic does not choose the cipher.
-  - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now and no Restore. A failure is an error he can read.
+  - Background sync tells him when it fails (A-E4-1, US-51). Acceptance: there is still no Back up now, no backup Restore, and no last-backup time. Restore from Trash stays in scope as US-66. There is no backup Restore in v1. A failure is an error he can read.
   - Each item keeps one id and an updated time across an edit, a repeat save, and a sync (A-E4-2, US-56). Acceptance: an edit or a second device does not fork the item. Which side wins when two updates share that id is US-73. Criteria follow from the ADR at the design gate.
-  - Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen (A-E4-3, US-59). Acceptance: he does not hunt through the app for those controls. The screen has no Back up now, no Restore, and no last-backup time. Each control keeps the behavior of its own story.
+  - Theme, sync, the reminder default, app lock, the topic controls, and the ML Kit disclosure slot live on one Settings screen (A-E4-3, US-59). Acceptance: he does not hunt through the app for those controls. The screen has no Back up now, no backup Restore, and no last-backup time. Restore from Trash stays in scope as US-66. There is no backup Restore in v1. Each control keeps the behavior of its own story.
   - Sign-out does not delete the vault on the phone (A-E4-4, US-78). Drive access stays `appDataFolder`. Acceptance: the phone vault remains after sign-out. The rest of the scope and sign-out behavior is the criteria on US-78.
 - **Future Scope (v2+):** Nothing named here.
 - **Out of Scope / Non-Goals:** A backup button, a restore wizard, Android Auto Backup, a second cloud provider, showing app-data files in the normal Drive browser.
