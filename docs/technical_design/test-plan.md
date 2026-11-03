@@ -49,9 +49,7 @@ Streaming file, Drive, and zip containers use Tink `AES256_GCM_HKDF_1MB`. A full
 
 ### UX artefact
 
-`docs/technical_design/ux-design.md` is Proposed. Rows that lock a sentence marked Proposed in that file fail if the string drifts from that file, and they are re-pointed if mjbvilhena changes the sentence before approval. They do not approve the sentence.
-
-Proposed amendment. Needs approval by mjbvilhena. Original: "`docs/technical_design/ux-design.md` is Proposed. Rows that lock a sentence marked Proposed in that file fail if the string drifts from that file, and they are re-pointed if mjbvilhena changes the sentence before approval. They do not approve the sentence." Replacement: "`docs/technical_design/ux-design.md` is approved. Approved by mjbvilhena on 2026-10-31. Rows that lock a sentence in that file fail if the string drifts from that file. A sentence in that file marked Proposed amendment is not approved. Those rows are re-pointed if mjbvilhena changes the sentence before he approves the amendment. They do not approve the sentence."
+`docs/technical_design/ux-design.md` is approved. Approved by mjbvilhena on 2026-10-31. Rows that lock a sentence in that file fail if the string drifts from that file. A sentence in that file marked Proposed amendment is not approved. Those rows are re-pointed if mjbvilhena changes the sentence before he approves the amendment. They do not approve the sentence. Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Risk-based coverage
 
@@ -85,14 +83,14 @@ Ordered by user and data risk. Status is planned. Nothing here is implemented.
 | TP-24 | US-81 sideload policy: the release signing story's published rule is the oracle. A test checks the policy file and the build type that policy names, once those files exist. This plan does not invent a second signing scheme. | integration | An unsigned or differently signed APK is treated as the release | planned |
 | TP-25 | Repeat URL normalisation (scheme, `www`, trailing slash, fragment, `utm_*` and tracking parameters, host case) updates one item, unions tags, appends a dated note, and does not overwrite text. The snackbar is "Saved before, added to existing" with Undo and "Keep separate". Trashed matches are ignored when a live match exists. | integration | A second item, or a note he typed is overwritten | planned |
 | TP-26 | Full-screen sets `screenBrightness` to `1.0f` on that window, does not request `WRITE_SETTINGS`, keeps the screen on until close, does not write a decoded image or a rendered page to disk, and does not open a PDF that needs a password. An owner-password-only PDF still opens. A sensitive item prompts before the view and uses `FLAG_SECURE`. | integration | Brightness is a system setting, or a password is stored | planned |
-| TP-27 | Compose. The passphrase field is a password input with `IME_FLAG_NO_PERSONALIZED_LEARNING`, and that screen uses `FLAG_SECURE`. Settings is one screen and has no Back up now, no Restore, no last-backup time, and no "Check my passphrase". Theme defaults to System. Light accent `#0F766E`, dark accent `#2DD4BF`, on-accent text in dark mode black or `#003731`, and `#0F766E` is not a dark-surface color. Dynamic color is off until toggled, and the toggle is absent on API 30 and below. Animator scale 0 completes the action with no motion. US-25 finds Settings' main control by its accessible name. Approved by mjbvilhena on 2026-10-30. | Compose | A backup button appears, or the dark accent is unreadable | planned |
+| TP-27 | Compose. The passphrase field is a password input with `IME_FLAG_NO_PERSONALIZED_LEARNING`, and that screen uses `FLAG_SECURE`. Settings is one screen and has no Back up now, no backup Restore, no last-backup time, and no "Check my passphrase". Theme defaults to System. Light accent `#0F766E`, dark accent `#2DD4BF`, on-accent text in dark mode black or `#003731`, and `#0F766E` is not a dark-surface color. Dynamic color is off until toggled, and the toggle is absent on API 30 and below. Animator scale 0 completes the action with no motion. US-25 finds Settings' main control by its accessible name. Approved by mjbvilhena on 2026-10-30. | Compose | A backup button appears, or the dark accent is unreadable | planned |
 | TP-28 | Module graph, once Gradle exists: `:domain` has no Android dependency, `:ui` does not depend on `:data`, `:data` does not depend on `:ui`, `:app` is the only module that depends on both. The architecture test fails the build otherwise. | unit | A composable imports SQLCipher or Drive | planned |
 | TP-29 | Zip reading rejects an absolute path, `..`, and a path that escapes the destination. It stops at 10000 entries, 2 GiB uncompressed in total, and a single entry whose uncompressed size is more than 100 times its compressed size. A stop leaves the vault unchanged. | integration | A zip replaces the vault or writes outside the destination | planned |
 | TP-30 | A failed assertion fails CI (US-25). Kotlin style runs `ktlintCheck` or `detekt` once Gradle exists, as `qa.yml` already says. | CI | A red test is ignored | planned |
 | TP-31 | File, attachment, derived-file, Drive records, and zip payloads use Tink `AES256_GCM_HKDF_1MB`. A full ciphertext segment is 1048576 bytes. The same associated data is required to decrypt. SQLCipher and the Keystore wrap do not use that template. Approved by mjbvilhena on 2026-10-30. Amendment approved by mjbvilhena on 2026-10-31. The Tink segment number stays strictly below 2^32 per stream, as ADR-0006's approved amendment states. Encrypting beyond that bound is refused. The check is cheap and needs no 4 PiB file, for example a unit test at the boundary on the segment counter or Tink's own guard. | integration | A platform GCM seal or a different segment size ships, or a segment number that is not strictly below 2^32 is written | planned |
-| TP-32 | Clock warning. A sync that reads back a records file this phone uploaded on that sync compares this phone's clock with that file's Drive `modifiedTime`. The warning "This phone's clock does not match Drive." is shown when the absolute difference is 24 hours or more, and not when it is under 24 hours. A later comparison under 24 hours clears it. Another install's `modifiedTime` does not show it. No read-back on this sync leaves the warning as it was. Merge, `trashChangedAt`, and the tombstone do not change on either side of the threshold. The 24-hour figure is the proposed amendment in `docs/technical_design/ux-design.md` and is not approved. | integration | A day of skew is silent, or the warning is treated as a merge guard | planned |
+| TP-32 | Clock warning. A sync that reads back a records file this phone uploaded on that sync compares this phone's clock with that file's Drive `modifiedTime`. The warning "This phone's clock does not match Drive." is shown when the absolute difference is 24 hours or more, and not when it is under 24 hours. A later comparison under 24 hours clears it. Another install's `modifiedTime` does not show it. No read-back on this sync leaves the warning as it was. Merge, `trashChangedAt`, and the tombstone do not change on either side of the threshold. The 24-hour figure is approved. Approved by mjbvilhena on 2026-11-03. | integration | A day of skew is silent, or the warning is treated as a merge guard | planned |
 
-Proposed amendment. Needs approval by mjbvilhena. TP-32 is added. It does not approve the 24-hour threshold. Citations for the existing rows, with no change to their behavior text:
+Amendment approved by mjbvilhena on 2026-11-03. TP-32 is added. The 24-hour threshold is approved. Approved by mjbvilhena on 2026-11-03. Citations for the existing rows, with no change to their behavior text:
 
 - TP-01, TP-02, TP-03, and TP-05 cite ADR-0001, US-35, and specification Product rules (passphrase length, memory floor, no strength meter).
 - TP-04 cites ADR-0001, ADR-0006, US-35, and US-36. US-36 stays Draft. It also cites T-24.
@@ -118,7 +116,7 @@ Proposed amendment. Needs approval by mjbvilhena. TP-32 is added. It does not ap
 - TP-30 cites `.github/workflows/qa.yml`. US-25 stays Draft.
 - J-6 also cites specification Product rules and E5, the same sources as the Theme flow. US-22, US-53, US-30, and US-59 stay Draft.
 
-Proposed amendment. Needs approval by mjbvilhena. In TP-27 and in the Settings unhappy row, "no Restore" means no backup Restore. Trash, opened from Settings, still has Restore (US-66). There is no backup Restore in v1.
+Amendment approved by mjbvilhena on 2026-11-03. In TP-27 and in the Settings unhappy row, "no Restore" means no backup Restore. Trash, opened from Settings, still has Restore (US-66). There is no backup Restore in v1.
 
 Happy paths are the success column of each row. Failure and empty paths are the risk column and the unhappy table. This change is not a bugfix, so there is no old-code regression row.
 
@@ -135,7 +133,7 @@ Draft stories are still the oracle for rows that cite them. A Draft story is not
 - ML Kit is not initialized in the unit tests. The disclosure test asserts the initialize function was not called.
 - SQLCipher tests use a temporary directory that is deleted at the end. `temp_store = MEMORY` is asserted from the connection, not from a file appearing.
 - Compose tests use the strings in `docs/technical_design/ux-design.md`. They do not invent a second sentence.
-- Proposed amendment. Needs approval by mjbvilhena. The fake `SyncPort` can return `modifiedTime` on a file this phone just uploaded. Tests set that instant. They do not call live Drive. This is the clock for TP-32.
+- Amendment approved by mjbvilhena on 2026-11-03. The fake `SyncPort` can return `modifiedTime` on a file this phone just uploaded. Tests set that instant. They do not call live Drive. This is the clock for TP-32.
 - Randomness: salt and nonce tests use a seeded `SecureRandom` stand-in where the test needs a known nonce, and a real `SecureRandom` only for the "two nonces differ" check.
 
 ## Unhappy paths
@@ -159,11 +157,11 @@ Draft stories are still the oracle for rows that cite them. A Draft story is not
 | Zip with `..` | Vault unchanged. | TP-29 |
 | Empty vault on the home screen | "Nothing is saved yet." | TP-27 |
 | Empty search | No rows. Not an error dialog. | TP-09 |
-| Settings | No Back up now, Restore, last-backup time, or "Check my passphrase". | TP-27 |
+| Settings | No Back up now, no backup Restore, no last-backup time, and no "Check my passphrase". | TP-27 |
 | Clock skew of 24 hours against this phone's read-back `modifiedTime` | "This phone's clock does not match Drive." Merge and trash rules unchanged. | TP-32 |
 | Clock skew under 24 hours | The warning is absent, or it clears if it was showing. | TP-32 |
 
-Proposed amendment. Needs approval by mjbvilhena. The two clock rows above are part of TP-32. They do not approve the threshold.
+Amendment approved by mjbvilhena on 2026-11-03. The two clock rows above are part of TP-32. The 24-hour threshold is approved. Approved by mjbvilhena on 2026-11-03.
 
 ## Definition of ready for this plan
 
@@ -317,15 +315,10 @@ Visual snapshot farms, load tests, a live Drive tenant, Play Store review, and E
 
 ## Closed in this plan
 
-These four are no longer open questions. Approved by mjbvilhena on 2026-10-30.
+Items 1 to 4 are no longer open questions. Approved by mjbvilhena on 2026-10-30.
 
 1. **Journey runner.** J-1 through J-12 run on JVM + Robolectric only. No instrumented or emulator runner is planned for them.
 2. **Tink.** Streaming AES-256-GCM uses Tink `AES256_GCM_HKDF_1MB`, as accepted ADR-0007. SQLCipher 4, Argon2id, the purpose HKDF, and the Keystore wrap stay as the accepted ADRs state them.
 3. **GCM segment length.** 1 MB. A full ciphertext segment is 1048576 bytes.
 4. **US-25 screen.** The named screen in this plan is Settings. Amendment approved by mjbvilhena on 2026-10-30. US-25 stays Draft.
-
-## Open questions
-
-5. **Proposed UX strings.** Journey assertions follow `docs/technical_design/ux-design.md`. If those sentences change before approval, the assertions change with them. They are not a second copy of the product decision.
-
-Proposed amendment. Needs approval by mjbvilhena. Original: "Journey assertions follow `docs/technical_design/ux-design.md`. If those sentences change before approval, the assertions change with them. They are not a second copy of the product decision." Replacement: "Journey assertions follow `docs/technical_design/ux-design.md`. That file is approved. Approved by mjbvilhena on 2026-10-31. An assertion that locks a Proposed amendment in that file changes if he changes the amendment before he approves it. The assertion does not approve the amendment."
+5. **UX strings.** Journey assertions follow `docs/technical_design/ux-design.md`. That file is approved. Approved by mjbvilhena on 2026-10-31. An assertion that locks a Proposed amendment in that file changes if he changes the amendment before he approves it. The assertion does not approve the amendment. Amendment approved by mjbvilhena on 2026-11-03.

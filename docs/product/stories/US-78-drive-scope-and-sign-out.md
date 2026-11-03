@@ -73,8 +73,7 @@ Not applicable. No analytics.
 ## Design and a11y notes
 
 - Sign out and the Drive-delete action are separate named controls. No placeholder sentences.
-- Exact layout waits for the UX artefact, which does not exist.
-- Proposed amendment. Needs approval by mjbvilhena. Original: "Exact layout waits for the UX artefact, which does not exist." Replacement: "Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31)."
+- Exact layout is in `docs/technical_design/ux-design.md` (approved 2026-10-31). Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Dependencies and risks
 

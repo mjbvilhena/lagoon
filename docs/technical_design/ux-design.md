@@ -64,8 +64,7 @@ From `docs/layers/ui/LAYER.md` and `docs/domain/vault/DOMAIN.md`:
 - Links open with Custom Tabs or `ACTION_VIEW`, `http` or `https` only. No WebView.
 - The full-screen page sets `WindowManager.LayoutParams.screenBrightness = 1.0f` and does not request `WRITE_SETTINGS`.
 - One Settings screen hosts theme, sync, the reminder default, app lock, topic controls, and the ML Kit disclosure.
-- No Back up now, no Restore, no last-backup time, no "Check my passphrase", and no periodic passphrase reminder.
-- Proposed amendment. Needs approval by mjbvilhena. Original: "No Back up now, no Restore, no last-backup time, no "Check my passphrase", and no periodic passphrase reminder." Replacement: "No Back up now, no backup Restore, and no last-backup time. Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1. No "Check my passphrase", and no periodic passphrase reminder."
+- No Back up now, no backup Restore, and no last-backup time. Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1. No "Check my passphrase", and no periodic passphrase reminder. Amendment approved by mjbvilhena on 2026-11-03.
 - The UI does not show a sensitive title, snippet, thumbnail, or code in a row. Notification text is "Lagoon reminder" for a sensitive item. The data layer posts it.
 - No analytics events.
 
@@ -90,7 +89,7 @@ Actor in every row is Miguel, the only person named in the vision. Draft means t
 | Sensitive item | He marks an item sensitive, or opens one | Lists show type and "Sensitive" until one US-37 unlock in this session, then the title. Backgrounding the app returns rows to the neutral form. Body waits for the prompt. | Cancelled unlock shows no body. Both notification versions are only "Lagoon reminder". Export waits for unlock. Topic calls exclude the item. | US-37 Draft, US-75 Approved, US-34 Approved |
 | Reminder and expiry | He sets a date on the quick-add row or on the item | Default time 09:00 in the phone's current local zone. One reminder or one expiry. `POST_NOTIFICATIONS` is asked at the first reminder, not at launch. | Skipping Add date leaves no date. Alarms stay inexact. Upcoming, if built, lists soonest first, then an Expired group. Done stops further notices for that expiry. Snooze is 1 hour. | US-34 Approved, US-54 Draft, US-55 Approved, US-62 Approved, US-77 Draft |
 | Topics | An ordinary item is saved with the Settings switch on | After enrich, snapshot, and OCR, a topic call may run. Pending suggestions is a button on Inbox. He confirms before a new topic exists. | The switch off skips the call. "Get topics" sends one ordinary item. A sensitive item is never sent. Failure keeps the item and shows "Try again", unless the credential is blocked. Empty result says no topics, not failed. | US-41 Approved, US-42–US-48 Draft, US-60 Draft, ADR-0003 |
-| Settings and sync | He opens the one Settings screen | Controls in the Settings wireframe. Sign-in is the Google sheet. Signed-in state is a sentence on Settings. | No client ID: "Sync is not configured." The app does not crash and local save still works. Revoked sign-in, Drive full, and upload failure use the sentences in Copy. No Back up now and no Restore. | US-59 Draft, US-17 Draft, US-18 Draft, US-19 Draft, US-30 Draft, US-51 Draft, US-22 Draft, US-53 Draft |
+| Settings and sync | He opens the one Settings screen | Controls in the Settings wireframe. Sign-in is the Google sheet. Signed-in state is a sentence on Settings. | No client ID: "Sync is not configured." The app does not crash and local save still works. Revoked sign-in, Drive full, and upload failure use the sentences in Copy. No Back up now and no backup Restore. | US-59 Draft, US-17 Draft, US-18 Draft, US-19 Draft, US-30 Draft, US-51 Draft, US-22 Draft, US-53 Draft |
 | Forget this phone | He chooses "Forget this phone" | US-37 unlock, then a list of other installs (device name, model, last check-in). Confirm names that install. This phone uploads its merged file, writes and reads back its forgotten-installs file, then deletes that other records file. | Cancelled unlock changes nothing. No other phone: "There is no other phone to forget." A failed write, read-back, or pre-upload tells him and deletes nothing. A failed records delete stays pending: "will be forgotten at its next sync". | US-87 Approved, US-59 Draft, ADR-0002 |
 | Sync paused | A sync reaches Drive and cannot read or list a forgotten-installs file | After 3 such syncs in a row, the banner in Copy is shown. The first sync that reads every forgotten-installs file successfully removes it. The local vault stays. This phone does not upload while a read or listing has failed. | An offline sync, when Drive is not reachable, does not count and does not reset the run. A newer-key file is not a read failure. | US-66 Approved, US-87 Approved, ADR-0002 |
 | Returning forgotten phone | This install's id is in a forgotten-installs file that was read successfully, and every such file was read | He is asked for the passphrase before anything local is discarded. On accept, the phone rebuilds from Drive, rejoins with a new install id, and shows the lost-edits sentence only if something was lost. | Cancel or a wrong passphrase discards nothing and does not upload. The prompt returns at the next sync. | US-87 Approved, US-66 Approved |
@@ -100,11 +99,11 @@ Actor in every row is Miguel, the only person named in the vision. Draft means t
 | OCR disclosure | The first OCR use, or a withdrawn acceptance | The disclosure in Copy is shown. Accept stores acceptance and then ML Kit may start. The same text is on Settings, with whether he has accepted, and withdraw. | Decline, or leaving it unanswered, does not start ML Kit. There is no telemetry off switch. | US-07 Draft, US-31 Approved, ADR-0004 |
 | Theme | He opens Settings | System is selected on a fresh install. Light, Dark, or System applies immediately. Dynamic color is off. Reduced motion follows the system scale. | API 30 and below do not show the dynamic-color toggle. | US-22 Draft, US-53 Draft, E5 |
 
-Proposed amendment. Needs approval by mjbvilhena. Original, in the Settings and sync unhappy path: "No Back up now and no Restore." Replacement: "No Back up now and no backup Restore." Trash Restore stays on the Delete and trash flow. There is no backup Restore in v1.
+Amendment approved by mjbvilhena on 2026-11-03. Trash Restore stays on the Delete and trash flow. There is no backup Restore in v1.
 
-Out of scope for these flows: E10 trip grouping, a second person, an image editor, a PDF editor, a Play Store listing, a component library other than Material 3, a second accent, a per-item topics opt-out, Delete forever, a strength meter, "Check my passphrase", Back up now, and Restore.
+Out of scope for these flows: E10 trip grouping, a second person, an image editor, a PDF editor, a Play Store listing, a component library other than Material 3, a second accent, a per-item topics opt-out, Delete forever, a strength meter, "Check my passphrase", Back up now, and a backup Restore.
 
-Proposed amendment. Needs approval by mjbvilhena. Original: "Back up now, and Restore." Replacement: "Back up now, and a backup Restore." Restore on Trash and on the trash which-item picker stays in scope. There is no backup Restore in v1.
+Amendment approved by mjbvilhena on 2026-11-03. Restore on Trash and on the trash which-item picker stays in scope. There is no backup Restore in v1.
 
 ## Wireframes
 
@@ -447,7 +446,7 @@ A place next to the Inbox, not a prompt on every save.
 
 Confirm, decline, rename, and merge keep the rules in US-43 and US-46. Declining does not delete the item.
 
-Proposed amendment. Needs approval by mjbvilhena. This screen also cites specification Core Workflows (Topics): a topic that does not exist yet is created only after he confirms. US-43 and US-46 stay Draft.
+Amendment approved by mjbvilhena on 2026-11-03. This screen also cites specification Core Workflows (Topics): a topic that does not exist yet is created only after he confirms. US-43 and US-46 stay Draft.
 
 ### Topic detail
 
@@ -488,7 +487,7 @@ Future dates are soonest first. Passed dates are in Expired, most recent first. 
 
 Untagged is a view, not a stored Inbox tag. Pending suggestions is a button on Inbox. US-71 batch filing is Could and is not drawn.
 
-Proposed amendment. Needs approval by mjbvilhena. This screen is US-38. Specification Core Workflows names the Untagged / Inbox view. US-38 stays Draft.
+Amendment approved by mjbvilhena on 2026-11-03. This screen is US-38. Specification Core Workflows names the Untagged / Inbox view. US-38 stays Draft.
 
 ### Link preview prompt
 
@@ -542,9 +541,7 @@ Those stories deferred the exact text to this artefact. The sentence in the bann
 | Passphrase reset waiting | Another phone holds the key and a pending-reset marker is on Drive | System notification and the in-app banner above. |
 | Ordinary reminder | The install US-55 picks posts it | System notification. Title and codes from the item title. No separate code field. |
 | Sensitive reminder or expiry | Same install | Public and private text are only "Lagoon reminder". |
-| Clock | This phone's clock does not match Drive | The text is "This phone's clock does not match Drive." The threshold is open. |
-
-Proposed amendment. Needs approval by mjbvilhena. The Clock row's "The threshold is open" is replaced by the 24-hour rule in open question 1. The warning text stays.
+| Clock | This phone's clock does not match Drive | The text is "This phone's clock does not match Drive." The warning shows when the absolute difference between this phone's clock and Drive's server time is 24 hours or more. The server time is the Drive `modifiedTime` of a records file this phone uploaded on that sync and read back. Amendment approved by mjbvilhena on 2026-11-03. |
 
 The undo snackbar times out after 8 seconds. The words beside Undo are "In trash".
 
@@ -626,9 +623,9 @@ Strings the stories already fix are marked Story. Strings this file fills, becau
 | Passphrase | Retry | Wait, then try again. | Proposed. ADR-0001 fixes the delays and says a wrong passphrase is reported. It does not fix the sentence. |
 | Passphrase | Guidance | Choose a passphrase of 12 to 128 characters that you do not use anywhere else. | US-35 requires the guidance. |
 | Delete | Snackbar | In trash | The action is Undo. The snackbar times out after 8 seconds. |
-| Clock | Warning | This phone's clock does not match Drive. | The threshold is open. |
+| Clock | Warning | This phone's clock does not match Drive. | The warning shows when the absolute difference between this phone's clock and Drive's server time is 24 hours or more. The server time is the Drive `modifiedTime` of a records file this phone uploaded on that sync and read back. Amendment approved by mjbvilhena on 2026-11-03. |
 
-Proposed amendment. Needs approval by mjbvilhena. Citations added. The copy strings and the flow sentences above stay. Each added source already states the fact.
+Amendment approved by mjbvilhena on 2026-11-03. Citations added. The copy strings and the flow sentences above stay. Each added source already states the fact.
 
 - Edit flow also cites ADR-0002. User fields named there are the title, body, personal notes, and a tag he changes. Specification Product rules: an empty title fills from the page title or the file name. US-12 stays Draft.
 - Theme flow also cites specification Product rules (light accent, dark accent, dynamic color) and E5 (Light, Dark, and System). US-22 and US-53 stay Draft.
@@ -648,15 +645,11 @@ Proposed amendment. Needs approval by mjbvilhena. Citations added. The copy stri
 - "Use PIN" cites US-37. No approved story, accepted ADR, or specification sentence names that button. US-37 stays Draft.
 - Empty home, empty note, empty title, enrichment failure, "Try again", empty topic list, and empty topic detail keep their Draft story sources. Those strings are not in an approved story, an accepted ADR, or the specification, so no further citation was added.
 
-Proposed amendment. Needs approval by mjbvilhena. The Clock copy row's "The threshold is open" is replaced by the 24-hour rule in open question 1. The warning text stays.
-
 No screen uses "Check my passphrase" or "Back up now". Restore appears only on Trash and the trash which-item picker. There is no backup Restore in v1.
 
-## Open questions
+## Clock warning
 
-1. **Clock-warning threshold.** The warning text is "This phone's clock does not match Drive." How far out the clock must be before that warning shows is not set. That threshold is still open.
-
-Proposed amendment. Needs approval by mjbvilhena. The warning shows when the absolute difference between this phone's clock and Drive's server time is 24 hours or more. The server time is the Drive `modifiedTime` of a records file this phone uploaded on that sync and read back. ADR-0002 already assumes the Drive v3 files API, and Drive sets `modifiedTime` from its clock. Another install's `modifiedTime` is not this comparison. If this sync has no such read-back, the warning stays as it was. A later comparison under 24 hours clears it. Merges, `trashChangedAt`, and the tombstone do not change (ADR-0002, T-28). The 24 hours are the forgotten-passphrase wait in accepted ADR-0001, and one displayed day of the US-66 trash window (30 × 24 hours, whole days). ADR-0002 and T-28 accept that any skew can make an older edit win or can tombstone early, and they choose no merge guard, so this warning does not change a merge. A threshold near one millisecond would warn on ordinary drift. 24 hours is also longer than the seconds a Drive upload spends before `modifiedTime` is read back, so the comparison does not warn on that latency.
+The warning text is "This phone's clock does not match Drive." The warning shows when the absolute difference between this phone's clock and Drive's server time is 24 hours or more. The server time is the Drive `modifiedTime` of a records file this phone uploaded on that sync and read back. ADR-0002 already assumes the Drive v3 files API, and Drive sets `modifiedTime` from its clock. Another install's `modifiedTime` is not this comparison. If this sync has no such read-back, the warning stays as it was. A later comparison under 24 hours clears it. Merges, `trashChangedAt`, and the tombstone do not change (ADR-0002, T-28). The 24 hours are the forgotten-passphrase wait in accepted ADR-0001, and one displayed day of the US-66 trash window (30 × 24 hours, whole days). ADR-0002 and T-28 accept that any skew can make an older edit win or can tombstone early, and they choose no merge guard, so this warning does not change a merge. A threshold near one millisecond would warn on ordinary drift. 24 hours is also longer than the seconds a Drive upload spends before `modifiedTime` is read back, so the comparison does not warn on that latency. Amendment approved by mjbvilhena on 2026-11-03.
 
 ## Relationship
 
