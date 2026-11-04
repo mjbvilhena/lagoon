@@ -89,6 +89,7 @@ The item is the aggregate root for its attachments, personal-note entries, tag l
 - Code → words already in the title (US-34). Never add a code field.
 - Sync → background ciphertext to Drive `appDataFolder`. Never call it backup or restore. There is no Back up now, no backup Restore, and no last-backup time (spec, US-30). Restore on Trash is US-66. There is no backup Restore in v1. Amendment approved by mjbvilhena on 2026-11-03. The ban on calling sync "backup" or "restore" stays.
 - Banned aliases: backup button, restore button, merchant, booking reference, return-by, warranty end, trip, collection. Those are out of v1 or removed.
+- Proposed amendment. Needs approval by mjbvilhena. Original: "Banned aliases: backup button, restore button, merchant, booking reference, return-by, warranty end, trip, collection. Those are out of v1 or removed." Replacement: "Banned aliases: backup button, merchant, booking reference, return-by, warranty end, trip, collection. Those are out of v1 or removed." The ubiquitous-language line stays. Restore on Trash is US-66. There is no backup Restore in v1.
 
 ## Integrations and boundaries
 
