@@ -107,7 +107,6 @@ Spec gate passed. Epic gate passed. US-15, US-31, US-34, US-35, US-40, US-41, US
 - **US-89** *(Draft)* Fail CodeQL on a high security finding. Evidence: `docs/product/stories/US-89-codeql-severity-gate.md`. The story is not approved. Security criteria approved by mjbvilhena on 2026-11-06. Not implemented.
 - **US-90** *(Draft)* Check workflow permissions, pull-request input, and pinned actions. Evidence: `docs/product/stories/US-90-workflow-security.md`. The story is not approved. Security criteria approved by mjbvilhena on 2026-11-06. Not implemented.
 - **US-91** *(Draft)* Keep the release manifest non-debuggable. Evidence: `docs/product/stories/US-91-release-not-debuggable.md`. The story is not approved. Security criteria approved by mjbvilhena on 2026-11-06. Not implemented. Exported components stay US-80. Signature checks stay US-81.
-
 Security criteria approved by mjbvilhena on 2026-11-06. mjbvilhena wrote: "I approve the proposed security criteria for US-88, US-89, US-90 and US-91 in Lagoon PR #19." The criteria, thresholds, permission sets, and scope are unchanged. US-88, US-89, US-90, and US-91 stay Draft. The controls are not implemented. No story is Done. This approval does not approve the stories, the E6 scope amendment, an ADR, the test-plan rows as part of the approved plan, or the threat-model rows as part of the approved table.
 
 ## Epic E7: On-device text recognition
