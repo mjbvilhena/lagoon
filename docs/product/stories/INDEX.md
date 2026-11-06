@@ -89,7 +89,7 @@ File names that said backup were renamed to match seamless sync. The index paths
 | US-86 | Change the passphrase. | E8 | Should | `docs/product/stories/US-86-change-the-passphrase.md` | Approved |
 | US-87 | Forget this phone. | E4 | Must | `docs/product/stories/US-87-forget-this-phone.md` | Approved |
 
-No story is Done. Implementation has not started.
+No story is Done. US-80's release-manifest allowlist is in the build and covered by unit tests. US-80 is not Done. The runtime `POST_NOTIFICATIONS` request when the first reminder is set stays US-34, and US-34 is not implemented.
 
 US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-64, US-65, US-66, US-75, US-78, US-79, US-80, US-81, US-85, US-86, and US-87 are approved. US-49 is approved. Approved on 2026-10-23 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-87 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. US-66 is approved. Approved on 2026-10-27 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena. Security criteria approved by mjbvilhena on 2026-10-22. The written US-66 security criteria carry that mark. The other stories stay Draft. Amendment approved by mjbvilhena on 2026-10-20. US-66 is Must for v1. v1 does not ship without it. Amendment approved by mjbvilhena on 2026-10-22.
 
