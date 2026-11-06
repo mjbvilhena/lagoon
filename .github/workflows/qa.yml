@@ -167,12 +167,24 @@ jobs:
             echo "present=false" >> "$GITHUB_OUTPUT"
             echo "No Gradle project is present. CodeQL succeeds so it can be required before the app exists."
           fi
+      - name: Set up Temurin 17
+        if: steps.gradle.outputs.present == 'true'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        if: steps.gradle.outputs.present == 'true'
+        uses: gradle/actions/setup-gradle@v4
       - name: Initialize CodeQL
         if: steps.gradle.outputs.present == 'true'
         uses: github/codeql-action/init@v3
         with:
           languages: java-kotlin
-          build-mode: none
+          build-mode: manual
+      - name: Assemble debug for CodeQL
+        if: steps.gradle.outputs.present == 'true'
+        run: ./gradlew assembleDebug --no-daemon
       - name: Analyze
         if: steps.gradle.outputs.present == 'true'
         uses: github/codeql-action/analyze@v3

@@ -92,7 +92,7 @@ Skills used for this note: `sdlc-conductor`, then `sdlc-setup-repository` with `
 
 ### Testing
 
-`Build and test` runs `./gradlew assembleDebug testDebugUnitTest` after wrapper validation when `settings.gradle` or `settings.gradle.kts` exists (Temurin 17, `gradle/actions/setup-gradle`). `Android lint` runs `lintDebug`. `Kotlin style` runs `ktlintCheck` or `detekt`. `CodeQL` analyzes Java/Kotlin. Those tasks run for the US-80 manifest slice. This note stays Draft.
+`Build and test` runs `./gradlew assembleDebug testDebugUnitTest` after wrapper validation when `settings.gradle` or `settings.gradle.kts` exists (Temurin 17, `gradle/actions/setup-gradle`). `Android lint` runs `lintDebug`. `Kotlin style` runs `ktlintCheck` or `detekt`. `CodeQL` analyzes Java/Kotlin by tracing `./gradlew assembleDebug`. `build-mode: none` saw no Kotlin once the project existed. Those tasks run for the US-80 manifest slice. This note stays Draft.
 
 ### Ownership
 
