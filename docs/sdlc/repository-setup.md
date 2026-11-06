@@ -12,12 +12,12 @@ Structured from `get_sdlc_template("repository setup")` and `get_definition_of_d
 | Field | Value |
 | --- | --- |
 | Target Repository | `github.com/mjbvilhena/lagoon` (public). Default branch `master`. |
-| Primary Tech Stack | Markdown product docs now. Kotlin, Jetpack Compose, and Gradle are named for a later app and are not in the tree. |
+| Primary Tech Stack | Kotlin and Gradle are in the tree for the US-80 manifest slice. Jetpack Compose is named and is not in this slice. This note stays Draft. |
 | CI/CD System | GitHub Actions. Required checks are `.github/workflows/qa.yml`. `.github/workflows/pages.yml` publishes the mockups and is not a required check. |
 
 ## Purpose Summary
 
-This repository will hold Miguel's personal knowledge vault: an on-device Android app and the SDLC documents that precede it. The content expected over time is product and design markdown, then a Kotlin/Compose app, its tests, and release notes. No application source is in the tree at this gate.
+This repository will hold Miguel's personal knowledge vault: an on-device Android app and the SDLC documents that precede it. The content expected over time is product and design markdown, then a Kotlin/Compose app, its tests, and release notes. The US-80 manifest slice is in the tree. This note stays Draft.
 
 ## Where things live
 
@@ -49,7 +49,7 @@ Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The An
 | GitHub Actions YAML | `actionlint` 1.7.12 | Job `Workflow lint` |
 | Bash scripts | `bats`, `shellcheck` | Not configured. This product repo is not a Bash project. The harness submodule has its own checks. |
 | Python | `bandit` and pytest | Not configured. Python is only the harness MCP server inside the submodule. |
-| Kotlin / Gradle | Build, Android lint, Kotlin style, CodeQL | Jobs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. Each passes with a clear message until `settings.gradle` or `settings.gradle.kts` exists. No Gradle project was added to make them pass. |
+| Kotlin / Gradle | Build, Android lint, Kotlin style, CodeQL | Jobs `Build and test`, `Android lint`, `Kotlin style`, and `CodeQL`. A Gradle project is in the tree for the US-80 manifest slice, so those jobs run the real tasks. It was not added to make the jobs pass before implementation. |
 
 The workflow matches `mjbvilhena/leisure-orchestrator` `.github/workflows/qa.yml` on triggers and permissions: `push` to `master`, `pull_request`, `workflow_dispatch`, `permissions: contents: read`, `actions/checkout@v6`. The older Origin-era workflows `.github/workflows/secret-scan.yml` and `.github/workflows/markdownlint.yml` are removed so those checks are not duplicated.
 
@@ -75,7 +75,7 @@ From the repo root, the same Markdown rules CI uses:
 npx --yes markdownlint-cli2
 ```
 
-Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code. Kotlin test commands do not exist yet. There is no app module, Gradle build, or APK in the tree.
+Read `docs/sdlc/pipeline-state.md` before editing product docs or writing code. From the repo root, the Gradle tasks those jobs run are `./gradlew assembleDebug testDebugUnitTest`, `./gradlew lintDebug`, and `./gradlew ktlintCheck`.
 
 ### Harness knowledge server
 
@@ -92,7 +92,7 @@ Skills used for this note: `sdlc-conductor`, then `sdlc-setup-repository` with `
 
 ### Testing
 
-No product test runner exists yet. `Build and test` will run `./gradlew assembleDebug testDebugUnitTest` after wrapper validation once a Gradle project exists (Temurin 17, `gradle/actions/setup-gradle`). Until then the job exits 0 with an explicit message. `Android lint` will run `lintDebug`. `Kotlin style` will run `ktlintCheck` or `detekt`. `CodeQL` will analyze Java/Kotlin. None of those tasks run today, because there is no Gradle project and implementation has not started.
+`Build and test` runs `./gradlew assembleDebug testDebugUnitTest` after wrapper validation when `settings.gradle` or `settings.gradle.kts` exists (Temurin 17, `gradle/actions/setup-gradle`). `Android lint` runs `lintDebug`. `Kotlin style` runs `ktlintCheck` or `detekt`. `CodeQL` analyzes Java/Kotlin by tracing `./gradlew assembleDebug`. `build-mode: none` saw no Kotlin once the project existed. Those tasks run for the US-80 manifest slice. This note stays Draft.
 
 ### Ownership
 
@@ -125,5 +125,5 @@ A green check is not product approval and is not permission to start implementat
 
 ## Anti-patterns avoided
 
-- No Gradle project, wrapper, or app module was added so the Android jobs would have something to compile. Those jobs no-op until the project exists.
+- The Gradle project was not added while this repository was docs-only. It is in the tree for the US-80 manifest slice. The workflow still no-ops when `settings.gradle` and `settings.gradle.kts` are absent.
 - No end-to-end emulator workflow was added while there is no app.
