@@ -94,6 +94,8 @@ Skills used for this note: `sdlc-conductor`, then `sdlc-setup-repository` with `
 
 `Build and test` runs `./gradlew assembleDebug testDebugUnitTest` after wrapper validation when `settings.gradle` or `settings.gradle.kts` exists (Temurin 17, `gradle/actions/setup-gradle`). `Android lint` runs `lintDebug`. `Kotlin style` runs `ktlintCheck` or `detekt`. `CodeQL` analyzes Java/Kotlin by tracing `./gradlew assembleDebug`. `build-mode: none` saw no Kotlin once the project existed. Those tasks run for the US-80 manifest slice. This note stays Draft.
 
+Proposed amendment. Needs approval by mjbvilhena. US-88, US-89, US-90, and US-91 are Draft. No job for them is in `.github/workflows/qa.yml`. `Dependency scan` and `Workflow security` are not required check names. The `CodeQL` job does not fail on finding severity. The release manifest test does not yet assert `android:debuggable`. Signature verification stays US-81. On 2026-11-06 the GitHub API reported Dependabot alerts disabled for this repository. That is why US-88 does not use Dependabot.
+
 ### Ownership
 
 `.github/CODEOWNERS` sets `* @mjbvilhena`. That assigns a default reviewer. It does not approve the product spec, epics, or stories.

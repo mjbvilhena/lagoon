@@ -303,6 +303,17 @@ Journeys below are the user-visible outcomes the stories require. `sdlc-e2e-scri
 
 Visual snapshot farms, load tests, a live Drive tenant, Play Store review, and E10. US-81's human signing ceremony is not automated beyond the policy check in TP-24.
 
+Proposed amendment. Needs approval by mjbvilhena. The rows below are not part of the approved plan above. They do not change TP-23, TP-24, TP-28, or TP-30. US-25 stays Draft.
+
+| ID | Behavior | Level | Risk if wrong | Status |
+| --- | --- | --- | --- | --- |
+| TP-33 | US-88. The scanner reads the resolved Gradle graph for `:app`, `:ui`, and `:data` `releaseRuntimeClasspath`, the `:domain` runtime classpath, and the buildscript classpath, including transitives. A CVSS v3 score of 7.0 or higher, or HIGH or CRITICAL when CVSS v3 is absent, fails the job. A named exception applies only to that OSV id and that resolved version when the line contains `Exception approved by mjbvilhena on` and a date. A resolver or service error fails the job. | CI | A transitive vulnerability is invisible, or an error is treated as clean | Proposed. Needs approval by mjbvilhena. |
+| TP-34 | US-89. The existing CodeQL job fails when SARIF has a `security`-tagged result at `security-severity` 7.0 or higher. A lower score, or a query that is not tagged `security`, does not fail it. A missing SARIF file, a failed assemble, or a failed upload fails the job. No baseline file hides current results. | CI | A high finding is reported and the check stays green | Proposed. Needs approval by mjbvilhena. |
+| TP-35 | US-90. A workflow with a permission other than `contents: read`, other than CodeQL `security-events: write`, or with no `permissions` block, fails. `pull_request_target`, and a `run` step that interpolates a pull request title, body, or head ref, fail. A `uses` value that is not a 40-character release commit fails. The checker does not run the pull request. | CI | A tag or a wide token merges | Proposed. Needs approval by mjbvilhena. |
+| TP-36 | US-91. The release manifest read by the US-80 test also asserts `android:debuggable` is absent or false. It does not repeat the allowlist or the exported-component assertions. It does not call `apksigner`. | unit | A debuggable release APK is treated as the release file | Proposed. Needs approval by mjbvilhena. |
+
+Journeys stay JVM plus Robolectric. These rows are CI and one unit assertion. They do not add an emulator.
+
 ## Anti-patterns
 
 - A test that only asserts a mock was called, with no oracle from a story or an ADR.
