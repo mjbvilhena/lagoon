@@ -1,7 +1,7 @@
 # US-90 Check workflow permissions, pull-request input, and pinned actions
 
 > **Approval status: Draft. Not approved.**
-> Security criteria: Proposed. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-11-06.
 
 **Epic:** E6.
 
@@ -32,7 +32,7 @@ Check workflow permissions, pull-request input, and pinned actions.
 ## Acceptance criteria
 
 - **Scenario: permissions match the named sets** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given a workflow file in the commit being checked
   - When the check reads the effective set
   - Then a job with `permissions` uses that block, and a job without one uses the workflow block
@@ -46,7 +46,7 @@ Check workflow permissions, pull-request input, and pinned actions.
   - And `actions: write` on any other file, or on a `pull_request` or `pull_request_target` trigger, fails the check
   - And any permission outside the set named for that file fails the check
 - **Scenario: untrusted pull-request input** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given a workflow
   - When the check runs
   - Then a `pull_request_target` trigger fails the job
@@ -55,7 +55,7 @@ Check workflow permissions, pull-request input, and pinned actions.
   - And `pages.yml` may pass `github.event.inputs.wip_sha` through an environment variable, and the step must reject a non-empty value that is not 40 hexadecimal characters before that value is a checkout ref
   - And the check does not execute the pull request's code
 - **Scenario: actions are pinned** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given a remote `uses` value (`owner/name@ref`)
   - When the check runs
   - Then a tag or a branch fails the job

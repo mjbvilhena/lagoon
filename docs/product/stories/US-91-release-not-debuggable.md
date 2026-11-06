@@ -1,7 +1,7 @@
 # US-91 Keep the release manifest non-debuggable
 
 > **Approval status: Draft. Not approved.**
-> Security criteria: Proposed. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-11-06.
 
 **Epic:** E6.
 
@@ -28,7 +28,7 @@ Keep the release manifest non-debuggable.
 ## Acceptance criteria
 
 - **Scenario: release is not debuggable** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given the release APK built for the US-80 manifest test
   - When its merged manifest is read
   - Then `android:debuggable` is absent or false

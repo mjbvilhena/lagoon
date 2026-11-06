@@ -1,7 +1,7 @@
 # US-89 Fail CodeQL on a high security finding
 
 > **Approval status: Draft. Not approved.**
-> Security criteria: Proposed. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-11-06.
 
 **Epic:** E6.
 
@@ -27,14 +27,14 @@ Fail CodeQL on a high security finding.
 ## Acceptance criteria
 
 - **Scenario: a high security result fails the same job** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given the CodeQL job produced SARIF for this commit
   - When a result has `security-severity` of 7.0 or higher and the query is tagged `security`
   - Then the `CodeQL` job fails
   - And a result below 7.0 does not fail the job
   - And a query that is not tagged `security` does not fail the job
 - **Scenario: analysis errors are not a clean scan** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given database creation, the debug assemble, analysis, or SARIF upload fails, or the SARIF file is missing
   - When the job finishes
   - Then the job fails
