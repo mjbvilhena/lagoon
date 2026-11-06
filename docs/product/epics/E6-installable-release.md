@@ -61,3 +61,4 @@ Miguel, installing and configuring the vault himself.
 - US-27 Review screenshots of the main screens
 - US-80 Keep the permission set to an allowlist. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-81 Publish a sideload signing policy. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
+- Amendment approved by mjbvilhena on 2026-11-06. US-88, US-89, US-90, and US-91 are listed on this epic and stay Draft. This amendment does not approve those stories and does not add a CI job. The approved out-of-scope sentence about CI jobs outside the repository-setup mapping stays.

@@ -66,4 +66,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Not a design spec. The story is Draft. Do not implement from this file.
+Not a design spec. Do not implement from this file.
