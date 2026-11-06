@@ -20,34 +20,51 @@ Check workflow permissions, pull-request input, and pinned actions.
 ## Background
 
 - `Workflow lint` runs actionlint 1.7.12. That is a syntax check. It does not decide token scope, `pull_request_target`, or immutable pins.
-- T-30 says Actions are pinned by commit SHA only as a proposed control, and that the workflow uses version tags. That sentence is not approval of a pin.
-- The workflows today declare `permissions: contents: read`, except the CodeQL job, which also has `security-events: write`. No workflow uses `pull_request_target`.
+- T-30 names pinned Actions as a proposed control for `.github/workflows/qa.yml` and says that file uses version tags. That sentence is not approval of a pin, and it does not describe `.github/workflows/pages.yml`.
+- On master, `qa.yml` has workflow `permissions: contents: read`. Jobs other than CodeQL inherit that set. The CodeQL job replaces it with `actions: read`, `contents: read`, `packages: read`, and `security-events: write` (`.github/workflows/qa.yml` lines 154–158). Its `uses` values are version tags.
+- On master, `pages.yml` publishes the mockups. It triggers on push to `master` for `docs/mockups/**`, `.github/workflows/pages.yml`, and `scripts/assemble-pages-site.sh`, and on `workflow_dispatch`. It does not trigger on `pull_request`. Workflow permissions are `contents: read`. The Deploy mockups job replaces that set with `contents: read`, `pages: write`, and `id-token: write` (`.github/workflows/pages.yml` lines 17–34). Its four `uses` values are commit SHAs. Those SHAs match the commented release tags: `actions/checkout` `v6.1.0`, `actions/configure-pages` `v6.0.0`, `actions/upload-pages-artifact` `v5.0.0`, and `actions/deploy-pages` `v5.0.1`. Checked against the Git tag objects on 2026-11-06.
+- The `gh-pages` branch, not master, has `.github/workflows/dispatch-pages.yml`. It triggers only on push to `gh-pages`. Workflow permissions are `actions: write` and `contents: read`. The only job inherits that set. It has no `uses` key. It posts `workflow_dispatch` of master `pages.yml` with the pushed commit as `wip_sha`. A master pull request does not contain this file.
+- No workflow under this repo's `.github` calls a local action or a reusable workflow. `third_party/**` workflows are not these files.
+- A job `permissions` block replaces the workflow set. Inheritance of the workflow set is allowed when that set is the least privilege for every job that does not replace it. A missing `permissions` key at both levels fails, because the default token is not an explicit set.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. This story does not add a vault rule.
-- Out of scope: replacing actionlint, a self-hosted runner, and any job that checks out a pull request and runs it with a write token.
+- Out of scope: replacing actionlint, disabling Pages, changing what the mockup site publishes, a self-hosted runner, and any job that checks out a pull request and runs it with a write token. This story does not exempt every deployment workflow.
 
 ## Acceptance criteria
 
-- **Scenario: permissions stay least privilege** — Must
+- **Scenario: permissions match the named sets** — Must
   - Security criteria: Proposed. Needs approval by mjbvilhena.
-  - Given a workflow file
-  - When the check runs
-  - Then every job has an explicit `permissions` block
-  - And a permission other than `contents: read` fails the job, except the CodeQL job's `security-events: write`
-  - And a missing `permissions` block fails the job
+  - Given a workflow file in the commit being checked
+  - When the check reads the effective set
+  - Then a job with `permissions` uses that block, and a job without one uses the workflow block
+  - And neither level having `permissions` fails the check
+  - And `.github/workflows/qa.yml` jobs that inherit the workflow set are exactly `contents: read`
+  - And the CodeQL job is exactly `actions: read`, `contents: read`, `packages: read`, and `security-events: write`
+  - And `.github/workflows/pages.yml` workflow permissions are exactly `contents: read`
+  - And its Deploy mockups job is exactly `contents: read`, `pages: write`, and `id-token: write`
+  - And `pages: write` or `id-token: write` on a workflow that also triggers on `pull_request` or `pull_request_target` fails the check
+  - And the gh-pages file `.github/workflows/dispatch-pages.yml`, when that file is the one being checked, is exactly `actions: write` and `contents: read`, inherited from the workflow block, and its only trigger is push to `gh-pages`
+  - And `actions: write` on any other file, or on a `pull_request` or `pull_request_target` trigger, fails the check
+  - And any permission outside the set named for that file fails the check
 - **Scenario: untrusted pull-request input** — Must
   - Security criteria: Proposed. Needs approval by mjbvilhena.
   - Given a workflow
   - When the check runs
   - Then a `pull_request_target` trigger fails the job
-  - And a `run` step that interpolates `github.event.pull_request.title`, `github.event.pull_request.body`, or a pull request head ref fails the job
+  - And a `run` step whose text contains `${{ github.event.pull_request.title }}`, `${{ github.event.pull_request.body }}`, or a pull request head ref fails the job
+  - And a `run` step whose text contains `${{ github.event.inputs.wip_sha }}` fails the job
+  - And `pages.yml` may pass `github.event.inputs.wip_sha` through an environment variable, and the step must reject a non-empty value that is not 40 hexadecimal characters before that value is a checkout ref
   - And the check does not execute the pull request's code
 - **Scenario: actions are pinned** — Must
   - Security criteria: Proposed. Needs approval by mjbvilhena.
-  - Given a `uses` value
+  - Given a remote `uses` value (`owner/name@ref`)
   - When the check runs
-  - Then a floating tag or a branch fails the job
-  - And a 40-character commit SHA passes only when it is the commit of a release tag on that action's repository
+  - Then a tag or a branch fails the job
+  - And a 40-character commit SHA passes only when it is the commit of a published release tag of that action
   - And the SHA is taken from the release the maintainer published, not from memory
+  - And a local `uses` path is not a SHA pin. The called file is checked under these same permission rules. This repo has no local `uses` path
+  - And a workflow with no `uses` key, which is `dispatch-pages.yml` today, does not fail the pin rule for lacking an action
+  - And the four SHAs already in `pages.yml` satisfy this rule for those commented tags
+  - And the version tags in `qa.yml` do not satisfy this rule. This draft does not replace them
 - **Scenario: the checker fails closed** — Must
   - Given the checker cannot read a workflow or exits with an error
   - When the check runs
@@ -66,7 +83,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Blocked on approval of this story and of the security criteria above by mjbvilhena.
-- Pinning the actions already in `.github/workflows/qa.yml` is part of meeting the pin scenario. It is not done in this draft.
+- Replacing the version tags in `.github/workflows/qa.yml` with release commits is part of meeting the pin scenario. It is not done in this draft. `pages.yml` is already pinned. `dispatch-pages.yml` has no `uses` key.
 
 ## Implementation notes
 
