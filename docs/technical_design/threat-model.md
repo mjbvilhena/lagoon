@@ -122,7 +122,7 @@ A forgotten passphrase, together with losing every phone that holds the key, mea
 - Security criteria approved by mjbvilhena on 2026-10-22. The returning phone's orphan-attachment cleanup deletes local copies only, never a Drive object (US-66, T-33).
 - Amendment approved by mjbvilhena on 2026-10-22. That cleanup runs after the rebuild from Drive. Attachments of items that are live or in trash are rebuilt from Drive (US-66, T-33).
 
-Proposed amendment. Needs approval by mjbvilhena. The rows below are not part of the approved table above. T-30 stays as written. It already says dependency verification and pinned Actions are proposed controls and are not done. These rows do not mark them done.
+Proposed amendment. Needs approval by mjbvilhena. The rows below are not part of the approved table above. T-30 stays as written. It already says dependency verification and pinned Actions are proposed controls and are not done. These rows do not mark them done. Security criteria approved by mjbvilhena on 2026-11-06 for the US-88, US-89, US-90, and US-91 criteria these rows restate. That approval does not accept these rows into the approved table. The controls are not done.
 
 | ID | Category | Asset / component | Evidence | Impact | Mitigation (defensive) | Observed or hypothesis |
 | --- | --- | --- | --- | --- | --- | --- |

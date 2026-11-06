@@ -1,7 +1,8 @@
 # US-91 Keep the release manifest non-debuggable
 
 > **Approval status: Draft. Not approved.**
-> Security criteria: Proposed. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-11-06. mjbvilhena wrote: "I approve the proposed security criteria for US-88, US-89, US-90 and US-91 in Lagoon PR #19."
+> The written security criteria in this story carry that mark. The criteria, thresholds, permission sets, and scope are unchanged. This story stays Draft. The controls are not implemented. This story is not Done.
 
 **Epic:** E6.
 
@@ -28,7 +29,7 @@ Keep the release manifest non-debuggable.
 ## Acceptance criteria
 
 - **Scenario: release is not debuggable** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given the release APK built for the US-80 manifest test
   - When its merged manifest is read
   - Then `android:debuggable` is absent or false
@@ -50,9 +51,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- Blocked on approval of this story by mjbvilhena. Security criteria approved by mjbvilhena on 2026-11-06. The controls are not implemented.
 - The release APK already built in the unit-test task is the file this reads. No new required check name.
 
 ## Implementation notes
 
-Not a design spec. Do not change the test from this draft.
+Not a design spec. Do not change the test from this draft. Approval of the security criteria is not implementation.

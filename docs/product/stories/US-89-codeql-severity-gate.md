@@ -1,7 +1,8 @@
 # US-89 Fail CodeQL on a high security finding
 
 > **Approval status: Draft. Not approved.**
-> Security criteria: Proposed. Needs approval by mjbvilhena.
+> Security criteria approved by mjbvilhena on 2026-11-06. mjbvilhena wrote: "I approve the proposed security criteria for US-88, US-89, US-90 and US-91 in Lagoon PR #19."
+> The written security criteria in this story carry that mark. The criteria, thresholds, permission sets, and scope are unchanged. This story stays Draft. The controls are not implemented. This story is not Done.
 
 **Epic:** E6.
 
@@ -27,14 +28,14 @@ Fail CodeQL on a high security finding.
 ## Acceptance criteria
 
 - **Scenario: a high security result fails the same job** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given the CodeQL job produced SARIF for this commit
   - When a result has `security-severity` of 7.0 or higher and the query is tagged `security`
   - Then the `CodeQL` job fails
   - And a result below 7.0 does not fail the job
   - And a query that is not tagged `security` does not fail the job
 - **Scenario: analysis errors are not a clean scan** — Must
-  - Security criteria: Proposed. Needs approval by mjbvilhena.
+  - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given database creation, the debug assemble, analysis, or SARIF upload fails, or the SARIF file is missing
   - When the job finishes
   - Then the job fails
@@ -57,9 +58,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- Blocked on approval of this story by mjbvilhena. Security criteria approved by mjbvilhena on 2026-11-06. The controls are not implemented.
 - US-88 owns the exception file. This story does not invent a second one.
 
 ## Implementation notes
 
-Not a design spec. Do not change `.github/workflows/qa.yml` from this draft.
+Not a design spec. Do not change `.github/workflows/qa.yml` from this draft. Approval of the security criteria is not implementation.
