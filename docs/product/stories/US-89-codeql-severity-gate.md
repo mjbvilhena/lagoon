@@ -50,6 +50,12 @@ Fail CodeQL on a high security finding.
   - When the job finishes
   - Then the job fails
   - And the job does not report success because an alerts API was unauthorized
+- **Scenario: no Gradle project produces no SARIF** — Must
+  - Security criteria approved by mjbvilhena on 2026-11-10.
+  - Given the tree has neither `settings.gradle` nor `settings.gradle.kts`
+  - When the CodeQL check runs
+  - Then there is no SARIF
+  - And the `CodeQL` job fails
 - **Scenario: no baseline and no new check name** — Must
   - Given this policy is in force
   - When the job is configured
@@ -69,13 +75,8 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded.
-- The approved fail-closed scenario already says a missing SARIF file fails the `CodeQL` job. A tree without `settings.gradle` or `settings.gradle.kts` produces no SARIF, so that path is not a successful skip under this criterion. `.github/workflows/qa.yml` still exits 0 when those files are absent. That live behavior does not yet meet the criterion. This note does not change the criterion and does not edit the workflow.
 - US-88 owns `docs/sdlc/vulnerability-exceptions.md` for an OSV id and an exact resolved module version. Security criteria approved by mjbvilhena on 2026-11-10. That file does not skip a CodeQL result. This story does not add a second file.
 
 ## Implementation notes
 
 Not a design spec. Do not change `.github/workflows/qa.yml` from this draft.
-
-## Applied amendment
-
-Security criteria approved by mjbvilhena on 2026-11-10. This section replaces the unapplied proposed amendment. This story has no CodeQL exception path. A result at `security-severity` of 7.0 or higher on a query tagged `security` fails the `CodeQL` job. A rule id and a result location do not skip that result. `docs/sdlc/vulnerability-exceptions.md` does not skip a CodeQL result. TP-34 and T-40 do not name a CodeQL exception, and those rows stay as written. The story stays Draft. Whole-story approval is not recorded.

@@ -37,7 +37,7 @@ Keep the release manifest non-debuggable.
   - Given this story
   - When the release APK is inspected
   - Then no certificate check and no `apksigner` check is added
-  - And the same test that reads the release APK states that the file is unsigned and is not the US-81 sideload release
+  - And the assertion message in `releaseManifestMatchesTheAllowlist` states that the file is unsigned and is not the US-81 sideload release
 
 ## Analytics and observability (optional)
 

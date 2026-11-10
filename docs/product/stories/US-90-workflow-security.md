@@ -69,6 +69,13 @@ Check workflow permissions, pull-request input, and pinned actions.
   - Given the checker cannot read a workflow or exits with an error
   - When the check runs
   - Then the job fails
+- **Scenario: the job inherits contents read** — Must
+  - Security criteria approved by mjbvilhena on 2026-11-10.
+  - Given the `Workflow security` job is to be added to `.github/workflows/qa.yml`
+  - When the job is written
+  - Then it adds no `permissions` block
+  - And it inherits that workflow's `contents: read` set
+  - And a job that needs any other permission needs a new approval from mjbvilhena
 
 ## Analytics and observability (optional)
 
@@ -78,12 +85,14 @@ Not applicable. No analytics.
 
 - Not a screen story. No placeholder sentences.
 - The candidate checker is `zizmorcore/zizmor` release `v1.32.0`, published 2026-11-02. It is not actionlint. The commit pin is chosen when this story is approved, from that release's Git tag.
-- The job name is `Workflow security`. It is not `Workflow lint`. The job is in `.github/workflows/qa.yml`. It adds no `permissions` block, so it inherits that workflow's `contents: read` set, the same set the other ordinary jobs inherit. It is not a separate workflow file.
+- Security criteria approved by mjbvilhena on 2026-11-10. The job name is `Workflow security`. It is not `Workflow lint`. The job is to be added to `.github/workflows/qa.yml`. It adds no `permissions` block, so it inherits that workflow's `contents: read` set, the same set the other ordinary jobs inherit. A job that needs any other permission needs a new approval from mjbvilhena. It is not a separate workflow file.
+- The `Dependency scan` and `Workflow security` jobs are to be added to `.github/workflows/qa.yml` with release commit SHAs from the start. A version tag on those new jobs does not meet the pin scenario.
 - It is not one of the seven required checks. The job failing is not the same thing as a merge failing. A merge stays open until ruleset 25303010 lists the name `Workflow security`. This story does not change the ruleset. Whole-story approval would not change it either. It does not broaden E6.
 
 ## Dependencies and risks
 
-- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded. Implementing the job in `qa.yml` and listing `Workflow security` on ruleset 25303010 are two different steps.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded. Adding the job to `qa.yml` and listing `Workflow security` on ruleset 25303010 are two different steps.
+- Amendment approved by mjbvilhena on 2026-11-10. An approved US-90 story is enough to add the `Workflow security` job to the repository-setup mapping. A change to ruleset 25303010 still needs approval by mjbvilhena. The story stays Draft. This sentence does not approve the story, does not add the job, and does not change the ruleset.
 - Replacing the version tags in `.github/workflows/qa.yml` with release commits is part of meeting the pin scenario. It is not done in this draft. `pages.yml` is already pinned. `dispatch-pages.yml` has no `uses` key.
 
 ## Implementation notes
