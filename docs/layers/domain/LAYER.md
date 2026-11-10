@@ -46,7 +46,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - Kotlin only. No Android framework types in signatures. A URI from the share sheet is a string or a small value object at this boundary; the data layer resolves it.
 - Package root `com.mjbvilhena.lagoon.domain`. Suggested packages: `item`, `tag`, `topic`, `search`, `sync`, `reminder`, `capture`.
-- Module `:domain` is pure Kotlin. It does not depend on Android, `:data`, or `:ui`. An architecture test fails the build otherwise. `:app` is the module that wires the others. No Gradle project exists yet. The data-layer file states the full graph. A reminder value in this module is a local time, not an instant.
+- Module `:domain` is pure Kotlin. It does not depend on Android, `:data`, or `:ui`. An architecture test fails the build otherwise. `:app` is the module that wires the others. A Gradle project is in the tree. `settings.gradle.kts` includes `:domain`, `:data`, `:ui`, and `:app`. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. The data-layer file states the full graph. A reminder value in this module is a local time, not an instant.
 - Testing is JVM unit tests of use cases with fake ports (US-25's repository and search tests belong with the data adapter; domain tests fake that adapter).
 
 ## Observability and safety

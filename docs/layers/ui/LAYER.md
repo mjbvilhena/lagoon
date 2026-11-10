@@ -57,7 +57,7 @@ If a dependency is missing from this table, treat it as **disallowed** until a h
 
 - Kotlin, Jetpack Compose, Material 3, as in the specification.
 - Package root `com.mjbvilhena.lagoon.ui`. Suggested packages: `share`, `list`, `detail`, `settings`, `fullscreen`. Names can move; the dependency rule cannot.
-- Gradle modules, once implementation starts: `:ui` depends on `:domain` only. `:app` wires `:ui` to `:data`. An architecture test fails the build if `:ui` depends on `:data` or if `:domain` takes an Android dependency. No Gradle project exists yet. The data-layer file states the full graph.
+- Gradle modules, once implementation starts: `:ui` depends on `:domain` only. `:app` wires `:ui` to `:data`. An architecture test fails the build if `:ui` depends on `:data` or if `:domain` takes an Android dependency. A Gradle project is in the tree. `settings.gradle.kts` includes `:domain`, `:data`, `:ui`, and `:app`. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. The data-layer file states the full graph.
 - Errors from domain use cases surface as the story's plain sentence (wrong passphrase, nothing saved, sync not configured). No new product copy in this file.
 - UI tests are Compose tests when a screen story is implemented (US-25). This layer does not invent them now.
 
