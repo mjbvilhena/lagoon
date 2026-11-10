@@ -58,6 +58,35 @@ class ReleaseManifestAllowlistTest {
         assertTrue("fullBackupContent missing\n$dump", dump.contains("android:fullBackupContent"))
         assertSdk(dump, "android:minSdkVersion", 26)
         assertSdk(dump, "android:targetSdkVersion", 37)
+        assertTrue(
+            "android:debuggable must be absent or false. The release file is unsigned and is not the US-81 sideload release.\n$dump",
+            releaseDebuggableIsAbsentOrFalse(dump),
+        )
+    }
+
+    @Test
+    fun debuggableTrueFailsTheReleaseManifestCheck() {
+        assertFalse(releaseDebuggableIsAbsentOrFalse("""android:debuggable(0x0101000f)=true"""))
+        assertFalse(
+            releaseDebuggableIsAbsentOrFalse(
+                """android:debuggable(0x0101000f)=(type 0x12)0xffffffff""",
+            ),
+        )
+        assertTrue(releaseDebuggableIsAbsentOrFalse("android:allowBackup(0x0101000f)=false"))
+        assertTrue(releaseDebuggableIsAbsentOrFalse("""android:debuggable(0x0101000f)=false"""))
+    }
+
+    @Test
+    fun ciGateFixturesPass() {
+        val root = File(requiredProperty("repoRoot"))
+        val process =
+            ProcessBuilder("python3", "scripts/ci/self_test.py")
+                .directory(root)
+                .redirectErrorStream(true)
+                .start()
+        val output = process.inputStream.bufferedReader().readText()
+        val code = process.waitFor()
+        assertEquals(output, 0, code)
     }
 
     @Test
@@ -136,6 +165,26 @@ class ReleaseManifestAllowlistTest {
         val app = File(root, "app/build.gradle.kts").readText()
         assertTrue(app.contains("project(\":data\")"))
         assertTrue(app.contains("project(\":ui\")"))
+    }
+
+    private fun releaseDebuggableIsAbsentOrFalse(dump: String): Boolean {
+        if (!dump.contains("android:debuggable")) {
+            return true
+        }
+        if (Regex("""android:debuggable\(0x[0-9a-fA-F]+\)=true""").containsMatchIn(dump)) {
+            return false
+        }
+        if (
+            Regex("""android:debuggable\(0x[0-9a-fA-F]+\)=\(type 0x12\)0x[fF]+""")
+                .containsMatchIn(dump)
+        ) {
+            return false
+        }
+        return listOf(
+            Regex("""android:debuggable\(0x[0-9a-fA-F]+\)=false"""),
+            Regex("""android:debuggable\(0x[0-9a-fA-F]+\)=\(type 0x12\)0x0+\b"""),
+            Regex("""android:debuggable\(0x[0-9a-fA-F]+\)=\(type 0x10\)0x0+\b"""),
+        ).any { pattern -> pattern.containsMatchIn(dump) }
     }
 
     private fun assertSdk(
