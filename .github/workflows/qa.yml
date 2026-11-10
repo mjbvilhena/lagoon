@@ -14,7 +14,7 @@ jobs:
     name: Secret scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           fetch-depth: 0
       # gitleaks-action@v3 scans `<first-pushed-commit>^..<head>`. That
@@ -34,14 +34,14 @@ jobs:
     name: Markdown lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: DavidAnson/markdownlint-cli2-action@v24
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
 
   actionlint:
     name: Workflow lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Download actionlint
         env:
           ACTIONLINT_VERSION: "1.7.12"
@@ -52,14 +52,14 @@ jobs:
       - name: Check workflow files
         run: ./actionlint -color
 
-  # Android jobs stay green until a Gradle project exists so they can be
-  # required checks on day one. They run the real tasks once settings.gradle
-  # or settings.gradle.kts is in the tree.
+  # Build and test, Android lint, and Kotlin style stay green until a Gradle
+  # project exists so they can be required checks. CodeQL does not: with no
+  # settings.gradle or settings.gradle.kts there is no SARIF and that job fails.
   build-and-test:
     name: Build and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Detect Gradle project
         id: gradle
         run: |
@@ -71,16 +71,16 @@ jobs:
           fi
       - name: Set up Temurin 17
         if: steps.gradle.outputs.present == 'true'
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           distribution: temurin
           java-version: "17"
       - name: Set up Gradle
         if: steps.gradle.outputs.present == 'true'
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Validate Gradle wrapper
         if: steps.gradle.outputs.present == 'true'
-        uses: gradle/actions/wrapper-validation@v4
+        uses: gradle/actions/wrapper-validation@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Assemble debug and run unit tests
         if: steps.gradle.outputs.present == 'true'
         run: ./gradlew assembleDebug testDebugUnitTest --no-daemon
@@ -89,7 +89,7 @@ jobs:
     name: Android lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Detect Gradle project
         id: gradle
         run: |
@@ -101,13 +101,13 @@ jobs:
           fi
       - name: Set up Temurin 17
         if: steps.gradle.outputs.present == 'true'
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           distribution: temurin
           java-version: "17"
       - name: Set up Gradle
         if: steps.gradle.outputs.present == 'true'
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Run lintDebug
         if: steps.gradle.outputs.present == 'true'
         run: ./gradlew lintDebug --no-daemon
@@ -116,7 +116,7 @@ jobs:
     name: Kotlin style
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Detect Gradle project
         id: gradle
         run: |
@@ -128,13 +128,13 @@ jobs:
           fi
       - name: Set up Temurin 17
         if: steps.gradle.outputs.present == 'true'
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           distribution: temurin
           java-version: "17"
       - name: Set up Gradle
         if: steps.gradle.outputs.present == 'true'
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Run ktlint or detekt
         if: steps.gradle.outputs.present == 'true'
         run: |
@@ -157,34 +157,54 @@ jobs:
       packages: read
       security-events: write
     steps:
-      - uses: actions/checkout@v6
-      - name: Detect Gradle project
-        id: gradle
-        run: |
-          if [[ -f settings.gradle || -f settings.gradle.kts ]]; then
-            echo "present=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "present=false" >> "$GITHUB_OUTPUT"
-            echo "No Gradle project is present. CodeQL succeeds so it can be required before the app exists."
-          fi
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - name: Require a Gradle project
+        run: bash scripts/ci/require_gradle_project.sh .
       - name: Set up Temurin 17
-        if: steps.gradle.outputs.present == 'true'
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:
           distribution: temurin
           java-version: "17"
       - name: Set up Gradle
-        if: steps.gradle.outputs.present == 'true'
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Initialize CodeQL
-        if: steps.gradle.outputs.present == 'true'
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@9418214df1f2c4b8128c770156c409013b07d6b9 # v3.39.3
         with:
           languages: java-kotlin
           build-mode: manual
       - name: Assemble debug for CodeQL
-        if: steps.gradle.outputs.present == 'true'
         run: ./gradlew assembleDebug --no-daemon
       - name: Analyze
-        if: steps.gradle.outputs.present == 'true'
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@9418214df1f2c4b8128c770156c409013b07d6b9 # v3.39.3
+        with:
+          output: ${{ github.workspace }}/codeql-results
+          upload: always
+      - name: Fail a high security result
+        run: python3 scripts/ci/codeql_gate.py "${{ github.workspace }}/codeql-results"
+
+  dependency-scan:
+    name: Dependency scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - name: Set up Temurin 17
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
+      - name: Scan the resolved Gradle graph
+        run: bash scripts/ci/dependency_scan.sh
+
+  workflow-security:
+    name: Workflow security
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - name: Check permissions, pull-request input, and pins
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/ci/workflow_security.py .
