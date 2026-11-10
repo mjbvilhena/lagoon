@@ -19,7 +19,7 @@ Miguel, installing and configuring the vault himself.
 
 - **In Scope (MVP):**
   - Command-line Gradle build of a release APK.
-  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). US-80 and US-81 are approved. The other stories in this epic stay Draft.
+  - `minSdk` 26. `compileSdk` and `targetSdk` are 37 (Android 17, stable since June 2026). US-80, US-81, US-88, US-89, US-90, and US-91 are approved. US-24, US-25, US-26, and US-27 stay Draft.
   - Application id `com.mjbvilhena.lagoon`.
   - Signed with a self-generated release keystore. The keystore is documented. Secrets are not committed.
   - README: build, sideload (unknown sources), Google Cloud OAuth client steps (package name, SHA-1 of the signing cert he was given), and where the client ID goes.
@@ -43,13 +43,13 @@ Miguel, installing and configuring the vault himself.
 ## Risks & Dependencies
 
 - Depends on E1–E5 for there to be screens and behavior worth testing and photographing.
-- The README can name Lagoon and `com.mjbvilhena.lagoon`. US-80 and US-81 are approved. The other stories in this epic stay Draft. The signing SHA-1 still does not exist and must not be invented.
+- The README can name Lagoon and `com.mjbvilhena.lagoon`. US-80, US-81, US-88, US-89, US-90, and US-91 are approved. US-24, US-25, US-26, and US-27 stay Draft. The signing SHA-1 still does not exist and must not be invented.
 - Screenshot capture needs an emulator or a device. Availability is unknown at drafting time.
 - The signing SHA-1 cannot be known until the keystore exists. It is an implementation output, documented in the README, not invented in this epic.
 
 ## Open Questions
 
-- The name, the application id, and the SDK levels are in the specification. US-80 and US-81 are approved. The other stories in this epic stay Draft.
+- The name, the application id, and the SDK levels are in the specification. US-80, US-81, US-88, US-89, US-90, and US-91 are approved. US-24, US-25, US-26, and US-27 stay Draft.
 - [ ] Android developer verification for sideloaded APKs, enforced globally in 2027. ADB installs are exempt.
 - Sync merge and encryption are not open here.
 
@@ -63,3 +63,4 @@ Miguel, installing and configuring the vault himself.
 - US-81 Publish a sideload signing policy. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - Amendment approved by mjbvilhena on 2026-11-06. US-88, US-89, US-90, and US-91 are listed on this epic and stay Draft. This amendment does not approve those stories and does not add a CI job. The approved out-of-scope sentence about CI jobs outside the repository-setup mapping stays.
 - Amendment approved by mjbvilhena on 2026-11-10. Approved US-88 and US-90 stories are enough to add the `Dependency scan` and `Workflow security` jobs to the repository-setup mapping. A change to ruleset 25303010 still needs approval by mjbvilhena. Those stories stay Draft. This amendment does not approve the stories, does not add the jobs, and does not change the ruleset.
+- US-88, US-89, US-90, and US-91 are approved. Approved on 2026-11-10 by Mikey's Dev Bot, Scout, Mikey's Household Assistant, Mikey's Leisure Assistant and Mikey's Assistant under Miguel's delegation of 2026-11-06. This is an artefact approval. Implementation is not Done. It covers no ruleset change and no vulnerability exception. They are ready for implementation.

@@ -1,11 +1,18 @@
 # US-89 Fail CodeQL on a high security finding
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
 > Security criteria approved by mjbvilhena on 2026-11-06.
+> Security criteria approved by mjbvilhena on 2026-11-10.
+> Mikey's Dev Bot, approved under Miguel's delegation of 2026-11-06.
+> Scout, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Household Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Assistant, approved under Miguel's delegation of 2026-11-06.
+> This is an artefact approval. Implementation is not Done. It covers no ruleset change and no vulnerability exception.
 
 **Epic:** E6.
 
-**MoSCoW:** Must. Proposed for v1. Not approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -74,9 +81,9 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story is approved as an artefact. Implementation is not Done.
 - US-88 owns `docs/sdlc/vulnerability-exceptions.md` for an OSV id and an exact resolved module version. Security criteria approved by mjbvilhena on 2026-11-10. That file does not skip a CodeQL result. This story does not add a second file.
 
 ## Implementation notes
 
-Not a design spec. Do not change `.github/workflows/qa.yml` from this draft.
+Not a design spec. Do not change `.github/workflows/qa.yml` in this documentation change.
