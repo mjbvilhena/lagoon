@@ -15,7 +15,7 @@ Amendment approved by mjbvilhena on 2026-10-27.
 
 Skill: `sdlc-threat-modeler`. The note `docs/technical_design/2026-10-17-proposed-threat-note.md` is an older hypothesis list. It is not this model.
 
-Security-change Definition of Done is not met. There is no application code, so authentication checks, negative tests, and runtime audit events cannot be shown. This file is the threat review. It contains no exploit procedure and no certification claim. Approved by mjbvilhena on 2026-10-20. The ADRs are accepted. There is still no application code.
+Security-change Definition of Done is not met. The US-80 release-manifest slice is in the tree. It does not show authentication checks, negative tests, or runtime audit events for this model. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. This file is the threat review. It contains no exploit procedure and no certification claim. Approved by mjbvilhena on 2026-10-20. The ADRs are accepted.
 
 ## System under review
 
@@ -26,7 +26,7 @@ Security-change Definition of Done is not met. There is no application code, so 
 
 ## STRIDE findings
 
-There is no running app. Rows are hypotheses about the written design. T-2, T-26, and T-29 name accepted residuals. Approved by mjbvilhena on 2026-10-20. Evidence is a story or an ADR, not a trace.
+Rows are hypotheses about the written design. The US-80 release-manifest slice is in the tree. It is not an observation of these rows. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. T-2, T-26, and T-29 name accepted residuals. Approved by mjbvilhena on 2026-10-20. Evidence is a story or an ADR, not a trace.
 
 | ID | Category | Asset / component | Evidence | Impact | Mitigation (defensive) | Observed or hypothesis |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -75,7 +75,7 @@ Denial of service against Drive quota is not given a number. The specification s
 
 ## Missing controls (defensive)
 
-Unchecked because there is no code. The design names the control. It does not demonstrate it.
+Unchecked. The US-80 release-manifest slice does not demonstrate these controls. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. The design names the control. It does not demonstrate it.
 
 - [ ] Authentication / session. US-37 covers sensitive items. The vault key does not use user authentication, by US-35. Passphrase reset is T-11 and T-25. The forgotten-passphrase reset accepts the US-37 biometric or device PIN, leaves Drive on the old passphrase for 24 hours, and another phone that holds the key can cancel.
 - [ ] Authorization checks on the new path. Share-out of a sensitive item waits on US-37 (US-64). No second user exists to authorize.
@@ -83,7 +83,7 @@ Unchecked because there is no code. The design names the control. It does not de
 - [ ] Encryption in transit (and at rest if the change stores sensitive data). At rest is T-1 and ADR-0006. Preview and topic calls are HTTPS.
 - [ ] Audit logging of sensitive actions (no secrets in logs). T-15 and T-31. No new analytics pipeline.
 - [ ] Rate / size limits. T-14, T-19, T-21, T-27, ADR-0003's 100000-character send bound, US-31's OCR page cap. There is no monthly topic-call cap.
-- [ ] Supply-chain controls in T-30. Not configured. The workflow is tag-pinned. There is no Gradle build yet.
+- [ ] Supply-chain controls in T-30. Not configured. The workflow is tag-pinned. A Gradle build is in the tree for the US-80 slice. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval.
 
 ## Secrets handling
 
@@ -138,8 +138,8 @@ Amendment approved by mjbvilhena on 2026-11-10. T-39 fails a finding that has ne
 - Exploit steps, payloads, or a procedure for breaking the KDF.
 - A "secure" or "STRIDE-compliant" claim.
 - Inventing a CVE number. The API 27 renderer bug is cited by its public issuetracker id in ADR-0005, not as a new CVE.
-- Marking a hypothesis as something observed in an app. There is no app.
-- Amendment approved by mjbvilhena on 2026-10-22. Treating acceptance of this model as a certification, or as implementation. Implementation has not started.
+- Marking a hypothesis as something observed in a running vault. The US-80 slice is not that observation. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval.
+- Amendment approved by mjbvilhena on 2026-10-22. Treating acceptance of this model as a certification, or as implementation. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. Implementation has started with US-80. The story is not Done. That slice does not implement this model.
 - A passphrase recall check, a "Check my passphrase" control, or a periodic reminder to re-enter the passphrase.
 
 Status: Approved. Approved by mjbvilhena on 2026-10-20.

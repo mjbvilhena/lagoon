@@ -11,15 +11,15 @@ This file plans tests. It does not add test code. `sdlc-test-writer` and `sdlc-e
 | Field | Value |
 | --- | --- |
 | Subject | v1 vault: E1–E9 and E11. E10 is out of scope. |
-| Framework | No Gradle project exists. US-25 names local JVM tests plus Robolectric for the one Compose screen it requires. Domain tests are JVM tests with fake ports (`docs/layers/domain/LAYER.md`). Data tests cover search ranking and ciphertext packaging without a live Drive call (`docs/layers/data/LAYER.md`, US-25). CI is `.github/workflows/qa.yml`. The Build and test job no-ops until `settings.gradle` or `settings.gradle.kts` exists. |
+| Framework | A Gradle project is in the tree for the US-80 slice. `settings.gradle.kts` includes `:domain`, `:data`, `:ui`, and `:app`. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. US-25 names local JVM tests plus Robolectric for the one Compose screen it requires. Domain tests are JVM tests with fake ports (`docs/layers/domain/LAYER.md`). Data tests cover search ranking and ciphertext packaging without a live Drive call (`docs/layers/data/LAYER.md`, US-25). CI is `.github/workflows/qa.yml`. Build and test runs the real Gradle tasks because `settings.gradle.kts` is in the tree. The workflow still no-ops when `settings.gradle` and `settings.gradle.kts` are absent. |
 | Related DoD | `feature`, `user story`, `ui change`, `security change`, `pr`. Those are implement and verify gates. This plan does not mark them Done. |
 
 Definition of Done checks that were read, and what they still require after this plan:
 
 | DoD | What this plan covers | What stays open until implementation |
 | --- | --- | --- |
-| `user story` | Each planned row names a Must scenario or says out of scope. | No story is Done. Automation does not exist. |
-| `feature` | Risk rows include a failure path where the story has one. | Must AC are not met in a build. There is no app. |
+| `user story` | Each planned row names a Must scenario or says out of scope. | No story is Done. The US-80 release-manifest test is in the tree. That test does not mark a story Done. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. |
+| `feature` | Risk rows include a failure path where the story has one. | Must AC are not met in a build. The US-80 release-manifest allowlist is in the build and covered by unit tests. US-80 is not Done. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. |
 | `ui change` | Compose rows name accessible names, keyboard, reduced motion, and no color-only meaning. | The checklist runs on implemented screens. No conformance claim. |
 | `security change` | Crypto, sync, and sensitive-item rows name the fail-closed result. | A security review of a diff is verify-time. |
 | `pr` | The pull request that adds this file is docs. It does not claim the product is tested. | Review and green CI are the PR gate for that pull request. |
@@ -32,7 +32,7 @@ Definition of Done checks that were read, and what they still require after this
 
 ### Runner
 
-The repo has no test sources and no test runner dependency. This plan does not switch stacks and does not add Playwright, Cypress, or a browser runner. The app is Android.
+The US-80 unit test is `app/src/test/kotlin/com/mjbvilhena/lagoon/ReleaseManifestAllowlistTest.kt`. The app module test dependency is `junit:junit:4.13.2`. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. This plan does not switch stacks and does not add Playwright, Cypress, or a browser runner. The app is Android.
 
 | Level | Runner the stories already name | When |
 | --- | --- | --- |
