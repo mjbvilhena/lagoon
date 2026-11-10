@@ -30,7 +30,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 | `docs/product/epics/` | Approved by mjbvilhena on 2026-10-17. Amendment approved by mjbvilhena on 2026-10-18 for E1, E3, E4, E8, E9, and E11. E10 is Later, not in v1. |
 | `docs/product/stories/` | Story files and `docs/product/stories/INDEX.md`. The approval line on each file is the status. |
 | `docs/product/backlog.md` | Draft backlog |
-| `docs/sdlc/pipeline-state.md` | Current gate and what has not been started |
+| `docs/sdlc/pipeline-state.md` | Current gate. US-80 has started and is not Done. |
 | `docs/sdlc/harness-install.md` | Harness pin, installer, MCP command |
 | `docs/sdlc/repository-setup.md` | Draft repository checks |
 | `.cursor/commands/` | Installed harness skills and rules |
@@ -40,7 +40,7 @@ The root `README.md` only describes the app. These paths are the rest of the not
 
 ## Stack mapping
 
-Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The Android and Kotlin jobs were added because the 2026-10-17 GitHub request named them. They do not compile anything until a Gradle project exists. Bash and Python checks were not added.
+Markdown, secret scanning, and workflow lint follow leisure-orchestrator. The Android and Kotlin jobs were added because the 2026-10-17 GitHub request named them. They compile when a Gradle project exists, and `settings.gradle.kts` is in the tree. Bash and Python checks were not added.
 
 | Content expected | Proposed check | In this repo |
 | --- | --- | --- |
@@ -118,7 +118,7 @@ A green check is not product approval and is not permission to start implementat
 
 - [x] Purpose and content types have been identified (`README.md`, this file).
 - [x] Universal secret scanning is configured (job `Secret scan`).
-- [x] Markdown lint and workflow lint are configured. Android and Kotlin jobs are present and no-op until Gradle exists.
+- [x] Markdown lint and workflow lint are configured. Android and Kotlin jobs run the real Gradle tasks because `settings.gradle.kts` is in the tree. The workflow still no-ops when `settings.gradle` and `settings.gradle.kts` are absent.
 - [x] Default code ownership is established (`.github/CODEOWNERS`).
 - [x] CI uses `actions/checkout@v6`, gitleaks 8.30.1 (`gitleaks git` on full history), and `markdownlint-cli2-action@v24`. Checkout and Markdown lint match leisure-orchestrator. Secret scan does not use `gitleaks-action`.
 - [x] `.gitignore` covers signing secrets, `google-services.json`, `local.properties`, and `.env*` except `.env.example`.
@@ -128,4 +128,4 @@ A green check is not product approval and is not permission to start implementat
 ## Anti-patterns avoided
 
 - The Gradle project was not added while this repository was docs-only. It is in the tree for the US-80 manifest slice. The workflow still no-ops when `settings.gradle` and `settings.gradle.kts` are absent.
-- No end-to-end emulator workflow was added while there is no app.
+- No end-to-end emulator workflow was added. The US-80 manifest slice is in the tree. There is still no vault UI.

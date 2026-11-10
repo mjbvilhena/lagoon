@@ -18,7 +18,7 @@ Follow written steps to build, sideload, and create the OAuth client.
 
 ## Background
 
-- There is no app yet, so those steps are not in the tree. That absence is correct until implementation.
+- The US-80 manifest slice is in the tree. It is not the sideload release, and the release SHA-1 is still unknown. The build, sideload, and OAuth steps are not in the tree. That absence is correct while this story is Draft.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: documenting a Back up now or Restore button.
 
