@@ -97,11 +97,12 @@ Not applicable. No analytics.
 - The job name is `Workflow security`. It is not `Workflow lint`. The job is to be added to `.github/workflows/qa.yml`. It is not a separate workflow file.
 - Security criteria approved by mjbvilhena on 2026-11-10. It adds no `permissions` block, so it inherits that workflow's `contents: read` set, the same set the other ordinary jobs inherit. A job that needs any other permission needs a new approval from mjbvilhena.
 - It is not one of the seven required checks. The job failing is not the same thing as a merge failing. A merge stays open until ruleset 25303010 lists the name `Workflow security`. This approval does not change the ruleset. It does not broaden E6.
+- On 2026-11-10 at 18:02 GMT ruleset 25303010 requires nine checks: Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, Kotlin style, Dependency scan, and Workflow security. This is a status reading. It is not an approval marker.
 
 ## Dependencies and risks
 
 - Security criteria approved by mjbvilhena on 2026-11-06. The story is approved as an artefact. Implementation is not Done. Adding the job to `qa.yml` and listing `Workflow security` on ruleset 25303010 are two different steps.
-- Amendment approved by mjbvilhena on 2026-11-10. An approved US-90 story is enough to add the `Workflow security` job to the repository-setup mapping. A change to ruleset 25303010 still needs approval by mjbvilhena. This sentence does not add the job and does not change the ruleset.
+- Amendment approved by mjbvilhena on 2026-11-10. An approved US-90 story is enough to add the `Workflow security` job to the repository-setup mapping. A change to ruleset 25303010 still needs approval by mjbvilhena. On 2026-11-10 at 18:02 GMT that ruleset requires nine checks: Secret scan, Markdown lint, Workflow lint, Build and test, Android lint, CodeQL, Kotlin style, Dependency scan, and Workflow security. This is a status reading. It is not an approval marker. This sentence does not add the job and does not change the ruleset.
 - Replacing the version tags in `.github/workflows/qa.yml` with release commits is part of meeting the pin scenario. It is not done in this documentation change. `pages.yml` is already pinned. `dispatch-pages.yml` has no `uses` key.
 
 ## Implementation notes
