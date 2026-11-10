@@ -1,11 +1,18 @@
 # US-89 Fail CodeQL on a high security finding
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
 > Security criteria approved by mjbvilhena on 2026-11-06.
+> Security criteria approved by mjbvilhena on 2026-11-10.
+> Mikey's Dev Bot, approved under Miguel's delegation of 2026-11-06.
+> Scout, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Household Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Assistant, approved under Miguel's delegation of 2026-11-06.
+> This is an artefact approval. Implementation is not Done. It covers no ruleset change and no vulnerability exception.
 
 **Epic:** E6.
 
-**MoSCoW:** Must. Proposed for v1. Not approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -33,12 +40,29 @@ Fail CodeQL on a high security finding.
   - Then the `CodeQL` job fails
   - And a result below 7.0 does not fail the job
   - And a query that is not tagged `security` does not fail the job
+- **Scenario: no exception skips a high security result** — Must
+  - Security criteria approved by mjbvilhena on 2026-11-10.
+  - Given the CodeQL job produced SARIF for this commit
+  - And a result has `security-severity` of 7.0 or higher
+  - And the query is tagged `security`
+  - When the job finishes
+  - Then the `CodeQL` job fails
+  - And a rule id does not skip that result
+  - And a result location does not skip that result
+  - And `docs/sdlc/vulnerability-exceptions.md` does not skip that result
+  - And a missing exception file does not skip that result
 - **Scenario: analysis errors are not a clean scan** — Must
   - Security criteria approved by mjbvilhena on 2026-11-06.
   - Given database creation, the debug assemble, analysis, or SARIF upload fails, or the SARIF file is missing
   - When the job finishes
   - Then the job fails
   - And the job does not report success because an alerts API was unauthorized
+- **Scenario: no Gradle project produces no SARIF** — Must
+  - Security criteria approved by mjbvilhena on 2026-11-10.
+  - Given the tree has neither `settings.gradle` nor `settings.gradle.kts`
+  - When the CodeQL check runs
+  - Then there is no SARIF
+  - And the `CodeQL` job fails
 - **Scenario: no baseline and no new check name** — Must
   - Given this policy is in force
   - When the job is configured
@@ -53,13 +77,13 @@ Not applicable. No analytics.
 ## Design and a11y notes
 
 - Not a screen story. No placeholder sentences.
-- An exception uses the same file and the same approval sentence as US-88, with the CodeQL rule id and the result location in place of the OSV id and module version. A line without `Exception approved by mjbvilhena on` and a date does not skip the result.
+- Security criteria approved by mjbvilhena on 2026-11-10. This story has no CodeQL exception path. A result at `security-severity` of 7.0 or higher on a query tagged `security` fails the `CodeQL` job. A rule id, a result location, and `docs/sdlc/vulnerability-exceptions.md` do not skip that result.
 
 ## Dependencies and risks
 
-- The story stays Draft. Security criteria approved by mjbvilhena on 2026-11-06. That approval is not approval of the story.
-- US-88 owns the exception file. This story does not invent a second one.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story is approved as an artefact. Implementation is not Done.
+- US-88 owns `docs/sdlc/vulnerability-exceptions.md` for an OSV id and an exact resolved module version. Security criteria approved by mjbvilhena on 2026-11-10. That file does not skip a CodeQL result. This story does not add a second file.
 
 ## Implementation notes
 
-Not a design spec. Do not change `.github/workflows/qa.yml` from this draft.
+Not a design spec. Do not change `.github/workflows/qa.yml` in this documentation change.
