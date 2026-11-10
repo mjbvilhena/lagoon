@@ -1,11 +1,17 @@
 # US-91 Keep the release manifest non-debuggable
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
 > Security criteria approved by mjbvilhena on 2026-11-06.
+> Mikey's Dev Bot, approved under Miguel's delegation of 2026-11-06.
+> Scout, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Household Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Leisure Assistant, approved under Miguel's delegation of 2026-11-06.
+> Mikey's Assistant, approved under Miguel's delegation of 2026-11-06.
+> This is an artefact approval. Implementation is not Done. It covers no ruleset change and no vulnerability exception.
 
 **Epic:** E6.
 
-**MoSCoW:** Must. Proposed for v1. Not approved.
+**MoSCoW:** Must.
 
 ## Title
 
@@ -37,7 +43,7 @@ Keep the release manifest non-debuggable.
   - Given this story
   - When the release APK is inspected
   - Then no certificate check and no `apksigner` check is added
-  - And an unsigned release APK is still not described as the sideload release
+  - And the assertion message in `releaseManifestMatchesTheAllowlist` states that the file is unsigned and is not the US-81 sideload release
 
 ## Analytics and observability (optional)
 
@@ -46,13 +52,13 @@ Not applicable. No analytics.
 ## Design and a11y notes
 
 - Not a screen story. No placeholder sentences.
-- The assertion is added beside the existing release-manifest test. It does not replace that test's allowlist or exported-component assertions.
+- The statement goes in the assertion message of `releaseManifestMatchesTheAllowlist`. It does not replace that test's allowlist or exported-component assertions.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story is approved as an artefact. Implementation is not Done. The assertion message that the file is unsigned must change when US-81 adds signing.
 - The release APK already built in the unit-test task is the file this reads. No new required check name.
 
 ## Implementation notes
 
-Not a design spec. Do not change the test from this draft.
+Not a design spec. Do not change the test in this documentation change.
