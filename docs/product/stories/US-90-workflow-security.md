@@ -82,7 +82,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- The story stays Draft. Security criteria approved by mjbvilhena on 2026-11-06. That approval is not approval of the story.
 - Replacing the version tags in `.github/workflows/qa.yml` with release commits is part of meeting the pin scenario. It is not done in this draft. `pages.yml` is already pinned. `dispatch-pages.yml` has no `uses` key.
 
 ## Implementation notes

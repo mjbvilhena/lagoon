@@ -57,7 +57,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- The story stays Draft. Security criteria approved by mjbvilhena on 2026-11-06. That approval is not approval of the story.
 - US-88 owns the exception file. This story does not invent a second one.
 
 ## Implementation notes
