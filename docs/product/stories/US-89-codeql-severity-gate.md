@@ -57,9 +57,22 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
-- US-88 owns the exception file. This story does not invent a second one.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded.
+- The approved fail-closed scenario already says a missing SARIF file fails the `CodeQL` job. A tree without `settings.gradle` or `settings.gradle.kts` produces no SARIF, so that path is not a successful skip under this criterion. `.github/workflows/qa.yml` still exits 0 when those files are absent. That live behavior does not yet meet the criterion. This note does not change the criterion and does not edit the workflow.
+- US-88 owns the exception file for an OSV id and a resolved module version. This story does not invent a second file.
 
 ## Implementation notes
 
 Not a design spec. Do not change `.github/workflows/qa.yml` from this draft.
+
+## Proposed amendment
+
+Proposed amendment. Needs approval by mjbvilhena. This section is not applied. The design note above and the approved Must scenarios stay as written. TP-34 and T-40 are not changed.
+
+The design note says a line can skip a CodeQL result by rule id and result location. The approved Must scenarios, TP-34, and T-40 do not say that, and they do not define result location. That choice is open.
+
+Recommended choice, if approved later: this story has no CodeQL exception path. The design note that skips a result is removed, and `docs/sdlc/vulnerability-exceptions.md` does not skip a CodeQL result. A high security result has to be fixed. That is stricter. It does not add a skip key.
+
+The other choice is not written here. It would define the skip key, add a Must scenario, and amend TP-34 and T-40. That would be a new security criterion.
+
+Until one choice is approved, this story stays Draft.

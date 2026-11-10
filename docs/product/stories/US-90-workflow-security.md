@@ -27,7 +27,7 @@ Check workflow permissions, pull-request input, and pinned actions.
 - No workflow under this repo's `.github` calls a local action or a reusable workflow. `third_party/**` workflows are not these files.
 - A job `permissions` block replaces the workflow set. Inheritance of the workflow set is allowed when that set is the least privilege for every job that does not replace it. A missing `permissions` key at both levels fails, because the default token is not an explicit set.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. This story does not add a vault rule.
-- Out of scope: replacing actionlint, disabling Pages, changing what the mockup site publishes, a self-hosted runner, and any job that checks out a pull request and runs it with a write token. This story does not exempt every deployment workflow.
+- Out of scope: replacing actionlint, disabling Pages, changing what the mockup site publishes, a self-hosted runner, and adding a job that checks out a pull request and runs it with a write token. This story does not exempt every deployment workflow. A check of a master commit does not scan a push to `gh-pages`. `dispatch-pages.yml` is checked only when that file is in the commit under review.
 
 ## Acceptance criteria
 
@@ -78,11 +78,12 @@ Not applicable. No analytics.
 
 - Not a screen story. No placeholder sentences.
 - The candidate checker is `zizmorcore/zizmor` release `v1.32.0`, published 2026-11-02. It is not actionlint. The commit pin is chosen when this story is approved, from that release's Git tag.
-- The job name is `Workflow security`. It is not `Workflow lint` and it is not one of the seven required checks. It does not block a merge until ruleset 25303010 lists that exact name. This story does not change the ruleset.
+- The job name is `Workflow security`. It is not `Workflow lint`. The job is in `.github/workflows/qa.yml`. It adds no `permissions` block, so it inherits that workflow's `contents: read` set, the same set the other ordinary jobs inherit. It is not a separate workflow file.
+- It is not one of the seven required checks. The job failing is not the same thing as a merge failing. A merge stays open until ruleset 25303010 lists the name `Workflow security`. This story does not change the ruleset. Whole-story approval would not change it either. It does not broaden E6.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded. Implementing the job in `qa.yml` and listing `Workflow security` on ruleset 25303010 are two different steps.
 - Replacing the version tags in `.github/workflows/qa.yml` with release commits is part of meeting the pin scenario. It is not done in this draft. `pages.yml` is already pinned. `dispatch-pages.yml` has no `uses` key.
 
 ## Implementation notes

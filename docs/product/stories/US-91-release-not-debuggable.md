@@ -37,7 +37,7 @@ Keep the release manifest non-debuggable.
   - Given this story
   - When the release APK is inspected
   - Then no certificate check and no `apksigner` check is added
-  - And an unsigned release APK is still not described as the sideload release
+  - And the same test that reads the release APK states that the file is unsigned and is not the US-81 sideload release
 
 ## Analytics and observability (optional)
 
@@ -50,7 +50,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked on approval of this story and of the security criteria above by mjbvilhena.
+- Security criteria approved by mjbvilhena on 2026-11-06. The story stays Draft. Whole-story approval is not recorded.
 - The release APK already built in the unit-test task is the file this reads. No new required check name.
 
 ## Implementation notes
