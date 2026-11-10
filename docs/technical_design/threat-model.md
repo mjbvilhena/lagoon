@@ -124,7 +124,7 @@ A forgotten passphrase, together with losing every phone that holds the key, mea
 
 Amendment approved by mjbvilhena on 2026-11-06. T-39 through T-42 are approved additions. T-30 stays as written. It already says dependency verification and pinned Actions are proposed controls and are not done. These rows do not mark them done. The controls are not implemented.
 
-Amendment approved by mjbvilhena on 2026-11-10. T-39 fails a finding that has neither a CVSS v3 score nor a database severity. The exception in that row stays one OSV id and one resolved version. T-40 does not name a CodeQL exception and its row is unchanged. These controls are not implemented. US-88 and US-89 stay Draft.
+Amendment approved by mjbvilhena on 2026-11-10. T-39 fails a finding that has neither a CVSS v3 score nor a database severity. The exception in that row stays one OSV id and one resolved version. T-40 does not name a CodeQL exception and its row is unchanged. These controls are not implemented. Status-only update. mjbvilhena said on 2026-11-10 that this needs no approval. US-88, US-89, US-90, and US-91 are approved. Approved on 2026-11-10 by Mikey's Dev Bot, Scout, Mikey's Household Assistant, Mikey's Leisure Assistant and Mikey's Assistant under Miguel's delegation of 2026-11-06. This is an artefact approval. Implementation is not Done. It covers no ruleset change and no vulnerability exception.
 
 | ID | Category | Asset / component | Evidence | Impact | Mitigation (defensive) | Observed or hypothesis |
 | --- | --- | --- | --- | --- | --- | --- |
