@@ -27,7 +27,7 @@ Read a saved item.
 - **Scenario: open an ordinary item** — Must
   - Given an item that is not marked sensitive
   - When he opens it
-  - Then he sees the title, body, note, all attachments, last-saved date, and the original URL when the item is a link
+  - Then he sees the title, body, note, tags, all attachments, last-saved date, and the original URL when the item is a link
   - And when the item is a link, he can open that original URL with the platform
   - And when the stored preview is the foggy placeholder from US-79, he sees that image and opening the item does not fetch a preview
 - **Scenario: source on the detail** — Should
@@ -53,7 +53,7 @@ Read a saved item.
   - When he opens it before US-37 unlock succeeds
   - Then, before US-37 unlock succeeds, a sensitive item's detail screen shows none of its title, body, personal note, URL, source, tags, OCR text, attachments or snapshot. This matches US-75's "details appear only after US-37". List-row behaviour stays with US-75
 - **Scenario: optional fields are empty** — Must
-  - Given an item has no note and no reminder
+  - Given an ordinary item has no note and no reminder
   - When he opens it
   - Then those areas are absent, and the title and body that do exist are still shown
 

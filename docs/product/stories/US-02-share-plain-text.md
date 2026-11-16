@@ -28,7 +28,7 @@ Share plain text into the vault.
 - **Scenario: share text** — Must
   - Given another app shares plain text that is not only whitespace and contains no URL
   - When he chooses Lagoon
-  - Then one note item is stored and he sees "Saved to Lagoon". The sending app name is recorded only when the platform reports it
+  - Then one note item is stored and he sees "Saved to Lagoon"
 - **Scenario: the text contains a URL** — Must
   - Amendment approved by mjbvilhena on 2026-11-16.
   - Given `EXTRA_TEXT` contains a URL and some other words
@@ -61,6 +61,7 @@ Not applicable. No analytics.
 
 - A body-only note he types himself uses the same 120-character title rule (US-05).
 - Leftover shared text is the rule defined once in US-01. Amendment approved by mjbvilhena on 2026-11-16.
+- The sending app name is a Should. It is the sending-app clause in US-01's "where it came from" scenario. Amendment approved by mjbvilhena on 2026-11-16.
 
 ## Implementation notes
 

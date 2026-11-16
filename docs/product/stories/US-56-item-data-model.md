@@ -26,7 +26,7 @@ Keep a stable identity for each item.
 
 - **Scenario: a stable id** — Must
   - Given he saves an item
-  - When he edits it, syncs it, or shares the same link again
+  - When he edits it, syncs it, or shares the same link again and it updates the existing item (US-49)
   - Then the id does not change
 - **Scenario: ids are not reused** — Must
   - Given two installs each save an item before any sync, or an item was deleted and another item is then saved
@@ -34,7 +34,7 @@ Keep a stable identity for each item.
   - Then the ids differ. An id is never reused for a different item, and a deleted item's id is not given to a new item
 - **Scenario: a user edit** — Must
   - Given an item
-  - When he edits the title, the body, the personal notes, or a tag on that item and saves
+  - When he edits the title, the body, the personal notes, a tag on that item, the reminder, the expiry, the attachments, or the sensitive mark and saves
   - Then `userEditedAt` and `updatedAt` are set to the same instant, the later of now and one millisecond after the previous `updatedAt`, and `createdAt` does not move
 - **Scenario: a system write** — Must
   - Given an item
@@ -58,11 +58,12 @@ Keep a stable identity for each item.
   - Amendment approved by mjbvilhena on 2026-11-16.
   - Given US-66 cites a once-only reminder fire or a once-only expiry notice
   - When the installs merge
-  - Then the synced fired state that US-66 cites for the once-only reminder fire and the once-only expiry notice is stored on the item in this story. Its merge rule is sticky: once any install has recorded that fire or that notice, the merged item stays fired, so another phone does not fire it again
+  - Then the synced fired state that US-66 cites for the once-only reminder fire and the once-only expiry notice is stored on the item in this story. Its merge rule is sticky per occurrence: once any install has recorded that fire or that notice, that occurrence stays fired, so another phone does not fire it again. A later reminder or a later expiry notice on the same item still fires
 - **Scenario: a migration** — Must
   - Given a vault already has items and the schema gains these fields
   - When the migration runs
-  - Then the items are still present, and each has an id, `userEditedAt`, `inTrash`, `trashedAt`, `trashChangedAt`, last-saved, and the synced fired state
+  - Then the items are still present, and each has an id, `createdAt`, `updatedAt`, `userEditedAt`, `inTrash`, `trashedAt`, `trashChangedAt`, last-saved, and the synced fired state
+  - And a migrated row with no `createdAt` gets `createdAt` at the instant it was first stored. `updatedAt` starts at that same instant when the row has none. `userEditedAt` starts unset, because the migration is a system write and a system write does not set `userEditedAt` (ADR-0002). `inTrash` starts clear, and `trashedAt` and `trashChangedAt` start unset, unless the row was already in trash. Last-saved starts at `createdAt`. Each reminder occurrence and each expiry-notice occurrence starts unfired
 
 ## Analytics and observability (optional)
 
