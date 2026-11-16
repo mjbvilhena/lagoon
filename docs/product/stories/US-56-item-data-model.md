@@ -63,7 +63,7 @@ Keep a stable identity for each item.
   - Given a vault already has items and the schema gains these fields
   - When the migration runs
   - Then the items are still present, and each has an id, `createdAt`, `updatedAt`, `userEditedAt`, `inTrash`, `trashedAt`, `trashChangedAt`, last-saved, and the synced fired state
-  - And a row keeps any createdAt, updatedAt and last-saved it already has. A missing createdAt or updatedAt is set to the migration instant. A missing last-saved is set to createdAt. `userEditedAt` starts unset, because the migration is a system write and a system write does not set `userEditedAt` (ADR-0002). `inTrash` starts clear, and `trashedAt` and `trashChangedAt` start unset, unless the row was already in trash. Amendment approved by mjbvilhena on 2026-11-16. A reminder occurrence or an expiry-notice occurrence whose time is already past at migration starts fired. A future occurrence starts unfired
+  - And a row keeps any `createdAt` and last-saved it already has. A missing `createdAt` is set to the migration instant. A missing last-saved is set to `createdAt`. `updatedAt` is set as for any system write (ADR-0002). `userEditedAt` starts unset, because the migration is a system write and a system write does not set `userEditedAt` (ADR-0002). `inTrash` starts clear, and `trashedAt` and `trashChangedAt` start unset, unless the row was already in trash. Amendment approved by mjbvilhena on 2026-11-16. A reminder occurrence or an expiry-notice occurrence whose time is already past at migration starts fired. A future occurrence starts unfired
 
 ## Analytics and observability (optional)
 
