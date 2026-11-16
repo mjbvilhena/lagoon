@@ -30,9 +30,10 @@ Share plain text into the vault.
   - When he chooses Lagoon
   - Then one note item is stored and he sees "Saved to Lagoon". The sending app name is recorded only when the platform reports it
 - **Scenario: the text contains a URL** — Must
+  - Amendment approved by mjbvilhena on 2026-11-16.
   - Given `EXTRA_TEXT` contains a URL and some other words
   - When he shares it
-  - Then US-01 stores the link, and the leftover words are kept as a note, the same way as US-01
+  - Then US-01 stores the link. US-02 references that rule and does not restate it
   - And the title uses the same order as US-01 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
 - **Scenario: the share has a subject** — Must
   - Given `EXTRA_SUBJECT` is present
@@ -59,7 +60,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - A body-only note he types himself uses the same 120-character title rule (US-05).
-- **Proposed amendment P4. Not approved.** The rule for leftover shared text is the proposed amendment in US-01. This story does not restate it. The Must at "the text contains a URL" stays until that amendment is approved.
+- Leftover shared text is the rule defined once in US-01. Amendment approved by mjbvilhena on 2026-11-16.
 
 ## Implementation notes
 

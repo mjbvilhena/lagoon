@@ -29,11 +29,13 @@ Share a link into the vault.
   - When he chooses Lagoon on the share sheet
   - Then one tap stores one link item, the source URL is the URL he shared, created and last-saved are that instant, and he sees the confirmation "Saved to Lagoon"
 - **Scenario: text that also contains a URL** — Must
+  - Amendment approved by mjbvilhena on 2026-11-16.
   - Given the share has text and a URL
   - When he chooses Lagoon
-  - Then the URL is the source URL and the leftover text is kept as a note, the same way US-02 keeps leftover text
+  - Then the URL is the source URL. Leftover shared text is one personal-note entry under today's `YYYY-MM-DD` separator. The rule is defined once in this story. US-02 references that rule and does not restate it
   - And the title uses one order, shared with US-02 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
-- **Scenario: where it came from** — Must
+- **Scenario: where it came from** — Should
+  - Amendment approved by mjbvilhena on 2026-11-16.
   - Given the share includes a URL
   - When the item is stored
   - Then the item records the URL host as the source domain
@@ -78,8 +80,6 @@ Not applicable. The brief forbids analytics.
 
 - A hand-entered URL uses US-06, then US-49 for a repeat.
 - Open questions are in `docs/product/stories/REVIEW-PACK.md`. This story does not decide them.
-- **Proposed amendment P3. Not approved. Needs approval by mjbvilhena.** Source domain and sending app are a Should in the approved vision and in approved epic E1, which name US-61. The Must at "where it came from" in this story, the Must at "what a row shows" in US-10, and the Must at "open an ordinary item" in US-11 record and show those fields. This amendment makes those clauses a Should, or defers them to approved US-61, so the stories match the approved epic. The existing Must text stays until this amendment is approved.
-- **Proposed amendment P4. Not approved. Needs approval by mjbvilhena.** Leftover shared text is one personal-note entry under today's `YYYY-MM-DD` separator. The rule is defined once in this story. US-02 references that rule and does not restate it. `docs/domain/vault/DOMAIN.md` and `docs/technical_design/ux-design.md` do not say where leftover shared text goes. The existing Must text stays until this amendment is approved.
 
 ## Implementation notes
 

@@ -49,10 +49,20 @@ Keep a stable identity for each item.
   - Given the permanent delete has been written
   - When that record is stored
   - Then the tombstone is the permanent-delete record accepted ADR-0002 already defines. This story points at that record and does not restate the conflict rule
+- **Scenario: last-saved** — Must
+  - Amendment approved by mjbvilhena on 2026-11-16.
+  - Given an item is saved for the first time, shared again as a repeat, or edited
+  - When that write is stored
+  - Then last-saved, the US-10 sort key, is stored as its own field. It is set on first save and on a repeat share, and not on an edit. Its cross-phone merge rule is the later value
+- **Scenario: synced fired state** — Must
+  - Amendment approved by mjbvilhena on 2026-11-16.
+  - Given US-66 cites a once-only reminder fire or a once-only expiry notice
+  - When the installs merge
+  - Then the synced fired state that US-66 cites for the once-only reminder fire and the once-only expiry notice is stored on the item in this story. Its merge rule is sticky: once any install has recorded that fire or that notice, the merged item stays fired, so another phone does not fire it again
 - **Scenario: a migration** — Must
   - Given a vault already has items and the schema gains these fields
   - When the migration runs
-  - Then the items are still present, and each has an id, `userEditedAt`, `inTrash`, `trashedAt`, and `trashChangedAt`
+  - Then the items are still present, and each has an id, `userEditedAt`, `inTrash`, `trashedAt`, `trashChangedAt`, last-saved, and the synced fired state
 
 ## Analytics and observability (optional)
 
@@ -66,8 +76,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - US-20 uses this id for one-sided merge.
-- Accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. `userEditedAt`, `trashChangedAt`, `inTrash`, `trashedAt`, the user-write and system-write rule, and the tombstone are defined there.
-- **Proposed amendment P2. Not approved. Needs approval by mjbvilhena.** Last-saved, the US-10 sort key, is stored as its own field. It is set on first save and on a repeat share, and not on an edit. Its cross-phone merge rule is the later value. The synced fired state that US-66 cites for the once-only reminder fire and the once-only expiry notice is stored on the item in this story. Its merge rule is sticky: once any install has recorded that fire or that notice, the merged item stays fired, so another phone does not fire it again. Accepted ADR-0002, US-55, and US-66 name that state and do not name a field or a merge rule. This amendment is not approved. The Must scenarios above do not include last-saved or the fired state.
+- Accepted ADR-0002. Approved by mjbvilhena on 2026-10-20. `userEditedAt`, `trashChangedAt`, `inTrash`, `trashedAt`, the user-write and system-write rule, and the tombstone are defined there. Amendment approved by mjbvilhena on 2026-11-16. Last-saved and the synced fired state are defined there too.
 
 ## Implementation notes
 
