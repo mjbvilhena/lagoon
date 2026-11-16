@@ -19,8 +19,9 @@ Share plain text into the vault.
 ## Background
 
 - Text shared from another app is not a link item unless the text contains a URL.
+- When he did not supply a subject, the title is the first line and is at most 120 characters. A longer first line is cut at 120 characters. The full text stays in the body.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
-- Out of scope: OCR, topics, and the repeat-URL update (US-49). An empty title is capped at 120 characters.
+- Out of scope: OCR, topics, and the repeat-URL update (US-49).
 
 ## Acceptance criteria
 
@@ -58,6 +59,7 @@ Not applicable. No analytics.
 ## Dependencies and risks
 
 - A body-only note he types himself uses the same 120-character title rule (US-05).
+- **Proposed amendment P4. Not approved.** The rule for leftover shared text is the proposed amendment in US-01. This story does not restate it. The Must at "the text contains a URL" stays until that amendment is approved.
 
 ## Implementation notes
 

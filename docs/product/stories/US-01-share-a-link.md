@@ -78,7 +78,9 @@ Not applicable. The brief forbids analytics.
 
 - A hand-entered URL uses US-06, then US-49 for a repeat.
 - Open questions are in `docs/product/stories/REVIEW-PACK.md`. This story does not decide them.
+- **Proposed amendment P3. Not approved. Needs approval by mjbvilhena.** Source domain and sending app are a Should in the approved vision and in approved epic E1, which name US-61. The Must at "where it came from" in this story, the Must at "what a row shows" in US-10, and the Must at "open an ordinary item" in US-11 record and show those fields. This amendment makes those clauses a Should, or defers them to approved US-61, so the stories match the approved epic. The existing Must text stays until this amendment is approved.
+- **Proposed amendment P4. Not approved. Needs approval by mjbvilhena.** Leftover shared text is one personal-note entry under today's `YYYY-MM-DD` separator. The rule is defined once in this story. US-02 references that rule and does not restate it. `docs/domain/vault/DOMAIN.md` and `docs/technical_design/ux-design.md` do not say where leftover shared text goes. The existing Must text stays until this amendment is approved.
 
 ## Implementation notes
 
-Android share intent for a URL. Not a design spec. No `LAYER.md` exists.
+Android share intent for a URL. Not a design spec. The layer files are `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md`. Approved by mjbvilhena on 2026-10-20.
