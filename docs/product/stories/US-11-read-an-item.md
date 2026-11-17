@@ -1,6 +1,7 @@
 # US-11 Read a saved item
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-11-16 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant under Miguel's delegation of 2026-10-17.
 
 **Epic:** E3.
 
@@ -27,22 +28,33 @@ Read a saved item.
 - **Scenario: open an ordinary item** — Must
   - Given an item that is not marked sensitive
   - When he opens it
-  - Then he sees the title, body, note, all attachments, last-saved date, source domain and sending app when present, and the original URL when the item is a link
+  - Then he sees the title, body, note, tags, all attachments, last-saved date, and the original URL when the item is a link
+  - And when the item is a link, he can open that original URL with the platform
   - And when the stored preview is the foggy placeholder from US-79, he sees that image and opening the item does not fetch a preview
+- **Scenario: source on the detail** — Should
+  - Amendment approved by mjbvilhena on 2026-11-16.
+  - Given an item that is not marked sensitive has a source domain or a sending app
+  - When he opens it
+  - Then he sees the source domain and sending app when present
 - **Scenario: OCR text** — Must
   - Given OCR text exists
   - When he opens the item
   - Then that text is shown, and he can select it and copy it
-- **Scenario: snapshot and dates** — Must
-  - Given a snapshot or a reminder or expiry is stored
+- **Scenario: a snapshot** — Must
+  - Given a snapshot is stored
   - When he opens the item
-  - Then he can read the snapshot, and he sees the reminder or expiry
+  - Then he can read the snapshot
+- **Scenario: a reminder or expiry** — Must
+  - Given a reminder or an expiry is stored
+  - When he opens the item
+  - Then he sees that reminder or expiry
 - **Scenario: a sensitive item** — Must
+  - Security criteria approved by mjbvilhena on 2026-11-16.
   - Given the item is marked sensitive
-  - When he opens it before US-37 succeeds
-  - Then the body, OCR text, attachments, and snapshot are not shown
+  - When he opens it before US-37 unlock succeeds
+  - Then, before US-37 unlock succeeds, a sensitive item's detail screen shows none of its title, body, personal note, URL, source, tags, OCR text, attachments or snapshot. This matches US-75's "details appear only after US-37". List-row behaviour stays with US-75
 - **Scenario: optional fields are empty** — Must
-  - Given an item has no note and no reminder
+  - Given an ordinary item has no note and no reminder
   - When he opens it
   - Then those areas are absent, and the title and body that do exist are still shown
 

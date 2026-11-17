@@ -1,6 +1,7 @@
 # US-12 Edit a saved item
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-11-16 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant under Miguel's delegation of 2026-10-17.
 
 **Epic:** E3.
 
@@ -27,11 +28,11 @@ Edit a saved item.
 - **Scenario: edit title, body, and note** — Must
   - Given an existing item
   - When he changes the title, the body, and the personal note and saves
-  - Then those fields are the new values, created date and last-saved stay, and only `updatedAt` moves to this edit
+  - Then those fields are the new values, created date and last-saved stay, and `userEditedAt` and `updatedAt` are set to the same instant (ADR-0002)
 - **Scenario: edit tags** — Must
   - Given an item with tags
   - When he adds one tag and removes another
-  - Then the item has the new set, and search follows it after US-15 re-indexes
+  - Then the item has the new set, created date and last-saved stay, `userEditedAt` and `updatedAt` are set to that same instant (ADR-0002), and search follows it after US-15 re-indexes
 - **Scenario: empty title** — Must
   - Given he clears the title
   - When he tries to save
@@ -44,7 +45,8 @@ Edit a saved item.
 - **Scenario: search and topics follow the edit** — Must
   - Given the body changed
   - When the edit is saved
-  - Then FTS is re-indexed from the new text, and topic processing is re-queued for this latest version (US-44, US-58)
+  - Then FTS is re-indexed from the new text. That re-index is a Must (US-15)
+  - And topic processing is re-queued for this latest version only when the item is ordinary, topics are on, and US-44 and US-58 are in the build
 
 ## Analytics and observability (optional)
 
@@ -60,4 +62,4 @@ Not applicable. No analytics.
 
 ## Implementation notes
 
-Do not change `createdAt` or last-saved on edit. Last-saved moves on a new save or a repeat share (US-49). Not a design spec.
+Do not change `createdAt` or last-saved on edit. A user edit sets `userEditedAt` and `updatedAt` to the same instant (ADR-0002). Last-saved moves on a new save or a repeat share (US-49). Not a design spec.

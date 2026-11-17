@@ -213,7 +213,7 @@ Journeys below are the user-visible outcomes the stories require. `sdlc-e2e-scri
 - **Steps:** Delete. Choose Undo. Delete again. Leave the snackbar. Open Settings, then Trash. Choose Restore.
 - **Assertions:** Undo puts the item back on the home list. After the snackbar ends, the home list does not show it and Trash shows type, title, days left, and Restore. There is no Delete forever, Delete now, or Empty trash. Restore returns it to the home list.
 - **Unhappy sibling:** A sensitive item in Trash shows "Sensitive" and no title until unlock.
-- **Maps to:** US-13 (Draft), US-66 Approved, US-59 (Draft).
+- **Maps to:** US-13 (Approved), US-66 Approved, US-59 (Draft).
 
 ### J-5: Sensitive reminder
 

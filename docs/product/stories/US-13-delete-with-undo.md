@@ -1,6 +1,7 @@
 # US-13 Delete an item and undo that delete
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-11-15 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant under Miguel's delegation of 2026-10-17.
 
 **Epic:** E3.
 

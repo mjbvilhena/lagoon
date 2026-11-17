@@ -378,7 +378,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is Draft.
+- Depends on US-13. The removal when the 30 × 24 hours end uses the cleanup US-13 runs when the tombstone is written. US-13 is approved.
 - Two or more live items that share one URL are "a later share matches two or more live items". The choice is US-49.
 - Two or more trashed items that share one URL, and no item that is not in trash matches, are "two or more trashed items match".
 - A forgotten phone that returns is "a forgotten phone returns". The passphrase step and the detection are in US-87. The orphan cleanup runs after the rebuild. The forgotten-installs file rules are in that scenario.

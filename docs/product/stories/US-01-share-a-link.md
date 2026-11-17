@@ -1,6 +1,7 @@
 # US-01 Share a link into the vault
 
-> **Approval status: Draft. Not approved.**
+> **Approval status: Approved.**
+> Approved on 2026-11-16 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant under Miguel's delegation of 2026-10-17.
 
 **Epic:** E1.
 
@@ -29,11 +30,13 @@ Share a link into the vault.
   - When he chooses Lagoon on the share sheet
   - Then one tap stores one link item, the source URL is the URL he shared, created and last-saved are that instant, and he sees the confirmation "Saved to Lagoon"
 - **Scenario: text that also contains a URL** — Must
+  - Amendment approved by mjbvilhena on 2026-11-16.
   - Given the share has text and a URL
   - When he chooses Lagoon
-  - Then the URL is the source URL and the leftover text is kept as a note, the same way US-02 keeps leftover text
+  - Then the URL is the source URL. Leftover shared text is one personal-note entry under today's `YYYY-MM-DD` separator. The rule is defined once in this story. US-02 references that rule and does not restate it
   - And the title uses one order, shared with US-02 and US-40: share subject, then a title he typed, then the page title or the file name, then leftover text, then host and path (host only when the link is token-looking, US-40)
-- **Scenario: where it came from** — Must
+- **Scenario: where it came from** — Should
+  - Amendment approved by mjbvilhena on 2026-11-16.
   - Given the share includes a URL
   - When the item is stored
   - Then the item records the URL host as the source domain
@@ -81,4 +84,4 @@ Not applicable. The brief forbids analytics.
 
 ## Implementation notes
 
-Android share intent for a URL. Not a design spec. No `LAYER.md` exists.
+Android share intent for a URL. Not a design spec. The layer files are `docs/layers/ui/LAYER.md`, `docs/layers/domain/LAYER.md`, and `docs/layers/data/LAYER.md`. Approved by mjbvilhena on 2026-10-20.
