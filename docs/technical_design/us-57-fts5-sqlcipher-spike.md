@@ -25,6 +25,7 @@ Compared with the master debug build at `483d5891359942e640697c0665626e1d23532ee
 | APK | Bytes |
 | --- | --- |
 | Master `:app` debug | 2374931 |
-| Spike debug, `net.zetetic:sqlcipher-android:4.6.1`, with the on-screen runner | 23450558 |
+| Spike debug built locally with the on-screen runner | 23450558 |
+| Spike debug packaged by CI for install | 22563778 |
 
-The spike debug APK is 21075627 bytes larger than that master debug APK. The product app was not rebuilt with this dependency, so that difference is the spike app, not a change to the Lagoon debug APK. The published CI artifact is the copy to install. Its SHA-256 is the checksum file beside that APK.
+The product app was not rebuilt with this dependency, so the difference is the spike app, not a change to the Lagoon debug APK. Install the CI artifact `spike-debug`. The file is `spike-debug.apk`. Its SHA-256 is in `spike-debug.apk.sha256` in that same artifact. The CI package measured here is 20188847 bytes larger than the master debug APK.
