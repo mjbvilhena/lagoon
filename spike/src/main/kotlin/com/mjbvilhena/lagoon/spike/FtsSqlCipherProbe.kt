@@ -10,16 +10,44 @@ import java.io.File
  * The US-57 checks. The raw key is the ADR-0006 form
  * `PRAGMA key = "x'<64 hex>'"`. This class does not choose a product cipher.
  */
+data class ProbeReport(
+    val passed: Boolean,
+    val detail: String,
+)
+
 object FtsSqlCipherProbe {
     private val rightKey = ByteArray(32) { index -> index.toByte() }.toHex()
     private val wrongKey = ByteArray(32) { 0x5a }.toHex()
 
-    fun run(context: Context): List<String> {
+    fun run(context: Context): ProbeReport =
+        try {
+            runChecks(context)
+            ProbeReport(
+                passed = true,
+                detail =
+                    "Raw key, memory temp store, FTS5, prefix, bm25, snippet, highlight, and reopen all held.",
+            )
+        } catch (error: Exception) {
+            ProbeReport(
+                passed = false,
+                detail = error.message ?: error.javaClass.simpleName,
+            )
+        }
+
+    private fun runChecks(context: Context) {
         System.loadLibrary("sqlcipher")
         val file = File(context.cacheDir, "fts-spike.db")
         if (file.exists() && !file.delete()) {
             error("could not replace ${file.name}")
         }
+        try {
+            runOn(file)
+        } finally {
+            file.delete()
+        }
+    }
+
+    private fun runOn(file: File) {
         open(file, rightKey).use { db ->
             val tempStore = db.pragma("temp_store")
             check(tempStore == "2") { "temp_store was $tempStore, expected MEMORY (2)" }
@@ -67,7 +95,6 @@ object FtsSqlCipherProbe {
             val count = db.longs("SELECT count(*) FROM search").single()
             check(count == 4L) { "reopen count was $count" }
         }
-        return listOf("pass")
     }
 
     private fun insert(

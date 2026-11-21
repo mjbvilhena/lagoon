@@ -84,6 +84,21 @@ jobs:
       - name: Assemble debug and run unit tests
         if: steps.gradle.outputs.present == 'true'
         run: ./gradlew assembleDebug testDebugUnitTest --no-daemon
+      - name: Checksum the spike debug APK
+        if: steps.gradle.outputs.present == 'true'
+        run: |
+          apk=spike/build/outputs/apk/debug/spike-debug.apk
+          test -f "$apk"
+          sha256sum "$apk" | tee "$apk.sha256"
+      - name: Publish the spike debug APK
+        if: steps.gradle.outputs.present == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: spike-debug
+          path: |
+            spike/build/outputs/apk/debug/spike-debug.apk
+            spike/build/outputs/apk/debug/spike-debug.apk.sha256
+          if-no-files-found: error
 
   android-lint:
     name: Android lint

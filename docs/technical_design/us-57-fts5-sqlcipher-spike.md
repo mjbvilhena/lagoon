@@ -16,6 +16,8 @@ Target: Android emulator, `system-images;android-26;google_apis;x86_64`, `ro.bui
 
 Blocked. No arm64 phone was attached. `adb` showed only the emulator above. An arm64 emulator was not used in place of the phone.
 
+An installable debug build of this spike, labeled Lagoon spike, runs these same checks on a phone and shows PASS or FAIL with the model, ABI, and Android version. That phone run is not recorded here. This result stays blocked until it is. The build does not choose a cipher.
+
 ## APK size
 
 Compared with the master debug build at `483d5891359942e640697c0665626e1d23532ee1`.
@@ -23,6 +25,6 @@ Compared with the master debug build at `483d5891359942e640697c0665626e1d23532ee
 | APK | Bytes |
 | --- | --- |
 | Master `:app` debug | 2374931 |
-| Spike debug, `net.zetetic:sqlcipher-android:4.6.1` | 22547064 |
+| Spike debug, `net.zetetic:sqlcipher-android:4.6.1`, with the on-screen runner | 23450558 |
 
-The spike debug APK is 20172133 bytes larger than that master debug APK. The product app was not rebuilt with this dependency, so that difference is the spike app, not a change to the Lagoon debug APK.
+The spike debug APK is 21075627 bytes larger than that master debug APK. The product app was not rebuilt with this dependency, so that difference is the spike app, not a change to the Lagoon debug APK. The published CI artifact is the copy to install. Its SHA-256 is the checksum file beside that APK.
