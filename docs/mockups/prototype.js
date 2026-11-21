@@ -1165,17 +1165,22 @@
     return '<div class="viewer-bar">' + iconBtn("viewer-close", "Close", I.close) + "<p>" + esc(S.viewerLabel || "") + '</p></div><div class="viewer-body"></div>';
   }
 
+  function notBuiltBanner() {
+    return '<p class="not-built">Not built yet.</p>';
+  }
+
   function frame() {
-    if (S.screen === "launcher") return launcherScreen();
-    if (S.screen === "reminder") return launcherScreen("ordinary");
-    if (S.screen === "reminder-sensitive") return launcherScreen("sensitive");
-    if (S.screen === "share") return shareScreen();
-    if (S.screen === "camera" || S.screen === "camera-missing") return cameraScreen();
-    if (S.screen === "viewer") return viewerScreen();
-    if (S.screen === "fullscreen") return renderFullscreen();
+    var mark = notBuiltBanner();
+    if (S.screen === "launcher") return mark + launcherScreen();
+    if (S.screen === "reminder") return mark + launcherScreen("ordinary");
+    if (S.screen === "reminder-sensitive") return mark + launcherScreen("sensitive");
+    if (S.screen === "share") return mark + shareScreen();
+    if (S.screen === "camera" || S.screen === "camera-missing") return mark + cameraScreen();
+    if (S.screen === "viewer") return mark + viewerScreen();
+    if (S.screen === "fullscreen") return mark + renderFullscreen();
     var animate = lastScreen !== S.screen;
     lastScreen = S.screen;
-    return appBar() + '<div class="content ' + (animate ? "content-in" : "") + '">' + body() + "</div>" + nav() + overlays();
+    return mark + appBar() + '<div class="content ' + (animate ? "content-in" : "") + '">' + body() + "</div>" + nav() + overlays();
   }
 
   function captureFocus() {
