@@ -82,6 +82,7 @@ gradle.projectsEvaluated {
     }
 
     root.project(":app").capture("releaseRuntimeClasspath", "AppRuntime")
+    root.project(":spike").capture("releaseRuntimeClasspath", "SpikeRuntime")
     root.project(":ui").capture("releaseRuntimeClasspath", "UiRuntime")
     root.project(":data").capture("releaseRuntimeClasspath", "DataRuntime")
     root.project(":domain").capture("runtimeClasspath", "DomainRuntime")
