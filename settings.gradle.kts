@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "lagoon"
-include(":domain", ":data", ":ui", ":app")
+include(":domain", ":data", ":ui", ":app", ":spike")
