@@ -65,6 +65,9 @@ Miguel, looking back through what he kept.
 - US-11 Read an item
 - US-12 Edit an item, including why it matters
 - US-13 Delete an item and undo it
+- US-92 Re-index an item after an edit. Draft. Not approved.
+- US-93 Finish a delete after the process dies. Draft. Not approved.
+- US-94 Put related records back when a delete is undone. Draft. Not approved.
 - US-14 Manage tags
 - US-15 Search with ranked, highlighted matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
 - US-50 Rank search matches. Approved on 2026-10-18 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant on behalf of mjbvilhena.
