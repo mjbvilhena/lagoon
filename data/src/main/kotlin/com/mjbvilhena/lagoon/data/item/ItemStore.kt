@@ -45,6 +45,8 @@ class ItemStore(
 
     fun item(id: ItemId): Item? = database.items().item(id.value)?.toItem()
 
+    fun all(): List<Item> = database.items().all().map { it.toItem() }
+
     fun tombstone(id: ItemId): Tombstone? {
         val row = database.items().tombstone(id.value) ?: return null
         return Tombstone(
