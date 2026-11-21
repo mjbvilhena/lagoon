@@ -25,6 +25,7 @@ RELEASES = {
     "github/codeql-action": ["9418214df1f2c4b8128c770156c409013b07d6b9"],
     "actions/configure-pages": ["45bfe0192ca1faeb007ade9deae92b16b8254a0d"],
     "actions/upload-pages-artifact": ["fc324d3547104276b827a68afc52ff2a11cc49c9"],
+    "actions/upload-artifact": ["ea165f8d65b6e75b540449e92b4886f43607fa02"],
     "actions/deploy-pages": ["368f82528645a54fb793d4d04e342629a3f51346"],
 }
 CHECKOUT = RELEASES["actions/checkout"][0]
