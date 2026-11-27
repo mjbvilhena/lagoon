@@ -616,7 +616,7 @@
     }
     var backBtn = ["home", "search", "inbox", "topics", "settings"].indexOf(S.screen) === -1 ? iconBtn("back", "Back", I.back) : "";
     var extra = "";
-    if (S.screen === "home") {
+    if (S.screen === "home" && !builtScreen()) {
       extra = '<button type="button" class="text-action" data-act="upcoming">Upcoming</button>' + iconBtn("camera", "Camera", I.camera);
     }
     if (S.screen === "detail" && !S.readOnly) extra = btn("edit", "Edit", "btn-text");
@@ -653,7 +653,7 @@
   }
 
   function filtersHtml() {
-    if (S.hideItems || liveItems().length === 0) return "";
+    if (builtScreen() || S.hideItems || liveItems().length === 0) return "";
     var tags = [];
     var sources = [];
     S.items.forEach(function (it) {
@@ -699,6 +699,7 @@
   function renderDetail() {
     var it = current();
     if (!it) return "";
+    if (it.sensitive && !S.sessionOpen) return '<div class="detail"></div>';
     var html = '<div class="detail"><h2>' + esc(shownTitle(it)) + "</h2>";
     html += '<p class="kicker">' + esc(homeMeta(it)) + "</p>";
     if (it.enrichFailed) html += '<p class="kicker">' + esc(COPY.enrich) + "</p>";
@@ -719,8 +720,8 @@
     }
     html += '<div class="actions">';
     if (it.preview === "fog" && !it.sensitive) html += btn("show-prompt", COPY.fetch, "btn-row btn-text");
-    if (!S.readOnly) html += btn("get-topics", COPY.topicsBtn, "btn-row btn-text");
-    html += btn("share-out", "Share", "btn-row btn-text");
+    if (!S.readOnly && !builtScreen()) html += btn("get-topics", COPY.topicsBtn, "btn-row btn-text");
+    if (!builtScreen()) html += btn("share-out", "Share", "btn-row btn-text");
     html += btn("open-link", "Open", "btn-row btn-text");
     if (!S.readOnly) html += btn("delete-item", "Delete", "btn-row btn-danger");
     html += "</div></div>";
@@ -1165,7 +1166,21 @@
     return '<div class="viewer-bar">' + iconBtn("viewer-close", "Close", I.close) + "<p>" + esc(S.viewerLabel || "") + '</p></div><div class="viewer-body"></div>';
   }
 
+  function builtScreen() {
+    return {
+      home: 1,
+      "home-empty": 1,
+      detail: 1,
+      "detail-locked": 1,
+      edit: 1,
+      "edit-title": 1,
+      share: 1,
+      "snack-undo": 1
+    }[S.screen] === 1;
+  }
+
   function notBuiltBanner() {
+    if (builtScreen()) return "";
     return '<p class="not-built">Not built yet.</p>';
   }
 
@@ -1914,7 +1929,7 @@
     detail: function () { prep({ screen: "detail", detailId: "n-ferry", stack: ["home"] }); },
     "detail-preview": function () { prep({ screen: "detail", detailId: "n-token", stack: ["home"] }); },
     "detail-failed": function () { prep({ screen: "detail", detailId: "n-harbour", stack: ["home"] }); },
-    "detail-locked": function () { prep({ screen: "home", detailId: "n-key", sheet: { kind: "bio" } }); S.afterUnlock = "detail"; },
+    "detail-locked": function () { prep({ screen: "detail", detailId: "n-key" }); },
     "detail-sensitive": function () { prep({ screen: "detail", detailId: "n-key", sessionOpen: true, stack: ["home"] }); },
     edit: function () { prep({ screen: "edit", detailId: "n-ferry", stack: ["detail", "home"] }); draftFrom(byId("n-ferry")); },
     "edit-title": function () { prep({ screen: "edit", detailId: "n-ferry", stack: ["detail"], editError: COPY.titleRequired }); draftFrom(byId("n-ferry")); S.editError = COPY.titleRequired; },
