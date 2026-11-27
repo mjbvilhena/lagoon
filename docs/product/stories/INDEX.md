@@ -99,7 +99,7 @@ US-15, US-31, US-34, US-35, US-40, US-41, US-49, US-50, US-55, US-61, US-62, US-
 
 Security criteria on US-35, US-64, US-75, US-78, US-79, US-80, US-81, and US-86 were approved by mjbvilhena on 2026-10-18. US-35, US-81, and US-86 are approved. Amendment approved by mjbvilhena on 2026-10-18.
 
-Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18. The US-85 E1 wording is included in that approval. Every other story with Given/When/Then passes artefact shape only. US-80, US-88, US-89, US-90, and US-91 are Done. The other stories are not implemented.
+Artefact Definition of Done: US-73, US-74, and US-76 have no Given/When/Then and no MoSCoW yet. They do not meet the user-story Definition of Done. They are placeholders waiting on the design-gate ADR. They are not ready for review. Amendment approved by mjbvilhena on 2026-10-18. The US-85 E1 wording is included in that approval. Every other story with Given/When/Then passes artefact shape only. US-80, US-88, US-89, US-90, and US-91 are Done. US-57 is Done. The spike result is pass. The other stories are not implemented.
 
 US-61 is a Should in epic E1. The story is approved.
 
