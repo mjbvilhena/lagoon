@@ -19,7 +19,7 @@ Re-index an item after an edit.
 ## Background
 
 - US-12 says FTS is re-indexed from the new text, and that re-index is a Must (US-15).
-- The US-57 spike result is blocked. No engine was chosen. The data layer says not to treat FTS5 plus SQLCipher as proven before that spike, and the fallback is not chosen in the spike.
+- The US-57 spike result is pass. No engine was chosen. The data layer says not to treat FTS5 plus SQLCipher as proven before that spike, and the fallback is not chosen in the spike.
 - Domain constraints: `docs/domain/vault/DOMAIN.md` is approved. Approved by mjbvilhena on 2026-10-20. Its MUST rules apply. Do not invent further rules.
 - Out of scope: choosing the search engine, and building search (US-15).
 
@@ -41,7 +41,7 @@ Not applicable. No analytics.
 
 ## Dependencies and risks
 
-- Blocked until a search engine is chosen. The US-57 note records blocked.
+- Blocked until a search engine is chosen. The US-57 note records pass. It does not choose a cipher.
 
 ## Implementation notes
 
