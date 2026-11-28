@@ -26,7 +26,7 @@ Put related records back when a delete is undone.
 
 ## Decisions
 
-mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recommended". For this story that is items 3 and 4. A reminder that falls due during the undo window fires once after Undo. On Undo, a queued topic job goes back to the queue exactly as it was, not sent straight away. These are decisions. They are not whole-story approval. US-94 stays Draft. Not approved.
+mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recommended". For this story that is items 3 and 4. A reminder that falls due during the undo window fires once after Undo. On Undo, a queued topic job goes back to the queue exactly as it was, not sent straight away. These are decisions. They are not whole-story approval.
 
 ## Acceptance criteria
 
