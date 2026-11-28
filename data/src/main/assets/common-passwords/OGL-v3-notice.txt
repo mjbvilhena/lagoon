@@ -1,0 +1,4 @@
+Contains public sector information licensed under the Open Government Licence v3.0.
+The entries are from the NCSC list of the 100,000 most commonly re-occurring breached passwords, filtered to NFC lengths of 12 to 128 Unicode code points.
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+https://www.ncsc.gov.uk/news/most-hacked-passwords-revealed-as-uk-cyber-survey-exposes-gaps-in-online-security

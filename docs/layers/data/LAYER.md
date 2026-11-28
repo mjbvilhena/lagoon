@@ -52,6 +52,8 @@ Amendment approved by mjbvilhena on 2026-11-28. The accepted table above is unch
 
 Amendment approved by mjbvilhena on 2026-11-28. The accepted table row for Native Argon2id stays. Original note: "JNI to the PHC reference. Not a pure-Java port (ADR-0001)." Replacement: "The artifact is `com.lambdapioneer.argon2kt:argon2kt:1.6.0`. JNI to the PHC reference. Every call passes the ADR-0001 parameters: Argon2id, version 0x13, memory 65536 KiB, iterations 3, parallelism 1, and a 32-byte output. The library defaults are not used. Not a pure-Java port." This paragraph does not add the Gradle dependency.
 
+Status-only update. The coordinate `com.lambdapioneer.argon2kt:argon2kt:1.6.0` is now declared on `:data`. mjbvilhena said on 2026-11-10 that a status sentence needs no approval. This sentence adds no rule. The accepted table row stays.
+
 ## Forbidden dependencies
 
 - NEVER import Compose or `com.mjbvilhena.lagoon.ui`.

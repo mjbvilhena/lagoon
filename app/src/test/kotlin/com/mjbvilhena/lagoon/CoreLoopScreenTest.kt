@@ -19,7 +19,7 @@ import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowLooper
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [28])
+@Config(sdk = [28], application = ReadyVaultApplication::class)
 class CoreLoopScreenTest {
     @Test
     fun aSharedLinkIsSavedAndListedNewestFirst() {

@@ -23,6 +23,11 @@ class ShareTargetActivity : Activity() {
                     .toLocalDate()
                     .toString(),
             )
+        if (message == PASSPHRASE_REQUIRED) {
+            startActivity(Intent(this, PassphraseActivity::class.java))
+            finish()
+            return
+        }
         val text =
             TextView(this).apply {
                 this.text = message
