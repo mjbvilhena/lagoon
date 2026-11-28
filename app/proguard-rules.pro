@@ -1,4 +1,6 @@
 # A release build strips android.util.Log. Data layer MUST.
+-keep class com.lambdapioneer.argon2kt.** { *; }
+
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
     public static int v(...);

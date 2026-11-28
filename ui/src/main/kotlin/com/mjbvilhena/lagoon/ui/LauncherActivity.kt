@@ -21,6 +21,8 @@ import com.mjbvilhena.lagoon.domain.item.PersonalNote
 import com.mjbvilhena.lagoon.domain.item.TITLE_REQUIRED
 import com.mjbvilhena.lagoon.domain.item.UNDO
 import com.mjbvilhena.lagoon.domain.item.addNote
+import com.mjbvilhena.lagoon.domain.vault.SETTINGS
+import com.mjbvilhena.lagoon.domain.vault.VaultPhase
 import java.time.Instant
 import java.time.ZoneId
 
@@ -41,6 +43,11 @@ class LauncherActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ReleaseLogProbe.touch()
+        if (vault().passphrasePhase() != VaultPhase.READY) {
+            startActivity(Intent(this, PassphraseActivity::class.java))
+            finish()
+            return
+        }
         showHome()
     }
 
@@ -68,6 +75,7 @@ class LauncherActivity : Activity() {
         if (pendingDelete != null) {
             column.addView(snackbar())
         }
+        column.addView(action(SETTINGS) { startActivity(Intent(this, SettingsActivity::class.java)) })
         setContentView(scroll(column))
     }
 

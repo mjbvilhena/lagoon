@@ -32,6 +32,13 @@
         </activity>
 
         <activity
+            android:name="com.mjbvilhena.lagoon.ui.PassphraseActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.mjbvilhena.lagoon.ui.SettingsActivity"
+            android:exported="false" />
+
+        <activity
             android:name="com.mjbvilhena.lagoon.ui.ShareTargetActivity"
             android:exported="true">
             <intent-filter>

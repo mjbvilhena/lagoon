@@ -5,6 +5,7 @@ import com.mjbvilhena.lagoon.domain.item.EditResult
 import com.mjbvilhena.lagoon.domain.item.Item
 import com.mjbvilhena.lagoon.domain.item.PersonalNote
 import com.mjbvilhena.lagoon.domain.share.ShareInput
+import com.mjbvilhena.lagoon.domain.vault.VaultPhase
 
 interface VaultHost {
     val vault: VaultSession
@@ -37,4 +38,29 @@ interface VaultSession {
     fun undoDelete(id: String)
 
     fun confirmDelete(now: Long)
+
+    fun passphrasePhase(): VaultPhase
+
+    fun preparePassphrase()
+
+    fun setupHardwareWarning(): Boolean
+
+    fun settingsHardwareWarning(): Boolean
+
+    fun memoryRefused(): Boolean
+
+    fun acceptPassphrase(passphrase: String): PassphraseStep
+
+    fun unlockPassphrase(passphrase: String): PassphraseStep
+
+    fun declinePassphrase(): String
+
+    fun newEmptyVault(): String
 }
+
+const val PASSPHRASE_REQUIRED = "PASSPHRASE_REQUIRED"
+
+class PassphraseStep(
+    val message: String,
+    val vaultReady: Boolean,
+)

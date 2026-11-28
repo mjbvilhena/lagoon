@@ -150,6 +150,8 @@ ADR-0001 through ADR-0006 are accepted. Approved by mjbvilhena on 2026-10-20. Th
 
 Only mjbvilhena may accept an ADR or add a published term. This file is approved. Approved by mjbvilhena on 2026-10-20. It does not change approved story text.
 
+Status-only update. Slice 1 of the vault key is in the data layer. US-35 is not Done. mjbvilhena said on 2026-11-10 that a status sentence needs no approval. This sentence adds no rule.
+
 ## Anti-patterns
 
 - A second DOMAIN.md for capture or topics that restates these rules.

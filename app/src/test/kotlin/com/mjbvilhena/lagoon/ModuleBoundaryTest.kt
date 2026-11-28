@@ -32,6 +32,15 @@ class ModuleBoundaryTest {
                 "import androidx.compose",
             ),
         )
+        val lowRam = ArrayList<String>()
+        listOf(File(root, "domain/src/main"), File(root, "data/src/main")).forEach { dir ->
+            dir.walkTopDown().filter { it.extension == "kt" }.forEach { file ->
+                if (file.readText().contains("isLowRamDevice")) {
+                    lowRam.add(file.path)
+                }
+            }
+        }
+        assertTrue(lowRam.joinToString(), lowRam.isEmpty())
     }
 
     private fun assertNoForbiddenImport(
