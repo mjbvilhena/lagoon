@@ -279,6 +279,16 @@ Journeys below are the user-visible outcomes the stories require. `sdlc-e2e-scri
 - **Unhappy sibling:** Turn the Settings switch off and save an ordinary item. It is not sent until he chooses "Get topics" on that item.
 - **Maps to:** US-41 Approved, US-75 Approved.
 
+### J-13: Search the encrypted vault after an edit
+
+Approved by mjbvilhena on 2026-11-28. He typed "Approved 1, 2, 3 and 6" at 09:54 GMT. Decision 6 includes this journey. It is planned. It is not passing. The journeys-in-scope cell above still names J-1 through J-12. J-13 is an additional journey. It touches search on ciphertext.
+
+- **Actor:** Miguel. Precondition: the vault key exists and the item is ordinary. The database is the encrypted vault.
+- **Steps:** Open Search. Enter a word from the title. Edit the item so that word is removed, another word is added, and a third word stays. Search each of those words.
+- **Assertions:** The first search highlights the title word. After the edit, the removed word does not find the item, the added word does, and the kept word still does. An empty query shows the home list and no error. A query that matches nothing says nothing matched.
+- **Unhappy sibling:** A query that contains `"`, `-`, `*`, `AND`, or `NEAR` does not crash, and those tokens are plain words.
+- **Maps to:** US-15 Approved, US-50 Approved, US-92 Approved. The sensitive search after the US-37 unlock stays US-75. US-37 stays Draft. `docs/technical_design/us-35-vault-key-plan.md`.
+
 ### Stability
 
 - [x] Assertions use the accessible name or the visible string from the UX artefact, not a position in a list.
@@ -322,6 +332,19 @@ TP-33 through TP-36 are covered by `.github/workflows/qa.yml` and `ReleaseManife
 TP-37, TP-38, and TP-39 cover US-92, US-93, and US-94. They are not an amendment approval of this plan. US-92, US-93, and US-94 are approved. Approved on 2026-11-28 by Scout, Mikey's Dev Bot, Mikey's Assistant, Mikey's Household Assistant and Mikey's Leisure Assistant under Miguel's delegation of 2026-10-17. This is an artefact approval. Implementation is not Done. US-93's approval covers its non-security scope. Security criteria approved by mjbvilhena on 2026-11-28. That marker covers only the storage criterion.
 
 Journeys stay JVM plus Robolectric. These rows are CI and one unit assertion. They do not add an emulator.
+
+TP-40 through TP-47 are the US-35 vault key plan rows. Approved by mjbvilhena on 2026-11-28. He typed "Approved 1, 2, 3 and 6" at 09:54 GMT. Decision 6 is these rows and journey J-13. The status is planned. The rows are not passing. This block is not an amendment approval of TP-01 through TP-39. Those rows stay as written. The plan is `docs/technical_design/us-35-vault-key-plan.md`.
+
+| ID | Behavior | Level | Risk if wrong | Status |
+| --- | --- | --- | --- | --- |
+| TP-40 | US-35 key storage. The wrapping key is AES-256-GCM. The nonce comes from the Keystore. `isUserAuthenticationRequired` is false. On API 28+ the key is created with `setUnlockedDeviceRequired(false)`. `setInvalidatedByBiometricEnrollment` is not set. On API 31+ `KeyInfo.getSecurityLevel()` is StrongBox or TEE, and on API 26–30 `KeyInfo.isInsideSecureHardware()` is true, read on that wrapping key. A phone without that hardware level shows the ADR-0001 warning before any vault bytes are written. Decline deletes the software entry and writes no vault. Accept keeps a software-backed key. A hardware-backed key does not show the warning. A new biometric does not drop the key. The wrap blob stays on the phone. | integration | A user-auth key blocks sync, or a software key is created with no warning | planned |
+| TP-41 | US-35 before the key exists. A waiting share stays in memory. Decline says nothing was saved. No plaintext vault file is written. The passphrase is not logged and is not written to disk. | integration | The first share is stored in the clear | planned |
+| TP-42 | US-35 when the Keystore entry is missing. The same key is derived from the passphrase and the clear header. No key is read from off the phone. A header outside the Argon2 floor or ceiling does not run the KDF. A wrong passphrase changes nothing. | unit | A second key is minted, or a missing wrap deletes the vault | planned |
+| TP-43 | US-35 and ADR-0008. Once the key exists, Room opens `net.zetetic:sqlcipher-android:4.6.1`. The database subkey is the ADR-0006 hex pragma. HMAC stays on. `temp_store` is `MEMORY`. A wrong key does not open the file. The file does not start with `SQLite format 3`. Room's bundled SQLite is not that file. In-memory rows are not copied. Key create encrypts an empty vault at generation 1. Room stays 2.7.2. | integration | The vault file is plaintext, or debug rows are treated as the vault | planned |
+| TP-44 | US-35 derived files. A file this slice writes uses Tink `AES256_GCM_HKDF_1MB`. Logs and WorkManager input contain no passphrase and no vault key. Thumbnail, preview, snapshot, OCR, and WebView producers are not built by this row. | integration | A derived file sits on disk in the clear | planned |
+| TP-45 | US-15 on the encrypted database. An ordinary item matches from title, body, personal note, tags, extracted text, the OCR column, or snapshot text. The matched word is highlighted in the snippet, and the snippet text is available to a screen reader. A query containing `"`, `-`, `*`, `AND`, or `NEAR` treats those tokens as plain words and does not crash. No match says nothing matched. An empty query follows the home-list rules and shows no error. Sensitive results stay US-75. | integration | A field is invisible, or a query operator crashes search | planned |
+| TP-46 | US-50 on that database. At the same term frequency and the same field length, a title match ranks above a tag match, and a tag match ranks above a body match. An OCR-only match and a body-only match do not outrank each other on weight. A phrase ranks above the same words scattered. Recency orders a tie and does not beat a higher score. "cafe" and the prefix "caf" match "café" under `unicode61 remove_diacritics 2`. The same query twice returns the same order. | integration | The closer match is buried, or accent folding is dropped | planned |
+| TP-47 | US-92. Saving an edit re-indexes the edited field from the new text inside the encrypted FTS5 table. There is no second plaintext index. For an ordinary item, an added word finds the item, a removed word no longer finds it because of that word, and a kept word still finds it. The sensitive search after the US-37 unlock stays unmet while US-37 is Draft. | integration | An edit is missing from search, or a plaintext index is written beside the vault | planned |
 
 ## Anti-patterns
 
