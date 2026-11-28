@@ -48,6 +48,8 @@ Amendment approved by mjbvilhena on 2026-10-29. Add `com.google.crypto.tink:tink
 
 Amendment approved by mjbvilhena on 2026-10-29. Original: "as proposed ADR-0007". Replacement: "as accepted ADR-0007". The rest of that sentence stays.
 
+Amendment approved by mjbvilhena on 2026-11-28. The accepted table above is unchanged. These three sentences are the live notes for the vault database. Original Room note: "Spec requires Room with FTS. Engine for encryption plus FTS waits on US-57." Replacement: "Room opens `net.zetetic:sqlcipher-android:4.6.1`. FTS5 comes from that artifact's SQLite. The product database is not Room's bundled SQLite." Original SQLCipher note: "Database encryption in ADR-0006. The subkey is raw key data, `PRAGMA key = "x'<64 hex>'"`, and `temp_store` is `MEMORY`. US-57 still has to show FTS with it." Replacement: "Database encryption in ADR-0006 and ADR-0008. The artifact is `net.zetetic:sqlcipher-android:4.6.1`. The subkey is raw key data, passed as the ADR-0006 hex pragma, and `temp_store` is `MEMORY`. US-57 records pass on the API 26 emulator and on the samsung SM-S911B." Original NEVER: "NEVER treat FTS5 plus SQLCipher as proven before the US-57 spike. The dependency is allowed. The spec's fallback, if that spike fails, is Room 2 FTS4 plus app-side ranking." Replacement: "US-57 records pass. The vault database uses `net.zetetic:sqlcipher-android:4.6.1` as ADR-0008 states. A later version needs the same two-target checks." The original sentences stay. This paragraph does not change the status line of this file. It does not name an Argon2id Maven coordinate.
+
 ## Forbidden dependencies
 
 - NEVER import Compose or `com.mjbvilhena.lagoon.ui`.
