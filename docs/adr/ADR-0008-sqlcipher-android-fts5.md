@@ -2,9 +2,9 @@
 
 ## Status
 
-Proposed. 2026-11-27. Drafted for review by mjbvilhena. Awaiting mjbvilhena.
+Accepted. Approved by mjbvilhena on 2026-11-28.
 
-This status is not acceptance. This record does not change the Accepted status of ADR-0006. It does not edit ADR-0006. It does not change any story status. Merging this file would not accept it.
+On 2026-11-28 at 05:01 GMT, mjbvilhena typed "E1-E6 approved as recommended". That accepts the six answers recorded under Open questions. It does not accept the specification amendment. This record does not change the Accepted status of ADR-0006. It does not edit ADR-0006. It does not change any story status.
 
 ## Context
 
@@ -22,7 +22,7 @@ Non-goals: Argon2id and the Keystore wrap (ADR-0001), file and zip containers (A
 
 Domain consultant `vault`. Layer consultant `data`. Both files stay as they are. The data layer still says not to treat FTS5 plus SQLCipher as proven before the spike, and its allowed-dependency row still says the spike has to show FTS with SQLCipher. Those sentences are not edited here.
 
-This is a new record, not an amendment pasted into ADR-0006. The harness template is one decision per ADR. ADR-0006's accepted sentences stay. ADR-0007 is the existing pattern for a later record that narrows one open part of ADR-0006 without rewriting it. An amendment line in this repository is an acceptance mark. This record is only Proposed, so no amendment line is added.
+This is a new record, not an amendment pasted into ADR-0006. The harness template is one decision per ADR. ADR-0006's accepted sentences stay. ADR-0007 is the existing pattern for a later record that narrows one open part of ADR-0006 without rewriting it. No amendment line was added to ADR-0006.
 
 ## Decision
 
@@ -53,20 +53,20 @@ Default: a new on-device vault database uses this same artifact, this tokenizer,
 - **Negative / accepted trade-offs.** Dependency scan. On master `57d39ebf38710fdd2b8f4fb6ea2e3ebbad8458c5`, Dependency scan job `140791362182` in run `46084678220` succeeded. The resolver ran `:spike:captureSpikeRuntime` and wrote 174 modules. `scripts/ci/resolve-classpaths.init.gradle.kts` captures `:spike` `releaseRuntimeClasspath`, and `spike/build.gradle.kts` declares `net.zetetic:sqlcipher-android:4.6.1`. The job log does not print the module list or the OSV report. The job fails closed on a high finding. A low finding would not fail it. `docs/sdlc/vulnerability-exceptions.md` is not in the tree, so there is no exception line. `:app` and `:data` do not declare this coordinate. Moving it onto `:data` is a new resolved graph. This record adds no exception.
 - **US-35.** The database file, once the key exists, uses this library under the database subkey. Attachment files and derived files stay on the Tink streams in ADR-0007. The vault key stays the Argon2id root in ADR-0001. US-35's text is not edited. This record does not implement US-35. The empty-vault Drive scenario stays where the pipeline map already puts it.
 - **US-15 and US-50.** The spike showed prefix match, accent folding, the US-50 weights for a title match then a tags match then a body match, and snippet and highlight on the title column. It did not show a match in every US-15 field, punctuation treated as plain words, an empty query, exact-phrase rank, the OCR-equals-body tie, or the recency tie-break. Those remain the stories' acceptance criteria. Ranking weights stay in the domain. This record does not copy them into a DAO.
-- **US-92.** The story stays Draft. It stays blocked until a search engine is accepted. This Proposed record is not that acceptance. The index it describes, once an engine is accepted, is the FTS5 table above, rebuilt from the edited text. This record does not implement that rebuild.
+- **US-92.** The story stays Draft. This record does not change that status. The index it describes is the FTS5 table above, rebuilt from the edited text. This record does not implement that rebuild.
 - **Migration from the in-memory database.** `openInMemoryVault` uses `Room.inMemoryDatabaseBuilder`. There is no on-disk vault file to convert, and there is no plaintext database file to re-encrypt. ADR-0006 already says key create encrypts an empty vault at generation 1. Rows that exist only in a running in-memory process are not copied into that file. A share that arrives before the key exists stays in memory until setup, as US-35 already requires, and is then written into the new encrypted database. Room schema version 2 and `ITEM_MIGRATION_1_2` stay the in-memory schema. They are not a dump of debug rows.
-- **Follow-ups.** After mjbvilhena accepts this record, a separate amendment can name `net.zetetic:sqlcipher-android:4.6.1` on the data-layer allowed-dependency row and retire the sentence that FTS5 plus SQLCipher is not yet proven. The specification sentence that FTS5 needs Room 3 with the bundled SQLite driver can be amended in that same later step. Neither file is edited here. The current data module depends on `androidx.room:room-runtime:2.7.2`. This record does not change that version. US-15, US-35, US-50, and US-92 are not started by this file.
+- **Follow-ups.** The Community Edition notice must be readable on an open-source licences screen in Settings. That screen is not built here. US-59 stays Draft. The product APK size is measured when the US-35 vault key is built. The spike sizes stay the evidence until that measurement. A later amendment can name `net.zetetic:sqlcipher-android:4.6.1` on the data-layer allowed-dependency row and retire the sentence that FTS5 plus SQLCipher is not yet proven. The data layer is not edited here. The specification amendment for the Room 3 sentence is drafted beside that sentence and is Proposed. It is not accepted. The current data module depends on `androidx.room:room-runtime:2.7.2`. This record does not change that version. US-15, US-35, US-50, and US-92 are not started by this file.
 
 ## Open questions
 
-These are the questions mjbvilhena has to answer before this status can leave Proposed. Each one is separate. Answering one does not answer the others.
+mjbvilhena answered these six questions on 2026-11-28 at 05:01 GMT with "E1-E6 approved as recommended". Each answer is recorded against its question.
 
-1. Do you want the vault database library to be `net.zetetic:sqlcipher-android` version 4.6.1, the version the spike ran, and to leave Maven's listed release 4.20.0 unused until the same API 26 emulator and arm64 phone checks pass on it?
-2. Do you accept the Community Edition licence in the `LICENSE` file at `sqlcipher-android` tag `v4.6.1` (3-clause BSD, copyright 2008–2023 ZETETIC LLC) for the Lagoon app, and where should a person be able to read that notice?
-3. Do you accept the spike size as the size evidence we have: the CI spike APK is 22,563,778 bytes (about 22.6 MB), 20,188,847 bytes larger than the master debug app APK of 2,374,931 bytes? The product app was not rebuilt with this library, and an arm64-only product APK was not measured.
-4. Do you accept the 16 KB page-size evidence we have: each `libsqlcipher.so` in the 4.6.1 AAR has PT_LOAD alignment 16384? The spike did not record the phone's page size.
-5. Do you accept the dependency-scan status we have: on master `57d39eb` the Dependency scan job succeeded after resolving the spike release classpath, and there is no vulnerability-exception file? `:app` and `:data` do not declare this library yet, and the job log does not include the OSV report.
-6. Do you accept that vault full-text search uses the SQLite bundled inside this SQLCipher library, opened later by Room, and that Room's own bundled SQLite is not the encrypted database? The data module today is Room 2.7.2. The specification still says FTS5 needs Room 3 with the bundled SQLite driver. This record does not change that sentence.
+1. Do you want the vault database library to be `net.zetetic:sqlcipher-android` version 4.6.1, the version the spike ran, and to leave Maven's listed release 4.20.0 unused until the same API 26 emulator and arm64 phone checks pass on it? E1: use `net.zetetic:sqlcipher-android` 4.6.1, and keep 4.20.0 unused until it passes the same API 26 emulator and arm64 phone checks. Approved by mjbvilhena on 2026-11-28.
+2. Do you accept the Community Edition licence in the `LICENSE` file at `sqlcipher-android` tag `v4.6.1` (3-clause BSD, copyright 2008–2023 ZETETIC LLC) for the Lagoon app, and where should a person be able to read that notice? E2: accept the Community Edition 3-clause BSD licence (ZETETIC LLC). The notice must be readable on an open-source licences screen in Settings. That screen is a follow-up and is not built here. Approved by mjbvilhena on 2026-11-28.
+3. Do you accept the spike size as the size evidence we have: the CI spike APK is 22,563,778 bytes (about 22.6 MB), 20,188,847 bytes larger than the master debug app APK of 2,374,931 bytes? The product app was not rebuilt with this library, and an arm64-only product APK was not measured. E3: accept the spike size evidence for now (spike APK 22,563,778 bytes, 20,188,847 bytes larger than the master debug APK), and measure the real app's size when the US-35 vault key is built. Approved by mjbvilhena on 2026-11-28.
+4. Do you accept the 16 KB page-size evidence we have: each `libsqlcipher.so` in the 4.6.1 AAR has PT_LOAD alignment 16384? The spike did not record the phone's page size. E4: accept the 16 KB page-size evidence (PT_LOAD alignment 16384 in each `libsqlcipher.so`). Approved by mjbvilhena on 2026-11-28.
+5. Do you accept the dependency-scan status we have: on master `57d39eb` the Dependency scan job succeeded after resolving the spike release classpath, and there is no vulnerability-exception file? `:app` and `:data` do not declare this library yet, and the job log does not include the OSV report. E5: accept the dependency-scan status (green on master `57d39eb`, with no vulnerability-exception file). Approved by mjbvilhena on 2026-11-28.
+6. Do you accept that vault full-text search uses the SQLite bundled inside this SQLCipher library, opened later by Room, and that Room's own bundled SQLite is not the encrypted database? The data module today is Room 2.7.2. The specification still says FTS5 needs Room 3 with the bundled SQLite driver. This record does not change that sentence. E6: accept that vault full-text search uses the SQLite bundled inside SQLCipher, opened by Room, and not Room's bundled SQLite. This answer depends on a separate specification amendment, because the spec says FTS5 needs Room 3 with the bundled driver. That amendment is Proposed. This line does not approve it. Approved by mjbvilhena on 2026-11-28.
 
 ## Compliance
 
@@ -109,4 +109,4 @@ stateDiagram-v2
     Rejected --> [*]
 ```
 
-Status: Proposed. Awaiting mjbvilhena. 2026-11-27.
+Status: Accepted. Approved by mjbvilhena on 2026-11-28.
