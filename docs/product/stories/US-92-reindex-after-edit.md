@@ -36,9 +36,9 @@ mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recomme
   - And the new text adds a word, removes a word, and keeps a word
   - When the edit is saved
   - Then that field is re-indexed from the new text
-  - And a search for the added word finds the item
-  - And a search for the removed word no longer finds the item because of that word
-  - And a search for the kept word still finds the item
+  - And, for an ordinary item, or for a sensitive item after the US-37 unlock, a search for the added word finds the item
+  - And, for an ordinary item, or for a sensitive item after the US-37 unlock, a search for the removed word no longer finds the item because of that word
+  - And, for an ordinary item, or for a sensitive item after the US-37 unlock, a search for the kept word still finds the item
   - And what a locked search shows for a sensitive item stays with US-75
 
 ## Analytics and observability (optional)

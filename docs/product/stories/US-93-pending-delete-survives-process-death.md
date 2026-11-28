@@ -25,7 +25,9 @@ Finish a delete after the process dies.
 
 ## Decisions
 
-mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recommended". For this story that is item 5. If the app is killed while the undo snackbar is still showing, the delete still completes on the next launch. `trashedAt` and `trashChangedAt` are that completion, the instant the confirmation ended. This is a decision. It is not whole-story approval. US-93 stays Draft. Not approved. Item 1 of that same sentence is the security criterion in the scenario below. It is not whole-story approval.
+mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recommended". For this story that is item 5. If the app is killed while the undo snackbar is still showing, the delete still completes on the next launch. This is a decision. It is not whole-story approval. US-93 stays Draft. Not approved. Item 1 of that same sentence is the security criterion in the scenario below. It is not whole-story approval.
+
+Decision (mjbvilhena, 2026-11-28): the pending delete is local and does not sync; after a kill during the undo snackbar, the 30-day trash clock starts when the delete completes on the next launch. He typed "I'm ok with your recommendation" on 2026-11-28 at 07:22 GMT. This is a decision. It is not whole-story approval. US-93 stays Draft. Not approved.
 
 ## Acceptance criteria
 
@@ -45,7 +47,7 @@ mjbvilhena decided on 2026-11-28 at 07:11 GMT. He typed "1-5 approved as recomme
   - Then the delete still completes
   - And the item is in trash
   - And `inTrash` is set
-  - And `trashedAt` and `trashChangedAt` are the instant that completion ended the confirmation
+  - And `trashedAt` and `trashChangedAt` are the instant the delete completes on that launch (ADR-0002, US-66)
   - And `updatedAt` is set as for any trash write (ADR-0002, US-66)
   - And `userEditedAt` is unchanged
 - **Scenario: where the pending delete is held** — Must
